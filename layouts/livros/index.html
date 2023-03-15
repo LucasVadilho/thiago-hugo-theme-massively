@@ -16,13 +16,16 @@
                     
                     <div id="painelLivros">
                         {{ range $livro := .Params.livros }}
-                        <div id="imagensPainelLivros">
-                            <a href="#" onclick="oi('{{$livro.titulo}}', '{{$livro.descricao}}', '{{$livro.imagens}}')">
+                        <div class="imagensPainelLivros" id="painel-{{ $livro.id }}" myid="{{ $livro.id }}">
+                            {{/*  <a href="#" onclick="oi('{{$livro.titulo}}', '{{$livro.descricao}}', '{{$livro.imagens}}')">  */}}
+                            <a href="#">
                                 <img src="{{index $livro.imagens 0}}" class="imagemPainel">
                             </a>
                         </div>
                         {{ end }}
                     </div>
+                    <a id="carrousel-left"><-</a>
+                    <a id="carrousel-right">-></a>
                     
                     <div id="livroSelecionado">
                         <div id="carrosselLivroSelecionado">
@@ -77,7 +80,7 @@
   
         {{- template "_internal/google_analytics.html" . }}
         {{- partial "scripts/index" . }}
-        
+       
     </body>
 
     <style>
@@ -105,17 +108,20 @@
             padding-bottom: 2%;
             width: 80%;
             margin: auto;
-            overflow: hidden;
-            justify-content: center;
+            overflow: auto;
         }
 
-        #imagensPainelLivros{
-            background-color: blue;
+        .imagensPainelLivros{
+            min-width: 200px;
+            /*  background-color: blue;  */
+        }
+
+        .selected {
+            border: 2px solid green;
         }
 
         .imagemPainel {
             width: 150px;
-            border: 2px solid green;
             padding: 0 10px 0 10px;
         }
 
@@ -358,8 +364,12 @@
     </style>
 
 
-<!-- JAVA SCRIPT -->
+<!-- JAVASCRIPT -->
 <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", (event) => { 
+        setupCarousel()
+    });
+
     // onload() = oi(titulo, descricao)
 
     let oi = function(titulo, descricao, imagens){
@@ -371,6 +381,41 @@
         // document.getElementById('main').appendChild(p)
     }
 
+    // Carousel
+    // Vai chamar carousel sim
+    let currentFocus = 0
+    let images = document.getElementsByClassName('imagensPainelLivros')
+    
+    let setupCarousel = function() {
+        for(let image of images) {
+            image.addEventListener("click", (el) => {
+                images[currentFocus].classList.remove('selected')
+
+                currentFocus = parseInt(el.currentTarget.getAttribute('myid'))
+                
+                el.currentTarget.scrollIntoView()
+                el.currentTarget.classList.add('selected')
+            })
+        }
+
+        document.getElementById('carrousel-left').addEventListener("click", () => {
+            images[currentFocus].classList.remove('selected')
+
+            currentFocus = currentFocus > 0 ? currentFocus - 1 : images.length - 1
+            
+            images[currentFocus].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })
+            images[currentFocus].classList.add('selected')
+         })
+
+        document.getElementById('carrousel-right').addEventListener("click", () => {
+            images[currentFocus].classList.remove('selected')
+
+            currentFocus = currentFocus < images.length - 1 ? currentFocus + 1 : 0
+            
+            images[currentFocus].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })
+            images[currentFocus].classList.add('selected')
+         })
+    }
 
     //SLIDES
      let slideIndex = 1;
@@ -403,6 +448,4 @@
         dots[slideIndex-1].className += " active";
 
     } 
-
-    
 </script>
