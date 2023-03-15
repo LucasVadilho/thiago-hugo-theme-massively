@@ -1,0 +1,408 @@
+{{- partial "htmlhead" . -}}
+
+
+
+	<body lang='{{ .Site.Language.Lang | default "en-us" }}' class="is-preload">
+
+        <!-- Wrapper -->
+        <div id="wrapper">
+
+            {{- partial "header" . -}}
+            {{- partial "nav" . }}
+
+            <!-- Main -->
+            <div id="main">
+                <div id="livros">
+                    
+                    <div id="painelLivros">
+                        {{ range $livro := .Params.livros }}
+                        <div id="imagensPainelLivros">
+                            <a href="#" onclick="oi('{{$livro.titulo}}', '{{$livro.descricao}}', '{{$livro.imagens}}')">
+                                <img src="{{index $livro.imagens 0}}" class="imagemPainel">
+                            </a>
+                        </div>
+                        {{ end }}
+                    </div>
+                    
+                    <div id="livroSelecionado">
+                        <div id="carrosselLivroSelecionado">
+                            <div class="mySlides fade">
+                                <img src="c2.jpg">                               
+                            </div>
+
+                            <div class="mySlides fade"> 
+                                <img src="indisponiveis.jpg">
+                            </div>
+
+                            <div class="mySlides fade">
+                                <img src="c2.jpg">
+                            </div>
+                
+                            <a id="prev" onclick="plusSlides(-1)">&#10094;</a> <!-- Já estava como a -->
+                            <a id="next" onclick="plusSlides(1)">&#10095;</a>
+                            
+                            <div id="posicaoDots">
+                                <span class="dot" onclick="currentSlide(1)"></span>
+                                <span class="dot" onclick="currentSlide(2)"></span>
+                                <span class="dot" onclick="currentSlide(3)"></span>
+                            </div>
+
+                            <!-- <div id="posicaoDots">
+                                {{ range $livro := .Params.livros }}
+                                    <span class="dot" onclick="currentSlide('{{$livro.imagens}}')"></span>
+                                {{end}}
+                            </div> -->
+
+                        </div>
+
+                        <div id="informacoesLivroSelecionado">     
+                            <p class="tituloLivroSelecionado">Coraline</p>             
+                            <div id="caixaDescricaoLivroSelecionado">
+                                <p class="descricaoLivroSelecionado">Enquanto explora sua nova casa à noite, a pequena Coraline descobre uma porta secreta que contém um mundo parecido com o dela, porém melhor em muitas maneiras. Todos têm botões no lugar dos olhos, os pais são carinhosos e os sonhos de Coraline viram realidade por lá. Ela se encanta com essa descoberta, mas logo percebe que segredos estranhos estão em ação: uma outra mãe e o resto de sua família tentam mantê-la eternamente nesse mundo paralelo.</p>
+                            </div>
+                            <div id="posicaoBotoes">
+                                <p class="adquirirLivroSelecionado">Adquirir livro</p>
+                                <button type="button">Ebook</button>
+                                <button type="button">Físico</button>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </div>
+            {{- partial "copyright" . }}
+            <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
+        </div>
+  
+        {{- template "_internal/google_analytics.html" . }}
+        {{- partial "scripts/index" . }}
+        
+    </body>
+
+    <style>
+        a {
+            border: none;
+        }
+        
+        img{
+            display: block;
+        }
+
+        #livros {
+            padding: 0 0 2% 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        #painelLivros {
+            display: inline-flex;
+            flex-direction: row; 
+            background-color: red;
+            justify-content: space-between;
+            padding-top: 5%;
+            padding-bottom: 2%;
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            justify-content: center;
+        }
+
+        #imagensPainelLivros{
+            background-color: blue;
+        }
+
+        .imagemPainel {
+            width: 150px;
+            border: 2px solid green;
+            padding: 0 10px 0 10px;
+        }
+
+        #livroSelecionado {
+            display: flex;
+            flex-direction: row;
+            padding: 5% 5% 2% 5%;
+        }
+
+        .tituloLivroSelecionado{ 
+            font-weight: bold;
+            font-size: 2rem;
+            margin: -1px;
+        }
+
+        .descricaoLivroSelecionado{
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .adquirirLivroSelecionado{
+            font-weight: bold;
+            font-size: 1rem;
+            margin: 0;
+        }
+        
+        #carrosselLivroSelecionado {
+            text-align: center;
+            min-width: 40%;
+            position: relative;
+            margin: auto;
+        }
+
+        #informacoesLivroSelecionado {
+            text-align: left;
+            padding-left: 3%;
+            position: relative;
+        }
+
+        #caixaDescricaoLivroSelecionado{
+            margin-bottom: 1%;
+            line-height: 1.8;
+        }
+
+        #posicaoBotoes{
+            position: absolute;
+            bottom: 10%;
+        }
+
+
+        /* REGRAS DE MEDIA */
+
+        @media screen and (max-width: 825px) and (min-width: 710px){
+            #livroSelecionado{
+                height: 60vw;
+            }
+
+            #caixaDescricaoLivroSelecionado{
+                overflow: auto;
+                height: 50%;
+                padding-right: 10px; 
+                margin-bottom: 1%;
+            }
+            #posicaoBotoes{
+                position: absolute;
+                transform: scale(0.95);
+                margin-left: -1.2%;
+                bottom: 10%;
+            }
+        }
+
+        @media screen and (max-width: 709px) and (min-width: 641px){
+            #livroSelecionado{
+                height: 60vw;
+            }
+
+            #carrosselLivroSelecionado{
+                margin-top: 0;
+                height: 68%;
+            }
+            .tituloLivroSelecionado{
+                transform: scale(0.9);
+                margin-left: -5%;
+            }
+            #informacoesLivroSelecionado{
+                height: 90%;
+            }
+            #caixaDescricaoLivroSelecionado{
+                overflow: auto;
+                height: 25vw;
+                padding-right: 10px;
+                margin-bottom: 10%;
+            }
+            #posicaoBotoes{
+                position: absolute;
+                transform: scale(0.9);
+                bottom: 1%;
+                margin-left: -3.2%;
+            }
+        }
+
+                    /*Estilizacao scrollbar*/
+                    ::-webkit-scrollbar {
+                    width: 5px;              /* width of the entire scrollbar */
+                    }
+
+                    ::-webkit-scrollbar-track {
+                    background: none;       /* color of the tracking area */
+                    }
+
+                    ::-webkit-scrollbar-thumb {
+                    background-color: rgb(100, 100, 100);    /* color of the scroll thumb */
+                    border-radius: 20px;       /* roundness of the scroll thumb */
+                    }
+                    
+                    *::-webkit-scrollbar {
+                    width: 5px;
+                    }
+
+                    *::-webkit-scrollbar-track {
+                    background: none;
+                    }
+
+                    *::-webkit-scrollbar-thumb {
+                    background-color: rgb(100, 100, 100);
+                    border-radius: 20px;
+                    }
+
+                    body {
+                    scrollbar-width: thin;   /* "auto" or "thin" */
+                    scrollbar-color: rgb(100, 100, 100);   /* scroll thumb and track */ 
+                    }
+            
+        @media screen and (max-width: 640px) {
+            #livroSelecionado { 
+                flex-direction: column;
+            }
+            #carrosselLivroSelecionado {
+                width: 100%;
+            }
+            #informacoesLivroSelecionado {
+            text-align: left;
+            padding-left: 0;
+            margin-top: 5%;
+        }
+            #posicaoBotoes {
+            position:relative;
+            padding-top: 10%;
+        }
+        }
+
+
+
+        /* SLIDER DAQUI PARA BAIXO */
+        *{box-sizing: border-box}
+
+        .mySlides{
+           display: none;
+        }
+
+        /* Next & previous buttons */
+        #prev, #next {
+            cursor: pointer;
+            position: absolute;
+            margin-top: -22px;
+            top: 48%;
+            width: auto;
+            padding: 16px;
+            color: rgba(255, 255, 255, 0.87);
+            opacity: 80%;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        /* Position the "next button" to the right */
+        #next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        #prev{
+            left:0;
+            border-radius: 0 3px 3px 0;
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        #prev:hover, #next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        /*tentando fazer voltar ao normal, aparentemente o outro tem mais importância*/
+        @media (hover: none){
+            #prev:active,#next:active{
+                color: rgba(255, 255, 255, 0.87) !important;
+                opacity: 80% !important;
+            }
+            #prev:hover, #next:hover{
+                color: rgba(255, 255, 255, 0.87) !important;
+                opacity: 80% !important;
+                background-color: rgba(0, 128, 0, 0);
+            }
+        }
+        
+        /* The dots/bullets/indicators */
+        .dot {
+            cursor: pointer;
+            height: 13px;
+            width: 13px;
+            margin: 0 4px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active, .dot:hover {
+            background-color: #535353;
+        }
+
+        /* Fading animation */
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+
+        #posicaoDots{
+            display: inline-flex;
+            flex-direction: row; 
+            width: 80%;
+            justify-content: center;
+        }
+    </style>
+
+
+<!-- JAVA SCRIPT -->
+<script type="text/javascript">
+    // onload() = oi(titulo, descricao)
+
+    let oi = function(titulo, descricao, imagens){
+        console.log(imagens)
+        // let p = document.createElement("p")
+        
+        // p.innerHTML = titulo + descricao
+        
+        // document.getElementById('main').appendChild(p)
+    }
+
+
+    //SLIDES
+     let slideIndex = 1;
+        showSlides(slideIndex);
+
+    // Next/previous controls
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", ""); 
+            }
+        
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+
+    } 
+
+    
+</script>
