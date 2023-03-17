@@ -13,18 +13,18 @@
                 <div id="livros"> 
 
                     <div id="painelLivros">
-                        <a id="carrousel-left">&#10094;</a>
-                        <a id="carrousel-right">&#10095;</a>
-
-                        {{ range $livro := .Params.livros }}
-                        <div class="imagensPainelLivros" id="painel-{{ $livro.id }}" myid="{{ $livro.id }}">
-                            {{/*  <a href="#" onclick="oi('{{$livro.titulo}}', '{{$livro.descricao}}', '{{$livro.imagens}}')">  */}}
-                            <a href="#">
-                                <img src="{{index $livro.imagens 0}}" class="imagemPainel">
-                            </a>
+                        <div class="arrow-holder"><a id="carrousel-left">&#10094;</a></div>
+                        <div class='image-holder'>
+                            {{ range $livro := .Params.livros }}
+                            <div class="imagensPainelLivros" id="painel-{{ $livro.id }}" myid="{{ $livro.id }}">
+                                {{/*  <a href="#" onclick="oi('{{$livro.titulo}}', '{{$livro.descricao}}', '{{$livro.imagens}}')">  */}}
+                                <a href="#">
+                                    <img src="{{index $livro.imagens 0}}" class="imagemPainel">
+                                </a>
+                            </div>
+                            {{ end }}
                         </div>
-                        {{ end }}
-                            
+                        <div class="arrow-holder"><a id="carrousel-right">&#10095;</a></div>
                     </div>
 
                     <div id="livroSelecionado">
@@ -146,13 +146,15 @@
             left:6%;
         }
 
-        #carrousel-right{           
+        #carrousel-right{
             right:6%;
         }
 
+        .arrow-holder {
+            align-self: center;
+        }
+
         #carrousel-left, #carrousel-right{
-            position: absolute;
-            top: 100px;
             cursor:pointer;
             font-size: 40px;
             font-weight: bold;
@@ -160,6 +162,12 @@
             user-select: none;
         }
 
+        .image-holder {
+            display: inline-flex;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+        
     /* Bloco das informações e aquisicao do livro selecionado */
         #livroSelecionado {
             display: flex;
