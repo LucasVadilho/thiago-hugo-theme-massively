@@ -39,13 +39,14 @@
         <section>
             <h3>{{ i18n "CONTACT_SOCIAL" . }}</h3>
             <ul class="icons alt">
-                {{ with .twitter}}
+                <!-- {{ with .twitter}}
                 <li><a href="{{ . }}" class="icon alt fa-twitter"><span class="label">Twitter</span></a></li>
-                {{ end }}
+                {{ end }} -->
                 
-                {{ with .instagram}}
-                <li><a href="{{ . }}" class="icon alt fa-instagram"><span class="label">Instagram</span></a></li>
+                {{ with .behance}}
+                <li><a href="{{ . }}" class="icon alt fa-behance"><span class="label">Behance</span></a></li>
                 {{ end }}
+
 
             </ul>
         </section>

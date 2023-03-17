@@ -1,15 +1,49 @@
-{{ partial "htmlhead" . }}
+{{- partial "htmlhead" . -}}
+
 	<body lang='{{ .Site.Language.Lang | default "en-us" }}' class="is-preload">
 
         <!-- Wrapper -->
         <div id="wrapper">
 
-            {{ partial "header" . }}
-            {{ partial "nav" . }}
-            {{- partial "scripts/index" . }}
-            <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
-            
+            {{- partial "header" . -}}
+            {{- partial "nav" . }}
+
             <!-- Main -->
             <div id="main">
+                <div id="sobreMiolo">
+                    <div id="apresentacao">
+                        <p>Olá, muito prazer!</p>
+                    </div>
+                    <div id="caixaTexto">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p class="assinatura"> - TD Vadilho </p>
+                    </div>
+                </div>
+            </div>
+            {{- partial "copyright" . }}
+            <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
+        </div>
+  
+        {{- template "_internal/google_analytics.html" . }}
+        {{- partial "scripts/index" . }}
+        
+    </body>
 
-aaaaaaaaaaa
+    <style>
+        #apresentacao{
+            font-weight: bold;
+            font-size: 2rem;
+        }
+
+        #caixaTexto{
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.8;
+        }
+
+        .assinatura{
+            font-style: italic;
+            font-weight: bold;
+        }
+    </style>
