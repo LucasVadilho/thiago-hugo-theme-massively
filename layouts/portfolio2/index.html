@@ -1,0 +1,147 @@
+{{ partial "htmlhead" . }}
+	<body lang='{{ .Site.Language.Lang | default "en-us" }}' class="is-preload">
+
+        <!-- Wrapper -->
+        <div id="wrapper">
+
+            {{ partial "header" . }}
+            {{ partial "nav" . }}
+            {{- partial "scripts/index" . }}
+            <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
+            
+            <!-- Main -->
+            <div id="main">
+                <div id="conteudo">
+                    <div id="portfolio-holder">
+                        {{ range $portfolio := .Params.portfolio }}
+                        <div id="item-holder"
+                            portid = "{{ $portfolio.id }}"
+                            tipo = "{{ $portfolio.tipo }}"
+                            titulo = "{{ $portfolio.titulo }}"
+                            brevedescricao = "{{ $portfolio.brevedescricao }}"
+                            thumbnail="{{ $portfolio.thumbnail }}"
+                            ordeminformacoes = "{{ $portfolio.ordeminformacoes }}"
+                            imagens = "{{ $portfolio.imagens }}"
+                            videos  = "{{ $portfolio.videos }}" 
+                        >
+
+                            <div id="filtragem">
+
+                            </div>
+
+                            <div id="thumbnail">
+                                <a href = "projetoOpen.html">
+                                    <img src="{{ $portfolio.thumbnail }}" />
+                                    <div class="brevedescricao">
+                                        <p class="titulo">{{ $portfolio.titulo }}</p>
+                                        <p class="descricao">{{ $portfolio.brevedescricao }}</p>
+                                    </div>
+                                </a>
+                            </div>
+                            
+                        </div>   
+                        {{end}}
+                    </div>
+                </div>
+            </div>
+            {{- partial "copyright" . }}
+            <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
+        </div>
+  
+        {{- template "_internal/google_analytics.html" . }}
+        {{- partial "scripts/index" . }}     
+</body>
+
+<style>
+    a{
+        border: none;
+    }
+    
+    #conteudo{
+        padding: 4% 0 2.5% 0;
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+
+    #portfolio-holder{
+        display: inline-flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        min-width: 100%;
+        justify-content: space-between;
+    }
+
+    #item-holder{
+        display: inline-block;
+        margin-bottom: 1.5%;
+        margin-left: 0.5%;
+        margin-right: 0.5%;
+        max-width: 32%;
+    }
+
+    #thumbnail{
+        position: relative;
+    }
+
+    #thumbnail img{
+        display: block;
+    }
+
+    #thumbnail:hover{
+        cursor: pointer;
+    }
+
+    #thumbnail:hover .brevedescricao{
+        cursor: pointer;
+        height: 80%;
+        transition: .5s ease;
+    }
+
+    .thumbnailInv{
+        cursor: default;
+        opacity: 0%;
+    }
+
+    .brevedescricao{
+        background-color: rgba(0, 0, 0, 0.658);
+        height: 22%;
+        overflow: hidden;
+        position: absolute;
+        bottom: 0%;
+    }
+
+    .titulo{
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        font-weight: bold;
+        font-size: 18px;
+        color: aliceblue;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .descricao{
+        margin: 0;
+        padding: 0;
+        line-height: 16px;
+        color: aliceblue;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+</style>
+
+<script type="text/javascript">
+
+    let projetoInv = document.getElementById('item-holder')
+    let projetoInvThumb = projetoInv.getAttribute('thumbnail')
+
+    /*correcao se tiver 2 itens só na linha */
+    if (projetoInvThumb = 'thumbnailInv.jpg'){
+        let projetoInvHolder = document.getElementById('portfolio-holder')
+
+        console.log (projetoInvHolder.lastElementChild)
+        projetoInvHolder.lastElementChild.innerHTML = '<img src="thumbnailInv.jpg" class="thumbnailInv"/>'
+    }
+   
+</script>

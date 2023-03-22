@@ -6,7 +6,7 @@
         <li class="{{ if eq ($currentPage.RelPermalink) (`/home/`) }}active{{end}}"><a href='{{ "/home" | relLangURL }}'>Home</a></li>
         <li class="{{ if eq ($currentPage.RelPermalink) (`/`) }}active{{end}}"><a href='{{ "/" | relLangURL }}'>Historietas</a></li>
         <li class="{{ if eq ($currentPage.RelPermalink) (`/livros/`) }}active{{end}}"><a href='{{ "/livros" | relLangURL }}'>Livros</a></li>
-        <li class="{{ if eq ($currentPage.RelPermalink) (`/portfolio/`) }}active{{end}}"><a href="/portfolio | relLangURL">Design Portfólio</a></li>
+        <li class="{{ if eq ($currentPage.RelPermalink) (`/portfolio/`) }}active{{end}}"><a href='{{ "/portfolio" | relLangURL }}'>Design Portfólio</a></li>
         <li class="{{ if eq ($currentPage.RelPermalink) (`/sobre/`) }}active{{end}}"><a href='{{ "/sobre" | relLangURL }}'>Sobre</a></li>
 
         {{ with $data.contactinfo }}

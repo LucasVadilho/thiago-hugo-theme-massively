@@ -1,0 +1,10 @@
+<h1> {{ .Title }}</h1>
+
+{{ .Content }}
+
+{{ range .Pages.ByDate.Reverse }}
+    <a href="{{.Permalink}}">
+    <div class="portfolio-container">
+        <img title="{{.Title}}" alt="{{.Title}}" src="/portfolio/{{ .Params.Thumbnail }}" />
+    </div>
+{{ end }}

@@ -1,0 +1,13 @@
+<h1>{{ .Title }}</h1>
+
+<img title="{{.Title}}" alt="{{.Title}}" src="/portfolio/{{ .Params.Thumbnail }}" />
+
+{{ range $item := .Params.itens }}
+    {{ if eq $item.type "image"}}
+        <img src="{{ $item.src }}" />
+    {{ else }}
+        <iframe width="560" height="315" src="{{ $item.src }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+        </iframe>
+    {{ end }}
+
+{{ end }}

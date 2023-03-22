@@ -13,57 +13,61 @@
                 <div id="livros"> 
 
                     <div id="painelLivros">
-                        <div class="arrow-holder"><a id="carrousel-left">&#10094;</a></div>
+                        <div class="arrow-holder">
+                            <a id="carrousel-left">&#10094;</a>
+                        </div>
+
                         <div class='image-holder'>
                             {{ range $livro := .Params.livros }}
-                            <div class="imagensPainelLivros" id="painel-{{ $livro.id }}" myid="{{ $livro.id }}" titulo="{{$livro.titulo}}" descricao="{{$livro.descricao}}" imagens="{{$livro.imagens}}">
-                                {{/*  <a href="#" onclick="oi('{{$livro.titulo}}', '{{$livro.descricao}}', '{{$livro.imagens}}')">  */}}
+                            <div class="imagensPainelLivros"
+                                 id="painel-{{ $livro.id }}"
+                                 myid="{{ $livro.id }}"
+                                 titulo="{{$livro.titulo}}"
+                                 descricao="{{$livro.descricao}}"
+                                 numImagens="{{ len $livro.imagens }}"
+                                 imagens="{{ $livro.imagens }}"
+                                 linkebook="{{ $livro.linkebook }}"
+                                 linkfisico="{{ $livro.linkfisico}}"
+                            >
                                 <a href="#">
                                     <img src="{{index $livro.imagens 0}}" class="imagemPainel">
                                 </a>
                             </div>
                             {{ end }}
                         </div>
-                        <div class="arrow-holder"><a id="carrousel-right">&#10095;</a></div>
+
+                        <div class="arrow-holder">
+                            <a id="carrousel-right">&#10095;</a>
+                        </div>
                     </div>
 
                     <div id="livroSelecionado">
                         <div id="carrosselLivroSelecionado">
-                            <div class="mySlides fade">
-                                <img src="c2.jpg">                               
-                            </div>
 
-                            <div class="mySlides fade"> 
-                                <img src="indisponiveis.jpg">
+                            <div id="mySlidesID">
+                                <div class="mySlides fade">
+                                </div>
                             </div>
-
-                            <div class="mySlides fade">
-                                <img src="c2.jpg">
-                            </div>
-
-                            <a id="prev" onclick="plusSlides(-1)">&#10094;</a> <!-- Já estava como a -->
+                            
+                            <a id="prev" onclick="plusSlides(-1)">&#10094;</a>
                             <a id="next" onclick="plusSlides(1)">&#10095;</a>
 
                             <div id="posicaoDots">
                                 <span class="dot" onclick="currentSlide(1)"></span>
-                                <span class="dot" onclick="currentSlide(2)"></span>
-                                <span class="dot" onclick="currentSlide(3)"></span>
                             </div>
-           
                         </div>
 
-                        <div id="informacoesLivroSelecionado">     
-                            <p class="tituloLivroSelecionado">Coraline</p>             
+                        <div id="informacoesLivroSelecionado"> 
+
+                            <p class="tituloLivroSelecionado" id="tituloLivroSelecionadoID"></p>      
+
                             <div id="caixaDescricaoLivroSelecionado">
-                                <p class="descricaoLivroSelecionado">Enquanto explora sua nova casa à noite, a pequena Coraline descobre uma porta secreta que contém um mundo parecido com o dela, porém melhor em muitas maneiras. Todos têm botões no lugar dos olhos, os pais são carinhosos e os sonhos de Coraline viram realidade por lá. Ela se encanta com essa descoberta, mas logo percebe que segredos estranhos estão em ação: uma outra mãe e o resto de sua família tentam mantê-la eternamente nesse mundo paralelo.</p>
+                                <p class="descricaoLivroSelecionado" id="descricaoLivroSelecionadoID"></p>
                             </div>
+
                             <div id="posicaoBotoes">
-                                <p class="adquirirLivroSelecionado">Adquirir livro</p>
-                                    <button type="button">Ebook</button>
-                                    <button type="button">Físico</button>
                             </div>
                         </div>
- 
                     </div>
                 </div>
             </div>
@@ -77,14 +81,18 @@
     </body>
 
 <style>
-
 /* DEFINICOES GERAIS DE ESTILO */
         a {
             border: none;
         }
 
+        form{
+            display: inline-flex;
+            margin: 0;
+        }
+
     /* Bloco dos livros gerais */       
-        img{
+        img {
             display: block;
         }
 
@@ -198,10 +206,6 @@
             line-height: 1.8;
         }
 
-        .mySlides{
-           display: none;
-        }
-
         #prev, #next {
             cursor: pointer;
             position: absolute;
@@ -311,9 +315,9 @@
             }
             #caixaDescricaoLivroSelecionado{
                 overflow: auto;
-                height: 50%;
+                height: 49%;
                 padding-right: 10px; 
-                margin-bottom: 1%;
+                padding-bottom: 2%;
             }
             #posicaoBotoes{
                 position: absolute;
@@ -340,7 +344,7 @@
             }
             #caixaDescricaoLivroSelecionado{
                 overflow: auto;
-                height: 25vw;
+                height: 24vw;
                 padding-right: 10px;
                 margin-bottom: 10%;
             }
@@ -379,46 +383,45 @@
 /* DEFINICOES PARA OS TAMANHOS DE DEVICE MOBILE */
     /* Definicoes para celular */
     @media only screen and (hover:none) and (pointer:coarse) and (max-width:450px) and (min-width:321px){
-            #painelLivros {
-                padding-top: 4%;
-                padding-bottom: 2%;
-                width: 90%;
-             }
-            .imagensPainelLivros{
-                transform: scale(0.8);
-                margin-bottom: -8%;
+        #painelLivros {
+            padding-top: 4%;
+            padding-bottom: 2%;
+            width: 90%;
             }
-            .selected {
-                transform: scale(0.85);
-            }
-            #informacoesLivroSelecionado {
-                margin-bottom: -5%;
-            }
-            #posicaoBotoes {
-                padding-top: 14%;
-            }
-                    
+        .imagensPainelLivros{
+            transform: scale(0.8);
+            margin-bottom: -8%;
+        }
+        .selected {
+            transform: scale(0.85);
+        }
+        #informacoesLivroSelecionado {
+            margin-bottom: -5%;
+        }
+        #posicaoBotoes {
+            padding-top: 14%;
+        }
     }
 
     @media only screen and (hover:none) and (pointer:coarse) and (max-width:321px){
-            #painelLivros {
-                padding-top: 4%;
-                padding-bottom: 2%;
-                width: 85%;
-             }
-            .imagensPainelLivros{
-                transform: scale(0.8);
-                margin-bottom: -10%;
+        #painelLivros {
+            padding-top: 4%;
+            padding-bottom: 2%;
+            width: 85%;
             }
-            .selected {
-                transform: scale(0.85);
-            }
-            #informacoesLivroSelecionado {
-                margin-bottom: -5%;
-            }
-            #posicaoBotoes {
-                padding-top: 18%;
-            } 
+        .imagensPainelLivros{
+            transform: scale(0.8);
+            margin-bottom: -10%;
+        }
+        .selected {
+            transform: scale(0.85);
+        }
+        #informacoesLivroSelecionado {
+            margin-bottom: -5%;
+        }
+        #posicaoBotoes {
+            padding-top: 18%;
+        }
     }
 
     /* Definicoes para retirar o clique de hover eterno dos mobiles */    
@@ -445,35 +448,54 @@
 
 <!-- JAVASCRIPT -->
 <script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", (event) => { 
-        setupCarousel()
-        setupSlider()
-    });
-
-// CARROSSEL TODOS OS LIVROS
+    // CARROSSEL TODOS OS LIVROS
     // Vai chamar carousel sim
     let currentFocus = 0
     let images = document.getElementsByClassName('imagensPainelLivros')
-    
+
     let setupCarousel = function() {
         for(let image of images) {
             image.addEventListener("click", (el) => {
+                el.preventDefault()
+                el.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })
+
                 images[currentFocus].classList.remove('selected')
 
                 currentFocus = parseInt(el.currentTarget.getAttribute('myid'))
-                        let currentFocusTitulo = el.currentTarget.getAttribute('titulo')
-                        let currentFocusDescricao = el.currentTarget.getAttribute('descricao')
-                        let currentFocusImagens = el.currentTarget.getAttribute('imagens')
-                        console.log(currentFocusTitulo)
-                        console.log(currentFocusDescricao)
-                        console.log(currentFocusImagens)
                 
-                el.currentTarget.scrollIntoView()
                 el.currentTarget.classList.add('selected')
-            })
-        }
 
-        document.getElementById('carrousel-left').addEventListener("click", (el) => {
+                document.getElementById('posicaoDots').innerHTML = ''
+                document.getElementById('tituloLivroSelecionadoID').innerHTML = '' 
+                document.getElementById('descricaoLivroSelecionadoID').innerHTML = ''
+                document.getElementById('mySlidesID').innerHTML = ''
+                document.getElementById('posicaoBotoes').innerHTML = ''
+
+                // /* atualizar titulo e descricao */
+                document.getElementById('tituloLivroSelecionadoID').innerHTML = el.currentTarget.getAttribute('titulo')
+                document.getElementById('descricaoLivroSelecionadoID').innerHTML = el.currentTarget.getAttribute('descricao')
+
+                // atualizar os links dos botoes
+                let linkebook = el.currentTarget.getAttribute('linkebook')
+                let linkfisico = el.currentTarget.getAttribute('linkfisico')
+
+                document.getElementById('posicaoBotoes').innerHTML = ('<p class="adquirirLivroSelecionado">Adquirir livro</p> <form action="' + linkebook + '"><button type="submit">Ebook</button></form> <form action="' + linkfisico + '"><button type="submit">Físico</button></form>')
+
+                // /* atualizar o slide do livro selecionado */
+                let numDots = (el.currentTarget.getAttribute('numImagens') - 1)
+                let currentFocusImagens = el.currentTarget.getAttribute('imagens')
+                let nomesImagens = currentFocusImagens.replace("[", "").replace("]", "").split(' ')
+                
+                for(let num=0; num <= numDots; num++) {
+                    document.getElementById('mySlidesID').innerHTML += ('<div class="mySlides fade"> <img src="' + nomesImagens[num] + '"> </div>')
+                    document.getElementById('posicaoDots').innerHTML += ('<span class="dot" onclick="currentSlide(' + (num + 1) + ')"></span>')
+                }
+                currentSlide(1)
+            })
+        }     
+    }
+
+        document.getElementById('carrousel-left').addEventListener("click", () => {
             images[currentFocus].classList.remove('selected')
 
             currentFocus = currentFocus > 0 ? currentFocus - 1 : images.length - 1
@@ -490,12 +512,12 @@
             images[currentFocus].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })
             images[currentFocus].classList.add('selected')
          })
-    }
-
-// PEGA INFORMACOES DO LIVRO SELECIONADO
     
 
-//SLIDES LIVRO SELECIONADO
+    // PEGA INFORMACOES DO LIVRO SELECIONADO
+    
+
+    //SLIDES LIVRO SELECIONADO
     let slideIndex = 1;
     showSlides(slideIndex);
 
@@ -518,7 +540,7 @@
         }
         for (i = 0; i < dots.length; i++) {
             dots[i].className = dots[i].className.replace(" active", ""); 
-            }
+        }
         
         slides[slideIndex-1].style.display = "block";
         dots[slideIndex-1].className += " active";
@@ -546,11 +568,6 @@
             startX = touchobj.pageX
             startY = touchobj.pageY
             startTime = new Date().getTime() 
-            // e.preventDefault()
-        }, false)
-        
-        touchsurface.addEventListener('touchmove', function(e) {
-            // e.preventDefault() // prevent scrolling when inside DIV
         }, false)
 
         touchsurface.addEventListener('touchend', function(e) {
@@ -580,9 +597,13 @@
             {                                         
                 document.getElementById('next').click()
             }
-
-            // e.preventDefault()
         }, false)
     }
+    
+    document.addEventListener("DOMContentLoaded", (event) => { 
+        setupCarousel()
+        setupSlider()
 
+        images[0].click()
+    });
 </script>
