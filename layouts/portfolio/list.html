@@ -1,10 +1,300 @@
-<h1> {{ .Title }}</h1>
+{{ partial "htmlhead" . }}
+<body lang='{{ .Site.Language.Lang | default "en-us" }}' class="is-preload">
+    <div id="wrapper">
+        {{ partial "header" . }}
+        {{ partial "nav" . }}
+        
+        <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
+        
+        <div id="main">
+            <div id="conteudo">
+                <div id="filtragem">
+                    <p class="mostrar">Mostrar: </p>
+                        {{ range $tipo := .Params.tipos }}
+                            <div class="checkbox">
+                                <input type="checkbox" class="checkbox" id="{{ $tipo }}" checked>
+                                <label for="{{ $tipo }}">{{ $tipo }}</label>
+                            </div>
+                        {{ end }}      
+                </div>
 
-{{ .Content }}
+                <div id="organizador-list">
+                    {{ range .Pages.ByDate}}
+                        <div class="portfolio-container" tipos="{{ .Params.tipos }}">
+                            <a href="{{.Permalink}}" id="asize"></a>
+                                <img title="{{.Title}}" alt="{{.Title}}" src="{{ .Params.Thumbnail }}"/>
+                            </a>
+                            <div class="brevedescricao">
+                                <p class="titulo">{{.Title}}</p>
+                                <p class="descricao">{{.Description}}</p>
+                            </div>
+                        </div>
+                    {{ end }}
+                </div>
 
-{{ range .Pages.ByDate.Reverse }}
-    <a href="{{.Permalink}}">
-    <div class="portfolio-container">
-        <img title="{{.Title}}" alt="{{.Title}}" src="/portfolio/{{ .Params.Thumbnail }}" />
+            </div>
+        </div>
+        {{- partial "copyright" . }}
     </div>
-{{ end }}
+
+    {{- template "_internal/google_analytics.html" . }}
+    {{- partial "scripts/index" . }}
+</body>
+
+<style>
+    #filtragem {
+        padding-left: 25px;
+        padding-right: 25px;
+        display: inline-flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        min-width: 100%;
+        align-items: flex-start;
+        margin-top: 0%;
+        padding-top: 8px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .mostrar{
+        margin-right: 2%;
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 0;
+        float: left;
+    }
+
+    .checkbox label{
+        transition: all .5s ease;
+        margin-top: 8px;
+        
+    }
+
+    input[type="checkbox"] + label {
+        font-family: Helvetica;
+        padding-left: 35px;
+        font-weight: 500;
+        letter-spacing: normal;
+    }
+
+    .checkbox input{
+        margin-left: 0px;
+    }
+
+    a{
+        border: none;
+    }
+
+    #asize{
+       position: absolute;
+    }
+
+    #conteudo{
+        padding: 3% 0 2.5% 0;
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+
+    #organizador-list{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 4%;
+    }
+
+    .portfolio-container{
+        position: relative;
+        display: inline-flex;
+        flex-wrap: wrap;
+        margin-bottom: 1.5%;
+        margin-left: 0.8%;
+        margin-right: 0.8%;
+        max-width: 330px;
+    }
+
+    .portfolio-container img{
+        display: block;
+
+        /* height: 200px; */
+    }
+
+    .portfolio-container:hover{
+        cursor: pointer;
+    }
+
+    .portfolio-container:hover .brevedescricao{
+        cursor: pointer;
+        height: 80%;
+        transition: .5s ease;
+    }
+
+    .brevedescricao{
+        background-color: rgba(0, 0, 0, 0.658);
+        height: 22%;
+        overflow: hidden;
+        position: absolute;
+        bottom: 0%;
+        width: 100%;
+    }
+
+    .titulo{
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        font-weight: bold;
+        font-size: 18px;
+        color: aliceblue;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .descricao{
+        margin: 0;
+        padding: 0;
+        line-height: 16px;
+        color: aliceblue;
+        padding-left: 5%;
+        padding-right: 5%;
+        text-align: left;
+    }
+
+    .displayhide{
+        display: none;
+    }
+
+    /*Estilizacao scrollbar*/
+    ::-webkit-scrollbar {
+        width: 5px;              /* width of the entire scrollbar */
+        height: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: none;       /* color of the tracking area */
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: rgb(131, 131, 131);    /* color of the scroll thumb */
+        border-radius: 20px;       /* roundness of the scroll thumb */
+    }
+                    
+    *::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    *::-webkit-scrollbar-track {
+        background: none;
+    }
+
+    *::-webkit-scrollbar-thumb {
+        background-color:rgb(131, 131, 131);
+        border-radius: 20px;
+    }
+
+    body {
+        scrollbar-width: thin;   /* "auto" or "thin" */
+        scrollbar-color: rgb(131, 131, 131);   /* scroll thumb and track */
+    }
+
+    ::-webkit-scrollbar-thumb:active { 
+        background-color: rgb(100, 100, 100);
+    }
+
+/* DEFINICOES PARA OS TAMANHOS EM DESKTOP */
+   
+    @media screen and (max-width: 1280px) and (min-width: 1052px){
+        .portfolio-container{
+            max-width: 300px;
+        }
+    }
+
+    @media screen and (max-width: 1052px) and (min-width: 983px){
+        .portfolio-container{
+            max-width: 280px;
+        }
+    }
+
+    @media screen and (max-width: 983px) and (min-width: 945px){
+        .portfolio-container{
+            max-width: 270px;
+        }
+        .titulo{
+            font-size: 17px;
+        }
+    }
+
+    @media screen and (max-width: 945px) and (min-width: 913px){
+        .portfolio-container{
+            max-width: 260px;
+        }
+        .titulo{
+            font-size: 17px;
+        }
+    }
+
+    @media screen and (max-width: 913px) and (min-width:880px){
+        .portfolio-container{
+            max-width: 250px;
+        }
+        .titulo{
+            font-size: 17px;
+        }
+    }
+
+    @media screen and (max-width: 774px) and (min-width: 667px){
+        .portfolio-container{
+            max-width: 280px;
+        }
+    }
+
+    @media screen and  (min-width: 666px){
+        .portfolio-container{
+            margin-bottom: 10px;
+        }
+    }
+    
+               
+/* DEFINICOES PARA OS TAMANHOS DE DEVICE MOBILE */
+    /* Definicoes para celular */
+    @media only screen and (hover:none) and (pointer:coarse) and (max-width:450px) and (min-width:321px){
+        .portfolio-container{
+            margin-bottom: 10px;
+        }
+    }
+
+    @media only screen and (hover:none) and (pointer:coarse) and (max-width:321px){
+        .portfolio-container{
+            margin-bottom: 10px;
+        }
+    }
+</style>
+
+<script type="text/javascript">
+    let checkboxs = document.getElementsByClassName('checkbox')
+    let portfolios = document.getElementsByClassName('portfolio-container')
+
+    for(checkbox of checkboxs) {
+        checkbox.addEventListener('click', (ev) => {
+            atualizarFiltro()
+        })
+    }
+
+    let atualizarFiltro = function() {
+        for(portfolio of portfolios) {
+            portfolio.style.cssText = 'display: none'
+        }
+
+        for(checkbox of checkboxs) {
+            if(checkbox.checked) {
+                for(portfolio of portfolios) {
+                    if(portfolio.getAttribute('tipos').includes(checkbox.id)){
+                        portfolio.style.cssText = 'display: block'
+                    }
+                }
+            }
+        }
+    }
+
+
+</script>

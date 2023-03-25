@@ -10,14 +10,14 @@
 
             <!-- Main -->
             <div id="main">
-                <div id="sobreMiolo">
+                <div id="sobre-container">
                     <div id="apresentacao">
-                        <p>Olá, muito prazer!</p>
+                        <p>{{ .Title }}</p>
                     </div>
+                            
                     <div id="caixaTexto">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <p class="assinatura"> - TD Vadilho </p>
+                        <p>{{ .Content }}</p>
+                        <p class="assinatura"> {{ .Params.Assinatura }} </p>
                     </div>
                 </div>
             </div>
@@ -30,20 +30,63 @@
         
     </body>
 
-    <style>
-        #apresentacao{
-            font-weight: bold;
-            font-size: 2rem;
-        }
+<style>
+    #apresentacao{
+        font-weight: bold;
+        font-size: 2rem;
+    }
 
-        #caixaTexto{
-            font-size: 1rem;
-            font-weight: 500;
-            line-height: 1.8;
-        }
+    #caixaTexto{
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.8;
+    }
 
-        .assinatura{
-            font-style: italic;
-            font-weight: bold;
-        }
-    </style>
+    .assinatura{
+        font-style: italic;
+        font-weight: bold;
+    }
+
+    /*Estilizacao scrollbar*/
+    ::-webkit-scrollbar {
+        width: 5px;              /* width of the entire scrollbar */
+        height: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: none;       /* color of the tracking area */
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: rgb(131, 131, 131);    /* color of the scroll thumb */
+        border-radius: 20px;       /* roundness of the scroll thumb */
+    }
+                    
+    *::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    *::-webkit-scrollbar-track {
+        background: none;
+    }
+
+    *::-webkit-scrollbar-thumb {
+        background-color:rgb(131, 131, 131);
+        border-radius: 20px;
+    }
+
+    body {
+        scrollbar-width: thin;   /* "auto" or "thin" */
+        scrollbar-color: rgb(131, 131, 131);   /* scroll thumb and track */
+    }
+
+    ::-webkit-scrollbar-thumb:active { 
+        background-color: rgb(100, 100, 100);
+    }
+
+</style>
+
+<script>
+    let titulo = document.getElementById('sobreMiolo')
+    console.log(titulo)
+</script>

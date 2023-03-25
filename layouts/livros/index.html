@@ -85,7 +85,7 @@
         a {
             border: none;
         }
-
+        
         form{
             display: inline-flex;
             margin: 0;
@@ -165,18 +165,18 @@
 
         .tituloLivroSelecionado{ 
             font-weight: bold;
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin: -1px;
         }
 
         .descricaoLivroSelecionado{
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 500;
         }
 
         .adquirirLivroSelecionado{
             font-weight: bold;
-            font-size: 1rem;
+            font-size: 1.2rem;
             margin: 0;
         }
 
@@ -199,6 +199,8 @@
             text-align: left;
             padding-left: 3%;
             position: relative;
+            word-spacing: normal;
+            word-break: break-all;
         }
 
         #caixaDescricaoLivroSelecionado{
@@ -247,7 +249,7 @@
             transition: background-color 0.6s ease;
         }
 
-        .active, .dot:hover {
+        .activedot, .dot:hover {
             background-color: #535353;
         }
 
@@ -369,7 +371,6 @@
                 width: 100%;
             }
             #informacoesLivroSelecionado {
-                text-align: left;
                 padding-left: 0;
                 margin-top: 5%;
                 margin-bottom: -5%;
@@ -539,11 +540,11 @@
             slides[i].style.display = "none";
         }
         for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", ""); 
+            dots[i].className = dots[i].className.replace(" activedot", ""); 
         }
         
         slides[slideIndex-1].style.display = "block";
-        dots[slideIndex-1].className += " active";
+        dots[slideIndex-1].className += " activedot";
         
     }
 

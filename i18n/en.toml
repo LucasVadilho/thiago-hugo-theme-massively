@@ -1,13 +1,13 @@
 [CONTACT_EMAIL]
   other = "Email"
 [CONTACT_FORM_FIELD_EMAIL]
-  other = "Email"
+  other = "Email*"
 [CONTACT_FORM_FIELD_MESSAGE]
-  other = "Mensagem"
+  other = "Mensagem*"
 [CONTACT_FORM_FIELD_NAME]
-  other = "Nome"
+  other = "Nome*"
 [CONTACT_FORM_FIELD_ASSUNTO]
-  other = "Assunto"
+  other = "Assunto*"
 [CONTACT_FORM_SUBMIT_SEND_MESSAGE]
   other = "Enviar a mensagem"
 [CONTACT_SOCIAL]

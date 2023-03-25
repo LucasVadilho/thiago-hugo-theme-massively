@@ -10,12 +10,53 @@
 
             <!-- Main -->
             <div id="main">
-                <div id="novidades">
-
+                <div id="lancamento" 
+                     displaylancamento="{{ .Params.Displaylancamento }}"
+                >
+                        <img src="{{ .Params.Lancamentoimagem1 }}" class="imglancamento1">
+                        <img src="{{ .Params.Lancamentoimagem2 }}" class="imglancamento2">
+                        <img src="{{ .Params.Lancamentoimagem3 }}" class="imglancamento3">
+                        <img src="{{ .Params.Lancamentoimagem4 }}" class="imglancamento4">            
                 </div>
 
-                <div id="newsLetter">
+                <div id="novidades">
+                    <div id = "ultimanovidade">
+                        <img src="{{ .Params.imgUltNovidade}}" class="imagemUltNovidade">
+                        <p class="chamadaUltNovidade"> {{ .Params.chamadaUltNovidade }}</p>
+                        <p class="textoUltNovidade"> {{ .Params.TxtUltNovidade }}</p>
+                    </div>
+                    <div id = "demaisnovidades">
+                        <div id="demais1">
+                            <img src="{{ .Params.imgDemNovidade1}}" class="imgDemNovidade1">
+                            <p class="chamadaDemNovidade1"> {{ .Params.chamadaUltNovidade }}</p>
+                            <p class="txtDemNovidade1"> {{ .Params.TxtUltNovidade }}</p>
+                        </div>
+                        <div id="demais2">
+                            <img src="{{ .Params.imgDemNovidade2}}" class="imgDemNovidade2">
+                            <p class="chamadaDemNovidade2"> {{ .Params.chamadaUltNovidade }}</p>
+                            <p class="txtDemNovidade2"> {{ .Params.TxtUltNovidade }}</p>
+                        </div>
+                    </div>
+                </div>
 
+                <div id="newsletter">
+                    <form id="newsletter" method="post" action="{{ . }}">
+                        <p class="chamada">Se inscreva na newsletter para ficar por dentro das novidades relevantes</p>
+                        <div class="fields">
+                            
+                            <label for="email">Email</label>
+                            <input type="email" name="mail" id="email" />
+                          </div>
+                        <ul class="actions">
+                          <li>
+                            <input type="submit" id="btn_inscrever"/>
+                          </li>
+                          <p class="aviso">Não se preocupe, sua privacidade será respeitada e a qualquer momento você poderá cancelar sua inscrição.</p>
+                          <div id="loading" style="display: none;">
+                            <img src=""/>
+                          </div>
+                        </ul>
+                      </form>
                 </div>
             </div>
 
@@ -28,3 +69,111 @@
         {{- partial "scripts/index" . }}
         
     </body>
+
+<style>
+    #main > *{
+        border-top:none;
+    }
+
+    #lancamento{
+        padding: 0;
+        margin: 0;
+    }
+
+    .imglancamento1{
+        width: 100%;
+        height: 200px;
+        display: block;
+        object-fit: cover;
+    }
+
+    .imglancamento2{
+        display:none;
+    }
+
+    .imglancamento3{
+        display:none;
+    }
+
+    .imglancamento4{
+        display:none;
+    }
+
+    .noDisplay{
+        display: none;
+    }
+
+    #ultimanovidade {
+        background-color: bisque;
+    }
+
+    @media screen and (min-width: 1032px){
+        .imglancamento2, .imglancamento3, .imglancamento4{
+            display:none;
+        }
+
+        .imglancamento1{
+            width: 100%;
+            height: 200px;
+            display: block;
+            object-fit: cover;
+        }
+    }
+
+    @media screen and (max-width: 1032px) and (min-width: 851px){
+        .imglancamento1, .imglancamento3, .imglancamento4{
+            display:none;
+        }
+
+        .imglancamento2{
+            width: 100%;
+            height: 200px;
+            display: block;
+            object-fit: cover;
+        }
+    }
+
+    @media screen and (max-width: 851px) and (min-width: 684px){
+        .imglancamento1, .imglancamento2, .imglancamento4{
+            display:none;
+        }
+
+        .imglancamento3{
+            width: 100%;
+            height: 200px;
+            display: block;
+            object-fit: cover;
+        }
+    }
+
+    @media screen and (max-width: 684px){
+        .imglancamento1, .imglancamento2, .imglancamento3{
+            display:none;
+        }
+
+        .imglancamento4{
+            width: 100%;
+            height: 200px;
+            display: block;
+            object-fit: cover;
+        } 
+    }
+</style>
+
+<script>
+
+    let confereLancamento = function (){
+        let lancamento = document.getElementById('lancamento')
+        let displaylancamento = lancamento.getAttribute('displaylancamento')
+
+        if (displaylancamento == "nao"){
+            lancamento.classList.add('noDisplay')
+        }else{
+            lancamento.classList.remove('noDisplay')
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", (event) => { 
+        confereLancamento();
+    });
+</script>
