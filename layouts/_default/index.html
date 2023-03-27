@@ -4,11 +4,12 @@
 
         <!-- Wrapper -->
         <div id="wrapper">
+			{{- partial "intro.html" . -}}
 
             {{- partial "header" . -}}
             {{- partial "nav" . }}
 
-            <!-- Main -->
+            <!-- Main --> 
             <div id="main">
                 <div id="lancamento" 
                      displaylancamento="{{ .Params.Displaylancamento }}"
@@ -43,20 +44,23 @@
                     <form id="newsletter" method="post" action="{{ . }}">
                         <p class="chamada">Se inscreva na newsletter para ficar por dentro das novidades relevantes</p>
                         <div class="fields">
-                            
-                            <label for="email">Email</label>
-                            <input type="email" name="mail" id="email" />
-                          </div>
+                            <label for="nomenewsl">Nome</label>
+                            <input type="text" name="nome" id="nomenewsl" required/>
+                        </div>
+                        <div class="fields">
+                            <label for="emailnewsl">Email</label>
+                            <input type="email" name="mailnewsl" id="emailnewsl"/>
+                        </div>
+
                         <ul class="actions">
-                          <li>
-                            <input type="submit" id="btn_inscrever"/>
-                          </li>
+                          <li><input type="submit" id="btn_inscrever" value="Inscrever"/></li>
                           <p class="aviso">Não se preocupe, sua privacidade será respeitada e a qualquer momento você poderá cancelar sua inscrição.</p>
-                          <div id="loading" style="display: none;">
+                          <div id="loadingnewsl" style="display: none;">
                             <img src=""/>
                           </div>
                         </ul>
-                      </form>
+                    </form>
+                    <div id="emailinscrito"></div>
                 </div>
             </div>
 
@@ -161,6 +165,59 @@
 </style>
 
 <script>
+/* SALVA EMAIL PARA NEWSLETTER */
+
+    document.getElementById('newsletter').addEventListener("submit", (e) => {		
+        e.preventDefault()
+
+        document.getElementById('btn_inscrever').setAttribute('disabled', 'a')
+        document.getElementById('loadingnewsl').style.cssText = 'display: true'
+        console.log(e.target)
+    
+        data = {
+            'mail': document.getElementById('emailnewsl').value,
+            'nome': document.getElementById('nomenewsl').value,
+            'assunto': '[Newsletter] Signup'
+        }
+        
+        url = 'http://thiago.oioipio.com/contato'
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(result => {
+            console.log(result)
+            document.getElementById('btn_inscrever').removeAttribute('disabled')
+            emailinscrito()
+        }).catch(error => {
+            document.getElementById('btn_inscrever').removeAttribute('disabled')
+            emailnaoinscrito()
+            console.error(error)
+        })
+    })
+
+    let emailinscrito = function(){
+      let emailinscrito = document.getElementById('emailinscrito')
+      emailinscrito.innerHTML = "Email inscrito. Muito obrigado por seu interesse pelo meu trabalho!"
+      document.getElementById('loading').style.cssText = 'display: none'
+      resetfunction()
+    }
+
+    let emailnaoinscrito = function(){
+        let emailinscrito = document.getElementById('emailinscrito')
+        emailinscrito.innerHTML = "Infelizmente algum problema ocorreu com o servidor. Por favor, tente novamente em alguns instantes."
+    }
+
+    let resetNewsForm = function(){
+      let resetNewsForm = document.getElementById('newsletter')
+      resetNewsForm.reset()
+    }
+
+/* CONFERE LANÇAMENTO */
 
     let confereLancamento = function (){
         let lancamento = document.getElementById('lancamento')
