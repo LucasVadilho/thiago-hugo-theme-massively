@@ -40,31 +40,37 @@
                     </div>
                 </div>
 
+                
                 <div id="newsletter">
-                    <form id="newsletter" method="post" action="{{ . }}">
+                    <form id="newsletterForm" method="post" action="{{ . }}">
                         <p class="chamada">Se inscreva na newsletter para ficar por dentro das novidades relevantes</p>
                         <div class="fields">
-                            <label for="nomenewsl">Nome</label>
+                            <label for="nomenewsl">Nome*</label>
                             <input type="text" name="nome" id="nomenewsl" required/>
                         </div>
                         <div class="fields">
-                            <label for="emailnewsl">Email</label>
+                            <label for="emailnewsl">Email*</label>
                             <input type="email" name="mailnewsl" id="emailnewsl"/>
                         </div>
 
                         <ul class="actions">
-                          <li><input type="submit" id="btn_inscrever" value="Inscrever"/></li>
-                          <p class="aviso">Não se preocupe, sua privacidade será respeitada e a qualquer momento você poderá cancelar sua inscrição.</p>
-                          <div id="loadingnewsl" style="display: none;">
-                            <img src=""/>
-                          </div>
+                            <li id="li_btn_inscrever"><input type="submit" id="btn_inscrever" value="Inscrever"/></li>
                         </ul>
                     </form>
-                    <div id="emailinscrito"></div>
+                    <p class="aviso">Não se preocupe, sua privacidade será respeitada e a qualquer momento você poderá cancelar a inscrição.</p>
                 </div>
             </div>
 
             {{- partial "footer/index" . }}
+
+           
+
+            <div id="Snackbar" onclick="closeSnackbar()">
+                <div id="SnackbarText1"></div>
+                <div id="SnackbarText2"></div>
+                <a id="close">x</a>
+            </div>  
+
             {{- partial "copyright" . }}
             <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
         </div>
@@ -75,6 +81,10 @@
     </body>
 
 <style>
+    #li_btn_inscrever {
+        padding: 0 !important;
+    }
+
     #main > *{
         border-top:none;
     }
@@ -162,17 +172,148 @@
             object-fit: cover;
         } 
     }
+
+    #Snackbar {
+        visibility: hidden;
+        text-align: left;
+        padding: 5px;
+        padding-left: 12px;
+        padding-right: 12px;
+        border-radius: 2px;
+        position: fixed;
+        bottom: 30px;
+        background-color: rgba(255, 255, 255, 0.875);
+        box-shadow: 0 0.125rem 0.75rem 0 rgba(30, 37, 45, 0.25);
+        color: #212931;
+        transform: translate(-50%,0);
+        left: 50%;
+        z-index: 7;
+    }
+
+    #Snackbar.showSucess {
+        visibility: visible;
+        -webkit-animation: fadein 0.5s;
+        animation: fadein 0.5s;
+        border-left: 10px solid #36a34c;
+    }
+
+    #Snackbar.showFail {
+        visibility: visible;
+        -webkit-animation: fadein 0.5s;
+        animation: fadein 0.5s;
+        border-left: 10px solid #a33636;
+    }
+
+    #SnackbarText1{
+        color: #101020;
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    #SnackbarText2{
+        margin-top: -12px;
+        font-size: 15px;
+        color: #656565;
+        font-weight: 400;
+    }
+
+    #Snackbar a{
+        position: absolute;
+        right: 5px;
+        top:  5px;
+        padding-right: 10px;
+        padding-top: 10px;
+        background-color: transparent;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 0;
+        color: #656565;
+        border: none;
+    }
+
+    #Snackbar:hover{
+        cursor: pointer;
+    }
+
+    #Snackbar:hover a{
+        cursor: pointer;
+        color: #18bfef;
+    }
+
+    @-webkit-keyframes fadein {
+        from {bottom: 0; opacity: 0;} 
+        to {bottom: 30px; opacity: 1;}
+    }
+
+    @keyframes fadein {
+        from {bottom: 0; opacity: 0;}
+        to {bottom: 30px; opacity: 1;}
+    }
+
+
+/* The animation starts here */
+    .borderAnim {
+        position: relative;
+    }
+
+    .borderAnim:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(120deg, #043a49, #18bfef, #043a49);
+        background-size: 300% 300%;
+        clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), 2px calc(100% - 2px), 2px 100%, 100% 100%, 100% 0%, 0% 0%);
+    }
+
+    .borderAnim.in:after {
+        animation: frame-enter 2s forwards ease-in-out reverse, gradient-animation 4s ease-in-out infinite;
+    }
+
+    /* motion */
+    @keyframes gradient-animation {
+        0% {
+            background-position: 15% 0%;
+        }
+        50% {
+            background-position: 85% 100%;
+        }
+        100% {
+            background-position: 15% 0%;
+        }
+    }
+
+    @keyframes frame-enter {
+        0% {
+            clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), 2px calc(100% - 2px), 2px 100%, 100% 100%, 100% 0%, 0% 0%);
+        }
+        25% {
+            clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), calc(100% - 2px) calc(100% - 2px), calc(100% - 2px) 100%, 100% 100%, 100% 0%, 0% 0%);
+        }
+        50% {
+            clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, 100% 0%, 0% 0%);
+        }
+        75% {
+            -webkit-clip-path: polygon(0% 100%, 2px 100%, 2px 2px, 2px 2px, 2px 2px, 2px 2px, 2px 2px, 2px 2px, 2px 0%, 0% 0%);
+        }
+        100% {
+            -webkit-clip-path: polygon(0% 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 0% 100%);
+        }
+    }
+
 </style>
 
 <script>
-/* SALVA EMAIL PARA NEWSLETTER */
+/* NEWSLETTER */
+var form = document.getElementById("Snackbar");
 
-    document.getElementById('newsletter').addEventListener("submit", (e) => {		
+    document.getElementById('newsletterForm').addEventListener("submit", (e) => {		
         e.preventDefault()
 
         document.getElementById('btn_inscrever').setAttribute('disabled', 'a')
-        document.getElementById('loadingnewsl').style.cssText = 'display: true'
-        console.log(e.target)
+        document.getElementById('li_btn_inscrever').classList.add('borderAnim', 'in')
     
         data = {
             'mail': document.getElementById('emailnewsl').value,
@@ -190,31 +331,51 @@
             },
             body: JSON.stringify(data)
         }).then(result => {
-            console.log(result)
             document.getElementById('btn_inscrever').removeAttribute('disabled')
-            emailinscrito()
+            document.getElementById('li_btn_inscrever').classList.remove('borderAnim', 'in')
+
+            formularioEnviado()
         }).catch(error => {
             document.getElementById('btn_inscrever').removeAttribute('disabled')
-            emailnaoinscrito()
-            console.error(error)
+            document.getElementById('li_btn_inscrever').classList.remove('borderAnim', 'in')
+
+            formularioNaoEnviado()
         })
     })
 
-    let emailinscrito = function(){
-      let emailinscrito = document.getElementById('emailinscrito')
-      emailinscrito.innerHTML = "Email inscrito. Muito obrigado por seu interesse pelo meu trabalho!"
-      document.getElementById('loading').style.cssText = 'display: none'
-      resetfunction()
+    let formularioEnviado = function(){
+        form.className = "showSucess";     
+        document.getElementById('SnackbarText1').innerHTML = "Inscrição realizada"
+        document.getElementById('SnackbarText2').innerHTML = "Muito obrigado por seu interesse pelo meu trabalho!"
+        setTimeout(function(){ 
+            form.className = form.className.replace("showSucess", "");   
+            resetForm();
+        }, 8000);
     }
 
-    let emailnaoinscrito = function(){
-        let emailinscrito = document.getElementById('emailinscrito')
-        emailinscrito.innerHTML = "Infelizmente algum problema ocorreu com o servidor. Por favor, tente novamente em alguns instantes."
+    let formularioNaoEnviado = function(){
+        form.className = "showFail";
+        document.getElementById('SnackbarText1').innerHTML = "Falha no servidor"
+        document.getElementById('SnackbarText2').innerHTML = "Desculpe pelo erro. Por favor, tente novamente em alguns instantes"
+        setTimeout(function(){ 
+            form.className = form.className.replace("showFail", ""); 
+        }, 8000);
     }
 
-    let resetNewsForm = function(){
-      let resetNewsForm = document.getElementById('newsletter')
+    function closeSnackbar(){
+        if(form.classList.contains("showSucess")){
+            resetForm();
+            form.className = form.classList.remove("showSucess")
+        }else{
+            form.className = form.classList.remove("showFail")    
+        }
+    }
+
+    let resetForm = function(){
+      let resetNewsForm = document.getElementById('newsletterForm')
       resetNewsForm.reset()
+      let resetContatoForm = document.getElementById('contato')
+      resetContatoForm.reset()
     }
 
 /* CONFERE LANÇAMENTO */

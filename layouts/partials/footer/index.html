@@ -23,16 +23,12 @@
           </div>
         </div>
         <ul class="actions">
-          <li>
+          <li id="li_btn_contato">
             <input type="submit" id="btn_enviar" value='{{ i18n "CONTACT_FORM_SUBMIT_SEND_MESSAGE" . }}'/>
           </li>
-          <div id="loading" style="display: none;">
-            <img src=""/>
-          </div>
         </ul>
       </form>
-      <div id="emailenviadoSnackbar">
-      </div>
+      <!-- <div id="Snackbar"></div> -->
     </section>
     {{ end }}
     <section class="split contact">
@@ -60,47 +56,8 @@
 </footer>
 
 <style>
-  
-  #emailenviadoSnackbar {
-    visibility: hidden;
-    min-width: 250px;
-    margin-left: -125px;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    border-radius: 2px;
-    padding: 16px;
-    position: fixed;
-    z-index: 1;
-    left: 50%;
-    bottom: 30px;
-    font-size: 17px;
-  }
-
-  #emailenviadoSnackbar.show {
-    visibility: visible;
-    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-    animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  }
-
-  @-webkit-keyframes fadein {
-    from {bottom: 0; opacity: 0;} 
-    to {bottom: 30px; opacity: 1;}
-  }
-
-  @keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
-  }
-
-  @-webkit-keyframes fadeout {
-    from {bottom: 30px; opacity: 1;} 
-    to {bottom: 0; opacity: 0;}
-  }
-
-  @keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
+  #li_btn_contato {
+    padding: 0;
   }
 </style>
 
@@ -109,7 +66,7 @@
         e.preventDefault()
 
         document.getElementById('btn_enviar').setAttribute('disabled', 'a')
-        document.getElementById('loading').style.cssText = 'display: true'
+        document.getElementById('li_btn_contato').classList.add('borderAnim', 'in')
         console.log(e.target)
     
         data = Object.fromEntries(new FormData(e.target).entries())
@@ -124,31 +81,42 @@
             },
             body: JSON.stringify(data)
         }).then(result => {
-            console.log(result)
             document.getElementById('btn_enviar').removeAttribute('disabled')
+            document.getElementById('li_btn_contato').classList.remove('borderAnim', 'in')
+            
             emailenviado()
         }).catch(error => {
             document.getElementById('btn_enviar').removeAttribute('disabled')
+            document.getElementById('li_btn_contato').classList.remove('borderAnim', 'in')
+            
             emailnaoenviado()
-            console.error(error)
         })
     })
 
     let emailenviado = function(){
-      var x = document.getElementById("emailenviadoSnackbar");
-      x.className = "show";
-        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-      document.getElementById('loading').style.cssText = 'display: none'
-      resetfunction()
+      var form = document.getElementById("Snackbar");
+      form.className = "showSucess";
+        document.getElementById('SnackbarText1').innerHTML = "Mensagem enviada"
+        document.getElementById('SnackbarText2').innerHTML = "Entrarei em contato assim que possível"
+        setTimeout(function(){ 
+            form.className = form.className.replace("showSucess", "");   
+            resetForm();
+        }, 8000);
     }
 
     let emailnaoenviado = function(){
         let emailenviado = document.getElementById('emailenviado')
         emailenviado.innerHTML = "Infelizmente o email não pode ser enviado. Por favor, tente novamente em alguns instantes"
+
+
+      var form = document.getElementById("Snackbar");
+      form.className = "showFail";
+        document.getElementById('SnackbarText1').innerHTML = "Falha no servidor"
+        document.getElementById('SnackbarText2').innerHTML = "Desculpe, infelizmente o email não pode ser enviado. Por favor, tente novamente em alguns instantes"
+        setTimeout(function(){ 
+            form.className = form.className.replace("showFail", "");   
+        }, 8000);
+
     }
 
-    let resetfunction = function(){
-      let resetform = document.getElementById('contato')
-      resetform.reset()
-    }
 </script>
