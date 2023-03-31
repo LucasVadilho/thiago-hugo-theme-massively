@@ -1,6 +1,6 @@
 languageCode = "en-us"
 title = "Massively"
-baseURL = "http://localhost:1313/"
+baseURL = "http://thiago.oioipio.com/"
 theme = "hugo-theme-massively"
 googleanalytics = ""
 disqusShortname = ""
