@@ -21,13 +21,14 @@
                 <div id="organizador-list">
                     {{ range .Pages.ByDate}}
                         <div class="portfolio-container" tipos="{{ .Params.tipos }}">
-                            <a href="{{.Permalink}}" id="asize"></a>
+                            <a href="{{.Permalink}}" id="asize">
                                 <img title="{{.Title}}" alt="{{.Title}}" src="{{ .Params.Thumbnail }}"/>
+                            
+                                <div class="brevedescricao">
+                                    <p class="titulo">{{.Title}}</p>
+                                    <p class="descricao">{{.Description}}</p>
+                                </div>
                             </a>
-                            <div class="brevedescricao">
-                                <p class="titulo">{{.Title}}</p>
-                                <p class="descricao">{{.Description}}</p>
-                            </div>
                         </div>
                     {{ end }}
                 </div>
@@ -85,10 +86,6 @@
         border: none;
     }
 
-    #asize{
-       position: absolute;
-    }
-
     #conteudo{
         padding: 3% 0 2.5% 0;
         padding-left: 2%;
@@ -116,8 +113,6 @@
 
     .portfolio-container img{
         display: block;
-
-        /* height: 200px; */
     }
 
     .portfolio-container:hover{
@@ -162,43 +157,6 @@
 
     .displayhide{
         display: none;
-    }
-
-    /*Estilizacao scrollbar*/
-    ::-webkit-scrollbar {
-        width: 5px;              /* width of the entire scrollbar */
-        height: 5px;
-    }
-
-    ::-webkit-scrollbar-track {
-        background: none;       /* color of the tracking area */
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background-color: rgb(131, 131, 131);    /* color of the scroll thumb */
-        border-radius: 20px;       /* roundness of the scroll thumb */
-    }
-                    
-    *::-webkit-scrollbar {
-        width: 5px;
-    }
-
-    *::-webkit-scrollbar-track {
-        background: none;
-    }
-
-    *::-webkit-scrollbar-thumb {
-        background-color:rgb(131, 131, 131);
-        border-radius: 20px;
-    }
-
-    body {
-        scrollbar-width: thin;   /* "auto" or "thin" */
-        scrollbar-color: rgb(131, 131, 131);   /* scroll thumb and track */
-    }
-
-    ::-webkit-scrollbar-thumb:active { 
-        background-color: rgb(100, 100, 100);
     }
 
 /* DEFINICOES PARA OS TAMANHOS EM DESKTOP */

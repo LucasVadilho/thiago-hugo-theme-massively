@@ -22,11 +22,13 @@
             <textarea name="mensagem" id="message" rows="3" required></textarea>
           </div>
         </div>
-        <ul class="actions">
-          <li id="li_btn_contato">
-            <input type="submit" id="btn_enviar" value='{{ i18n "CONTACT_FORM_SUBMIT_SEND_MESSAGE" . }}'/>
-          </li>
-        </ul>
+        <div id="voltaPadding">
+          <ul class="actions">
+            <li id="li_btn_contato">
+              <input type="submit" id="btn_enviar" value='{{ i18n "CONTACT_FORM_SUBMIT_SEND_MESSAGE" . }}'/>
+            </li>
+          </ul>
+        </div>
       </form>
       <!-- <div id="Snackbar"></div> -->
     </section>
@@ -56,8 +58,19 @@
 </footer>
 
 <style>
+  #voltaPadding{
+    padding-left: 15px;
+  }
+
   #li_btn_contato {
     padding: 0;
+  }
+
+  @media screen and (min-width: 980px){
+    #message{
+      width: 470px;
+      resize: vertical;
+    }
   }
 </style>
 

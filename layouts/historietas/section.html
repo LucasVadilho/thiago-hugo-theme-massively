@@ -1,8 +1,9 @@
 {{ $postsPerPage := 4}}
 
 {{ $posts := .Pages }}
-{{ $firstPost := first 1 $posts }}
-{{ $postsPaging := .Paginate (after 1 $posts) $postsPerPage }}
+{{ $lastPost := last 1 $posts }}
+
+{{ $postsPaging := .Paginate .Pages.ByDate $postsPerPage }}
 
 {{ partial "htmlhead" . }}
 
@@ -13,7 +14,7 @@
 
             <!-- Main -->
             <div id="main">
-                {{- partial "posts/featured.html" (dict "firstpost" $firstPost "siteData" (index .Site.Data .Site.Language.Lang)) }}
+                {{- partial "posts/featured.html" (dict "lastpost" $lastPost "siteData" (index .Site.Data .Site.Language.Lang)) }}
                 
                 {{ if gt (len $posts) 1 }}
                     {{ partial "posts/list.html" (dict "posts" $postsPaging "siteData" (index .Site.Data .Site.Language.Lang)) }}

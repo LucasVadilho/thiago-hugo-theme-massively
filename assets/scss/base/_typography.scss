@@ -4,23 +4,6 @@
 /// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 ///
 
-/* Type */
-
-	html {
-		font-size: 16pt;
-
-		@include breakpoint('<=xlarge') {
-			font-size: 12pt;
-		}
-
-		@include breakpoint('<=large') {
-			font-size: 11pt;
-		}
-
-		@include breakpoint('<=xxsmall') {
-			font-size: 10pt;
-		}
-	}
 
 	body {
 		color: _palette(fg);
