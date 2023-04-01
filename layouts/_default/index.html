@@ -21,21 +21,56 @@
                 </div>
 
                 <div id="novidades">
+                    <h1 class="titulo">NOVIDADES</h1>
                     <div id = "ultimanovidade">
                         <img src="{{ .Params.imgUltNovidade}}" class="imagemUltNovidade">
-                        <p class="chamadaUltNovidade"> {{ .Params.chamadaUltNovidade }}</p>
-                        <p class="textoUltNovidade"> {{ .Params.TxtUltNovidade }}</p>
+                        <div id="informacoesUltNovidade">
+                            <p class="chamadaUltNovidade"> Historieta #1: O caso do papagaio</p>
+                            <p class="tempLeitura">
+                                <span class="icon alt fa-calendar-o"> 31 de Março de 2023</span> 
+                                <span class="icon alt fa-clock-o"> 4 minutos</span>
+                            </p>
+                            <p class="textoUltNovidade">
+                                — Hmm… desculpa — disse o rapaz —, mas todo esse discurso de eu ser obrigado a ir 
+                                para a prancha não me convenceu. Na verdade, não estou nem convencido de que 
+                                vocês são realmente piratas.</p>
+                        </div>
                     </div>
+
                     <div id = "demaisnovidades">
                         <div id="demais1">
-                            <img src="{{ .Params.imgDemNovidade1}}" class="imgDemNovidade1">
-                            <p class="chamadaDemNovidade1"> {{ .Params.chamadaUltNovidade }}</p>
-                            <p class="txtDemNovidade1"> {{ .Params.TxtUltNovidade }}</p>
+                            <img src="{{ .Params.imgDemNovidade1}}" class="imgDemNovidades">
+                                <div id="informacoesNovidades">
+                                    <p class="chamadaNovidades"> Historieta #2</p>
+                                    <p class="iconClass">
+                                        <span class="icon alt fa-calendar-o"> 31 de Março de 2023</span> 
+                                        <span class="icon alt fa-clock-o"> 4 minutos</span>
+                                    </p>
+                                </div>
                         </div>
+
                         <div id="demais2">
-                            <img src="{{ .Params.imgDemNovidade2}}" class="imgDemNovidade2">
-                            <p class="chamadaDemNovidade2"> {{ .Params.chamadaUltNovidade }}</p>
-                            <p class="txtDemNovidade2"> {{ .Params.TxtUltNovidade }}</p>
+                            <img src="{{ .Params.imgDemNovidade2}}" class="imgDemNovidades">
+                            <div id="informacoesNovidades">
+                                <p class="chamadaNovidades"> Historieta #3</p>
+                                <p class="iconClass">
+                                    <span class="icon alt fa-calendar-o"> 31 de Março de 2023</span> 
+                                    <span class="icon alt fa-clock-o"> 4 minutos</span>
+                                </p>
+                        
+                            </div>
+                        </div>
+
+                        <div id="demais2">
+                            <img src="{{ .Params.imgDemNovidade2}}" class="imgDemNovidades">
+                            <div id="informacoesNovidades">
+                                <p class="chamadaNovidades"> Historieta #3</p>
+                                <p class="iconClass">
+                                    <span class="icon alt fa-calendar-o"> 31 de Março de 2023</span> 
+                                    <span class="icon alt fa-clock-o"> 4 minutos</span>
+                                </p>
+                        
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -43,7 +78,7 @@
                 
                 <div id="newsletter">
                     <form id="newsletterForm" method="post" action="{{ . }}">
-                        <p class="titulo"> Newsletter </p>
+                        <h1 class="titulo2"> NEWSLETTER </h1>
                         <p class="chamada">Se inscreva na newsletter para ficar por dentro das novidades relevantes</p>
                         <div id="nomeOrganizer">
                             <div class="fields">
@@ -65,11 +100,14 @@
                     </form>
                     <p class="aviso">Não se preocupe, sua privacidade será respeitada e a qualquer momento você poderá cancelar a inscrição.</p>
                 </div>
+
+                <div style="background-color: #f5f5f5;">
+                    <h1 class="titulo">CONTATO</h1>
+                </div>     
             </div>
-
+            
+         
             {{- partial "footer/index" . }}
-
-           
 
             <div id="Snackbar" onclick="closeSnackbar()">
                 <div id="SnackbarText1"></div>
@@ -87,58 +125,16 @@
     </body>
 
 <style>
+/* GERAL CSS */  
     a{
         border:none;
-    }
-
-    #nomeOrganizer{
-        position: relative;
-        float: left;
-        width: 40%
-    }
-
-    #emailOrganizer{
-        margin-left: 30px;
-        margin-right: 30px;
-        float: left;
-        width: 40%
-    }
-
-    #botaoInscreverOrganizer{
-        margin-top:29px;
-    }
-
-    .aviso{
-        text-align: center;
-        font-size: 15px;
-        margin-bottom: 0;
-        margin-left: 5%;
-        width: 90%;
-        word-break: break-word;
-    }
-
-    .chamada{
-        text-align: center;
-        font-size: 18px;
-        margin: 0;
-        word-break: break-word;
-    }
-
-    .titulo{
-        font-size: 20px;
-        font-weight: bold;
-        text-align: center;
-        margin: 0;
-    }
-
-    #li_btn_inscrever {
-        padding: 0 !important;
     }
 
     #main > *{
         border-top:none;
     }
 
+/* VAI LANÇAR CSS */  
     #lancamento{
         padding: 0;
         margin: 0;
@@ -167,62 +163,201 @@
         display: none;
     }
 
+/* TÍTULOS DAS PARTES */
+    .titulo{
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .titulo2{
+        text-align: center;
+        margin-bottom: 40px;
+        color: aliceblue;
+    }
+
+/* ULTIMA POSTAGEM CSS */  
     #ultimanovidade {
-        background-color: bisque;
+        display: inline-flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+        -webkit-backface-visibility: hidden;
+        -webkit-transform: translateZ(0) scale(1, 1);
+        filter: blur(0);
+        -webkit-filter: blur(0);
     }
 
-    @media screen and (min-width: 1032px){
-        .imglancamento2, .imglancamento3, .imglancamento4{
-            display:none;
-        }
-
-        .imglancamento1{
-            width: 100%;
-            height: 200px;
-            display: block;
-            object-fit: cover;
-        }
+    #ultimanovidade:hover{
+        cursor: pointer;
+        transform: perspective(300px) rotateY(1deg) translateZ(10px) scale(0.97);
+        transition: transform .2s;
     }
 
-    @media screen and (max-width: 1032px) and (min-width: 851px){
-        .imglancamento1, .imglancamento3, .imglancamento4{
-            display:none;
-        }
-
-        .imglancamento2{
-            width: 100%;
-            height: 200px;
-            display: block;
-            object-fit: cover;
-        }
+    #informacoesUltNovidade{
+        width: 40%;
+        position: relative;
     }
 
-    @media screen and (max-width: 851px) and (min-width: 684px){
-        .imglancamento1, .imglancamento2, .imglancamento4{
-            display:none;
-        }
-
-        .imglancamento3{
-            width: 100%;
-            height: 200px;
-            display: block;
-            object-fit: cover;
-        }
+    .imagemUltNovidade{
+        width: 50%;
+        margin-right: 25px;
+    }
+    
+    .chamadaUltNovidade {
+        font-weight: bold;
+        font-size: 1.7rem;
+        margin-top: 15px;
+        margin-bottom: 0;
+        padding: 0;
+        word-break: break-word;
+        line-height: 1.1;
+        word-spacing: normal;
     }
 
-    @media screen and (max-width: 684px){
-        .imglancamento1, .imglancamento2, .imglancamento3{
-            display:none;
-        }
-
-        .imglancamento4{
-            width: 100%;
-            height: 200px;
-            display: block;
-            object-fit: cover;
-        } 
+    .icon{
+        margin-right: 5px;
+        font-size: 1rem;
+        font-weight: 400;
+        font-weight: bold;
+        color: #656565;
     }
 
+    .tempLeitura{
+        margin-top: 0%;
+    }
+
+    .textoUltNovidade {
+        font-size: 1rem;
+        font-weight: 500;
+        margin: 0;
+        padding: 0;
+        bottom: 0;
+        width: 100%;
+        line-height: 1.8;
+        word-spacing: normal;
+    }
+
+
+/* ULTIMAS POSTAGEM CSS */
+    #demaisnovidades{
+        display: inline-flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        margin-top: 38px;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    #demais1,#demais2{
+        width: 33%;
+        text-align: center;
+        margin: 0;
+        margin-bottom: 0;
+        -webkit-backface-visibility: hidden;
+        -webkit-transform: translateZ(0) scale(1, 1);
+        filter: blur(0);
+        -webkit-filter: blur(0);
+    }
+
+    #demais1:hover,#demais2:hover{
+        cursor: pointer;
+        transform: perspective(300px) rotateY(1deg) translateZ(10px) scale(0.97);
+        transition: transform .2s;
+    }
+
+    .imgDemNovidades{
+        width: 80%;
+    }
+
+    .chamadaNovidades{
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.3rem;
+        margin-bottom: 0;
+        padding: 0;
+        word-break: break-word;
+        line-height: 1.1;
+        word-spacing: normal;
+    }
+
+    #informacoesNovidades{
+        text-align: center;
+    }
+
+    .iconClass{
+        text-align: center;
+        font-size: 1rem;
+        font-weight: 400;
+        font-weight: bold;
+        color: #656565;
+        margin-bottom: 0;
+    }
+
+/* NEWSLETTER CSS */  
+    #newsletter{
+        background-color: #7A633A;
+    }
+    
+    #nomeOrganizer{
+        position: relative;
+        float: left;
+        width: 40%;
+    }
+
+    #emailOrganizer{
+        margin-left: 30px;
+        margin-right: 30px;
+        float: left;
+        width: 40%
+    }
+
+    #botaoInscreverOrganizer{
+        margin-top:29px;
+    }
+
+    .aviso{
+        text-align: center;
+        font-size: 15px;
+        margin-bottom: 0;
+        margin-left: 5%;
+        width: 90%;
+        word-break: break-word;
+        color: aliceblue;
+    }
+
+    label{
+        color: aliceblue; 
+    }
+
+    .chamada{
+        text-align: center;
+        font-size: 18px;
+        margin: 0;
+        word-break: break-word;
+        color: aliceblue;
+    }
+
+    #li_btn_inscrever {
+        padding: 0 !important;
+    }
+
+    #btn_inscrever{
+        box-shadow: inset 0 0 0 2px aliceblue;
+        color: aliceblue !important;
+    }
+
+    #btn_inscrever:hover{
+        box-shadow: inset 0 0 0 2px #E0DCC5;
+        color: #E0DCC5 !important;
+    }
+
+    #nomenewsl, #emailnewsl{
+        background-color: aliceblue;
+    }
+
+/* SNACKBAR CSS */
     #Snackbar {
         visibility: hidden;
         text-align: left;
@@ -304,7 +439,7 @@
     }
 
 
-/* The animation starts here */
+/* FEEDBACK BOTAO CARREGANDO */
     .borderAnim {
         position: relative;
     }
@@ -356,6 +491,67 @@
         }
     }
 
+/* MEDIA SCREEN RULES */
+
+    @media screen and (min-width: 1032px){
+
+        /* VAI LANÇAR CSS */ 
+        .imglancamento2, .imglancamento3, .imglancamento4{
+            display:none;
+        }
+
+        .imglancamento1{
+            width: 100%;
+            height: 200px;
+            display: block;
+            object-fit: cover;
+        }
+    }
+
+    @media screen and (max-width: 1032px) and (min-width: 851px){
+
+        /* VAI LANÇAR CSS */ 
+        .imglancamento1, .imglancamento3, .imglancamento4{
+            display:none;
+        }
+
+        .imglancamento2{
+            width: 100%;
+            height: 200px;
+            display: block;
+            object-fit: cover;
+        }
+    }
+
+    @media screen and (max-width: 851px) and (min-width: 684px){
+
+        /* VAI LANÇAR CSS */ 
+        .imglancamento1, .imglancamento2, .imglancamento4{
+            display:none;
+        }
+
+        .imglancamento3{
+            width: 100%;
+            height: 200px;
+            display: block;
+            object-fit: cover;
+        }
+    }
+
+    @media screen and (max-width: 684px){
+
+        /* VAI LANÇAR CSS */ 
+        .imglancamento1, .imglancamento2, .imglancamento3{
+            display:none;
+        }
+
+        .imglancamento4{
+            width: 100%;
+            height: 200px;
+            display: block;
+            object-fit: cover;
+        } 
+    }
 </style>
 
 <script>
