@@ -6,7 +6,8 @@
 -->
 <html lang='{{ .Site.Language.Lang | default "en-us" }}'>
 	<head>
-		<title>{{ if eq (.Site.Title) (.Title) }}{{ .Site.Title }}{{ else }}{{ .Title }} &middot; {{ .Site.Title }}{{ end }}</title>
+		<!-- <title>{{ if eq (.Site.Title) (.Title) }}{{ .Site.Title }}{{ else }}{{ .Title }} &middot; {{ .Site.Title }}{{ end }}</title> -->
+        <title>TD VADILHO</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<!-- CSS -->
@@ -28,11 +29,13 @@
     <a id="goToTop" onclick="voltarAoTopo()">Topo</a>
 
 <style>
+    
 	body {
 		font-family: Helvetica;
 		word-spacing: normal;
 		word-break: break-all;
         overflow-anchor: none;
+        text-rendering: optimizeLegibility;
 	}
 
     p{
@@ -129,10 +132,6 @@
             window.scrollTo(0, scrollpos);
             sessionStorage.removeItem('scrollpos');
         }
-    });
-
-    window.addEventListener("beforeunload", function (e) {
-        sessionStorage.setItem('scrollpos', window.scrollY);
     });
 
 </script>

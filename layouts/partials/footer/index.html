@@ -35,7 +35,7 @@
     {{ end }}
     <section class="split contact">
         {{ with $data.contactinfo.email }}
-        <section>
+        <section id="splitcontact">
             <h3>{{ i18n "CONTACT_EMAIL" . }}</h3>
             <p><a href="mailto:{{ . }}">{{ . }}</a></p>
         </section>

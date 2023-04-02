@@ -61,7 +61,7 @@
                             </div>
                         </div>
 
-                        <div id="demais2">
+                        <div id="demais3">
                             <img src="{{ .Params.imgDemNovidade2}}" class="imgDemNovidades">
                             <div id="informacoesNovidades">
                                 <p class="chamadaNovidades"> Historieta #3</p>
@@ -79,7 +79,7 @@
                 <div id="newsletter">
                     <form id="newsletterForm" method="post" action="{{ . }}">
                         <h1 class="titulo2"> NEWSLETTER </h1>
-                        <p class="chamada">Se inscreva na newsletter para ficar por dentro das novidades relevantes</p>
+                        <p class="chamada">Se inscreva na newsletter para ficar por dentro das novidades da Toca</p>
                         <div id="nomeOrganizer">
                             <div class="fields">
                                 <label for="nomenewsl">Nome*</label>
@@ -98,15 +98,12 @@
                             </ul>
                         </div>
                     </form>
-                    <p class="aviso">Não se preocupe, sua privacidade será respeitada e a qualquer momento você poderá cancelar a inscrição.</p>
+                    <p class="aviso">Não se preocupe, sua privacidade será respeitada e a qualquer momento você poderá cancelar a inscrição</p>
                 </div>
-
-                <div style="background-color: #f5f5f5;">
-                    <h1 class="titulo">CONTATO</h1>
+                <div id="contato">
+                    <h1 class="tituloc">CONTATO</h1>
                 </div>     
             </div>
-            
-         
             {{- partial "footer/index" . }}
 
             <div id="Snackbar" onclick="closeSnackbar()">
@@ -171,8 +168,13 @@
 
     .titulo2{
         text-align: center;
-        margin-bottom: 40px;
+        margin-bottom: 5px;
         color: aliceblue;
+    }
+
+    .tituloc{
+        text-align: center;
+        margin-bottom: 0px;
     }
 
 /* ULTIMA POSTAGEM CSS */  
@@ -187,6 +189,7 @@
         -webkit-transform: translateZ(0) scale(1, 1);
         filter: blur(0);
         -webkit-filter: blur(0);
+        transition: transform .2s;
     }
 
     #ultimanovidade:hover{
@@ -233,10 +236,11 @@
         font-weight: 500;
         margin: 0;
         padding: 0;
-        bottom: 0;
+        bottom: 15px;
         width: 100%;
         line-height: 1.8;
         word-spacing: normal;
+        position: relative;
     }
 
 
@@ -250,7 +254,7 @@
         justify-content: space-between;
     }
 
-    #demais1,#demais2{
+    #demais1,#demais2,#demais3{
         width: 33%;
         text-align: center;
         margin: 0;
@@ -259,9 +263,10 @@
         -webkit-transform: translateZ(0) scale(1, 1);
         filter: blur(0);
         -webkit-filter: blur(0);
+        transition: transform .2s;
     }
 
-    #demais1:hover,#demais2:hover{
+    #demais1:hover,#demais3:hover,#demais2:hover{
         cursor: pointer;
         transform: perspective(300px) rotateY(1deg) translateZ(10px) scale(0.97);
         transition: transform .2s;
@@ -288,14 +293,17 @@
 
     .iconClass{
         text-align: center;
-        font-size: 1rem;
-        font-weight: 400;
         font-weight: bold;
         color: #656565;
         margin-bottom: 0;
     }
 
+    .iconClass span{
+        font-size: 1rem;
+    }
+
 /* NEWSLETTER CSS */  
+
     #newsletter{
         background-color: #7A633A;
     }
@@ -313,15 +321,12 @@
         width: 40%
     }
 
-    #botaoInscreverOrganizer{
-        margin-top:29px;
-    }
-
     .aviso{
         text-align: center;
         font-size: 15px;
         margin-bottom: 0;
         margin-left: 5%;
+        margin-right: 5%;
         width: 90%;
         word-break: break-word;
         color: aliceblue;
@@ -334,9 +339,13 @@
     .chamada{
         text-align: center;
         font-size: 18px;
-        margin: 0;
+        margin-bottom: 20px;
         word-break: break-word;
         color: aliceblue;
+    }
+
+    #botaoInscreverOrganizer{
+        margin-top:48.5px;
     }
 
     #li_btn_inscrever {
@@ -357,6 +366,20 @@
         background-color: aliceblue;
     }
 
+/* CONTATO */
+    #contato{
+        background-color: #f5f5f5;
+        padding-bottom: 0px;
+    }
+
+    #footer section{
+        padding-top: 40px;
+        border: none;
+    }
+
+    #footer > section.split.contact > section:first-child {
+        padding: 35px 4rem 3rem 4rem;
+    }
 /* SNACKBAR CSS */
     #Snackbar {
         visibility: hidden;

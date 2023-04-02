@@ -97,7 +97,6 @@
         }
 
         #livros {
-            padding: 0 0 2% 0;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -107,7 +106,6 @@
             display: inline-flex;
             flex-direction: row; 
             justify-content: space-between;
-            padding-top: 5%;
             padding-bottom: 2%;
             width: 80%;
             margin: auto;
@@ -161,6 +159,7 @@
             -webkit-transform: translateZ(0) scale(1, 1);
             filter: blur(0);
             -webkit-filter: blur(0);
+            transition: transform .2s;
         }
 
         .imagemPainel:hover{
@@ -172,7 +171,7 @@
         #livroSelecionado {
             display: flex;
             flex-direction: row;
-            padding: 5% 5% 2% 5%;
+            padding: 5% 5% 0 5%;
         }
 
         .tituloLivroSelecionado{ 
@@ -335,9 +334,6 @@
     
     /* Bloco a partir de 640 px */
         @media screen and (max-width: 640px) {
-            #livros {
-                padding: 0 5% 2% 5%;
-            }
             #livroSelecionado { 
                 flex-direction: column;
                 padding: 5% 5% 2% 5%;

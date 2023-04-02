@@ -8,30 +8,40 @@
         
         <div id="main">
             <div id="conteudo">
-                <div id="filtragem">
-                    <p class="mostrar">Mostrar: </p>
-                        {{ range $tipo := .Params.tipos }}
-                            <div class="checkbox">
-                                <input type="checkbox" class="checkbox" id="{{ $tipo }}" checked>
-                                <label for="{{ $tipo }}">{{ $tipo }}</label>
-                            </div>
-                        {{ end }}      
+                
+                <div id="projetos-list-ilustracoes">
+                    <h1>Ilustrações</h1>
+                        <div class="projetos-organizer">
+                            {{ range where .Pages.ByDate "Params.categoriaprojeto" "Ilustrações" }}
+                                <div class="projeto-container">
+                                    <div class="img-crop">
+                                        <img src="{{ .Params.Thumbprojeto }}" onclick="abrirproj()">
+                                    </div>
+                                            
+                                </div> 
+                            {{ end }}
+                        </div>
                 </div>
 
-                <div id="organizador-list">
-                    {{ range .Pages.ByDate}}
-                        <div class="portfolio-container" tipos="{{ .Params.tipos }}">
-                            <a href="{{.Permalink}}" id="asize">
-                                <img title="{{.Title}}" alt="{{.Title}}" src="{{ .Params.Thumbnail }}"/>
-                            
-                                <div class="brevedescricao">
-                                    <p class="titulo">{{.Title}}</p>
-                                    <p class="descricao">{{.Description}}</p>
-                                </div>
-                            </a>
+                <div id="projetos-list-capas">
+                    <h1>Capas de Livros</h1>
+                        <div class="projetos-organizer">
+                            {{ range where .Pages.ByDate "Params.categoriaprojeto" "Ilustrações" }}
+                                <div class="projeto-container">
+                                    <div class="img-crop">
+                                        <img src="{{ .Params.Thumbprojeto }}" onclick="abrirproj()">
+                                    </div>                             
+                                </div> 
+                            {{ end }}
                         </div>
-                    {{ end }}
                 </div>
+
+                <div id="Snackbar">
+                    {{ range .Pages.ByDate }}
+                        <img src="{{ .Params.src }}" />                
+                    {{ end }}
+                    <a id="close" onclick="closeSnackbar()">x</a>
+                </div> 
 
             </div>
         </div>
@@ -43,120 +53,87 @@
 </body>
 
 <style>
-    #filtragem {
-        padding-left: 25px;
-        padding-right: 25px;
-        display: inline-flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        min-width: 100%;
-        align-items: flex-start;
-        margin-top: 0%;
-        padding-top: 8px;
-        font-weight: bold;
-        margin-bottom: 20px;
-    }
-
-    .mostrar{
-        margin-right: 2%;
-        font-weight: bold;
-        font-size: 16px;
-        margin-bottom: 0;
-        float: left;
-    }
-
-    .checkbox label{
-        transition: all .5s ease;
-        margin-top: 8px;
-        
-    }
-
-    input[type="checkbox"] + label {
-        font-family: Helvetica;
-        padding-left: 35px;
-        font-weight: 500;
-        letter-spacing: normal;
-    }
-
-    .checkbox input{
-        margin-left: 0px;
-    }
-
     a{
         border: none;
     }
+/* ORGANIZA OS TIPOS */
+   #projetos-list-ilustracoes{
+        text-align: center;
+   }
 
-    #conteudo{
-        padding: 3% 0 2.5% 0;
-        padding-left: 2%;
-        padding-right: 2%;
+   #projetos-list-capas{
+        text-align: center;
+        margin-top: 40px;
     }
 
-    #organizador-list{
-        display: flex;
+    /* ORGANIZA OS PROJETOS DENTRO DOS TIPOS */
+   .projetos-organizer{
+        width: 100%;
+        justify-content: center;
+        display: inline-flex;
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: center;
-        width: 100%;
-        margin-bottom: 4%;
-    }
+        margin-top: -20px;
+   }
 
-    .portfolio-container{
+   .projeto-container{
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-top: 20px;
+   }
+
+   .img-crop{
         position: relative;
-        display: inline-flex;
-        flex-wrap: wrap;
-        margin-bottom: 1.5%;
-        margin-left: 0.8%;
-        margin-right: 0.8%;
-        max-width: 330px;
-    }
-
-    .portfolio-container img{
-        display: block;
-    }
-
-    .portfolio-container:hover{
-        cursor: pointer;
-    }
-
-    .portfolio-container:hover .brevedescricao{
-        cursor: pointer;
-        height: 80%;
-        transition: .5s ease;
-    }
-
-    .brevedescricao{
-        background-color: rgba(0, 0, 0, 0.658);
-        height: 22%;
+        width: 200px;
+        height: 200px;
         overflow: hidden;
+   }
+
+   .img-crop img{
         position: absolute;
-        bottom: 0%;
-        width: 100%;
+        top: -9999px;
+        left: -9999px;
+        right: -9999px;
+        bottom: -9999px;
+        margin: auto;
+        -webkit-backface-visibility: hidden;
+        -webkit-transform: translateZ(0) scale(1, 1);
+        filter: blur(0);
+        -webkit-filter: blur(0);
+        transition: transform .2s;
     }
 
-    .titulo{
-        margin: 0;
-        padding: 0;
+    .img-crop img:hover{
+        cursor: pointer;
+        transform: scale(1.2);
+        transition: transform .2s;
+    }
+
+    .projeto-nome{
         text-align: center;
-        font-weight: bold;
-        font-size: 18px;
-        color: aliceblue;
-        padding-left: 5%;
-        padding-right: 5%;
+        margin-bottom: 0;
     }
 
-    .descricao{
-        margin: 0;
-        padding: 0;
-        line-height: 16px;
-        color: aliceblue;
-        padding-left: 5%;
-        padding-right: 5%;
-        text-align: left;
-    }
-
-    .displayhide{
+/* SNACKBAR PROJETO OPEN */
+    #Snackbar {
         display: none;
+        text-align: left;
+        padding: 5px;
+        padding-left: 12px;
+        padding-right: 12px;
+        border-radius: 2px;
+        position: fixed;
+        bottom: 30px;
+        background-color: rgba(255, 255, 255, 0.875);
+        box-shadow: 0 0.125rem 0.75rem 0 rgba(30, 37, 45, 0.25);
+        color: #212931;
+        transform: translate(-50%,0);
+        left: 50%;
+        z-index: 7;
+    }
+
+    #close:hover{
+        cursor: pointer;
     }
 
 /* DEFINICOES PARA OS TAMANHOS EM DESKTOP */
@@ -167,50 +144,6 @@
         }
     }
 
-    @media screen and (max-width: 1052px) and (min-width: 983px){
-        .portfolio-container{
-            max-width: 280px;
-        }
-    }
-
-    @media screen and (max-width: 983px) and (min-width: 945px){
-        .portfolio-container{
-            max-width: 270px;
-        }
-        .titulo{
-            font-size: 17px;
-        }
-    }
-
-    @media screen and (max-width: 945px) and (min-width: 913px){
-        .portfolio-container{
-            max-width: 260px;
-        }
-        .titulo{
-            font-size: 17px;
-        }
-    }
-
-    @media screen and (max-width: 913px) and (min-width:880px){
-        .portfolio-container{
-            max-width: 250px;
-        }
-        .titulo{
-            font-size: 17px;
-        }
-    }
-
-    @media screen and (max-width: 774px) and (min-width: 667px){
-        .portfolio-container{
-            max-width: 280px;
-        }
-    }
-
-    @media screen and  (min-width: 666px){
-        .portfolio-container{
-            margin-bottom: 10px;
-        }
-    }
     
                
 /* DEFINICOES PARA OS TAMANHOS DE DEVICE MOBILE */
@@ -220,39 +153,19 @@
             margin-bottom: 10px;
         }
     }
-
-    @media only screen and (hover:none) and (pointer:coarse) and (max-width:321px){
-        .portfolio-container{
-            margin-bottom: 10px;
-        }
-    }
 </style>
 
 <script type="text/javascript">
-    let checkboxs = document.getElementsByClassName('checkbox')
-    let portfolios = document.getElementsByClassName('portfolio-container')
+    let snackbar = document.getElementById("Snackbar")
 
-    for(checkbox of checkboxs) {
-        checkbox.addEventListener('click', (ev) => {
-            atualizarFiltro()
-        })
+    let abrirproj = function (){
+        snackbar.style.display = "block";
+        let thumbclicada = document.getElementsByClassName('img-crop')
+        console.log (thumbclicada)
     }
 
-    let atualizarFiltro = function() {
-        for(portfolio of portfolios) {
-            portfolio.style.cssText = 'display: none'
-        }
-
-        for(checkbox of checkboxs) {
-            if(checkbox.checked) {
-                for(portfolio of portfolios) {
-                    if(portfolio.getAttribute('tipos').includes(checkbox.id)){
-                        portfolio.style.cssText = 'display: block'
-                    }
-                }
-            }
-        }
+    function closeSnackbar(){
+        snackbar.style.display = "none";
     }
-
-
+    /* if snackbaropen and click outside, então fecha snackbar */
 </script>
