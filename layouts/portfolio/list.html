@@ -1,21 +1,25 @@
 {{ partial "htmlhead" . }}
+
 <body lang='{{ .Site.Language.Lang | default "en-us" }}' class="is-preload">
+    
     <div id="wrapper">
         {{ partial "header" . }}
         {{ partial "nav" . }}
-        
+        <div id="blackout2"></div>
         <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
         
         <div id="main">
             <div id="conteudo">
-                
                 <div id="projetos-list-ilustracoes">
                     <h1>Ilustrações</h1>
-                        <div class="projetos-organizer">
+                        <div id="projetos-organizer">
                             {{ range where .Pages.ByDate "Params.categoriaprojeto" "Ilustrações" }}
                                 <div class="projeto-container">
-                                    <div class="img-crop">
-                                        <img src="{{ .Params.Thumbprojeto }}" onclick="abrirproj()">
+                                    <div id="{{ .Params.Titleprojeto }}" 
+                                         class="img-crop" 
+                                         onclick="abrirproj(event,'{{ .Params.Titleprojeto }}')"
+                                         itens="{{ jsonify .Params.Itens }}">
+                                        <img src="{{ .Params.Thumbprojeto }}">
                                     </div>
                                             
                                 </div> 
@@ -25,36 +29,48 @@
 
                 <div id="projetos-list-capas">
                     <h1>Capas de Livros</h1>
-                        <div class="projetos-organizer">
-                            {{ range where .Pages.ByDate "Params.categoriaprojeto" "Ilustrações" }}
-                                <div class="projeto-container">
-                                    <div class="img-crop">
-                                        <img src="{{ .Params.Thumbprojeto }}" onclick="abrirproj()">
-                                    </div>                             
-                                </div> 
-                            {{ end }}
-                        </div>
                 </div>
 
-                <div id="Snackbar">
-                    {{ range .Pages.ByDate }}
-                        <img src="{{ .Params.src }}" />                
-                    {{ end }}
+                <div id="blackout"></div>
+                <div id="Snackbar">               
                     <a id="close" onclick="closeSnackbar()">x</a>
-                </div> 
-
+                </div>  
             </div>
         </div>
-        {{- partial "copyright" . }}
+        {{- partial "copyright" . }}  
     </div>
-
     {{- template "_internal/google_analytics.html" . }}
     {{- partial "scripts/index" . }}
+    
 </body>
 
 <style>
     a{
         border: none;
+    }
+    
+    #blackout{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.534);
+        display: none;
+        z-index: 3;
+        pointer-events: none;
+    }
+
+    #blackout2{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.534);
+        display: none;
+        z-index: 2;
+        pointer-events: none;
     }
 /* ORGANIZA OS TIPOS */
    #projetos-list-ilustracoes{
@@ -67,7 +83,7 @@
     }
 
     /* ORGANIZA OS PROJETOS DENTRO DOS TIPOS */
-   .projetos-organizer{
+   #projetos-organizer{
         width: 100%;
         justify-content: center;
         display: inline-flex;
@@ -117,19 +133,17 @@
 /* SNACKBAR PROJETO OPEN */
     #Snackbar {
         display: none;
-        text-align: left;
-        padding: 5px;
-        padding-left: 12px;
-        padding-right: 12px;
+        padding: 12px;
         border-radius: 2px;
         position: fixed;
+        top: 30px;
         bottom: 30px;
         background-color: rgba(255, 255, 255, 0.875);
-        box-shadow: 0 0.125rem 0.75rem 0 rgba(30, 37, 45, 0.25);
-        color: #212931;
         transform: translate(-50%,0);
         left: 50%;
-        z-index: 7;
+        z-index: 8;
+        overflow: auto;
+        width: 90%;
     }
 
     #close:hover{
@@ -143,8 +157,6 @@
             max-width: 300px;
         }
     }
-
-    
                
 /* DEFINICOES PARA OS TAMANHOS DE DEVICE MOBILE */
     /* Definicoes para celular */
@@ -158,14 +170,44 @@
 <script type="text/javascript">
     let snackbar = document.getElementById("Snackbar")
 
-    let abrirproj = function (){
-        snackbar.style.display = "block";
-        let thumbclicada = document.getElementsByClassName('img-crop')
-        console.log (thumbclicada)
+    let abrirproj = function (e, id){
+
+        snackbar.innerHTML = ''
+        e.stopPropagation()
+        snackbar.style.display = "block"
+        let itens = JSON.parse(document.getElementById(id).getAttribute('itens'))
+        
+        for (let item of itens){
+            if (item.type == 'image'){
+                snackbar.innerHTML += '<img src="' + item.src + '"/>'
+            } else {
+                snackbar.innerHTML += '<iframe  src="' + item.src + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" frameorder="0" vspace="0" hspace="0" marginwidth="0" marginheight="0" width="100%" style="margin: 0 0 0 0" frameBorder="0" scrolling="no" style="border: 0px" allowfullscreen> </iframe>'
+            } 
+        }
+
+        let dark = document.getElementById('blackout')
+        let dark2 = document.getElementById('blackout2')
+        dark.style.display= "block"
+        dark2.style.display= "block"
+
+        window.addEventListener('click', function(b){
+            if (document.getElementById('Snackbar').contains(b.target)){
+            } else{
+                console.log("cliquei fora da snack, fecho ela")
+                snackbar.style.display = "none"  
+                dark.style.display= "none"
+                dark2.style.display= "none"  
+            }
+        }, options = {"once": true})
     }
 
     function closeSnackbar(){
-        snackbar.style.display = "none";
+        snackbar.style.display = "none"
+        snackbar.innerHTML = ''
+        dark.style.display= "none"
+        dark2.style.display= "none"  
     }
-    /* if snackbaropen and click outside, então fecha snackbar */
+
+
+/* ARRUMAR A BARRA DE ROLAGEM DO TOASTER PARA VOLTAR PARA O TOPO DEPOIS QUE FECHAR O TOASTER */
 </script>
