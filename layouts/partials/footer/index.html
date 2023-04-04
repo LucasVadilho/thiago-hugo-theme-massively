@@ -3,37 +3,49 @@
 <footer id="footer">
     {{ with $data.contactinfo.contactformaction }}
     <section>
-      <form id="contato" method="post" action="{{ . }}">
-        <div class="fields">
-          <div class="field">
-            <label for="name">{{ i18n "CONTACT_FORM_FIELD_NAME" . }}</label>
-            <input type="text" name="nome" id="name" required/>
-          </div>
-          <div class="field">
-            <label for="email">{{ i18n "CONTACT_FORM_FIELD_EMAIL" . }}</label>
-            <input type="email" name="mail" id="email" />
-          </div>
-          <div class="field">
-            <label for="assunto">{{ i18n "CONTACT_FORM_FIELD_ASSUNTO" . }}</label>
-            <input type="text" name="assunto" id="assunto" required/>
-          </div>
-          <div class="field">
-            <label for="message">{{ i18n "CONTACT_FORM_FIELD_MESSAGE" . }}</label>
-            <textarea name="mensagem" id="message" rows="3" required></textarea>
-          </div>
+        <div id="blackout3"></div>  
+        <form id="contato" method="post">
+            <div class="fields">
+            <div class="field">
+                <label for="name">{{ i18n "CONTACT_FORM_FIELD_NAME" . }}</label>
+                <input type="text" name="nome" id="name" required/>
+            </div>
+            <div class="field">
+                <label for="email">{{ i18n "CONTACT_FORM_FIELD_EMAIL" . }}</label>
+                <input type="email" name="mail" id="email" />
+            </div>
+            <div class="field">
+                <label for="assunto">{{ i18n "CONTACT_FORM_FIELD_ASSUNTO" . }}</label>
+                <input type="text" name="assunto" id="assunto" required/>
+            </div>
+            <div class="field">
+                <label for="message">{{ i18n "CONTACT_FORM_FIELD_MESSAGE" . }}</label>
+                <textarea name="mensagem" id="message" rows="3" required></textarea>
+            </div>
+            </div>
+            <div id="voltaPadding">
+            <ul class="actions">
+                <li id="li_btn_contato">
+                <input type="submit" id="btn_enviar" value='{{ i18n "CONTACT_FORM_SUBMIT_SEND_MESSAGE" . }}'/>
+                </li>
+            </ul>
+            </div>
+        </form>
+        
+        <div id = "SnackbarFAQ">
+            <a id="close" onclick="closeSnackbarFAQ()">x</a>
+            <p> Área ainda em construção. Peço que tenha paciência. </p> 
+            <p> Além disso, por favor, não hesite em me mandar perguntas por meio do formulário ou email para que eu
+            possa construir uma área de FAQ de real relevância.</p>
+            <p> Obrigado! </p>
         </div>
-        <div id="voltaPadding">
-          <ul class="actions">
-            <li id="li_btn_contato">
-              <input type="submit" id="btn_enviar" value='{{ i18n "CONTACT_FORM_SUBMIT_SEND_MESSAGE" . }}'/>
-            </li>
-          </ul>
-        </div>
-      </form>
-      <!-- <div id="Snackbar"></div> -->
     </section>
     {{ end }}
     <section class="split contact">
+        <section id="splitcontact">
+            <h3>FAQ</h3>
+            <p><a onclick="openFAQ(event)">Possui alguma dúvida? Acesse o FAQ para simplificar o processo da nossa comunicação</a></p>
+        </section>
         {{ with $data.contactinfo.email }}
         <section id="splitcontact">
             <h3>{{ i18n "CONTACT_EMAIL" . }}</h3>
@@ -58,32 +70,77 @@
 </footer>
 
 <style>
-  #voltaPadding{
-    padding-left: 15px;
-  }
-
-  #li_btn_contato {
-    padding: 0;
-  }
-
-  @media screen and (min-width: 980px){
-    #message{
-      width: 470px;
-      resize: vertical;
+    #voltaPadding{
+        padding-left: 15px;
     }
-  }
+
+    #li_btn_contato {
+        padding: 0;
+    }
+
+    #footer > section.split > section:first-child{
+        text-justify: distribute;
+        word-break: break-word;
+        hyphens: auto;
+        text-rendering: optimizeLegibility;
+    }
+
+    #footer > section.split > section:first-child:hover{
+        cursor: pointer;
+    }
+
+    #SnackbarFAQ {
+        display: none;
+        padding: 12px;
+        border-radius: 2px;
+        position: fixed;
+        /* top: 300px; */
+        bottom: 30px;
+        background-color: rgb(255, 255, 255);
+        transform: translate(-50%,0);
+        left: 50%;
+        z-index: 8;
+        overflow: auto;
+        width: 90%;
+        
+    }
+
+    #SnackbarFAQ p{
+        font-size: 14px;
+        margin: 0;
+    }
+
+    #close:hover{
+        cursor: pointer;
+    }
+
+/* REGRAS DE MEDIA */
+    
+    @media screen and (min-width: 980px){
+        #message{
+        width: 470px;
+        resize: vertical;
+        }
+    }
+
+    @media screen and (max-width: 980px){
+        #footer > section.split > section:first-child {
+            padding: 5rem 4rem 1rem 4rem;
+            border-top: solid 2px #e2e2e2;
+        }
+    }
 </style>
 
 <script>
     document.getElementById('contato').addEventListener("submit", (e) => {		
+        console.log(e.target)
         e.preventDefault()
 
         document.getElementById('btn_enviar').setAttribute('disabled', 'a')
         document.getElementById('li_btn_contato').classList.add('borderAnim', 'in')
-        console.log(e.target)
-    
-        data = Object.fromEntries(new FormData(e.target).entries())
         
+    
+        data = Object.fromEntries(new FormData(e.target).entries())  
         url = 'http://thiago.oioipio.com/contato'
 
         fetch(url, {

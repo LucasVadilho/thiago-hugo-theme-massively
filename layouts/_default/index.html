@@ -8,9 +8,10 @@
 
             {{- partial "header" . -}}
             {{- partial "nav" . }}
-
+            <div id="blackout2"></div>
             <!-- Main --> 
             <div id="main">
+                <div id="blackout"></div> 
                 <div id="lancamento" 
                      displaylancamento="{{ .Params.Displaylancamento }}"
                 >
@@ -76,8 +77,8 @@
                 </div>
 
                 
-                <div id="newsletter">
-                    <form id="newsletterForm" method="post" action="{{ . }}">
+                <div class="title-newsletter">
+                    <form id="newsletterForm" method="post">
                         <h1 class="titulo2"> NEWSLETTER </h1>
                         <p class="chamada">Se inscreva na newsletter para ficar por dentro das novidades da Toca</p>
                         <div id="nomeOrganizer">
@@ -100,12 +101,14 @@
                     </form>
                     <p class="aviso">Não se preocupe, sua privacidade será respeitada e a qualquer momento você poderá cancelar a inscrição</p>
                 </div>
-                <div id="contato">
+                <div class="title-contato">
                     <h1 class="tituloc">CONTATO</h1>
-                </div>     
-            </div>
+                </div>
+                   
+            </div>  
+         
             {{- partial "footer/index" . }}
-
+              
             <div id="Snackbar" onclick="closeSnackbar()">
                 <div id="SnackbarText1"></div>
                 <div id="SnackbarText2"></div>
@@ -304,7 +307,7 @@
 
 /* NEWSLETTER CSS */  
 
-    #newsletter{
+    .title-newsletter{
         background-color: #7A633A;
     }
     
@@ -367,7 +370,7 @@
     }
 
 /* CONTATO */
-    #contato{
+    .title-contato{
         background-color: #f5f5f5;
         padding-bottom: 0px;
     }
@@ -380,7 +383,45 @@
     #footer > section.split.contact > section:first-child {
         padding: 35px 4rem 3rem 4rem;
     }
+
 /* SNACKBAR CSS */
+    #blackout{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.534);
+        display: none;
+        z-index: 3;
+        pointer-events: none;
+    }
+
+    #blackout2{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.534);
+        display: none;
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    #blackout3{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.534);
+        display: none;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+
     #Snackbar {
         visibility: hidden;
         text-align: left;
@@ -666,4 +707,42 @@ var form = document.getElementById("Snackbar");
     document.addEventListener("DOMContentLoaded", (event) => { 
         confereLancamento();
     });
+
+/* SNACKBAR FAQ */
+    let snackbarFAQ = document.getElementById("SnackbarFAQ")
+    let dark = document.getElementById('blackout')
+    let dark2 = document.getElementById('blackout2')
+    let dark3 = document.getElementById('blackout3')
+    
+    let openFAQ=function(e){  
+        e.stopPropagation()
+        snackbarFAQ.style.display = "block"
+        
+        dark.style.display= "block"
+        dark2.style.display= "block"
+        dark3.style.display= "block"
+
+        var goToTop = document.getElementById("goToTop")
+        goToTop.style.display = "none"
+
+        window.addEventListener('click', function(b){
+            if (document.getElementById('SnackbarFAQ').contains(b.target)){
+            } else{
+                snackbarFAQ.style.display = "none"  
+                dark.style.display= "none"
+                dark2.style.display= "none"
+                dark3.style.display= "none"
+                goToTop.style.display = "block"
+            }
+        }, options = {"once": true})
+    }
+    
+    let closeSnackbarFAQ = function(){
+        snackbarFAQ.style.display = "none"
+        dark.style.display= "none"
+        dark2.style.display= "none" 
+        dark3.style.display= "none" 
+        goToTop.style.display = "block"
+    }
+    
 </script>

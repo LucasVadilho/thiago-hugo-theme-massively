@@ -42,6 +42,7 @@
         text-justify: distribute;
         word-break: break-word;
         hyphens: auto;
+        text-rendering: optimizeLegibility;
     }
 	
 	/*Estilizacao scrollbar*/
@@ -109,24 +110,36 @@
     document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', myFunctionForSticky);
 
-    var navbar = document.getElementById("nav");
-    var sticky = (navbar.offsetTop);
+    var navbar = document.getElementById("nav")
+    var sticky = (navbar.offsetTop)
     var goToTop = document.getElementById("goToTop")
 
     function myFunctionForSticky() {
-            if ((window.pageYOffset > sticky) && (($(window).width()) > 980)){
-                goToTop.style.display = "block";
-            } else {
-                goToTop.style.display = "none";
-            }
+        if ((window.pageYOffset > (sticky+20) && (($(window).width()) > 980))){
+            goToTop.style.display = "block"
+        } else {
+            goToTop.style.display = "none"
+        }
     }
-  })
+    
+    window.addEventListener('resize', checkMenu);
+    var navPanelToggleCheck = document.getElementById('navPanelToggle')
+    
+    function checkMenu(){
+        if ((($(window).width()) <= 975) && (goToTop.style.display == "block")){
+            goToTop.style.display = "none"
+        }
+        if ((($(window).width()) > 975) && (goToTop.style.display == "none")){
+            goToTop.style.display = "block"
+        }
+    }
+    })  
 
-  let voltarAoTopo = function (){
-    $('html,body').animate({scrollTop: '0px'}, 1000);
-  }
+    let voltarAoTopo = function (){
+        $('html,body').animate({scrollTop: '0px'}, 1000);
+    }
 
-  document.addEventListener("DOMContentLoaded", function (event) {
+    document.addEventListener("DOMContentLoaded", function (event) {
         var scrollpos = sessionStorage.getItem('scrollpos');
         if (scrollpos) {
             window.scrollTo(0, scrollpos);
