@@ -249,22 +249,26 @@
 </style>
 
 <script type="text/javascript">
-    let goToTop = document.getElementById("goToTop")
     let navPanelToggle = document.getElementById("navPanelToggle")
-    
+
     let closeIcon = document.getElementById("closeProj")
     let snackbarProj = document.getElementById("snackbarProj")
     let flagProjAberto = false
+    let dark = document.getElementById('blackout')
+    let dark2 = document.getElementById('blackout2')
 
     let abrirproj = function (e, id){
-        closeIcon.style.display = 'block'
+        e.stopPropagation()
 
         flagProjAberto = true
         checkFlag()
 
         snackbarProj.innerHTML = ''
-        e.stopPropagation()
         snackbarProj.style.display = "block"
+        closeIcon.style.display = 'block'
+
+        document.body.style.cssText = 'overflow: hidden'
+
         let itens = JSON.parse(document.getElementById(id).getAttribute('itens'))
         
         for (let item of itens){    
@@ -275,8 +279,6 @@
             } 
         }
 
-        let dark = document.getElementById('blackout')
-        let dark2 = document.getElementById('blackout2')
         dark.style.display= "block"
         dark2.style.display= "block"
 
@@ -284,28 +286,28 @@
             if (document.getElementById('snackbarProj').contains(b.target)){
             } else{
                 console.log("cliquei fora da snack, fecho ela")
-                snackbarProj.style.display = "none"  
-                dark.style.display= "none"
-                dark2.style.display= "none"  
-                closeIcon.style.display = 'none'
-                flagProjAberto = false
-                checkMenu()
-                snackFiltro.style.display = 'block'
-                navPanelToggle.style.display = 'block'
+                closeSnackbarProj()
             }
         }, options = {"once": true})
+        
+        snackbarProj.scroll(0,0)
     }
 
     function closeSnackbarProj(){
-        snackbarProj.style.display = "none"
-        snackbarProj.innerHTML = ''
+        snackbarProj.style.display = "none"  
         dark.style.display= "none"
-        dark2.style.display= "none" 
+        dark2.style.display= "none"  
         closeIcon.style.display = 'none'
-        flagProjAberto = false
-        goToTop.style.display = 'block'
+
         snackFiltro.style.display = 'block'
-        navPanelToggle.style.display = 'block'
+        
+        if(window.innerWidth < 980){
+            navPanelToggle.style.cssText = ''
+        }
+        
+        document.body.style.cssText = 'overflow: auto'
+
+        flagProjAberto = false
     }
 
     let goToPosition = function (id){
@@ -313,11 +315,11 @@
         let ilustracoesYPosition = document.getElementById("projetos-list-ilustracoes").offsetTop
 
         if (id == "goToCapas"){
-            window.scrollTo({left: 0, top: capasYPosition,behavior:"smooth"})
+            window.scrollTo({left: 0, top: capasYPosition, behavior: "smooth"})
         }
 
         if (id == "goToIlustracoes"){
-            window.scrollTo({left: 0, top: ilustracoesYPosition,behavior:"smooth"})
+            window.scrollTo({left: 0, top: ilustracoesYPosition, behavior: "smooth"})
         }
     }
 
@@ -340,9 +342,8 @@
 
     let checkFlag = function(){
         if (flagProjAberto == true){
-            goToTop.style.display = 'none'
             snackFiltro.style.display = 'none'
-            navPanelToggle.style.display ='none'         
+            navPanelToggle.style.cssText = 'display: none'         
         }
     }
     window.addEventListener('scroll', checkFlag)

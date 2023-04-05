@@ -25,11 +25,7 @@
 		<noscript><link rel="stylesheet" href='{{ $noscript.RelPermalink }}' /></noscript>
 		{{ partial "htmlhead.custom.html" }}
 	</head>
-
-    <a id="goToTop" onclick="voltarAoTopo()">Topo</a>
-
 <style>
-    
 	body {
 		font-family: Helvetica;
 		word-spacing: normal;
@@ -81,74 +77,4 @@
     ::-webkit-scrollbar-thumb:active { 
         background-color: rgb(100, 100, 100);
     }
-
-    #goToTop{
-        display: none;
-        background-color: rgba(255, 255, 255, 0.875);
-        box-shadow: 0 0.125rem 0.75rem 0 rgba(30, 37, 45, 0.25);
-        color: #212931;
-        position: fixed;
-        bottom: 0.75rem;
-        right: 0.75rem;
-        border: 0;
-        font-family: "Source Sans Pro", Helvetica, sans-serif;
-        font-size: 0.9rem;
-        font-weight: 900;
-        letter-spacing: 0.075em;
-        padding: 0.375rem 1.25rem;
-        text-transform: uppercase;
-        z-index: 10001;
-    }
-
-    #goToTop:hover{
-        cursor: pointer;
-    }
-
 </style>
-
-<script>
-    let checkMenu = function(){
-        let portfolioAberto = (typeof flagProjAberto !== 'undefined') && (flagProjAberto)
-
-        if ((($(window).width()) <= 975) && (goToTop.style.display == "block")){
-            goToTop.style.display = "none"
-        }
-        if ((($(window).width()) > 975) && (goToTop.style.display == "none") && (!portfolioAberto)){
-            goToTop.style.display = "block"
-        }
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        window.addEventListener('scroll', myFunctionForSticky);
-
-        var navbar = document.getElementById("nav")
-        var sticky = (navbar.offsetTop)
-        var goToTop = document.getElementById("goToTop")
-
-        function myFunctionForSticky() {
-            let portfolioAberto = (typeof flagProjAberto !== 'undefined') && (flagProjAberto)
-            console.log(portfolioAberto)
-            if (((window.pageYOffset > (sticky+20) && (($(window).width()) > 980))) && (!portfolioAberto)){
-                goToTop.style.display = "block"
-            } else {
-                goToTop.style.display = "none"
-            }
-        }
-        
-        window.addEventListener('resize', checkMenu);
-        var navPanelToggleCheck = document.getElementById('navPanelToggle')
-    })  
-
-    let voltarAoTopo = function (){
-        $('html,body').animate({scrollTop: '0px'}, 1000);
-    }
-
-    document.addEventListener("DOMContentLoaded", function (event) {
-        var scrollpos = sessionStorage.getItem('scrollpos');
-        if (scrollpos) {
-            window.scrollTo(0, scrollpos);
-            sessionStorage.removeItem('scrollpos');
-        }
-    });
-
-</script>
