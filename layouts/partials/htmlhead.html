@@ -107,32 +107,36 @@
 </style>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    window.addEventListener('scroll', myFunctionForSticky);
+    let checkMenu = function(){
+        let portfolioAberto = (typeof flagProjAberto !== 'undefined') && (flagProjAberto)
 
-    var navbar = document.getElementById("nav")
-    var sticky = (navbar.offsetTop)
-    var goToTop = document.getElementById("goToTop")
-
-    function myFunctionForSticky() {
-        if ((window.pageYOffset > (sticky+20) && (($(window).width()) > 980))){
-            goToTop.style.display = "block"
-        } else {
-            goToTop.style.display = "none"
-        }
-    }
-    
-    window.addEventListener('resize', checkMenu);
-    var navPanelToggleCheck = document.getElementById('navPanelToggle')
-    
-    function checkMenu(){
         if ((($(window).width()) <= 975) && (goToTop.style.display == "block")){
             goToTop.style.display = "none"
         }
-        if ((($(window).width()) > 975) && (goToTop.style.display == "none")){
+        if ((($(window).width()) > 975) && (goToTop.style.display == "none") && (!portfolioAberto)){
             goToTop.style.display = "block"
         }
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        window.addEventListener('scroll', myFunctionForSticky);
+
+        var navbar = document.getElementById("nav")
+        var sticky = (navbar.offsetTop)
+        var goToTop = document.getElementById("goToTop")
+
+        function myFunctionForSticky() {
+            let portfolioAberto = (typeof flagProjAberto !== 'undefined') && (flagProjAberto)
+            console.log(portfolioAberto)
+            if (((window.pageYOffset > (sticky+20) && (($(window).width()) > 980))) && (!portfolioAberto)){
+                goToTop.style.display = "block"
+            } else {
+                goToTop.style.display = "none"
+            }
+        }
+        
+        window.addEventListener('resize', checkMenu);
+        var navPanelToggleCheck = document.getElementById('navPanelToggle')
     })  
 
     let voltarAoTopo = function (){

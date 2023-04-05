@@ -52,8 +52,8 @@
                 </div>
 
                 <div id="blackout"></div>
-                <div id="closeProj" onclick="closeSnackbar()">x</div>
-                <div id="Snackbar">               
+                <div id="closeProj" onclick="closeSnackbarProj()">x</div>
+                <div id="snackbarProj">               
                 </div>  
             </div>
         </div>
@@ -190,7 +190,7 @@
     }
 
 /* SNACKBAR PROJETO OPEN */
-    #Snackbar {
+    #snackbarProj {
         display: none;
         padding: 12px;
         border-radius: 2px;
@@ -228,6 +228,9 @@
         z-index: 10;
     }
 
+    #copyright{
+        z-index:1;
+    }
 /* DEFINICOES PARA OS TAMANHOS EM DESKTOP */
    
     @media screen and (max-width: 1280px) and (min-width: 1052px){
@@ -246,22 +249,29 @@
 </style>
 
 <script type="text/javascript">
+    let goToTop = document.getElementById("goToTop")
+    let navPanelToggle = document.getElementById("navPanelToggle")
+    
     let closeIcon = document.getElementById("closeProj")
-    let snackbar = document.getElementById("Snackbar")
+    let snackbarProj = document.getElementById("snackbarProj")
+    let flagProjAberto = false
 
     let abrirproj = function (e, id){
         closeIcon.style.display = 'block'
 
-        snackbar.innerHTML = ''
+        flagProjAberto = true
+        checkFlag()
+
+        snackbarProj.innerHTML = ''
         e.stopPropagation()
-        snackbar.style.display = "block"
+        snackbarProj.style.display = "block"
         let itens = JSON.parse(document.getElementById(id).getAttribute('itens'))
         
         for (let item of itens){    
             if (item.type == 'image'){
-                snackbar.innerHTML += '<img src="' + item.src + '"/>'
+                snackbarProj.innerHTML += '<img src="' + item.src + '"/>'
             } else {
-                snackbar.innerHTML += '<iframe  src="' + item.src + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" frameorder="0" vspace="0" hspace="0" marginwidth="0" marginheight="0" width="100%" style="margin: 0 0 0 0" frameBorder="0" scrolling="no" style="border: 0px" allowfullscreen> </iframe>'
+                snackbarProj.innerHTML += '<iframe  src="' + item.src + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" frameorder="0" vspace="0" hspace="0" marginwidth="0" marginheight="0" width="100%" style="margin: 0 0 0 0" frameBorder="0" scrolling="no" style="border: 0px" allowfullscreen> </iframe>'
             } 
         }
 
@@ -271,23 +281,31 @@
         dark2.style.display= "block"
 
         window.addEventListener('click', function(b){
-            if (document.getElementById('Snackbar').contains(b.target)){
+            if (document.getElementById('snackbarProj').contains(b.target)){
             } else{
                 console.log("cliquei fora da snack, fecho ela")
-                snackbar.style.display = "none"  
+                snackbarProj.style.display = "none"  
                 dark.style.display= "none"
                 dark2.style.display= "none"  
                 closeIcon.style.display = 'none'
+                flagProjAberto = false
+                checkMenu()
+                snackFiltro.style.display = 'block'
+                navPanelToggle.style.display = 'block'
             }
         }, options = {"once": true})
     }
 
-    function closeSnackbar(){
-        snackbar.style.display = "none"
-        snackbar.innerHTML = ''
+    function closeSnackbarProj(){
+        snackbarProj.style.display = "none"
+        snackbarProj.innerHTML = ''
         dark.style.display= "none"
         dark2.style.display= "none" 
-        closeIcon.style.display = 'none' 
+        closeIcon.style.display = 'none'
+        flagProjAberto = false
+        goToTop.style.display = 'block'
+        snackFiltro.style.display = 'block'
+        navPanelToggle.style.display = 'block'
     }
 
     let goToPosition = function (id){
@@ -319,4 +337,14 @@
         abrir.style.display = 'block'
         fechar.style.display = 'none'
     }
+
+    let checkFlag = function(){
+        if (flagProjAberto == true){
+            goToTop.style.display = 'none'
+            snackFiltro.style.display = 'none'
+            navPanelToggle.style.display ='none'         
+        }
+    }
+    window.addEventListener('scroll', checkFlag)
+    
 </script>
