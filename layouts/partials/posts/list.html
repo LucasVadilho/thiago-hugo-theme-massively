@@ -11,11 +11,11 @@
                 <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
             </header>
             
-            {{ if .Params.image }}
+            {{ if .Params.imagethumb }}
                 <a href="{{ .Permalink }}" class="image fit"><img src="{{ .Params.image | relURL }}" alt="" /></a>
             {{ end }}
 
-            <p>{{ .Description }}</p>
+            <p>{{ .Params.Previatexto }}</p>
             
             <ul class="actions">
                 <li><a href="{{ .Permalink }}" class="button">{{ $data.post.linktext }}</a></li>

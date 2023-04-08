@@ -1,6 +1,37 @@
-single
+{{- partial "htmlhead" . -}}
 
-{{ .Content }}
+<body lang='{{ .Site.Language.Lang | default "en-us" }}' class="is-preload">
 
+    <!-- Wrapper -->
+    <div id="wrapper">
+        {{- partial "intro.html" . -}}
 
-<!-- word-break: break-word; -->
+        {{- partial "header" . -}}
+        {{- partial "nav" . }}
+
+        <div id="main">
+
+            <h1> {{ .Title }} </h1>
+
+            {{ .Content }}
+            
+            <div id="historieta-encerramento">
+                <!-- BOTAO E AVISOS -->
+            </div>
+
+        </div>
+            
+        {{- partial "copyright" . }}
+        <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
+    </div>
+
+    {{- template "_internal/google_analytics.html" . }}
+    {{- partial "scripts/index" . }}
+    
+</body>
+
+<style>
+    #main > * {
+        border: none;
+    }
+</style>

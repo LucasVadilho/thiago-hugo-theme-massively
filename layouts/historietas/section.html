@@ -14,6 +14,15 @@
 
             <!-- Main -->
             <div id="main">
+                <div id="explicacoes">
+                    <p id="introHistorietas">O conteúdo do Historietas é disponibilizado gratuitamente pelo autor. Caso queira apoiar o projeto, por favor, acesse:</p>
+                    <form action="">
+                        <button type="submit">Ebook</button>
+                    </form>
+                    <p class="atencaoHistorietas">Atenção: você pode compartilhar e até mesmo imprimir as Historietas, porém a utilização de qualquer uma das Historietas 
+                    para ganho monetário é estritamente proibida sem a prévia liberação do autor (Thiago David Vadilho).</p>
+                </div>
+        
                 {{ if eq .Paginator.PageNumber 1 }}
                     {{- partial "posts/featured.html" (dict "lastpost" $lastPost "siteData" (index .Site.Data .Site.Language.Lang)) }}
                 {{ end}}
@@ -36,3 +45,12 @@
         {{- partial "scripts/index" . }}
     </body>
 </html>
+
+<style>
+    #main > .post header.major > h1, #main > .post header.major h2 {
+        font-size: 3rem;
+        line-height: 1.1;
+        margin: 0 0 2rem 0;
+    }
+
+</style>

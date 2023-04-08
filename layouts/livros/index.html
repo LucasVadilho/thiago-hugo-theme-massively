@@ -107,7 +107,7 @@
             flex-direction: row; 
             justify-content: space-between;
             padding-bottom: 2%;
-            width: 80%;
+            width: 95%;
             margin: auto;
             overflow: auto;
         }
@@ -171,18 +171,23 @@
         #livroSelecionado {
             display: flex;
             flex-direction: row;
-            padding: 5% 5% 0 5%;
+            padding: 5% 0 0 0;
         }
 
         .tituloLivroSelecionado{ 
             font-weight: bold;
-            font-size: 2.2rem;
+            font-size: 2rem;
             margin: -1px;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            margin-top:3%;
         }
 
         .descricaoLivroSelecionado{
             font-size: 1.1rem;
             font-weight: 500;
+            line-height: 1.8;
+            margin-bottom: 0;
         }
 
         .adquirirLivroSelecionado{
@@ -285,13 +290,14 @@
 /* DEFINICOES PARA OS TAMANHOS EM DESKTOP */
    
     /* Bloco 825 até 710 px */
-        @media screen and (max-width: 865px) and (min-width: 710px){
+        @media screen and (max-width: 898px) and (min-width: 785px){
             #livroSelecionado{
-                height: 60vw;
+                height: 55vw;
             }
+
             #caixaDescricaoLivroSelecionado{
                 overflow: auto;
-                height: 49%;
+                height: 50%;
                 padding-right: 10px; 
                 padding-bottom: 2%;
             }
@@ -299,12 +305,34 @@
                 position: absolute;
                 transform: scale(0.95);
                 margin-left: -1.2%;
-                bottom: 10%;
+                bottom: 11%;
+            }
+        }
+
+        @media screen and (max-width: 785px) and (min-width: 736px){
+            #livroSelecionado{
+                height: 55vw;
+            }
+
+            #caixaDescricaoLivroSelecionado{
+                overflow: auto;
+                height: 48%;
+                padding-right: 10px; 
+                padding-bottom: 2%;
+            }
+            #posicaoBotoes{
+                position: absolute;
+                transform: scale(0.95);
+                margin-left: -1.2%;
+                bottom: 12%;
+            }
+            #livros{
+                padding-bottom: 29.333px;
             }
         }
 
     /* Bloco 709 até 641 px */
-        @media screen and (max-width: 709px) and (min-width: 641px){
+        @media screen and (max-width: 736px) and (min-width: 641px){
             #livroSelecionado{
                 height: 60vw;
             }
@@ -327,8 +355,11 @@
             #posicaoBotoes{
                 position: absolute;
                 transform: scale(0.9);
-                bottom: 1%;
+                bottom: 5%;
                 margin-left: -3.2%;
+            }
+            #livros{
+                padding: 3rem 2rem 0rem 2rem;
             }
         }
     
@@ -348,7 +379,10 @@
             }
             #posicaoBotoes {
                 position:relative;
-                padding-top: 10%;
+                padding-top: 15%;
+            }
+            #livros{
+                padding: 3rem 2rem 0rem 2rem;
             }
         }
                
@@ -367,11 +401,17 @@
         .selected {
             transform: scale(0.85);
         }
+        .tituloLivroSelecionado{
+            font-size: 1.8rem;
+        }
         #informacoesLivroSelecionado {
             margin-bottom: -5%;
         }
         #posicaoBotoes {
-            padding-top: 14%;
+            padding-top: 60px;
+        }
+        #livros{
+            padding: 3rem 2rem 0rem 2rem;
         }
     }
 
@@ -388,11 +428,17 @@
         .selected {
             transform: scale(0.85);
         }
+        .tituloLivroSelecionado{
+            font-size: 1.6rem;
+        }
         #informacoesLivroSelecionado {
-            margin-bottom: -5%;
+            margin-bottom: -10%;
         }
         #posicaoBotoes {
-            padding-top: 18%;
+            padding-top: 60px;
+        }
+        #livros{
+            padding: 3rem 2rem 0rem 2rem;
         }
     }
 
@@ -518,7 +564,7 @@
         dots[slideIndex-1].className += " activedot";
         
     }
-
+    
     //SWIPE LEFT OR RIGHT
     let touchsurface = document.getElementById('carrosselLivroSelecionado'),
         startX, 
