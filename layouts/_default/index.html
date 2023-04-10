@@ -1,6 +1,6 @@
 {{- partial "htmlhead" . -}}
 
-	<body lang='{{ .Site.Language.Lang | default "en-us" }}' class="is-preload">
+	<body lang='{{ .Site.LanguageCode | default "en-us" }}' class="is-preload">
 
         <!-- Wrapper -->
         <div id="wrapper">
@@ -23,59 +23,82 @@
 
                 <div id="novidades">
                     <h1 class="titulo">NOVIDADES</h1>
-                    <div id = "ultimanovidade" a href="">
-                        <img src="{{ .Params.imgUltNovidade}}" class="imagemUltNovidade">
-                        <div id="informacoesUltNovidade">
-                            <p class="chamadaUltNovidade"> Historieta #1: O caso do papagaio</p>
-                            <p class="tempLeitura">
-                                <span class="icon alt fa-calendar-o"> 31 de Mar de 2023</span> 
-                                <span class="icon alt fa-clock-o"> 4 minutos</span>
-                            </p>
-                            <p class="textoUltNovidade">
-                                — Hmm… desculpa — disse o rapaz —, mas todo esse discurso de eu ser obrigado a ir 
+                    <div id="ultimanovidade">
+
+                        <a href="www.youtube.com" class="novi">
+                            <div class="novidadeDestaque">
+                                <header class="novidadeHeader">
+                                        <h2>O caso do papagaio</h2>  
+                                        <h3> Historieta #1 </h3> 
+                                </header>
+
+                                <div class="imgNovidadeFit"><img src="{{ .Params.imgUltNovidade}}"/></div >
+
+                                <p class="iconClass">
+                                    <span class="icon alt fa-calendar-o"> 31 de Mar de 2023</span> 
+                                    <span class="icon alt fa-clock-o"> 4 minutos </span>
+                                </p>
+                    
+                                <p>— Hmm… desculpa — disse o rapaz —, mas todo esse discurso de eu ser obrigado a ir 
                                 para a prancha não me convenceu. Na verdade, não estou nem convencido de que 
                                 vocês são realmente piratas...</p>
-                        </div>
+                            </div>
+                        </a>
+
                     </div>
 
-                    <div id = "demaisnovidades">
-                        <div id="demais1">
-                            <img src="{{ .Params.imgDemNovidade1}}" class="imgDemNovidades">
-                                <div id="informacoesNovidades">
-                                    <p class="chamadaNovidades"> Historieta #2</p>
-                                    <p class="iconClass">
-                                        <span class="icon alt fa-calendar-o"> 31 de Mar de 2023</span> 
-                                        <span class="icon alt fa-clock-o"> 4 minutos</span>
-                                    </p>
+                    <div id = "demaisNovidades">
+                        <section class="dnovi">
+                            <a href="" class="novi">
+                                <div id="demais1">
+                                    <article>
+                                        <header>
+                                            <h2 class="demaisNoviTutle">Titulo</h2>
+                                            <h3 class="demaisNoviSubT"> Subtitulo </h3> 
+                                        </header>
+                                    
+                                        <div class="imageDemaisFit"><img src="{{ .Params.imgDemNovidade1}}"></div>
+                                        
+                                        <p class="iconClass">
+                                            <span class="icon alt fa-calendar-o"> 31 de Mar de 2023 </span> 
+                                            <span class="icon alt fa-clock-o"> 4 minutos </span>
+                                        </p>
+
+                                        <p class="demaisDescri">— Hmm… desculpa — disse o rapaz —, mas todo esse discurso de eu ser obrigado a ir 
+                                            para a prancha não me convenceu. Na verdade, não estou nem convencido de que 
+                                            vocês são realmente piratas...</p>            
+                                    </article>
                                 </div>
-                        </div>
+                            </a>
+                        </section>
 
-                        <div id="demais2">
-                            <img src="{{ .Params.imgDemNovidade2}}" class="imgDemNovidades">
-                            <div id="informacoesNovidades">
-                                <p class="chamadaNovidades"> Historieta #3</p>
-                                <p class="iconClass">
-                                    <span class="icon alt fa-calendar-o"> 31 de Mar de 2023</span> 
-                                    <span class="icon alt fa-clock-o"> 4 minutos</span>
-                                </p>
-                        
-                            </div>
-                        </div>
+                        <section class="dnovi">
+                            <a href="" class="novi">
+                                <div id="demais2" >
+                                    <article>
+                                        <header>
+                                            <h2 class="demaisNoviTutle">Titulo</h2>
+                                            <h3 class="demaisNoviSubT"> Subtitulo </h3> 
+                                        </header>
+                                    
+                                        <div class="imageDemaisFit"><img src="{{ .Params.imgDemNovidade2}}"></div>
+                                        
+                                        <p class="iconClass">
+                                            <span class="icon alt fa-calendar-o"> 32 de Mar de 2023 </span> 
+                                            <span class="icon alt fa-clock-o"> 4 minutos </span>
+                                        </p>
 
-                        <div id="demais3">
-                            <img src="{{ .Params.imgDemNovidade2}}" class="imgDemNovidades">
-                            <div id="informacoesNovidades">
-                                <p class="chamadaNovidades"> Historieta #3</p>
-                                <p class="iconClass">
-                                    <span class="icon alt fa-calendar-o"> 31 de Mar de 2023</span> 
-                                    <span class="icon alt fa-clock-o"> 4 minutos</span>
-                                </p>
-                        
-                            </div>
-                        </div>
+                                        <p class="demaisDescri">— Hmm… desculpa — disse o rapaz —, mas todo esse discurso de eu ser obrigado a ir 
+                                            para a prancha não me convenceu. Na verdade, não estou nem convencido de que 
+                                            vocês são realmente piratas...</p>    
+                                    </article>
+                                </div>
+                            </a>
+                        </section>
                     </div>
+
                 </div>
-      
+                
                 <div class="title-newsletter">
                     <form id="newsletterForm" method="post">
                         <h1 class="titulo2"> NEWSLETTER </h1>
@@ -105,11 +128,11 @@
                 <div class="title-contato">
                     <h1 class="tituloc">CONTATO</h1>
                 </div>
-                   
-            </div>  
-         
+                
+            </div> 
+        </div>      
+
             {{- partial "footer/index" . }}
-              
             <div id="Snackbar" onclick="closeSnackbar()">
                 <div id="SnackbarText1"></div>
                 <div id="SnackbarText2"></div>
@@ -127,8 +150,17 @@
 
 <style>
 /* GERAL CSS */  
-    a{
-        border:none;
+    .novi{
+        border: none;
+        display: contents;
+    }
+
+    .novi:hover p{
+        color: #212931;
+    }
+
+    .novi p{
+        color: #212931; 
     }
 
     #main > *{
@@ -182,152 +214,197 @@
     }
 
 /* ULTIMA POSTAGEM CSS */  
-    #ultimanovidade {
-        display: inline-flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        width: 100%;
+    h2{
+        margin-bottom: 0px;
+        line-height: 1.1; /* CHECAR */
+    }
+
+    h3{
+        margin-bottom: 0px;
+    }
+
+    #ultimanovidade{
+        padding: 0rem 8rem 0rem 8rem;
+    }
+
+    .novidadeDestaque{
+        justify-content: center;
+        text-align: center;
         -webkit-backface-visibility: hidden;
         -webkit-transform: translateZ(0) scale(1, 1);
         filter: blur(0);
         -webkit-filter: blur(0);
         transition: transform .2s;
-        justify-content: center;
-        height: 200px;
+        margin-bottom: 2rem;
     }
 
-    #ultimanovidade:hover{
+    .novidadeDestaque:hover{
         cursor: pointer;
         transform: perspective(300px) rotateY(1deg) translateZ(10px) scale(0.97);
         transition: transform .2s;
     }
 
-    #ultimanovidade img{
-        width: 300px;
-        height: 200px;
+    header.novidadeHeader{
+        margin-bottom: 20px;
+    } 
+    
+    header{
+        cursor: pointer; 
     }
 
-    #informacoesUltNovidade{
-        width: 45%;
+    .imgNovidadeFit{
+        max-width: 100%;
+        margin-top: 20px;
         position: relative;
-        height: 200px;
+        display: block;
+        overflow: hidden;
     }
 
-    .imagemUltNovidade{
-        margin-right: 25px;
+    .imgNovidadeFit img{
+        margin: auto;
+        display: block;
+    }
+
+    p{
+        hyphens: auto;
+        -ms-hyphens: auto;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        text-rendering: optimizeLegibility;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 4; /* max nb lines to show */
+        -webkit-box-orient: vertical;
+        margin-bottom: 0px;
+    }
+
+    header.novidadeHeader{
+        font-size: 3rem;
+        line-height: 1.1;
+        word-spacing: normal;
+        word-break: break-word;
+        text-rendering: optimizeLegibility; 
+        margin-bottom: 0px;
+    }
+
+    .icon {
+        margin-right: 5px;
+        text-decoration: none;
+        border-bottom: none;
+        font-size: 0.95rem;
+        position: relative;
+        font-style: italic;
+        color: #656565;
     }
     
-    .chamadaUltNovidade {
-        font-weight: bold;
-        font-size: 1.2rem;
-        padding-top: 10px;
-        margin-bottom: 0;
-        word-break: break-word;
-        line-height: 1.2;
-        word-spacing: normal;
-    }
-
-    .icon{
+    .iconClass {
         margin-right: 5px;
-        font-size: 0.9rem;
-        font-family: sans-serif;
-        font-weight: 400;
-        font-weight: bold;
+        text-decoration: none;
+        border-bottom: none;
+        font-size: 0.95rem;
+        position: relative;
+        font-style: italic;
         color: #656565;
+        margin-bottom: 15px;
     }
 
     .tempLeitura{
         margin-top: 0%;
     }
 
-    .textoUltNovidade {
-        margin: 0;
-        width: 100%;
-        line-height: 1.7;
-        position: relative;
-        font-size: 1rem;
-        font-weight: 500;
-        padding-bottom: 15px;
-        display: inline-block;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 4; /* max nb lines to show */
-        -webkit-box-orient: vertical;
-        height: 100px;
+/* ULTIMAS POSTAGEM CSS */
+    .dnovi{
+        display: contents;
     }
 
-/* ULTIMAS POSTAGEM CSS */
-    #demaisnovidades{
-        display: inline-flex;
+    #demaisNovidades {
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: flex;
+        -moz-flex-wrap: wrap;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
         flex-wrap: wrap;
         flex-direction: row;
-        margin-top: 38px;
-        width: 100%;
-        justify-content: center;
-    }
-
-    #demais1,#demais2,#demais3{
-        
-        max-width: 33%;
+        -moz-align-items: -moz-stretch;
+        -webkit-align-items: -webkit-stretch;
+        -ms-align-items: -ms-stretch;
+        align-items: stretch;
         text-align: center;
-        margin: 0;
-        margin-bottom: 0;
+        width: 100%;
+        padding: 0;
         -webkit-backface-visibility: hidden;
         -webkit-transform: translateZ(0) scale(1, 1);
         filter: blur(0);
         -webkit-filter: blur(0);
         transition: transform .2s;
+        justify-content: space-around;
     }
 
-    #demais1:hover,#demais3:hover,#demais2:hover{
+    #demais1,#demais2{
+        -webkit-backface-visibility: hidden;
+        -webkit-transform: translateZ(0) scale(1, 1);
+        filter: blur(0);
+        -webkit-filter: blur(0);
+        transition: transform .2s; 
+        width: 43%;
+        /* padding: 0rem 2rem 0rem 2rem; */
+    }
+
+    #demais1:hover,#demais2:hover{
         cursor: pointer;
         transform: perspective(300px) rotateY(1deg) translateZ(10px) scale(0.97);
         transition: transform .2s;
     }
 
-    .imgDemNovidades{
-        width: 83%;
-        height: 70%;
+    .demaisNoviTutle{
+        font-size: 1.7rem;
+        margin-bottom: 0;
+        word-break: break-word;
+    }
+
+    .demaisNoviSubT{
+        font-size: 1.1rem;
+    }
+
+    .imageDemaisFit{
+        margin:0;
+        position: relative;
+        height: 23vh;
+        width: 100%;
         overflow: hidden;
     }
 
-    .imgDemNovidade img{
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-        right: -9999px;
-        bottom: -9999px;
-        margin: auto;
+    .imageDemaisFit img{
+        margin:auto;
+        width: 100%;
+        object-fit: cover;
+        object-position: 50% 50%;
+        position: relative;
+        height: 100%;
     }
 
-    .chamadaNovidades{
-        text-align: center;
-        font-weight: bold;
-        font-size: 1.2rem;
-        margin-bottom: 0;
-        padding: 0;
-        word-break: break-word;
-        line-height: 1.1;
-        word-spacing: normal;
+    .demaisDescri{
+        hyphens: auto;
+        -ms-hyphens: auto;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        text-rendering: optimizeLegibility;
+        font-size: 1rem;
+        line-height: 1.7;
+        margin-bottom: 15px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* max nb lines to show */
+        -webkit-box-orient: vertical; 
     }
-
-    #informacoesNovidades{
-        text-align: center;
-    }
-
-    .iconClass{
-        text-align: center;
-        font-weight: bold;
-        color: #656565;
-        margin-bottom: 0;
-    }
-
-    .iconClass span{
-        font-size: 0.8rem;
-        font-family: sans-serif;
-    }
-
+ 
+    
 /* NEWSLETTER CSS */  
     #newsletterForm{
         margin-bottom: 0;
@@ -446,84 +523,6 @@
         }    
     }
 
-    @media screen and (max-width: 920px) and (min-width:882px) {
-        #ultimanovidade{
-            width: 90%;
-            margin-left: 5%;
-            margin-right: 5%;
-        }
-    }
-
-    @media screen and (max-width: 881px) and (min-width:838px) {
-        #ultimanovidade{
-            width: 90%;
-            margin-left: 5%;
-            margin-right: 5%;
-        }
-        .chamadaUltNovidade{
-            font-size: 1.1rem;
-        }
-    }
-
-    @media screen and (max-width: 837px) and (min-width:500px) {
-        #ultimanovidade{
-            width: 90%;
-            margin-left: 5%;
-            margin-right: 5%;
-            height:max-content;
-        }
-        #ultimanovidade img{
-            margin:0px;
-        }
-        #informacoesUltNovidade{
-            width: 100%;
-            height: 135px;
-        }
-        .chamadaUltNovidade{
-            font-size: 1.2rem;
-            text-align: center;
-        }
-        .tempLeitura{
-            text-align: center;
-            margin-bottom:0.7rem;
-        }
-        .textoUltNovidade {
-            margin: 0;
-            width: 100%;
-            line-height: 1.7;
-            position: relative;
-            font-size: 1rem;
-            font-weight: 500;
-            padding-bottom: 15px;
-            display: inline-block;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 3; /* max nb lines to show */
-            -webkit-box-orient: vertical;
-            height: 80px;
-        }
-        #demais3{
-            display: none;
-        }
-        #demais1{
-            max-width: 50%;
-        }
-        #demais2{
-            max-width: 50%;
-        }     
-    }
-
-    @media screen and (max-width: 611px){
-        .iconClass span{
-            font-size: 0.75rem;
-            font-family: sans-serif;
-        }
-        .chamadaNovidades{
-            font-size: 1.1rem;
-        }
-    }
-
     @media screen and (max-width: 736px) and (min-width: 376px){
         ul.actions{
             margin-bottom: 25px;
@@ -545,16 +544,35 @@
         #newsletterForm{
             margin-bottom: 20px;
         }
-        #novidades{
-            margin-bottom: 29.333px;
-        }
         .chamada{
             width: 100%;
             hyphens: none;
         }
         #titulo2{
             width: 100%;
-        }  
+        } 
+    }
+
+    @media screen and (max-width: 796px) and (min-width: 376px){
+        #novidades{
+            padding: 4rem 0 0 0;
+        }
+        #demais1,#demais2{
+            -webkit-backface-visibility: hidden;
+            -webkit-transform: translateZ(0) scale(1, 1);
+            filter: blur(0);
+            -webkit-filter: blur(0);
+            transition: transform .2s; 
+            width: 100%;
+            padding:2rem;
+        }
+        #ultimanovidade{
+            padding:0 2rem 0 2rem;
+        }
+        .dnovi{
+            border-top: solid 2px #eeeeee;
+            display: block;
+        }
     }
 
     @media screen and (max-width: 376px){
@@ -592,6 +610,31 @@
         }  
         h1{
             font-size: 2.8rem;
+        }
+        #demais1,#demais2{
+            -webkit-backface-visibility: hidden;
+            -webkit-transform: translateZ(0) scale(1, 1);
+            filter: blur(0);
+            -webkit-filter: blur(0);
+            transition: transform .2s; 
+            width: 100%;
+            padding: 2rem;
+        }
+        #ultimanovidade{
+            padding: 0 2rem 0 2rem;
+        }
+        .dnovi{
+            display: block;
+            border-top: solid 2px #eeeeee;
+        }
+        #novidades{
+            padding: 4rem 0 0 0;
+        }
+        h2, .demaisNoviTutle{
+            font-size: 1.5rem;
+        }
+        h3, .demaisNoviSubT {
+            font-size: 1rem;
         }
     }
 
@@ -781,15 +824,12 @@
         }
     }
 
-/* MEDIA SCREEN RULES */
+/* MEDIA SCREEN RULES PARA IMAGEM DE LANÇAMENTO */
 
     @media screen and (min-width: 1032px){
-
-        /* VAI LANÇAR CSS */ 
         .imglancamento2, .imglancamento3, .imglancamento4{
             display:none;
         }
-
         .imglancamento1{
             width: 100%;
             height: 200px;
@@ -798,13 +838,10 @@
         }
     }
 
-    @media screen and (max-width: 1032px) and (min-width: 851px){
-
-        /* VAI LANÇAR CSS */ 
+    @media screen and (max-width: 1032px) and (min-width: 851px){  
         .imglancamento1, .imglancamento3, .imglancamento4{
             display:none;
         }
-
         .imglancamento2{
             width: 100%;
             height: 200px;
@@ -814,12 +851,9 @@
     }
 
     @media screen and (max-width: 851px) and (min-width: 684px){
-
-        /* VAI LANÇAR CSS */ 
         .imglancamento1, .imglancamento2, .imglancamento4{
             display:none;
         }
-
         .imglancamento3{
             width: 100%;
             height: 200px;
@@ -829,12 +863,9 @@
     }
 
     @media screen and (max-width: 684px){
-
-        /* VAI LANÇAR CSS */ 
         .imglancamento1, .imglancamento2, .imglancamento3{
             display:none;
         }
-
         .imglancamento4{
             width: 100%;
             height: 200px;
@@ -842,6 +873,7 @@
             object-fit: cover;
         } 
     }
+    
 </style>
 
 <script>

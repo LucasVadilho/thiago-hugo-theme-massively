@@ -1,6 +1,6 @@
 {{ partial "htmlhead" . }}
 
-<body lang='{{ .Site.Language.Lang | default "en-us" }}' class="is-preload">
+<body lang='{{ .Site.LanguageCode | default "en-us" }}' class="is-preload">
     
     <div id="wrapper">
         {{ partial "header" . }}
@@ -52,8 +52,10 @@
                 </div>
 
                 <div id="blackout"></div>
-                <div id="closeProj" onclick="closeSnackbarProj()">x</div>
-                <div id="snackbarProj"></div>  
+                <div id="containerProj">
+                    <div id="closeProj" onclick="closeSnackbarProj()">x</div>
+                    <div id="snackbarProj"></div>
+                </div>  
             </div>
         </div>
         {{- partial "copyright" . }}  
@@ -99,7 +101,7 @@
 /* ORGANIZA OS TIPOS */
    #projetos-list-ilustracoes{
         text-align: center;
-   }
+   }                        
 
    #projetos-list-capas{
         text-align: center;
@@ -152,29 +154,43 @@
     }
 
     /* ORGANIZA OS PROJETOS DENTRO DOS TIPOS */
-   #projetos-organizer{
+    #projetos-organizer{
         width: 100%;
         justify-content: center;
         display: inline-flex;
         flex-direction: row;
         flex-wrap: wrap;
         margin-top: -20px;
-   }
+    }
 
-   .projeto-container{
+    .projeto-container{
         margin-right: 10px;
         margin-left: 10px;
         margin-top: 20px;
-   }
+    }
 
-   .img-crop{
+    .img-crop{
+        margin: 0;
         position: relative;
         width: 220px;
         height: 220px;
         overflow: hidden;
-   }
+    }
 
-   .img-crop img{
+    .img-crop img{
+        width: 100%;
+        object-fit: cover;
+        object-position: 50% 50%;
+        position: relative;
+        height: 100%;
+    /*   -webkit-backface-visibility: hidden;
+        -webkit-transform: translateZ(0) scale(1, 1);
+        filter: blur(0);
+        -webkit-filter: blur(0); */
+        transition: transform .2s;
+    }
+
+   /* .img-crop img{
         position: absolute;
         top: -9999px;
         left: -9999px;
@@ -186,7 +202,7 @@
         filter: blur(0);
         -webkit-filter: blur(0);
         transition: transform .2s;
-    }
+    } */
 
     .img-crop img:hover{
         cursor: pointer;
@@ -205,8 +221,6 @@
         padding: 12px;
         border-radius: 2px;
         position: fixed;
-        top: 10px;
-        bottom: 10px;
         background-color: rgb(255 255 255 / 88%);
         transform: translate(-50%,0);
         left: 50%;
@@ -218,24 +232,23 @@
 
     #closeProj:hover{
         cursor: pointer;
-        transform: scale(0.95);
+        background-color: #18bfef;
     }
 
     #closeProj{
         position: fixed;
-        top: 5px;
-        right: 8%;
-        padding-top: 8px;
-        font-size: 15px;
-        font-weight: 600;
-        line-height: 0;
+        padding-right: 1px;
+        top: 20px;
+        font-size: 20px;
+        line-height: 22px;
         color: #ffffff;
-        background-color: #db3131;
+        background-color: #838383;
         border-radius: 50%;
-        width: 18px;
-        height: 18px;
+        width: 25px;
+        height: 25px;
         text-align: center;
         display: none;
+        font-weight: 100;
         z-index: 10;
     }
 
@@ -261,9 +274,6 @@
         z-index:1;
     }
 
-    .correcao{
-        margin-top: -14px;
-    }
 /* DEFINICOES PARA OS TAMANHOS EM DESKTOP */
     @media screen and (min-width: 1120px){
         .img-crop{
@@ -468,6 +478,7 @@
         checkFlag()
 
         snackbarProj.innerHTML = ''
+
         snackbarProj.style.display = "block"
         closeIcon.style.display = 'block'
 
@@ -477,11 +488,20 @@
         
         for (let item of itens){
             if (item.type == 'image'){
-                snackbarProj.innerHTML += '<img src="' + item.src + '"/>'
+                snackbarProj.innerHTML += '<img src="' + item.src + '" style="display:block"/>'
             } else {
-                snackbarProj.innerHTML += '<div class="correcao"><div class="iframecontainer"><iframe src="' + item.src + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" frameorder="0" vspace="0" hspace="0" marginwidth="0" marginheight="0" width="100%" style="margin: 0 0 0 0" frameBorder="0" scrolling="no" style="border: 0px" allowfullscreen></iframe></div></div>'
-            } 
+                snackbarProj.innerHTML += '<div class="iframecontainer"><iframe src="' + item.src + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" frameorder="0" vspace="0" hspace="0" marginwidth="0" marginheight="0" width="100%" style="margin: 0 0 0 0" frameBorder="0" scrolling="no" style="border: 0px" allowfullscreen></iframe></div>'
+            }   
         }
+
+        /* checa o tamanho do content para ajustar a height da snackbar */
+        if (snackbarProj.scrollHeight <= screen.height){
+            var topOffSet = ((screen.height - snackbarProj.scrollHeight)/2)
+            snackbarProj.style.top = topOffSet + "px"
+        }else{
+            snackbarProj.style.bottom = "10px"
+            snackbarProj.style.top = "10px"
+        }    
 
         dark.style.display= "block"
         dark2.style.display= "block"

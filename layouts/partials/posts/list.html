@@ -1,26 +1,114 @@
 <!-- Posts -->
 {{ $data := .siteData }}
-
-<section class="posts">
-    {{ range .posts.Pages.ByDate }}
-        <article>
-            <header>
-                {{ if not .Date.IsZero }}
-                    <span class="date">{{ .Date.Format (.Site.Params.DateFormat | default "January 2, 2006") }}</span>
-                {{ end }}
-                <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-            </header>
+<body lang='{{ .Site.LanguageCode | default "en-us" }}' class="is-preload">
+    <section class="posts">
+        {{ range .posts.Pages.ByDate }}
+            <article>
+                <header>
+                    <h2 class="histTitleList"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+                    <h3 class="histNumList"> {{ .Params.Historietanumero }} </h3> 
+                </header>
             
-            {{ if .Params.imagethumb }}
-                <a href="{{ .Permalink }}" class="image fit"><img src="{{ .Params.image | relURL }}" alt="" /></a>
-            {{ end }}
+                <a href="{{ .Permalink }}" class="image fit"><img src="{{ .Params.Imagethumb | relURL }}" alt="" /></a>
+                
+                <p class="iconClass">
+                    <span class="icon alt fa-calendar-o"> {{ .Params.Datapost }} </span> 
+                    <span class="icon alt fa-clock-o"> {{ .Params.Tempoleitura }} </span>
+                </p>
 
-            <p>{{ .Params.Previatexto }}</p>
-            
-            <ul class="actions">
-                <li><a href="{{ .Permalink }}" class="button">{{ $data.post.linktext }}</a></li>
-            </ul>
-        </article>
+                <p class="histDescriList">{{ .Params.Description }}</p>
+                
+                <ul class="actions">
+                    <li><a href="{{ .Permalink }}" class="button">Ler Historieta</a></li>
+                </ul>
+            </article>
 
-    {{ end }}
-</section>
+        {{ end }}
+    </section>
+</body>
+
+<style>
+    h2{
+        line-height: 1.1;
+    }
+    .histTitleList{
+        font-size: 1.7rem;
+        margin-bottom: 0px;
+        word-break: break-word;
+    }
+
+    .histNumList{
+        font-size: 1.1rem;
+    }
+
+    .image.fit{
+        margin:0;
+        position: relative;
+        height: 23vh;
+        overflow: hidden;
+    }
+
+    .image.fit img{
+       /*  position: absolute;
+        top: -9999px;
+        left: -9999px;
+        right: -9999px;
+        bottom: -9999px;
+        margin: auto; */
+        object-fit: cover;
+        object-position: 50% 50%;
+        height: 100%;
+        position: relative;
+    }
+
+    .histDescriList{
+        hyphens: auto;
+        -ms-hyphens: auto;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        text-rendering: optimizeLegibility;
+        font-size: 1rem;
+        line-height: 1.7;
+        margin-bottom: 15px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* max nb lines to show */
+        -webkit-box-orient: vertical; 
+    }
+
+    .icon {
+        margin-right: 5px;
+        text-decoration: none;
+        border-bottom: none;
+        font-size: 0.95rem;
+        position: relative;
+        font-style: italic;
+        color: #656565;
+    }
+
+    #main > .posts > * {
+        padding: 2rem;
+    }
+
+/* REGRAS DE MEDIA  */
+    @media screen and (max-width: 736px){
+        #main > .posts > article:nth-child(-n + 2)  {
+            padding: 2rem 4rem 2rem 4rem;
+        }
+        #main > .post {
+            padding: 4rem 4rem 0rem 4rem;
+        }
+        #main > .posts > article .image {
+            max-width: 45rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #main > .post header.major h2 {
+            font-size: 2.2rem;
+        }
+        h3{
+            font-size: 1.3rem;
+        }
+    }
+</style>

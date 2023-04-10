@@ -1,6 +1,6 @@
 {{- partial "htmlhead" . -}}
 
-	<body lang='{{ .Site.Language.Lang | default "en-us" }}' class="is-preload">
+	<body lang='{{ .Site.LanguageCode | default "en-us" }}' class="is-preload">
 
         <!-- Wrapper -->
         <div id="wrapper">
@@ -54,7 +54,6 @@
         padding-top: 56.25%;
         width: 100%;
         line-height:0;
-        background-color: rgba(172, 19, 19, 0.87);
         display: block;
     }
 

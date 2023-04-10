@@ -4,7 +4,7 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html lang='{{ .Site.Language.Lang | default "en-us" }}'>
+<html lang='{{ .Site.LanguageCode | default "en-us" }}'>
 	<head>
 		<!-- <title>{{ if eq (.Site.Title) (.Title) }}{{ .Site.Title }}{{ else }}{{ .Title }} &middot; {{ .Site.Title }}{{ end }}</title> -->
         <title>TD VADILHO</title>
@@ -32,6 +32,11 @@
 		word-break: break-all;
         overflow-anchor: none;
         text-rendering: optimizeLegibility;
+        image-rendering: crisp-edges;
+        image-rendering: -moz-crisp-edges;          /* Firefox */
+        image-rendering: -o-crisp-edges;            /* Opera */
+        image-rendering: -webkit-optimize-contrast; /* Webkit (non-standard naming)*/
+        -ms-interpolation-mode: nearest-neighbor;   /* IE (non-standard property) */
 	}
 
     h1 {
@@ -42,6 +47,9 @@
         text-justify: distribute;
         word-break: break-word;
         hyphens: auto;
+        -ms-hyphens: auto;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
         text-rendering: optimizeLegibility;
     }
 	
