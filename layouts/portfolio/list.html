@@ -5,6 +5,9 @@
     <div id="wrapper">
         {{ partial "header" . }}
         {{ partial "nav" . }}
+        <span id="closeProj" class="fa fa-times-circle fa-2x" aria-hidden="true" onclick="closeSnackbarProj()">
+            <span id="insideCloseProj"></span>
+        </span>
         <div id="blackout2"></div>
         <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
         
@@ -53,7 +56,6 @@
 
                 <div id="blackout"></div>
                 <div id="containerProj">
-                    <div id="closeProj" onclick="closeSnackbarProj()">x</div>
                     <div id="snackbarProj"></div>
                 </div>  
             </div>
@@ -80,7 +82,7 @@
         bottom: 0;
         right: 0;
         left: 0;
-        background-color: rgba(0, 0, 0, 0.534);
+        background-color: rgba(0, 0, 0, 0.801);
         display: none;
         z-index: 3;
         pointer-events: none;
@@ -92,10 +94,22 @@
         bottom: 0;
         right: 0;
         left: 0;
-        background-color: rgba(0, 0, 0, 0.534);
+        background-color: rgba(0, 0, 0, 0.801);
         display: none;
         z-index: 2;
         pointer-events: none;
+    }
+
+    body.outsideSnackProj{
+        cursor: zoom-out;
+    }
+
+    body.insideSnackProj{
+        cursor: zoom-in;
+    }
+
+    body.normal{
+        cursor: default;
     }
 
 /* ORGANIZA OS TIPOS */
@@ -183,26 +197,8 @@
         object-position: 50% 50%;
         position: relative;
         height: 100%;
-    /*   -webkit-backface-visibility: hidden;
-        -webkit-transform: translateZ(0) scale(1, 1);
-        filter: blur(0);
-        -webkit-filter: blur(0); */
         transition: transform .2s;
     }
-
-   /* .img-crop img{
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-        right: -9999px;
-        bottom: -9999px;
-        margin: auto;
-        -webkit-backface-visibility: hidden;
-        -webkit-transform: translateZ(0) scale(1, 1);
-        filter: blur(0);
-        -webkit-filter: blur(0);
-        transition: transform .2s;
-    } */
 
     .img-crop img:hover{
         cursor: pointer;
@@ -227,29 +223,35 @@
         z-index: 8;
         overflow: auto;
         width: calc(100% - 2rem);
-        max-width: 72rem;
+        max-width: 1051px;
     }
 
     #closeProj:hover{
         cursor: pointer;
-        background-color: #18bfef;
+        color: #18bfef; 
     }
 
     #closeProj{
-        position: fixed;
-        padding-right: 1px;
-        top: 20px;
-        font-size: 20px;
-        line-height: 22px;
-        color: #ffffff;
-        background-color: #838383;
-        border-radius: 50%;
-        width: 25px;
-        height: 25px;
+        position: absolute;
+        color: rgb(255 255 255 / 88%);
         text-align: center;
         display: none;
-        font-weight: 100;
-        z-index: 10;
+        z-index: 10; 
+        visibility: visible;
+        transition: visibility 1s ease-in-out;
+    }
+
+    #insideCloseProj{
+        background-color: #838383;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 4.5px;
+        left: 2px;
+        z-index: -1;
+        visibility: visible;
+        transition: visibility 1s ease-in-out;
     }
 
     .iframecontainer{
@@ -274,6 +276,18 @@
         z-index:1;
     }
 
+    /* IMAGEM ON FOCUS */
+
+    .imageOnFocus{
+        object-fit: contain;
+        object-position: 50% 50%;
+        display: block;
+    }
+
+    .hide{
+        visibility: hidden;
+    }
+    
 /* DEFINICOES PARA OS TAMANHOS EM DESKTOP */
     @media screen and (min-width: 1120px){
         .img-crop{
@@ -466,11 +480,14 @@
     let navPanelToggle = document.getElementById("navPanelToggle")
 
     let closeIcon = document.getElementById("closeProj")
+    let closeIconInside = document.getElementById("insideCloseProj")
+
     let snackbarProj = document.getElementById("snackbarProj")
     let flagProjAberto = false
     let dark = document.getElementById('blackout')
     let dark2 = document.getElementById('blackout2')
-
+    let snackbarCssStyle
+    
     let abrirproj = function (e, id){
         e.stopPropagation()
 
@@ -491,20 +508,47 @@
                 snackbarProj.innerHTML += '<img src="' + item.src + '" style="display:block"/>'
             } else {
                 snackbarProj.innerHTML += '<div class="iframecontainer"><iframe src="' + item.src + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" frameorder="0" vspace="0" hspace="0" marginwidth="0" marginheight="0" width="100%" style="margin: 0 0 0 0" frameBorder="0" scrolling="no" style="border: 0px" allowfullscreen></iframe></div>'
-            }   
+            } 
         }
 
         /* checa o tamanho do content para ajustar a height da snackbar */
-        if (snackbarProj.scrollHeight <= screen.height){
-            var topOffSet = ((screen.height - snackbarProj.scrollHeight)/2)
+        let closeIconProj = document.getElementById("closeProj")
+        let rect = snackbarProj.getBoundingClientRect()
+        if (snackbarProj.scrollHeight <= window.innerHeight){
+            var topOffSet = ((window.innerHeight - snackbarProj.scrollHeight)/2)
             snackbarProj.style.top = topOffSet + "px"
+            closeIcon.style.top = ((topOffSet + window.pageYOffset + 28)+ "px")
+            closeIcon.style.left = (((rect.x + rect.width) - 50 ) + "px")
+            let snackbarCssStyle = snackbarProj.style.cssText 
         }else{
             snackbarProj.style.bottom = "10px"
             snackbarProj.style.top = "10px"
-        }    
+            closeIcon.style.top = (window.pageYOffset + 28) + "px"
+            closeIcon.style.left = (((rect.x + rect.width) - 50 ) + "px")
+            let snackbarCssStyle = snackbarProj.style.cssText 
+        }   
+
+        window.addEventListener('resize', function(c){
+            let rect = snackbarProj.getBoundingClientRect()
+            if (snackbarProj.scrollHeight <= window.innerHeight){
+                var topOffSet = ((window.innerHeight - snackbarProj.scrollHeight)/2)
+                snackbarProj.style.top = topOffSet + "px"
+                snackbarProj.style.removeProperty('bottom')
+                closeIcon.style.top = ((topOffSet + window.pageYOffset + 28)+ "px")
+                closeIcon.style.left = (((rect.x + rect.width) - 50 ) + "px")
+                let snackbarCssStyle = snackbarProj.style.cssText   
+            }else{
+                snackbarProj.style.bottom = "10px"
+                snackbarProj.style.top = "10px"
+                closeIcon.style.top = (window.pageYOffset + 28) + "px"
+                closeIcon.style.left = (((rect.x + rect.width) - 50 ) + "px")
+                let snackbarCssStyle = snackbarProj.style.cssText 
+        }
+        })
 
         dark.style.display= "block"
         dark2.style.display= "block"
+        setTimeout("hideIconVisibility()", 3000)
 
         window.addEventListener('click', function(b){
             if (document.getElementById('snackbarProj').contains(b.target)){
@@ -512,25 +556,108 @@
                 closeSnackbarProj()
             }
         }, options = {"once": true})
-        
+
+        document.addEventListener("keydown", function(c){
+            if(c.key=="Escape"){
+                closeSnackbarProj();
+            }
+        })
+
         snackbarProj.scroll(0,0)
     }
 
-    function closeSnackbarProj(){
-        snackbarProj.style.display = "none"  
-        dark.style.display= "none"
-        dark2.style.display= "none"  
-        closeIcon.style.display = 'none'
-
-        snackFiltro.style.display = 'block'
-        
-        if(window.innerWidth < 980){
-            navPanelToggle.style.cssText = ''
+    var mouseMovimentoCheck
+    snackbarProj.addEventListener('mousemove', () => {
+        clearTimeout(mouseMovimentoCheck)
+        mouseMovimentoCheck = setTimeout(hideIconVisibility, 2000) 
+        if (closeIcon.style.visibility == "hidden") {
+            closeIcon.style.visibility = "visible"
+            closeIconInside.style.visibility = "visible" 
         }
-        
-        document.body.style.cssText = 'overflow: auto'
+    })
 
-        flagProjAberto = false
+    snackbarProj.addEventListener('mouseout', () => {
+        document.body.className = 'outsideSnackProj'
+    })
+
+    snackbarProj.addEventListener('mouseover', () => {
+        document.body.className = 'insideSnackProj'
+    })
+
+    let flagImageOnFocus = false
+    snackbarProj.addEventListener('click', function(event) {
+        let rect = snackbarProj.getBoundingClientRect()
+
+        for (var i = 0; i < snackbarProj.children.length; i++) {
+            var child = snackbarProj.children[i];    
+            child.classList.add('hide');   
+        }
+        event.target.style.visibility = "visible"
+        event.target.classList.add('imageOnFocus')
+    
+        let largura = window.innerWidth
+        let altura = window.innerHeight
+
+        snackbarProj.style.maxWidth = "1920px"
+        snackbarProj.style.maxHeight = "1080px"
+
+        snackbarProj.style.background = "black"
+        dark.style.background = "black"
+        dark2.style.background = "black"
+
+        snackbarProj.style.padding = "0"
+        snackbarProj.style.top = "0"
+        snackbarProj.style.bottom = "0"
+        snackbarProj.style.overflow = "hidden"
+
+        snackbarProj.style.width = largura + "px"
+        snackbarProj.style.height = altura + "px"
+
+        event.target.style.width = largura + "px"
+        event.target.style.height = altura + "px"
+
+        let rect2 = event.target.getBoundingClientRect()
+        closeIcon.style.top = "80px"
+        closeIcon.style.left = (((rect.x + rect.width)-((rect.width-rect2.width)/2) - 55) + "px") 
+
+        flagImageOnFocus = true
+    })
+    
+    function hideIconVisibility(){
+       closeIcon.style.visibility = "hidden"
+       closeIconInside.style.visibility = "hidden"
+    }  
+
+    function closeSnackbarProj(){
+        console.log(snackbarCssStyle)
+        if (flagImageOnFocus == false){
+            snackbarProj.style.display = "none"  
+            dark.style.display= "none"
+            dark2.style.display= "none"  
+            closeIcon.style.display = 'none'
+            snackFiltro.style.display = 'block'
+        
+            if(window.innerWidth < 980){
+                navPanelToggle.style.cssText = ''
+            }
+            
+            document.body.style.cssText = 'overflow: auto'
+            document.body.className = 'normal'
+            flagProjAberto = false
+        }
+
+        if (flagImageOnFocus == true){
+            for (var i = 0; i < snackbarProj.children.length; i++) {
+                var child = snackbarProj.children[i];    
+                child.classList.remove('hide');   
+            }
+
+            snackbarProj.style.cssText = snackbarCssStyle  
+            snackbarProj.style.display="block"
+            dark.style.background = "rgba(0, 0, 0, 0.801)"
+            dark2.style.background = "rgba(0, 0, 0, 0.801)" 
+            flagImageOnFocus = false    
+        }  
     }
 
     let goToPosition = function (id){
