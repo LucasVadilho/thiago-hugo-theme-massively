@@ -6,7 +6,7 @@
         {{ partial "header" . }}
         {{ partial "nav" . }}
         <span id="closeProj" class="fa fa-times-circle fa-2x" aria-hidden="true" onclick="closeSnackbarProj()">
-            <span id="insideCloseProj"></span>
+            <span class="closeButtonBackground" id="insideCloseProj"></span>
         </span>
         <div id="blackout2"></div>
         <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
@@ -241,7 +241,7 @@
         transition: visibility 1s ease-in-out;
     }
 
-    #insideCloseProj{
+    .closeButtonBackground{
         background-color: #838383;
         border-radius: 50%;
         width: 20px;
@@ -277,11 +277,22 @@
     }
 
     /* IMAGEM ON FOCUS */
+    .zoomedContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        z-index: 9;
+        background-color: #000;
+    }
 
-    .imageOnFocus{
+    .zoomedObject {
         object-fit: contain;
-        object-position: 50% 50%;
-        display: block;
+        max-height: calc(100vh - 40px);
+        margin: auto;
+        max-width: max-content;
     }
 
     .hide{
@@ -477,6 +488,8 @@
 </style>
 
 <script type="text/javascript">
+    let toClose = []
+
     let navPanelToggle = document.getElementById("navPanelToggle")
 
     let closeIcon = document.getElementById("closeProj")
@@ -489,7 +502,10 @@
     let snackbarCssStyle
     
     let abrirproj = function (e, id){
+        console.log('abrirproj')
         e.stopPropagation()
+
+        toClose = 'projeto'
 
         flagProjAberto = true
         checkFlag()
@@ -505,7 +521,7 @@
         
         for (let item of itens){
             if (item.type == 'image'){
-                snackbarProj.innerHTML += '<img src="' + item.src + '" style="display:block"/>'
+                snackbarProj.innerHTML += '<img src="' + item.src + '" style="display:block" class="snackZoom"/>'
             } else {
                 snackbarProj.innerHTML += '<div class="iframecontainer"><iframe src="' + item.src + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" frameorder="0" vspace="0" hspace="0" marginwidth="0" marginheight="0" width="100%" style="margin: 0 0 0 0" frameBorder="0" scrolling="no" style="border: 0px" allowfullscreen></iframe></div>'
             } 
@@ -531,10 +547,10 @@
         window.addEventListener('resize', function(c){
             let rect = snackbarProj.getBoundingClientRect()
             if (snackbarProj.scrollHeight <= window.innerHeight){
-                var topOffSet = ((window.innerHeight - snackbarProj.scrollHeight)/2)
+                var topOffSet = ((window.innerHeight - snackbarProj.scrollHeight) / 2)
                 snackbarProj.style.top = topOffSet + "px"
                 snackbarProj.style.removeProperty('bottom')
-                closeIcon.style.top = ((topOffSet + window.pageYOffset + 28)+ "px")
+                closeIcon.style.top = ((topOffSet + window.pageYOffset + 28) + "px")
                 closeIcon.style.left = (((rect.x + rect.width) - 50 ) + "px")
                 let snackbarCssStyle = snackbarProj.style.cssText   
             }else{
@@ -550,20 +566,22 @@
         dark2.style.display= "block"
         setTimeout("hideIconVisibility()", 3000)
 
-        window.addEventListener('click', function(b){
-            if (document.getElementById('snackbarProj').contains(b.target)){
-            } else{
-                closeSnackbarProj()
-            }
-        }, options = {"once": true})
+        // window.addEventListener('click', function(b){
+        //     if (!document.getElementById('snackbarProj').contains(b.target)){
+        //         close()
+        //     }
+        // }, options = {"once": true})
 
-        document.addEventListener("keydown", function(c){
-            if(c.key=="Escape"){
-                closeSnackbarProj();
-            }
-        })
+        // document.addEventListener("keydown", function(c){
+        //     console.log('esc proj')
+        //     if(c.key=="Escape"){
+        //         close();
+        //     }
+        // }, options = {"once": true})
 
         snackbarProj.scroll(0,0)
+
+        setupZoom()
     }
 
     var mouseMovimentoCheck
@@ -585,79 +603,143 @@
     })
 
     let flagImageOnFocus = false
-    snackbarProj.addEventListener('click', function(event) {
-        let rect = snackbarProj.getBoundingClientRect()
-
-        for (var i = 0; i < snackbarProj.children.length; i++) {
-            var child = snackbarProj.children[i];    
-            child.classList.add('hide');   
-        }
-        event.target.style.visibility = "visible"
-        event.target.classList.add('imageOnFocus')
     
-        let largura = window.innerWidth
-        let altura = window.innerHeight
-
-        snackbarProj.style.maxWidth = "1920px"
-        snackbarProj.style.maxHeight = "1080px"
-
-        snackbarProj.style.background = "black"
-        dark.style.background = "black"
-        dark2.style.background = "black"
-
-        snackbarProj.style.padding = "0"
-        snackbarProj.style.top = "0"
-        snackbarProj.style.bottom = "0"
-        snackbarProj.style.overflow = "hidden"
-
-        snackbarProj.style.width = largura + "px"
-        snackbarProj.style.height = altura + "px"
-
-        event.target.style.width = largura + "px"
-        event.target.style.height = altura + "px"
-
-        let rect2 = event.target.getBoundingClientRect()
-        closeIcon.style.top = "80px"
-        closeIcon.style.left = (((rect.x + rect.width)-((rect.width-rect2.width)/2) - 55) + "px") 
-
-        flagImageOnFocus = true
+    // Close
+    document.addEventListener('click', (ev) => {
+        close(ev)
     })
+
+    document.addEventListener('keydown', (ev) => {
+        if(ev.key == 'Escape'){
+            close(ev)
+        }
+    })
+    
+    let close = function(ev) {
+        if(toClose == 'zoom') {
+            closeZoomedObject()
+            toClose = 'projeto'
+        } else if(toClose == 'projeto') {
+            if(ev.type == 'click' && document.getElementById('snackbarProj').contains(ev.target))
+                return
+                
+            closeSnackbarProj()
+            toClose = null
+        } else {
+            console.log('Nada pra fechar')
+        }
+    }
+
+    let closeZoomedObject = function() {
+        document.getElementsByClassName('zoomedContainer')[0].remove()
+    }
+
+    let setupZoom = function() {
+        zoomObjects = document.getElementsByClassName('snackZoom')
+        
+        for(zo of zoomObjects) {
+            // deletar depois
+            let x = Math.floor(500 + 3000 * Math.random())
+            let y = Math.floor(500 + 3000 * Math.random())
+
+            zo.addEventListener('click', (ev) => {
+                toClose = 'zoom'
+                
+                ev.stopPropagation()
+
+                let imgSrc = ev.target.src
+                
+                zoom = document.createElement('div')
+                zoom.classList.add('zoomedContainer')
+
+                zoom.innerHTML = `
+                    <div id='buttonClose'>
+                        <span class='fa fa-times-circle fa-2x' aria-hidden='true'>
+                            <span class='closeButtonBackground'></span>
+                        </span>
+                    </div>
+                    <img src="https://placehold.co/${x}x${y}" id="zoomedObject" class="zoomedObject">
+                `
+                // trocar depois
+                // <img src="${imgSrc}" class="zoomedObject">
+
+                document.body.prepend(zoom)
+                
+                zoomedObject = document.getElementById('zoomedObject')
+                
+                intervalId = setInterval(() => {
+                    console.log(1)
+                    if(zoomedObject.complete) {
+                        let rect = zoomedObject.getBoundingClientRect()
+                        let closePadding = rect.x + rect.width - 20
+
+                        document.getElementById('buttonClose').style.paddingLeft = `${closePadding}px`
+
+                        clearInterval(intervalId)
+                    }
+                }, 10)
+            })
+        }
+    }
+    
+    
+
+    // snackbarProj.addEventListener('click', function(event) {
+    //     let rect = snackbarProj.getBoundingClientRect()
+
+    //     for (var i = 0; i < snackbarProj.children.length; i++) {
+    //         var child = snackbarProj.children[i];    
+    //         child.classList.add('hide');   
+    //     }
+    //     event.target.style.visibility = "visible"
+    //     event.target.classList.add('imageOnFocus')
+    
+    //     let largura = window.innerWidth
+    //     let altura = window.innerHeight
+
+    //     snackbarProj.style.maxWidth = "1920px"
+    //     snackbarProj.style.maxHeight = "1080px"
+
+    //     snackbarProj.style.background = "black"
+    //     dark.style.background = "black"
+    //     dark2.style.background = "black"
+
+    //     snackbarProj.style.padding = "0"
+    //     snackbarProj.style.top = "0"
+    //     snackbarProj.style.bottom = "0"
+    //     snackbarProj.style.overflow = "hidden"
+
+    //     snackbarProj.style.width = largura + "px"
+    //     snackbarProj.style.height = altura + "px"
+
+    //     event.target.style.width = largura + "px"
+    //     event.target.style.height = altura + "px"
+
+    //     let rect2 = event.target.getBoundingClientRect()
+    //     closeIcon.style.top = "80px"
+    //     closeIcon.style.left = (((rect.x + rect.width)-((rect.width-rect2.width)/2) - 55) + "px") 
+
+    //     flagImageOnFocus = true
+    // })
     
     function hideIconVisibility(){
        closeIcon.style.visibility = "hidden"
        closeIconInside.style.visibility = "hidden"
-    }  
+    }
 
     function closeSnackbarProj(){
-        console.log(snackbarCssStyle)
-        if (flagImageOnFocus == false){
-            snackbarProj.style.display = "none"  
-            dark.style.display= "none"
-            dark2.style.display= "none"  
-            closeIcon.style.display = 'none'
-            snackFiltro.style.display = 'block'
-        
-            if(window.innerWidth < 980){
-                navPanelToggle.style.cssText = ''
-            }
-            
-            document.body.style.cssText = 'overflow: auto'
-            document.body.className = 'normal'
-            flagProjAberto = false
+        snackbarProj.style.display = "none"  
+        dark.style.display= "none"
+        dark2.style.display= "none"  
+        closeIcon.style.display = 'none'
+        snackFiltro.style.display = 'block'
+    
+        if(window.innerWidth < 980){
+            navPanelToggle.style.cssText = ''
         }
-
-        if (flagImageOnFocus == true){
-            for (var i = 0; i < snackbarProj.children.length; i++) {
-                var child = snackbarProj.children[i];    
-                child.classList.remove('hide');   
-            }
-
-            snackbarProj.style.cssText = snackbarCssStyle  
-            snackbarProj.style.display="block"
-            dark.style.background = "rgba(0, 0, 0, 0.801)"
-            dark2.style.background = "rgba(0, 0, 0, 0.801)" 
-            flagImageOnFocus = false    
-        }  
+        
+        document.body.style.cssText = 'overflow: auto'
+        document.body.className = 'normal'
     }
 
     let goToPosition = function (id){
