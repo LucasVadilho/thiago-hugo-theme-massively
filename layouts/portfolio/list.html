@@ -283,7 +283,7 @@
         justify-content: center;
         width: 100vw;
         height: 100vh;
-        position: absolute;
+        position: fixed;
         z-index: 9;
         background-color: #000;
     }
@@ -291,7 +291,6 @@
     .zoomedObject {
         object-fit: contain;
         max-height: calc(100vh - 40px);
-        margin: auto;
         max-width: max-content;
     }
 
@@ -501,6 +500,16 @@
     let dark2 = document.getElementById('blackout2')
     let snackbarCssStyle
     
+    let setupMouseover = function(){
+        document.getElementById('ssssss').addEventListener('mouseover', () => {
+            document.body.className = 'insideSnackProj'
+        })
+        
+        document.getElementById('ssssss').addEventListener('mouseout', () => {
+            document.body.className = 'normal'  
+        })
+    }
+
     let abrirproj = function (e, id){
         console.log('abrirproj')
         e.stopPropagation()
@@ -510,7 +519,7 @@
         flagProjAberto = true
         checkFlag()
 
-        snackbarProj.innerHTML = ''
+        openProject = "<div id='ssssss'>"
 
         snackbarProj.style.display = "block"
         closeIcon.style.display = 'block'
@@ -521,11 +530,17 @@
         
         for (let item of itens){
             if (item.type == 'image'){
-                snackbarProj.innerHTML += '<img src="' + item.src + '" style="display:block" class="snackZoom"/>'
+                openProject += '<img src="' + item.src + '" style="display:block" class="snackZoom"/>'
             } else {
-                snackbarProj.innerHTML += '<div class="iframecontainer"><iframe src="' + item.src + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" frameorder="0" vspace="0" hspace="0" marginwidth="0" marginheight="0" width="100%" style="margin: 0 0 0 0" frameBorder="0" scrolling="no" style="border: 0px" allowfullscreen></iframe></div>'
+                openProject += '<div class="iframecontainer"><iframe src="' + item.src + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" frameorder="0" vspace="0" hspace="0" marginwidth="0" marginheight="0" width="100%" style="margin: 0 0 0 0" frameBorder="0" scrolling="no" style="border: 0px" allowfullscreen></iframe></div>'
             } 
         }
+
+        openProject += "</div>"
+
+        snackbarProj.innerHTML = openProject
+
+        setupMouseover()
 
         /* checa o tamanho do content para ajustar a height da snackbar */
         let closeIconProj = document.getElementById("closeProj")
@@ -584,26 +599,17 @@
         setupZoom()
     }
 
-    var mouseMovimentoCheck
-    snackbarProj.addEventListener('mousemove', () => {
-        clearTimeout(mouseMovimentoCheck)
-        mouseMovimentoCheck = setTimeout(hideIconVisibility, 2000) 
-        if (closeIcon.style.visibility == "hidden") {
-            closeIcon.style.visibility = "visible"
-            closeIconInside.style.visibility = "visible" 
-        }
-    })
+    // var mouseMovimentoCheck
+    // snackbarProj.addEventListener('mousemove', () => {
+    //     clearTimeout(mouseMovimentoCheck)
+    //     mouseMovimentoCheck = setTimeout(hideIconVisibility, 2000) 
+    //     if (closeIcon.style.visibility == "hidden") {
+    //         closeIcon.style.visibility = "visible"
+    //         closeIconInside.style.visibility = "visible" 
+    //     }
+    // })
 
-    snackbarProj.addEventListener('mouseout', () => {
-        document.body.className = 'outsideSnackProj'
-    })
-
-    snackbarProj.addEventListener('mouseover', () => {
-        document.body.className = 'insideSnackProj'
-    })
-
-    let flagImageOnFocus = false
-    
+   
     // Close
     document.addEventListener('click', (ev) => {
         close(ev)
