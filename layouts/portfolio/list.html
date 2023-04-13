@@ -26,7 +26,7 @@
                                 <div class="projeto-container">
                                     <div id="{{ .Params.Titleprojeto }}" 
                                          class="img-crop" 
-                                         onclick="abrirproj(event,'{{ .Params.Titleprojeto }}')"
+                                         onclick="abrirproj(event, '{{ .Params.Titleprojeto }}')"
                                          itens="{{ jsonify .Params.Itens }}">
                                         <img src="{{ .Params.Thumbprojeto }}">
                                     </div>           
@@ -54,8 +54,6 @@
 
                 <div id="blackout"></div>
                 <div id="containerProj">
-                    <span id="closeProj" class="fa fa-times" aria-hidden="true" onclick="closeSnackbarProj()"></span>
-                    <div id="snackbarProj"></div>
                 </div>  
             </div>
         </div>
@@ -471,6 +469,36 @@
     /* Definicoes para celular */
     /* @media only screen and (hover:none) and (pointer:coarse) and (max-width:450px) and (min-width:321px){
     } */
+
+    #openProject {
+        align-self: center;
+        overflow: auto;
+        object-fit: contain;
+        max-height: 97vh;
+        grid-row-start: 2;
+        grid-column-start: 2;
+        align-self: center;
+        overflow: auto;        
+    }
+
+    #buttonCloseProject {
+        grid-row-start: 1;
+        grid-column-start: 2;
+        align-self: center;
+        width: 10px;
+        justify-self: right;
+    }
+
+    .snackbar {
+        display: grid;
+        grid-template-rows: 20px 1fr;
+        grid-template-columns: 1fr minmax(0, 1300px) 1fr;
+        width: 100vw;
+        position: fixed;
+        top: 0;
+        z-index: 9;
+        background-color: red;
+    }
 </style>
 
 <script type="text/javascript">
@@ -478,65 +506,53 @@
 
     let navPanelToggle = document.getElementById("navPanelToggle")
 
-    let closeIcon = document.getElementById("closeProj")
+    // let closeIcon = document.getElementById("closeProj")
 
-    let snackbarProj = document.getElementById("snackbarProj")
+    // let snackbarProj = document.getElementById("snackbarProj")
     let flagProjAberto = false
     let dark = document.getElementById('blackout')
     let dark2 = document.getElementById('blackout2')
 
     
     let setupMouseover = function(){
-        document.getElementById('ssssss').addEventListener('mouseover', () => {
+        document.getElementById('openProject').addEventListener('mouseover', () => {
             document.body.className = 'insideSnackProj'
         })
         
-        document.getElementById('ssssss').addEventListener('mouseout', () => {
+        document.getElementById('openProject').addEventListener('mouseout', () => {
             document.body.className = 'outsideSnackProj'  
         })
     }
 
-    let setupSnackbar = function(){
-        console.log('setup snackbar')
-        
-        let rect = snackbarProj.getBoundingClientRect()
-        let topOffSet = 0
-        let tamanhoCloseIcon = document.getElementById('closeProj').scrollHeight
+    let lastResize = 0
+    let positionCloseProject = function() {
+        if(Date.now() - lastResize > 500) {
+            lastResize = Date.now()
 
-        if ((snackbarProj.scrollHeight+tamanhoCloseIcon) < window.innerHeight){
-            console.log(topOffSet)
-            topOffSet = (((window.innerHeight - (snackbarProj.scrollHeight + tamanhoCloseIcon))/2))
-            console.log(topOffSet)
-            snackbarProj.style.top = topOffSet + "px"
-            snackbarProj.style.removeProperty('bottom')
-            closeIcon.style.left = (((rect.x + rect.width) - 10 ) + "px")
-            closeIcon.style.top = (snackbarProj.offsetTop -20) + "px"
-        }else{
-            console.log(topOffSet)
-            snackbarProj.style.bottom = "10px"
-            snackbarProj.style.top = "30px"
-            closeIcon.style.left = (((rect.x + rect.width) - 10 ) + "px")
-            closeIcon.style.top = (snackbarProj.offsetTop -20) + "px"
+            rect = document.getElementById('openProject').getBoundingClientRect()
+            
+            buttonClose = document.getElementById('buttonCloseProject')
+            console.log(rect.x, rect.width, buttonClose.clientWidth)
+            buttonClose.style.paddingLeft = `${rect.x + rect.width - buttonClose.scrollWidth}px`
         }
     }
 
-    let abrirproj = function (e, id){
-        e.stopPropagation()
+    let createSnackbar = function(id) {
+        let snackbar = document.createElement('div')
 
-        toClose = 'projeto'
-
-        flagProjAberto = true
-        checkFlag()
-
-        openProject = "<div id='ssssss'>"
-
-        snackbarProj.style.display = "block"
-        closeIcon.style.display = 'block'
-
+        snackbar.classList = 'snackbar'
+        
         document.body.style.cssText = 'overflow: hidden'
 
+        let closeButton = `
+            <div id='buttonCloseProject'>
+                <span class='fa fa-times' aria-hidden='true'></span>
+            </div>`
+
+        let openProject = `<div id='openProject'>`
+        // openProject += '<span id="closeProj" class="fa fa-times" aria-hidden="true" onclick="closeSnackbarProj()"></span>'
+
         let itens = JSON.parse(document.getElementById(id).getAttribute('itens'))
-        
         for (let item of itens){
             if (item.type == 'image'){
                 openProject += '<img src="' + item.src + '" style="display:block" class="snackZoom"/>'
@@ -547,28 +563,47 @@
 
         openProject += "</div>"
 
-        snackbarProj.innerHTML = openProject
+        snackbar.innerHTML = closeButton + openProject
 
-        setupMouseover()
+        document.body.append(snackbar)
+        
+        // positionCloseProject()
 
-        /* checa o tamanho do content para ajustar a height da snackbar */
-        let closeIconProj = document.getElementById("closeProj")
-        let rect = snackbarProj.getBoundingClientRect()
-        let containerProj = document.getElementById("containerProj")
-        let tamanhoCloseIcon = 20
-        let topOffSet = 0
+        // window.addEventListener('resize', () => {
+        //     positionCloseProject()
+        // })
+    }
+
+    let abrirproj = function (e, id){
+        e.stopPropagation()
+
+        toClose = 'projeto'
+
+        flagProjAberto = true
+
+        checkFlag()
+        createSnackbar(id)
+        
+        // setupMouseover()
+
+        // /* checa o tamanho do content para ajustar a height da snackbar */
+        // let closeIconProj = document.getElementById("closeProj")
+        // let rect = snackbarProj.getBoundingClientRect()
+        // let containerProj = document.getElementById("containerProj")
+        // let tamanhoCloseIcon = 20
+        // let topOffSet = 0
 
         // arruma margens da snackbar e do x
-        setupSnackbar()
+        // setupSnackbar()
 
-        window.addEventListener('resize', function(c){
-            setupSnackbar()
-        })
+        // window.addEventListener('resize', function(c){
+        //     setupSnackbar()
+        // })
 
-        dark.style.display= "block"
-        dark2.style.display= "block"
-        snackbarProj.scroll(0,0)
-        setupZoom()
+        // dark.style.display= "block"
+        // dark2.style.display= "block"
+        // snackbarProj.scroll(0,0)
+        // setupZoom()
     }
    
     // Close
@@ -692,7 +727,7 @@
         fechar.style.display = 'none'
     }
 
-    let checkFlag = function(){
+    let checkFlag = function() {
         if (flagProjAberto == true){
             snackFiltro.style.display = 'none'
             navPanelToggle.style.cssText = 'display: none'         
