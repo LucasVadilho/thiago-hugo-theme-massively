@@ -6,11 +6,10 @@
         {{ partial "header" . }}
         {{ partial "nav" . }}
         
-        <div id="blackout2"></div>
         <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
         
         <div id="main">
-            <div id="conteudo">
+            <div id="conteudo" style="visibility: hidden;">
 
                 <div id="snackbarFiltro"> 
                     <a id="abrir" class='goToClass' onclick="openBar()">Seção &#10095;</a>
@@ -52,7 +51,6 @@
                     </div>
                 </div>
 
-                <div id="blackout"></div>
                 <div id="containerProj">
                 </div>  
             </div>
@@ -73,36 +71,8 @@
         font-size: 3rem;
     }
 
-    #blackout{
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        background-color: rgb(0, 0, 0);
-        display: none;
-        z-index: 3;
-        pointer-events: none;
-    }
-
-    #blackout2{
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        background-color: rgb(0, 0, 0);
-        display: none;
-        z-index: 2;
-        pointer-events: none;
-    }
-
     body.outsideSnackProj{
         cursor: zoom-out;
-    }
-
-    body.insideSnackProj{
-        cursor: zoom-in;
     }
 
     body.normal{
@@ -207,19 +177,41 @@
     }
 
 /* SNACKBAR PROJETO OPEN */
-    #snackbarProj {
-        display: none;
-        padding: 12px;
-        border-radius: 2px;
-        position: fixed;
-        background-color: rgb(255 255 255 / 88%);
-        transform: translate(-50%,0);
-        left: 50%;
-        z-index: 8;
+    #openProject {
+        align-self: center;
         overflow: auto;
-        width: calc(100% - 2rem);
-        max-width: 1051px;
+        object-fit: contain;
+        max-height: 97vh;
+        grid-row-start: 2;
+        grid-column-start: 2;
+        align-self: center;
+        overflow: auto;     
+        padding: 0px 10px 0px 10px;  
+        justify-content: center;
+        display: block;
+        margin: auto;
     }
+
+    #buttonCloseProject {
+        grid-row-start: 1;
+        grid-column-start: 2;
+        align-self: center;
+        padding: 0px 17px 0px 0px;
+        justify-self: right;
+    }
+
+    .snackbar {
+        display: grid;
+        grid-template-rows: 30px 1fr;
+        grid-template-columns: 1fr minmax(0, 1300px) 1fr;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        z-index: 9;
+        background-color: rgb(0, 0, 0);
+    }
+
     .fa{
         color: aliceblue;
     }
@@ -227,15 +219,6 @@
     .fa:hover, #closeProj:hover{
         cursor: pointer;
         color: #18bfef; 
-    }
-
-    #closeProj{
-        position: fixed;
-        color: rgb(255 255 255 / 88%);
-        text-align: center;
-        display: none;
-        z-index: 10; 
-        visibility: visible;
     }
 
     .iframecontainer{
@@ -260,30 +243,20 @@
         z-index:1;
     }
 
-    /* IMAGEM ON FOCUS */
-    .zoomedContainer {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 100vw;
-        height: 100vh;
-        position: fixed;
-        z-index: 9;
-        background-color: #000;
-        align-items: center;
-    }
-
-    .zoomedObject {
-        object-fit: contain;
-        max-height: calc(100vh - 40px);
-        max-width: max-content;
-    }
-
-    .hide{
-        visibility: hidden;
-    }
     
 /* DEFINICOES PARA OS TAMANHOS EM DESKTOP */
+    @media screen and (min-width:1230px){
+        #buttonCloseProject {
+            padding: 0px 52px 0px 0px;
+        }
+    }
+
+    @media screen and (max-width: 1231px) and (min-width:0px){
+        #buttonCloseProject {
+            padding: 0px 17px 0px 0px;
+        }
+    }
+
     @media screen and (min-width: 1120px){
         .img-crop{
             width: 210px;
@@ -381,7 +354,6 @@
             height: 165px;
         }
     }
-
     
 /* DEFINICOES PARA OS TAMANHOS EM MOBILE */
     @media only screen and (hover:none) and (pointer:coarse) and (max-width: 736px) and (min-width: 425px){
@@ -470,59 +442,16 @@
     /* @media only screen and (hover:none) and (pointer:coarse) and (max-width:450px) and (min-width:321px){
     } */
 
-    #openProject {
-        align-self: center;
-        overflow: auto;
-        object-fit: contain;
-        max-height: 97vh;
-        grid-row-start: 2;
-        grid-column-start: 2;
-        align-self: center;
-        overflow: auto;        
-    }
-
-    #buttonCloseProject {
-        grid-row-start: 1;
-        grid-column-start: 2;
-        align-self: center;
-        width: 10px;
-        justify-self: right;
-    }
-
-    .snackbar {
-        display: grid;
-        grid-template-rows: 20px 1fr;
-        grid-template-columns: 1fr minmax(0, 1300px) 1fr;
-        width: 100vw;
-        position: fixed;
-        top: 0;
-        z-index: 9;
-        background-color: red;
-    }
 </style>
 
 <script type="text/javascript">
-    let toClose = []
+
+    window.addEventListener('load', ()=> {
+        document.getElementById('conteudo').style.visibility = "visible"
+    })
 
     let navPanelToggle = document.getElementById("navPanelToggle")
-
-    // let closeIcon = document.getElementById("closeProj")
-
-    // let snackbarProj = document.getElementById("snackbarProj")
     let flagProjAberto = false
-    let dark = document.getElementById('blackout')
-    let dark2 = document.getElementById('blackout2')
-
-    
-    let setupMouseover = function(){
-        document.getElementById('openProject').addEventListener('mouseover', () => {
-            document.body.className = 'insideSnackProj'
-        })
-        
-        document.getElementById('openProject').addEventListener('mouseout', () => {
-            document.body.className = 'outsideSnackProj'  
-        })
-    }
 
     let lastResize = 0
     let positionCloseProject = function() {
@@ -537,156 +466,65 @@
         }
     }
 
+    let mouseoverCloseSetup = function(){
+        document.getElementById('snackZoomId').addEventListener('mouseout', () => {
+            document.body.className = 'outsideSnackProj' 
+        })
+        document.getElementById('snackZoomId').addEventListener('mouseover', () => {
+            document.body.className = 'normal' 
+        })
+    }
+
     let createSnackbar = function(id) {
         let snackbar = document.createElement('div')
-
         snackbar.classList = 'snackbar'
-        
+        snackbar.id = 'snackbarId'
         document.body.style.cssText = 'overflow: hidden'
 
         let closeButton = `
             <div id='buttonCloseProject'>
-                <span class='fa fa-times' aria-hidden='true'></span>
+                <span class='fa fa-times' aria-hidden='true' onclick="closeSnackbarProj()"></span>
             </div>`
 
         let openProject = `<div id='openProject'>`
-        // openProject += '<span id="closeProj" class="fa fa-times" aria-hidden="true" onclick="closeSnackbarProj()"></span>'
 
         let itens = JSON.parse(document.getElementById(id).getAttribute('itens'))
         for (let item of itens){
             if (item.type == 'image'){
-                openProject += '<img src="' + item.src + '" style="display:block" class="snackZoom"/>'
+                openProject += '<img src="' + item.src + '" style="display:block; object-fit: contain; max-height: 97vh;" class="snackZoom" id="snackZoomId"/>'
             } else {
-                openProject += '<div class="iframecontainer"><iframe src="' + item.src + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" frameorder="0" vspace="0" hspace="0" marginwidth="0" marginheight="0" width="100%" style="margin: 0 0 0 0" frameBorder="0" scrolling="no" style="border: 0px" allowfullscreen></iframe></div>'
+                openProject += '<div class="iframecontainer" id="snackZoomId"><iframe src="' + item.src + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" frameorder="0" vspace="0" hspace="0" marginwidth="0" marginheight="0" width="100%" style="margin: 0 0 0 0" frameBorder="0" scrolling="no" style="border: 0px" allowfullscreen></iframe></div>'
             } 
         }
 
         openProject += "</div>"
-
         snackbar.innerHTML = closeButton + openProject
-
         document.body.append(snackbar)
-        
-        // positionCloseProject()
-
-        // window.addEventListener('resize', () => {
-        //     positionCloseProject()
-        // })
     }
 
     let abrirproj = function (e, id){
         e.stopPropagation()
-
-        toClose = 'projeto'
-
         flagProjAberto = true
-
         checkFlag()
-        createSnackbar(id)
-        
-        // setupMouseover()
-
-        // /* checa o tamanho do content para ajustar a height da snackbar */
-        // let closeIconProj = document.getElementById("closeProj")
-        // let rect = snackbarProj.getBoundingClientRect()
-        // let containerProj = document.getElementById("containerProj")
-        // let tamanhoCloseIcon = 20
-        // let topOffSet = 0
-
-        // arruma margens da snackbar e do x
-        // setupSnackbar()
-
-        // window.addEventListener('resize', function(c){
-        //     setupSnackbar()
-        // })
-
-        // dark.style.display= "block"
-        // dark2.style.display= "block"
-        // snackbarProj.scroll(0,0)
-        // setupZoom()
+        createSnackbar(id)  
+        mouseoverCloseSetup()
     }
-   
-    // Close
-    document.addEventListener('click', (ev) => {
-        close(ev)
-    })
 
     document.addEventListener('keydown', (ev) => {
-        if(ev.key == 'Escape'){
-            close(ev)
+        if((ev.key == 'Escape') && (flagProjAberto == true)){
+            closeSnackbarProj()
+        }
+    }) 
+
+    document.addEventListener('click', (ev) => {
+        if (document.body.className == 'outsideSnackProj'){
+            closeSnackbarProj()
         }
     })
-    
-    let close = function(ev) {
-        if(toClose == 'zoom') {
-            closeZoomedObject()
-            toClose = 'projeto'
-        } else if(toClose == 'projeto') {
-            if(ev.type == 'click' && document.getElementById('snackbarProj').contains(ev.target))
-                return
-                
-            closeSnackbarProj()
-            toClose = null
-        } else {
-        }
-    }
-
-    let closeZoomedObject = function() {
-        document.getElementsByClassName('zoomedContainer')[0].remove()
-    }
-
-    let setupZoom = function() {
-        zoomObjects = document.getElementsByClassName('snackZoom')
-        
-        for(zo of zoomObjects) {
-            // deletar depois
-            let x = Math.floor(500 + 3000 * Math.random())
-            let y = Math.floor(500 + 3000 * Math.random())
-
-            zo.addEventListener('click', (ev) => {
-                toClose = 'zoom'
-                
-                ev.stopPropagation()
-
-                let imgSrc = ev.target.src
-                
-                zoom = document.createElement('div')
-                zoom.classList.add('zoomedContainer')
-
-                zoom.innerHTML = `
-                    <div id='buttonClose'>
-                        <span class='fa fa-times' aria-hidden='true'>
-                            <span class='closeButtonBackground'></span>
-                        </span>
-                    </div>
-                    <img src="https://placehold.co/${x}x${y}" id="zoomedObject" class="zoomedObject">
-                `
-                // trocar depois
-                // <img src="${imgSrc}" class="zoomedObject">
-
-                document.body.prepend(zoom)
-                
-                zoomedObject = document.getElementById('zoomedObject')
-                
-                intervalId = setInterval(() => {
-                    if(zoomedObject.complete) {
-                        let rect = zoomedObject.getBoundingClientRect()
-                        let closePadding = rect.x + rect.width - 20
-
-                        document.getElementById('buttonClose').style.paddingLeft = `${closePadding}px`
-
-                        clearInterval(intervalId)
-                    }
-                }, 10)
-            })
-        }
-    }
 
     function closeSnackbarProj(){
-        snackbarProj.style.display = "none"  
-        dark.style.display= "none"
-        dark2.style.display= "none"  
-        closeIcon.style.display = 'none'
+        let snackbarToClose = document.getElementById('snackbarId')
+        snackbarToClose.remove()
         snackFiltro.style.display = 'block'
     
         if(window.innerWidth < 980){
