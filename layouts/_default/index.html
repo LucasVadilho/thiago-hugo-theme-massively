@@ -3,7 +3,7 @@
 	<body lang='{{ .Site.LanguageCode | default "en-us" }}' class="is-preload">
 
         <!-- Wrapper -->
-        <div id="wrapper">
+        <div id="wrapper" class="fade-in">
 			{{- partial "intro.html" . -}}
 
             {{- partial "header" . -}}
@@ -125,9 +125,11 @@
                         <p class="aviso">Não se preocupe, sua privacidade será respeitada e a qualquer momento você poderá cancelar a inscrição</p>
                     </form>
                 </div>
-                <div class="title-contato">
-                    <h1 class="tituloc">CONTATO</h1>
-                </div>
+                <a id="contatofocus"> 
+                    <div class="title-contato">
+                        <h1 class="tituloc">CONTATO</h1>
+                    </div>
+                </a>
                 
             </div> 
             {{- partial "footer/index" . }}
@@ -167,6 +169,7 @@
         text-align: center;
         font-family: "Source Sans Pro", Helvetica, sans-serif;
         width: 100%;
+        word-break: break-word;
     }
 
 /* GERAL CSS */  
@@ -501,6 +504,24 @@
 
     #nomenewsl, #emailnewsl{
         background-color: aliceblue;
+    }
+
+    @media screen and (max-width: 1213px) and (min-width: 200px){
+        #intro h1{
+            font-size: 3rem;
+            line-height: 1;
+        }
+
+        #intro p {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-top: -0.25rem;
+            margin-bottom: 3.25rem;
+            text-align: center;
+            font-family: "Source Sans Pro", Helvetica, sans-serif;
+            width: 100%;
+            word-break: break-word;
+        }
     }
 
     @media screen and (max-width: 1280px) and (min-width: 1010px){

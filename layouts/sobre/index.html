@@ -3,7 +3,7 @@
 	<body lang='{{ .Site.LanguageCode | default "en-us" }}' class="is-preload">
 
         <!-- Wrapper -->
-        <div id="wrapper">
+        <div id="wrapper" class="fade-in">
 
             {{- partial "header" . -}}
             {{- partial "nav" . }}
@@ -11,14 +11,64 @@
             <!-- Main -->
             <div id="main">
                 <div id="sobre-container">
-                    <div id="apresentacao">
-                        <p>{{ .Title }}</p>
-                    </div>
-                            
+                    
+                    <h1 id="apresentacao">{{ .Title }}</h1>
+                           
                     <div id="caixaTexto">
-                        <p>{{ .Content }}</p>
-                        <p class="assinatura"> {{ .Params.Assinatura }} </p>
+                        <p class="firstLine">Para a minha cabeça, a verdade é simples:</p>
+                        <p class="lastLine">Eu demorei muito para me encontrar.</p>
+
+                        <p class="firstLine">Eu estava em um outro caminho,</p> 
+                        <p class="normalLine">No meio do limbo,</p>
+                        <p class="lastLine">Que era muito mais pra lá do que pra cá.</p>
+
+                        <p class="firstLine">Nessa época eu pensava, e me enganava, dizendo:</p>  
+                        <p class="normalLine">É muito mais fácil, seguir passo a passo, sem sequer desviar o olhar.</p>  
+                        <p class="normalLine">Se eu fizer tudo com perfeição, vou chegar no ápice da emoção;</p>  
+                        <p class="lastLine">E vou me garantir e me encaixar.</p>
+
+                        <p class="firstLine">O problema foi, como você supôs, que chegou o momento de me confrontar:  </p>
+                        <p class="normalLine specialLine">Quem eu sou?</p>
+                        <p class="normalLine specialLine">O que eu valorizo?</p>
+                        <p class="lastLine specialLine">E para qual lado eu realmente quero caminhar?</p>
+
+                        <p class="firstLine">Eu pensei, me questionei, e percebi que não tinha muita resposta para dar.</p>
+                        <p class="normalLine">E por isso eu travei, me isolei, adoeci e… enfim,</p>
+                        <p class="lastLine">Meu vício passou a ser o de me julgar e condenar.</p>
+                          
+                        <p class="firstLine">Eu não sei ao certo quanto tempo passou,</p>
+                        <p class="normalLine">E nem me lembro de tudo o que rolou,</p>
+                        <p class="lastLine">Mas eventualmente certas coisas começaram a me atrair para cá.</p>
+
+                        <p class="firstLine">Coisas como plantar.</p>
+                        <p class="normalLine">Como escrever.</p>
+                        <p class="lastLine">Como ler e desenhar.</p>
+
+                        <p class="firstLine">Ou como Neil Gaiman,</p>
+                        <p class="normalLine">Dr. Seuss,</p>
+                        <p class="lastLine">Um Pequeno Príncipe, e a ideia que levou Nora Seed a continuar.</p>
+
+                        <p class="firstLine">E então eu me redescobri,</p>
+                        <p class="normalLine">Com a ajuda daqueles que não me deixaram afundar.</p>
+                        <p class="normalLine"> Eu sou alguém simples,</p>
+                        <p class="lastLine">Que apenas aprecia e anseia pela dedicação genuína ao criar.</p>   
+
+                        <p class="firstLine specialLine">Esse é quem eu sou,</p>
+                        <p class="normalLine specialLine">Isso é o que eu valorizo,</p>
+                        <p class="lastLine specialLine">E é por esse caminho que eu quero caminhar.</p>
+
+                        <p class="firstLine">Fora isso, querido(a), só resta falar:</p>
+                        <p class="normalLine">Me chamo Thiago.</p>
+                        <p class="normalLine">O D vem de David.</p>
+                        <p class="normalLine">E a única coisa que fiz foi me graduar.</p>
+                        <p class="normalLine">Design Digital, turma 018.</p>
+                        <p class="normalLine">Só que por hora trabalho com algo que foge do meu caminhar…</p>
+                        <p class="normalLine">Não é que eu não tenha tentado.</p>
+                        <p class="normalLine">É mais como se não tivesse rolado…</p>
+                        <p class="lastLine">Espero que seja porque é aqui que eu deva estar.</p>    
                     </div>
+
+                    <p class="assinatura"> {{ .Params.Assinatura }} </p>
                 </div>
             </div>
             {{- partial "copyright" . }}
@@ -32,17 +82,45 @@
 
 <style>
 
+    .firstLine{
+        font-variant: small-caps;
+        letter-spacing: 0.75px;
+        font-size: 1.12rem;
+        margin-bottom: 0px;
+    }
+
+    .normalLine{
+        margin-top: 0px;
+        margin-bottom: 0px;
+        margin-left: 10px;
+    }
+
+    .lastLine{
+        margin-bottom: 1.5rem;
+        margin-left: 10px;
+    }
+
+    .specialLine{
+        font-style: italic;
+    }
+
     #apresentacao{
-        font-weight: bold;
-        font-size: 2rem;
+        font-size: 2.7rem;
+        color: #212931;
+        font-family: "Source Sans Pro", Helvetica, sans-serif;
+        letter-spacing: 0.075em;
+        text-transform: uppercase;
+        margin-bottom: 0;
+        /* display: flex;
+        justify-content: center; */
     }
 
     #caixaTexto{
         font-size: 1.1rem;
-        font-weight: 500;
         line-height: 1.8;
         word-break: break-word;
         text-align: left;
+        margin: 35px 20px 0 20px;
     }
 
     .assinatura{
@@ -53,6 +131,14 @@
     @media screen and (max-width: 736px){
         #sobre-container{
             padding: 3rem 2rem 3rem 2rem;
+        }
+        #apresentacao{
+            font-size: 2.2rem;
+            display: flex;
+            justify-content: center;
+        }
+        #caixaTexto{
+            margin: 35px 0px 0px 0px;
         }
     }
 

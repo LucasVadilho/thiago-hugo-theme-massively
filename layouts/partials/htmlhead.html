@@ -29,7 +29,7 @@
 	body {
 		font-family: Helvetica;
 		word-spacing: normal;
-		word-break: break-all;
+		hyphens: auto;
         overflow-anchor: none;
         text-rendering: optimizeLegibility;
         image-rendering: crisp-edges;
@@ -52,7 +52,32 @@
         -moz-hyphens: auto;
         text-rendering: optimizeLegibility;
     }
+
+    .actions2{
+        list-style: none;
+        padding: 0;
+    }
 	
+    #wrapper.fade-in:before {
+        pointer-events: none;
+        -moz-transition: opacity 1s ease-in-out;
+        -webkit-transition: opacity 1s ease-in-out;
+        -ms-transition: opacity 1s ease-in-out;
+        transition: opacity 1s ease-in-out;
+        -moz-transition-delay: 0.25s;
+        -webkit-transition-delay: 0.25s;
+        -ms-transition-delay: 0.25s;
+        transition-delay: 0.25s;
+        background: #1e252d;
+        content: '';
+        display: block;
+        height: 100%;
+        left: 0;
+        opacity: 0;
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
 	/*Estilizacao scrollbar*/
     ::-webkit-scrollbar {
         width: 5px;              /* width of the entire scrollbar */

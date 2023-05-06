@@ -10,7 +10,7 @@
         <li class="{{ if eq ($currentPage.RelPermalink) (`/sobre/`) }}active{{end}}"><a href='{{ "/sobre" | relLangURL }}'>Sobre</a></li>
 
         {{ with $data.contactinfo }}
-            <li><a href='{{ "#footer" | relLangURL }}'>{{ i18n "NAV_CONTACT" . }}</a></li>
+            <li><a href='{{ "#contatofocus" | relLangURL }}'>{{ i18n "NAV_CONTACT" . }}</a></li>
         {{ end }}
         {{ if .IsTranslated }}
         {{ range .AllTranslations }}
