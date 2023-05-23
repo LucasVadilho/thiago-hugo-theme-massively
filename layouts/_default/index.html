@@ -8,12 +8,13 @@
 
             {{- partial "header" . -}}
             {{- partial "nav" . }}
-            <div id="blackout2"></div>
+            
             <!-- Main --> 
             <div id="main">
-                <div id="blackout"></div> 
+                
                 <div id="lancamento" 
                      displaylancamento="{{ .Params.Displaylancamento }}"
+                     style="display: none;"
                 >
                         <img src="{{ .Params.Lancamentoimagem1 }}" class="imglancamento1">
                         <img src="{{ .Params.Lancamentoimagem2 }}" class="imglancamento2">
@@ -25,23 +26,23 @@
                     <h1 class="titulo">NOVIDADES</h1>
                     <div id="ultimanovidade">
 
-                        <a href="www.youtube.com" class="novi">
+                        <a href="/historietas/post1/" class="novi"> <!-- !MUDAR SEMPRE -->
                             <div class="novidadeDestaque">
                                 <header class="novidadeHeader">
-                                        <h2>O caso do papagaio</h2>  
+                                        <h2>Um motim no bote pirata</h2>  
                                         <h3> Historieta #1 </h3> 
                                 </header>
 
                                 <div class="imgNovidadeFit"><img src="{{ .Params.imgUltNovidade}}"/></div >
 
                                 <p class="iconClass">
-                                    <span class="icon alt fa-calendar-o"> 31 de Mar de 2023</span> 
-                                    <span class="icon alt fa-clock-o"> 4 minutos </span>
+                                    <span class="icon alt fa-calendar-o"> 3 de Mai de 2023</span> 
+                                    <span class="icon alt fa-clock-o"> 6 minutos </span>
                                 </p>
                     
-                                <p>— Hmm… desculpa — disse o rapaz —, mas todo esse discurso de eu ser obrigado a ir 
-                                para a prancha não me convenceu. Na verdade, não estou nem convencido de que 
-                                vocês são realmente piratas...</p>
+                                <p>— Jack! — brandou o homem aos sete ventos. Ele estava envergonhado, 
+                                    amarrado ao mastro do próprio bote pirata. — Jack, é isso mesmo que eu estou 
+                                    pensando?!...</p>
                             </div>
                         </a>
 
@@ -49,48 +50,48 @@
 
                     <div id = "demaisNovidades">
                         <section class="dnovi">
-                            <a href="" class="novi">
+                            <a href="/portfolio?id=CapaPequenoPrincipe" class="novi"> <!-- MUDAR SEMPRE -->
                                 <div id="demais1">
                                     <article>
                                         <header>
-                                            <h2 class="demaisNoviTutle">Titulo</h2>
-                                            <h3 class="demaisNoviSubT"> Subtitulo </h3> 
+                                            <h2 class="demaisNoviTutle">Atualização Portfólio</h2>
+                                            <h3 class="demaisNoviSubT"> Capa de Livro </h3> 
                                         </header>
                                     
                                         <div class="imageDemaisFit"><img src="{{ .Params.imgDemNovidade1}}"></div>
                                         
                                         <p class="iconClass">
-                                            <span class="icon alt fa-calendar-o"> 31 de Mar de 2023 </span> 
+                                            <span class="icon alt fa-calendar-o"> 23 de Mai de 2023 </span> 
                                             <span class="icon alt fa-clock-o"> 4 minutos </span>
                                         </p>
 
-                                        <p class="demaisDescri">— Hmm… desculpa — disse o rapaz —, mas todo esse discurso de eu ser obrigado a ir 
-                                            para a prancha não me convenceu. Na verdade, não estou nem convencido de que 
-                                            vocês são realmente piratas...</p>            
+                                        <p class="demaisDescri"> Criação da capa do livro <em>O Pequeno Príncipe</em>, de Antoine de Saint-Exupéry. <em>Projeto fictício, 
+                                            desenvolvido para treino</em>.
+                                        </p>            
                                     </article>
                                 </div>
                             </a>
                         </section>
 
                         <section class="dnovi">
-                            <a href="" class="novi">
+                                <a href="/portfolio?id=imiFlores" class="novi"></a> <!-- MUDAR SEMPRE -->
                                 <div id="demais2" >
                                     <article>
                                         <header>
-                                            <h2 class="demaisNoviTutle">Titulo</h2>
-                                            <h3 class="demaisNoviSubT"> Subtitulo </h3> 
+                                            <h2 class="demaisNoviTutle">Atualização Portfólio</h2>
+                                            <h3 class="demaisNoviSubT"> Ilustração </h3> 
                                         </header>
                                     
                                         <div class="imageDemaisFit"><img src="{{ .Params.imgDemNovidade2}}"></div>
                                         
                                         <p class="iconClass">
-                                            <span class="icon alt fa-calendar-o"> 32 de Mar de 2023 </span> 
-                                            <span class="icon alt fa-clock-o"> 4 minutos </span>
+                                            <span class="icon alt fa-calendar-o"> 23 de Mai de 2023 </span> 
+                                            <span class="icon alt fa-clock-o"> 3 minutos </span>
                                         </p>
 
-                                        <p class="demaisDescri">— Hmm… desculpa — disse o rapaz —, mas todo esse discurso de eu ser obrigado a ir 
-                                            para a prancha não me convenceu. Na verdade, não estou nem convencido de que 
-                                            vocês são realmente piratas...</p>    
+                                        <p class="demaisDescri"> Ilustração da personagem Imi em meio a um campo de flores. A personagem 
+                                            foi criada por mim para o meu projeto de conclusão de curso.
+                                        </p>            
                                     </article>
                                 </div>
                             </a>
@@ -99,10 +100,10 @@
 
                 </div>
                 
-                <div class="title-newsletter">
+                <div class="title-newsletter" id="newsletterFocus">
                     <form id="newsletterForm" method="post">
                         <h1 class="titulo2"> NEWSLETTER </h1>
-                        <p class="chamada">Se inscreva na newsletter para ficar por dentro das novidades da Toca</p>
+                        <p class="chamada">Se inscreva na newsletter para ficar por dentro das novidades do site</p>
                         <div id="newsLetterFormOrgnaizer">
                             <div id="nomeOrganizer">
                                 <div class="fields">
@@ -125,12 +126,9 @@
                         <p class="aviso">Não se preocupe, sua privacidade será respeitada e a qualquer momento você poderá cancelar a inscrição</p>
                     </form>
                 </div>
-                <a id="contatofocus"> 
-                    <div class="title-contato">
-                        <h1 class="tituloc">CONTATO</h1>
-                    </div>
-                </a>
-                
+                <div id="contatar" class="contato">
+                    <h1 class="tituloc">CONTATO</h1>
+                </div>
             </div> 
             {{- partial "footer/index" . }}
             
@@ -375,7 +373,6 @@
         -webkit-filter: blur(0);
         transition: transform .2s; 
         width: 43%;
-        /* padding: 0rem 2rem 0rem 2rem; */
     }
 
     #demais1:hover,#demais2:hover{
@@ -487,7 +484,7 @@
 
     #li_btn_inscrever {
         padding: 0 !important;
-        margin-top: 27.5px;
+        margin-top: 28px;
     }
 
     #btn_inscrever{
@@ -680,9 +677,12 @@
     }
 
 /* CONTATO */
-    .title-contato{
-        background-color: #f5f5f5;
+    .contatar{
         padding-bottom: 0px;
+    }
+
+    #contatar{
+        background-color: #f5f5f5;
     }
 
     #footer section{
@@ -695,43 +695,6 @@
     }
 
 /* SNACKBAR CSS */
-    #blackout{
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        background-color: rgba(0, 0, 0, 0.534);
-        display: none;
-        z-index: 3;
-        pointer-events: none;
-    }
-
-    #blackout2{
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        background-color: rgba(0, 0, 0, 0.534);
-        display: none;
-        z-index: 2;
-        pointer-events: none;
-    }
-
-    #blackout3{
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        background-color: rgba(0, 0, 0, 0.534);
-        display: none;
-        z-index: 1;
-        pointer-events: none;
-    }
-
-
     #Snackbar {
         visibility: hidden;
         text-align: left;
@@ -811,7 +774,6 @@
         from {bottom: 0; opacity: 0;}
         to {bottom: 30px; opacity: 1;}
     }
-
 
 /* FEEDBACK BOTAO CARREGANDO */
     .borderAnim {
@@ -990,58 +952,23 @@ var form = document.getElementById("Snackbar");
       resetContatoForm.reset()
     }
 
-/* CONFERE LANÇAMENTO */
-
-    let confereLancamento = function (){
-        let lancamento = document.getElementById('lancamento')
-        let displaylancamento = lancamento.getAttribute('displaylancamento')
-
-        if (displaylancamento == "nao"){
-            lancamento.classList.add('noDisplay')
-        }else{
-            lancamento.classList.remove('noDisplay')
-        }
-    }
-
-    document.addEventListener("DOMContentLoaded", (event) => { 
-        confereLancamento();
-    });
-
 /* SNACKBAR FAQ */
     let snackbarFAQ = document.getElementById("SnackbarFAQ")
-    let dark = document.getElementById('blackout')
-    let dark2 = document.getElementById('blackout2')
-    let dark3 = document.getElementById('blackout3')
-    
+
     let openFAQ=function(e){  
         e.stopPropagation()
         snackbarFAQ.style.display = "block"
-        
-        dark.style.display= "block"
-        dark2.style.display= "block"
-        dark3.style.display= "block"
 
-        var goToTop = document.getElementById("goToTop")
-        goToTop.style.display = "none"
-
-        window.addEventListener('click', function(b){
-            if (document.getElementById('SnackbarFAQ').contains(b.target)){
+        window.addEventListener('click', function(v){
+            if (document.getElementById('SnackbarFAQ').contains(v.target)){
             } else{
                 snackbarFAQ.style.display = "none"  
-                dark.style.display= "none"
-                dark2.style.display= "none"
-                dark3.style.display= "none"
-                goToTop.style.display = "block"
             }
         }, options = {"once": true})
     }
     
     let closeSnackbarFAQ = function(){
         snackbarFAQ.style.display = "none"
-        dark.style.display= "none"
-        dark2.style.display= "none" 
-        dark3.style.display= "none" 
-        goToTop.style.display = "block"
     }
     
 </script>

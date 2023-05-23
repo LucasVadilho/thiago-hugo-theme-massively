@@ -14,17 +14,18 @@
 
                 {{ .Content }}
                 
+                © TD VADILHO
                 <div id="historieta-encerramento">
                     <div id="explicacoes">
                         <p id="introHistorietas">Todo o conteúdo do Historietas é disponibilizado gratuitamente pelo autor Thiago David Vadilho (TD Vadilho). 
-                            Caso queira apoiar o projeto, em primeiro lugar, meu muito obrigado, em segundo lugar, por favor, 
+                            Caso queira apoiar o projeto, em primeiro lugar, meu muito obrigado, e em segundo lugar, por favor, 
                             acesse uma das seguintes opções:</p>
                         <form action="">
                             <button type="submit" href="">Pix</button>
                             <button type="submit" href="">Apoia-se</button>
-                            <button type="submit" href="">Loja</button>
+                            <!-- <button type="submit" href="">Loja</button> -->
                         </form>
-                        <p class="atencaoHistorietas">*Atenção: você pode compartilhar e até mesmo imprimir o conteúdo desta Historieta. Porém, a utilização do conteúdo desta Historieta para ganhos monetários
+                        <p class="atencaoHistorietas">*Atenção: você pode compartilhar e até mesmo imprimir o conteúdo desta Historieta. Entretanto, a utilização do conteúdo desta Historieta para ganhos monetários
                             é <u>estritamente proibida</u> sem a prévia liberação do autor Thiago David Vadilho (TD Vadilho). O mesmo vale para todas as Historietas postadas neste site. Caso necessário, entre em contato.</p>
                     </div>
                 </div>
@@ -83,19 +84,11 @@
         display: grid;
     }
 
-    a{
-        border: none;
-        font-size: 0.9rem;
-        display: grid;
-        justify-content: center;
-        color: rgb(122, 122, 122);
-    }
-
     #historieta-encerramento{
-        margin-top: 20px;
-        border-top: 20px;
-        padding-top: 20px;
-        border-top: 2px solid #eeeeee ;
+        margin-top: 25px;
+        padding-top: 25px;
+        border-top: 2px solid #b6b6b6;
+        border-width: thin;
     }
 
     form{
@@ -127,5 +120,6 @@
 </style>
 
 <script>
-
+    let activeMenu = document.querySelector("#nav > ul > li:nth-child(2)")
+    activeMenu.innerHTML = '<li class="active"> <a href="/historietas">Historietas</a></li>'
 </script>

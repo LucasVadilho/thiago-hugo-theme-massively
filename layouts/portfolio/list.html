@@ -1,4 +1,4 @@
-{{ partial "htmlhead" . }}
+{{- partial "htmlhead" . -}}
 
 <body lang='{{ .Site.LanguageCode | default "en-us" }}' class="is-preload">
     
@@ -447,8 +447,13 @@
 <script type="text/javascript">
 
     window.addEventListener('load', ()=> {
-        document.getElementById('conteudo').style.visibility = "visible"
-    })
+        document.getElementById('conteudo').style.visibility = "visible";
+
+        const id = new URLSearchParams(window.location.search).get('id');
+        if(id) {
+            abrirproj('', id);
+        }
+    });
 
     let navPanelToggle = document.getElementById("navPanelToggle")
     let flagProjAberto = false
@@ -503,11 +508,11 @@
     }
 
     let abrirproj = function (e, id){
-        e.stopPropagation()
-        flagProjAberto = true
-        checkFlag()
-        createSnackbar(id)  
-        mouseoverCloseSetup()
+        if (e) e.stopPropagation();
+        flagProjAberto = true;
+        checkFlag();
+        createSnackbar(id);
+        mouseoverCloseSetup();
     }
 
     document.addEventListener('keydown', (ev) => {

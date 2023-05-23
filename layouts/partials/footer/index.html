@@ -1,9 +1,9 @@
 <!-- Footer -->
 {{ $data := index .Site.Data .Site.Language.Lang }}
+
 <footer id="footer">
     {{ with $data.contactinfo.contactformaction }}
     <section>
-        <div id="blackout3"></div>  
         <form id="contato" method="post">
             <div class="fields">
             <div class="field">
@@ -73,6 +73,7 @@
     a{
         border: none;
     }
+    
     #li_btn_contato {
         padding: 0;
     }
@@ -93,28 +94,50 @@
 
     #SnackbarFAQ {
         display: none;
-        padding: 12px;
+        text-align: left;
+        padding: 5px;
+        padding-left: 12px;
+        padding-right: 12px;
         border-radius: 2px;
         position: fixed;
-        /* top: 300px; */
         bottom: 30px;
         background-color: rgb(255, 255, 255);
+        box-shadow: 0 100vw 100vw 100vw rgba(30, 37, 45, 0.623);
+        color: #212931;
         transform: translate(-50%,0);
         left: 50%;
-        z-index: 8;
-        overflow: auto;
-        width: 90%;
-        
+        z-index: 7;
+        -webkit-animation: fadein 0.5s;
+        animation: fadein 0.5s;
     }
 
     #SnackbarFAQ p{
-        font-size: 14px;
-        margin: 0;
+        color: #101020;
+        font-weight: 500;
+        font-size: 15px;
+        font-family: helvetica;
+        line-height: normal;
+        margin-bottom: 18px;
     }
 
     #close:hover{
         cursor: pointer;
     }
+
+    #close{
+        padding-top: 10px;
+        background-color: transparent;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 0;
+        color: #656565;
+        border: none;
+        font-family: helvetica;
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 10px;
+    }
+    
 
 /* REGRAS DE MEDIA */
     
