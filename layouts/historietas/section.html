@@ -1,42 +1,40 @@
 {{- partial "htmlhead" . -}}
 
 {{ $postsPerPage := 4}}
-
 {{ $posts := .Pages }}
 {{ $lastPost := last 1 $posts }}
-
 {{ $postsPaging := .Paginate (last (sub (len .Pages) 1) .Pages.ByDate.Reverse) $postsPerPage }}
 
 
-    <body lang='{{ .Site.LanguageCode | default "en-us" }}' class="is-preload">
-        <div id="wrapper" class="fade-in">
-            {{- partial "header" . -}}
-            {{- partial "nav" . -}}
+<body lang='{{ .Site.LanguageCode | default "en-us" }}' class="is-preload">
+    <div id="wrapper" class="fade-in">
+        {{- partial "header" . -}}
+        {{- partial "nav" . -}}
 
-            <!-- Main -->
-            <div id="main">
-                {{ if eq .Paginator.PageNumber 1 }}
-                    {{- partial "posts/featured.html" (dict "lastpost" $lastPost "siteData" (index .Site.Data .Site.Language.Lang)) }}
-                {{ end}}
+        <!-- Main -->
+        <div id="main">
+            {{ if eq .Paginator.PageNumber 1 }}
+                {{- partial "posts/featured.html" (dict "lastpost" $lastPost "siteData" (index .Site.Data .Site.Language.Lang)) }}
+            {{ end}}
 
-                {{ if gt (len $posts) 1 }}
-                    {{ partial "posts/list.html" (dict "posts" $postsPaging "siteData" (index .Site.Data .Site.Language.Lang)) }}
-                {{ end }}
-                
-                {{- $paginator := .Paginator }}
-                {{- $outer := . }}
-                {{- partial "posts/pagination.html" (dict "paginator" $paginator "outer" $outer)}}
-            </div>
-
-            {{- partial "copyright" . }}
-
-            <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
+            {{ if gt (len $posts) 1 }}
+                {{ partial "posts/list.html" (dict "posts" $postsPaging "siteData" (index .Site.Data .Site.Language.Lang)) }}
+            {{ end }}
+            
+            {{- $paginator := .Paginator }}
+            {{- $outer := . }}
+            {{- partial "posts/pagination.html" (dict "paginator" $paginator "outer" $outer)}}
         </div>
 
-        {{- template "_internal/google_analytics.html" . }}
-        {{- partial "scripts/index" . }}
-    </body>
-</html>
+        {{- partial "copyright" . }}
+
+        <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
+    </div>
+
+    {{- template "_internal/google_analytics.html" . }}
+    {{- partial "scripts/index" . }}
+</body>
+
 
 <style>
     /* RETIRAR DEPOIS DA SEGUNDA HISTORIETA */
@@ -51,6 +49,20 @@
         word-break: break-word;
         text-rendering: optimizeLegibility;
         margin-bottom: 0.5rem;
+    }
+
+    @media screen and (max-width: 767px){
+        #main > .post {
+            padding: 4rem 3rem 1rem 3rem;
+        }
+        
+        #main > .post header.major h2 {
+            font-size: 2.5rem;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+        }
     }
 </style>
 
