@@ -140,6 +140,7 @@
 
             {{- partial "copyright" . }}
             <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
+            
         </div>
   
         {{- template "_internal/google_analytics.html" . }}
@@ -147,6 +148,8 @@
         
     </body>
 
+    {{- partial "temporario" . }}
+    
 <style>
 /* INTRO */
     #intro {

@@ -6,8 +6,6 @@
         {{ partial "header" . }}
         {{ partial "nav" . }}
         
-        <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
-        
         <div id="main">
             <div id="conteudo" style="visibility: hidden;">
 
@@ -55,12 +53,17 @@
                 </div>  
             </div>
         </div>
-        {{- partial "copyright" . }}  
+        {{- partial "copyright" . }} 
+        <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
     </div>
+    
     {{- template "_internal/google_analytics.html" . }}
     {{- partial "scripts/index" . }}
     
 </body>
+
+{{- partial "temporario" . }}
+
 
 <style>
     a{
