@@ -16,7 +16,7 @@
 		<link rel="stylesheet" href="{{ ($style).RelPermalink }}">
 		{{ else }}
 		{{ $style := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "main.scss" . | toCSS (dict "targetPath" "assets/css/main.css" "enableSourceMap" false) }}
-		<link rel="stylesheet" href="{{ ($style | minify).RelPermalink }}">
+		<link rel="stylesheet" href="{{ ($style | minify).RelPermalink }}"/>
 		{{ end }}
 
         <link rel="icon" href='{{ absURL "/images/favicon.png" }}'>
