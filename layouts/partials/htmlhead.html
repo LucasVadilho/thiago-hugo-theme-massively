@@ -19,7 +19,8 @@
 		<link rel="stylesheet" href="{{ ($style | minify).RelPermalink }}">
 		{{ end }}
 
-        <link rel="icon" type="image/x-icon" href='{{ absURL "/images/favicon.png" }}'>
+        <link rel="icon" href='{{ absURL "/images/favicon.png" }}'>
+                <!--  <link rel="icon" type="image/x-icon" href='{{ absURL "/images/favicon.png" }}'> -->
                 <!-- 	{{ with .Site.Params.favicon }}
                 <link rel="shortcut icon" href="{{ . }}">
                 {{ end }} -->
