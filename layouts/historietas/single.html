@@ -637,7 +637,7 @@
 
         /* Reddit */
         document.getElementById('reddit_sharebutton').innerHTML += 
-            `<a onclick='redditSharing("https://www.reddit.com/submit?title=Historieta%20-%20TDVadilho&text=Que%20tal%20ler%20uma%20historieta%20hoje?%20[Um motim no bote pirata](` + urlCurrentPage + `)%0a%0a&signup_survey=true")'>
+            `<a onclick='redditSharing("https://www.reddit.com/submit?title=Historieta%20-%20TDVadilho&text=Que%20tal%20ler%20uma%20historieta%20hoje?%20[{{ .Params.title }}](` + urlCurrentPage + `)%0a%0a&signup_survey=true")'>
                 <div class="logoRedeContainerReddit">
                     <i class="icon alt fa-reddit-alien fa-lg"></i>
                 </div>
@@ -645,7 +645,7 @@
             </a>`
             
         /* Pinterest */
-        document.getElementById('pinterest_sharebutton').innerHTML += `<a onclick='pinterestSharing("http://pinterest.com/pin-builder/?description={{ .Params.description }}&h=329&media={{ .Params.imageCompartilhar }}&method=bookmarklet&url=${urlCurrentPage}&w=530")'>
+        document.getElementById('pinterest_sharebutton').innerHTML += `<a onclick='pinterestSharing("http://pinterest.com/pin-builder/?description={{ .Params.description }}&h=329&media={{ relURL .Params.imageCompartilhar }}&method=bookmarklet&url=${urlCurrentPage}&w=530")'>
                 <div class="logoRedeContainerPinterest">
                     <i class="icon alt fa-pinterest fa-lg"></i>
                 </div>
