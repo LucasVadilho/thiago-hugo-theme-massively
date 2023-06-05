@@ -1,6 +1,5 @@
 {{- partial "htmlhead" . -}}
 
-
 <body lang='{{ .Site.LanguageCode | default "en-us" }}' class="is-preload">
     <!-- Wrapper -->
     <div id="wrapper">
@@ -8,67 +7,145 @@
         {{- partial "nav" . }}
 
         <div id="main">
-            <div id="historietas_container">
-                <h1> {{ .Title }} </h1>
-                <h3> {{ .Params.Historietanumero }} </h3>
+            <table>
+                <thead>
+                    <tr>
+                      <th>Fonte: www.tdvadilho.com</th>
+                    </tr>
+                </thead>
 
-                {{ .Content }}
-                
-                <p class="referenciar">
-                    Autor e ilustrador: Thiago David Vadilho (TD Vadilho)
-                    <br>
-                    Disponibilizado gratuitamente em: www.tdvadilho.com
-                    <br>
-                    Por favor, certifique-se de ler o item "Atenção" no rodapé
-                </p>
-                
-                <div id="historieta-encerramento">
-                    <div id="explicacoes">
-                        <p id="introHistorietas">Todo o conteúdo da página Historietas é disponibilizado gratuitamente pelo autor. 
-                            Caso queira apoiar esse projeto, em primeiro lugar, meu muito obrigado, e em segundo lugar, por favor, 
-                            leia o QR Code ou clique no quadro abaixo:</p>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div id="historietas_container">
+                        
+                                <h1> {{ .Title }} </h1>
+                                <h3> {{ .Params.Historietanumero }} </h3>
 
-                            <a href="https://nubank.com.br/pagar/11jeh7/8ABRsdHuzw" class="suporteqrcode-container">
-                                <div id="suporteqrcode">
-                                    <img src="/images/qrcodepix.png" class="qrcode">
-                                    <div id="qrcodetexto">
-                                        <p class="qrcodetitulo">Pix Thiago David Vadilho</p>
+                                {{ .Content }}
+                                
+                                <p class="referenciar">
+                                    Autor e ilustrador: Thiago David Vadilho (TD Vadilho)
+                                    <br>
+                                    *Jamais venda ou monetize este conteúdo sem a autorização do autor. Caso necessário, entre em <a  href='{{ "#contatar" | relLangURL }}' class="atencaoHistorietas"><u>contato</u></a>.
+                                </p>
+
+                                <div id="compartilharHistBotoesContainer">
+                                    <button type="submit" id="btn_compartilharHistorieta" onclick="abrirCompartilhar(event)">
+                                        <i class="fa fa-share-alt fa-lg"></i> Compartilhar
+                                    </button>
+
+                                    <button type="submit" id="btn_imprimirHistorieta" onclick="imprimirHistorieta()">
+                                        <i class="fa fa-print fa-lg"></i> Imprimir
+                                    </button>
+                                </div>
+
+                                <div id="historieta-encerramento">
+                                    <div id="explicacoes">
+                                        <p id="introHistorietas">Todo o conteúdo da página Historietas é disponibilizado gratuitamente pelo autor. Caso queira apoiar esse projeto, em primeiro lugar, meu muito obrigado, e em segundo lugar, por favor, leia o QR Code ou clique no quadro abaixo:</p>
+                                        <p id="introHistorietasImprimir">Todo o conteúdo da página Historietas é disponibilizado gratuitamente pelo autor. Caso queira apoiar esse projeto, em primeiro lugar, meu muito obrigado, e em segundo lugar, por favor, leia o QR Code abaixo:</p>
+                                            <a href="https://nubank.com.br/pagar/11jeh7/8ABRsdHuzw" class="suporteqrcode-container">
+                                                <div id="suporteqrcode">
+                                                    <img src="/images/qrcodepix.png" class="qrcode">
+                                                    <div id="qrcodetexto">
+                                                        <p class="qrcodetitulo">Pix Thiago David Vadilho</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+
+                                            <!-- <button type="submit" href="">Apoia-se</button> -->
+                                            <!-- <button type="submit" href="">Loja</button> -->
                                     </div>
                                 </div>
-                            </a>
-
-                            <!-- <button type="submit" href="">Apoia-se</button> -->
-                            <!-- <button type="submit" href="">Loja</button> -->
-
-                        <p class="atencaoHistorietas">*Atenção: você pode compartilhar e até mesmo imprimir o conteúdo desta Historieta. 
-                            <u>Entretanto</u>, declara-se que a utilização de qualquer parte do conteúdo desta Historieta para fins lucrativos
-                            é <u>estritamente proibida</u> sem a prévia liberação do autor Thiago David Vadilho (TD Vadilho). 
-                            O mesmo vale para todas as Historietas postadas neste site. Caso necessário, por favor, entre em <a  href='{{ "#contatar" | relLangURL }}' class="atencaoHistorietas"><u>contato</u></a>.</p>
-                    </div>
-                </div>
-            </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-            
+
         {{- partial "copyright" . }}
         <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
-        
+       
+        <!-- BOTÕES COMPARTILHAR -->
+        <div id="compartilharHistContainer">
+            <div id='buttonCloseCompartilhar'>
+                <span class='fa fa-times' aria-hidden='true' onclick="closeCompartilhar()"></span>
+            </div>
+
+            <!-- Copy Link -->
+            <div id="urlCopiarNotification">
+            </div>
+
+            <div id="copyUrl_sharebutton">
+            </div>
+            
+            <!-- WPP -->
+            <div id="wpp_sharebutton"> 
+            </div>
+
+            <!-- Twitter -->
+            <div id="twitter_sharebutton">
+            </div>
+
+            <!-- Facebook -->
+            <div id="facebook_sharebutton">
+            </div>
+
+            <!-- Reddit -->
+            <div id="reddit_sharebutton">
+            </div>
+
+            <!-- Pinterest -->
+            <div id="pinterest_sharebutton">
+            </div>
+
+        </div>
     </div>
 
     {{- template "_internal/google_analytics.html" . }}
     {{- partial "scripts/index" . }}
-    
+
 </body>
 
 {{- partial "temporario" . }}
 
 <style>
-    #main > * {
+    #main{
         border: none;
         padding: 4rem 5rem 3rem 5rem;
     }
 
+    table td{
+        padding: 0;
+    }
+
+    table thead{
+        border: none;
+    }
+
+    thead{
+        display: none;
+    }
+
+    table tbody tr:nth-child(2n + 1) {
+        background-color: rgba(255, 255, 255, 0);
+    }
+
+    table tbody tr {
+        border: none;
+    }
+
+    #introHistorietasImprimir{
+        display: none;
+    }
+
     a{
         border: none;
+    }
+
+    a:hover{
+        cursor: pointer;
     }
 
     h1{
@@ -161,10 +238,6 @@
         text-align: center;
     }
 
-    .atencaoHistorietas{
-        margin-top: 25px;
-    }
-
     form{
         margin-top: 2px;
         margin-bottom: 15px; 
@@ -193,16 +266,445 @@
         font-size: 0.9rem;
         line-height: 1.6;
         color: rgb(122, 122, 122);
+        margin-top: 25px;
     }
 
+    /* Botões compartilhamento */
+    #compartilharHistBotoesContainer{
+        text-align: left;
+        margin-top: 20px;
+    }
+
+    #compartilharHistContainer{
+        position: fixed;
+        display: none;
+        flex-direction: row;
+        flex-wrap: wrap;
+        background-color: rgb(255, 255, 255);
+        box-shadow: 0 100vw 100vw 100vw rgba(30, 37, 45, 0.623);
+        z-index: 25;
+        -webkit-animation: fadein 0.5s;
+        animation: fadein 0.5s;
+        bottom: 10px;
+        padding: 32px 10px 10px 10px;
+        max-width: 520px;
+        justify-content: space-evenly;
+        transform: translate(-50%, -50%);
+        left: 50%;
+    }
+
+    .icon{
+        vertical-align: 1px;
+    }
+
+    #buttonCloseCompartilhar:hover{
+        color: #00aced;
+        cursor: pointer;
+    }
+
+    #buttonCloseCompartilhar{
+        background-color: transparent;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 0;
+        color: #656565;
+        border: none;
+        font-family: helvetica;
+        display: flex;
+        justify-content: flex-end;
+        position: absolute;
+        right: 17px;
+        top: 7px;
+    }
+
+    .logoRedeContainerWpp{
+        float: left;
+        color: white;
+        width: 26px;
+        height: 26px;
+        background-color: #075E54;
+        text-align: center;
+    }
+
+    .nomeRedeContainerWpp{
+        width: 130px;
+        float: right;
+        background-color: #128C7E;
+        color: white;
+        font-family: inherit;
+        height: 26px;
+        letter-spacing: 1px;
+        font-size: small;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .logoRedeContainerTwitter{
+        float: left;
+        color: white;
+        width: 26px;
+        height: 26px;
+        background-color: #0084b4;
+        text-align: center;
+    }
+
+    .nomeRedeContainerTwitter{
+        width: 130px;
+        float: right;
+        background-color:#00aced;
+        color: white;
+        font-family: inherit;
+        height: 26px;
+        letter-spacing: 1px;
+        font-size: small;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .logoRedeContainerFacebook{
+        float: left;
+        color: white;
+        width: 26px;
+        height: 26px;
+        background-color: #3b5998;
+        text-align: center;
+    }
+
+    .nomeRedeContainerFacebook{
+        width: 130px;
+        float: right;
+        background-color:#8b9dc3;
+        color: white;
+        font-family: inherit;
+        height: 26px;
+        letter-spacing: 1px;
+        font-size: small;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .logoRedeContainerReddit{
+        float: left;
+        color: white;
+        width: 26px;
+        height: 26px;
+        background-color: #b64e28;
+        text-align: center;
+    }
+
+    .nomeRedeContainerReddit{
+        width: 130px;
+        float: right;
+        background-color:#FF4500;
+        color: white;
+        font-family: inherit;
+        height: 26px;
+        letter-spacing: 1px;
+        font-size: small;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .logoRedeContainerPinterest{
+        float: left;
+        color: white;
+        width: 26px;
+        height: 26px;
+        background-color: #BD081C;
+        text-align: center;
+    }
+
+    .nomeRedeContainerPinterest{
+        width: 130px;
+        float: right;
+        background-color:#c03041;
+        color: white;
+        font-family: inherit;
+        height: 26px;
+        letter-spacing: 1px;
+        font-size: small;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    
+    .iconeContainerCopyUrl{
+        float: left;
+        color: white;
+        width: 26px;
+        height: 26px;
+        background-color: #56707D;
+        text-align: center;
+    }
+
+    .nomeContainerCopyUrl{
+        width: 130px;
+        float: right;
+        background-color:#607D8B;
+        color: white;
+        font-family: inherit;
+        height: 26px;
+        letter-spacing: 1px;
+        font-size: small;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+
+    #urlCopiarNotification{
+        display: none;
+        position: fixed;
+        top: 40px;
+        transform: translateY(-100%) translateX(-50%);
+        left: 50%;
+        padding: 9px 20px;
+        background: #343a40;
+        color: #eeeeee;
+        border-radius: 5px;
+        font-family: "Source Sans Pro", Helvetica, sans-serif;
+        font-size: 0.8rem;
+        font-weight: 900;
+        letter-spacing: 0.075em;
+        box-shadow: 0 0 14px rgba(0, 0, 0, 0.05); 
+    }
+
+
+    /* Regras de media */
+    /* screen */
     @media screen and (max-width: 736px){
-        #main > * {
+        #main {
             padding: 2rem 1.8rem 2rem 1.8rem;
+        }
+        #compartilharHistContainer{
+            width: 352px;
+        }
+        #compartilharHistBotoesContainer{
+            text-align: center;
+        }
+    }
+
+    @media screen and (max-width: 1036px) and (min-width:737px){
+        #compartilharHistContainer{
+            max-width: 352px;
+        }
+    }
+
+    /* print */
+    @page{
+        size: a4;
+        orphans: 2;
+        widows: 2;
+        page-break-after: always;
+        margin-top: 80px;
+        margin-bottom: 60px;
+    }
+
+    @media print {
+        p {
+            font-family:georgia, times, serif;
+            font-size: 13px;
+        }
+        #header, #copyright, #navPanelToggle, #nav, #btn_imprimirHistorieta, #btn_compartilharHistorieta, .bg{
+            display: none;
+        }
+        #main, #historietas_container{
+            padding: 0px;
+        }
+
+        body{
+            background-image: none;
+            background-color: #ffffff00;
+        }
+        
+        h1{
+            font-size: 2.5rem;
+            margin-top: 45px;
+        }
+
+        h2{
+            font-size: 1rem;
+        }
+
+        .referenciar{
+            font-size: 0.8rem;
+            line-height: 1.6;
+            color: rgb(122, 122, 122);
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        html, body {
+            width: 210mm;
+            height: 297mm;
+        }
+
+        table td{
+            margin-left: 500px;
+        }
+
+        thead{
+            display: inline;
+        }
+
+        table th { 
+            font-family: inherit;
+            letter-spacing: 0.075em;
+            text-transform: none;
+            padding:0;
+            font-size: 0.7rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: rgb(122, 122, 122);
+            text-align: right;
+            position: fixed;
+            margin-top: 0px;
+            bottom: 0;
+            right: 0;
+        } 
+
+        #introHistorietasImprimir{
+            display: inline-block;
+        }
+
+        #introHistorietas{
+            display: none;
+        }
+    }
+
+    @media print and (color) {
+        * {
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
         }
     }
 </style>
 
 <script>
-    let activeMenu = document.querySelector("#nav > ul > li:nth-child(2)")
-    activeMenu.innerHTML = '<li class="active"> <a href="/historietas">Historietas</a></li>'
+    /* DESTACARR O MENU*/
+    let activeMenu = document.querySelector("#nav > ul > li:nth-child(2)") || undefined;
+    if(activeMenu)
+        activeMenu.innerHTML = '<li class="active"> <a href="/historietas">Historietas</a></li>'
+
+    /* COMPARTILHAMENTO */
+    function fbSharing(post_url) {
+        var url = new String(post_url);
+        window.open(post_url , "share_dialog", "width=500, height=300");
+    }
+
+    function ttSharing(post_url){
+        var url = new String(post_url);
+        window.open(post_url , "share_dialog", "width=790, height=462");
+    }
+
+    function redditSharing(post_url){
+        var url = new String(post_url);
+        window.open(post_url , "share_dialog", "width=790, height=742");
+    }
+
+    function pinterestSharing(post_url){
+        var url = new String(post_url);
+        window.open(post_url , "share_dialog", "width=790, height=742");
+    }
+    
+    /* Carregando links de compartilhamento */
+        let urlCurrentPage = window.location.href;
+
+        /* WPP */
+        document.getElementById('wpp_sharebutton').innerHTML += 
+            `<a href="https://api.whatsapp.com/send?text=${urlCurrentPage}" target="_blank" data-action="share/whatsapp/share">
+                <div class="logoRedeContainerWpp">
+                    <i class="icon alt fa-whatsapp fa-lg"></i>
+                </div>
+                <div class="nomeRedeContainerWpp">WhatsApp</div>
+            </a>`
+
+        /* Twitter */
+        document.getElementById('twitter_sharebutton').innerHTML += 
+            `<a onclick='ttSharing("https://twitter.com/share?url=` + urlCurrentPage + `%0a%0a&text=Que tal ler uma historieta hoje?&hashtags=HistorietasTDVadilho,Historietas")'>
+                <div class="logoRedeContainerTwitter">
+                    <i class="icon alt fa-twitter fa-lg"></i>
+                </div>
+                <div class="nomeRedeContainerTwitter">Twitter</div>    
+            </a>`
+
+         /* Facebook */
+         document.getElementById('facebook_sharebutton').innerHTML += 
+            `<a onclick='fbSharing("https://www.facebook.com/sharer/sharer.php?u=` + urlCurrentPage + `")'>
+                <div class="logoRedeContainerFacebook">
+                    <i class="icon alt fa-facebook fa-lg"></i>
+                </div>
+                <div class="nomeRedeContainerFacebook">Facebook</div>    
+            </a>`
+
+        /* Reddit */
+        document.getElementById('reddit_sharebutton').innerHTML += 
+            `<a onclick='redditSharing("https://www.reddit.com/submit?title=Historieta%20-%20TDVadilho&text=Que%20tal%20ler%20uma%20historieta%20hoje?%20[Um motim no bote pirata](` + urlCurrentPage + `)%0a%0a&signup_survey=true")'>
+                <div class="logoRedeContainerReddit">
+                    <i class="icon alt fa-reddit-alien fa-lg"></i>
+                </div>
+                <div class="nomeRedeContainerReddit">Reddit</div>
+            </a>`
+            
+        /* Pinterest */
+        document.getElementById('pinterest_sharebutton').innerHTML += `<a onclick='pinterestSharing("http://pinterest.com/pin-builder/?description={{ .Params.description }}&h=329&media={{ .Params.imageCompartilhar }}&method=bookmarklet&url=${urlCurrentPage}&w=530")'>
+                <div class="logoRedeContainerPinterest">
+                    <i class="icon alt fa-pinterest fa-lg"></i>
+                </div>
+                <div class="nomeRedeContainerPinterest">Pinterest</div>    
+            </a>`
+
+        /* Copiar URL*/    
+        document.getElementById('copyUrl_sharebutton').innerHTML += 
+            `<a onclick="copiarUrl()">
+                <div class="iconeContainerCopyUrl">
+                    <i class="icon alt fa-link fa-lg"></i>
+                </div>
+                <div class="nomeContainerCopyUrl">Copiar url</div>    
+            </a>`
+
+        let copiarUrl = function() {
+            let createCopiarNotification = function() {
+                let notification = document.getElementById("urlCopiarNotification");
+                notification.style.display = "block";
+                notification.innerHTML = '<i class="fa fa-link"></i> URL COPIADA</div>';
+                
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 3000);
+            }
+
+            if(navigator.clipboard) {
+                navigator.clipboard.writeText(window.location.href);
+                createCopiarNotification();
+            }
+        }
+
+    let imprimirHistorieta = function (){
+        window.print();
+    }
+
+    let flagCompartilharAberto = false;
+    let abrirCompartilhar = function(e) {
+        e.stopPropagation()
+        let container = document.getElementById("compartilharHistContainer");
+        container.style.display = "inline-flex";
+        flagCompartilharAberto = true;
+
+        window.addEventListener('click', function(g){
+            if (container.contains(g.target)){
+            } else{
+                closeCompartilhar();  
+            }
+        }, options = {"once": true})
+    }
+
+    document.addEventListener('keydown', (ev) => {
+        if((ev.key == 'Escape') && (flagCompartilharAberto == true)){
+            closeCompartilhar();
+        }
+    }) 
+
+    let closeCompartilhar = function () {
+        let container = document.getElementById("compartilharHistContainer")
+        container.style.display="none"
+    }
 </script>

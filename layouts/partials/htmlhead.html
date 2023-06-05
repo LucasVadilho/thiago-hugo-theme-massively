@@ -29,6 +29,16 @@
 		<noscript><link rel="stylesheet" href='{{ $noscript.RelPermalink }}' /></noscript>
 		
         {{ partial "htmlhead.custom.html" }}
+        {{ if and (isset .Params "og") .Params.og }}
+            <meta property="og:url"           content="{{ .Permalink }}" />
+            <meta property="og:type"          content="{{ .Params.ogType }}" />
+            <meta property="og:title"         content="{{ .Params.title }}" />
+            <meta property="og:description"   content="{{ .Params.description }}" />
+            <meta property="og:image"         content="{{ relURL .Params.imageCompartilhar }}" />
+        {{ end }}
+
+        <!-- Pinterest -->
+        <meta name="p:domain_verify" content="216b3e2d7c75ea573b2d8477c69a4a86"/>
 
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-JFYQ7F7NQC"></script>
