@@ -645,7 +645,7 @@
             </a>`
             
         /* Pinterest */
-        document.getElementById('pinterest_sharebutton').innerHTML += `<a onclick='pinterestSharing("http://pinterest.com/pin-builder/?description={{ .Params.description }}&h=329&media={{ absURL .Params.imageCompartilhar }}&method=bookmarklet&url=${urlCurrentPage}&w=530")'>
+        document.getElementById('pinterest_sharebutton').innerHTML += `<a onclick='pinterestSharing("http://pinterest.com/pin-builder/?description={{ htmlEscape .Params.description }}&h=329&media={{ absURL .Params.imageCompartilhar }}&method=bookmarklet&url=${urlCurrentPage}&w=530")'>
                 <div class="logoRedeContainerPinterest">
                     <i class="icon alt fa-pinterest fa-lg"></i>
                 </div>
