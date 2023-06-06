@@ -34,7 +34,7 @@
             <meta property="og:type"          content="{{ .Params.ogType }}" />
             <meta property="og:title"         content="{{ .Params.title }}" />
             <meta property="og:description"   content="{{ .Params.description }}" />
-            <meta property="og:image"         content="{{ relURL .Params.imageCompartilhar }}" />
+            <meta property="og:image"         content="{{ absURL .Params.imageCompartilhar }}" />
         {{ end }}
 
         <!-- Pinterest -->
