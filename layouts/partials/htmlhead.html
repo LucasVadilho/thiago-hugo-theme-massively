@@ -29,12 +29,19 @@
 		<noscript><link rel="stylesheet" href='{{ $noscript.RelPermalink }}' /></noscript>
 		
         {{ partial "htmlhead.custom.html" }}
+        
+        <meta property="og:site_name" content="TD Vadilho">
+
         {{ if and (isset .Params "og") .Params.og }}
             <meta property="og:url"           content="{{ .Permalink }}" />
             <meta property="og:type"          content="{{ .Params.ogType }}" />
             <meta property="og:title"         content="{{ .Params.title }}" />
             <meta property="og:description"   content="{{ .Params.description }}" />
-            <meta property="og:image"         content="{{ absURL .Params.imageCompartilhar }}" />
+            <meta property="og:image"         itemprop="image" content="{{ absURL .Params.imageCompartilhar }}" />
+            <meta property="og:image:secure_url" itemprop="image" content="{{ absURL .Params.imageCompartilhar }}" />
+        {{ else }}
+            <meta property="og:type" content="website" />
+            <meta property="og:image" itemprop="image" content="https://www.tdvadilho.com/images/favicon.png" />
         {{ end }}
 
         <!-- Pinterest -->
