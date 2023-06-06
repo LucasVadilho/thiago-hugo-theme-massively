@@ -647,7 +647,7 @@
             console.log('{{ urlquery (absURL .Params.imageCompartilhar) }}')
         /* Pinterest */
         // {{ htmlEscape .Params.description }}
-        document.getElementById('pinterest_sharebutton').innerHTML += `<a onclick='pinterestSharing("http://pinterest.com/pin-builder/?description={{ urlquery .Params.description }}&media={{ urlquery (absURL .Params.imageCompartilhar) }}&method=bookmarklet&url=${encodeURIComponent(urlCurrentPage)}")'>
+        document.getElementById('pinterest_sharebutton').innerHTML += `<a onclick='pinterestSharing("http://pinterest.com/pin-builder/?description={{ urlquery .Params.description }}&media=www.{{ urlquery (absURL .Params.imageCompartilhar) }}&method=bookmarklet&url=${encodeURIComponent(urlCurrentPage)}")'>
                 <div class="logoRedeContainerPinterest">
                     <i class="icon alt fa-pinterest fa-lg"></i>
                 </div>
