@@ -30,11 +30,11 @@
 		
         {{ partial "htmlhead.custom.html" }}
         {{ if and (isset .Params "og") .Params.og }}
-            <meta property="og:url"           content="{{ .Permalink }}" />
-            <meta property="og:type"          content="{{ .Params.ogType }}" />
-            <meta property="og:title"         content="{{ htmlEscape .Params.title }}" />
-            <meta property="og:description"   content="{{ htmlEscape .Params.description }}" />
-            <meta property="og:image"         content="{{ absURL .Params.imageCompartilhar }}" />
+            <meta property="og:url"           content="{{ urlquery .Permalink }}" />
+            <meta property="og:type"          content="{{ urlquery .Params.ogType }}" />
+            <meta property="og:title"         content="{{ urlquery .Params.title }}" />
+            <meta property="og:description"   content="{{ urlquery .Params.description }}" />
+            <meta property="og:image"         content="{{ urlquery (absURL .Params.imageCompartilhar) }}" />
         {{ end }}
 
         <!-- Pinterest -->
