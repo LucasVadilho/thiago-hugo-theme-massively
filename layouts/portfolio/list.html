@@ -16,6 +16,8 @@
                     <a id="goToCapas" class='goToClass' onclick="goToPosition(id)">Capas de Livros</a>
                 </div>
                 
+                <span id="array" idsArray="{{ .Params.ProjetosIds }}"></span>
+
                 <div id="projetos-list-ilustracoes">
                     <h1>Ilustrações</h1>
                         <div id="projetos-organizer">
@@ -24,8 +26,13 @@
                                     <div id="{{ .Params.Titleprojeto }}" 
                                          class="img-crop" 
                                          onclick="abrirproj(event, '{{ .Params.Titleprojeto }}')"
-                                         itens="{{ jsonify .Params.Itens }}">
-                                        <img src="{{ .Params.Thumbprojeto }}">
+                                         itens="{{ jsonify .Params.Itens }}"
+                                         legenda="{{ .Params.Legenda }}"
+                                         lojalink="{{ .Params.lojalink }}"
+                                         pinterestlink="{{ .Params.pinterestlink }}"
+                                         behancelink="{{ .Params.behancelink }}"
+                                        >
+                                        <img src="{{ .Params.Thumbprojeto }}" alt="{{ .Params.altthumb }}">
                                     </div>           
                                 </div> 
                             {{ end }}
@@ -40,8 +47,13 @@
                                 <div id="{{ .Params.Titleprojeto }}" 
                                      class="img-crop" 
                                      onclick="abrirproj(event,'{{ .Params.Titleprojeto }}')"
-                                     itens="{{ jsonify .Params.Itens }}">
-                                    <img src="{{ .Params.Thumbprojeto }}">
+                                     itens="{{ jsonify .Params.Itens }}"
+                                     legenda="{{ .Params.Legenda }}"
+                                     lojalink="{{ .Params.lojalink }}"
+                                     pinterestlink="{{ .Params.pinterestlink }}"
+                                     behancelink="{{ .Params.behancelink }}"
+                                     >
+                                    <img src="{{ .Params.Thumbprojeto }}" alt="{{ .Params.altthumb }}">
                                 </div>
                                         
                             </div> 
@@ -72,14 +84,6 @@
 
     h1{
         font-size: 3rem;
-    }
-
-    body.outsideSnackProj{
-        cursor: zoom-out;
-    }
-
-    body.normal{
-        cursor: default;
     }
 
 /* ORGANIZA OS TIPOS */
@@ -184,83 +188,166 @@
     }
 
 /* SNACKBAR PROJETO OPEN */
-    #openProject {
-        align-self: center;
-        overflow: auto;
-        object-fit: contain;
-        max-height: 97vh;
-        grid-row-start: 2;
-        grid-column-start: 2;
-        align-self: center;
-        overflow: auto;     
-        padding: 0px 10px 0px 10px;  
-        justify-content: center;
-        display: block;
-        margin: auto;
-    }
-
-    #buttonCloseProject {
-        grid-row-start: 1;
-        grid-column-start: 2;
-        align-self: center;
-        padding: 0px 17px 0px 0px;
-        justify-self: right;
-    }
-
     .snackbar {
-        display: grid;
-        grid-template-rows: 30px 1fr;
-        grid-template-columns: 1fr minmax(0, 1300px) 1fr;
-        width: 100vw;
-        height: 100vh;
         position: fixed;
         top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
         z-index: 9;
-        background-color: rgb(0, 0, 0);
+
+        display: grid;
+        grid-template-columns: 1fr fit-content(1300px) 1fr;
+        grid-template-rows: 50px calc(100vh - 100px) 50px;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+
+        background-color: #080808;
     }
 
-    .fa{
-        color: aliceblue;
+    #openProject {  
+                object-fit: contain;
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 2;
+        grid-column-end: 3;
+
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+        
+    }
+
+        #openProject img{
+            object-fit: contain;
+        }
+
+        .iframecontainer{
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+        }
+
+        .iframecontainer iframe{
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+    #topButtonsToClose{
+        padding-right: 10px;
+        line-height: 0;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        transition-duration: 1s;
+
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-column-start: 1;
+        grid-column-end: 4;
     }
     
-    .fa:hover, #closeProj:hover{
-        cursor: pointer;
-        color: #18bfef; 
+    #topProjButtonsContainer {
+        display: flex;
+        justify-content: flex-end;
+        align-items: baseline;
     }
 
-    .iframecontainer{
-        position: relative;
-        overflow: hidden;
-        width: 100%;
-        padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+        .lojaLink{
+            color: rgb(230, 230, 230);
+            text-decoration: underline;
+        }
+
+        #behanceButton, #pinterestButton, #buttonCloseProject{
+            margin-left: 10px;
+        }
+
+        .fa, .fa-shopping-cart,.fa-pinterest, .fa-behance-square, #projLegendaContainer{
+            color: rgb(230, 230, 230);
+            filter:drop-shadow(2px 2px #0808080a) ;
+            
+        }
+        
+        .fa:hover, .fa-shopping-cart:hover, .fa-pinterest:hover, .fa-behance-square:hover, #closeProj:hover, .lojaLink:hover{
+            cursor: pointer;
+            color: #18bfef; 
+        }
+
+    #prevToClose{
+        float: left;
+        margin-right: 10px;
+        direction: rtl;
+        width: calc(50vw - 660px);
+        transition-duration: 1s;
+        align-items: center;
+        display: flex;
+        transition-duration: 1s;
+        
     }
 
-    .iframecontainer iframe{
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        border: none;
+    #nextToClose{
+        float: right;
+        margin-left: 10px;
+        direction: ltr;
+        width: calc(50vw - 660px);
+        align-items: center;
+        display: flex;
+        transition-duration: 1s;
+    }
+
+        #next .fa, #prev .fa{
+            padding: 10px;
+        }
+
+    #projLegendaContainer {
+        hyphens: auto;
+        font-family: inherit;
+        font-size: 0.9rem;
+        line-height: 1rem;
+        justify-content: center;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-left: 20px;
+        margin-right: 20px;
+
+        display: flex;    
+        grid-row-start: 3;
+        grid-row-end: 4;
+        grid-column-start: 2;
+        grid-column-end: 3;
+
+        transition-duration: 1s;       
+    }
+
+    #projLegendaContainer p{
+        text-align: center;
     }
 
     #copyright{
         z-index:1;
     }
 
-    
-/* DEFINICOES PARA OS TAMANHOS EM DESKTOP */
-    @media screen and (min-width:1230px){
-        #buttonCloseProject {
-            padding: 0px 52px 0px 0px;
+    @media screen and (max-width: 1400px){
+        #nextToClose{      
+            position: fixed;
+            align-items: center; 
+            right: 50px;
+            top: calc(50% - 24.665px); 
+            transition-duration: 1s;  
         }
-    }
 
-    @media screen and (max-width: 1231px) and (min-width:0px){
-        #buttonCloseProject {
-            padding: 0px 17px 0px 0px;
+        #prevToClose{
+            position: fixed;
+            align-items: center;
+            left: 50px;
+            transition-duration: 1s;
+            top: calc(50% - 24.665px);  
         }
     }
 
@@ -363,6 +450,12 @@
     }
     
 /* DEFINICOES PARA OS TAMANHOS EM MOBILE */
+    @media only screen and (hover:none) and (pointer:coarse){
+        .snackbar{
+            grid-template-rows: 50px calc(100dvh - 105px) 55px;
+        }
+    }
+
     @media only screen and (hover:none) and (pointer:coarse) and (max-width: 736px) and (min-width: 425px){
         #conteudo{
             padding: 3rem 2rem 3rem 2rem;
@@ -443,11 +536,6 @@
             user-select:none;
         }
     }
-               
-/* DEFINICOES PARA OS TAMANHOS DE DEVICE MOBILE */
-    /* Definicoes para celular */
-    /* @media only screen and (hover:none) and (pointer:coarse) and (max-width:450px) and (min-width:321px){
-    } */
 
 </style>
 
@@ -472,69 +560,237 @@
 
             rect = document.getElementById('openProject').getBoundingClientRect()
             
-            buttonClose = document.getElementById('buttonCloseProject')
+            buttonClose = document.getElementById('topButtonsContainer')
             console.log(rect.x, rect.width, buttonClose.clientWidth)
             buttonClose.style.paddingLeft = `${rect.x + rect.width - buttonClose.scrollWidth}px`
         }
     }
 
-    let mouseoverCloseSetup = function(){
-        document.getElementById('snackZoomId').addEventListener('mouseout', () => {
-            document.body.className = 'outsideSnackProj' 
-        })
-        document.getElementById('snackZoomId').addEventListener('mouseover', () => {
-            document.body.className = 'normal' 
-        })
+    let setupHideElements = function(){ /* Hide quando passar determinado tempo*/
+        if (flagProjAberto==true){
+            document.getElementById('topProjButtonsContainer').style.opacity = 0
+            document.getElementById('prev').style.opacity = 0
+            document.getElementById('next').style.opacity = 0
+            document.getElementById('projLegendaContainer').style.opacity = 0
+        }
     }
 
-    let createSnackbar = function(id) {
+    let setupUnhideElements = function(){ /* Unhide quando a pessoa mexer o mouse */
+        if (flagProjAberto==true){
+            document.getElementById('topProjButtonsContainer').style.opacity = 1
+            document.getElementById('prev').style.opacity = 1
+            document.getElementById('next').style.opacity = 1
+            document.getElementById('projLegendaContainer').style.opacity = 1
+        }
+    }
+
+    let timer
+    window.addEventListener("mousemove", function() {
+        setupUnhideElements();
+        clearTimeout(timer);
+
+        timer = setTimeout(setupHideElements, 400000);
+    })
+
+    let openLink = function(link){    /* Abrir os caminhos do container top buttons */
+        window.open(link)
+    }
+
+    /* Slide no mobile */
+    let setupSlider = function() {
+        let touchsurface = document.getElementById('snackbarId'),
+        startX, 
+        startY,
+        dist,
+        distThreshold,
+        thresholdX = 50,
+        thresholdY = 50,
+        allowedTime = 1500,
+        elapsedTime,
+        startTime
+
+        touchsurface.addEventListener ('touchstart', function(e) {
+            let touchobj = e.changedTouches[0]
+            
+            dist = 0
+            distThreshold = 0
+            startX = touchobj.pageX
+            startY = touchobj.pageY
+            startTime = new Date().getTime() 
+        }, false)
+
+        touchsurface.addEventListener('touchend', function(e) {
+            var touchobj = e.changedTouches[0]
+            dist = touchobj.pageX - startX
+            distThreshold = Math.abs(dist)
+            elapsedTime = new Date().getTime() - startTime
+           
+            if (
+                elapsedTime <= allowedTime &&
+                distThreshold >= thresholdX &&
+                Math.abs(touchobj.pageY - startY) <= thresholdY &&
+                dist > 0
+            ){
+                plusSlides(-1);
+            }
+
+            if (
+                elapsedTime <= allowedTime &&
+                distThreshold >= thresholdX &&
+                Math.abs(touchobj.pageY - startY) <= thresholdY &&
+                dist < 0)
+            {                                         
+                plusSlides(1);
+            }
+        }, false)
+    }
+   
+    let corrigeVertical = function(){
+        if(document.getElementById('openProject').childNodes.length > 1){
+            document.getElementById('openProject').style.justifyContent = "none";
+        }else{
+            document.getElementById('openProject').style.justifyContent = "center";            
+        }
+    }
+
+    let createSnackbar = function(id) {    /* Criando Snack do projeto */
         let snackbar = document.createElement('div')
         snackbar.classList = 'snackbar'
         snackbar.id = 'snackbarId'
         document.body.style.cssText = 'overflow: hidden'
 
-        let closeButton = `
-            <div id='buttonCloseProject'>
-                <span class='fa fa-times' aria-hidden='true' onclick="closeSnackbarProj()"></span>
+        let legenda = document.getElementById(id).getAttribute('legenda') /* pegando os parametros e declarando as variaveis correspondentes */
+        let lojalink = document.getElementById(id).getAttribute('lojalink')
+        let pinterestlink = document.getElementById(id).getAttribute('pinterestlink')
+        let behancelink = document.getElementById(id).getAttribute('behancelink')
+        let projLegendaContainer = ""
+        let lojaButton = ""
+
+        if (lojalink != ""){ /* Checando se existe o link da loja para construir o botão e o link na legenda */
+            projLegendaContainer = `<div id="projLegendaContainer"><p>`+ legenda + `<a class="lojaLink" href="` + lojalink + `" target='_blank'>loja do site</a>.</p>`     
+            lojaButton =  `<a id='lojaButton'><div class="logoContainerLoja"><i class="icon alt  fa-shopping-cart fa-2x" onclick="openLink('` + lojalink + `')"></i></div></a>`
+        } else{
+            projLegendaContainer = `<div id="projLegendaContainer"><p>`+ legenda + `</p></div>`
+        }
+     
+        let topButtonsContainer = /* Criando os botões com os links correspondentes */
+            `<div id='topButtonsToClose'><div id='topProjButtonsContainer'>`+ lojaButton +`
+                <a id='pinterestButton'><div class="logoContainerPinterest"><i class="icon alt fa-pinterest fa-2x" onclick="openLink('` + pinterestlink + `')"></i></div></a>
+                <a id='behanceButton'><div class="logoContainerBehance" onclick="openLink('` + behancelink + `')"><i class="icon alt fa-behance-square fa-2x" ></i></div></a>
+                <div id='buttonCloseProject'><span class='fa fa-times-circle fa-2x' aria-hidden='true' onclick="closeSnackbarProj()"></span></div>
+            </div></div>`
+
+        let prev = /* Criando o botão prev */
+            `<div id="prevToClose">
+                <div id="prev">
+                    <span class='fa fa-chevron-circle-left fa-2x' aria-hidden='true' onclick="plusSlides(-1)"></span>
+                </div>
             </div>`
 
-        let openProject = `<div id='openProject'>`
-
+        let openProject = `<div id='openProject'>` /* Puxando os arquivos imagem e vídeo do content */
         let itens = JSON.parse(document.getElementById(id).getAttribute('itens'))
         for (let item of itens){
             if (item.type == 'image'){
-                openProject += '<img src="' + item.src + '" style="display:block; object-fit: contain; max-height: 97vh;" class="snackZoom" id="snackZoomId"/>'
+                openProject += '<img src="' + item.src + '" alt="'+ item.alt +'"  style="display:block; object-fit: contain; max-height:calc(100hv - 100px)" class="snackZoom" id="snackZoomId"/>'
             } else {
-                openProject += '<div class="iframecontainer" id="snackZoomId"><iframe src="' + item.src + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" frameorder="0" vspace="0" hspace="0" marginwidth="0" marginheight="0" width="100%" style="margin: 0 0 0 0" frameBorder="0" scrolling="no" style="border: 0px" allowfullscreen></iframe></div>'
+                openProject += '<div class="iframecontainer" id="snackZoomId"><iframe src="' + item.src + '" alt="' + item.alt + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" frameorder="0" vspace="0" hspace="0" marginwidth="0" marginheight="0" width="100%" style="margin: 0 0 0 0" frameBorder="0" scrolling="no" style="border: 0px" allowfullscreen></iframe></div>'
             } 
         }
+        openProject += "</div>";
 
-        openProject += "</div>"
-        snackbar.innerHTML = closeButton + openProject
-        document.body.append(snackbar)
+        let next = /* Criando o botão next */
+            `<div id="nextToClose">
+                <div id="next">
+                    <span class='fa fa-chevron-circle-right fa-2x' aria-hidden='true' onclick="plusSlides(1)"></span>
+                </div>
+            </div>`
+
+        
+        snackbar.innerHTML = topButtonsContainer + prev + openProject + next + projLegendaContainer; /* Snackbar totalmente construida */
+        document.body.append(snackbar); /* Adiciona a snack ao body*/
+
+        window.addEventListener("click", checkIfCanClose)
+
+        corrigeVertical()
+
+        /* Slide no mobile */
+        setupSlider()
     }
+   
+    let checkFlag = function() { /*Projeto aberto > esconde o filtro e o menu*/
+        if (flagProjAberto == true){
+            snackFiltro.style.display = 'none'
+            navPanelToggle.style.cssText = 'display: none'         
+        }
+    }
+    window.addEventListener('scroll', checkFlag)
 
+    let idsArray = document.getElementById("array").getAttribute("idsArray"); /*Criando array com os projetos existentes para permitir funcionamento dos slides*/
+    let splitIdsArray = idsArray.replace("]","").replace("[","").split(' ')
+    let totalProjectNum = splitIdsArray.length
+
+    let plusSlides = function(botao){/*Funcionamento dos slides*/
+        closeSnackbarProj();/*Fecha o projeto aberto*/
+
+        if(botao == 1) {
+            if(currentFocusProject + 1 >= totalProjectNum) {
+                currentFocusProject = 0;
+            } else {
+                currentFocusProject += 1;
+            }
+        } else {
+            if(currentFocusProject == 0) {
+                currentFocusProject = totalProjectNum - 1;
+            } else {
+                currentFocusProject -= 1;
+            }
+        }
+    
+        abrirproj('', splitIdsArray[currentFocusProject]);/*Cria a nova snack com a nova id*/
+    }
+    
     let abrirproj = function (e, id){
         if (e) e.stopPropagation();
+
         flagProjAberto = true;
         checkFlag();
         createSnackbar(id);
-        mouseoverCloseSetup();
+        checkMouseOverContainers();
+        
+        currentFocusProject = splitIdsArray.indexOf(id);
     }
-
+   
     document.addEventListener('keydown', (ev) => {
-        if((ev.key == 'Escape') && (flagProjAberto == true)){
-            closeSnackbarProj()
+       if(flagProjAberto==true){
+            if(ev.key == 'Escape'){/* para ler quando preciona o esc*/
+                closeSnackbarProj();
+            }
+            if(ev.keyCode == '39'){/*para ler quando preciona a seta direita*/
+                plusSlides(1);
+            }
+            if(ev.keyCode == '37'){/*para ler quando preciona a seta esquerda*/
+                plusSlides(-1);
+            }
         }
     }) 
 
-    document.addEventListener('click', (ev) => {
-        if (document.body.className == 'outsideSnackProj'){
-            closeSnackbarProj()
+    let isMouseover = Boolean
+    let checkIfCanClose = function (){
+        if(isMouseover == false){
+            closeSnackbarProj();
         }
-    })
+    }
 
-    function closeSnackbarProj(){
+    let checkMouseOverContainers = function(){
+        $("#topProjButtonsContainer, #next, #prev, #projLegendaContainer p, #snackZoomId").mouseover(function() {
+            isMouseover = true;
+        })
+        $("#topProjButtonsContainer, #next, #prev, #projLegendaContainer p, #snackZoomId").mouseout(function() {
+            isMouseover = false;
+        })
+    }
+  
+    function closeSnackbarProj(){/*Função para fechar snack e retornar elementos ao padrão*/
         let snackbarToClose = document.getElementById('snackbarId')
         snackbarToClose.remove()
         snackFiltro.style.display = 'block'
@@ -543,10 +799,15 @@
             navPanelToggle.style.cssText = ''
         }
         
-        document.body.style.cssText = 'overflow: auto'
-        document.body.className = 'normal'
+        document.body.style.cssText = 'overflow: auto';
+        document.body.className = 'normal';
+        flagProjAberto = false;
+        isMouseover = true;
     }
 
+    /* ----------------------------------------------------------------- */
+
+    /*Funcionamento do filtro daqui para baixo*/
     let goToPosition = function (id){
         let capasYPosition = document.getElementById("projetos-list-capas").offsetTop
         let ilustracoesYPosition = document.getElementById("projetos-list-ilustracoes").offsetTop
@@ -580,14 +841,5 @@
         goToCapas.style.display = 'none'
         goToIlustracoes.style.display = 'none'
     }
-
-    let checkFlag = function() {
-        if (flagProjAberto == true){
-            snackFiltro.style.display = 'none'
-            navPanelToggle.style.cssText = 'display: none'         
-        }
-    }
-
-    window.addEventListener('scroll', checkFlag)
     
 </script>

@@ -74,8 +74,6 @@
             </div>
 
             <!-- Copy Link -->
-            <div id="urlCopiarNotification">
-            </div>
 
             <div id="copyUrl_sharebutton">
             </div>
@@ -99,8 +97,11 @@
             <!-- Pinterest -->
             <div id="pinterest_sharebutton">
             </div>
-
         </div>
+
+        <div id="urlCopiarNotification">
+        </div>
+
     </div>
 
     {{- template "_internal/google_analytics.html" . }}
@@ -453,7 +454,8 @@
     #urlCopiarNotification{
         display: none;
         position: fixed;
-        top: 40px;
+        top: 50px;
+        z-index: 25;
         transform: translateY(-100%) translateX(-50%);
         left: 50%;
         padding: 9px 20px;
@@ -602,7 +604,7 @@
 
     function pinterestSharing(post_url){
         var url = new String(post_url);
-        window.open(post_url , "share_dialog", "width=790, height=742");
+        window.open(post_url , "share_dialog", "width=1080, height=727");
     }
     
     /* Carregando links de compartilhamento */
@@ -646,7 +648,7 @@
             
         /* Pinterest */
         // {{ htmlEscape .Params.description }}
-        document.getElementById('pinterest_sharebutton').innerHTML += `<a onclick='pinterestSharing("http://pinterest.com/pin-builder/?description={{ urlquery .Params.description }}&media={{ urlquery (absURL .Params.imageCompartilhar) }}&method=bookmarklet&url=${encodeURIComponent(urlCurrentPage)}")'>
+        document.getElementById('pinterest_sharebutton').innerHTML += `<a onclick='pinterestSharing("{{ .Params.linkPin }}")'>
                 <div class="logoRedeContainerPinterest">
                     <i class="icon alt fa-pinterest fa-lg"></i>
                 </div>
@@ -670,13 +672,14 @@
                 
                 setTimeout(() => {
                     notification.style.display = 'none';
-                }, 3000);
+                }, 2800);
             }
 
             if(navigator.clipboard) {
                 navigator.clipboard.writeText(window.location.href);
                 createCopiarNotification();
             }
+            createCopiarNotification();
         }
 
     let imprimirHistorieta = function (){

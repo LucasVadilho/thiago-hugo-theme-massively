@@ -20,11 +20,6 @@
 		{{ end }}
         
         <link rel="icon" href='https://www.tdvadilho.com/images/favicon.png'>
-        <!-- <link rel="icon" href='{{ absURL "/images/favicon.png" }}'> -->
-                <!--  <link rel="icon" type="image/x-icon" href='{{ absURL "/images/favicon.png" }}'> -->
-                <!-- 	{{ with .Site.Params.favicon }}
-                <link rel="shortcut icon" href="{{ . }}">
-                {{ end }} -->
 		{{ $noscript := resources.Get "scss/noscript.scss" | resources.ExecuteAsTemplate "noscript.scss" . | toCSS (dict "targetPath" "assets/css/noscript.css" "enableSourceMap" false) }}
 		<noscript><link rel="stylesheet" href='{{ $noscript.RelPermalink }}' /></noscript>
 		
@@ -33,16 +28,22 @@
         <meta property="og:site_name" content="TD Vadilho">
 
         {{ if and (isset .Params "og") .Params.og }}
-            <meta property="og:url"           content="{{ .Permalink }}" />
-            <meta property="og:type"          content="{{ .Params.ogType }}" />
-            <meta property="og:title"         content="{{ .Params.title }}" />
-            <meta property="og:description"   content="{{ .Params.description }}" />
-            <meta property="og:image"         itemprop="image" content="{{ absURL .Params.imageCompartilhar }}" />
-            <meta property="og:image:secure_url" itemprop="image" content="{{ absURL .Params.imageCompartilhar }}" />
+            <meta property="og:url"                 content="{{ .Permalink }}" />
+            <meta property="og:type"                content="{{ .Params.ogType }}" />
+            <meta property="og:title"               content="{{ .Params.title }}" />
+            <meta property="og:description"         content="{{ .Params.description }}" />
+            <meta property="og:image"               itemprop="image" content="{{ absURL .Params.imageCompartilhar }}" />
+            <meta property="og:image:secure_url"    itemprop="image" content="{{ absURL .Params.imageCompartilhar }}" />
         {{ else }}
-            <meta property="og:type" content="website" />
-            <meta property="og:image" itemprop="image" content="https://www.tdvadilho.com/images/favicon.png" />
+            <meta property="og:type"                content="website" />
+            <meta property="og:image:secure_url"    itemprop="image" content="https://www.tdvadilho.com/images/favicon.png" />
+            <meta property="og:title"               content="TD Vadilho"/>
+            <meta property="og: description"        content="Venha conhecer o site oficial de TD Vadilho. É um prazer te ter aqui!"/>
+            <meta property="og: url"                content="www.tdvadilho.com"/>
         {{ end }}
+        
+            <meta name="robots" content="noimageai"> <!-- implementado do https://www.deviantart.com/team/journal/Tell-AI-Datasets-If-They-Can-t-Use-Your-Content-934500371 -->
+            <meta name="robots" content="noai">
 
         <!-- Pinterest -->
         <meta name="p:domain_verify" content="216b3e2d7c75ea573b2d8477c69a4a86"/>
