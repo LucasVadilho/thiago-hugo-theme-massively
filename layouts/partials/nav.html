@@ -21,6 +21,19 @@
     </ul>
 
     {{ with $data.social }}
+        <ul class="icons">
+            {{ with .instagram}}
+                <li><a href="{{ . }}" class="icon alt fa-instagram"><span class="label">Instagram</span></a></li>
+            {{ end }}
+
+            {{ with .pinterest}}
+                <li><a href="{{ . }}" class="icon alt fa-pinterest"><span class="label">Pinterest</span></a></li>
+            {{ end }}
+
+            {{ with .behance}}
+                <li><a href="{{ . }}" class="icon alt fa-behance"><span class="label">Behance</span></a></li>
+            {{ end }}
+        </ul>    
     <!--<ul class="icons">
         {{ with .twitter }}
         <li><a href="{{ . }}" class="icon fa-twitter"><span class="label">Twitter</span></a></li>

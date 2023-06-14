@@ -63,6 +63,9 @@
 
                 <div id="containerProj">
                 </div>  
+
+                <p class="copyrightIntern">© Todas as imagens, textos, arquivos e direitos autorais de conteúdo Thiago David Vadilho (TD Vadilho)
+                </p>
             </div>
         </div>
         {{- partial "copyright" . }} 
@@ -78,6 +81,15 @@
 
 
 <style>
+    .copyrightIntern{
+        font-size: 0.8rem;
+        line-height: 1.6;
+        color: rgb(122, 122, 122);
+        text-align: center;
+        margin-top: 60px;
+        margin-bottom: 0px;
+    }
+
     a{
         border: none;
     }
@@ -198,7 +210,7 @@
 
         display: grid;
         grid-template-columns: 1fr fit-content(1300px) 1fr;
-        grid-template-rows: 50px calc(100vh - 100px) 50px;
+        grid-template-rows: 50px 89dvh 50px;
         grid-column-gap: 0px;
         grid-row-gap: 0px;
 
@@ -292,14 +304,17 @@
     }
 
     #nextToClose{
-        float: right;
+        position: fixed;
+        height: 100vh;
         margin-left: 10px;
         direction: ltr;
         width: calc(50vw - 660px);
         align-items: center;
         display: flex;
         transition-duration: 1s;
+        right: 0;
     }
+    
 
         #next .fa, #prev .fa{
             padding: 10px;
@@ -336,10 +351,15 @@
     @media screen and (max-width: 1400px){
         #nextToClose{      
             position: fixed;
-            align-items: center; 
-            right: 50px;
-            top: calc(50% - 24.665px); 
-            transition-duration: 1s;  
+            height: 100dvh;
+            margin-left: 10px;
+            direction: ltr;
+            width: calc(50vw - 660px);
+            align-items: center;
+            display: flex;
+            transition-duration: 1s;
+            right: 50px; 
+
         }
 
         #prevToClose{
@@ -691,7 +711,7 @@
         let itens = JSON.parse(document.getElementById(id).getAttribute('itens'))
         for (let item of itens){
             if (item.type == 'image'){
-                openProject += '<img src="' + item.src + '" alt="'+ item.alt +'"  style="display:block; object-fit: contain; max-height:calc(100hv - 100px)" class="snackZoom" id="snackZoomId"/>'
+                openProject += '<img src="' + item.src + '" alt="'+ item.alt +'"  style="display:block; object-fit: contain; max-height: 89vh;" class="snackZoom" id="snackZoomId"/>'
             } else {
                 openProject += '<div class="iframecontainer" id="snackZoomId"><iframe src="' + item.src + '" alt="' + item.alt + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" frameorder="0" vspace="0" hspace="0" marginwidth="0" marginheight="0" width="100%" style="margin: 0 0 0 0" frameBorder="0" scrolling="no" style="border: 0px" allowfullscreen></iframe></div>'
             } 
