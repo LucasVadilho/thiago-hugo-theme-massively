@@ -1,10 +1,9 @@
 {{- partial "htmlhead" . -}}
 
 {{ $postsPerPage := 4}}
-{{ $posts := .Pages }}
-{{ $lastPost := last 1 $posts }}
-{{ $postsPaging := .Paginate (last (sub (len .Pages) 1) .Pages.ByDate.Reverse) $postsPerPage }}
-
+{{ $posts := .Pages.ByDate.Reverse }}
+{{ $lastPost := first 1 $posts }}
+{{ $postsPaging := .Paginate (last (sub (len .Pages) 1) $posts) $postsPerPage }}
 
 <body lang='{{ .Site.LanguageCode | default "en-us" }}' class="is-preload">
     <div id="wrapper" class="fade-in">
