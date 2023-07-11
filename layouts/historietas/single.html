@@ -22,6 +22,9 @@
                                 <h1> {{ .Title }} </h1>
                                 <h3> {{ .Params.Historietanumero }} </h3>
 
+                                <img class="iconClassInd" src= "{{ .Params.ClasIndicativa }}" > 
+                                <p>{{ .Params.DescripIndicativa }}</p>
+
                                 {{ .Content }}
                                 
                                 <p class="referenciar">
@@ -184,6 +187,10 @@
         max-height: 96vh;
         display: flex;
         justify-content: center;
+    }
+
+    .imgAlinhadaDir{
+
     }
 
     #historieta-encerramento{

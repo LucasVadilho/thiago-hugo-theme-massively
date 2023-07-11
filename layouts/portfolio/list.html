@@ -321,6 +321,10 @@
             padding: 10px;
         }
 
+        #next, #prev, #topProjButtonsContainer {
+            transition-duration: 1s;
+        }
+        
     #projLegendaContainer {
         hyphens: auto;
         font-family: inherit;
@@ -696,8 +700,6 @@
      
         let topButtonsContainer = /* Criando os botões com os links correspondentes */
             `<div id='topButtonsToClose'><div id='topProjButtonsContainer'>`+ lojaButton +`
-                <a id='pinterestButton'><div class="logoContainerPinterest"><i class="icon alt fa-pinterest fa-2x" onclick="openLink('` + pinterestlink + `')"></i></div></a>
-                <a id='behanceButton'><div class="logoContainerBehance" onclick="openLink('` + behancelink + `')"><i class="icon alt fa-behance-square fa-2x" ></i></div></a>
                 <div id='buttonCloseProject'><span class='fa fa-times-circle fa-2x' aria-hidden='true' onclick="closeSnackbarProj()"></span></div>
             </div></div>`
 
