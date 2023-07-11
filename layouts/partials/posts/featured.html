@@ -7,6 +7,7 @@
             <header class="major">
                     <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>  
                     <h3> {{ .Params.Historietanumero }} </h3> 
+                    
             </header>
 
             {{ if .Params.Imagethumb }}
@@ -16,6 +17,7 @@
             <p class="iconClass">
                 <span class="icon alt fa-calendar-o"> {{ .Params.Datapost }} </span> 
                 <span class="icon alt fa-clock-o"> {{ .Params.Tempoleitura }} </span>
+                <img class="iconClassInd" src= "{{ .Params.ClasIndicativa }}" > <span class="icon">{{ .Params.DescripIndicativa }}</span>
             </p>
 
             <p>{{ .Description }}</p>     
@@ -28,6 +30,13 @@
 </body>
 
 <style>
+    .iconClass{
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden
+    }
+
     #main > .post header.major h2{
         font-size: 3rem;
         line-height: 1.1;
@@ -80,7 +89,7 @@
         -moz-hyphens: auto;
         text-rendering: optimizeLegibility;
         font-size: 1.1rem;
-        line-height: 1.8;
+        line-height: 1.7;
         margin-bottom: 15px;
     }
 
