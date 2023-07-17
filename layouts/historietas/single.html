@@ -20,7 +20,10 @@
                             <div id="historietas_container">
                         
                                 <h1> {{ .Title }} </h1>
-                                <h3> {{ .Params.Historietanumero }} </h3>
+                                <h3> {{ .Params.Historietanumero }} |
+                                    <img class="iconClassInd" src= "{{ .Params.ClasIndicativa }}" > 
+                                    {{ .Params.DescripIndicativa }}
+                                </h3>
 
                                 {{ .Content }}
                                 
@@ -175,7 +178,7 @@
         text-rendering: optimizeLegibility;
         padding: 0;
         font-size: 1.1rem;
-        line-height: 1.8;
+        line-height: 1.7;
         margin: 0;
     }
 
@@ -184,6 +187,27 @@
         max-height: 96vh;
         display: flex;
         justify-content: center;
+    }
+
+    .imgAlinhadaEsq{
+        max-width: 60%;
+        margin: 0;
+        float: left;
+    }
+
+    figcaption p{
+        text-align: center;
+        font-size: 0.85rem;
+        line-height: 1.6;
+        color: rgb(122, 122, 122);
+    }
+
+    figcaption a{
+        text-align: center;
+        font-size: 0.85rem;
+        line-height: 1.6;
+        color: rgb(122, 122, 122);
+        text-decoration: underline;
     }
 
     #historieta-encerramento{
@@ -578,6 +602,7 @@
             print-color-adjust: exact;
         }
     }
+
 </style>
 
 <script>

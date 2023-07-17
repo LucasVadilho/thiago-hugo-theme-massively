@@ -14,6 +14,7 @@
                 <p class="iconClass">
                     <span class="icon alt fa-calendar-o"> {{ .Params.Datapost }} </span> 
                     <span class="icon alt fa-clock-o"> {{ .Params.Tempoleitura }} </span>
+                    <img class="iconClassInd" src= "{{ .Params.ClasIndicativa }}" > <span class="icon">{{ .Params.DescripIndicativa }}</span>
                 </p>
 
                 <p class="histDescriList">{{ .Params.Description }}</p>
@@ -31,6 +32,7 @@
     h2{
         line-height: 1.1;
     }
+
     .histTitleList{
         font-size: 1.7rem;
         margin-bottom: 0px;
@@ -49,12 +51,6 @@
     }
 
     .image.fit img{
-       /*  position: absolute;
-        top: -9999px;
-        left: -9999px;
-        right: -9999px;
-        bottom: -9999px;
-        margin: auto; */
         object-fit: cover;
         object-position: 50% 50%;
         height: 100%;
@@ -91,11 +87,15 @@
         padding: 2rem;
     }
 
+    #main {
+        padding-bottom: 1rem;
+    }
+
 /* REGRAS DE MEDIA  */
     @media screen and (max-width: 736px){
-        #main > .posts > article:nth-child(-n + 2)  {
+        /* #main > .posts > article:nth-child(-n + 2)  {
             padding: 2rem 4rem 2rem 4rem;
-        }
+        } */
         #main > .post {
             padding: 4rem 4rem 0rem 4rem;
         }
