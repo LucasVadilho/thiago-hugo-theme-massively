@@ -45,9 +45,13 @@
 
                                 <div id="historieta-encerramento">
                                     <div id="explicacoes">
-                                        <p id="introHistorietas">Todo o conteúdo da página Historietas é disponibilizado gratuitamente pelo autor. Caso queira apoiar esse projeto, em primeiro lugar, meu muito obrigado, e em segundo lugar, por favor, leia o QR Code ou clique no quadro abaixo:</p>
-                                        <p id="introHistorietasImprimir">Todo o conteúdo da página Historietas é disponibilizado gratuitamente pelo autor. Caso queira apoiar esse projeto, em primeiro lugar, meu muito obrigado, e em segundo lugar, por favor, leia o QR Code abaixo:</p>
-                                            <a href="https://nubank.com.br/pagar/11jeh7/8ABRsdHuzw" class="suporteqrcode-container">
+                                     <p id="introHistorietas">O projeto historietas é produzido e disponibilizado gratuitamente graças ao apoio
+                                            dos leitores. Caso puder, e quiser contribuir, clique no botão ou aponte a câmera do celular para o QR code abaixo. Muito obrigado ❤️
+                                        </p>
+                                        <p id="introHistorietasImprimir">O projeto historietas é produzido e disponibilizado gratuitamente graças ao apoio
+                                            dos leitores. Caso puder, e quiser contribuir, aponte a câmera do celular para o QR code abaixo. Muito obrigado ❤️</p>
+                                        
+                                        <a href="https://nubank.com.br/pagar/11jeh7/8ABRsdHuzw" class="suporteqrcode-container">
                                                 <div id="suporteqrcode">
                                                     <img src="/images/qrcodepix.png" class="qrcode">
                                                     <div id="qrcodetexto">
@@ -55,12 +59,32 @@
                                                     </div>
                                                 </div>
                                             </a>
-
-                                            <!-- <button type="submit" href="">Apoia-se</button> -->
-                                            <!-- <button type="submit" href="">Loja</button> -->
                                     </div>
                                 </div>
-                            </div>
+
+                                <div id="processo"> 
+                                    <h2>Processo criativo</h2>
+          
+                                    <div id="mySlidesProcessoID">
+                                        <a id="prevProcesso" onclick="plusSlides(-1)">&#10094;</a>
+
+                                            {{ range $processoCriativo := .Params.processoCriativo }}
+                                                <div class="mySlides fade">
+                                                    <img src="{{ $processoCriativo }}">
+                                                    <div class="text">Caption Text</div>
+                                                </div>
+                                            {{ end }}
+
+                                        <a id="nextProcesso" onclick="plusSlides(1)">&#10095;</a>
+
+                                        <div id="posicaoDotsProcesso">
+                                            {{ range $processoCriativo := .Params.processoCriativo }}
+                                                <span class="dot" onclick='currentSlide(" {{ len $processoCriativo }}")'></span>
+                                            {{ end }}
+                                        </div>
+                                    </div>
+                                    
+                                </div>
                         </td>
                     </tr>
                 </tbody>
@@ -153,21 +177,23 @@
     }
 
     h1{
-        font-size: 3rem;
+        font-size: 2.8rem;
         text-align: center;
         word-spacing: normal;
         word-break: break-word;
         text-rendering: optimizeLegibility;
         margin-bottom: 0.5rem;
+        hyphens: none;
     }
 
     h3{
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         text-align: center;
         margin-bottom: 30px;
         word-spacing: normal;
         word-break: break-word;
         text-rendering: optimizeLegibility; 
+        hyphens: none;
     }
 
     p{
@@ -493,6 +519,80 @@
         box-shadow: 0 0 14px rgba(0, 0, 0, 0.05); 
     }
 
+    /* CARROSEL */
+    #mySlidesProcessoID{
+        width: 88%;
+    }
+
+    /* Slideshow container */
+    .slideshow-container {
+        max-width: 1200px;
+        position: relative;
+        margin: auto;
+    }
+
+    /* Next & previous buttons */
+    .prevProcesso, .nextProcesso {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        color: white;
+        font-size: 2rem;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+    }
+
+    /* Position the "next button" to the right */
+    .nextProcesso {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    /* On hover, add a black background color with a little bit see-through */
+    .prevProcesso:hover, .nextProcesso:hover {
+        background-color: rgba(0,0,0,0.8);
+    }
+
+    /* Caption text */
+    .text {
+        color: #141414;
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* The dots/bullets/indicators */
+    .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+
+    .active, .dot:hover {
+        background-color: #717171;
+    }
+
+    /* Fading animation */
+    .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+
+    @keyframes fade {
+        from {opacity: .4}
+        to {opacity: 1}
+    }
 
     /* Regras de media */
     /* screen */
@@ -736,4 +836,35 @@
         let container = document.getElementById("compartilharHistContainer")
         container.style.display="none"
     }
+
+    // CARROSSEL
+ 
+    let slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
 </script>
