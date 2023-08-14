@@ -62,29 +62,28 @@
                                     </div>
                                 </div>
 
+                                {{ if isset .Params "processocriativo" }}
                                 <div id="processo"> 
                                     <h2>Processo criativo</h2>
           
                                     <div id="mySlidesProcessoID">
                                         <a id="prevProcesso" onclick="plusSlides(-1)">&#10094;</a>
-
                                             {{ range $processoCriativo := .Params.processoCriativo }}
                                                 <div class="mySlides fade">
                                                     <img src="{{ $processoCriativo }}">
                                                     <div class="text">Caption Text</div>
                                                 </div>
                                             {{ end }}
-
                                         <a id="nextProcesso" onclick="plusSlides(1)">&#10095;</a>
 
                                         <div id="posicaoDotsProcesso">
-                                            {{ range $processoCriativo := .Params.processoCriativo }}
-                                                <span class="dot" onclick='currentSlide(" {{ len $processoCriativo }}")'></span>
+                                            {{ range $i := (seq (len .Params.processoCriativo)) }}
+                                                <span class="dot" onclick='currentSlide("{{ $i }}")'></span>
                                             {{ end }}
                                         </div>
                                     </div>
-                                    
                                 </div>
+                                {{ end }}
                         </td>
                     </tr>
                 </tbody>
@@ -763,8 +762,9 @@
             </a>`
 
         /* Reddit */
+        let reddit_url = "https://www.reddit.com/submit?title=Historieta%20-%20TDVadilho&text=Que%20tal%20ler%20uma%20historieta%20hoje?%20[{{ .Params.title }}]"
         document.getElementById('reddit_sharebutton').innerHTML += 
-            `<a onclick='redditSharing("https://www.reddit.com/submit?title=Historieta%20-%20TDVadilho&text=Que%20tal%20ler%20uma%20historieta%20hoje?%20[{{ .Params.title }}](` + urlCurrentPage + `)%0a%0a&signup_survey=true")'>
+            `<a onclick='redditSharing("${reddit_url}(${urlCurrentPage})%0a%0a&signup_survey=true")'>
                 <div class="logoRedeContainerReddit">
                     <i class="icon alt fa-reddit-alien fa-lg"></i>
                 </div>
@@ -772,8 +772,8 @@
             </a>`
             
         /* Pinterest */
-        // {{ htmlEscape .Params.description }}
-        document.getElementById('pinterest_sharebutton').innerHTML += `<a onclick='pinterestSharing("{{ .Params.linkPin }}")'>
+        let pinterest_url = "pinterestSharing('{{ .Params.linkPin }}')"
+        document.getElementById('pinterest_sharebutton').innerHTML += `<a onclick="${pinterest_url}">
                 <div class="logoRedeContainerPinterest">
                     <i class="icon alt fa-pinterest fa-lg"></i>
                 </div>
