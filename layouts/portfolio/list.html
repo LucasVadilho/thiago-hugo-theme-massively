@@ -573,6 +573,7 @@
         document.getElementById('conteudo').style.visibility = "visible";
 
         const id = new URLSearchParams(window.location.search).get('id');
+        console.log(id);
         if(id) {
             abrirproj('', id);
         }

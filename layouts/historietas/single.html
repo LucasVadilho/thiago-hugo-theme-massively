@@ -43,11 +43,37 @@
                                     </button>
                                 </div>
 
+                                {{ if isset .Params "processocriativo" }}
+                                <div id="processo"> 
+                                    <h2>Processo criativo</h2>
+          
+                                    <div id="mySlidesProcessoID">
+                                        <a id="prevProcesso" onclick="plusSlides(-1)">&#10094;</a>
+                                            {{ range $processoCriativo := .Params.processoCriativo }}
+                                                <div class="mySlides fade">
+                                                    <img src="{{ $processoCriativo }}">
+                                                </div>
+                                            {{ end }}
+                                        <a id="nextProcesso" onclick="plusSlides(1)">&#10095;</a>
+                                        </div>
+                                    </div>
+
+                                    <div id="posicaoDotsProcesso">
+                                        {{ range $i := (seq (len .Params.processoCriativo)) }}
+                                            <span class="dot" onclick='currentSlide("{{ $i }}")'></span>
+                                        {{ end }}
+                                    </div>
+                                {{ end }}
+
                                 <div id="historieta-encerramento">
                                     <div id="explicacoes">
-                                        <p id="introHistorietas">Todo o conteúdo da página Historietas é disponibilizado gratuitamente pelo autor. Caso queira apoiar esse projeto, em primeiro lugar, meu muito obrigado, e em segundo lugar, por favor, leia o QR Code ou clique no quadro abaixo:</p>
-                                        <p id="introHistorietasImprimir">Todo o conteúdo da página Historietas é disponibilizado gratuitamente pelo autor. Caso queira apoiar esse projeto, em primeiro lugar, meu muito obrigado, e em segundo lugar, por favor, leia o QR Code abaixo:</p>
-                                            <a href="https://nubank.com.br/pagar/11jeh7/8ABRsdHuzw" class="suporteqrcode-container">
+                                     <p id="introHistorietas">O projeto historietas é produzido e disponibilizado gratuitamente graças ao apoio
+                                            dos leitores. Caso puder, e quiser contribuir, clique no botão ou aponte a câmera do celular para o QR code abaixo. Muito obrigado ❤️
+                                        </p>
+                                        <p id="introHistorietasImprimir">O projeto historietas é produzido e disponibilizado gratuitamente graças ao apoio
+                                            dos leitores. Caso puder, e quiser contribuir, aponte a câmera do celular para o QR code abaixo. Muito obrigado ❤️</p>
+                                        
+                                        <a href="https://nubank.com.br/pagar/11jeh7/8ABRsdHuzw" class="suporteqrcode-container">
                                                 <div id="suporteqrcode">
                                                     <img src="/images/qrcodepix.png" class="qrcode">
                                                     <div id="qrcodetexto">
@@ -55,12 +81,10 @@
                                                     </div>
                                                 </div>
                                             </a>
-
-                                            <!-- <button type="submit" href="">Apoia-se</button> -->
-                                            <!-- <button type="submit" href="">Loja</button> -->
                                     </div>
                                 </div>
-                            </div>
+
+                               
                         </td>
                     </tr>
                 </tbody>
@@ -153,21 +177,23 @@
     }
 
     h1{
-        font-size: 3rem;
+        font-size: 2.8rem;
         text-align: center;
         word-spacing: normal;
         word-break: break-word;
         text-rendering: optimizeLegibility;
         margin-bottom: 0.5rem;
+        hyphens: none;
     }
 
     h3{
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         text-align: center;
         margin-bottom: 30px;
         word-spacing: normal;
         word-break: break-word;
         text-rendering: optimizeLegibility; 
+        hyphens: none;
     }
 
     p{
@@ -493,8 +519,92 @@
         box-shadow: 0 0 14px rgba(0, 0, 0, 0.05); 
     }
 
+    /* CARROSSEL */
+    #processo {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    #mySlidesProcessoID{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+    }
+
+    /* Slideshow container */
+    .slideshow-container {
+        
+        position: relative;
+        margin: auto;
+    }
+
+    /* Next & previous buttons */
+    #prevProcesso, #nextProcesso {
+        cursor: pointer;
+        margin-top: -10px;  
+        padding: 8px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        font-size: 2rem;
+    }
+    
+    #posicaoDotsProcesso {
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Caption text */
+    .text {
+        color: #141414;
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* The dots/bullets/indicators */
+    .dot {
+        cursor: pointer;
+        height: 12px;
+        width: 12px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+
+    .active, .dot:hover {
+        background-color: #717171;
+    }
+
+    /* Fading animation */
+    .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+
+    @keyframes fade {
+        from {opacity: .4}
+        to {opacity: 1}
+    }
 
     /* Regras de media */
+    @media screen and (max-width: 835px){
+        h1{
+            font-size: 2rem;
+        }
+
+        h3{
+            font-size: 1rem;
+        }
+    }
+
     /* screen */
     @media screen and (max-width: 736px){
         #main {
@@ -505,6 +615,10 @@
         }
         #compartilharHistBotoesContainer{
             text-align: center;
+        }
+
+        #prevProcesso, #nextProcesso{
+            display: none;
         }
         figcaption p{
             text-align: center;
@@ -543,7 +657,7 @@
             font-family:georgia, times, serif;
             font-size: 13px;
         }
-        #header, #copyright, #navPanelToggle, #nav, #btn_imprimirHistorieta, #btn_compartilharHistorieta, .bg{
+        #header, #copyright, #navPanelToggle, #nav, #btn_imprimirHistorieta, #btn_compartilharHistorieta, #processo, #posicaoDotsProcesso, .bg{
             display: none;
         }
         #main, #historietas_container{
@@ -677,8 +791,9 @@
             </a>`
 
         /* Reddit */
+        let reddit_url = "https://www.reddit.com/submit?title=Historieta%20-%20TDVadilho&text=Que%20tal%20ler%20uma%20historieta%20hoje?%20[{{ .Params.title }}]"
         document.getElementById('reddit_sharebutton').innerHTML += 
-            `<a onclick='redditSharing("https://www.reddit.com/submit?title=Historieta%20-%20TDVadilho&text=Que%20tal%20ler%20uma%20historieta%20hoje?%20[{{ .Params.title }}](` + urlCurrentPage + `)%0a%0a&signup_survey=true")'>
+            `<a onclick='redditSharing("${reddit_url}(${urlCurrentPage})%0a%0a&signup_survey=true")'>
                 <div class="logoRedeContainerReddit">
                     <i class="icon alt fa-reddit-alien fa-lg"></i>
                 </div>
@@ -686,8 +801,8 @@
             </a>`
             
         /* Pinterest */
-        // {{ htmlEscape .Params.description }}
-        document.getElementById('pinterest_sharebutton').innerHTML += `<a onclick='pinterestSharing("{{ .Params.linkPin }}")'>
+        let pinterest_url = "pinterestSharing('{{ .Params.linkPin }}')"
+        document.getElementById('pinterest_sharebutton').innerHTML += `<a onclick="${pinterest_url}">
                 <div class="logoRedeContainerPinterest">
                     <i class="icon alt fa-pinterest fa-lg"></i>
                 </div>
@@ -750,4 +865,92 @@
         let container = document.getElementById("compartilharHistContainer")
         container.style.display="none"
     }
+
+    // CARROSSEL
+ 
+    let slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+
+ //SWIPE LEFT OR RIGHT
+ let touchsurface = document.getElementById('processo'),
+        startX, 
+        startY,
+        dist,
+        distThreshold,
+        thresholdX = 50,
+        thresholdY = 50,
+        allowedTime = 1500,
+        elapsedTime,
+        startTime
+
+    let setupSlider = function() {
+        touchsurface.addEventListener ('touchstart', function(e) {
+            let touchobj = e.changedTouches[0]
+            
+            dist = 0
+            distThreshold = 0
+            startX = touchobj.pageX
+            startY = touchobj.pageY
+            startTime = new Date().getTime() 
+        }, false)
+
+        touchsurface.addEventListener('touchend', function(e) {
+            var touchobj = e.changedTouches[0]
+            dist = touchobj.pageX - startX
+            distThreshold = Math.abs(dist)
+            elapsedTime = new Date().getTime() - startTime
+           
+            console.log('dist ' + dist + ' threshold X ' + thresholdX)
+            console.log('abs y ' + Math.abs(touchobj.pageY - startY) + ' thrs Y ' + thresholdY)
+            console.log('elapsedTime ' + elapsedTime + ' allowed ' + allowedTime)
+
+            if (
+                elapsedTime <= allowedTime &&
+                distThreshold >= thresholdX &&
+                Math.abs(touchobj.pageY - startY) <= thresholdY &&
+                dist > 0
+            ){
+                document.getElementById('prevProcesso').click()
+            }
+
+            if (
+                elapsedTime <= allowedTime &&
+                distThreshold >= thresholdX &&
+                Math.abs(touchobj.pageY - startY) <= thresholdY &&
+                dist < 0)
+            {                                         
+                document.getElementById('nextProcesso').click()
+            }
+        }, false)
+    }
+    
+    document.addEventListener("DOMContentLoaded", (event) => { 
+        setupSlider()
+    });
 </script>
