@@ -46,6 +46,7 @@
         word-break: break-word;
         text-rendering: optimizeLegibility;
         margin-bottom: 0.5rem;
+        hyphens:none;
     }
 
     #main > .post header.major h3 {
@@ -72,18 +73,18 @@
         padding: 0rem 2rem 1rem 2rem;
     }
 
-    @media screen and (max-width: 980px){
-        #main > .post .featured{
-            padding: 4rem 1rem 1rem 1rem;
+    @media screen and (max-width: 1000px) and (min-width:651px){
+        #main > .post {
+            padding: 4rem 4rem 0rem 4rem;
         }
         .image.main{
-            height: 40vh;
+            height: 35vh;
         }
     }
 
-    @media screen and (max-width: 767px){
+    @media screen and (max-width: 900px) and (min-width: 651px){
         #main > .post header.major h2 {
-            font-size: 2.5rem;
+            font-size: 2rem;
         }
 
         h3 {
@@ -91,8 +92,38 @@
         }
     }
 
+    @media screen and (max-width: 651px){
+        #main > .post {
+            padding: 4rem 2rem 0rem 2rem;
+        }
+
+        #main > .posts {
+            padding: 0rem 0rem 1rem 0rem;
+        }
+
+        #main > .post header.major h2 {
+            font-size: 1.55rem;
+        }
+
+        .histTitleList {
+            font-size: 1.55rem;
+        }
+
+        .histNumList, #main > .post header.major h3 {
+            font-size: 1rem;
+        }
+
+        .image.main{
+            height: 35vh;
+        }
+    }
+
     .histTitleList {
         hyphens: none;
+    }
+
+    .iconClass{
+        text-align: left;
     }
 </style>
 

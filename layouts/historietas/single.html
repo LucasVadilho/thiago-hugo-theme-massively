@@ -43,6 +43,28 @@
                                     </button>
                                 </div>
 
+                                {{ if isset .Params "processocriativo" }}
+                                <div id="processo"> 
+                                    <h2>Processo criativo</h2>
+          
+                                    <div id="mySlidesProcessoID">
+                                        <a id="prevProcesso" onclick="plusSlides(-1)">&#10094;</a>
+                                            {{ range $processoCriativo := .Params.processoCriativo }}
+                                                <div class="mySlides fade">
+                                                    <img src="{{ $processoCriativo }}">
+                                                </div>
+                                            {{ end }}
+                                        <a id="nextProcesso" onclick="plusSlides(1)">&#10095;</a>
+                                        </div>
+                                    </div>
+
+                                    <div id="posicaoDotsProcesso">
+                                        {{ range $i := (seq (len .Params.processoCriativo)) }}
+                                            <span class="dot" onclick='currentSlide("{{ $i }}")'></span>
+                                        {{ end }}
+                                    </div>
+                                {{ end }}
+
                                 <div id="historieta-encerramento">
                                     <div id="explicacoes">
                                      <p id="introHistorietas">O projeto historietas é produzido e disponibilizado gratuitamente graças ao apoio
@@ -62,28 +84,7 @@
                                     </div>
                                 </div>
 
-                                {{ if isset .Params "processocriativo" }}
-                                <div id="processo"> 
-                                    <h2>Processo criativo</h2>
-          
-                                    <div id="mySlidesProcessoID">
-                                        <a id="prevProcesso" onclick="plusSlides(-1)">&#10094;</a>
-                                            {{ range $processoCriativo := .Params.processoCriativo }}
-                                                <div class="mySlides fade">
-                                                    <img src="{{ $processoCriativo }}">
-                                                    <div class="text">Caption Text</div>
-                                                </div>
-                                            {{ end }}
-                                        <a id="nextProcesso" onclick="plusSlides(1)">&#10095;</a>
-
-                                        <div id="posicaoDotsProcesso">
-                                            {{ range $i := (seq (len .Params.processoCriativo)) }}
-                                                <span class="dot" onclick='currentSlide("{{ $i }}")'></span>
-                                            {{ end }}
-                                        </div>
-                                    </div>
-                                </div>
-                                {{ end }}
+                               
                         </td>
                     </tr>
                 </tbody>
@@ -518,41 +519,41 @@
         box-shadow: 0 0 14px rgba(0, 0, 0, 0.05); 
     }
 
-    /* CARROSEL */
+    /* CARROSSEL */
+    #processo {
+        text-align: center;
+        margin-top: 50px;
+    }
+
     #mySlidesProcessoID{
-        width: 88%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
     }
 
     /* Slideshow container */
     .slideshow-container {
-        max-width: 1200px;
+        
         position: relative;
         margin: auto;
     }
 
     /* Next & previous buttons */
-    .prevProcesso, .nextProcesso {
+    #prevProcesso, #nextProcesso {
         cursor: pointer;
-        position: absolute;
-        top: 50%;
-        width: auto;
-        padding: 16px;
-        color: white;
-        font-size: 2rem;
+        margin-top: -10px;  
+        padding: 8px;
         transition: 0.6s ease;
         border-radius: 0 3px 3px 0;
         user-select: none;
+        font-size: 2rem;
     }
-
-    /* Position the "next button" to the right */
-    .nextProcesso {
-        right: 0;
-        border-radius: 3px 0 0 3px;
-    }
-
-    /* On hover, add a black background color with a little bit see-through */
-    .prevProcesso:hover, .nextProcesso:hover {
-        background-color: rgba(0,0,0,0.8);
+    
+    #posicaoDotsProcesso {
+        display: flex;
+        justify-content: center;
     }
 
     /* Caption text */
@@ -569,8 +570,8 @@
     /* The dots/bullets/indicators */
     .dot {
         cursor: pointer;
-        height: 15px;
-        width: 15px;
+        height: 12px;
+        width: 12px;
         margin: 0 2px;
         background-color: #bbb;
         border-radius: 50%;
@@ -594,6 +595,16 @@
     }
 
     /* Regras de media */
+    @media screen and (max-width: 835px){
+        h1{
+            font-size: 2rem;
+        }
+
+        h3{
+            font-size: 1rem;
+        }
+    }
+
     /* screen */
     @media screen and (max-width: 736px){
         #main {
@@ -604,6 +615,10 @@
         }
         #compartilharHistBotoesContainer{
             text-align: center;
+        }
+
+        #prevProcesso, #nextProcesso{
+            display: none;
         }
     }
 
@@ -628,7 +643,7 @@
             font-family:georgia, times, serif;
             font-size: 13px;
         }
-        #header, #copyright, #navPanelToggle, #nav, #btn_imprimirHistorieta, #btn_compartilharHistorieta, .bg{
+        #header, #copyright, #navPanelToggle, #nav, #btn_imprimirHistorieta, #btn_compartilharHistorieta, #processo, #posicaoDotsProcesso, .bg{
             display: none;
         }
         #main, #historietas_container{
@@ -867,4 +882,61 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block";
   dots[slideIndex-1].className += " active";
 }
+
+ //SWIPE LEFT OR RIGHT
+ let touchsurface = document.getElementById('processo'),
+        startX, 
+        startY,
+        dist,
+        distThreshold,
+        thresholdX = 50,
+        thresholdY = 50,
+        allowedTime = 1500,
+        elapsedTime,
+        startTime
+
+    let setupSlider = function() {
+        touchsurface.addEventListener ('touchstart', function(e) {
+            let touchobj = e.changedTouches[0]
+            
+            dist = 0
+            distThreshold = 0
+            startX = touchobj.pageX
+            startY = touchobj.pageY
+            startTime = new Date().getTime() 
+        }, false)
+
+        touchsurface.addEventListener('touchend', function(e) {
+            var touchobj = e.changedTouches[0]
+            dist = touchobj.pageX - startX
+            distThreshold = Math.abs(dist)
+            elapsedTime = new Date().getTime() - startTime
+           
+            console.log('dist ' + dist + ' threshold X ' + thresholdX)
+            console.log('abs y ' + Math.abs(touchobj.pageY - startY) + ' thrs Y ' + thresholdY)
+            console.log('elapsedTime ' + elapsedTime + ' allowed ' + allowedTime)
+
+            if (
+                elapsedTime <= allowedTime &&
+                distThreshold >= thresholdX &&
+                Math.abs(touchobj.pageY - startY) <= thresholdY &&
+                dist > 0
+            ){
+                document.getElementById('prevProcesso').click()
+            }
+
+            if (
+                elapsedTime <= allowedTime &&
+                distThreshold >= thresholdX &&
+                Math.abs(touchobj.pageY - startY) <= thresholdY &&
+                dist < 0)
+            {                                         
+                document.getElementById('nextProcesso').click()
+            }
+        }, false)
+    }
+    
+    document.addEventListener("DOMContentLoaded", (event) => { 
+        setupSlider()
+    });
 </script>
