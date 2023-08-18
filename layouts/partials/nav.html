@@ -23,15 +23,15 @@
     {{ with $data.social }}
         <ul class="icons">
             {{ with .instagram}}
-                <li><a href="{{ . }}" class="icon alt fa-instagram"><span class="label">Instagram</span></a></li>
+                <li><a href="{{ . }}" class="icon alt fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
             {{ end }}
 
             {{ with .pinterest}}
-                <li><a href="{{ . }}" class="icon alt fa-pinterest"><span class="label">Pinterest</span></a></li>
+                <li><a href="{{ . }}" class="icon alt fa-pinterest" target="_blank"><span class="label">Pinterest</span></a></li>
             {{ end }}  
             
             {{ with .youtube }}
-                <li><a href="{{ . }}" class="icon fa-youtube"><span class="label">Youtube</span></a></li>
+                <li><a href="{{ . }}" class="icon fa-youtube" target="_blank"><span class="label">Youtube</span></a></li>
             {{ end }}
         </ul>    
     <!--<ul class="icons">
