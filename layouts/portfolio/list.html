@@ -704,9 +704,12 @@
             projLegendaContainer = `<div id="projLegendaContainer"><p>`+ legenda + `</p></div>`
         }
      
-        if (youtubelink != ""){
+        if (youtubelink && youtubelink != ""){
+            console.log("tem ytlink")
             youtubeButton =  `<a id='youtubeButton'><div class="logoContainerLoja"><i class="icon alt  fa  fa-youtube fa-2x" onclick="openLink('` + youtubelink + `')" target="_blank"></i></div></a>`
-        }else{}
+        }else{
+            console.log("não tem ytlink")
+        }
 
         let topButtonsContainer = /* Criando os botões com os links correspondentes */
             `<div id='topButtonsToClose'><div id='topProjButtonsContainer'>`+ lojaButton + youtubeButton +`
