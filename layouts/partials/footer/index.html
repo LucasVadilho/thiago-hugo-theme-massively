@@ -31,7 +31,7 @@
             </ul>
            
         </form>
-        
+
         <div id = "SnackbarFAQ">
             <a id="close" onclick="closeSnackbarFAQ()">x</a>
             <p> Área ainda em construção. Peço que tenha paciência. </p> 
@@ -41,17 +41,26 @@
         </div>
     </section>
     {{ end }}
+
     <section class="split contact">
+        <section id="splitcontact">
+            <h3>Status</h3>
+            <p><a href="mailto:{{ . }}">Estou <i>disponível</i> para projetos de design ou textuais. 
+                Sinta-se à vontade para me enviar uma mensagem via formulário ou email!</a></p>
+        </section>
+
         <section id="splitcontact">
             <h3>FAQ</h3>
             <p><a onclick="openFAQ(event)">Possui alguma dúvida? Acesse o FAQ para simplificar o processo da nossa comunicação</a></p>
         </section>
+
         {{ with $data.contactinfo.email }}
         <section id="splitcontact">
             <h3>{{ i18n "CONTACT_EMAIL" . }}</h3>
             <p><a href="mailto:{{ . }}">{{ . }}</a></p>
         </section>
         {{ end }}
+
         {{ with $data.social }}
         <section>
             <h3>{{ i18n "CONTACT_SOCIAL" . }}</h3>
@@ -70,6 +79,7 @@
             </ul>
         </section>
         {{ end }}
+        
     </section>
 </footer>
 
@@ -145,7 +155,7 @@
 
 /* REGRAS DE MEDIA */
     
-    @media screen and (min-width: 980px){
+    @media screen and (min-width: 981px){
         #message{
             width: 470px;
             resize: vertical;
@@ -156,6 +166,12 @@
         #footer > section.split > section:first-child {
             padding: 5rem 4rem 1rem 4rem;
             border-top: solid 2px #e2e2e2;
+        }
+    }
+
+    @media screen and (max-width: 736px){
+        #footer > section.split.contact > section:first-child {
+            padding: 2rem !important;
         }
     }
 </style>
