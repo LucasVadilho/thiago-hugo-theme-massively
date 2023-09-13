@@ -73,8 +73,96 @@
         -ms-interpolation-mode: nearest-neighbor;   /* IE (non-standard property) */
 	}
 
-    h1 {
+    h1 { /* Título da seção */
         font-size: 3rem;
+        line-height: 1.1;
+        color: #151616;
+        /* text-shadow: 0px 0.5px 0.5px 151616; */
+        word-spacing: normal;
+        word-break: break-word;
+        text-rendering: optimizeLegibility; 
+    }
+
+    h2{ /* Títulos gerais */
+        font-size: 2.7rem;
+        line-height: 1.1;
+        hyphens: none;
+        font-family: "Candara";
+        font-weight: bold;
+        font-variant: small-caps;
+        color: #0e1216;
+        text-shadow: 0px 1px 1px #161616;
+        text-transform: none;
+        word-spacing: normal;
+        word-break: break-word;
+    }
+
+    h3{ /* subtítulo da seção*/
+        font-size: 1.75rem;
+        line-height: 1.1;
+        font-family: "Candara";
+        text-transform: uppercase;
+        font-weight: 700;
+        color: #2F5A80;
+    }
+
+    h4{ /* Subtítulo gerais */
+        font-size: 1.25rem;
+        line-height: 1.1;
+        font-family: "Candara";
+        text-transform: uppercase;
+        font-weight: 700;
+        color: #2F5A80;
+        margin: 0 0 0.5rem 0rem;
+        word-spacing: normal;
+        word-break: break-word;
+        text-rendering: optimizeLegibility; 
+        hyphens: none;
+    }
+
+    h5{ /* Subtítulo de subtítulo */
+        font-size: 1rem;
+        line-height: 1.1;
+    }
+
+    h6{ /* Título de botões e formulários */
+        font-size: 0.8rem;
+        line-height: 1.1;
+        font-family: "Source Sans Pro", Helvetica, sans-serif;
+    }
+
+    .txt_informaçõesPost{ /* Legenda informativa das postagens (data, tempo de leitura e classificação indicativa) */
+        margin-right: 5px;
+        text-decoration: none;
+        border-bottom: none;   
+        position: relative;
+        font-style: italic;
+        text-align: left;
+        font-family: "Candara";
+        font-size: 0.95rem;
+        color: #757575;
+        font-weight: 400;
+        margin-top: 2px;
+        margin-bottom: 8px;
+    }
+
+    .txt_hideOverflowUmaLinha{
+        word-break: break-all;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .txt_hideOverflowTrêsLinhas{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* max nb lines to show */
+        -webkit-box-orient: vertical; 
+    }
+
+    .img_shadow{
+        box-shadow: rgba(0, 0, 0, 0.33) 0px 1px 3px 0px;
     }
 
     p{
@@ -85,6 +173,9 @@
         -webkit-hyphens: auto;
         -moz-hyphens: auto;
         text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.7;
+        font-size: 1.1rem;
     }
 
     .actions2{
@@ -161,6 +252,17 @@
     .icon_classifIndicativa{
         width: 1.65em;
         vertical-align: top;
+    }
+
+    .icon_classifIndicativaMiddleAlign{
+        width: 1.65em;
+        vertical-align: middle;
+    }
+
+    .button.icon.solo:before {
+        top: 1.5px;
+        left: 0.5px;
+        font-size: 1.25rem;
     }
 </style>
 

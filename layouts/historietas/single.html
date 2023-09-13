@@ -20,11 +20,11 @@
                         <td>
                             <div id="historietas_container">
                         
-                                <h1> {{ .Title }} </h1>
-                                <h3 class="text_infosHistorieta"> {{ .Params.Historietanumero }} |
-                                    <img class="icon_classifIndicativa" src= "{{ .Params.ClasIndicativa }}" > 
+                                <h2> {{ .Title }} </h2>
+                                <h4 class="text_infosHistorieta"> {{ .Params.Historietanumero }} |
+                                    <img class="icon_classifIndicativaMiddleAlign" src= "{{ .Params.ClasIndicativa }}" > 
                                     {{ .Params.DescripIndicativa }}
-                                </h3>
+                                </h4>
 
                                 {{ .Content }}
                                 
@@ -75,7 +75,7 @@
                                         
                                         <div id="container_contribuicoesHistorietas">
                                             <div class="contribuicoesHistorietas">
-                                                <h3>Diretamente</h3>
+                                                <h4>Diretamente</h4>
                                                 <p>Clique em um dos botões abaixo para mandar um PIX. Toda contribuição faz uma enorme diferença!</p>
 
                                                 <div id="container_contribuicaopix">
@@ -100,7 +100,7 @@
                                             </div>
 
                                             <div class="contribuicoesHistorietas">
-                                                <h3>Indiretamente</h3>
+                                                <h4>Indiretamente</h4>
                                                 <p>Compras a partir de links afiliados geram renda para o projeto sem qualquer custo adicional para você.</p>
                                                 <a href="https://docs.google.com/spreadsheets/d/1DJxa44ngnqBP9sUN0czkUV66Z7qXPEoODkHs1WnuSQg/edit#gid=0" class="clicavel_linkafiliado"  target="_blank">
                                                     <div id="container_linkafiliado">
@@ -110,7 +110,7 @@
                                             </div>
 
                                             <div class="contribuicoesHistorietas">
-                                                <h3>Sem custo</h3>
+                                                <h4>Sem custo</h4>
                                                 <p>Seguindo minhas redes sociais você estará me ajudando a levar o meu trabalho para um maior público.</p>
 
                                                 {{ with $data.social }}
@@ -204,24 +204,14 @@
         cursor: pointer;
     }
 
-    h1{
-        font-size: 2.8rem;
+    h2{
         text-align: center;
-        word-spacing: normal;
-        word-break: break-word;
-        text-rendering: optimizeLegibility;
-        margin-bottom: 0.5rem;
-        hyphens: none;
+        margin-bottom: 0.5rem;  
     }
 
-    h3{
-        font-size: 1.25rem;
+    h4{
         text-align: center;
         margin-bottom: 30px;
-        word-spacing: normal;
-        word-break: break-word;
-        text-rendering: optimizeLegibility; 
-        hyphens: none;
     }
 
     p{
@@ -560,7 +550,7 @@
             background-color: #ffffff00;
         }
         
-        h1{
+        h2{
             font-size: 2.5rem;
             margin-top: 45px;
         }
@@ -711,7 +701,7 @@
         min-width: 20%;
     }
 
-    .contribuicoesHistorietas h3{
+    .contribuicoesHistorietas h4{
         margin-bottom: 15px;
     }
 
@@ -808,11 +798,11 @@
 
 /* REGRAS DE MIDIA */
     @media screen and (max-width: 835px){
-        h1{
+        h2{
             font-size: 2rem;
         }
 
-        .text_infosHistorieta h3{
+        .text_infosHistorieta h4{
             font-size: 1rem;
         }
     }
@@ -874,7 +864,7 @@
             margin-bottom: 0;
         }
 
-        .contribuicoesHistorietas h3{
+        .contribuicoesHistorietas h4{
             text-align: left;
         }
 

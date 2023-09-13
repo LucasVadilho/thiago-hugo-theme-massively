@@ -19,7 +19,7 @@
                 <span id="array" idsArray="{{ .Params.ProjetosIds }}"></span>
 
                 <div id="projetos-list-ilustracoes">
-                    <h1>Ilustrações</h1>
+                    <h2>Ilustrações</h2>
                         <div id="projetos-organizer">
                             {{ range where .Pages.ByDate "Params.categoriaprojeto" "Ilustrações" }}
                                 <div class="projeto-container">
@@ -41,7 +41,7 @@
                 </div>
 
                 <div id="projetos-list-capas">
-                    <h1>Capas de Livros</h1>
+                    <h2>Capas de livros</h2>
                     <div id="projetos-organizer">
                         {{ range where .Pages.ByDate "Params.categoriaprojeto" "Capas de Livros" }}
                             <div class="projeto-container">
@@ -95,9 +95,6 @@
         border: none;
     }
 
-    h1{
-        font-size: 2.7rem;
-    }
 
 /* ORGANIZA OS TIPOS */
    #projetos-list-ilustracoes{
@@ -448,7 +445,7 @@
         #conteudo{
             padding: 3rem 2rem 3rem 2rem;
         }
-        h1{
+        h2{
             font-size: 2.5rem;
         }
     }
@@ -457,7 +454,7 @@
         #conteudo{
             padding: 3rem 2rem 3rem 2rem;
         }
-        h1{
+        h2{
             font-size: 2.5rem;
         }
         .img-crop{
@@ -470,7 +467,7 @@
         #conteudo{
             padding: 3rem 2rem 3rem 2rem;
         }
-        h1{
+        h2{
             font-size: 2.5rem;
         }
         .img-crop{
@@ -490,7 +487,7 @@
         #conteudo{
             padding: 3rem 2rem 3rem 2rem;
         }
-        h1{
+        h2{
             font-size: 2.5rem;
         }
         .img-crop{
@@ -509,7 +506,7 @@
         #conteudo{
             padding: 3rem 2rem 3rem 2rem;
         }
-        h1{
+        h2{
             font-size: 2.3rem;
         }
         .img-crop{
@@ -526,7 +523,7 @@
         #conteudo{
             padding: 3rem 2rem 3rem 2rem;
         }
-        h1{
+        h2{
             font-size: 2rem;
         }
         .img-crop{
@@ -705,7 +702,7 @@
         }
      
         if (youtubelink && youtubelink != ""){
-            console.log("tem ytlink")
+            projLegendaContainer = `<div id="projLegendaContainer"><p>`+ legenda + `<a class="lojaLink" href="` + youtubelink + `" target='_blank'>veja o processo no youTube</a>.</p>`  
             youtubeButton =  `<a id='youtubeButton'><div class="logoContainerLoja"><i class="icon alt  fa  fa-youtube fa-2x" onclick="openLink('` + youtubelink + `')" target="_blank"></i></div></a>`
         }else{
             console.log("não tem ytlink")

@@ -17,7 +17,7 @@
                     <img class="icon_classifIndicativa" src= "{{ .Params.ClasIndicativa }}" > <span class="icon">{{ .Params.DescripIndicativa }}</span>
                 </p>
 
-                <p class="histDescriList">{{ .Params.Description }}</p>
+                <p class="histDescriList txt_hideOverflowTrêsLinhas">{{ .Params.Description }}</p>
                 
                 <ul class="actions">
                     <li><a href="{{ .Permalink }}" class="button">Ler Historieta</a></li>
@@ -58,19 +58,7 @@
     }
 
     .histDescriList{
-        hyphens: auto;
-        -ms-hyphens: auto;
-        -webkit-hyphens: auto;
-        -moz-hyphens: auto;
-        text-rendering: optimizeLegibility;
-        font-size: 1rem;
-        line-height: 1.7;
         margin-bottom: 15px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 3; /* max nb lines to show */
-        -webkit-box-orient: vertical; 
     }
 
     .icon {

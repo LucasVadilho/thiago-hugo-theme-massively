@@ -6,22 +6,22 @@
     <section>
         <form id="contato" method="post">
             <div class="fields">
-            <div class="field">
-                <label for="name">{{ i18n "CONTACT_FORM_FIELD_NAME" . }}</label>
-                <input type="text" name="nome" id="name" required/>
-            </div>
-            <div class="field">
-                <label for="email">{{ i18n "CONTACT_FORM_FIELD_EMAIL" . }}</label>
-                <input type="email" name="mail" id="email" />
-            </div>
-            <div class="field">
-                <label for="assunto">{{ i18n "CONTACT_FORM_FIELD_ASSUNTO" . }}</label>
-                <input type="text" name="assunto" id="assunto" required/>                  
-            </div>
-            <div class="field">
-                <label for="message">{{ i18n "CONTACT_FORM_FIELD_MESSAGE" . }}</label>
-                <textarea name="mensagem" id="message" rows="3" required></textarea>
-            </div>
+                <div class="field">
+                    <label for="name">{{ i18n "CONTACT_FORM_FIELD_NAME" . }}</label>
+                    <input type="text" name="nome" id="name" required/>
+                </div>
+                <div class="field">
+                    <label for="email">{{ i18n "CONTACT_FORM_FIELD_EMAIL" . }}</label>
+                    <input type="email" name="mail" id="email" />
+                </div>
+                <div class="field">
+                    <label for="assunto">{{ i18n "CONTACT_FORM_FIELD_ASSUNTO" . }}</label>
+                    <input type="text" name="assunto" id="assunto" required/>                  
+                </div>
+                <div class="field">
+                    <label for="message">{{ i18n "CONTACT_FORM_FIELD_MESSAGE" . }}</label>
+                    <textarea name="mensagem" id="message" rows="3" required></textarea>
+                </div>
             </div>
          
             <ul class="actions">
@@ -44,26 +44,26 @@
 
     <section class="split contact">
         <section id="splitcontact">
-            <h3>Status</h3>
-            <p><a href="mailto:{{ . }}">Estou <i>disponível</i> para projetos de design ou textuais. 
-                Sinta-se à vontade para me enviar uma mensagem via formulário ou email!</a></p>
+            <h6>Status</h6>
+            <a href="mailto:{{ . }}"><p>Estou <i>disponível</i> para projetos de design ou textuais. 
+                Sinta-se à vontade para me enviar uma mensagem via formulário ou email!</p></a>
         </section>
 
         <section id="splitcontact">
-            <h3>FAQ</h3>
-            <p><a onclick="openFAQ(event)">Possui alguma dúvida? Acesse o FAQ para simplificar o processo da nossa comunicação</a></p>
+            <h6>FAQ</h6>
+            <a onclick="openFAQ(event)"><p>Possui alguma dúvida? Acesse o FAQ para simplificar o processo da nossa comunicação</p></a>
         </section>
 
         {{ with $data.contactinfo.email }}
         <section id="splitcontact">
-            <h3>{{ i18n "CONTACT_EMAIL" . }}</h3>
-            <p><a href="mailto:{{ . }}">{{ . }}</a></p>
+            <h6>{{ i18n "CONTACT_EMAIL" . }}</h6>
+            <a href="mailto:{{ . }}"><p>{{ . }}</p></a>
         </section>
         {{ end }}
 
         {{ with $data.social }}
         <section>
-            <h3>{{ i18n "CONTACT_SOCIAL" . }}</h3>
+            <h6>{{ i18n "CONTACT_SOCIAL" . }}</h6>
             <ul class="icons alt">
                 {{ with .instagram}}
                     <li><a href="{{ . }}" class="icon alt fa-instagram"><span class="label">Instagram</span></a></li>
@@ -102,7 +102,7 @@
         text-rendering: optimizeLegibility;
     }
 
-    #footer > section.split > section:first-child>p:hover{
+    #footer > section.split.contact > section > :last-child:hover{
         cursor: pointer;
     }
 
