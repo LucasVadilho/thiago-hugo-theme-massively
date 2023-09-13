@@ -5,13 +5,13 @@
         {{ range .posts.Pages }}
             <article>
                 <header>
-                    <h2 class="histTitleList"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+                    <h2 class="histTitleList txt_hideOverflowUmaLinha"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
                     <h3 class="histNumList"> {{ .Params.Historietanumero }} </h3> 
                 </header>
             
                 <a href="{{ .Permalink }}" class="image fit"><img src="{{ .Params.Imagethumb | relURL }}" alt="" /></a>
                 
-                <p class="iconClass">
+                <p class="txt_informaçõesPost">
                     <span class="icon alt fa-calendar-o"> {{ .Params.Datapost }} </span> 
                     <span class="icon alt fa-clock-o"> {{ .Params.Tempoleitura }} </span>
                     <img class="icon_classifIndicativa" src= "{{ .Params.ClasIndicativa }}" > <span class="icon">{{ .Params.DescripIndicativa }}</span>
@@ -23,29 +23,22 @@
                     <li><a href="{{ .Permalink }}" class="button">Ler Historieta</a></li>
                 </ul>
             </article>
-
         {{ end }}
     </section>
+    <p class="copyrightIntern">© Todas as imagens, textos, arquivos e direitos autorais de conteúdo Thiago David Vadilho (TD Vadilho)</p>
 </body>
 
 <style>
-    h2{
-        line-height: 1.1;
-    }
-
     .histTitleList{
-        font-size: 1.7rem;
-        margin-bottom: 0px;
-        word-break: break-word;
+        font-size: 2rem;
     }
 
     .histNumList{
-        font-size: 1.1rem;
+        font-size: 1.25rem;
     }
 
     .image.fit{
         margin:0;
-        position: relative;
         height: 23vh;
         overflow: hidden;
     }
@@ -61,22 +54,22 @@
         margin-bottom: 15px;
     }
 
-    .icon {
-        margin-right: 5px;
-        text-decoration: none;
-        border-bottom: none;
-        font-size: 0.95rem;
-        position: relative;
-        font-style: italic;
-        color: #656565;
-    }
-
     #main > .posts > * {
         padding: 2rem;
     }
 
     #main {
         padding-bottom: 1rem;
+    }
+
+    .txt_hideOverflowUmaLinha{
+        word-break: break-word;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: initial;
+        -webkit-line-clamp: 2; 
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
     }
 
 /* REGRAS DE MEDIA  */
@@ -87,16 +80,15 @@
         #main > .post {
             padding: 4rem 4rem 0rem 4rem;
         }
+        
         #main > .posts > article .image {
             max-width: 45rem;
             margin-left: auto;
             margin-right: auto;
         }
+
         #main > .post header.major h2 {
             font-size: 2.2rem;
-        }
-        h3{
-            font-size: 1.3rem;
         }
     }
 </style>

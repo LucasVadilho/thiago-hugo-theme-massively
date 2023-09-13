@@ -9,18 +9,18 @@
         <div id="main">
             <div id="conteudo" style="visibility: hidden;">
 
-                <div id="snackbarFiltro"> 
-                    <a id="abrir" class='goToClass' onclick="openBar()">Seção &#10095;</a>
-                    <a id="fechar" class='goToClass' onclick="closeBar()">Seção &#10094;</a>
-                    <a id="goToIlustracoes" class='goToClass' onclick="goToPosition(id)">Ilustrações</a>
-                    <a id="goToCapas" class='goToClass' onclick="goToPosition(id)">Capas de Livros</a>
+                <div id="snackbar_filtro"> 
+                    <a id="snackbar_filtroAbrir" class='goToClass' onclick="openBar()">Seção &#10095;</a>
+                    <a id="snackbar_filtroFechar" class='goToClass' onclick="closeBar()">Seção &#10094;</a>
+                    <a id="goTo_ilustrações" class='goToClass' onclick="goToPosition(id)">Ilustrações</a>
+                    <a id="goTo_capas" class='goToClass' onclick="goToPosition(id)">Capas de Livros</a>
                 </div>
                 
                 <span id="array" idsArray="{{ .Params.ProjetosIds }}"></span>
 
-                <div id="projetos-list-ilustracoes">
+                <div id="container_listaIlustrações">
                     <h2>Ilustrações</h2>
-                        <div id="projetos-organizer">
+                        <div id="organizer_projetos">
                             {{ range where .Pages.ByDate "Params.categoriaprojeto" "Ilustrações" }}
                                 <div class="projeto-container">
                                     <div id="{{ .Params.Titleprojeto }}" 
@@ -40,9 +40,9 @@
                         </div>
                 </div>
 
-                <div id="projetos-list-capas">
+                <div id="container_listaCapas">
                     <h2>Capas de livros</h2>
-                    <div id="projetos-organizer">
+                    <div id="organizer_projetos">
                         {{ range where .Pages.ByDate "Params.categoriaprojeto" "Capas de Livros" }}
                             <div class="projeto-container">
                                 <div id="{{ .Params.Titleprojeto }}" 
@@ -65,8 +65,7 @@
                 <div id="containerProj">
                 </div>  
 
-                <p class="copyrightIntern">© Todas as imagens, textos, arquivos e direitos autorais de conteúdo Thiago David Vadilho (TD Vadilho)
-                </p>
+                <p class="copyrightIntern">© Todas as imagens, textos, arquivos e direitos autorais de conteúdo Thiago David Vadilho (TD Vadilho)</p>
             </div>
         </div>
         {{- partial "copyright" . }} 
@@ -82,85 +81,28 @@
 
 
 <style>
-    .copyrightIntern{
-        font-size: 0.8rem;
-        line-height: 1.6;
-        color: rgb(122, 122, 122);
-        text-align: center;
-        margin-top: 60px;
-        margin-bottom: 0px;
-    }
-
+/* GERAL */
     a{
         border: none;
     }
 
-
-/* ORGANIZA OS TIPOS */
-   #projetos-list-ilustracoes{
+/* LISTAS DOS PROJETOS */
+   #container_listaIlustrações{
         text-align: center;
    }                        
 
-   #projetos-list-capas{
+   #container_listaCapas{
         text-align: center;
         margin-top: 40px;
     }
 
-    /* ORGANIZA O FILTRO DOS PROJETOS */
-    #snackbarFiltro{
-        background-color: rgba(255, 255, 255, 0.875);
-        box-shadow: 0 0.125rem 0.75rem 0 rgba(30, 37, 45, 0.25);
-        color: #212931;
-        position: fixed;
-        bottom: 0.75rem;
-        left: 0.75rem;
-        font-family: "Source Sans Pro";
-        font-size: 0.9rem;
-        font-weight: bold;
-        letter-spacing: 0.075em;
-        padding: 0.375rem 1.25rem;
-        text-transform: uppercase;
-        z-index: 5;
-        height: 41px;
-        overflow: hidden;
-        display: inline-flex;
-        -webkit-touch-callout:none;
-        -webkit-user-select:none;
-        -khtml-user-select:none;
-        -moz-user-select:none;
-        -ms-user-select:none;
-        user-select:none;
-    }
-
-    #fechar{
-        display: none;
-    }
-
-    #abrir{
-        display: block;
-    }
-
-    #goToCapas,#goToIlustracoes{
-        display: none;
-    }
-
-    .goToClass:hover{
-        cursor: pointer;
-    }
-
-    .goToClass{
-        margin-right: 10px;
-        display: none;
-    }
-
-    /* ORGANIZA OS PROJETOS DENTRO DOS TIPOS */
-    #projetos-organizer{
+    /* ORGANIZAÇÃO TIPOS DE PROJETOS */
+    #organizer_projetos{
         width: 100%;
         justify-content: center;
         display: inline-flex;
         flex-direction: row;
         flex-wrap: wrap;
-        margin-top: -20px;
     }
 
     .projeto-container{
@@ -171,8 +113,6 @@
     }
 
     .img-crop{
-        margin: 0;
-        position: relative;
         width: 220px;
         height: 220px;
         overflow: hidden;
@@ -181,7 +121,7 @@
     .img-crop img{
         width: 100%;
         object-fit: cover;
-        object-position: 50% 50%;
+        object-position: middle;
         position: relative;
         height: 100%;
         transition: transform .2s;
@@ -190,12 +130,6 @@
     .img-crop img:hover{
         cursor: pointer;
         transform: scale(1.2);
-        transition: transform .2s;
-    }
-
-    .projeto-nome{
-        text-align: center;
-        margin-bottom: 0;
     }
 
 /* SNACKBAR PROJETO OPEN */
@@ -206,13 +140,11 @@
         width: 100vw;
         height: 100vh;
         z-index: 9;
-
         display: grid;
         grid-template-columns: 1fr fit-content(1300px) 1fr;
         grid-template-rows: 50px 89dvh 50px;
         grid-column-gap: 0px;
         grid-row-gap: 0px;
-
         background-color: #080808;
     }
 
@@ -222,37 +154,35 @@
         grid-row-end: 3;
         grid-column-start: 2;
         grid-column-end: 3;
-
         display: flex;
         flex-direction: column;
         overflow: auto;
-
         padding-left: 5px;
         padding-right: 5px;
         
     }
 
-        #openProject img{
-            object-fit: contain;
-        }
+    #openProject img{
+        object-fit: contain;
+    }
 
-        .iframecontainer{
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
-        }
+    .iframecontainer{
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+    }
 
-        .iframecontainer iframe{
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
+    .iframecontainer iframe{
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
 
     #topButtonsToClose{
         padding-right: 10px;
@@ -275,25 +205,25 @@
         align-items: baseline;
     }
 
-        .lojaLink{
-            color: rgb(230, 230, 230);
-            text-decoration: underline;
-        }
+    .lojaLink{
+        color: rgb(230, 230, 230);
+        text-decoration: underline;
+    }
 
-        #behanceButton, #pinterestButton, #buttonCloseProject{
-            margin-left: 10px;
-        }
+    #behanceButton, #pinterestButton, #buttonCloseProject{
+        margin-left: 10px;
+    }
 
-        .fa, .fa-shopping-cart,.fa-pinterest, .fa-behance-square, #projLegendaContainer{
-            color: rgb(230, 230, 230);
-            filter:drop-shadow(2px 2px #0808080a) ;
-            
-        }
+    .fa, .fa-shopping-cart,.fa-pinterest, .fa-behance-square, #projLegendaContainer{
+        color: rgb(230, 230, 230);
+        filter:drop-shadow(2px 2px #0808080a) ;
         
-        .fa:hover, .fa-shopping-cart:hover, .fa-pinterest:hover, .fa-behance-square:hover, #closeProj:hover, .lojaLink:hover{
-            cursor: pointer;
-            color: #18bfef; 
-        }
+    }
+    
+    .fa:hover, .fa-shopping-cart:hover, .fa-pinterest:hover, .fa-behance-square:hover, #closeProj:hover, .lojaLink:hover{
+        cursor: pointer;
+        color: #18bfef; 
+    }
 
     #prevToClose{
         float: left;
@@ -318,14 +248,13 @@
         right: 0;
     }
     
+    #next .fa, #prev .fa{
+        padding: 10px;
+    }
 
-        #next .fa, #prev .fa{
-            padding: 10px;
-        }
-
-        #next, #prev, #topProjButtonsContainer {
-            transition-duration: 1s;
-        }
+    #next, #prev, #topProjButtonsContainer {
+        transition-duration: 1s;
+    }
         
     #projLegendaContainer {
         hyphens: auto;
@@ -337,13 +266,11 @@
         padding-bottom: 5px;
         margin-left: 20px;
         margin-right: 20px;
-
         display: flex;    
         grid-row-start: 3;
         grid-row-end: 4;
         grid-column-start: 2;
         grid-column-end: 3;
-
         transition-duration: 1s;       
     }
 
@@ -351,8 +278,48 @@
         text-align: center;
     }
 
-    #copyright{
-        z-index:1;
+/* ORGANIZA O FILTRO DOS PROJETOS */
+    #snackbar_filtro{
+        background-color: rgba(255, 255, 255, 0.875);
+        box-shadow: 0 0.125rem 0.75rem 0 rgba(30, 37, 45, 0.25);
+        position: fixed;
+        bottom: 0.75rem;
+        left: 0.75rem;
+        font-family: "Source Sans Pro";
+        font-size: 0.9rem;
+        font-weight: bold;
+        letter-spacing: 0.075em;
+        padding: 0.375rem 1.25rem;
+        text-transform: uppercase;
+        z-index: 5;
+        height: 41px;
+        -webkit-touch-callout:none;
+        -webkit-user-select:none;
+        -khtml-user-select:none;
+        -moz-user-select:none;
+        -ms-user-select:none;
+        user-select:none;
+    }
+
+    #snackbar_filtroFechar{
+        display: none;
+    }
+
+    #snackbar_filtroAbrir{
+        display: block;
+    }
+
+    #goTo_capas,#goTo_ilustrações{
+        display: none;
+    }
+
+    .goToClass:hover{
+        cursor: pointer;
+    }
+
+    .goToClass{
+        margin-right: 10px;
+        display: none;
     }
 
     @media screen and (max-width: 1400px){
@@ -535,7 +502,7 @@
             margin-left: 7px;
             margin-top: 14px;
         }
-        #snackbarFiltro{
+        #snackbar_filtro{
             background-color: rgba(255, 255, 255, 0.875);
             box-shadow: 0 0.125rem 0.75rem 0 rgba(30, 37, 45, 0.25);
             color: #212931;
@@ -702,11 +669,12 @@
         }
      
         if (youtubelink && youtubelink != ""){
-            projLegendaContainer = `<div id="projLegendaContainer"><p>`+ legenda + `<a class="lojaLink" href="` + youtubelink + `" target='_blank'>veja o processo no youTube</a>.</p>`  
             youtubeButton =  `<a id='youtubeButton'><div class="logoContainerLoja"><i class="icon alt  fa  fa-youtube fa-2x" onclick="openLink('` + youtubelink + `')" target="_blank"></i></div></a>`
-        }else{
-            console.log("não tem ytlink")
+        } else{ 
+            /* não faz nada */ 
         }
+
+        
 
         let topButtonsContainer = /* Criando os botões com os links correspondentes */
             `<div id='topButtonsToClose'><div id='topProjButtonsContainer'>`+ lojaButton + youtubeButton +`
@@ -842,37 +810,37 @@
 
     /*Funcionamento do filtro daqui para baixo*/
     let goToPosition = function (id){
-        let capasYPosition = document.getElementById("projetos-list-capas").offsetTop
-        let ilustracoesYPosition = document.getElementById("projetos-list-ilustracoes").offsetTop
+        let capasYPosition = document.getElementById("container_listaCapas").offsetTop
+        let ilustracoesYPosition = document.getElementById("container_listaIlustrações").offsetTop
 
-        if (id == "goToCapas"){
+        if (id == "goTo_capas"){
             window.scrollTo({left: 0, top: capasYPosition, behavior: "smooth"})
         }
 
-        if (id == "goToIlustracoes"){
+        if (id == "goTo_ilustrações"){
             window.scrollTo({left: 0, top: ilustracoesYPosition, behavior: "smooth"})
         }
     }
     
-    let snackFiltro = document.getElementById('snackbarFiltro')
+    let snackFiltro = document.getElementById('snackbar_filtro')
 
-    let abrir = document.getElementById('abrir')
-    let fechar = document.getElementById('fechar')
-    let goToCapas = document.getElementById('goToCapas')
-    let goToIlustracoes = document.getElementById('goToIlustracoes')
+    let abrir = document.getElementById('snackbar_filtroAbrir')
+    let fechar = document.getElementById('snackbar_filtroFechar')
+    let goTo_capas = document.getElementById('goTo_capas')
+    let goTo_ilustrações = document.getElementById('goTo_ilustrações')
 
     let openBar = function(){
         abrir.style.display = 'none'
         fechar.style.display = 'inline-block'
-        goToCapas.style.display = 'inline-block'
-        goToIlustracoes.style.display = 'inline-block'
+        goTo_capas.style.display = 'inline-block'
+        goTo_ilustrações.style.display = 'inline-block'
     }
 
     let closeBar = function(){
         abrir.style.display = 'inline-block'
         fechar.style.display = 'none'
-        goToCapas.style.display = 'none'
-        goToIlustracoes.style.display = 'none'
+        goTo_capas.style.display = 'none'
+        goTo_ilustrações.style.display = 'none'
     }
     
 </script>

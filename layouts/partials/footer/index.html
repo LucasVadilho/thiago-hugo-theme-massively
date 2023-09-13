@@ -44,8 +44,8 @@
 
     <section class="split contact">
         <section id="splitcontact">
-            <h6>Status</h6>
-            <a href="mailto:{{ . }}"><p>Estou <i>disponível</i> para projetos de design ou textuais. 
+            <h6><span class="underline_status">Status</span></h6>
+            <a href="mailto:{{ . }}"><p>Estou <b>disponível</b> para projetos de design ou textuais. 
                 Sinta-se à vontade para me enviar uma mensagem via formulário ou email!</p></a>
         </section>
 
@@ -104,6 +104,11 @@
 
     #footer > section.split.contact > section > :last-child:hover{
         cursor: pointer;
+    }
+
+    .underline_status{
+        border-bottom: 2px solid #299928;
+        border-width: medium;
     }
 
     #SnackbarFAQ {
