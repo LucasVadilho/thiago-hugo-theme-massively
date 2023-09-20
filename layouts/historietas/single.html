@@ -54,7 +54,6 @@
                                                 <div class="mySlides fade">
                                                     {{ if strings.Contains $processoCriativo "youtube" }}
                                                         <iframe
-                                                            width="315" height="560"
                                                             src={{ $processoCriativo }}
                                                             title="YouTube video player" frameborder="0"
                                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -199,6 +198,16 @@
 {{- partial "temporario" . }}
 
 <style>
+    .mySlides {
+        flex-grow: 1
+    }
+
+    .mySlides iframe {
+        /* width: 100%;
+        height: 100%; */
+        width: 100%;
+        height: 500px;
+    }
 
 /* GERAIS */
     #main{
@@ -1046,7 +1055,7 @@ function showSlides(n) {
 }
 
  //SWIPE LEFT OR RIGHT
- let touchsurface = document.getElementById('processo'),
+ let touchsurface = document.getElementById('container_processo'),
         startX, 
         startY,
         dist,
@@ -1058,7 +1067,7 @@ function showSlides(n) {
         startTime
 
     let setupSlider = function() {
-        touchsurface.addEventListener ('touchstart', function(e) {
+        touchsurface.addEventListener('touchstart', function(e) {
             let touchobj = e.changedTouches[0]
             
             dist = 0
