@@ -14,10 +14,10 @@
                 <a href="{{ .Permalink }}" class="image main"><img src="{{ .Params.Imagethumb| relURL }}" alt="" /></a>
             {{ end }}
 
-            <p class="iconClass">
+            <p class="txt_informaçõesPost">
                 <span class="icon alt fa-calendar-o"> {{ .Params.Datapost }} </span> 
                 <span class="icon alt fa-clock-o"> {{ .Params.Tempoleitura }} </span>
-                <img class="iconClassInd" src= "{{ .Params.ClasIndicativa }}" > <span class="icon">{{ .Params.DescripIndicativa }}</span>
+                <img class="icon_classifIndicativa" src= "{{ .Params.ClasIndicativa }}" > <span class="icon">{{ .Params.DescripIndicativa }}</span>
             </p>
 
             <p>{{ .Description }}</p>     
@@ -30,34 +30,17 @@
 </body>
 
 <style>
-    .iconClass{
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-        overflow: hidden
-    }
-
-    #main > .post header.major h2{
-        font-size: 3rem;
-        line-height: 1.1;
-        word-spacing: normal;
-        word-break: break-word;
-        text-rendering: optimizeLegibility; 
-        margin-bottom: 0px;
-    }
-
     header.major{
         margin-bottom: 0rem;
     }
 
+    #main > .post header.major h2{
+        margin-bottom: 0.1rem !important;
+    }
+
     h3 {
         font-size: 1.5rem;
-        line-height: 1.1;
-        text-align: center;
         margin-bottom: 10px;
-        word-spacing: normal;
-        word-break: break-word;
-        text-rendering: optimizeLegibility;
     }
 
     .image.main{
@@ -83,13 +66,6 @@
     }
 
     p{
-        hyphens: auto;
-        -ms-hyphens: auto;
-        -webkit-hyphens: auto;
-        -moz-hyphens: auto;
-        text-rendering: optimizeLegibility;
-        font-size: 1.1rem;
-        line-height: 1.7;
         margin-bottom: 15px;
     }
 
@@ -97,24 +73,9 @@
         padding: 4rem 8rem 0rem 8rem;
     }
 
-    .icon {
-        margin-right: 5px;
-        text-decoration: none;
-        border-bottom: none;
-        font-size: 0.95rem;
-        position: relative;
-        font-style: italic;
-        color: #656565;
-    }
-
     @media screen and (max-width: 377px){
         #main > .post header.major h2{
             font-size: 2.2rem;
-            line-height: 1.1;
-            word-spacing: normal;
-            word-break: break-word;
-            text-rendering: optimizeLegibility; 
-            margin-bottom: 0px;
         }
     }
 </style>

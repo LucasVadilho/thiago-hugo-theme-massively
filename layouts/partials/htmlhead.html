@@ -58,11 +58,19 @@
 
             gtag('config', 'G-JFYQ7F7NQC');
         </script>
+
+        <!-- Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC" rel="stylesheet">
 	</head>
 <style>
-    
+    #main > *{
+        border-top: none;
+    }
+
 	body {
-		font-family: Helvetica;
+		font-family: 'Helvetica';
 		word-spacing: normal;
 		hyphens: auto;
         overflow-anchor: none;
@@ -74,18 +82,127 @@
         -ms-interpolation-mode: nearest-neighbor;   /* IE (non-standard property) */
 	}
 
-    h1 {
+    h1 { /* Título da seção */
         font-size: 3rem;
+        line-height: 1.1;
+        color: #151616;
+        /* text-shadow: 0px 0.5px 0.5px 151616; */
+        word-spacing: normal;
+        word-break: break-word;
+        text-align: center;
+        hyphens: none;
+    }
+
+    h2{ /* Títulos gerais */
+        font-size: 2.7rem;
+        /* line-height: 1.1; */
+        margin-bottom: 0px;
+        hyphens: none;
+        font-family: "Alegreya Sans SC";
+        font-weight: bold;
+        line-height: 0.9;
+        /* font-variant: small-caps; */
+        text-transform: none;
+        color: #0e1216;
+        word-spacing: normal;
+        letter-spacing: 0.02em;
+        word-break: break-word;
+        text-align: center;
+        text-wrap: balance;
+    }
+
+    h3{ /* subtítulo da seção*/
+        font-size: 1.75rem;
+        /* line-height: 1.1; */
+        margin-bottom: 3px; 
+        line-height: 0.9;
+        font-family: "Alegreya Sans SC";
+        letter-spacing: 0.02em;
+        text-transform: none;
+        font-weight: 700;
+        letter-spacing: normal;
+        color: #2F5A80;
+        text-align: center;
+        word-break: break-word;
+        word-spacing: normal;
+    }
+
+    h4{ /* Subtítulo gerais */
+        font-size: 1.25rem;
+        /* line-height: 1.1; */
+        line-height: 0.9;
+        font-family: "Alegreya Sans SC";
+        text-transform: none;
+        font-weight: 700;
+        color: #2F5A80;
+        margin: 0 0 0.5rem 0rem;
+        word-spacing: normal;
+        letter-spacing: normal;
+        word-break: break-word;
+        hyphens: none;
+        text-align: center;
+        letter-spacing: 0.02em;
+    }
+
+    h5{ /* Subtítulo de subtítulo */
+        font-size: 1rem;
+        line-height: 1.1;
+        text-align: center;
+    }
+
+    h6{ /* Título de botões e formulários */
+        font-size: 0.8rem;
+        line-height: 1.1;
+        font-family: "Source Sans Pro", Helvetica, sans-serif;
+    }
+
+    .txt_informaçõesPost{ /* Legenda informativa das postagens (data, tempo de leitura e classificação indicativa) */
+       font-style: italic;
+        text-align: left;
+        font-family: "Alegreya Sans SC";
+        font-size: 0.95rem;
+        color: #757575 !important;
+        font-weight: 400;
+        margin-top: 2px;
+        margin-bottom: 8px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+    }
+
+    .txt_hideOverflowUmaLinha{
+        word-break: break-word;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .txt_hideOverflowTrêsLinhas{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* max nb lines to show */
+        -webkit-box-orient: vertical;
+    }
+
+    .img_shadow{
+        box-shadow: rgba(0, 0, 0, 0.33) 0px 1px 3px 0px;
     }
 
     p{
         text-justify: distribute;
+        line-height: 1.7;
+        font-size: 1.1rem;
         word-break: break-word;
         hyphens: auto;
         -ms-hyphens: auto;
         -webkit-hyphens: auto;
         -moz-hyphens: auto;
         text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        margin-bottom: 0px;    
     }
 
     .actions2{
@@ -93,6 +210,15 @@
         padding: 0;
     }
 	
+    .copyrightIntern{
+        font-size: 0.8rem;
+        color: rgb(122, 122, 122);
+        text-align: center;
+        margin-top: 40px;
+        margin-bottom: 0px;
+        z-index:1;
+    }
+
     #wrapper.fade-in:before {
         pointer-events: none;
         -moz-transition: opacity 1s ease-in-out;
@@ -159,9 +285,28 @@
         cursor: default; 
     }
 
-    .iconClassInd{
+    .icon_classifIndicativa{
         width: 1.65em;
         vertical-align: top;
+        margin-left: -3px;
+        margin-right: -2px;
+    }
+
+    .icon_classifIndicativaMiddleAlign{
+        width: 1.65em;
+        vertical-align: middle;
+        margin-left: -3px;
+        margin-right: -2px;
+    }
+
+    .icon{
+        margin-right: 4px;
+    }
+
+    .button.icon.solo:before {
+        top: 1.5px;
+        left: 0.5px;
+        font-size: 1.25rem;
     }
 </style>
 
