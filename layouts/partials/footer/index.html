@@ -43,11 +43,13 @@
     {{ end }}
 
     <section class="split contact">
+        {{ with $data.contactinfo.email }}
         <section id="splitcontact">
             <h6><span class="underline_status">Status</span></h6>
             <a href="mailto:{{ . }}"><p>Estou <b>disponível</b> para projetos de design ou textuais. 
                 Sinta-se à vontade para me enviar uma mensagem via formulário ou email!</p></a>
         </section>
+        {{ end }}
 
         <section id="splitcontact">
             <h6>FAQ</h6>
@@ -87,6 +89,10 @@
     a{
         border: none;
     }
+
+    b{
+        color: inherit !important;
+    }
     
     #li_btn_contato {
         padding: 0;
@@ -109,6 +115,10 @@
     .underline_status{
         border-bottom: 2px solid #299928;
         border-width: medium;
+    }
+
+    .correction_hover:hover{
+        color: indigo;
     }
 
     #SnackbarFAQ {
