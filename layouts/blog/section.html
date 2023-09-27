@@ -1,0 +1,187 @@
+{{- partial "htmlhead" . -}}
+
+{{ $postsPerPage := 5}}
+{{ $posts_blog := .Pages.ByDate.Reverse }}
+{{ $lastPost := first 1 $posts_blog }}
+{{ $postsPaging := .Paginate (last (sub (len .Pages) 1) $posts_blog) $postsPerPage }}
+
+
+<body lang='{{ .Site.LanguageCode | default "en-us" }}' class="is-preload">
+    <div id="wrapper" class="fade-in">
+        {{- partial "header" . -}}
+        {{- partial "nav" . -}}
+
+        <!-- Main -->
+        <div id="main">
+
+            <div id="container_blogSearchFilter">
+                <div class="container_filter" id="filter_blog">
+                    <button onclick="action_filter()" class="btn_drodown">Filtrar por <span id="dropdown_arrow">&#10095;</span></button>
+                    <div id="dropdown_filterBlog">
+                        <a href="#Todos" class="dropdown_active" onclick="action_filterselection(todos)"> Todos </a>
+                        <a href="#recomendacoes" onclick="action_filterselection(recomendacoes)"> Recomendações </a>
+                            <a href="#recomendacoes_livros" class="suboption" onclick="action_filterselection(recomendacoeslivros)">• Livros </a>
+                            <a href="#recomendacoes_livros" class="suboption" onclick="action_filterselection(recomendacoesfilmes)">• Filmes </a>
+                        <a href="#estudos" onclick="action_filterselection(estudos)"> Estudos </a>
+                        <a href="#dissertacoes" onclick="action_filterselection(dissertacoes)"> Dissertações </a>
+                    </div>
+                </div>
+
+                <div class="searchbar" id="searchbar_blog">
+                    <input type="text" class="input_searchbar" placeholder="Procurar...">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+
+            {{ if eq .Paginator.PageNumber 1 }}
+                {{- partial "posts_blog/featured.html" (dict "lastpost" $lastPost "siteData" (index .Site.Data .Site.Language.Lang)) }}
+            {{ end}}
+
+            {{ if gt (len $posts_blog) 1 }}
+                {{ partial "posts_blog/list.html" (dict "posts" $postsPaging "siteData" (index .Site.Data .Site.Language.Lang)) }}
+            {{ end }}
+
+            {{- $paginator := .Paginator }}
+            {{- $outer := . }}
+            {{- partial "posts/pagination.html" (dict "paginator" $paginator "outer" $outer)}}
+
+            
+        </div>
+
+        {{- partial "copyright" . }}
+
+        <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
+        
+    </div>
+
+    {{- template "_internal/google_analytics.html" . }}
+    {{- partial "scripts/index" . }}
+</body>
+
+{{- partial "temporario" . }}
+
+<style>
+    .container_filter{
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown_active{
+        background-color: #e2e2e2;
+        color: #18bfef !important;
+    }
+
+    #dropdown_filterBlog{
+        display: none;
+        position: absolute;
+        background-color: #ffffff;
+        box-shadow: rgba(0, 0, 0, 0.33) 0px 1px 3px 0px;
+        min-width: 230px;
+        font-family: "Source Sans Pro", Helvetica, sans-serif;
+        font-size: 0.8rem;
+        font-weight: 900;
+        letter-spacing: 0.075em;
+        padding: 0.75rem 0;
+        text-transform: uppercase;
+        z-index: 1;
+    }
+
+    #dropdown_filterBlog a{
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    #dropdown_filterBlog a:hover{
+        background-color: #f1f1f1;
+    }
+
+    .suboption{
+        padding: 12px 48px !important;
+    }
+
+    .show_dropdownOptions {
+        display:block !important;
+    }
+
+    .dropdown_arrowactive{
+        display: inline-block;
+        transform: rotate(90deg);
+    }
+
+    #main > .post header.major h2 {
+        font-size: 2.7rem;
+        line-height: 1.1;
+        word-spacing: normal;
+        word-break: break-word;
+        text-rendering: optimizeLegibility;
+        margin-bottom: 0.5rem;
+        hyphens:none;
+    }
+
+    #main > .post header.major h3 {
+        font-size: 1.25rem
+    }
+
+    #main > .posts{
+        padding: 0rem 2rem 1rem 2rem;
+    }
+
+    #container_blogSearchFilter{
+        display: inline-flex;
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    @media screen and (max-width: 1000px) and (min-width:651px){
+        #main > .post {
+            padding: 4rem 4rem 0rem 4rem;
+        }
+        .image.main{
+            height: 35vh;
+        }
+    }
+
+    @media screen and (max-width: 900px) and (min-width: 651px){
+        #main > .post header.major h2 {
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+        }
+    }
+
+    @media screen and (max-width: 651px){
+        #main > .post {
+            padding: 4rem 2rem 0rem 2rem;
+        }
+
+        #main > .posts {
+            padding: 0rem 0rem 1rem 0rem;
+        }
+
+        #main > .post header.major h2 {
+            font-size: 1.55rem;
+        }
+
+        .histTitleList {
+            font-size: 1.55rem;
+        }
+
+        .histNumList, #main > .post header.major h3 {
+            font-size: 1rem;
+        }
+
+        .image.main{
+            height: 35vh;
+        }
+    }
+</style>
+
+<script>
+    let action_filter = function(){
+        document.getElementById("dropdown_filterBlog").classList.toggle('show_dropdownOptions');
+        document.getElementById("dropdown_arrow").classList.toggle('dropdown_arrowactive');
+    }
+</script>

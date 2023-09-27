@@ -21,26 +21,13 @@
                             <div id="historietas_container">
                         
                                 <h2> {{ .Title }} </h2>
-                                <h4> {{ .Params.Historietanumero }} |
-                                    <img class="icon_classifIndicativaMiddleAlign" src= "{{ .Params.ClasIndicativa }}" > 
-                                    {{ .Params.DescripIndicativa }}
-                                </h4>
+                                <h4> {{ .Params.Subtitle }} </h4>
 
                                 {{ .Content }}
-                                
-                                <p class="referenciar">
-                                    Autor e ilustrador: Thiago David Vadilho (TD Vadilho)
-                                    <br>
-                                    *Jamais venda ou monetize este conteúdo sem a autorização do autor. Caso necessário, entre em <a  href='{{ "#contatar" | relLangURL }}' class="linkto_contato"><u>contato</u></a>.
-                                </p>
 
                                 <div id="buttonContainer_compartilharHistorietas">
                                     <button type="submit" id="button_compartilharHistorieta" onclick="abrirCompartilhar(event)">
                                         <i class="fa fa-share-alt fa-lg"></i> Compartilhar
-                                    </button>
-
-                                    <button type="submit" id="button_imprimirHistorieta" onclick="imprimirHistorieta()">
-                                        <i class="fa fa-print fa-lg"></i> Imprimir
                                     </button>
                                 </div>
 
@@ -74,80 +61,11 @@
                                         {{ end }}
                                     </div>
                                 {{ end }}
-
-                                <div id="historieta-encerramento">
-                                    <h2>Ajude o projeto</h2>
-                                    <div id="explicacoes">
-                                     <p id="introHistorietas">O projeto historietas é produzido e disponibilizado gratuitamente graças ao apoio
-                                            dos leitores. Caso puder, e quiser contribuir, por favor, verifique as opções abaixo. Muito obrigado❤️
-                                        </p>
-                                        
-                                        <div id="container_contribuicoesHistorietas">
-                                            <div class="contribuicoesHistorietas">
-                                                <h4>Diretamente</h4>
-                                                <p>Clique em um dos botões abaixo para mandar um PIX. Toda contribuição faz uma enorme diferença!</p>
-
-                                                <div id="container_contribuicaopix">
-                                                        <a href="https://nubank.com.br/pagar/11jeh7/SzzazyVAuQ" class="button_contribuicaopix-container" target="_blank">
-                                                            <div class="button_contribuicaopix">
-                                                                <p class="textbutton_contribuicaopix"><img src="/images/icon_pix.svg" class="icon_pix"> R$ 2,50</p>
-                                                            </div>
-                                                        </a>
-
-                                                        <a href="https://nubank.com.br/pagar/11jeh7/xz6pO4OTxo" class="button_contribuicaopix-container" target="_blank">
-                                                            <div class="button_contribuicaopix">
-                                                                <p class="textbutton_contribuicaopix"><img src="/images/icon_pix.svg" class="icon_pix"> R$ 5,00</p>
-                                                            </div>
-                                                        </a>
-
-                                                        <a href="https://nubank.com.br/pagar/11jeh7/8ABRsdHuzw" class="button_contribuicaopix-container" target="_blank">
-                                                            <div class="button_contribuicaopix">
-                                                                <p class="textbutton_contribuicaopix"><img src="/images/icon_pix.svg" class="icon_pix"> OUTRO</p>
-                                                            </div>
-                                                        </a>
-                                                </div>    
-                                            </div>
-
-                                            <div class="contribuicoesHistorietas">
-                                                <h4>Indiretamente</h4>
-                                                <p>Compras a partir de links afiliados geram renda para o projeto sem qualquer custo adicional para você.</p>
-                                                <a href="https://docs.google.com/spreadsheets/d/1DJxa44ngnqBP9sUN0czkUV66Z7qXPEoODkHs1WnuSQg/edit#gid=0" class="clicavel_linkafiliado"  target="_blank">
-                                                    <div id="container_linkafiliado">
-                                                        <div class="linkafiliado"><i class="fa fa-bookmark" aria-hidden="true"></i> LEITURAS FAVORITAS 2023</div>
-                                                    </div>
-                                                </a>
-                                            </div>
-
-                                            <div class="contribuicoesHistorietas">
-                                                <h4>Sem custo</h4>
-                                                <p>Seguindo minhas redes sociais você estará me ajudando a levar o meu trabalho para um maior público.</p>
-
-                                                {{ with $data.social }}
-                                                    <ul class="icons alt">
-                                                        {{ with .instagram}}
-                                                            <li><a href="{{ . }}" class="icon alt fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
-                                                        {{ end }}
-
-                                                        {{ with .pinterest}}
-                                                            <li><a href="{{ . }}" class="icon alt fa-pinterest" target="_blank"><span class="label">Pinterest</span></a></li>
-                                                        {{ end }}
-
-                                                        {{ with .youtube }}
-                                                            <li><a href="{{ . }}" class="icon fa-youtube" target="_blank"><span class="label">Youtube</span></a></li>
-                                                        {{ end }}
-                                                    </ul>
-                                                {{ end }}
-                                            </div>
-                                        </div>
-
-                                        <p id="introHistorietasImprimir">O projeto historietas é produzido e disponibilizado gratuitamente graças ao apoio
-                                            dos leitores. Caso puder, e quiser contribuir, acesse qualquer Historieta pelo meu site (www.tdvadilho.com). Muito obrigado❤️</p>                                        
-                                    </div>
-                                </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <p class="copyrightIntern">© Todas as imagens, textos, arquivos e direitos autorais de conteúdo Thiago David Vadilho (TD Vadilho)</p>
         </div>
 
         {{- partial "copyright" . }}
@@ -178,10 +96,6 @@
 
             <!-- Reddit -->
             <div id="reddit_sharebutton">
-            </div>
-
-            <!-- Pinterest -->
-            <div id="pinterest_sharebutton">
             </div>
         </div>
 
@@ -444,28 +358,6 @@
         width: 130px;
         float: right;
         background-color:#FF4500;
-        color: white;
-        font-family: inherit;
-        height: 26px;
-        letter-spacing: 1px;
-        font-size: small;
-        text-align: center;
-        margin-bottom: 5px;
-    }
-
-    .logoRedeContainerPinterest{
-        float: left;
-        color: white;
-        width: 26px;
-        height: 26px;
-        background-color: #BD081C;
-        text-align: center;
-    }
-
-    .nomeRedeContainerPinterest{
-        width: 130px;
-        float: right;
-        background-color:#c03041;
         color: white;
         font-family: inherit;
         height: 26px;
@@ -896,9 +788,9 @@
 
 <script>
     /* DESTACARR O MENU*/
-    let activeMenu = document.querySelector("#nav > ul > li:nth-child(2)") || undefined;
+    let activeMenu = document.querySelector("#nav > ul > li:nth-child(5)") || undefined;
     if(activeMenu)
-        activeMenu.innerHTML = '<li class="active"> <a href="/historietas">Historietas</a></li>'
+        activeMenu.innerHTML = '<li class="active"> <a href="/blog">Blog</a></li>'
 
     /* COMPARTILHAMENTO */
     function fbSharing(post_url) {
@@ -916,11 +808,6 @@
         window.open(post_url , "share_dialog", "width=790, height=742");
     }
 
-    function pinterestSharing(post_url){
-        var url = new String(post_url);
-        window.open(post_url , "share_dialog", "width=1080, height=727");
-    }
-    
     /* Carregando links de compartilhamento */
         let urlCurrentPage = window.location.href;
 
@@ -959,15 +846,6 @@
                     <i class="icon alt icon_compartilharHistorieta fa-reddit-alien fa-lg"></i>
                 </div>
                 <div class="nomeRedeContainerReddit">Reddit</div>
-            </a>`
-            
-        /* Pinterest */
-        let pinterest_url = "pinterestSharing('{{ .Params.linkPin }}')"
-        document.getElementById('pinterest_sharebutton').innerHTML += `<a onclick="${pinterest_url}">
-                <div class="logoRedeContainerPinterest">
-                    <i class="icon alt icon_compartilharHistorieta fa-pinterest fa-lg"></i>
-                </div>
-                <div class="nomeRedeContainerPinterest">Pinterest</div>    
             </a>`
 
         /* Copiar URL*/    
@@ -1030,17 +908,17 @@
     // CARROSSEL
  
     let slideIndex = 1;
-showSlides(slideIndex);
+    showSlides(slideIndex);
 
-// Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
+    // Next/previous controls
+    function plusSlides(n) {
+    showSlides(slideIndex += n);
+    }
 
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
+    // Thumbnail image controls
+    function currentSlide(n) {
+    showSlides(slideIndex = n);
+    }
 
 function showSlides(n) {
   let i;

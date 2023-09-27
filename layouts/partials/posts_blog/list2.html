@@ -1,0 +1,142 @@
+<!-- Posts -->
+{{ $data := .siteData }}
+<body lang='{{ .Site.LanguageCode | default "en-us" }}' class="is-preload">
+    <section class="posts blog">
+        {{ range $i,$p := .posts.Pages }}
+            {{if not (modBool $i 2)}} <!-- IMPAR -->
+                <article>
+                    <div class="major">
+                        <div class="container_imageBlogThumb img_shadow">
+                            {{ if .Params.Imagethumb }}
+                                <a href="{{ .Permalink }}" class="image main blog"><img src="{{ .Params.Imagethumb| relURL }}" alt="" /></a>
+                            {{ end }}
+                        </div>
+
+                        <div class="container_textosBlogThumb">
+                            <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>  
+
+                            <h3> {{ .Params.Subtitle }} </h3> 
+
+                            <p class="txt_informaçõesPost">
+                                <span class="icon alt fa-calendar-o"> {{ .Params.Datapost }} </span> 
+                                <span class="icon alt fa-clock-o"> {{ .Params.Tempoleitura }} </span>
+                            </p>
+                            
+                            <p class="p_descriptionBlog"> {{ .Description }} </p> 
+
+                            <a href="{{ .Permalink }}"><p class="goto_wordlink"> Ir para a postagem &#10095;</p></a>
+                        </div>
+                    </div>
+                </article>
+
+            {{else}}
+                <article>
+                    <div class="major">  
+                        <div class="container_textosBlogThumb">
+                            <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>  
+        
+                            <h3> {{ .Params.Subtitle }} </h3> 
+        
+                            <p class="txt_informaçõesPost">
+                                <span class="icon alt fa-calendar-o"> {{ .Params.Datapost }} </span> 
+                                <span class="icon alt fa-clock-o"> {{ .Params.Tempoleitura }} </span>
+                            </p>
+                            
+                            <p class="p_descriptionBlog"> {{ .Description }} </p> 
+        
+                            <a href="{{ .Permalink }}"><p class="goto_wordlink"> Ir para a postagem &#10095;</p></a>
+                        </div>
+
+                        <div class="container_imageBlogThumbPar img_shadow">
+                            {{ if .Params.Imagethumb }}
+                                <a href="{{ .Permalink }}" class="image main blog"><img src="{{ .Params.Imagethumb| relURL }}" alt="" /></a>
+                            {{ end }}
+                        </div>
+                    </div>
+                </article>
+            {{ end }}
+        {{ end }}
+    </section>
+    <p class="copyrightIntern">© Todas as imagens, textos, arquivos e direitos autorais de conteúdo Thiago David Vadilho (TD Vadilho)</p>
+</body>
+
+<style>
+    a{
+        border: none;
+    }
+
+    .major{
+        display: inline-block;
+    }
+    
+    .container_imageBlogThumb{
+        max-width: 33%;
+        margin-right: 2%;
+        float: left;
+    }
+
+    .container_imageBlogThumbPar{
+        max-width: 33%;
+        margin-left: 2%;
+        float: right;
+    }
+
+    .post{
+        display: inline-flex;
+        flex-direction: column;
+        align-items: baseline;
+    }
+
+    .image.main{
+        margin-bottom: 0px;
+    }
+
+    h2, h3, p {
+        text-align: left;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0px;
+    }
+
+    .container_textosBlogThumb{
+        float: left;
+        width: 65%
+    }
+
+    .p_descriptionBlog{
+        margin-bottom: 15px;
+        margin-top: 11px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+
+    .goto_wordlink{
+        text-align: right;
+        text-decoration: underline;
+    }
+
+    .goto_wordlink:hover{
+        color: #18bfef;
+    }
+
+    article{
+        width: 100% !important;
+        padding: 2rem 6rem 2rem 6rem !important;
+        border-bottom: solid 2px #eee;
+    }
+
+    section{
+        padding: 0 !important;
+    }
+
+    @media screen and (max-width: 377px){
+        #main > h2{
+            font-size: 2.2rem;
+        }
+    }
+</style>
