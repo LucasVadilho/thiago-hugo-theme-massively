@@ -25,6 +25,7 @@
 
                     <a href="{{ .Permalink }}"><p class="goto_wordlink"> Ir para a postagem &#10095;</p></a>
                 </div>
+                {{ partial "taxonomy/category" . }}
             </div>
         </article>
     {{ end }}

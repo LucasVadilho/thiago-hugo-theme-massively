@@ -15,8 +15,17 @@
                     <input type="email" name="mail" id="email" />
                 </div>
                 <div class="field">
+                    <label for="assunto2">{{ i18n "CONTACT_FORM_FIELD_ASSUNTO" . }}</label>
+                    <input type="text" name="assunto2" id="assunto2" required/>                  
+                </div>
+                <div class="field">
                     <label for="assunto">{{ i18n "CONTACT_FORM_FIELD_ASSUNTO" . }}</label>
-                    <input type="text" name="assunto" id="assunto" required/>                  
+                    <select id="assunto" name="assunto">
+                        <option value="volvo">Volvo</option>
+                        <option value="saab">Saab</option>
+                        <option value="fiat">Fiat</option>
+                        <option value="audi">Audi</option>
+                    </select>
                 </div>
                 <div class="field">
                     <label for="message">{{ i18n "CONTACT_FORM_FIELD_MESSAGE" . }}</label>
@@ -192,7 +201,7 @@
     
         data = Object.fromEntries(new FormData(e.target).entries())  
         url = 'https://thiago.oioipio.com/contato'
-
+        
         fetch(url, {
             method: 'POST',
             headers: {
