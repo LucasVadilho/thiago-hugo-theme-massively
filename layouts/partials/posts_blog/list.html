@@ -4,56 +4,56 @@
     <section class="posts blog">
         {{ range $i,$p := .posts.Pages }}
             {{if not (modBool $i 2)}} <!-- IMPAR -->
-                <article>
-                    <div class="major">
-                        <div class="container_imageBlogThumb img_shadow">
-                            {{ if .Params.Imagethumb }}
-                                <a href="{{ .Permalink }}" class="image main blog"><img src="{{ .Params.Imagethumb| relURL }}" alt="" /></a>
-                            {{ end }}
-                        </div>
+                <article class="article_left">
+                    <div class="container_imageBlogThumb img_shadow">
+                        {{ if .Params.Imagethumb }}
+                            <a href="{{ .Permalink }}"><img src="{{ .Params.Imagethumb| relURL }}" alt="{{ .Params.Altimagethumb| relURL }}"  class="image blog"/></a>
+                        {{ end }}
+                    </div>
 
-                        <div class="container_textosBlogThumb">
-                            <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>  
+                    <div class="container_textosBlogThumb">
+                        <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>  
 
-                            <h3> {{ .Params.Subtitle }} </h3> 
+                        <h3> {{ .Params.Subtitle }} </h3> 
 
-                            <p class="txt_informaçõesPost">
-                                <span class="icon alt fa-calendar-o"> {{ .Params.Datapost }} </span> 
-                                <span class="icon alt fa-clock-o"> {{ .Params.Tempoleitura }} </span>
-                            </p>
-                            
-                            <p class="p_descriptionBlog"> {{ .Description }} </p> 
+                        <p class="txt_informaçõesPost">
+                            <span class="icon alt fa-calendar-o"> {{ .Params.Datapost }} </span> 
+                            <span class="icon alt fa-clock-o"> {{ .Params.Tempoleitura }} </span>
+                        </p>
+                        
+                        <p class="p_descriptionBlog"> {{ .Description }} </p> 
 
-                            <a href="{{ .Permalink }}"><p class="goto_wordlink"> Ir para a postagem &#10095;</p></a>
-                        </div>
-                        {{ partial "taxonomy/category" . }}
+                        <a href="{{ .Permalink }}"><p class="goto_wordlink"> Ir para a postagem &#10095;</p></a>
                     </div>
                 </article>
 
             {{else}}
-                <article>
-                    <div class="major">  
-                        <div class="container_textosBlogThumb">
-                            <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>  
-        
-                            <h3> {{ .Params.Subtitle }} </h3> 
-        
-                            <p class="txt_informaçõesPost">
-                                <span class="icon alt fa-calendar-o"> {{ .Params.Datapost }} </span> 
-                                <span class="icon alt fa-clock-o"> {{ .Params.Tempoleitura }} </span>
-                            </p>
-                            
-                            <p class="p_descriptionBlog"> {{ .Description }} </p> 
-        
-                            <a href="{{ .Permalink }}"><p class="goto_wordlink"> Ir para a postagem &#10095;</p></a>
-                        </div>
-
-                        <div class="container_imageBlogThumbPar img_shadow">
+                <article class="article_right">
+                    <div class="container_textosBlogThumb">
+                        <div class="container_imageBlogThumbPar img_shadow forresize">
                             {{ if .Params.Imagethumb }}
-                                <a href="{{ .Permalink }}" class="image main blog"><img src="{{ .Params.Imagethumb| relURL }}" alt="" /></a>
+                                <a href="{{ .Permalink }}"><img src="{{ .Params.Imagethumb| relURL }}" alt="{{ .Params.Altimagethumb| relURL }}"  class="image blog"/></a>
                             {{ end }}
                         </div>
-                        {{ partial "taxonomy/category" . }}
+
+                        <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>  
+    
+                        <h3> {{ .Params.Subtitle }} </h3> 
+    
+                        <p class="txt_informaçõesPost">
+                            <span class="icon alt fa-calendar-o"> {{ .Params.Datapost }} </span> 
+                            <span class="icon alt fa-clock-o"> {{ .Params.Tempoleitura }} </span>
+                        </p>
+                        
+                        <p class="p_descriptionBlog"> {{ .Description }} </p> 
+    
+                        <a href="{{ .Permalink }}"><p class="goto_wordlink"> Ir para a postagem &#10095;</p></a>
+                    </div>
+
+                    <div class="container_imageBlogThumbPar img_shadow">
+                        {{ if .Params.Imagethumb }}
+                            <a href="{{ .Permalink }}"><img src="{{ .Params.Imagethumb| relURL }}" alt="{{ .Params.Altimagethumb| relURL }}"  class="image blog"/></a>
+                        {{ end }}
                     </div>
                 </article>
             {{ end }}
@@ -67,30 +67,44 @@
         border: none;
     }
 
-    .major{
-        display: inline-block;
+    .container_imageBlogThumb,.container_imageBlogThumbPar{
+        width: 33%;
+        overflow: hidden;
+        height: 23vh;
     }
-    
+
+    .container_imageBlogThumbPar{
+        margin-left: 2%;
+        float: right;
+    }
+
     .container_imageBlogThumb{
-        max-width: 33%;
         margin-right: 2%;
         float: left;
     }
 
-    .container_imageBlogThumbPar{
-        max-width: 33%;
-        margin-left: 2%;
-        float: right;
+    .forresize{
+        display: none;
+    }
+
+    .image{
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 50%;
+        transition: transform .2s;
+    }
+
+    .image:hover{
+        cursor: pointer;
+        transform: scale(1.2);
     }
 
     .post{
         display: inline-flex;
         flex-direction: column;
         align-items: baseline;
-    }
-
-    .image.main{
-        margin-bottom: 0px;
     }
 
     h2, h3, p {
@@ -126,10 +140,10 @@
         color: #18bfef;
     }
 
-    article{
+    .article_left,.article_right{
         width: 100% !important;
-        padding: 2rem 6rem 2rem 6rem !important;
         border-bottom: solid 2px #eee;
+        padding: 2rem 6rem 2rem 6rem !important;
     }
 
     section{
@@ -139,6 +153,72 @@
     @media screen and (max-width: 377px){
         #main > h2{
             font-size: 2.2rem;
+        }
+    }
+
+    @media screen and (max-width: 981px){
+        .container_textosBlogThumb{
+            width: 100%;
+        }
+
+        .container_imageBlogThumb{
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .container_imageBlogThumbPar{
+            display: none;
+        }
+        
+        .forresize{
+            display: block;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .article_left, .article_right{
+            padding: 2rem 4rem 2rem 4rem !important;
+        }
+
+        #container_blogHeader{
+            padding: 4rem 4rem 1rem 4rem !important;
+        }
+    }
+
+    @media screen and (max-width: 736px){
+        #main > .posts > article .image {
+            max-width: 100%;
+        }
+    }
+    
+
+    @media screen and (max-width: 900px) and (min-width: 651px){
+        .subtitle{
+            font-size: 1.5rem !important;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+        }
+    }
+
+    @media screen and (max-width: 651px){
+        .subtitle{
+            font-size: 1.5rem !important;
+            margin-bottom: 15px;
+        }
+
+        .article_left, .article_right {
+            padding: 2rem 2rem 2rem 2rem !important;
+        }
+
+        #container_blogHeader{
+            padding: 4rem 2rem 2rem 2rem !important;
         }
     }
 </style>

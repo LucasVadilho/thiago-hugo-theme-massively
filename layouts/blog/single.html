@@ -18,23 +18,20 @@
                 <tbody>
                     <tr>
                         <td>
-                            <div id="historietas_container">
+                            <div id="container_blogPost">
                         
                                 <h2> {{ .Title }} </h2>
                                 <h4> {{ .Params.Subtitle }} </h4>
 
                                 {{ .Content }}
 
-                                <div id="buttonContainer_compartilharHistorietas">
-                                    <button type="submit" id="button_compartilharHistorieta" onclick="abrirCompartilhar(event)">
+                                <div id="container_btnCompartilharBlogPost">
+                                    <button type="submit" id="btn_compartilharBlogPost" onclick="abrirCompartilhar(event)">
                                         <i class="fa fa-share-alt fa-lg"></i> Compartilhar
                                     </button>
                                 </div>
 
                                 {{ if isset .Params "processocriativo" }}
-                                <div id="container_processo"> 
-                                    <h2>Processo criativo</h2>
-          
                                     <div id="mySlidesProcessoID">
                                         <a id="prevProcesso" onclick="plusSlides(-1)">&#10094;</a>
                                             {{ range $processoCriativo := .Params.processoCriativo }}
@@ -72,7 +69,7 @@
         <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
        
         <!-- BOTÕES COMPARTILHAR -->
-        <div id="compartilharHistContainer">
+        <div id="share_postBlog">
             <div id='buttonCloseCompartilhar'>
                 <span class='fa fa-times' aria-hidden='true' onclick="closeCompartilhar()"></span>
             </div>
@@ -131,6 +128,10 @@
 
     a{
         border: none;
+    }
+
+    p>a{
+        text-decoration: underline;
     }
 
     a:hover{
@@ -227,12 +228,12 @@
     }
 
     /* compartilhamento */
-    #buttonContainer_compartilharHistorietas{
+    #container_btnCompartilharBlogPost{
         text-align: left;
         margin-top: 20px;
     }
 
-    #compartilharHistContainer{
+    #share_postBlog{
         position: fixed;
         display: none;
         flex-direction: row;
@@ -254,7 +255,7 @@
         vertical-align: 1px;
     }
 
-    .icon_compartilharHistorieta{
+    .icon_compartilharPostBlog{
         margin-right: 0px;
     }
 
@@ -406,98 +407,9 @@
         letter-spacing: 0.075em;
         box-shadow: 0 0 14px rgba(0, 0, 0, 0.05); 
     }
-    
-    /* imprimir */
-    #introHistorietasImprimir{
-        display: none;
-    }
 
-    @page{
-        size: a4;
-        orphans: 2;
-        widows: 2;
-        page-break-after: always;
-        margin-top: 80px;
-        margin-bottom: 60px;
-    }
-
-    @media print {
-        p {
-            font-family:georgia, times, serif;
-            font-size: 13px;
-        }
-        #header, #copyright, #navPanelToggle, #nav, #button_imprimirHistorieta, #button_compartilharHistorieta, #container_processo, #posicaoDotsProcesso, .bg, #container_contribuicoesHistorietas{
-            display: none;
-        }
-        #main, #historietas_container{
-            padding: 0px;
-        }
-
-        body{
-            background-image: none;
-            background-color: #ffffff00;
-        }
-        
-        h2{
-            font-size: 2.5rem;
-            margin-top: 45px;
-        }
-
-        h2{
-            font-size: 1rem;
-        }
-
-        .referenciar{
-            font-size: 0.8rem;
-            line-height: 1.6;
-            color: rgb(122, 122, 122);
-            text-align: right;
-            margin-top: 20px;
-        }
-
-        html, body {
-            width: 210mm;
-            height: 297mm;
-        }
-
-        table td{
-            margin-left: 500px;
-        }
-
-        thead{
-            display: inline;
-        }
-
-        table th { 
-            font-family: inherit;
-            letter-spacing: 0.075em;
-            text-transform: none;
-            padding:0;
-            font-size: 0.7rem;
-            font-weight: 400;
-            line-height: 1.6;
-            color: rgb(122, 122, 122);
-            text-align: right;
-            position: fixed;
-            margin-top: 0px;
-            bottom: 0;
-            right: 0;
-        } 
-
-        #introHistorietasImprimir{
-            display: inline-block;
-        }
-
-        #introHistorietas{
-            display: none;
-        }
-    }
-
-    @media print and (color) {
-        * {
-            -webkit-print-color-adjust: exact;
-            print-color-adjust: exact;
-        }
+    #btn_compartilharBlogPost{
+        margin-left: 0px;
     }
 
     /* processo */
@@ -561,130 +473,6 @@
         to {opacity: 1}
     }
 
-/* ENCERRAMENTO */
-    #introHistorietas{
-        margin-bottom: 25px;
-    }
-
-    #historieta-encerramento{
-        margin-top: 35px;
-        padding-top: 35px;
-        border-top: 2px solid #b6b6b6;
-        border-width: thin;
-    }
-
-    #historieta-encerramento h2{
-        text-align: center;
-    }
-
-    #container_contribuicoesHistorietas{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-top: 35px;
-    }
-
-    .contribuicoesHistorietas{
-        width: 30%;
-        min-width: 20%;
-    }
-
-    .contribuicoesHistorietas h4{
-        margin-bottom: 15px;
-    }
-
-    .title_contribuicoesHistorietas{
-        text-align: center;
-        font-size: 1rem;
-        line-height: 1.6;
-        text-transform: uppercase;
-    }
-
-    /* diretamente */
-    #container_contribuicaopix{
-        width: 100%;
-        display: inline-flex;
-        justify-content: space-evenly;
-        margin-top: 12px;
-    }
-
-    .button_contribuicaopix-container{
-        -webkit-backface-visibility: hidden;
-        -webkit-transform: translateZ(0) scale(1, 1);
-        filter: blur(0);
-        -webkit-filter: blur(0);
-        transition: transform .2s;
-    }
-
-    .button_contribuicaopix-container:hover{
-        cursor: pointer;
-        transform: perspective(300px) rotateY(1deg) translateZ(10px) scale(0.97);
-        transition: transform .2s;
-    }
-
-    .button_contribuicaopix{
-        display: flex;
-        margin-left: 0px;
-        margin-right: 0px;
-        height: 26px;
-        background-color: rgba(0,95,89,1.00);
-        border-radius: 3px;
-        text-align: center;
-        justify-self: center;
-        align-items: center;
-    }
-
-    .textbutton_contribuicaopix{
-        color:rgb(255, 255, 255); 
-        letter-spacing: 0.6px;
-        font-size: smaller;
-        font-weight: bold;
-        text-align: center;
-        padding: 0 10px 0 10px;
-    }
-
-    .icon_pix{
-        filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(323deg) brightness(102%) contrast(101%);
-        width: 9.344px;
-        height: 12.219px;
-        padding-top: 3px;
-    }
-
-    /* indiretamente */
-    #container_linkafiliado {
-        margin-top: 8px;
-        height: 26px;
-        display: flex;
-        margin: 12px auto 0 auto;
-        width: fit-content;
-    }
-
-    #container_linkafiliado :hover{
-        cursor: pointer;
-        transform: perspective(300px) rotateY(1deg) translateZ(10px) scale(0.97);
-        transition: transform .2s;
-    }
-
-    .linkafiliado {
-        border-radius: 3px;
-        background-color: #ffe95a;
-        color: rgb(0, 0, 0);
-        height: 26px;
-        letter-spacing: 0.6px;
-        font-size: smaller;
-        font-weight: bold;
-        text-align: center;
-        padding: 0 10px 0 10px;
-    }
-
-    /* sem custo */
-    .contribuicoesHistorietas ul{
-        text-align: center;
-        margin-top: 8px;
-    }
-
-
 /* REGRAS DE MIDIA */
     @media screen and (max-width: 700px) and (min-width: 551px){
         h2{
@@ -710,10 +498,10 @@
         #main {
             padding: 2rem 1.8rem 2rem 1.8rem;
         }
-        #compartilharHistContainer{
+        #share_postBlog{
             width: 352px;
         }
-        #buttonContainer_compartilharHistorietas{
+        #container_btnCompartilharBlogPost{
             text-align: center;
         }
 
@@ -723,67 +511,10 @@
     }
 
     @media screen and (max-width: 1036px) and (min-width:737px){
-        #compartilharHistContainer{
+        #share_postBlog{
             max-width: 352px;
         }
-    }
-
-    @media screen and (max-width: 1080px) and (min-width:890px){
-        #container_contribuicoesHistorietas{
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .contribuicoesHistorietas{
-            width: 40%;
-            margin-bottom: 50px;
-        }
-
-        .contribuicoesHistorietas:first-of-type{
-            margin-right: 50px;
-        }
-
-        .contribuicoesHistorietas:last-of-type{
-            margin-bottom: 0;
-        }
-    }
-
-    @media screen and (max-width: 889px){
-        #container_contribuicoesHistorietas{
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .contribuicoesHistorietas{
-            width: 90%;
-            margin-bottom: 50px;
-        }
-
-        .contribuicoesHistorietas:last-of-type{
-            margin-bottom: 0;
-        }
-
-        .contribuicoesHistorietas h4{
-            text-align: left;
-        }
-
-        #container_contribuicaopix{
-            justify-content: flex-start;
-        }
-
-        .button_contribuicaopix-container{
-            margin-right: 10px;
-        }
-
-        #container_linkafiliado{
-            margin: 12px 0 0 0;
-        }
-
-        .contribuicoesHistorietas ul{
-            text-align: left;
-        }
-    }
-    
+    }  
 </style>
 
 <script>
@@ -815,16 +546,16 @@
         document.getElementById('wpp_sharebutton').innerHTML += 
             `<a href="https://api.whatsapp.com/send?text=${urlCurrentPage}" target="_blank" data-action="share/whatsapp/share">
                 <div class="logoRedeContainerWpp">
-                    <i class="icon alt icon_compartilharHistorieta fa-whatsapp fa-lg"></i>
+                    <i class="icon alt icon_compartilharPostBlog fa-whatsapp fa-lg"></i>
                 </div>
                 <div class="nomeRedeContainerWpp">WhatsApp</div>
             </a>`
 
         /* Twitter */
         document.getElementById('twitter_sharebutton').innerHTML += 
-            `<a onclick='ttSharing("https://twitter.com/share?url=` + urlCurrentPage + `%0a%0a&text=Que tal ler uma historieta hoje?&hashtags=HistorietasTDVadilho,Historietas")'>
+            `<a onclick='ttSharing("https://twitter.com/share?url=` + urlCurrentPage + `%0a%0a&text=Dá uma olhada nesse post!&hashtags=HistorietasTDVadilho,Historietas")'>
                 <div class="logoRedeContainerTwitter">
-                    <i class="icon alt icon_compartilharHistorieta fa-twitter fa-lg"></i>
+                    <i class="icon alt icon_compartilharPostBlog fa-twitter fa-lg"></i>
                 </div>
                 <div class="nomeRedeContainerTwitter">Twitter</div>    
             </a>`
@@ -833,17 +564,17 @@
          document.getElementById('facebook_sharebutton').innerHTML += 
             `<a onclick='fbSharing("https://www.facebook.com/sharer/sharer.php?u=` + urlCurrentPage + `")'>
                 <div class="logoRedeContainerFacebook">
-                    <i class="icon alt icon_compartilharHistorieta fa-facebook fa-lg"></i>
+                    <i class="icon alt icon_compartilharPostBlog fa-facebook fa-lg"></i>
                 </div>
                 <div class="nomeRedeContainerFacebook">Facebook</div>    
             </a>`
 
         /* Reddit */
-        let reddit_url = "https://www.reddit.com/submit?title=Historieta%20-%20TDVadilho&text=Que%20tal%20ler%20uma%20historieta%20hoje?%20[{{ .Params.title }}]"
+        let reddit_url = "https://www.reddit.com/submit?title=Historieta%20-%20TDVadilho&text=Dá%20uma%20olhada%20nesse%20post%20!%20[{{ .Params.title }}]"
         document.getElementById('reddit_sharebutton').innerHTML += 
             `<a onclick='redditSharing("${reddit_url}(${urlCurrentPage})%0a%0a&signup_survey=true")'>
                 <div class="logoRedeContainerReddit">
-                    <i class="icon alt icon_compartilharHistorieta fa-reddit-alien fa-lg"></i>
+                    <i class="icon alt icon_compartilharPostBlog fa-reddit-alien fa-lg"></i>
                 </div>
                 <div class="nomeRedeContainerReddit">Reddit</div>
             </a>`
@@ -852,7 +583,7 @@
         document.getElementById('copyUrl_sharebutton').innerHTML += 
             `<a onclick="copiarUrl()">
                 <div class="iconeContainerCopyUrl">
-                    <i class="icon alt icon_compartilharHistorieta fa-link fa-lg"></i>
+                    <i class="icon alt icon_compartilharPostBlog fa-link fa-lg"></i>
                 </div>
                 <div class="nomeContainerCopyUrl">Copiar url</div>    
             </a>`
@@ -882,7 +613,7 @@
     let flagCompartilharAberto = false;
     let abrirCompartilhar = function(e) {
         e.stopPropagation()
-        let container = document.getElementById("compartilharHistContainer");
+        let container = document.getElementById("share_postBlog");
         container.style.display = "inline-flex";
         flagCompartilharAberto = true;
 
@@ -901,7 +632,7 @@
     }) 
 
     let closeCompartilhar = function () {
-        let container = document.getElementById("compartilharHistContainer")
+        let container = document.getElementById("share_postBlog")
         container.style.display="none"
     }
 

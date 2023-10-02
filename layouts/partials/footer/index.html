@@ -15,16 +15,14 @@
                     <input type="email" name="mail" id="email" />
                 </div>
                 <div class="field">
-                    <label for="assunto2">{{ i18n "CONTACT_FORM_FIELD_ASSUNTO" . }}</label>
-                    <input type="text" name="assunto2" id="assunto2" required/>                  
-                </div>
-                <div class="field">
                     <label for="assunto">{{ i18n "CONTACT_FORM_FIELD_ASSUNTO" . }}</label>
-                    <select id="assunto" name="assunto">
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="fiat">Fiat</option>
-                        <option value="audi">Audi</option>
+                    <select id="assunto" name="assunto" required>
+                        <option value="Gostaria de te contratar">Gostaria de te contratar</option>
+                        <option value="Vamos fazer uma parceria?">Vamos fazer uma parceria?</option>
+                        <option value="Um convite para você">Um convite para você</option>
+                        <option value="Só queria falar que...">Só queria falar que...</option>
+                        <option value="Tenho uma sugestão">Tenho uma sugestão</option>
+                        <option value="Outro">Outro</option>
                     </select>
                 </div>
                 <div class="field">
@@ -52,11 +50,13 @@
     {{ end }}
 
     <section class="split contact">
+        {{ with $data.contactinfo.email }}
         <section id="splitcontact">
             <h6><span class="underline_status">Status</span></h6>
-            <a href="mailto:{{ . }}"><p>Estou <b>disponível</b> para projetos de design ou textuais. 
+            <a href="mailto:{{ . }}"><p>Estou <span style="font-weight: bold;">disponível</span> para projetos de design ou textuais. 
                 Sinta-se à vontade para me enviar uma mensagem via formulário ou email!</p></a>
         </section>
+        {{ end }}
 
         <section id="splitcontact">
             <h6>FAQ</h6>

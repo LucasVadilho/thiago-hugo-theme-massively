@@ -2,8 +2,7 @@
 
 {{ $postsPerPage := 5}}
 {{ $posts_blog := .Pages.ByDate.Reverse }}
-{{ $lastPost := first 1 $posts_blog }}
-{{ $postsPaging := .Paginate (last (sub (len .Pages) 1) $posts_blog) $postsPerPage }}
+{{ $postsPaging := .Paginate $posts_blog $postsPerPage }}
 
 
 <body lang='{{ .Site.LanguageCode | default "en-us" }}' class="is-preload">
@@ -13,33 +12,23 @@
 
         <!-- Main -->
         <div id="main">
+            <div id="container_blogHeader">
+                <div id="container_blogHeaderIntroText">
+                    <h1 style="text-align: left; margin-bottom: 0px;">Um diário não diário</h1>
+                    <h3 class="subtitle">Aqui entram conteúdos extras para me inspirar e te inspirar</h3>
+                </div>
 
-            <div id="container_blogSearchFilter">
                 <div class="container_filter" id="filter_blog">
                     <button onclick="action_filter()" class="btn_drodown">Filtrar por <span id="dropdown_arrow">&#10095;</span></button>
                     <div id="dropdown_filterBlog">
-                        <a href="#Todos" class="dropdown_active" onclick="action_filterselection(todos)"> Todos </a>
-                        <a href="#recomendacoes" onclick="action_filterselection(recomendacoes)"> Recomendações </a>
-                            <a href="#recomendacoes_livros" class="suboption" onclick="action_filterselection(recomendacoeslivros)">• Livros </a>
-                            <a href="#recomendacoes_livros" class="suboption" onclick="action_filterselection(recomendacoesfilmes)">• Filmes </a>
-                        <a href="#estudos" onclick="action_filterselection(estudos)"> Estudos </a>
-                        <a href="#dissertacoes" onclick="action_filterselection(dissertacoes)"> Dissertações </a>
+                        <a href='{{ "/categories/a" | relLangURL }}' class="dropdown_active"> Todos </a>
+                        <a href='{{ "/categories/b" | relLangURL }}'> Recomendações </a>
+                            <a href="#recomendacoes_livros" class="suboption">• Livros </a>
                     </div>
-                </div>
-
-                <div class="searchbar" id="searchbar_blog">
-                    <input type="text" class="input_searchbar" placeholder="Procurar...">
-                    <button type="submit"><i class="fa fa-search"></i></button>
                 </div>
             </div>
 
-            {{ if eq .Paginator.PageNumber 1 }}
-                {{- partial "posts_blog/featured.html" (dict "lastpost" $lastPost "siteData" (index .Site.Data .Site.Language.Lang)) }}
-            {{ end}}
-
-            {{ if gt (len $posts_blog) 1 }}
-                {{ partial "posts_blog/list.html" (dict "posts" $postsPaging "siteData" (index .Site.Data .Site.Language.Lang)) }}
-            {{ end }}
+            {{ partial "posts_blog/list.html" (dict "posts" $postsPaging "siteData" (index .Site.Data .Site.Language.Lang)) }}
 
             {{- $paginator := .Paginator }}
             {{- $outer := . }}
@@ -127,10 +116,14 @@
         padding: 0rem 2rem 1rem 2rem;
     }
 
-    #container_blogSearchFilter{
+    #container_blogHeader{
         display: inline-flex;
+        flex-wrap: wrap;
         width: 100%;
-        justify-content: space-around;
+        padding-left: 6rem;
+        padding-right: 6rem;
+        align-items: flex-end;
+        justify-content: space-between;
     }
 
     @media screen and (max-width: 1000px) and (min-width:651px){
@@ -150,9 +143,20 @@
         h3 {
             font-size: 1.2rem;
         }
+
+        #filter_blog{
+            justify-content: flex-end;
+            width: 100%;
+            display: inline-flex;
+        }
     }
 
     @media screen and (max-width: 651px){
+        #filter_blog{
+            justify-content: flex-end;
+            width: 100%;
+            display: inline-flex;
+        }
         #main > .post {
             padding: 4rem 2rem 0rem 2rem;
         }
@@ -180,8 +184,23 @@
 </style>
 
 <script>
+    let isFilterOpen = false;
+
     let action_filter = function(){
         document.getElementById("dropdown_filterBlog").classList.toggle('show_dropdownOptions');
         document.getElementById("dropdown_arrow").classList.toggle('dropdown_arrowactive');
+
+        isFilterOpen = true;
     }
+
+    window.addEventListener('click', function(e){
+        e.stopPropagation();
+        
+        if (isFilterOpen == true){
+            console.log('teste')
+            document.getElementById("dropdown_filterBlog").classList.toggle('show_dropdownOptions');
+            document.getElementById("dropdown_arrow").classList.toggle('dropdown_arrowactive');
+            isFilterOpen = false;
+        }
+    })
 </script>
