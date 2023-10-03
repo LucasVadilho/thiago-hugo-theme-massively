@@ -1,64 +1,8 @@
 <!-- Posts -->
 {{ $data := .siteData }}
 <body lang='{{ .Site.LanguageCode | default "en-us" }}' class="is-preload">
-    <section class="posts blog">
-        {{ range $i,$p := .posts.Pages }}
-            {{if not (modBool $i 2)}} <!-- IMPAR -->
-                <article class="article_left">
-                    <div class="container_imageBlogThumb img_shadow">
-                        {{ if .Params.Imagethumb }}
-                            <a href="{{ .Permalink }}"><img src="{{ .Params.Imagethumb| relURL }}" alt="{{ .Params.Altimagethumb| relURL }}"  class="image blog"/></a>
-                        {{ end }}
-                    </div>
+    {{ partial "partials/posts_blog/list_organizer" .posts }}
 
-                    <div class="container_textosBlogThumb">
-                        <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>  
-
-                        <h3> {{ .Params.Subtitle }} </h3> 
-
-                        <p class="txt_informaçõesPost">
-                            <span class="icon alt fa-calendar-o"> {{ .Params.Datapost }} </span> 
-                            <span class="icon alt fa-clock-o"> {{ .Params.Tempoleitura }} </span>
-                        </p>
-                        
-                        <p class="p_descriptionBlog"> {{ .Description }} </p> 
-
-                        <a href="{{ .Permalink }}"><p class="goto_wordlink"> Ir para a postagem &#10095;</p></a>
-                    </div>
-                </article>
-
-            {{else}}
-                <article class="article_right">
-                    <div class="container_textosBlogThumb">
-                        <div class="container_imageBlogThumbPar img_shadow forresize">
-                            {{ if .Params.Imagethumb }}
-                                <a href="{{ .Permalink }}"><img src="{{ .Params.Imagethumb| relURL }}" alt="{{ .Params.Altimagethumb| relURL }}"  class="image blog"/></a>
-                            {{ end }}
-                        </div>
-
-                        <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>  
-    
-                        <h3> {{ .Params.Subtitle }} </h3> 
-    
-                        <p class="txt_informaçõesPost">
-                            <span class="icon alt fa-calendar-o"> {{ .Params.Datapost }} </span> 
-                            <span class="icon alt fa-clock-o"> {{ .Params.Tempoleitura }} </span>
-                        </p>
-                        
-                        <p class="p_descriptionBlog"> {{ .Description }} </p> 
-    
-                        <a href="{{ .Permalink }}"><p class="goto_wordlink"> Ir para a postagem &#10095;</p></a>
-                    </div>
-
-                    <div class="container_imageBlogThumbPar img_shadow">
-                        {{ if .Params.Imagethumb }}
-                            <a href="{{ .Permalink }}"><img src="{{ .Params.Imagethumb| relURL }}" alt="{{ .Params.Altimagethumb| relURL }}"  class="image blog"/></a>
-                        {{ end }}
-                    </div>
-                </article>
-            {{ end }}
-        {{ end }}
-    </section>
     <p class="copyrightIntern">© Todas as imagens, textos, arquivos e direitos autorais de conteúdo Thiago David Vadilho (TD Vadilho)</p>
 </body>
 

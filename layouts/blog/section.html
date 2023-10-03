@@ -367,29 +367,71 @@
 </style>
 
 <script>
+    let blog_filter_open = false;
+    let filter_options = document.getElementById("dropdown_filterBlog");
+    let arrow_right = document.getElementById("dropdown_arrowOpen");
+    let arrow_left = document.getElementById("dropdown_arrowClose");
 
-    let closeBlogFilter = function (){
-        document.getElementById("dropdown_filterBlog").classList.toggle('show_dropdownOptions');
-        document.getElementById("dropdown_arrowOpen").style.display = "inline-block";
-        document.getElementById("dropdown_arrowClose").style.display = "none";
+    let close_filter = function(){
+        filter_options.classList.toggle('show_dropdownOptions');
+        arrow_right.style.display = "inline-block";
+        arrow_left.style.display = "none";
+        
+        blog_filter_open = false;
     }
 
     let action_filter = function(e){
-        document.getElementById("dropdown_filterBlog").classList.toggle('show_dropdownOptions');
-        document.getElementById("dropdown_arrowOpen").style.display = "none";
-        document.getElementById("dropdown_arrowClose").style.display = "inline-block";
-
         e.stopPropagation();
-        let container = document.getElementById("filter_blog")
 
-        window.addEventListener('click', function(g){
-            closeBlogFilter(); 
-        }, options = {"once": true})
+        if(!blog_filter_open) {
+            filter_options.classList.toggle('show_dropdownOptions');
+            
+            arrow_right.style.display = "none";
+            arrow_left.style.display = "inline-block";
 
-        touchsurface.addEventListener('touchstart', function(c) {
-            closeBlogFilter(); 
-        }, options = {"once": true})
+            window.addEventListener('click', close_filter, options={"once": true});
 
-        isFilterOpen = true;
-    }  
+            blog_filter_open = true;
+        } else {
+            close_filter();
+        }
+    }
+
+    // let closeBlogFilter = function (){
+    //     document.getElementById("dropdown_filterBlog").classList.toggle('show_dropdownOptions');
+    //     document.getElementById("dropdown_arrowOpen").style.display = "inline-block";
+    //     document.getElementById("dropdown_arrowClose").style.display = "none";
+    //     console.log(4);
+    // }
+
+    // let action_filter = function(e){
+    //     btn_filter.classList.toggle('show_dropdownOptions');
+
+    //     if(blog_filter_open) {
+    //         closeBlogFilter();
+    //         return;
+    //     }
+
+    //     // console.log(3);
+
+    //     // document.getElementById("dropdown_filterBlog").classList.toggle('show_dropdownOptions');
+    //     // document.getElementById("dropdown_arrowOpen").style.display = "none";
+    //     // document.getElementById("dropdown_arrowClose").style.display = "inline-block";
+
+    //     blog_filter_open = true;
+        
+
+    //     // e.stopPropagation();
+    //     // let container = document.getElementById("filter_blog")
+
+    //     // window.addEventListener('click', function(g){
+    //     //     closeBlogFilter(); 
+    //     // }, options = {"once": true})
+
+    //     // window.addEventListener('touchstart', function(c) {
+    //     //     closeBlogFilter(); 
+    //     // }, options = {"once": true})
+
+    //     // isFilterOpen = true;
+    // }  
 </script>

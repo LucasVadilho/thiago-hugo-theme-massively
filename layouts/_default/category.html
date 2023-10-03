@@ -1,7 +1,5 @@
 {{ define "main" }}
-
-<div>
-    {{ range .Pages }}
-    {{ end }}
-</div>
+    <div id="main">
+        {{ partial "partials/posts_blog/list_organizer" . }}
+    </div>
 {{ end }}
