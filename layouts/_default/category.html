@@ -1,10 +1,7 @@
 {{ define "main" }}
-<div style="background-color: cadetblue;">
-    <p>Todas os conteúdos marcados com esse termo vão aparecer aqui</p>
+
+<div>
     {{ range .Pages }}
-    <p>
-        <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a>
-    </p>
     {{ end }}
 </div>
 {{ end }}

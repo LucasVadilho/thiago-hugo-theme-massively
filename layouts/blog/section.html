@@ -4,7 +4,6 @@
 {{ $posts_blog := .Pages.ByDate.Reverse }}
 {{ $postsPaging := .Paginate $posts_blog $postsPerPage }}
 
-
 <body lang='{{ .Site.LanguageCode | default "en-us" }}' class="is-preload">
     <div id="wrapper" class="fade-in">
         {{- partial "header" . -}}
@@ -14,16 +13,19 @@
         <div id="main">
             <div id="container_blogHeader">
                 <div id="container_blogHeaderIntroText">
-                    <h1 style="text-align: left; margin-bottom: 0px;">Um diário não diário</h1>
+                    <h1 style="margin-bottom: 0px;">Um diário não diário</h1>
                     <h3 class="subtitle">Aqui entram conteúdos extras para me inspirar e te inspirar</h3>
                 </div>
 
                 <div class="container_filter" id="filter_blog">
-                    <button onclick="action_filter()" class="btn_drodown">Filtrar por <span id="dropdown_arrow">&#10095;</span></button>
+                    <button onclick="action_filter(event)" class="btn_dropdowndown">Filtrar por 
+                    <span id="dropdown_arrowOpen"> &#10095;</span>
+                    <span id="dropdown_arrowClose"> &#10094;</span></button>
+
                     <div id="dropdown_filterBlog">
-                        <a href='{{ "/categories/a" | relLangURL }}' class="dropdown_active"> Todos </a>
-                        <a href='{{ "/categories/b" | relLangURL }}'> Recomendações </a>
-                            <a href="#recomendacoes_livros" class="suboption">• Livros </a>
+                        <a href='{{ "/blog/" | relLangURL }}' class="dropdown_active"> Todos </a>
+                        <a href='{{ "/categories/recomendações/" | relLangURL }}'> Recomendações </a>
+                            <a href='{{ "/categories/recomendações-de-livros/" | relLangURL }}' class="dopdown_suboption">• Livros </a>
                     </div>
                 </div>
             </div>
@@ -33,7 +35,6 @@
             {{- $paginator := .Paginator }}
             {{- $outer := . }}
             {{- partial "posts/pagination.html" (dict "paginator" $paginator "outer" $outer)}}
-
             
         </div>
 
@@ -50,52 +51,19 @@
 {{- partial "temporario" . }}
 
 <style>
-    .container_filter{
-        position: relative;
-        display: inline-block;
+
+/* GERAL */
+    a{
+        border: none;
     }
 
-    .dropdown_active{
-        background-color: #e2e2e2;
-        color: #18bfef !important;
+    h2, h3, p {
+        text-align: left;
     }
 
-    #dropdown_filterBlog{
-        display: none;
-        position: absolute;
-        background-color: #ffffff;
-        box-shadow: rgba(0, 0, 0, 0.33) 0px 1px 3px 0px;
-        min-width: 230px;
-        font-family: "Source Sans Pro", Helvetica, sans-serif;
-        font-size: 0.8rem;
-        font-weight: 900;
-        letter-spacing: 0.075em;
-        padding: 0.75rem 0;
-        text-transform: uppercase;
-        z-index: 1;
-    }
-
-    #dropdown_filterBlog a{
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-    }
-
-    #dropdown_filterBlog a:hover{
-        background-color: #f1f1f1;
-    }
-
-    .suboption{
-        padding: 12px 48px !important;
-    }
-
-    .show_dropdownOptions {
-        display:block !important;
-    }
-
-    .dropdown_arrowactive{
-        display: inline-block;
-        transform: rotate(90deg);
+    h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0px;
     }
 
     #main > .post header.major h2 {
@@ -108,23 +76,187 @@
         hyphens:none;
     }
 
-    #main > .post header.major h3 {
-        font-size: 1.25rem
-    }
-
     #main > .posts{
         padding: 0rem 2rem 1rem 2rem;
     }
 
+    #main {
+        padding-bottom: 1rem;
+    }
+
+/* HEADER DO DIÁRIO */
     #container_blogHeader{
         display: inline-flex;
         flex-wrap: wrap;
         width: 100%;
         padding-left: 6rem;
         padding-right: 6rem;
-        align-items: flex-end;
-        justify-content: space-between;
+        justify-content: center;
+        text-wrap: balance;
     }
+
+    .subtitle{            
+        text-align: center !important;
+        font-size: 1.5rem !important;
+        margin-bottom: 0px;
+    }
+
+    /* Título e Subtítulo da Página */
+    #main > .post header.major h3 {
+        font-size: 1.25rem
+    }
+
+    /* Filtro */
+    .btn_dropdowndown{
+        background-color: rgba(255, 255, 255, 0.875);
+        box-shadow: 0 0.125rem 0.75rem 0 rgba(30, 37, 45, 0.25);
+        position: fixed;
+        bottom: 0.75rem;
+        left: 0.75rem;
+        font-size: 0.9rem;
+        z-index: 5;
+        -webkit-touch-callout:none;
+        -webkit-user-select:none;
+        -khtml-user-select:none;
+        -moz-user-select:none;
+        -ms-user-select:none;
+        user-select:none;
+    }
+
+    .dropdown_active{
+        background-color: #c2c2c2;
+    }
+
+    #dropdown_filterBlog{
+        display: none;
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.875);
+        box-shadow: 0 0.125rem 0.75rem 0 rgba(30, 37, 45, 0.25);
+        min-width: 230px;
+        position: fixed;
+        bottom: 0.75rem;
+        left: 11.45rem;
+        font-family: "Source Sans Pro";
+        font-size: 0.9rem;
+        font-weight: bold;
+        letter-spacing: 0.075em;
+        text-transform: uppercase;
+        z-index: 5;
+        -webkit-touch-callout:none;
+        -webkit-user-select:none;
+        -khtml-user-select:none;
+        -moz-user-select:none;
+        -ms-user-select:none;
+        user-select:none;
+        z-index: 1;
+    }
+
+    #dropdown_filterBlog a{
+        padding: 6.2px 48px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dopdown_suboption{
+        padding: 6.2px 62px !important;
+    }
+
+    #dropdown_filterBlog a:hover{
+        background-color: #f1f1f1;
+    }
+
+    .show_dropdownOptions {
+        display:block !important;
+    }
+    
+    #dropdown_arrowOpen {
+        display: inline-block;
+    }
+
+    #dropdown_arrowClose {
+        display: none;
+    }
+
+/* POSTS LISTADOS */
+    section{
+        padding: 0 !important;
+    }
+
+    .article_left,.article_right{
+        width: 100% !important;
+        border-bottom: solid 2px #eee;
+        padding: 2rem 6rem 2rem 6rem !important;
+    }
+
+
+    .post{
+        display: inline-flex;
+        flex-direction: column;
+        align-items: baseline;
+    }
+
+    /* Config das imagens */
+    .container_imageBlogThumb,.container_imageBlogThumbPar{
+        width: 33%;
+        overflow: hidden;
+        height: 23vh;
+    }
+
+    .container_imageBlogThumbPar{
+        margin-left: 2%;
+        float: right;
+    }
+
+    .container_imageBlogThumb{
+        margin-right: 2%;
+        float: left;
+    }
+
+    .forresize{
+        display: none;
+    }
+
+    .image{
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 50%;
+        transition: transform .2s;
+    }
+
+    .image:hover{
+        cursor: pointer;
+        transform: scale(1.2);
+    }
+
+    /* Config dos textos */
+    .container_textosBlogThumb{
+        float: left;
+        width: 65%
+    }
+
+    .p_descriptionBlog{
+        margin-bottom: 15px;
+        margin-top: 11px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+
+    /* Config do botao-link */
+    .goto_wordlink{
+        text-align: right;
+        text-decoration: underline;
+    }
+
+    .goto_wordlink:hover{
+        color: #18bfef;
+    }
+
+/* REGRAS DE MEDIA */
 
     @media screen and (max-width: 1000px) and (min-width:651px){
         #main > .post {
@@ -132,6 +264,35 @@
         }
         .image.main{
             height: 35vh;
+        }
+    }
+
+    @media screen and (max-width: 981px){
+        .container_textosBlogThumb{
+            width: 100%;
+        }
+
+        .container_imageBlogThumb{
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .container_imageBlogThumbPar{
+            display: none;
+        }
+        
+        .forresize{
+            display: block;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .article_left, .article_right{
+            padding: 2rem 4rem 2rem 4rem !important;
+        }
+
+        #container_blogHeader{
+            padding: 4rem 4rem 1rem 4rem !important;
         }
     }
 
@@ -149,6 +310,20 @@
             width: 100%;
             display: inline-flex;
         }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+        }
+    }
+
+    @media screen and (max-width: 736px){
+        #main > .posts > article .image {
+            max-width: 100%;
+        }
     }
 
     @media screen and (max-width: 651px){
@@ -156,13 +331,6 @@
             justify-content: flex-end;
             width: 100%;
             display: inline-flex;
-        }
-        #main > .post {
-            padding: 4rem 2rem 0rem 2rem;
-        }
-
-        #main > .posts {
-            padding: 0rem 0rem 1rem 0rem;
         }
 
         #main > .post header.major h2 {
@@ -180,27 +348,48 @@
         .image.main{
             height: 35vh;
         }
+
+        .article_left, .article_right {
+            padding: 2rem 2rem 2rem 2rem !important;
+        }
+
+        #container_blogHeader{
+            padding: 4rem 2rem 0rem 2rem !important;
+        }
     }
+
+    @media screen and (max-width: 377px){
+        #main > h2{
+            font-size: 2.2rem;
+        }
+    }
+
 </style>
 
 <script>
-    let isFilterOpen = false;
 
-    let action_filter = function(){
+    let closeBlogFilter = function (){
         document.getElementById("dropdown_filterBlog").classList.toggle('show_dropdownOptions');
-        document.getElementById("dropdown_arrow").classList.toggle('dropdown_arrowactive');
-
-        isFilterOpen = true;
+        document.getElementById("dropdown_arrowOpen").style.display = "inline-block";
+        document.getElementById("dropdown_arrowClose").style.display = "none";
     }
 
-    window.addEventListener('click', function(e){
+    let action_filter = function(e){
+        document.getElementById("dropdown_filterBlog").classList.toggle('show_dropdownOptions');
+        document.getElementById("dropdown_arrowOpen").style.display = "none";
+        document.getElementById("dropdown_arrowClose").style.display = "inline-block";
+
         e.stopPropagation();
-        
-        if (isFilterOpen == true){
-            console.log('teste')
-            document.getElementById("dropdown_filterBlog").classList.toggle('show_dropdownOptions');
-            document.getElementById("dropdown_arrow").classList.toggle('dropdown_arrowactive');
-            isFilterOpen = false;
-        }
-    })
+        let container = document.getElementById("filter_blog")
+
+        window.addEventListener('click', function(g){
+            closeBlogFilter(); 
+        }, options = {"once": true})
+
+        touchsurface.addEventListener('touchstart', function(c) {
+            closeBlogFilter(); 
+        }, options = {"once": true})
+
+        isFilterOpen = true;
+    }  
 </script>

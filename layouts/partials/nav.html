@@ -21,19 +21,29 @@
         {{ end }}
     </ul>
 
-    {{ with $data.social }}
-        <ul class="icons">
-            {{ with .instagram}}
-                <li><a href="{{ . }}" class="icon alt fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
-            {{ end }}
+    <spam id="socialicons_hide">
+        {{ with $data.social }}
+            <ul class="icons">
+                {{ with .instagram}}
+                    <li><a href="{{ . }}" class="icon alt fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
+                {{ end }}
 
-            {{ with .pinterest}}
-                <li><a href="{{ . }}" class="icon alt fa-pinterest" target="_blank"><span class="label">Pinterest</span></a></li>
-            {{ end }}  
-            
-            {{ with .youtube }}
-                <li><a href="{{ . }}" class="icon fa-youtube" target="_blank"><span class="label">Youtube</span></a></li>
-            {{ end }}
-        </ul>    
-    {{ end }}
+                {{ with .pinterest}}
+                    <li><a href="{{ . }}" class="icon alt fa-pinterest" target="_blank"><span class="label">Pinterest</span></a></li>
+                {{ end }}  
+                
+                {{ with .youtube }}
+                    <li><a href="{{ . }}" class="icon fa-youtube" target="_blank"><span class="label">Youtube</span></a></li>
+                {{ end }}
+            </ul>    
+        {{ end }}
+    </spam>
 </nav>
+
+<style>
+    @media screen and (max-width:1053px){
+        #socialicons_hide{
+            display: none;
+        }
+    }
+</style>
