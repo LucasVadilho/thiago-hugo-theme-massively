@@ -16,7 +16,14 @@
                 </div>
                 <div class="field">
                     <label for="assunto">{{ i18n "CONTACT_FORM_FIELD_ASSUNTO" . }}</label>
-                    <input type="text" name="assunto" id="assunto" required/>                  
+                    <select id="assunto" name="assunto" required>
+                        <option value="Gostaria de te contratar">Gostaria de te contratar</option>
+                        <option value="Vamos fazer uma parceria?">Vamos fazer uma parceria?</option>
+                        <option value="Um convite para você">Um convite para você</option>
+                        <option value="Só queria falar que...">Só queria falar que...</option>
+                        <option value="Tenho uma sugestão">Tenho uma sugestão</option>
+                        <option value="Outro">Outro</option>
+                    </select>
                 </div>
                 <div class="field">
                     <label for="message">{{ i18n "CONTACT_FORM_FIELD_MESSAGE" . }}</label>
@@ -46,7 +53,7 @@
         {{ with $data.contactinfo.email }}
         <section id="splitcontact">
             <h6><span class="underline_status">Status</span></h6>
-            <a href="mailto:{{ . }}"><p>Estou <b>disponível</b> para projetos de design ou textuais. 
+            <a href="mailto:{{ . }}"><p>Estou <span style="font-weight: bold;">disponível</span> para projetos de design ou textuais. 
                 Sinta-se à vontade para me enviar uma mensagem via formulário ou email!</p></a>
         </section>
         {{ end }}
@@ -202,7 +209,7 @@
     
         data = Object.fromEntries(new FormData(e.target).entries())  
         url = 'https://thiago.oioipio.com/contato'
-
+        
         fetch(url, {
             method: 'POST',
             headers: {

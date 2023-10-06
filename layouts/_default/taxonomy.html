@@ -1,0 +1,14 @@
+{{ define "main" }}
+<div style="background-color: cadetblue;">
+    <p>
+        Todas as taxonomias vão usar esse template (por enquanto, pelo que entendi, vc só vai usar categorias).
+        Dá para fazer específico de cada, caso necessário (ex, um layout para <code>categories</code> e um para <code>tags</code>).
+    </p>
+    
+    {{ range .Pages }}
+        <p>
+            <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a>
+        </p>
+    {{ end }}
+</div>
+{{ end }}

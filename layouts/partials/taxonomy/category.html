@@ -1,0 +1,5 @@
+{{ with .Params.categories }}
+    {{- range $index, $el := . -}}
+        <a href="{{ ( printf "categories/%s/" ( . | urlize ) ) | relLangURL }}">{{ . }}</a>
+    {{- end -}}
+{{ end }}
