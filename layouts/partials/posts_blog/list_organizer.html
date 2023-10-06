@@ -16,6 +16,7 @@
                     <p class="txt_informaçõesPost">
                         <span class="icon alt fa-calendar-o"> {{ .Params.Datapost }} </span> 
                         <span class="icon alt fa-clock-o"> {{ .Params.Tempoleitura }} </span>
+                        <img class="icon_classifIndicativa" src= "{{ .Params.ClasIndicativa }}" > <span class="icon">{{ .Params.DescripIndicativa }}</span>
                     </p>
                     
                     <p class="p_descriptionBlog"> {{ .Description }} </p> 
@@ -40,6 +41,7 @@
                     <p class="txt_informaçõesPost">
                         <span class="icon alt fa-calendar-o"> {{ .Params.Datapost }} </span> 
                         <span class="icon alt fa-clock-o"> {{ .Params.Tempoleitura }} </span>
+                        <img class="icon_classifIndicativa" src= "{{ .Params.ClasIndicativa }}" > <span class="icon">{{ .Params.DescripIndicativa }}</span>
                     </p>
                     
                     <p class="p_descriptionBlog"> {{ .Description }} </p> 
@@ -255,7 +257,8 @@
     
         /* Config do botao-link */
         .goto_wordlink{
-            text-align: right;
+            display: inline-flex;
+            float: right;
             text-decoration: underline;
         }
     

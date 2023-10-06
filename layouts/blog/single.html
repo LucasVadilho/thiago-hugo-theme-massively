@@ -21,7 +21,7 @@
                             <div id="container_blogPost">
                         
                                 <h2> {{ .Title }} </h2>
-                                <h4> {{ .Params.Subtitle }} </h4>
+                                <h4> {{ .Params.Subtitle }} | <img class="icon_classifIndicativaMiddleAlign" src= "{{ .Params.ClasIndicativa }}" > {{ .Params.DescripIndicativa }} </h4>
 
                                 {{ .Content }}
 
@@ -94,6 +94,10 @@
             <!-- Reddit -->
             <div id="reddit_sharebutton">
             </div>
+
+            <!-- Pinterest -->
+            <div id="pinterest_sharebutton">
+            </div>
         </div>
 
         <div id="urlCopiarNotification">
@@ -118,6 +122,24 @@
         height: 100%; */
         width: 100%;
         height: 500px;
+    }
+
+    .iframecontainer{
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+    }
+
+    .iframecontainer iframe{
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
     }
 
 /* GERAIS */
@@ -183,11 +205,10 @@
 
     /* imagem */
     .imgcentralizada{
-        max-width: 100%;
+        width: 100%;
         max-height: 96vh;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
+        display: inline-block;
+        text-align: center;
     }
 
     .imgAlinhadaEsq{
@@ -368,6 +389,28 @@
         margin-bottom: 5px;
     }
     
+    .logoRedeContainerPinterest{
+        float: left;
+        color: white;
+        width: 26px;
+        height: 26px;
+        background-color: #BD081C;
+        text-align: center;
+    }
+
+    .nomeRedeContainerPinterest{
+        width: 130px;
+        float: right;
+        background-color:#c03041;
+        color: white;
+        font-family: inherit;
+        height: 26px;
+        letter-spacing: 1px;
+        font-size: small;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
     .iconeContainerCopyUrl{
         float: left;
         color: white;
@@ -539,6 +582,11 @@
         window.open(post_url , "share_dialog", "width=790, height=742");
     }
 
+    function pinterestSharing(post_url){
+        var url = new String(post_url);
+        window.open(post_url , "share_dialog", "width=1080, height=727");
+    }
+
     /* Carregando links de compartilhamento */
         let urlCurrentPage = window.location.href;
 
@@ -577,6 +625,15 @@
                     <i class="icon alt icon_compartilharPostBlog fa-reddit-alien fa-lg"></i>
                 </div>
                 <div class="nomeRedeContainerReddit">Reddit</div>
+            </a>`
+
+        /* Pinterest */
+        let pinterest_url = "pinterestSharing('{{ .Params.linkPin }}')"
+        document.getElementById('pinterest_sharebutton').innerHTML += `<a onclick="${pinterest_url}">
+                <div class="logoRedeContainerPinterest">
+                    <i class="icon alt icon_compartilharHistorieta fa-pinterest fa-lg"></i>
+                </div>
+                <div class="nomeRedeContainerPinterest">Pinterest</div>    
             </a>`
 
         /* Copiar URL*/    
