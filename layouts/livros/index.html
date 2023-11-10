@@ -14,7 +14,7 @@
 
                     <div id="painelLivros">
                         <div class="arrow-holder">
-                            <a id="carrousel-left">&#10094;</a>
+                            <a id="carrousel-left"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
                         </div>
 
                         <div class='image-holder'>
@@ -23,51 +23,96 @@
                                  id="painel-{{ $livro.id }}"
                                  myid="{{ $livro.id }}"
                                  titulo="{{$livro.titulo}}"
-                                 descricao="{{$livro.descricao}}"
+                                 criticas="{{$livro.criticas}}"
+                                 dados+sinopse="{{$livro.dadossinopse}}"
+                                 msgdoautor="{{ $livro.msgdoautor }}"
                                  numImagens="{{ len $livro.imagens }}"
                                  imagens="{{ $livro.imagens }}"
                                  linkebook="{{ $livro.linkebook }}"
                                  linkfisico="{{ $livro.linkfisico}}"
                             >
                                 <a href="#">
-                                    <img src="{{index $livro.imagens 0}}" class="imagemPainel">
+                                    <img src="{{index $livro.imagens 0}}" class="imagemPainel ">
                                 </a>
                             </div>
                             {{ end }}
                         </div>
 
                         <div class="arrow-holder">
-                            <a id="carrousel-right">&#10095;</a>
+                            <a id="carrousel-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
                         </div>
                     </div>
 
-                    <div id="livroSelecionado">
-                        <div id="carrosselLivroSelecionado">
+                    <div style="margin-top: 50px; width: 100%;">
+                        <h3>Sabe por que a página Livros foi liberada?</h3>
+                        <br>
+                        <p style="text-align: justify;">
+                        Exatamente!
+                        O meu <b>primeiro livro</b> está em processo de correção e diagramação, com previsão para ser lançado na pré-venda de <b>janeiro</b> da editora Flyve!
+                        Esse é só um textinho para compartilhar a novidade e dividir minha felicidade. Um "easter egg", se preferir. 
+                        Em breve outros compartilhamentos virão e, em breve, essa página vai ser atualizada, estou trabalhando em umas ideias para deixá-la uma belezura! Então, só para encerrar:</p>
+                        <br>
+                    
+                        <h2 style="width: 90%; margin-left: 5%;">Há Quanto Tempo Você Não Olha Para As Estrelas?</h2>
+                        <br>
+                        <p style="text-align: justify">Fique à vontade também para me perguntar qualquer coisa ou até mesmo me dar sugestões para promover o livro, será um enorme prazer saber que tem interesse! Espero que tenha se interessado pelo que virá 😊</p>
+                    </div>
 
-                            <div id="mySlidesID">
-                                <div class="mySlides fade">
-                                </div>
-                            </div>
-                            
-                            <a id="prev" onclick="plusSlides(-1)">&#10094;</a>
-                            <a id="next" onclick="plusSlides(1)">&#10095;</a>
+                    <div style="width: 100%; padding-left: 10%; padding-right: 10%;">
+                        <p style="text-align: center;">____</p>
+                        
+                        <p style="margin-top: 20px; margin-bottom: 20px; text-align: center;">Para receber atualizações sobre o livro, por favor, considere:</p>
+                
+                        <a href='{{ "#container_newsletterForm" | relLangURL }}'><p style="text-align: center;"><u>Inscrever-se na Newsletter do site</u></p></a>
+                        <p style="text-align: center; font-size: 0.9rem; margin-bottom: 10px;">Para resumos mensais</p>
 
-                            <div id="posicaoDots">
-                                <span class="dot" onclick="currentSlide(1)"></span>
+                        <a href='https://www.instagram.com/td.vadilho/' target="_blank"><u><p style="text-align: center;">Me seguir no Instagram</p></u></a>  
+                        <p style="text-align: center; font-size: 0.9rem;margin-bottom: 20px;">Para compartilhamentos mais esporádicos</p>
+                    </div>
+
+
+                    <p style="text-align: justify;"></p>
+                       
+
+                    <!-- <div id="container_livroSelecionado">
+                        <div id="mySlidesID">
+                            <div class="mySlides fade">
                             </div>
                         </div>
 
-                        <div id="informacoesLivroSelecionado"> 
+                        <div id="container_posicaoPrevNext">
+                            <a id="prev" onclick="plusSlides(-1)"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+                            <a id="next" onclick="plusSlides(1)"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                        </div>
 
-                            <p class="tituloLivroSelecionado" id="tituloLivroSelecionadoID"></p>      
+                        <div id="posicaoDots">
+                            <span class="dot" onclick="currentSlide(1)"></span>
+                        </div>
 
-                            <div id="caixaDescricaoLivroSelecionado">
-                                <p class="descricaoLivroSelecionado" id="descricaoLivroSelecionadoID"></p>
+                        <h2 class="titulocontainer_livroSelecionado" id="titulocontainer_livroSelecionadoID"></h2>      
+
+                        <div id="container_informacoesEscritasLivro">
+                            <div id="textcontainer_sinopse+dados">
+                                <p class="text_sinopse+dadosLivroSelecionado" id="text_sinopse+dadosLivroSelecionadoID"></p>
                             </div>
 
-                            <div id="posicaoBotoes">
+                            <div id="textcontainer_msgAutor">
+                                <p class="text_msgAutorLivroSelecionado" id="text_msgAutorLivroSelecionadoID"></p>
+                            </div>
+
+                            <div id="textcontainer_criticas">
+                                <p class="text_criticasLivroSelecionado" id="text_criticasLivroSelecionadoID"></p>
                             </div>
                         </div>
+
+                        <div id="container_botoes"></div>
+                        
+                    </div> -->
+
+                    <div id="buttonContainer_compartilharHistorietas" style="margin-bottom: 30px;">
+                        <button type="submit" id="button_compartilharHistorieta" onclick="abrirCompartilhar(event)">
+                            <i class="fa fa-share-alt fa-lg"></i> Compartilhar
+                        </button>
                     </div>
                 </div>
             </div>
@@ -75,7 +120,41 @@
             {{- partial "copyright" . }}
             <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
         </div>
-  
+
+        <!-- BOTÕES COMPARTILHAR -->
+        <div id="compartilharMsg">
+            <div id='buttonCloseCompartilhar'>
+                <span class='fa fa-times' aria-hidden='true' onclick="closeCompartilhar()"></span>
+            </div>
+
+            <!-- Copy Link -->
+
+            <div id="copyUrl_sharebutton">
+            </div>
+            
+            <!-- WPP -->
+            <div id="wpp_sharebutton"> 
+            </div>
+
+            <!-- Twitter -->
+            <div id="twitter_sharebutton">
+            </div>
+
+            <!-- Facebook -->
+            <div id="facebook_sharebutton">
+            </div>
+
+            <!-- Reddit -->
+            <div id="reddit_sharebutton">
+            </div>
+
+            <!-- Pinterest -->
+            <div id="pinterest_sharebutton">
+            </div>
+        </div>
+
+        <div id="urlCopiarNotification">
+        </div>
         {{- template "_internal/google_analytics.html" . }}
         {{- partial "scripts/index" . }}     
     </body>
@@ -167,87 +246,87 @@
             transition: transform .2s;
         }
         
-    /* Bloco das informações e aquisicao do livro selecionado */
-        #livroSelecionado {
-            display: flex;
-            flex-direction: row;
-            padding: 5% 0 0 0;
+    /* Bloco das informações e aquisicao do livro selecionado */     
+        #container_livroSelecionado {  
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: 39% 58.3%;
+            column-gap: 25px;
+            grid-template-rows: minmax(36px,68px) minmax(0px, 362px) 77px 30px;
+            row-gap: 10px;
         }
 
-        .tituloLivroSelecionado{ 
-            font-weight: bold;
-            font-size: 2rem;
-            margin: -1px;
-            line-height: 1.2;
-            margin-bottom: 15px;
-            margin-top:3%;
+        #mySlidesID{
+            grid-column-start: 1;
+            grid-column-end: 1;
+            grid-row-start: 1;
+            grid-row-end: 4;
         }
 
-        .descricaoLivroSelecionado{
-            font-size: 1.1rem;
-            font-weight: 500;
-            line-height: 1.7;
-            margin-bottom: 0;
+        #mySlidesID img{
+            box-shadow: rgba(0, 0, 0, 0.33) 0px 1px 3px 0px;
+            line-height: 0;
+            object-fit: cover;
+            width: 100%;
+            max-height: 100%;
         }
 
-        .adquirirLivroSelecionado{
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin: 0;
+        .titulocontainer_livroSelecionado{ 
+            text-align: left;
+            grid-column-start: 2;
+            grid-column-end: 2;
+            grid-row-start: 1;
+            grid-row-end:1;
         }
 
-        #posicaoBotoes{
-            position: absolute;
-            bottom: 10%;
+        #container_informacoesEscritasLivro{
+            overflow: auto;
+            padding-right: 10px;
+            grid-column-start: 2;
+            grid-column-end: 2;
+            grid-row-start: 2;
+            grid-row-end:3;
+        }
+
+        #container_botoes{
+            font-size: 1.5rem;
+            grid-column-start: 2;
+            grid-column-end: 2;
+            grid-row-start: 3;
+            grid-row-end: 3;
+        }
+
+        #container_botoes h3{
+            text-align: left;
         }
 
     /* Bloco do carrossel do livro selecionado */
         *{box-sizing: border-box}
 
-        #carrosselLivroSelecionado {
-            text-align: center;
-            min-width: 40%;
-            position: relative;
-            margin: auto;
-        }
-
-        #informacoesLivroSelecionado {
-            text-align: left;
-            padding-left: 3%;
-            position: relative;
-            word-spacing: normal;
-            word-break: break-word;
-        }
-
-        #caixaDescricaoLivroSelecionado{
-            margin-bottom: 1%;
-            line-height: 1.7;
-            word-break: break-word;
+        #container_posicaoPrevNext{
+            grid-column-start: 1;
+            grid-column-end: 1;
+            grid-row-start: 2;
+            grid-row-end: 3;
         }
 
         #prev, #next {
             cursor: pointer;
-            position: absolute;
-            margin-top: -22px;
-            top: 48%;
-            width: auto;
             padding: 16px;
             color: rgba(255, 255, 255, 0.87);
             opacity: 80%;
-            font-weight: bold;
             font-size: 18px;
             transition: 0.6s ease;
-            border-radius: 0 3px 3px 0;
             user-select: none;
+            top: 50%;
+            position: relative;
         }
 
         #next {
-            right: 0;
             border-radius: 3px 0 0 3px;
         }
 
         #prev{
-            left:0;
             border-radius: 0 3px 3px 0;
         }
 
@@ -281,167 +360,16 @@
         }
 
         #posicaoDots{
-            display: inline-flex;
-            flex-direction: row; 
-            width: 80%;
-            justify-content: center;
+            grid-column-start: 1;
+            grid-column-end: 1;
+            grid-row-start: 4;
+            grid-row-end:4;
+            text-align: center;
         }
 
 /* DEFINICOES PARA OS TAMANHOS EM DESKTOP */
-   
-    /* Bloco 825 até 710 px */
-        @media screen and (max-width: 898px) and (min-width: 785px){
-            #livroSelecionado{
-                height: 55vw;
-            }
-
-            #caixaDescricaoLivroSelecionado{
-                overflow: auto;
-                height: 50%;
-                padding-right: 10px; 
-                padding-bottom: 2%;
-            }
-            #posicaoBotoes{
-                position: absolute;
-                transform: scale(0.95);
-                margin-left: -1.2%;
-                bottom: 11%;
-            }
-        }
-
-        @media screen and (max-width: 785px) and (min-width: 736px){
-            #livroSelecionado{
-                height: 55vw;
-            }
-
-            #caixaDescricaoLivroSelecionado{
-                overflow: auto;
-                height: 48%;
-                padding-right: 10px; 
-                padding-bottom: 2%;
-            }
-            #posicaoBotoes{
-                position: absolute;
-                transform: scale(0.95);
-                margin-left: -1.2%;
-                bottom: 12%;
-            }
-            #livros{
-                padding-bottom: 29.333px;
-            }
-        }
-
-    /* Bloco 709 até 641 px */
-        @media screen and (max-width: 736px) and (min-width: 641px){
-            #livroSelecionado{
-                height: 60vw;
-            }
-            #carrosselLivroSelecionado{
-                margin-top: 0;
-            }
-            .tituloLivroSelecionado{
-                transform: scale(0.9);
-                margin-left: -5%;
-            }
-            #informacoesLivroSelecionado{
-                height: 90%;
-            }
-            #caixaDescricaoLivroSelecionado{
-                overflow: auto;
-                height: 24vw;
-                padding-right: 10px;
-                margin-bottom: 10%;
-            }
-            #posicaoBotoes{
-                position: absolute;
-                transform: scale(0.9);
-                bottom: 5%;
-                margin-left: -3.2%;
-            }
-            #livros{
-                padding: 3rem 2rem 0rem 2rem;
-            }
-        }
-    
-    /* Bloco a partir de 640 px */
-        @media screen and (max-width: 640px) {
-            #livroSelecionado { 
-                flex-direction: column;
-                padding: 5% 5% 2% 5%;
-            }
-            #carrosselLivroSelecionado {
-                width: 100%;
-            }
-            #informacoesLivroSelecionado {
-                padding-left: 0;
-                margin-top: 5%;
-                margin-bottom: -5%;
-            }
-            #posicaoBotoes {
-                position:relative;
-                padding-top: 15%;
-            }
-            #livros{
-                padding: 3rem 2rem 0rem 2rem;
-            }
-        }
                
 /* DEFINICOES PARA OS TAMANHOS DE DEVICE MOBILE */
-    /* Definicoes para celular */
-    @media only screen and (hover:none) and (pointer:coarse) and (max-width:450px) and (min-width:321px){
-        #painelLivros {
-            padding-top: 4%;
-            padding-bottom: 2%;
-            width: 90%;
-            }
-        .imagensPainelLivros{
-            transform: scale(0.8);
-            margin-bottom: -8%;
-        }
-        .selected {
-            transform: scale(0.85);
-        }
-        .tituloLivroSelecionado{
-            font-size: 1.8rem;
-        }
-        #informacoesLivroSelecionado {
-            margin-bottom: -5%;
-        }
-        #posicaoBotoes {
-            padding-top: 60px;
-        }
-        #livros{
-            padding: 3rem 2rem 0rem 2rem;
-        }
-    }
-
-    @media only screen and (hover:none) and (pointer:coarse) and (max-width:321px){
-        #painelLivros {
-            padding-top: 4%;
-            padding-bottom: 2%;
-            width: 85%;
-            }
-        .imagensPainelLivros{
-            transform: scale(0.8);
-            margin-bottom: -10%;
-        }
-        .selected {
-            transform: scale(0.85);
-        }
-        .tituloLivroSelecionado{
-            font-size: 1.6rem;
-        }
-        #informacoesLivroSelecionado {
-            margin-bottom: -10%;
-        }
-        #posicaoBotoes {
-            padding-top: 60px;
-        }
-        #livros{
-            padding: 3rem 2rem 0rem 2rem;
-        }
-    }
-
     /* Definicoes para retirar o clique de hover eterno dos mobiles */    
     @media only screen and (hover:none) and (pointer:coarse){       
         /*Fazer os botões voltarem ao normal*/        
@@ -484,20 +412,23 @@
                 el.currentTarget.classList.add('selected')
 
                 document.getElementById('posicaoDots').innerHTML = ''
-                document.getElementById('tituloLivroSelecionadoID').innerHTML = '' 
-                document.getElementById('descricaoLivroSelecionadoID').innerHTML = ''
+                document.getElementById('titulocontainer_livroSelecionadoID').innerHTML = '' 
+                document.getElementById('text_msgAutorLivroSelecionadoID').innerHTML = ''
+                document.getElementById('text_sinopse+dadosLivroSelecionadoID').innerHTML=''
+                document.getElementById('text_criticasLivroSelecionadoID').innerHTML=''
                 document.getElementById('mySlidesID').innerHTML = ''
-                document.getElementById('posicaoBotoes').innerHTML = ''
+                document.getElementById('container_botoes').innerHTML = ''
 
                 // /* atualizar titulo e descricao */
-                document.getElementById('tituloLivroSelecionadoID').innerHTML = el.currentTarget.getAttribute('titulo')
-                document.getElementById('descricaoLivroSelecionadoID').innerHTML = el.currentTarget.getAttribute('descricao')
-
+                document.getElementById('titulocontainer_livroSelecionadoID').innerHTML = el.currentTarget.getAttribute('titulo')
+                document.getElementById('text_msgAutorLivroSelecionadoID').innerHTML = el.currentTarget.getAttribute('msgdoautor')
+                document.getElementById('text_sinopse+dadosLivroSelecionadoID').innerHTML = el.currentTarget.getAttribute('dados+sinopse')
+                document.getElementById('text_criticasLivroSelecionadoID').innerHTML = el.currentTarget.getAttribute('criticas')
                 // atualizar os links dos botoes
                 let linkebook = el.currentTarget.getAttribute('linkebook')
                 let linkfisico = el.currentTarget.getAttribute('linkfisico')
 
-                document.getElementById('posicaoBotoes').innerHTML = ('<p class="adquirirLivroSelecionado">Adquirir livro</p> <form action="' + linkebook + '"><button type="submit">Ebook</button></form> <form action="' + linkfisico + '"><button type="submit">Físico</button></form>')
+                document.getElementById('container_botoes').innerHTML = ('<h3>Adquirir livro</h3> <form action="' + linkebook + '"><button type="submit">Ebook</button></form> <form action="' + linkfisico + '"><button type="submit">Físico</button></form>')
 
                 // /* atualizar o slide do livro selecionado */
                 let numDots = (el.currentTarget.getAttribute('numImagens') - 1)
@@ -513,23 +444,23 @@
         }     
     }
 
-        document.getElementById('carrousel-left').addEventListener("click", () => {
-            images[currentFocus].classList.remove('selected')
+    document.getElementById('carrousel-left').addEventListener("click", () => {
+        images[currentFocus].classList.remove('selected')
 
-            currentFocus = currentFocus > 0 ? currentFocus - 1 : images.length - 1
-            
-            images[currentFocus].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })
-            images[currentFocus].classList.add('selected')
-         })
+        currentFocus = currentFocus > 0 ? currentFocus - 1 : images.length - 1
+        
+        images[currentFocus].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })
+        images[currentFocus].classList.add('selected')
+        })
 
-        document.getElementById('carrousel-right').addEventListener("click", () => {
-            images[currentFocus].classList.remove('selected')
+    document.getElementById('carrousel-right').addEventListener("click", () => {
+        images[currentFocus].classList.remove('selected')
 
-            currentFocus = currentFocus < images.length - 1 ? currentFocus + 1 : 0
-            
-            images[currentFocus].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })
-            images[currentFocus].classList.add('selected')
-         })
+        currentFocus = currentFocus < images.length - 1 ? currentFocus + 1 : 0
+        
+        images[currentFocus].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })
+        images[currentFocus].classList.add('selected')
+    })
     
 
     // PEGA INFORMACOES DO LIVRO SELECIONADO
@@ -549,24 +480,29 @@
 
     function showSlides(n) {
         let i;
-        let slides = document.getElementsByClassName("mySlides");
+        let slides = document.getElementsByClassName("mySlides") || undefined;
         let dots = document.getElementsByClassName("dot");
-        if (n > slides.length) {slideIndex = 1}
-        if (n < 1) {slideIndex = slides.length}
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" activedot", ""); 
-        }
         
-        slides[slideIndex-1].style.display = "block";
-        dots[slideIndex-1].className += " activedot";
-        
+        if(slides.length > 0) {
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" activedot", ""); 
+            }
+            
+            
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " activedot";
+        }
     }
     
     //SWIPE LEFT OR RIGHT
-    let touchsurface = document.getElementById('carrosselLivroSelecionado'),
+    let touchsurface = document.getElementById('mySlidesID'),
         startX, 
         startY,
         dist,
@@ -616,6 +552,130 @@
                 document.getElementById('next').click()
             }
         }, false)
+    }
+    
+    /* COMPARTILHAMENTO */
+    function fbSharing(post_url) {
+        var url = new String(post_url);
+        window.open(post_url , "share_dialog", "width=500, height=300");
+    }
+
+    function ttSharing(post_url){
+        var url = new String(post_url);
+        window.open(post_url , "share_dialog", "width=790, height=462");
+    }
+
+    function redditSharing(post_url){
+        var url = new String(post_url);
+        window.open(post_url , "share_dialog", "width=790, height=742");
+    }
+
+    function pinterestSharing(post_url){
+        var url = new String(post_url);
+        window.open(post_url , "share_dialog", "width=1080, height=727");
+    }
+    
+    /* Carregando links de compartilhamento */
+    let urlCurrentPage = window.location.href;
+
+    /* WPP */
+    document.getElementById('wpp_sharebutton').innerHTML += 
+        `<a href="https://api.whatsapp.com/send?text=${urlCurrentPage}" target="_blank" data-action="share/whatsapp/share">
+            <div class="logoRedeContainerWpp">
+                <i class="icon alt icon_compartilharHistorieta fa-whatsapp fa-lg"></i>
+            </div>
+            <div class="nomeRedeContainerWpp">WhatsApp</div>
+        </a>`
+
+    /* Twitter */
+    document.getElementById('twitter_sharebutton').innerHTML += 
+        `<a onclick='ttSharing("https://twitter.com/share?url=` + urlCurrentPage + `%0a%0a&text=Já leu esse livro?&hashtags=LivrosTDVadilho,AmoLer")'>
+            <div class="logoRedeContainerTwitter">
+                <i class="icon alt icon_compartilharHistorieta fa-twitter fa-lg"></i>
+            </div>
+            <div class="nomeRedeContainerTwitter">Twitter</div>    
+        </a>`
+
+        /* Facebook */
+        document.getElementById('facebook_sharebutton').innerHTML += 
+        `<a onclick='fbSharing("https://www.facebook.com/sharer/sharer.php?u=` + urlCurrentPage + `")'>
+            <div class="logoRedeContainerFacebook">
+                <i class="icon alt icon_compartilharHistorieta fa-facebook fa-lg"></i>
+            </div>
+            <div class="nomeRedeContainerFacebook">Facebook</div>    
+        </a>`
+
+    /* Reddit */
+    let reddit_url = "https://www.reddit.com/submit?title=Historieta%20-%20TDVadilho&text=Que%20tal%20ler%20uma%20historieta%20hoje?%20[{{ .Params.title }}]"
+    document.getElementById('reddit_sharebutton').innerHTML += 
+        `<a onclick='redditSharing("${reddit_url}(${urlCurrentPage})%0a%0a&signup_survey=true")'>
+            <div class="logoRedeContainerReddit">
+                <i class="icon alt icon_compartilharHistorieta fa-reddit-alien fa-lg"></i>
+            </div>
+            <div class="nomeRedeContainerReddit">Reddit</div>
+        </a>`
+        
+    /* Pinterest */
+    let pinterest_url = "pinterestSharing('{{ .Params.linkPin }}')"
+    document.getElementById('pinterest_sharebutton').innerHTML += `<a onclick="${pinterest_url}">
+            <div class="logoRedeContainerPinterest">
+                <i class="icon alt icon_compartilharHistorieta fa-pinterest fa-lg"></i>
+            </div>
+            <div class="nomeRedeContainerPinterest">Pinterest</div>    
+        </a>`
+
+    /* Copiar URL*/    
+    document.getElementById('copyUrl_sharebutton').innerHTML += 
+        `<a onclick="copiarUrl()">
+            <div class="iconeContainerCopyUrl">
+                <i class="icon alt icon_compartilharHistorieta fa-link fa-lg"></i>
+            </div>
+            <div class="nomeContainerCopyUrl">Copiar url</div>    
+        </a>`
+
+    let copiarUrl = function() {
+        let createCopiarNotification = function() {
+            let notification = document.getElementById("urlCopiarNotification");
+            notification.style.display = "block";
+            notification.innerHTML = '<i class="fa fa-link"></i> URL COPIADA</div>';
+            
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 2800);
+        }
+
+        if(navigator.clipboard) {
+            navigator.clipboard.writeText(window.location.href);
+            createCopiarNotification();
+        }
+        createCopiarNotification();
+    }
+
+    let flagCompartilharAberto = false;
+
+    let abrirCompartilhar = function(e) {
+        e.stopPropagation()
+        let container = document.getElementById("compartilharMsg");
+        container.style.display = "inline-flex";
+        flagCompartilharAberto = true;
+
+        window.addEventListener('click', function(g){
+            if (container.contains(g.target)){
+            } else{
+                closeCompartilhar();  
+            }
+        }, options = {"once": true})
+    }
+
+    document.addEventListener('keydown', (ev) => {
+        if((ev.key == 'Escape') && (flagCompartilharAberto == true)){
+            closeCompartilhar();
+        }
+    }) 
+
+    let closeCompartilhar = function () {
+        let container = document.getElementById("compartilharMsg")
+        container.style.display="none"
     }
     
     document.addEventListener("DOMContentLoaded", (event) => { 
