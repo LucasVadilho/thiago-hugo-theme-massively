@@ -444,23 +444,23 @@
         }     
     }
 
-        document.getElementById('carrousel-left').addEventListener("click", () => {
-            images[currentFocus].classList.remove('selected')
+    document.getElementById('carrousel-left').addEventListener("click", () => {
+        images[currentFocus].classList.remove('selected')
 
-            currentFocus = currentFocus > 0 ? currentFocus - 1 : images.length - 1
-            
-            images[currentFocus].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })
-            images[currentFocus].classList.add('selected')
-         })
+        currentFocus = currentFocus > 0 ? currentFocus - 1 : images.length - 1
+        
+        images[currentFocus].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })
+        images[currentFocus].classList.add('selected')
+        })
 
-        document.getElementById('carrousel-right').addEventListener("click", () => {
-            images[currentFocus].classList.remove('selected')
+    document.getElementById('carrousel-right').addEventListener("click", () => {
+        images[currentFocus].classList.remove('selected')
 
-            currentFocus = currentFocus < images.length - 1 ? currentFocus + 1 : 0
-            
-            images[currentFocus].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })
-            images[currentFocus].classList.add('selected')
-         })
+        currentFocus = currentFocus < images.length - 1 ? currentFocus + 1 : 0
+        
+        images[currentFocus].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })
+        images[currentFocus].classList.add('selected')
+    })
     
 
     // PEGA INFORMACOES DO LIVRO SELECIONADO
@@ -480,20 +480,25 @@
 
     function showSlides(n) {
         let i;
-        let slides = document.getElementsByClassName("mySlides");
+        let slides = document.getElementsByClassName("mySlides") || undefined;
         let dots = document.getElementsByClassName("dot");
-        if (n > slides.length) {slideIndex = 1}
-        if (n < 1) {slideIndex = slides.length}
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" activedot", ""); 
-        }
         
-        slides[slideIndex-1].style.display = "block";
-        dots[slideIndex-1].className += " activedot";
-        
+        if(slides.length > 0) {
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" activedot", ""); 
+            }
+            
+            
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " activedot";
+        }
     }
     
     //SWIPE LEFT OR RIGHT
@@ -571,82 +576,83 @@
     }
     
     /* Carregando links de compartilhamento */
-        let urlCurrentPage = window.location.href;
+    let urlCurrentPage = window.location.href;
 
-        /* WPP */
-        document.getElementById('wpp_sharebutton').innerHTML += 
-            `<a href="https://api.whatsapp.com/send?text=${urlCurrentPage}" target="_blank" data-action="share/whatsapp/share">
-                <div class="logoRedeContainerWpp">
-                    <i class="icon alt icon_compartilharHistorieta fa-whatsapp fa-lg"></i>
-                </div>
-                <div class="nomeRedeContainerWpp">WhatsApp</div>
-            </a>`
+    /* WPP */
+    document.getElementById('wpp_sharebutton').innerHTML += 
+        `<a href="https://api.whatsapp.com/send?text=${urlCurrentPage}" target="_blank" data-action="share/whatsapp/share">
+            <div class="logoRedeContainerWpp">
+                <i class="icon alt icon_compartilharHistorieta fa-whatsapp fa-lg"></i>
+            </div>
+            <div class="nomeRedeContainerWpp">WhatsApp</div>
+        </a>`
 
-        /* Twitter */
-        document.getElementById('twitter_sharebutton').innerHTML += 
-            `<a onclick='ttSharing("https://twitter.com/share?url=` + urlCurrentPage + `%0a%0a&text=Já leu esse livro?&hashtags=LivrosTDVadilho,AmoLer")'>
-                <div class="logoRedeContainerTwitter">
-                    <i class="icon alt icon_compartilharHistorieta fa-twitter fa-lg"></i>
-                </div>
-                <div class="nomeRedeContainerTwitter">Twitter</div>    
-            </a>`
+    /* Twitter */
+    document.getElementById('twitter_sharebutton').innerHTML += 
+        `<a onclick='ttSharing("https://twitter.com/share?url=` + urlCurrentPage + `%0a%0a&text=Já leu esse livro?&hashtags=LivrosTDVadilho,AmoLer")'>
+            <div class="logoRedeContainerTwitter">
+                <i class="icon alt icon_compartilharHistorieta fa-twitter fa-lg"></i>
+            </div>
+            <div class="nomeRedeContainerTwitter">Twitter</div>    
+        </a>`
 
-         /* Facebook */
-         document.getElementById('facebook_sharebutton').innerHTML += 
-            `<a onclick='fbSharing("https://www.facebook.com/sharer/sharer.php?u=` + urlCurrentPage + `")'>
-                <div class="logoRedeContainerFacebook">
-                    <i class="icon alt icon_compartilharHistorieta fa-facebook fa-lg"></i>
-                </div>
-                <div class="nomeRedeContainerFacebook">Facebook</div>    
-            </a>`
+        /* Facebook */
+        document.getElementById('facebook_sharebutton').innerHTML += 
+        `<a onclick='fbSharing("https://www.facebook.com/sharer/sharer.php?u=` + urlCurrentPage + `")'>
+            <div class="logoRedeContainerFacebook">
+                <i class="icon alt icon_compartilharHistorieta fa-facebook fa-lg"></i>
+            </div>
+            <div class="nomeRedeContainerFacebook">Facebook</div>    
+        </a>`
 
-        /* Reddit */
-        let reddit_url = "https://www.reddit.com/submit?title=Historieta%20-%20TDVadilho&text=Que%20tal%20ler%20uma%20historieta%20hoje?%20[{{ .Params.title }}]"
-        document.getElementById('reddit_sharebutton').innerHTML += 
-            `<a onclick='redditSharing("${reddit_url}(${urlCurrentPage})%0a%0a&signup_survey=true")'>
-                <div class="logoRedeContainerReddit">
-                    <i class="icon alt icon_compartilharHistorieta fa-reddit-alien fa-lg"></i>
-                </div>
-                <div class="nomeRedeContainerReddit">Reddit</div>
-            </a>`
+    /* Reddit */
+    let reddit_url = "https://www.reddit.com/submit?title=Historieta%20-%20TDVadilho&text=Que%20tal%20ler%20uma%20historieta%20hoje?%20[{{ .Params.title }}]"
+    document.getElementById('reddit_sharebutton').innerHTML += 
+        `<a onclick='redditSharing("${reddit_url}(${urlCurrentPage})%0a%0a&signup_survey=true")'>
+            <div class="logoRedeContainerReddit">
+                <i class="icon alt icon_compartilharHistorieta fa-reddit-alien fa-lg"></i>
+            </div>
+            <div class="nomeRedeContainerReddit">Reddit</div>
+        </a>`
+        
+    /* Pinterest */
+    let pinterest_url = "pinterestSharing('{{ .Params.linkPin }}')"
+    document.getElementById('pinterest_sharebutton').innerHTML += `<a onclick="${pinterest_url}">
+            <div class="logoRedeContainerPinterest">
+                <i class="icon alt icon_compartilharHistorieta fa-pinterest fa-lg"></i>
+            </div>
+            <div class="nomeRedeContainerPinterest">Pinterest</div>    
+        </a>`
+
+    /* Copiar URL*/    
+    document.getElementById('copyUrl_sharebutton').innerHTML += 
+        `<a onclick="copiarUrl()">
+            <div class="iconeContainerCopyUrl">
+                <i class="icon alt icon_compartilharHistorieta fa-link fa-lg"></i>
+            </div>
+            <div class="nomeContainerCopyUrl">Copiar url</div>    
+        </a>`
+
+    let copiarUrl = function() {
+        let createCopiarNotification = function() {
+            let notification = document.getElementById("urlCopiarNotification");
+            notification.style.display = "block";
+            notification.innerHTML = '<i class="fa fa-link"></i> URL COPIADA</div>';
             
-        /* Pinterest */
-        let pinterest_url = "pinterestSharing('{{ .Params.linkPin }}')"
-        document.getElementById('pinterest_sharebutton').innerHTML += `<a onclick="${pinterest_url}">
-                <div class="logoRedeContainerPinterest">
-                    <i class="icon alt icon_compartilharHistorieta fa-pinterest fa-lg"></i>
-                </div>
-                <div class="nomeRedeContainerPinterest">Pinterest</div>    
-            </a>`
-
-        /* Copiar URL*/    
-        document.getElementById('copyUrl_sharebutton').innerHTML += 
-            `<a onclick="copiarUrl()">
-                <div class="iconeContainerCopyUrl">
-                    <i class="icon alt icon_compartilharHistorieta fa-link fa-lg"></i>
-                </div>
-                <div class="nomeContainerCopyUrl">Copiar url</div>    
-            </a>`
-
-        let copiarUrl = function() {
-            let createCopiarNotification = function() {
-                let notification = document.getElementById("urlCopiarNotification");
-                notification.style.display = "block";
-                notification.innerHTML = '<i class="fa fa-link"></i> URL COPIADA</div>';
-                
-                setTimeout(() => {
-                    notification.style.display = 'none';
-                }, 2800);
-            }
-
-            if(navigator.clipboard) {
-                navigator.clipboard.writeText(window.location.href);
-                createCopiarNotification();
-            }
-            createCopiarNotification();
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 2800);
         }
 
+        if(navigator.clipboard) {
+            navigator.clipboard.writeText(window.location.href);
+            createCopiarNotification();
+        }
+        createCopiarNotification();
+    }
+
     let flagCompartilharAberto = false;
+
     let abrirCompartilhar = function(e) {
         e.stopPropagation()
         let container = document.getElementById("compartilharMsg");
