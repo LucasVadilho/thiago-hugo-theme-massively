@@ -122,7 +122,7 @@
         </div>
 
         <!-- BOTÕES COMPARTILHAR -->
-        <div id="compartilharMsg">
+        <div id="compartilharHistContainer">
             <div id='buttonCloseCompartilhar'>
                 <span class='fa fa-times' aria-hidden='true' onclick="closeCompartilhar()"></span>
             </div>
@@ -367,8 +367,23 @@
             text-align: center;
         }
 
-/* DEFINICOES PARA OS TAMANHOS EM DESKTOP */
-               
+/* COMPARTILHAMENTO */
+    
+    @media screen and (max-width: 736px){
+        #compartilharHistContainer{
+            width: 352px;
+        }
+        #buttonContainer_compartilharHistorietas{
+            text-align: center;
+        }
+
+    }
+
+    @media screen and (max-width: 1036px) and (min-width:737px){
+        #compartilharHistContainer{
+            max-width: 352px;
+        }
+    }           
 /* DEFINICOES PARA OS TAMANHOS DE DEVICE MOBILE */
     /* Definicoes para retirar o clique de hover eterno dos mobiles */    
     @media only screen and (hover:none) and (pointer:coarse){       
@@ -655,7 +670,7 @@
 
     let abrirCompartilhar = function(e) {
         e.stopPropagation()
-        let container = document.getElementById("compartilharMsg");
+        let container = document.getElementById("compartilharHistContainer");
         container.style.display = "inline-flex";
         flagCompartilharAberto = true;
 
@@ -674,7 +689,7 @@
     }) 
 
     let closeCompartilhar = function () {
-        let container = document.getElementById("compartilharMsg")
+        let container = document.getElementById("compartilharHistContainer")
         container.style.display="none"
     }
     
