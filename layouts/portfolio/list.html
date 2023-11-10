@@ -29,7 +29,6 @@
                             {{ range where .Pages.ByDate "Params.categoriaprojeto" "Ilustrações" }}
                                 <div class="projeto-container">
                                     <div id="{{ .Params.Titleprojeto }}" 
-                                         class="img-crop" 
                                          onclick="abrirproj(event, '{{ .Params.Titleprojeto }}')"
                                          itens="{{ jsonify .Params.Itens }}"
                                          legenda="{{ .Params.Legenda }}"
@@ -37,6 +36,7 @@
                                          youtubelink="{{ .Params.youtubelink}}"
                                          pinterestlink="{{ .Params.pinterestlink }}"
                                          behancelink="{{ .Params.behancelink }}"
+                                         class="{{ .Params.class }}"
                                         >
                                         <img src="{{ .Params.Thumbprojeto }}" alt="{{ .Params.altthumb }}">
                                     </div>           
@@ -51,7 +51,6 @@
                         {{ range where .Pages.ByDate "Params.categoriaprojeto" "Capas de Livros" }}
                             <div class="projeto-container">
                                 <div id="{{ .Params.Titleprojeto }}" 
-                                     class="img-crop" 
                                      onclick="abrirproj(event,'{{ .Params.Titleprojeto }}')"
                                      itens="{{ jsonify .Params.Itens }}"
                                      legenda="{{ .Params.Legenda }}"
@@ -59,6 +58,7 @@
                                      youtubelink="{{ .Params.youtubelink}}"
                                      pinterestlink="{{ .Params.pinterestlink }}"
                                      behancelink="{{ .Params.behancelink }}"
+                                     class="{{ .Params.class }}"
                                      >
                                     <img src="{{ .Params.Thumbprojeto }}" alt="{{ .Params.altthumb }}">
                                 </div>
@@ -82,9 +82,6 @@
     
 </body>
 
-{{- partial "temporario" . }}
-
-
 <style>
 /* GERAL */
     a{
@@ -92,50 +89,51 @@
     }
 
 /* LISTAS DOS PROJETOS */
-   #container_listaIlustrações{
-        text-align: center;
-   }                        
-
    #container_listaCapas{
-        text-align: center;
-        margin-top: 40px;
+        margin-top: 40px;  
     }
 
     /* ORGANIZAÇÃO TIPOS DE PROJETOS */
     #organizer_projetos{
-        width: 100%;
-        justify-content: center;
-        display: inline-flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+        margin-top: 20px;
+        -webkit-column-count: 3; /* Chrome, Safari, Opera */
+        -moz-column-count: 3; /* Firefox */
+        column-count: 3;
+        -webkit-column-gap: 15px;
+        -moz-column-gap: 15px;
+        column-gap: 15px;
     }
 
     .projeto-container{
-        margin-right: 10px;
-        margin-left: 10px;
-        margin-top: 20px;
-        box-shadow: rgba(0, 0, 0, 0.33) 0px 1px 3px 0px
-    }
-
-    .img-crop{
-        width: 220px;
-        height: 220px;
+        box-shadow: rgba(0, 0, 0, 0.33) 0px 1px 3px 0px;
+        border-radius: 4px;
+        line-height: 0;
+        margin-bottom: 15px;
+        width: fit-content;
         overflow: hidden;
     }
 
-    .img-crop img{
-        width: 100%;
-        object-fit: cover;
-        object-position: middle;
-        position: relative;
-        height: 100%;
+    .container_imgThumb{
+        width: 300px;
+        border-radius: 4px;
+    }
+
+    .container_imgThumbduascolunas{
+        width: 600px;
+        border-radius: 4px;
         transition: transform .2s;
     }
 
-    .img-crop img:hover{
+    .container_imgThumb img,.container_imgThumbduascolunas img{
+        width: 100%;
+        transition: transform .2s;
+    }
+
+    .container_imgThumb img:hover,.container_imgThumbduascolunas:hover{
         cursor: pointer;
         transform: scale(1.2);
     }
+
 
 /* SNACKBAR PROJETO OPEN */
     .snackbar {
@@ -163,8 +161,7 @@
         flex-direction: column;
         overflow: auto;
         padding-left: 5px;
-        padding-right: 5px;
-        
+        padding-right: 5px;  
     }
 
     #openProject img{
@@ -221,8 +218,7 @@
 
     .fa, .fa-shopping-cart,.fa-pinterest, .fa-behance-square, #projLegendaContainer{
         color: rgb(230, 230, 230);
-        filter:drop-shadow(2px 2px #0808080a) ;
-        
+        filter:drop-shadow(2px 2px #0808080a);
     }
     
     .fa:hover, .fa-shopping-cart:hover, .fa-pinterest:hover, .fa-behance-square:hover, #closeProj:hover, .lojaLink:hover{
@@ -238,7 +234,6 @@
         align-items: center;
         display: flex;
         transition-duration: 1s;
-        
     }
 
     #nextToClose{
@@ -338,7 +333,6 @@
             display: flex;
             transition-duration: 1s;
             right: 50px; 
-
         }
 
         #prevToClose{
@@ -350,66 +344,227 @@
         }
     }
 
-    @media screen and (min-width: 1120px){
-        .img-crop{
-            width: 210px;
-            height: 210px;
+    @media screen and (max-width: 1101px) and (min-width: 1071px){
+        .container_imgThumb{
+            width: 290px;
+        }
+
+        .container_imgThumbduascolunas{
+            width: 580px;
         }
     }
 
-    @media screen and (max-width: 1119px) and (min-width: 1061px){
-        .img-crop{
-            width: 200px;
+    @media screen and (max-width: 1070px) and (min-width: 1042px){
+        .container_imgThumb{
+            width: 280px;
+        }
+
+        .container_imgThumbduascolunas{
+            width: 560px;
+        }
+    }
+
+    @media screen and (max-width: 1041px) and (min-width: 1006px){
+        .container_imgThumb{
+            width: 270px;
+        }
+
+        .container_imgThumbduascolunas{
+            width: 540px;
+        }
+    }
+
+    @media screen and (max-width: 1005px) and (min-width: 981px){
+        .container_imgThumb{
+            width: 260px;
+        }
+
+        .container_imgThumbduascolunas{
+            width: 520px;
+        }
+    }
+
+    @media screen and (max-width: 980px) and (min-width: 949px){
+        .container_imgThumb{
+            width: 250px;
+        }
+
+        .container_imgThumbduascolunas{
+            width: 500px;
+        }
+    }
+
+    @media screen and (max-width: 948px) and (min-width: 796px){
+        .container_imgThumb{
+            width: 300px;
+        }
+
+        .container_imgThumbduascolunas{
+            width: 300px;   
+        }
+
+        .container_imgThumbduascolunas img{
+            overflow: hidden;
             height: 200px;
+            object-fit: cover;
+        }
+
+        #organizer_projetos{
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            -webkit-column-count: 2; /* Chrome, Safari, Opera */
+            -moz-column-count: 2; /* Firefox */
+            column-count: 2;
+            -webkit-column-gap: 15px;
+            -moz-column-gap: 15px;
+            column-gap: 15px;
         }
     }
 
-    @media screen and (max-width: 1060px) and (min-width: 1041px){
-        .img-crop{
-            width: 195px;
-            height: 195px;
+    @media screen and (max-width: 795px) and (min-width: 679px){
+        .container_imgThumb{
+            width: 270px;
         }
-    }
 
-    @media screen and (max-width: 1040px) and (min-width: 1021px){
-        .img-crop{
-            width: 190px;
-            height: 190px;
+        .container_imgThumbduascolunas{
+            width: 270px;
         }
-    }
 
-    @media screen and (max-width: 1020px) and (min-width: 981px){
-        .img-crop{
-            width: 180px;
+        .container_imgThumbduascolunas img{
+            overflow: hidden;
             height: 180px;
+            object-fit: cover;
+        }
+
+        #organizer_projetos{
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            -webkit-column-count: 2; /* Chrome, Safari, Opera */
+            -moz-column-count: 2; /* Firefox */
+            column-count: 2;
+            -webkit-column-gap: 15px;
+            -moz-column-gap: 15px;
+            column-gap: 15px;
         }
     }
 
-    @media screen and (max-width: 980px) and (min-width: 941px) {
-        .img-crop{
-            width: 170px;
-            height: 170px;
+    @media screen and (max-width: 678px) and (min-width: 619px){
+        .container_imgThumb{
+            width: 240px;
+        }
+
+        .container_imgThumbduascolunas{
+            width: 240px;
+        }
+
+        .container_imgThumbduascolunas img{
+            overflow: hidden;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        #organizer_projetos{
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            -webkit-column-count: 2; /* Chrome, Safari, Opera */
+            -moz-column-count: 2; /* Firefox */
+            column-count: 2;
+            -webkit-column-gap: 15px;
+            -moz-column-gap: 15px;
+            column-gap: 15px;
         }
     }
 
-    @media screen and (max-width: 940px) and (min-width: 872px) {
-        .img-crop{
-            width: 210px;
-            height: 210px;
-        }
-    }
-
-    @media screen and (max-width: 872px) and (min-width: 841px) {
-        .img-crop{
+    @media screen and (max-width: 618px) and (min-width: 536px){
+        .container_imgThumb{
             width: 200px;
-            height: 200px;
+        }
+
+        .container_imgThumbduascolunas{
+            width: 200px;
+        }
+
+        .container_imgThumbduascolunas img{
+            overflow: hidden;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        #organizer_projetos{
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            -webkit-column-count: 2; /* Chrome, Safari, Opera */
+            -moz-column-count: 2; /* Firefox */
+            column-count: 2;
+            -webkit-column-gap: 10px;
+            -moz-column-gap: 10px;
+            column-gap: 10px;
+        }
+
+        .projeto-container{
+            margin-bottom: 10px;
         }
     }
 
-    @media screen and (max-width: 840px) and (min-width: 810px) {
-        .img-crop{
-            width: 190px;
-            height: 190px;
+    @media screen and (max-width: 535px) and (min-width: 408px){
+        .container_imgThumb{
+            width: 170px;
+        }
+
+        .container_imgThumbduascolunas{
+            width: 170px;
+        }
+
+        .container_imgThumbduascolunas img{
+            overflow: hidden;
+            height: 140px;
+            object-fit: cover;
+        }
+
+        #organizer_projetos{
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            -webkit-column-count: 2; /* Chrome, Safari, Opera */
+            -moz-column-count: 2; /* Firefox */
+            column-count: 2;
+            -webkit-column-gap: 10px;
+            -moz-column-gap: 10px;
+            column-gap: 10px;
+        }
+
+        .projeto-container{
+            margin-bottom: 10px;
+        }
+    }
+
+    @media screen and (max-width: 407px){
+        .container_imgThumb{
+            width: 250px;
+        }
+
+        .container_imgThumbduascolunas{
+            width: 250px;
+        }
+
+        #organizer_projetos{
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            -webkit-column-count: 1; /* Chrome, Safari, Opera */
+            -moz-column-count: 1; /* Firefox */
+            column-count: 1;
+            -webkit-column-gap: 10px;
+            -moz-column-gap: 10px;
+            column-gap: 10px;
+        }
+
+        .projeto-container{
+            margin-bottom: 10px;
         }
     }
 
@@ -429,10 +584,6 @@
         h2{
             font-size: 2.5rem;
         }
-        .img-crop{
-            width: 190px;
-            height: 190px;
-        }
     }
 
     @media screen and (max-width: 543px){
@@ -441,10 +592,6 @@
         }
         h2{
             font-size: 2.5rem;
-        }
-        .img-crop{
-            width: 165px;
-            height: 165px;
         }
     }
     
@@ -462,10 +609,6 @@
         h2{
             font-size: 2.5rem;
         }
-        .img-crop{
-            width: 160px;
-            height: 160px;
-        }
     }
 
     @media only screen and (hover:none) and (pointer:coarse){
@@ -481,31 +624,14 @@
         h2{
             font-size: 2.3rem;
         }
-        .img-crop{
-            width: 140px;
-            height: 140px;
-        }
-        .projeto-container{
-            margin-right: 7px;
-            margin-left: 7px;
-            margin-top: 14px;
-        }
     }
+
     @media screen and (max-width: 374px){
         #conteudo{
             padding: 3rem 2rem 3rem 2rem;
         }
         h2{
             font-size: 2rem;
-        }
-        .img-crop{
-            width: 118px;
-            height: 118px;
-        }
-        .projeto-container{
-            margin-right: 7px;
-            margin-left: 7px;
-            margin-top: 14px;
         }
         #snackbar_filtro{
             background-color: rgba(255, 255, 255, 0.875);
@@ -677,9 +803,7 @@
             youtubeButton =  `<a id='youtubeButton'><div class="logoContainerLoja"><i class="icon alt  fa  fa-youtube fa-2x" onclick="openLink('` + youtubelink + `')" target="_blank"></i></div></a>`
         } else{ 
             /* não faz nada */ 
-        }
-
-        
+        } 
 
         let topButtonsContainer = /* Criando os botões com os links correspondentes */
             `<div id='topButtonsToClose'><div id='topProjButtonsContainer'>`+ lojaButton + youtubeButton +`
