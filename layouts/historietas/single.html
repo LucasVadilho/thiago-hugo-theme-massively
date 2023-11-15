@@ -49,8 +49,24 @@
                                 {{ if isset .Params "processocriativo" }}
                                 <div id="container_processo"> 
                                     <h2>Processo criativo</h2>
-          
+
                                     <div id="mySlidesProcessoID">
+                                        {{ if isset .Params "listamateriais" }}
+                                            <span class="pinMateriaisUsados" onclick="expandirmateriais()">
+                                            <span class="txt_pinMateriaisUsados">Materiais</span><i class="fa fa-thumb-tack" aria-hidden="true"></i></span>
+
+                                            <div class="listaMateriais">
+                                                <span class="txt_pinMateriaisUsadosAberto">Materiais (links afiliados) <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                                                
+                                                </span>
+                                                {{ range $item := .Params.listaMateriais }}
+                                                    <span class="itemDaLista">
+                                                        <a href="{{ $item.link }}" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i> {{ $item.nome }}</a>
+                                                    </span>
+                                                {{ end }}
+                                            </div>
+                                        {{ end }}
+
                                         <a id="prevProcesso" onclick="plusSlides(-1)">&#10094;</a>
                                             {{ range $processoCriativo := .Params.processoCriativo }}
                                                 <div class="mySlides fade">
@@ -407,6 +423,7 @@
         align-items: center;
         margin: auto;
         margin-top: 15px;
+        position: relative;
     }
 
     .mySlides {
@@ -828,32 +845,32 @@
     // CARROSSEL
  
     let slideIndex = 1;
-    showSlides(slideIndex);
+        showSlides(slideIndex);
 
     // Next/previous controls
     function plusSlides(n) {
-    showSlides(slideIndex += n);
+        showSlides(slideIndex += n);
     }
 
     // Thumbnail image controls
     function currentSlide(n) {
-    showSlides(slideIndex = n);
+        showSlides(slideIndex = n);
     }
 
     function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("dot");
-    if (n > slides.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = slides.length}
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex-1].style.display = "block";
-    dots[slideIndex-1].className += " active";
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
     }
 
     //SWIPE LEFT OR RIGHT

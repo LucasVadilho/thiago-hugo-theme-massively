@@ -64,6 +64,10 @@
         <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC" rel="stylesheet">
 	</head>
 <style>
+    p>a{
+        color:#0000FF;
+    }
+
     #main > *{
         border-top: none;
     }
@@ -528,5 +532,132 @@
         letter-spacing: 0.075em;
         box-shadow: 0 0 14px rgba(0, 0, 0, 0.05); 
     }
+
+    .pinMateriaisUsados{
+        color: rgb(255 255 255);
+        font-size: large;
+        position: absolute;
+        bottom: 10%;
+        right: 5%;
+        background-color: rgba(168, 168, 184, 0.712);
+        border-radius: 3%;
+        padding-left: 20px;
+        padding-right: 20px;
+        height: 30px;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .txt_pinMateriaisUsados{
+        font-family: "Source Sans Pro", Helvetica, sans-serif;
+        font-size: 0.8rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        line-height: 3em;
+        margin-right: 10px;
+    }
+
+    .fa-thumb-tack{
+        transform: rotate(45deg);
+    }
+
+    .pinMateriaisUsados:hover{
+        cursor: pointer;
+        background-color: rgba(133, 133, 146, 0.87);
+    }
+
+    .txt_pinMateriaisUsadosAberto{
+        font-size: large;
+        font-family: "Source Sans Pro", Helvetica, sans-serif;
+        background-color: rgb(133, 133, 146);
+        font-size: 0.8rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        line-height: 3em;
+        margin-right: 10px;
+        width: 100%;
+        color: white;
+    }
+
+    .listaMateriais{
+        display: none;
+        position: absolute;
+        justify-items: start;
+        right: 5%;
+        bottom: 10%;
+        border-radius: 3% 3% 3% 3%;
+        background-color: rgb(231 231 231);
+    }
+
+    .itemDaLista>a{
+       padding-left: 10px;
+       padding-right: 10px;
+       color:#0000FF;
+    }
+    
+    .itemDaLista, .itemDaLista>a{
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
 </style>
+
+<script>
+/* ----------------MATERIAIS LINKS AFILIADOS---------------- */
+    let flagMateriaisAberto = false;
+    let expandirmateriais = function(){
+        let listademateriais = document.getElementsByClassName('listaMateriais');
+        listademateriais[0].style.display = "inline-grid";
+        flagMateriaisAberto = true;
+
+        let botaomateriais = document.getElementsByClassName('pinMateriaisUsados');
+        botaomateriais[0].style.display = "none";
+
+        checkMouseOverMateriais();
+
+        window.addEventListener("click", checkIfCanCloseMateriais);
+    }
+
+    document.addEventListener('keydown', (ev) => {
+       if(flagMateriaisAberto==true){
+            if(ev.key == 'Escape'){/* para ler quando preciona o esc*/
+                fecharmateriais();
+            }
+        }
+    }) 
+
+    let isMouseoverMateriais = Boolean
+    let checkIfCanCloseMateriais = function (){
+        if(isMouseoverMateriais == false){
+            fecharmateriais();
+        }
+    }
+
+    let checkMouseOverMateriais = function(){
+        $(".listaMateriais").mouseover(function() {
+            console.log("mouse em cima dos materiais")
+            isMouseoverMateriais = true;
+        })
+        $(".listaMateriais").mouseout(function() {
+            console.log("mouse fora dos materiais")
+            isMouseoverMateriais = false;
+        })
+    }
+
+    function fecharmateriais(){
+        if(window.innerWidth < 980){
+            navPanelToggle.style.cssText = ''
+        }
+
+        let listademateriais = document.getElementsByClassName('listaMateriais');
+        listademateriais[0].style.display = "none";
+
+        let botaomateriais = document.getElementsByClassName('pinMateriaisUsados');
+        botaomateriais[0].style.display = "inline-flex";
+
+        flagMateriaisAberto = false;
+        isMouseoverMateriais = true;
+    }
+/* ----------------FIM DOS MATERIAIS LINKS AFILIADOS---------------- */
+</script>
 
