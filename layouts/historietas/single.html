@@ -47,49 +47,54 @@
                                 </div>
 
                                 {{ if isset .Params "processocriativo" }}
-                                <div id="container_processo"> 
-                                    <h2>Processo criativo</h2>
+                                    <div id="container_processo"> 
+                                        <h2>Processo criativo</h2>
 
-                                    <div id="mySlidesProcessoID">
-                                        {{ if isset .Params "listamateriais" }}
-                                            <span class="pinMateriaisUsados" onclick="expandirmateriais()">
-                                            <span class="txt_pinMateriaisUsados">Materiais</span><i class="fa fa-thumb-tack" aria-hidden="true"></i></span>
-
-                                            <div class="listaMateriais">
-                                                <span class="txt_pinMateriaisUsadosAberto">Materiais (links afiliados) <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                                        <div id="mySlidesProcessoID">
+                                            <a id="prevProcesso" onclick="plusSlides(-1)"><span class='fa fa-chevron-circle-left fa' aria-hidden='true'></span></a>
+                                                <div id="container_slidesAndMateriais">
+                                                    {{ if isset .Params "listamateriais" }}
+                                                        <span class="pinMateriaisUsados" onclick="expandirmateriais(event)">
+                                                        <span class="txt_pinMateriaisUsados">MATERIAIS</span><i class="fa fa-thumb-tack" aria-hidden="true"></i></span>
+                                                        
+                                                        <div class="listaMateriais">
+                                                            <span class="txt_pinMateriaisUsadosAberto">MATERIAIS (LINKS AFILIADOS) <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                                                                <span class='toCloseMateriais' onclick="fecharmateriais()"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+                                                            </span>
+                                                            {{ range $item := .Params.listaMateriais }}
+                                                                <span class="itemDaLista">
+                                                                    <a href="{{ $item.link }}" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i> {{ $item.nome }}</a>
+                                                                </span>
+                                                            {{ end }}
+                                                            <span class="txt_pinMateriaisUsadosAbertoAviso">
+                                                            <span class="divisoriaBonitaMateriais"></span>
+                                                            Comprar pelos links gera renda para o site <b>sem</b> alterar o custo da sua compra</span>
+                                                        </div>
+                                                    {{ end }}
                                                 
-                                                </span>
-                                                {{ range $item := .Params.listaMateriais }}
-                                                    <span class="itemDaLista">
-                                                        <a href="{{ $item.link }}" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i> {{ $item.nome }}</a>
-                                                    </span>
-                                                {{ end }}
-                                            </div>
-                                        {{ end }}
-
-                                        <a id="prevProcesso" onclick="plusSlides(-1)">&#10094;</a>
-                                            {{ range $processoCriativo := .Params.processoCriativo }}
-                                                <div class="mySlides fade">
-                                                    {{ if strings.Contains $processoCriativo "youtube" }}
-                                                        <iframe
-                                                            src={{ $processoCriativo }}
-                                                            title="YouTube video player" frameborder="0" scrolling="no"
-                                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                            allowfullscreen>
-                                                        </iframe>
-                                                    {{ else }}
-                                                        <img src="{{ $processoCriativo }}">
+                                                    {{ range $processoCriativo := .Params.processoCriativo }}
+                                                        <div class="mySlides fade">
+                                                            {{ if strings.Contains $processoCriativo "youtube" }}
+                                                                <iframe
+                                                                    src={{ $processoCriativo }}
+                                                                    title="YouTube video player" frameborder="0" scrolling="no"
+                                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                                    allowfullscreen>
+                                                                </iframe>
+                                                            {{ else }}
+                                                                <img src="{{ $processoCriativo }}">
+                                                            {{ end }}
+                                                        </div>
                                                     {{ end }}
                                                 </div>
-                                            {{ end }}
-                                        <a id="nextProcesso" onclick="plusSlides(1)">&#10095;</a>
-                                        </div>
-                                    </div>
+                                            <a id="nextProcesso" onclick="plusSlides(1)"><span class='fa fa-chevron-circle-right fa' aria-hidden='true'></span></a>
+                                        </div>                               
 
-                                    <div id="posicaoDotsProcesso">
-                                        {{ range $i := (seq (len .Params.processoCriativo)) }}
-                                            <span class="dot" onclick='currentSlide("{{ $i }}")'></span>
-                                        {{ end }}
+                                        <div id="posicaoDotsProcesso">
+                                            {{ range $i := (seq (len .Params.processoCriativo)) }}
+                                                <span class="dot" onclick='currentSlide("{{ $i }}")'></span>
+                                            {{ end }}
+                                        </div>
                                     </div>
                                 {{ end }}
 
@@ -485,6 +490,10 @@
     }
 
 /* ENCERRAMENTO */
+    #explicacoes{
+        margin-top: 20px;
+    }
+    
     #introHistorietas{
         margin-bottom: 25px;
     }
@@ -672,6 +681,19 @@
     }
 
     @media screen and (max-width: 889px){
+        .txt_pinMateriaisUsados{
+            font-size: 0.75rem;
+        }
+
+        .fa-thumb-tack {
+            font-size: small;
+        }
+
+        .pinMateriaisUsados{
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
         #container_contribuicoesHistorietas{
             flex-wrap: wrap;
             justify-content: center;
@@ -824,9 +846,8 @@
         flagCompartilharAberto = true;
 
         window.addEventListener('click', function(g){
-            if (container.contains(g.target)){
-            } else{
-                closeCompartilhar();  
+            if(!container.contains(g.target)){
+                closeCompartilhar();
             }
         }, options = {"once": true})
     }
@@ -901,16 +922,13 @@
             dist = touchobj.pageX - startX
             distThreshold = Math.abs(dist)
             elapsedTime = new Date().getTime() - startTime
-           
-            console.log('dist ' + dist + ' threshold X ' + thresholdX)
-            console.log('abs y ' + Math.abs(touchobj.pageY - startY) + ' thrs Y ' + thresholdY)
-            console.log('elapsedTime ' + elapsedTime + ' allowed ' + allowedTime)
 
             if (
                 elapsedTime <= allowedTime &&
                 distThreshold >= thresholdX &&
                 Math.abs(touchobj.pageY - startY) <= thresholdY &&
-                dist > 0
+                dist > 0 &&
+                flagMateriaisAberto == false
             ){
                 document.getElementById('prevProcesso').click()
             }
@@ -919,8 +937,9 @@
                 elapsedTime <= allowedTime &&
                 distThreshold >= thresholdX &&
                 Math.abs(touchobj.pageY - startY) <= thresholdY &&
-                dist < 0)
-            {                                         
+                dist < 0 &&
+                flagMateriaisAberto == false
+            ){                                         
                 document.getElementById('nextProcesso').click()
             }
         }, false)

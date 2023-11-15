@@ -533,26 +533,29 @@
         box-shadow: 0 0 14px rgba(0, 0, 0, 0.05); 
     }
 
+    #container_slidesAndMateriais{
+        position: relative;
+        width: 100%;
+    }
+
     .pinMateriaisUsados{
         color: rgb(255 255 255);
         font-size: large;
         position: absolute;
-        bottom: 10%;
-        right: 5%;
+        top: 2%;
+        right: 1.5%;
         background-color: rgba(168, 168, 184, 0.712);
-        border-radius: 3%;
         padding-left: 20px;
         padding-right: 20px;
         height: 30px;
-        display: inline-flex;
         align-items: center;
+        display: inline-flex;
     }
 
     .txt_pinMateriaisUsados{
         font-family: "Source Sans Pro", Helvetica, sans-serif;
         font-size: 0.8rem;
         letter-spacing: 0.1em;
-        text-transform: uppercase;
         line-height: 3em;
         margin-right: 10px;
     }
@@ -567,12 +570,10 @@
     }
 
     .txt_pinMateriaisUsadosAberto{
-        font-size: large;
         font-family: "Source Sans Pro", Helvetica, sans-serif;
         background-color: rgb(133, 133, 146);
         font-size: 0.8rem;
         letter-spacing: 0.1em;
-        text-transform: uppercase;
         line-height: 3em;
         margin-right: 10px;
         width: 100%;
@@ -583,9 +584,9 @@
         display: none;
         position: absolute;
         justify-items: start;
-        right: 5%;
-        bottom: 10%;
-        border-radius: 3% 3% 3% 3%;
+        top: 2%;
+        right: 1.5%;
+        border-radius: 3%;
         background-color: rgb(231 231 231);
     }
 
@@ -600,22 +601,68 @@
         width: 100%;
         text-align: left;
     }
+
+    .txt_pinMateriaisUsadosAbertoAviso{
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-top: 5px;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        width: 300px;
+        text-align: center;
+        border: 0; 
+    }
+
+    .divisoriaBonitaMateriais{
+        display: block;
+        height: 1px; 
+        background-image: -webkit-linear-gradient(left, rgb(231 231 231), #8c8b8bc5,  rgb(231 231 231));
+        background-image: -moz-linear-gradient(left, rgb(231 231 231), #8c8b8bc5,  rgb(231 231 231));
+        background-image: -ms-linear-gradient(left, rgb(231 231 231), #8c8b8bc5,  rgb(231 231 231));
+        background-image: -o-linear-gradient(left, rgb(231 231 231), #8c8b8bc5,  rgb(231 231 231));
+    }
+
+    .toCloseMateriais{
+        display: none;
+        position: absolute;
+        z-index: 2;
+        font-size: x-large;
+        color: white;
+        line-height: 0;
+        top: 1.3%;
+        right: 2.5%;
+    }
+
+    .toCloseMateriais:hover{
+        cursor: pointer;
+        color: #343452;
+    }
 </style>
 
 <script>
 /* ----------------MATERIAIS LINKS AFILIADOS---------------- */
     let flagMateriaisAberto = false;
-    let expandirmateriais = function(){
-        let listademateriais = document.getElementsByClassName('listaMateriais');
-        listademateriais[0].style.display = "inline-grid";
+    
+    let expandirmateriais = function(e){
+        e.stopPropagation();
+        let listademateriais = document.getElementsByClassName('listaMateriais')[0];
+        listademateriais.style.display = "inline-grid";
+        
         flagMateriaisAberto = true;
 
         let botaomateriais = document.getElementsByClassName('pinMateriaisUsados');
         botaomateriais[0].style.display = "none";
 
-        checkMouseOverMateriais();
+        let buttonCloseMateriais = document.getElementsByClassName('toCloseMateriais')[0];
+        buttonCloseMateriais.style.display = "block";
 
-        window.addEventListener("click", checkIfCanCloseMateriais);
+        window.addEventListener('click', function(g){
+            if(!listademateriais.contains(g.target)){
+                fecharmateriais();
+            }
+        }, options = {"once": true})
     }
 
     document.addEventListener('keydown', (ev) => {
@@ -626,25 +673,10 @@
         }
     }) 
 
-    let isMouseoverMateriais = Boolean
-    let checkIfCanCloseMateriais = function (){
-        if(isMouseoverMateriais == false){
-            fecharmateriais();
-        }
-    }
-
-    let checkMouseOverMateriais = function(){
-        $(".listaMateriais").mouseover(function() {
-            console.log("mouse em cima dos materiais")
-            isMouseoverMateriais = true;
-        })
-        $(".listaMateriais").mouseout(function() {
-            console.log("mouse fora dos materiais")
-            isMouseoverMateriais = false;
-        })
-    }
-
     function fecharmateriais(){
+        let buttonCloseMateriais = document.getElementsByClassName('toCloseMateriais')[0];
+        buttonCloseMateriais.style.display = "none";
+
         if(window.innerWidth < 980){
             navPanelToggle.style.cssText = ''
         }
