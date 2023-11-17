@@ -907,6 +907,8 @@ var form = document.getElementById("Snackbar");
             form.className = form.className.replace("showSucess", "");   
             resetForm();
         }, 8000);
+
+        window.history.pushState('', '', '#form-enviado');
     }
 
     let formularioNaoEnviado = function(){

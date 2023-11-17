@@ -730,14 +730,14 @@
 </style>
 
 <script>
-/* NEWSLETTER */
-var form = document.getElementById("Snackbar");
+    /* NEWSLETTER */
+    var form = document.getElementById("Snackbar");
+    
+    document.getElementById('newsletterForm').addEventListener("submit", (e) => {
+        e.preventDefault();
 
-    document.getElementById('newsletterForm').addEventListener("submit", (e) => {		
-        e.preventDefault()
-
-        document.getElementById('btn_inscrever').setAttribute('disabled', 'a')
-        document.getElementById('li_btn_inscrever').classList.add('borderAnim', 'in')
+        document.getElementById('btn_inscrever').setAttribute('disabled', 'a');
+        document.getElementById('li_btn_inscrever').classList.add('borderAnim', 'in');
     
         data = {
             'mail': document.getElementById('emailnewsl').value,
@@ -745,7 +745,7 @@ var form = document.getElementById("Snackbar");
             'assunto': '[Newsletter] Signup'
         }
         
-        url = 'https://thiago.oioipio.com/contato'
+        url = 'https://thiago.oioipio.com/contato';
 
         fetch(url, {
             method: 'POST',
@@ -755,32 +755,39 @@ var form = document.getElementById("Snackbar");
             },
             body: JSON.stringify(data)
         }).then(result => {
-            document.getElementById('btn_inscrever').removeAttribute('disabled')
-            document.getElementById('li_btn_inscrever').classList.remove('borderAnim', 'in')
+            document.getElementById('btn_inscrever').removeAttribute('disabled');
+            document.getElementById('li_btn_inscrever').classList.remove('borderAnim', 'in');
 
-            formularioEnviado()
+            formularioEnviado();
         }).catch(error => {
-            document.getElementById('btn_inscrever').removeAttribute('disabled')
-            document.getElementById('li_btn_inscrever').classList.remove('borderAnim', 'in')
+            document.getElementById('btn_inscrever').removeAttribute('disabled');
+            document.getElementById('li_btn_inscrever').classList.remove('borderAnim', 'in');
 
-            formularioNaoEnviado()
+            formularioNaoEnviado();
         })
     })
 
     let formularioEnviado = function(){
-        form.className = "showSucess";     
-        document.getElementById('SnackbarText1').innerHTML = "Inscrição realizada"
-        document.getElementById('SnackbarText2').innerHTML = "Muito obrigado por seu interesse pelo meu trabalho!"
+        console.log('HELP');
+        form.className = "showSucess";    
+        
+        document.getElementById('SnackbarText1').innerHTML = "Inscrição realizada";
+        document.getElementById('SnackbarText2').innerHTML = "Muito obrigado por seu interesse pelo meu trabalho!";
+        
         setTimeout(function(){ 
             form.className = form.className.replace("showSucess", "");   
             resetForm();
         }, 8000);
+        
+        window.history.pushState('', '', '#form-enviado');
     }
 
     let formularioNaoEnviado = function(){
         form.className = "showFail";
-        document.getElementById('SnackbarText1').innerHTML = "Falha no servidor"
-        document.getElementById('SnackbarText2').innerHTML = "Desculpe pelo erro. Por favor, tente novamente em alguns instantes"
+        
+        document.getElementById('SnackbarText1').innerHTML = "Falha no servidor";
+        document.getElementById('SnackbarText2').innerHTML = "Desculpe pelo erro. Por favor, tente novamente em alguns instantes";
+        
         setTimeout(function(){ 
             form.className = form.className.replace("showFail", ""); 
         }, 8000);
@@ -789,36 +796,36 @@ var form = document.getElementById("Snackbar");
     function closeSnackbar(){
         if(form.classList.contains("showSucess")){
             resetForm();
-            form.className = form.classList.remove("showSucess")
+            form.className = form.classList.remove("showSucess");
         }else{
-            form.className = form.classList.remove("showFail")    
+            form.className = form.classList.remove("showFail"); 
         }
     }
 
     let resetForm = function(){
-        let resetNewsForm = document.getElementById('newsletterForm')
-        resetNewsForm.reset()
-        let resetContatoForm = document.getElementById('contato')
-        resetContatoForm.reset()
+        let resetNewsForm = document.getElementById('newsletterForm');
+        resetNewsForm.reset();
+        let resetContatoForm = document.getElementById('contato');
+        resetContatoForm.reset();
     }
 
-/* SNACKBAR FAQ */
-    let snackbarFAQ = document.getElementById("SnackbarFAQ")
+    /* SNACKBAR FAQ */
+    let snackbarFAQ = document.getElementById("SnackbarFAQ");
 
-    let openFAQ=function(e){  
-        e.stopPropagation()
-        snackbarFAQ.style.display = "block"
+    let openFAQ = function(e){
+        e.stopPropagation();
+        snackbarFAQ.style.display = "block";
 
         window.addEventListener('click', function(v){
             if (document.getElementById('SnackbarFAQ').contains(v.target)){
             } else{
-                snackbarFAQ.style.display = "none"  
+                snackbarFAQ.style.display = "none";
             }
         }, options = {"once": true})
     }
     
     let closeSnackbarFAQ = function(){
-        snackbarFAQ.style.display = "none"
+        snackbarFAQ.style.display = "none";
     }
     
 </script>
