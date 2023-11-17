@@ -191,16 +191,15 @@
 </style>
 
 <script>
-    document.getElementById('contato').addEventListener("submit", (e) => {		
-        console.log(e.target)
-        e.preventDefault()
+    document.getElementById('contato').addEventListener("submit", (e) => {
+        e.preventDefault();
 
-        document.getElementById('btn_enviar').setAttribute('disabled', 'a')
-        document.getElementById('li_btn_contato').classList.add('borderAnim', 'in')
+        document.getElementById('btn_enviar').setAttribute('disabled', 'a');
+        document.getElementById('li_btn_contato').classList.add('borderAnim', 'in');
         
     
-        data = Object.fromEntries(new FormData(e.target).entries())  
-        url = 'https://thiago.oioipio.com/contato'
+        data = Object.fromEntries(new FormData(e.target).entries());
+        url = 'https://thiago.oioipio.com/contato';
         
         fetch(url, {
             method: 'POST',
@@ -210,42 +209,47 @@
             },
             body: JSON.stringify(data)
         }).then(result => {
-            document.getElementById('btn_enviar').removeAttribute('disabled')
-            document.getElementById('li_btn_contato').classList.remove('borderAnim', 'in')
+            document.getElementById('btn_enviar').removeAttribute('disabled');
+            document.getElementById('li_btn_contato').classList.remove('borderAnim', 'in');
             
-            emailenviado()
+            emailenviado();
         }).catch(error => {
-            document.getElementById('btn_enviar').removeAttribute('disabled')
-            document.getElementById('li_btn_contato').classList.remove('borderAnim', 'in')
+            document.getElementById('btn_enviar').removeAttribute('disabled');
+            document.getElementById('li_btn_contato').classList.remove('borderAnim', 'in');
             
-            emailnaoenviado()
+            emailnaoenviado();
         })
     })
 
     let emailenviado = function(){
-      var form = document.getElementById("Snackbar");
-      form.className = "showSucess";
+        var form = document.getElementById("Snackbar");
+        
+        form.className = "showSucess";
+
         document.getElementById('SnackbarText1').innerHTML = "Mensagem enviada"
         document.getElementById('SnackbarText2').innerHTML = "Entrarei em contato assim que possível"
+        
         setTimeout(function(){ 
             form.className = form.className.replace("showSucess", "");   
             resetForm();
         }, 8000);
+
+        window.history.pushState('', '', '#form-enviado');
     }
 
     let emailnaoenviado = function(){
-        let emailenviado = document.getElementById('emailenviado')
-        emailenviado.innerHTML = "Infelizmente o email não pode ser enviado. Por favor, tente novamente em alguns instantes"
+        let emailenviado = document.getElementById('emailenviado');
+        let form = document.getElementById("Snackbar");
 
-
-      var form = document.getElementById("Snackbar");
-      form.className = "showFail";
-        document.getElementById('SnackbarText1').innerHTML = "Falha no servidor"
-        document.getElementById('SnackbarText2').innerHTML = "Desculpe, infelizmente o email não pode ser enviado. Por favor, tente novamente em alguns instantes"
+        emailenviado.innerHTML = "Infelizmente o email não pode ser enviado. Por favor, tente novamente em alguns instantes";
+        form.className = "showFail";
+       
+        document.getElementById('SnackbarText1').innerHTML = "Falha no servidor";
+        document.getElementById('SnackbarText2').innerHTML = "Desculpe, infelizmente o email não pode ser enviado. Por favor, tente novamente em alguns instantes";
+        
         setTimeout(function(){ 
             form.className = form.className.replace("showFail", "");   
         }, 8000);
-
     }
 
 </script>
