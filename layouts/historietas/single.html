@@ -134,11 +134,18 @@
                                             <div class="contribuicoesHistorietas">
                                                 <h4>Indiretamente</h4>
                                                 <p>Compras a partir de links afiliados geram renda para o projeto sem qualquer custo adicional para você.</p>
-                                                <a href="https://docs.google.com/spreadsheets/d/1DJxa44ngnqBP9sUN0czkUV66Z7qXPEoODkHs1WnuSQg/edit#gid=0" class="clicavel_linkafiliado"  target="_blank">
-                                                    <div id="container_linkafiliado">
-                                                        <div class="linkafiliado"><i class="fa fa-bookmark" aria-hidden="true"></i> LEITURAS FAVORITAS 2023</div>
-                                                    </div>
-                                                </a>
+                                                <div id="organizer_contribuicoesHistorietas">
+                                                    <a href="https://amzn.to/4a29ROf" class="clicavel_linkafiliado" target="_blank">
+                                                        <div id="container_linkafiliado">
+                                                            <div class="linkafiliado"><i class="fa fa-bookmark" aria-hidden="true"></i> MEU LINK</div>
+                                                        </div>
+                                                    </a>
+                                                    <a href="https://docs.google.com/spreadsheets/d/1DJxa44ngnqBP9sUN0czkUV66Z7qXPEoODkHs1WnuSQg/edit#gid=0" class="clicavel_linkafiliado"  target="_blank">
+                                                        <div id="container_linkafiliado">
+                                                            <div class="linkafiliado"><i class="fa fa-bookmark" aria-hidden="true"></i> LEITURAS 2023</div>
+                                                        </div>
+                                                    </a>
+                                                </div>
                                             </div>
 
                                             <div class="contribuicoesHistorietas">
@@ -671,6 +678,12 @@
     }
 
     /* indiretamente */
+    #organizer_contribuicoesHistorietas{
+        display: inline-flex;
+        justify-content: space-around;
+        width: 100%;
+    }
+
     #container_linkafiliado {
         margin-top: 8px;
         height: 26px;
@@ -803,12 +816,18 @@
             justify-content: flex-start;
         }
 
+
         .button_contribuicaopix-container{
             margin-right: 10px;
         }
 
+        #organizer_contribuicoesHistorietas{
+            justify-content: flex-start;
+        }
+
         #container_linkafiliado{
-            margin: 12px 0 0 0;
+            margin-right: 10px;
+            margin-top: 12px;
         }
 
         .contribuicoesHistorietas ul{
