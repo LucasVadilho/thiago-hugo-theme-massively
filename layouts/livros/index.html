@@ -1,4 +1,5 @@
 {{- partial "htmlhead" . -}}
+{{ $data := index .Site.Data .Site.Language.Lang }}
 
 	<body lang='{{ .Site.LanguageCode | default "en-us" }}' class="is-preload">
 
@@ -22,59 +23,100 @@
                             <div class="imagensPainelLivros"
                                  id="painel-{{ $livro.id }}"
                                  myid="{{ $livro.id }}"
-                                 titulo="{{$livro.titulo}}"
-                                 criticas="{{$livro.criticas}}"
-                                 dados+sinopse="{{$livro.dadossinopse}}"
-                                 msgdoautor="{{ $livro.msgdoautor }}"
+                                 titulo="{{ $livro.titulo }}"
                                  numImagens="{{ len $livro.imagens }}"
                                  imagens="{{ $livro.imagens }}"
-                                 linkebook="{{ $livro.linkebook }}"
-                                 linkfisico="{{ $livro.linkfisico}}"
                             >
                                 <a href="#">
-                                    <img src="{{index $livro.imagens 0}}" class="imagemPainel ">
+                                    <img src="{{ index $livro.imagens 0 }}" class="imagemPainel ">
                                 </a>
                             </div>
                             {{ end }}
                         </div>
-
-                        <div class="arrow-holder">
-                            <a id="carrousel-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
-                        </div>
                     </div>
 
-                    <div style="margin-top: 50px; width: 100%;">
-                        <h3>Sabe por que a página Livros foi liberada?</h3>
-                        <br>
-                        <p style="text-align: justify;">
-                        Exatamente!
-                        O meu <b>primeiro livro</b> está em processo de correção e diagramação, com previsão para ser lançado na pré-venda de <b>janeiro</b> da editora Flyve!
-                        Esse é só um textinho para compartilhar a novidade e dividir minha felicidade. Um "easter egg", se preferir. 
-                        Em breve outros compartilhamentos virão e, em breve, essa página vai ser atualizada, estou trabalhando em umas ideias para deixá-la uma belezura! Então, só para encerrar:</p>
-                        <br>
-                    
-                        <h2 style="width: 90%; margin-left: 5%;">Há Quanto Tempo Você Não Olha Para As Estrelas?</h2>
-                        <br>
-                        <p style="text-align: justify">Fique à vontade para me perguntar qualquer coisa ou até mesmo me dar sugestões para promover o livro, será um enorme prazer saber que tem interesse 😊</p>
+                    <div class="arrow-holder">
+                        <a id="carrousel-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
                     </div>
-
-                    <div style="width: 100%; padding-left: 10%; padding-right: 10%;">
-                        <p style="text-align: center;">____</p>
-                        
-                        <p style="margin-top: 20px; margin-bottom: 20px; text-align: center;">Para receber atualizações sobre o livro, por favor, considere:</p>
+                </div>
                 
-                        <a href='{{ "#container_newsletterForm" | relLangURL }}'><p style="text-align: center;"><u>Inscrever-se na Newsletter do site</u></p></a>
-                        <p style="text-align: center; font-size: 0.9rem; margin-bottom: 10px;">Para resumos mensais</p>
+                {{ range $livro := .Params.livros }}
+                    {{ if eq $livro.id 0 }}
+                        <div id="buttonContainer_compartilharHistorietas">
+                            <button type="submit" id="button_compartilharHistorieta" onclick="abrirCompartilhar(event)">
+                                <i class="fa fa-share-alt fa-lg"></i> Compartilhar
+                            </button>
+                        </div>
 
-                        <a href='https://www.instagram.com/td.vadilho/' target="_blank"><u><p style="text-align: center;">Me seguir no Instagram</p></u></a>  
-                        <p style="text-align: center; font-size: 0.9rem;margin-bottom: 20px;">Para compartilhamentos mais esporádicos</p>
-                    </div>
+                        <div id="buttonContainer_comprarlivro">
+                            <button type="submit" id="button_comprarlivrofisico" onclick="comprarlivrofisico(event)">
+                                <i class="fa fa-shopping-cart fa-lg"></i> Livro
+                            </button>
 
+                            <button type="submit" id="button_comprarebook" onclick="comprarlivroebook(event)">
+                                <i class="fa fa-shopping-cart fa-lg"></i> Ebook
+                            </button>
+                        </div>
+                        
+                        <div class="container_sinopsemsgautor">     
+                            <div class="menu_sinopsemsgautor">
+                                <div class="sinopse selectedmenu" onclick="focus_sinopse()">
+                                    <h4>Sinopse</h4>
+                                </div>
 
-                    <p style="text-align: justify;"></p>
+                                <div class="msgdoautor" onclick="focus_msgautor()">
+                                    <h4>Mensagem do autor</h4>
+                                </div>
+
+                                <div class="txtfield_sinopsemsgautor">
+                                    <p class="txt_sinopse selectedtext">{{ $livro.sinopse }}</p>
+                                    <p class="txt_msgautor">{{ $livro.msgdoautor }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="container_dadosdolivro">
+                            <ul>
+                                <li>Gênero: {{ $livro.genero }}</li>
+                                <li>Páginas: {{ $livro.paginas }}</li>
+                                <li>Edição: {{ $livro.edicao }}</li>
+                                <li>Editora: {{ $livro.editora }}</li>
+                                <li>Papel: {{ $livro.papel }}</li>
+                                <li>Capa: {{ $livro.capa }}</li>
+                                <li>Dimensões: {{ $livro.dimensoes }}</li>
+                                <li>ISBN: {{ $livro.isbn }}</li>
+                            </ul>
+                        </div>
+
+                        <div class="container_destaques">
+
+                        </div>
+
+                        <div class="container_comentariosdolivro">
+                            <div class="menu_sinopsemsgautor">
+                                <div class="comentariosgeraisselecionados selectedmenu" onclick="focus_comentariosgeraisselecionados()">
+                                    <h4>Comentários selecionados</h4>
+                                </div>
+
+                                <div class="respostasdoautor" onclick="focus_respostasdoautor()">
+                                    <h4>Respostas do autor</h4>
+                                </div>
+
+                                <div class="conteudosextras" onclick="focus_conteudosextras()">
+                                    <h4>Conteúdos extras</h4>
+                                </div>
+
+                                <div class="txtfield_comentariosrespostasextras">
+                                    <p class="txt_comentariosgeraisselecionados selectedtext">{{ $livro.comentariosgeraisselecionados }}</p>
+                                    <p class="txt_respostasdoautor">{{ $livro.respostasdoautor}}</p>
+                                    <p class="txt_conteudosextras">{{ $livro.conteudosextras}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {{ end }}
+                {{ end }}
                        
-
-                    <!-- <div id="container_livroSelecionado">
+                    <div id="container_livroSelecionado">
                         <div id="mySlidesID">
                             <div class="mySlides fade">
                             </div>
@@ -89,31 +131,32 @@
                             <span class="dot" onclick="currentSlide(1)"></span>
                         </div>
 
-                        <h2 class="titulocontainer_livroSelecionado" id="titulocontainer_livroSelecionadoID"></h2>      
-
-                        <div id="container_informacoesEscritasLivro">
-                            <div id="textcontainer_sinopse+dados">
-                                <p class="text_sinopse+dadosLivroSelecionado" id="text_sinopse+dadosLivroSelecionadoID"></p>
-                            </div>
-
-                            <div id="textcontainer_msgAutor">
-                                <p class="text_msgAutorLivroSelecionado" id="text_msgAutorLivroSelecionadoID"></p>
-                            </div>
-
-                            <div id="textcontainer_criticas">
-                                <p class="text_criticasLivroSelecionado" id="text_criticasLivroSelecionadoID"></p>
-                            </div>
-                        </div>
-
-                        <div id="container_botoes"></div>
-                        
-                    </div> -->
-
-                    <div id="buttonContainer_compartilharHistorietas" style="margin-bottom: 30px;">
-                        <button type="submit" id="button_compartilharHistorieta" onclick="abrirCompartilhar(event)">
-                            <i class="fa fa-share-alt fa-lg"></i> Compartilhar
-                        </button>
+                        <h2 class="titulocontainer_livroSelecionado" id="titulocontainer_livroSelecionadoID"></h2>                    
                     </div>
+                
+
+                <div id="container_footerlivros">
+                    {{ with $data.social }}
+                        <section>
+                            <ul class="icons alt">
+                                {{ with .newsletter }}
+                                    <li><a href="{{ . }}" class="icon alt fa-envelope-open"><span class="label">Newsletter</span></a></li>
+                                {{ end }}
+
+                                {{ with .instagram}}
+                                    <li><a href="{{ . }}" class="icon alt fa-instagram"><span class="label">Instagram</span></a></li>
+                                {{ end }}
+
+                                {{ with .youtube }}
+                                    <li><a href="{{ . }}" class="icon fa-youtube"><span class="label">Youtube</span></a></li>
+                                {{ end }}
+
+                                {{ with .pinterest}}
+                                    <li><a href="{{ . }}" class="icon alt fa-pinterest"><span class="label">Pinterest</span></a></li>
+                                {{ end }}
+                            </ul>
+                        </section>
+                    {{ end }}          
                 </div>
             </div>
 
@@ -298,6 +341,55 @@
 
         #container_botoes h3{
             text-align: left;
+        }
+
+        #button_comprarlivrofisico{
+            background-color:#E0501E;
+        }
+
+        #button_comprarebook{
+            background-color:#5FB0DD;
+        }
+
+        #button_comprarlivrofisico,#button_comprarebook{
+            box-shadow: none;
+            color: white !important;
+            font-family: "Alegreya Sans SC";
+            font-size: 1.4rem;
+            text-transform: none;
+            padding: 0px 40px 0px 40px;
+        }
+
+        .menu_sinopsemsgautor{
+            display: inline-flex;
+        }
+
+        .sinopse h4:hover,.msgdoautor h4:hover,.comentariosgeraisselecionados:hover, .respostasdoautor:hover, .conteudosextras:hover{
+            cursor: pointer;
+        }
+
+        .txt_msgautor{
+            display: none;
+        }
+
+        .txt_sinopse{
+            display: none;
+        }
+
+        .selectedtext{
+            display: block !important;
+        }
+
+        .selectedmenu{
+            border-bottom: 3px solid #E0501E;
+        }
+        
+        .selectedmenu h4{
+            color:#E0501E !important;
+        }
+
+        .txt_comentariosgeraisselecionados, .txt_respostasdoautor, .txt_conteudosextras{
+            display: none;
         }
 
     /* Bloco do carrossel do livro selecionado */
@@ -699,4 +791,85 @@
 
         images[0].click()
     });
+
+    let flagsinopseopen = true;
+    let flagmsgdoautor = false;
+    let focus_sinopse = function (){
+        if ((flagmsgdoautor == true) && (flagsinopseopen != true)){
+            document.getElementsByClassName("txt_msgautor")[0].classList.remove('selectedtext')
+            document.getElementsByClassName("txt_sinopse")[0].classList.add('selectedtext')
+
+            document.getElementsByClassName("sinopse")[0].classList.add('selectedmenu')
+            document.getElementsByClassName("msgdoautor")[0].classList.remove('selectedmenu')
+
+            flagsinopseopen = true; 
+            flagmsgdoautor = false;       
+        }
+    }
+
+    let focus_msgautor = function (){
+        if ((flagmsgdoautor != true) && (flagsinopseopen == true)){
+            document.getElementsByClassName("txt_msgautor")[0].classList.add('selectedtext')
+            document.getElementsByClassName("txt_sinopse")[0].classList.remove('selectedtext')
+
+            document.getElementsByClassName("msgdoautor")[0].classList.add('selectedmenu')
+            document.getElementsByClassName("sinopse")[0].classList.remove('selectedmenu')
+
+            flagmsgdoautor = true;
+            flagsinopseopen = false;  
+        }
+    }
+
+    let flagcomentariosgeraisselecionados = true;
+    let flagrespostasdoautor = false;
+    let flagconteudosextras = false;
+    let focus_comentariosgeraisselecionados = function (){
+        if (flagcomentariosgeraisselecionados != true){
+            document.getElementsByClassName("txt_comentariosgeraisselecionados")[0].classList.add('selectedtext')
+            document.getElementsByClassName("txt_respostasdoautor")[0].classList.remove('selectedtext')
+            document.getElementsByClassName("txt_conteudosextras")[0].classList.remove('selectedtext')
+
+            document.getElementsByClassName("comentariosgeraisselecionados")[0].classList.add('selectedmenu')
+            document.getElementsByClassName("respostasdoautor")[0].classList.remove('selectedmenu')
+            document.getElementsByClassName("conteudosextras")[0].classList.remove('selectedmenu')
+
+            flagcomentariosgeraisselecionados = true;
+            flagrespostasdoautor = false; 
+            flagconteudosextras = false;
+        }
+    }
+
+    let focus_respostasdoautor= function (){
+        if (flagrespostasdoautor != true){
+            document.getElementsByClassName("txt_comentariosgeraisselecionados")[0].classList.remove('selectedtext')
+            document.getElementsByClassName("txt_respostasdoautor")[0].classList.add('selectedtext')
+            document.getElementsByClassName("txt_conteudosextras")[0].classList.remove('selectedtext')
+
+            document.getElementsByClassName("comentariosgeraisselecionados")[0].classList.remove('selectedmenu')
+            document.getElementsByClassName("respostasdoautor")[0].classList.add('selectedmenu')
+            document.getElementsByClassName("conteudosextras")[0].classList.remove('selectedmenu')
+
+            flagcomentariosgeraisselecionados = false;
+            flagrespostasdoautor = true; 
+            flagconteudosextras = false;
+        }
+    }
+
+    let focus_conteudosextras = function (){
+        if (flagconteudosextras != true){
+            document.getElementsByClassName("txt_comentariosgeraisselecionados")[0].classList.remove('selectedtext')
+            document.getElementsByClassName("txt_respostasdoautor")[0].classList.remove('selectedtext')
+            document.getElementsByClassName("txt_conteudosextras")[0].classList.add('selectedtext')
+
+            document.getElementsByClassName("comentariosgeraisselecionados")[0].classList.remove('selectedmenu')
+            document.getElementsByClassName("respostasdoautor")[0].classList.remove('selectedmenu')
+            document.getElementsByClassName("conteudosextras")[0].classList.add('selectedmenu')
+
+            flagcomentariosgeraisselecionados = false;
+            flagrespostasdoautor = false; 
+            flagconteudosextras = true;
+        }
+    }
+
+
 </script>
