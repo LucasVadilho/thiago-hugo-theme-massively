@@ -83,7 +83,7 @@
                 {{ end }}
 
                 {{ with .youtube }}
-                    <li><a href="{{ . }}" class="icon fa-youtube"><span class="label">Youtube</span></a></li>
+                    <li><a href="{{ . }}" class="icon alt fa-youtube-play"><span class="label">Youtube</span></a></li>
                 {{ end }}
             </ul>
         </section>
@@ -113,6 +113,10 @@
 
     #footer > section.split.contact > section > :last-child:hover{
         cursor: pointer;
+    }
+
+    ul.icons li:last-child {
+        padding: 0 0.5rem 0 0;
     }
 
     .underline_status{

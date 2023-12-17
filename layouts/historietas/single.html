@@ -163,7 +163,7 @@
                                                         {{ end }}
 
                                                         {{ with .youtube }}
-                                                            <li><a href="{{ . }}" class="icon fa-youtube" target="_blank"><span class="label">Youtube</span></a></li>
+                                                            <li><a href="{{ . }}" class="icon alt fa-youtube-play" target="_blank"><span class="label">Youtube</span></a></li>
                                                         {{ end }}
                                                     </ul>
                                                 {{ end }}
@@ -184,7 +184,7 @@
         <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
        
         <!-- BOTÕES COMPARTILHAR -->
-        <div id="compartilharHistContainer">
+        <div id="compartilharContainer">
             <div id='buttonCloseCompartilhar'>
                 <span class='fa fa-times' aria-hidden='true' onclick="closeCompartilhar()"></span>
             </div>
@@ -629,7 +629,10 @@
         margin-top: 8px;
     }
 
-
+    .icon.alt{
+        color: #717981;
+    }
+    
 /* REGRAS DE MIDIA */
     @media screen and (max-width: 700px) and (min-width: 551px){
         h2{
@@ -655,7 +658,7 @@
         #main {
             padding: 2rem 1.8rem 2rem 1.8rem;
         }
-        #compartilharHistContainer{
+        #compartilharContainer{
             width: 352px;
         }
         #buttonContainer_compartilharHistorietas{
@@ -668,7 +671,7 @@
     }
 
     @media screen and (max-width: 1036px) and (min-width:737px){
-        #compartilharHistContainer{
+        #compartilharContainer{
             max-width: 352px;
         }
     }
@@ -860,7 +863,7 @@
     let flagCompartilharAberto = false;
     let abrirCompartilhar = function(e) {
         e.stopPropagation()
-        let container = document.getElementById("compartilharHistContainer");
+        let container = document.getElementById("compartilharContainer");
         container.style.display = "inline-flex";
         flagCompartilharAberto = true;
 
@@ -878,7 +881,7 @@
     }) 
 
     let closeCompartilhar = function () {
-        let container = document.getElementById("compartilharHistContainer")
+        let container = document.getElementById("compartilharContainer")
         container.style.display="none"
     }
 
