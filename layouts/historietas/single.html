@@ -754,6 +754,56 @@
 </style>
 
 <script>
+/* ----------------MATERIAIS LINKS AFILIADOS---------------- */
+    let flagMateriaisAberto = false;
+    
+    let expandirmateriais = function(e){
+        e.stopPropagation();
+        let listademateriais = document.getElementsByClassName('listaMateriais')[0];
+        listademateriais.style.display = "inline-grid";
+        
+        flagMateriaisAberto = true;
+
+        let botaomateriais = document.getElementsByClassName('pinMateriaisUsados');
+        botaomateriais[0].style.display = "none";
+
+        let buttonCloseMateriais = document.getElementsByClassName('toCloseMateriais')[0];
+        buttonCloseMateriais.style.display = "block";
+
+        window.addEventListener('click', function(g){
+            if(!listademateriais.contains(g.target)){
+                fecharmateriais();
+            }
+        }, options = {"once": true})
+    }
+
+    document.addEventListener('keydown', (ev) => {
+       if(flagMateriaisAberto==true){
+            if(ev.key == 'Escape'){/* para ler quando preciona o esc*/
+                fecharmateriais();
+            }
+        }
+    }) 
+
+    function fecharmateriais(){
+        let buttonCloseMateriais = document.getElementsByClassName('toCloseMateriais')[0];
+        buttonCloseMateriais.style.display = "none";
+
+        if(window.innerWidth < 980){
+            navPanelToggle.style.cssText = ''
+        }
+
+        let listademateriais = document.getElementsByClassName('listaMateriais');
+        listademateriais[0].style.display = "none";
+
+        let botaomateriais = document.getElementsByClassName('pinMateriaisUsados');
+        botaomateriais[0].style.display = "inline-flex";
+
+        flagMateriaisAberto = false;
+        isMouseoverMateriais = true;
+    }
+/* ----------------FIM DOS MATERIAIS LINKS AFILIADOS---------------- */
+
     /* DESTACARR O MENU*/
     let activeMenu = document.querySelector("#nav > ul > li:nth-child(2)") || undefined;
     if(activeMenu)
