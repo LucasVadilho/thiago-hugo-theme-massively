@@ -28,7 +28,7 @@
                                 imagens="{{ $livro.imagens }}"
                         >
                             <a href="#" class="container_livrostitulos">
-                                <img src="{{ index $livro.imagens 0 }}" class="imagemPainel ">
+                                <img src="{{ index $livro.imagens 0 }}" class="imagemPainel" alt="thumbnail da capa do livro">
                                 <h4 class="titulolivros">{{ $livro.titulo }}</h4>
                             </a>
                         </div>
@@ -43,7 +43,7 @@
             
             <div id="containerHaqnto">
                 <div id="container_headerhaqnto">
-                    <img src="/images/haqntopag/bg_topo.jpg" id="haqntobg">
+                    <img src="/images/haqntopag/bg_topo.jpg" id="haqntobg" alt="visualização do outro lado do lago Mótil. Chuva e bicicleta caida a direita, levando o observador a seguir o caminho que Gabi fez.">
 
                     <div id="containier_headerhaqntoClicaveis">
                         <div id="buttonContainer_compartilharLivro">
@@ -52,14 +52,14 @@
                             </button>
                         </div>
                         
-                        <img src="/images/haqntopag/titulo.svg" id="haqntotitulo">
+                        <img src="/images/haqntopag/titulo.svg" id="haqntotitulo" alt="vetor do título do livro Há quanto tempo você não olha para as estrelas?">
 
                         <div id="buttonContainer_comprarlivro">
-                            <button type="submit" class="button_comprarlivrofisico" onclick="comprarlivrofisico(event)">
+                            <button type="submit" class="button_comprarlivrofisico" onclick="comprarLivroFisico(event)">
                                 <i class="fa fa-shopping-cart fa-lg"></i> Livro
                             </button>
 
-                            <button type="submit" class="button_comprarebook" onclick="comprarlivroebook(event)">
+                            <button type="submit" class="button_comprarebook" onclick="comprarLivroEbook(event)">
                                 <i class="fa fa-shopping-cart fa-lg"></i> Ebook
                             </button>
                         </div>
@@ -78,7 +78,7 @@
                             <h3 class="txt_overmsg_polaroid">Clique para ampliar</h3>
                         </div>
                         <div class="container_img_polaroid">
-                            <img src="" class="img_polaroid">
+                            <img src="" class="img_polaroid" alt="polaroid 1. Mockup do livro Há quanto tempo você não olha para as estrelas?. Nela é retratado uma borboleta aparecendo em meio ao rasgo de uma folha.">
                         </div>
                         <p class="txt_polaroid">Clique para ampliar</p>
                     </div>
@@ -89,7 +89,7 @@
                             <h3 class="txt_overmsg_polaroid">Clique para ampliar</h3>
                         </div>
                         <div class="container_img_polaroid">
-                            <img src="" class="img_polaroid">
+                            <img src="" class="img_polaroid" alt="polaroid 2. Detalhe da capa do livro, focando nas asas e texturas da borboleta.">
                         </div>
                         <p class="txt_polaroid">Clique para ampliar</p>
                     </div>
@@ -100,26 +100,11 @@
                             <h3 class="txt_overmsg_polaroid">Clique para ler o primeiro capítulo</h3>
                         </div>
                         <div class="container_img_polaroid">
-                            <img src="" class="img_polaroid">
+                            <img src="" class="img_polaroid" alt="polaroid 3. Mockup do livro aberto, chamada para leitura do primeiro capítulo do livro.">
                         </div>
                         <p class="txt_polaroid">Clique para ler o primeiro capíitulo</p>
                     </div>
                 </div>
-
-                                <!--  <div id="container_carrossel">                                    
-                        <div id="mySlidesID">
-                            <div class="mySlides fade"></div>
-                        </div>
-
-                        <div id="container_posicaoPrevNext">
-                            <a id="prev" onclick="plusSlides(-1)"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
-                            <a id="next" onclick="plusSlides(1)"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
-                        </div>
-
-                        <div id="posicaoDots">
-                            <span class="dot" onclick="currentSlide(1)"></span>
-                        </div>
-                </div> -->
 
                 <div class="snackbar_showimages">
                     <div id='container_buttonCloseImgsHaQnto'>
@@ -136,17 +121,17 @@
 
                     <div id="container_images">
                         <div class="imageSection">
-                            <img src="/images/haqntopag/1cap/1cap_1.jpg">
+                            <img src="/images/haqntopag/1cap/1cap_1.jpg" alt="Imagem da capa do livro">
                         </div>
 
                         <div class="imageSection">
-                            <img src="/images/haqntopag/1cap/1cap_2.jpg">
+                            <img src="/images/haqntopag/1cap/1cap_2.jpg" alt="Imagem detalhe da capa do livro">
                         </div>
 
                         <div class="imageSection">
-                            <img src="/images/haqntopag/1cap/1cap_1.jpg">
-                            <img src="/images/haqntopag/1cap/1cap_2.jpg">
-                            <img src="/images/haqntopag/1cap/1cap_3.jpg">
+                            <img src="/images/haqntopag/1cap/1cap_1.jpg" alt="Página 1 do livro">
+                            <img src="/images/haqntopag/1cap/1cap_2.jpg" alt="Página 2 do livro">
+                            <img src="/images/haqntopag/1cap/1cap_3.jpg" alt="Página 3 do livro">
                         </div>
                     </div>
                     
@@ -198,15 +183,15 @@
                 </div>
 
                 <div id="livroSelecionadoDados">
-                    <img src="/images/haqntopag/galhoFrente2.png" id="galhofrente">
+                    <img src="/images/haqntopag/galhoFrente2.png" id="galhofrente" alt="ilustração de um galho de uma tartaré no qual estão marcados os seguintes dados do livro: gênero: ficção; páginas: em breve; edição: 1ª ed.; editora: Flyve; papel: pólen 80g; capa: brochura; dimensões: 21x14cm; isbn: 978-65-00-84745-1; classificação indicativa: 14">
                 </div>
 
                 <div id="container1Palavra">
                     <h3>O livro na fala dos leitores</h3>
-                    <h4>uma palavra para descrever</h4>
-                    <img src="/images/haqntopag/colagemBoard.png" id="colagem">
+                    <h4>uma palavra para descrever o livro</h4>
+                    <img src="/images/haqntopag/nuvemDePalavrasBoard.png" id="nuvemDePalavras" alt="nuvem de palavras que leitores usaram para descrever o livro e a leitura.">
                     <div id="container_participa">
-                        <p onclick="participarcolagem()" class="participar"><u>Venha participar😊</u></p>
+                        <p onclick="participarnuvemDePalavras(event)" class="participar"><u>Venha participar</u>😊</p>
                     </div>
                 </div>
 
@@ -228,37 +213,37 @@
                     <div class="txtfield_comentariosrespostasextras">
                         <div class="txt_comentariosdopublico selectedtext">
                             <div class="boxDosTextos">
-                                <p class="frase_comentariopublico">"Esse é o comentário número 3 que vem aqui blabla bla bla bla bla blablabla"</p>
+                                <p class="frase_comentariopublico">"Esse é o espaço destinado para o comentário de número 1"</p>
+                                <p class="autoria_comentariopublico"><i>— Pessoa n1</i></p>
+                            </div>
+
+                            <div class="boxDosTextos">
+                                <p class="frase_comentariopublico">"Esse é o espaço destinado para o comentário de número 2"</p>
+                                <p class="autoria_comentariopublico"><i>— Pessoa n2</i></p>
+                            </div>
+
+                            <div class="boxDosTextos">
+                                <p class="frase_comentariopublico">"Esse é o espaço destinado para o comentário de número 3"</p>
                                 <p class="autoria_comentariopublico"><i>— Pessoa n3</i></p>
                             </div>
 
                             <div class="boxDosTextos">
-                                <p class="frase_comentariopublico">"Esse é o comentário número 3 que vem aqui blabla bla bla bla bla blablabla"</p>
-                                <p class="autoria_comentariopublico"><i>— Pessoa n3</i></p>
-                            </div>
-
-                            <div class="boxDosTextos">
-                                <p class="frase_comentariopublico">"Esse é o comentário número 3 que vem aqui blabla bla bla bla bla blablabla"</p>
-                                <p class="autoria_comentariopublico"><i>— Pessoa n3</i></p>
-                            </div>
-
-                            <div class="boxDosTextos">
-                                <p class="frase_comentariopublico">"Esse é o comentário número 3 que vem aqui blabla bla bla bla bla blablabla"</p>
-                                <p class="autoria_comentariopublico"><i>— Pessoa n3</i></p>
+                                <p class="frase_comentariopublico">"Esse é o espaço destinado para o comentário de número 4"</p>
+                                <p class="autoria_comentariopublico"><i>— Pessoa n4</i></p>
                             </div>
                         </div>
 
                         <div class="txt_respostasdoautor">
                             <p style="color: white"><i class="fa fa-check-square" aria-hidden="true" style="margin-right:5px"></i>Respostas livres de spoilers</p>
                             <div class="boxDosTextos">
-                                <p><b>Pergunta pergunta pergunta?</b></p>
-                                <p>Resposta resposta resposta</p>
+                                <p><b>Espaço destinado para a pergunta.</b></p>
+                                <p>Espaço destinado para a resposta.</p>
                             </div>
 
                             <p style="color: white"><i class="fa fa-exclamation-triangle" aria-hidden="true" style="margin-right:5px"></i>A partir deste ponto as respostas contém spoilers!</p>
                             <div class="boxDosTextos_comSpoiler">
-                                <p><b>Pergunta pcom spoiler?</b></p>
-                                <p>Resposta com spoiler</p>
+                                <p><b>Espaço destinado para pergunta que envolve spoilers.</b></p>
+                                <p>Resposta com spoiler.</p>
                             </div>
                         </div>
 
@@ -273,7 +258,6 @@
                     </div>  
                 </div>
             
-
                 <div id="containerBottomButtonsAndCosmetic">
                     <div id="buttonsBottomContainer">
                         <button type="submit" class="button_comprarlivrofisico" onclick="comprarlivrofisico(event)">
@@ -294,13 +278,13 @@
                 </div>
 
                 <div id="livroSelecionadoFooter">
-                    <img src="/images/haqntopag/folhabaixo.png" id="folhabaixo">
+                    <img src="/images/haqntopag/folhabaixo.png" id="folhabaixo" alt="borda inferior de uma folha rasgada">
                 </div>
             </div>
                     
             <div id="container_footerlivros">
                 <div id="bookend">
-                    <img src="/images/haqntopag/mybookshelf.svg" class="bookshelf">
+                    <img src="/images/haqntopag/mybookshelf.svg" class="bookshelf" alt="a estante do autor, contendo vetores dos livros já escritos para ilustrar a cena">
                 </div>
 
                 {{ with $data.social }}
@@ -328,6 +312,48 @@
         </div>
         {{- partial "copyright" . }}
         <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
+    </div>
+
+    <!-- COMPRAR LIVRO SNAKBAR -->
+    <div id="comprarLivroFisicoSnack">
+        <div id='buttonCloseComprarLivroFisicoSnack'><span class='fa fa-times' aria-hidden='true' onclick="closeComprarLivroFisico()"></span></div>
+        <h3>O livro entrará na pré-venda no dia 16 de janeiro de 2024. Estamos quase lá!</h3>
+        
+        <div id="preprevenda">
+            <h3>Se você é de Campinas ou região:</h3>
+            <p><b>A Pré pré-venda já foi liberada</b>. O objetivo é juntar os pedidos para que o frete saia de graça para você. Se tiver interesse
+                em garantir o livro agora, por favor, <a href="https://docs.google.com/forms/d/e/1FAIpQLScPsAVWA9xEuAwZOQRigzuyRvVI6j7UusUd_o2SudQ4TlAB7g/viewform" target="_blank">cheque este formulário</a>
+            </p>
+        </div>
+
+        <div id="lembrete">
+            <h3>Caso não se encaixar na Pré pré-venda, eu poderia te lembrar da abertura da pré-venda no dia 16?</h3>
+            <p>Se sim, por favor, se inscreva na minha newsletter ou siga o meu perfil no instagram</p>
+        </div>
+
+        <h3>De coração, muito obrigado pelo seu interesse!!!</h3>
+    </div>
+
+    <!-- PARTICIPAR NUVEM DE PALAVRAS SNACKBAR -->
+    <div id="participarSnack">
+        <div id='buttonCloseParticiparSnack'><span class='fa fa-times' aria-hidden='true' onclick="closeparticiparnuvemDePalavras()"></span></div>
+
+        <h4>Por favor, digite <i>uma</i> nova palavra ou reforce uma já existente:</h4>
+        <form id="form_nuvemDePalavras" method="post">
+            <div class="field">
+                <input type="text" name="txt_nuvemDePalavraHaQnto" id="txt_nuvemDePalavraHaQnto" required spellcheck="true"/>
+            </div>
+
+            <ul class="actions">
+                <li id="btn_nuvemDePalavrasHaQnto">
+                    <input type="submit" id="btn_enviarPalavraHaQnto" value='Enviar' onclick="enviarPalavraANuvem()"/>
+                </li>
+            </ul>
+        </form>
+        <div id="palavraEnviadaMsg">
+            <h3>A sua palavra foi enviada</h3>
+            <h4>Obrigado pela sua participação! A sua palavra entrará para a nuvem na próxima atualização</h4>
+        </div>
     </div>
 
     <!-- BOTÕES COMPARTILHAR -->
@@ -632,6 +658,46 @@
             clip-path: none;
             transition: transform 1s ease-in-out;
         }
+
+        /* Comprar Livro Fisico Snak */
+        #buttonCloseComprarLivroFisicoSnack{
+            background-color: transparent;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 0;
+            color: #656565;
+            border: none;
+            font-family: helvetica;
+            display: flex;
+            justify-content: flex-end;
+            position: absolute;
+            right: 17px;
+            top: 7px;
+        }
+
+        #buttonCloseComprarLivroFisicoSnack:hover {
+            color: #18bfef;
+            cursor: pointer;;
+        }
+
+        #comprarLivroFisicoSnack{
+            position: fixed;
+            display: none;
+            flex-direction: row;
+            flex-wrap: wrap;
+            background-color: rgb(255, 255, 255);
+            box-shadow: 0 100vw 100vw 100vw rgba(30, 37, 45, 0.623);
+            z-index: 25;
+            -webkit-animation: fadein 0.5s;
+            animation: fadein 0.5s;
+            bottom: 10px;
+            padding: 25px 20px 25px 20px;
+            max-width: 520px;
+            justify-content: center;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            text-wrap: balance;
+        }
         
     /* Livro selecionado, sinopse e msg do autor */
         #livroSelecionado {  
@@ -876,7 +942,7 @@
             margin-bottom: -280px;
         }
     
-    /* Colagem com leitores */
+    /* Nuvem de palavras */
         #container1Palavra{
             width: 100%;
             margin-bottom: 50px;
@@ -891,9 +957,10 @@
         #container1Palavra h4{
             color: rgb(231, 231, 231);
             font-weight: 100;
+            margin-bottom: -10px;
         }
 
-        #colagem{
+        #nuvemDePalavras{
             pointer-events: none;
             z-index: -1;
         }
@@ -909,9 +976,60 @@
             align-items: baseline;
         }
 
-        .participar:hover{
+        #buttonCloseParticiparSnack{
+            background-color: transparent;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 0;
+            color: #656565;
+            border: none;
+            font-family: helvetica;
+            display: flex;
+            justify-content: flex-end;
+            position: absolute;
+            right: 17px;
+            top: 7px;
+        }
+
+        .participar:hover, #buttonCloseParticiparSnack:hover {
             color: #18bfef;
             cursor: pointer;;
+        }
+
+        #participarSnack{
+            position: fixed;
+            display: none;
+            flex-direction: row;
+            flex-wrap: wrap;
+            background-color: rgb(255, 255, 255);
+            box-shadow: 0 100vw 100vw 100vw rgba(30, 37, 45, 0.623);
+            z-index: 25;
+            -webkit-animation: fadein 0.5s;
+            animation: fadein 0.5s;
+            bottom: 10px;
+            padding: 25px 20px 25px 20px;
+            max-width: 520px;
+            justify-content: center;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            text-wrap: balance;
+        }
+
+        #participarSnack>h4{
+            margin-bottom: 15px;
+        }
+
+        #form_nuvemDePalavras{
+            width: 80%;
+            justify-content: space-around;
+        }
+
+        #form_nuvemDePalavras>.field{
+            width: 65%;
+        }
+
+        #palavraEnviadaMsg{
+            display: none;
         }
 
     /* Comentários do público, respostas do autor e extras */
@@ -1018,7 +1136,7 @@
 </style>
 
 <script type="text/javascript">
-    // CARROSSEL TODOS OS LIVROS
+// CARROSSEL TODOS OS LIVROS
     let currentFocus = 0
     let images = document.getElementsByClassName('imagensPainelLivros')
 
@@ -1047,6 +1165,71 @@
         images[currentFocus].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })
         images[currentFocus].classList.add('selected')
     })
+
+    document.addEventListener("DOMContentLoaded", (event) => { 
+        setupCarousel()
+        images[0].click()
+    });
+// FIM CARROSSEL TODOS OS LIVROS
+
+/* COMPRAR O LIVRO */
+let closeComprarLivroFisico = function () {
+        let containerComprarLivroFisico = document.getElementById("comprarLivroFisicoSnack");
+        containerComprarLivroFisico.style.display="none"
+    }
+
+    let flagComprarLivroFisicoAberto = false;
+    let comprarLivroFisico = function(e) {
+        e.stopPropagation()
+        let containerComprarLivroFisico = document.getElementById("comprarLivroFisicoSnack");
+        containerComprarLivroFisico.style.display = "inline-flex";
+        flagComprarLivroFisicoAberto  = true;
+
+        window.addEventListener('click', function(g){
+            if (containerComprarLivroFisico.contains(g.target)){
+            } else{
+                closeComprarLivroFisico();  
+            }
+        }, options = {"once": true})
+    }
+
+    document.addEventListener('keydown', (ev) => {
+        if((ev.key == 'Escape') && (flagComprarLivroFisicoAberto == true)){
+            closeComprarLivroFisico();
+        }
+    }) 
+/* COMPRAR O LIVRO */
+
+/* PARTICIPAR NUVEM DE PALAVRAS */
+    let closeparticiparnuvemDePalavras = function () {
+        let containerparticiparnuvemDePalavras = document.getElementById("participarSnack");
+        containerparticiparnuvemDePalavras.style.display="none"
+    }
+
+    let flagParticiparSnackAberto = false;
+    let participarnuvemDePalavras = function(e) {
+        e.stopPropagation()
+        let containerparticiparnuvemDePalavras = document.getElementById("participarSnack");
+        containerparticiparnuvemDePalavras.style.display = "inline-flex";
+        flagParticiparSnackAberto  = true;
+        let selectinput = document.getElementById('txt_nuvemDePalavraHaQnto');
+        selectinput.focus();
+        selectinput.select();
+
+        window.addEventListener('click', function(g){
+            if (containerparticiparnuvemDePalavras.contains(g.target)){
+            } else{
+                closeparticiparnuvemDePalavras();  
+            }
+        }, options = {"once": true})
+    }
+
+    document.addEventListener('keydown', (ev) => {
+        if((ev.key == 'Escape') && (flagParticiparSnackAberto == true)){
+            closeparticiparnuvemDePalavras();
+        }
+    }) 
+/* FIM PARTICIPAR NUVEM DE PALAVRAS */
       
 /* COMPARTILHAMENTO */
     function fbSharing(post_url) {
@@ -1144,9 +1327,8 @@
         }
         createCopiarNotification();
     }
-
+    
     let flagCompartilharAberto = false;
-
     let abrirCompartilharLivro = function(e) {
         e.stopPropagation()
         let container = document.getElementById("compartilharContainer");
@@ -1171,11 +1353,7 @@
         let container = document.getElementById("compartilharContainer")
         container.style.display="none"
     }
-    
-    document.addEventListener("DOMContentLoaded", (event) => { 
-        setupCarousel()
-        images[0].click()
-    });
+/* FIM COMPARTILHAMENTO */
 
     let flagsinopseopen = true;
     let flagmsgdoautor = false;
@@ -1256,6 +1434,49 @@
         }
     }
 
+    //SWIPE LEFT OR RIGHT
+    let touchsurface = document.getElementById('container_images'),
+    startX, 
+    startY,
+    dist,
+    distThreshold,
+    thresholdX = 50,
+    thresholdY = 50,
+    allowedTime = 1500,
+    elapsedTime,
+    startTime
+
+    let setupSliderHaQnto = function() {
+        touchsurface.addEventListener('touchstart', function(t) {
+            let touchobj = t.changedTouches[0]
+            
+            dist = 0
+            distThreshold = 0
+            startX = touchobj.pageX
+            startY = touchobj.pageY
+            startTime = new Date().getTime() 
+        }, false)
+
+        touchsurface.addEventListener('touchend', function(t) {
+            var touchobj = t.changedTouches[0]
+            dist = touchobj.pageX - startX
+            distThreshold = Math.abs(dist)
+            elapsedTime = new Date().getTime() - startTime
+           
+            console.log('dist ' + dist + ' threshold X ' + thresholdX)
+            console.log('abs y ' + Math.abs(touchobj.pageY - startY) + ' thrs Y ' + thresholdY)
+            console.log('elapsedTime ' + elapsedTime + ' allowed ' + allowedTime)
+
+            if (elapsedTime <= allowedTime && distThreshold >= thresholdX && Math.abs(touchobj.pageY - startY) <= thresholdY && dist > 0){
+                document.getElementById('nextButtonHaQnto').childNodes[1].click();
+            }
+
+            if (elapsedTime <= allowedTime && distThreshold >= thresholdX && Math.abs(touchobj.pageY - startY) <= thresholdY && dist < 0){                                         
+                document.getElementById('prevButtonHaQnto').childNodes[1].click();
+            }
+        }, false)
+    }
+
     let navPanelToggle = document.getElementById("navPanelToggle")
     let flagImagesHaqntoAberto = false;
     document.addEventListener('keydown', (ev) => {
@@ -1264,10 +1485,10 @@
                 closeSnackbarHaQnto();
             }
             if(ev.keyCode == '39'){/*para ler quando preciona a seta direita*/
-                plusSlides(1);
+                nextFotoHaQnto();
             }
             if(ev.keyCode == '37'){/*para ler quando preciona a seta esquerda*/
-                plusSlides(-1);
+                prevFotoHaQnto();
             }
         }
     })
@@ -1280,10 +1501,10 @@
     }
 
     let checkMouseOverContainersHaQnto = function(){
-        $("#buttonCloseImgsHaQnto, #nextButtonHaQnto, #prevButtonHaQnto").mouseover(function() {
+        $("#buttonCloseImgsHaQnto, #nextButtonHaQnto, #prevButtonHaQnto, .imageSection").mouseover(function() {
             isMouseover = true;
         })
-        $("#buttonCloseImgsHaQnto, #nextButtonHaQnto, #prevButtonHaQnto").mouseout(function() {
+        $("#buttonCloseImgsHaQnto, #nextButtonHaQnto, #prevButtonHaQnto, .imageSection").mouseout(function() {
             isMouseover = false;
         })
     }
@@ -1305,6 +1526,7 @@
     let openSnakbarImagesLivro=function(e){
         let snackbarToOpen = document.getElementsByClassName("snackbar_showimages");
         checkMouseOverContainersHaQnto();
+        setupSliderHaQnto();
         flagImagesHaqntoAberto = true;
         document.body.style.cssText = 'overflow: hidden';
         navPanelToggle.style.cssText = 'display: none';
@@ -1313,30 +1535,27 @@
             document.getElementById('container_images').childNodes[1].style="display:flex;flex-direction: column;"
             currentImageHaQnto = 1;
             snackbarToOpen[0].classList.add('snackbar_showimagesOpen');
-            window.addEventListener("click", checkIfCanCloseHaQntoImages);
-
             document.getElementById('container_images').childNodes[3].style="display:none;"
             document.getElementById('container_images').childNodes[5].style="display:none;"
+            window.addEventListener("click", checkIfCanCloseHaQntoImages);
         }
 
         if (e==2){
             document.getElementById('container_images').childNodes[3].style="display:flex;flex-direction: column;"
             currentImageHaQnto = 3;
             snackbarToOpen[0].classList.add('snackbar_showimagesOpen');
-            window.addEventListener("click", checkIfCanCloseHaQntoImages);
-
             document.getElementById('container_images').childNodes[1].style="display:none;"
             document.getElementById('container_images').childNodes[5].style="display:none;"
+            window.addEventListener("click", checkIfCanCloseHaQntoImages);
         }
 
         if(e==3){
             document.getElementById('container_images').childNodes[5].style="display:flex;flex-direction: column;"
             currentImageHaQnto = 5;
             snackbarToOpen[0].classList.add('snackbar_showimagesOpen');
-            window.addEventListener("click", checkIfCanCloseHaQntoImages);
-
             document.getElementById('container_images').childNodes[1].style="display:none;"
             document.getElementById('container_images').childNodes[3].style="display:none;"
+            window.addEventListener("click", checkIfCanCloseHaQntoImages);
         }
     }
 
@@ -1383,4 +1602,5 @@
             document.getElementById('container_images').childNodes[1].style="display:flex;flex-direction: column;"
         }
     }
+
 </script>
