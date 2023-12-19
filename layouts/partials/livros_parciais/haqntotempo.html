@@ -1673,7 +1673,7 @@
         document.getElementById('li_btn_nuvemDePalavrasHaQnto').classList.add('borderAnim', 'in');
         
     
-        data = Object.fromEntries(new FormData(e.target).entries());
+        data = {'word': document.getElementById('txt_nuvemDePalavraHaQnto').value}
         url = 'https://thiago.oioipio.com/wordcloud';
         
         fetch(url, {
