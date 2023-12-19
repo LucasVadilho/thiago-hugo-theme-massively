@@ -18,22 +18,19 @@
                 <button type="submit" class="button_comprarlivrofisico" onclick="comprarLivroFisico(event)">
                     <i class="fa fa-shopping-cart fa-lg"></i> Livro
                 </button>
+                <span class="cosmetic_comprarlivroTop"></span>
 
                 <button type="submit" class="button_comprarebook" onclick="comprarLivroFisico(event)">
                     <i class="fa fa-shopping-cart fa-lg"></i> Ebook
                 </button>
-            </div>
-
-            <div id="cosmeticContainer_comprarlivro">
-                <span class="cosmetic_comprarlivro"></span>
-                <span class="cosmetic_comprarebook"></span>
+                <span class="cosmetic_comprarebookTop"></span>
             </div>
         </div>
     </div>
 
     <div id="container_polaroids">
-        <div class="paper_polaroid">
-            <div class="overmsg_polaroid" onclick="openSnakbarImagesLivro(1)">
+        <div class="paper_polaroid" onclick="openSnakbarImagesLivro(1)">
+            <div class="overmsg_polaroid">
                 <i class="fa fa-search" aria-hidden="true"></i>
                 <h3 class="txt_overmsg_polaroid">Clique para ampliar</h3>
             </div>
@@ -101,8 +98,6 @@
             </div>
         </div>
     </div>
-
-    <div id="bggradient"></div>
     
     <div class="container_sinopsemsgautor">     
         <div class="menu_sinopsemsgdoautor">
@@ -223,18 +218,13 @@
             <button type="submit" class="button_comprarlivrofisico" onclick="comprarLivroFisico(event)">
                 <i class="fa fa-shopping-cart fa-lg"></i> Livro
             </button>
+            <span class="cosmetic_comprarlivroBottom"></span>
 
             <button type="submit" class="button_comprarebook" onclick="comprarLivroFisico(event)">
                 <i class="fa fa-shopping-cart fa-lg"></i> Ebook
             </button>
-        </div>
-
-        <div id="cosmeticBottomButtons">
-            <div id="cosmeticContainer_comprarlivro">
-                <span class="cosmetic_comprarlivro"></span>
-                <span class="cosmetic_comprarebook"></span>
-            </div>
-        </div>          
+            <span class="cosmetic_comprarebookBottom"></span>
+        </div>         
     </div>
 
     <div id="livroSelecionadoFooter">
@@ -329,13 +319,6 @@
         user-select: none;
         z-index: -1;
     }
-
-    #bggradient{
-        /* height: 2000px; */
-        z-index: -1;
-        position: relative;
-        background-image: linear-gradient(#00080b, #0d1f24);
-    }
             
     /* Abertura (header)*/
     #container_headerhaqnto{
@@ -424,41 +407,79 @@
             color: white !important;
             box-shadow: none !important;
         }
-        
-        #cosmeticContainer_comprarlivro{
-            width: 100%;
-            z-index: 0;
-            position: relative;
-            right: 0;
-            display: flex;
-            justify-content: flex-end;
-            padding: 0px 8.4rem 0px 2rem;
-        }
 
-        .cosmetic_comprarlivro,.cosmetic_comprarebook{
+        .cosmetic_comprarlivroTop{
             clip-path: polygon(0% 10%, 98% 0%, 95% 100%, 4% 94%);
             -webkit-clip-path: polygon(0% 10%, 98% 0%, 95% 100%, 4% 94%);
             width: 230px;
             height: 61px;
             font-size: 1.6rem;
             text-transform: none;
+            background-color: #8d2506;
+            margin-right: 247px;
+            margin-top: 10px;
+            position: absolute;
+            z-index: -1;
         }
-
-        .cosmetic_comprarlivro{
-            background-color:#8d2506;
-            margin-right: 10px;
-        }
-
-        .cosmetic_comprarebook{
+        
+        .cosmetic_comprarebookTop{
+            clip-path: polygon(0% 10%, 98% 0%, 95% 100%, 4% 94%);
+            -webkit-clip-path: polygon(0% 10%, 98% 0%, 95% 100%, 4% 94%);
+            width: 230px;
+            height: 61px;
+            font-size: 1.6rem;
+            text-transform: none;
             background-color:#0c2d6b;
+            margin-right: 7px;
+            margin-top: 10px;
+            position: absolute;
+            z-index: -1;
         }
 
-        body:has(.button_comprarlivrofisico:hover) .cosmetic_comprarlivro{
+        body:has(.button_comprarlivrofisico:hover) .cosmetic_comprarlivroTop{
             clip-path: none;
             transition: transform 1s ease-in-out;
         }
 
-        body:has(.button_comprarebook:hover) .cosmetic_comprarebook{
+        body:has(.button_comprarebook:hover) .cosmetic_comprarebookTop{
+            clip-path: none;
+            transition: transform 1s ease-in-out;
+        }
+
+        .cosmetic_comprarlivroBottom {
+            clip-path: polygon(0% 10%, 98% 0%, 95% 100%, 4% 94%);
+            -webkit-clip-path: polygon(0% 10%, 98% 0%, 95% 100%, 4% 94%);
+            width: 230px;
+            height: 61px;
+            font-size: 1.6rem;
+            text-transform: none;
+            background-color: #8d2506;
+            margin-right: 253px;
+            margin-top: 10px;
+            position: absolute;
+            z-index: -1;
+        }
+
+        .cosmetic_comprarebookBottom{
+            clip-path: polygon(0% 10%, 98% 0%, 95% 100%, 4% 94%);
+            -webkit-clip-path: polygon(0% 10%, 98% 0%, 95% 100%, 4% 94%);
+            width: 230px;
+            height: 61px;
+            font-size: 1.6rem;
+            text-transform: none;
+            background-color:#0c2d6b;
+            margin-right: -226px;
+            margin-top: 10px;
+            position: absolute;
+            z-index: -1;
+        }
+
+        body:has(.button_comprarlivrofisico:hover) .cosmetic_comprarlivroBottom{
+            clip-path: none;
+            transition: transform 1s ease-in-out;
+        }
+
+        body:has(.button_comprarebook:hover) .cosmetic_comprarebookBottom{
             clip-path: none;
             transition: transform 1s ease-in-out;
         }
@@ -494,9 +515,9 @@
             z-index: 25;
             -webkit-animation: fadein 0.5s;
             animation: fadein 0.5s;
-            bottom: 10px;
+            top: 50%;
             padding: 25px 20px 25px 20px;
-            max-width: 800px;
+            width: 800px;
             justify-content: center;
             transform: translate(-50%, -50%);
             left: 50%;
@@ -547,7 +568,7 @@
         /* 1. Polaroids*/
             #container_polaroids{
                 display: flex;
-                margin-bottom: 120px;
+                margin-bottom: 130px;
                 padding: 0px  4rem 0px 4rem;
             }
 
@@ -662,6 +683,9 @@
                 overflow-y: auto;
                 padding-left: 5px;
                 padding-right: 5px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
             }
 
             #container_buttonCloseImgsHaQnto{
@@ -670,8 +694,6 @@
                 grid-column-start: 1;
                 grid-column-end: 4;
                 display: flex;
-                padding-right: 18px;
-                padding-top: 12px;
                 justify-content: flex-end;
                 z-index: 2;
             }
@@ -698,19 +720,20 @@
                 right: 0;
             }
 
-            #prevButtonHaQnto .fa, #nextButtonHaQnto .fa {
+            #prevButtonHaQnto .fa, #nextButtonHaQnto .fa, #buttonCloseImgsHaQnto .fa {
                 padding: 10px;
+                color: rgb(230, 230, 230);
             }
 
-            #prevButtonHaQnto:hover, #nextButtonHaQnto:hover, #buttonCloseImgsHaQnto:hover{
+            #prevButtonHaQnto .fa:hover, #nextButtonHaQnto .fa:hover, #buttonCloseImgsHaQnto .fa:hover{
                 cursor: pointer;
                 color: #18bfef; 
             }
 
             /* Definicoes para retirar o clique de hover eterno dos mobiles */    
                 @media only screen and (hover:none) and (pointer:coarse){          
-                    #prevButtonHaQnto:hover, #nextButtonHaQnto:hover{
-                        color: rgba(255, 255, 255, 0.87) !important;
+                    #prevButtonHaQnto .fa:hover, #nextButtonHaQnto .fa:hover{
+                        color: rgb(230, 230, 230) !important;
                         opacity: 80%;
                         background-color: rgba(255, 0, 0, 0);
                     }
@@ -723,9 +746,8 @@
         /* 2. Sinopse e Msg do Autor */
             .container_sinopsemsgautor{
                 display:grid;
-                margin-left: 25px;
                 height: fit-content;
-                padding: 0px  6rem 0px 6rem;
+                padding: 0px 7rem 0px 6rem;
             }
 
             .selectedtext{
@@ -778,13 +800,14 @@
             width: 100%;
             pointer-events: none;
             z-index:-1;
-            margin-bottom: -280px;
+            margin-bottom: -275px;
         }
     
     /* Nuvem de palavras */
         #container1Palavra{
             width: 100%;
             margin-bottom: 50px;
+            margin-left: -8px;
         }
 
         #container1Palavra h3{
@@ -803,9 +826,6 @@
             pointer-events: none;
             z-index: -1;
         }
-        #livroSelecionadoDados {
-            margin-bottom: -115px;
-        }
 
         #container1Palavra {
             margin-bottom: 20px;
@@ -819,7 +839,7 @@
             color: white;
             width: 80%;
             margin-left: 10%;
-            top: -31px;
+            top: -11px;
             position: relative;
             display: flex;
             justify-content: flex-end;
@@ -855,17 +875,13 @@
             z-index: 25;
             -webkit-animation: fadein 0.5s;
             animation: fadein 0.5s;
-            bottom: 10px;
+            top: 50%;
             padding: 25px 20px 25px 20px;
-            max-width: 520px;
+            width: 540px;
             justify-content: center;
             transform: translate(-50%, -50%);
             left: 50%;
             text-wrap: balance;
-        }
-
-        #btn_enviarPalavraHaQnto{
-	        height: 43.5px;
         }
 
         .showsucess{
@@ -902,12 +918,19 @@
         }
 
         #form_nuvemDePalavras{
-            width: 80%;
-            justify-content: space-around;
+            width: 100%;
+            justify-content: center;
         }
 
         #form_nuvemDePalavras>.field{
             width: 65%;
+        }
+
+        #btn_enviarPalavraHaQnto{
+            height: 43.5px;
+            line-height: 0;
+            font-size: 0.8rem;
+            margin-left: 10px;
         }
 
         #palavraEnviadaMsg{
@@ -927,7 +950,7 @@
             padding: 10px 20px 10px 20px;
             margin-bottom: 20px;
             box-shadow: rgb(89 34 215 / 88%) 6px 6px;
-            margin-right: 20px;
+            margin-right: -15px;
         }
 
         .boxDosTextos_comSpoiler{
@@ -936,7 +959,7 @@
             border-radius: 0px 10px 0px;
             margin-bottom: 20px;
             box-shadow: rgba(255, 233, 37, 0.88) 6px 6px;
-            margin-right: 20px; 
+            margin-right: -15px; 
         }
 
         .txtfield_comentariosrespostasextras{
@@ -947,6 +970,7 @@
             display: none;
             max-height: 333px;
             overflow: auto;
+            padding-right: 35px;
         }
 
         /* 1. Comentários */
@@ -996,12 +1020,201 @@
         padding: 0;
     }
 
-/* DEFINIÇÕES PARA TAMANHOS DE MEDIA */    
-    @media only screen and (hover:none) and (pointer:coarse){          
+/* DEFINIÇÕES PARA TAMANHOS DE MEDIA */  
+    @media screen and (max-width: 1400px){
+        #nextButtonHaQnto{      
+            position: fixed;
+            height: 100dvh;
+            margin-left: 10px;
+            direction: ltr;
+            width: calc(50vw - 660px);
+            align-items: center;
+            display: flex;
+            transition-duration: 1s;
+            right: 49px;
+        }
+
+        #prevButtonHaQnto{
+            position: fixed;
+            align-items: center;
+            left: 6px;
+            transition-duration: 1s;
+            top: calc(50% - 24.665px);  
+        }
     }
 
-    @media screen and (max-width: 600px) and (min-width: 0px){
+    @media screen and (max-width: 964px){
+        #comprarLivroFisicoSnack{
+            width: 85%;
+        }
+    }
+
+    @media screen and (max-width: 646px){
+        .preprevenda, .lembrete {
+            width: 100%;
+        }
+        .container_prePreVendaNewsletter {
+            flex-direction: column;
+        }
+        #participarSnack{
+            width: 80%;
+        }
+    }
+
+    @media screen and (max-width: 1089px) and (min-width: 993px) {
+        #containerHaqnto {background-position-y: 1037px;}
+    }
+
+    @media screen and (max-width: 992px) and (min-width: 853px) {
+        #containerHaqnto {background-position-y: 880px;}
+    }
+
+    @media screen and (max-width: 853px) and (min-width: 773px) {
+        #containerHaqnto {background-position-y: 791px;}
+    }
+
+    @media screen and (max-width: 772px) and (min-width: 657px) {
+        #containerHaqnto {background-position-y: 661px;}
+    }
+
+    @media screen and (max-width: 656px) and (min-width: 551px) {
+        #containerHaqnto {background-position-y: 542px;}
+    }
+
+    @media screen and (max-width: 550px) and (min-width: 445px) {
+        #containerHaqnto {background-position-y: 486px;}
+    }
+
+    @media screen and (max-width: 444px) and (min-width: 339px) {
+        #containerHaqnto {background-position-y: 377px;}
+    }
+
+    @media screen and (max-width: 338px) and (min-width: 320px) {
+        #containerHaqnto {background-position-y: 357px;}
+    }
+
+    @media screen and (max-width: 980px) and (min-width: 725px) {
+        #button_compartilharLivro>i {
+            vertical-align: 21%;
+        }
+
+        .container_sinopsemsgautor{
+            padding: 0px 5rem 0px 4rem;
+        }
+    }
+
+    @media screen and (max-width: 1111px) and (min-width: 1000px){
+        #container_polaroids{
+            padding: 0px 1px 0px 7px;
+        }
+    }
+
+    @media screen and (max-width: 999px) and (min-width: 856px){
+        #container_polaroids{
+            scale: 0.85;
+            margin-right: 3%;
+            justify-content: center;
+        }
+    }
+
+    @media screen and (max-width: 855px) and (min-width: 426px){
+        #container_polaroids{
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 0px 4rem 0px 0rem;
+        }
+    }
+
+    @media screen and (max-width: 772px) and (min-width: 426px){
+        .comentariosdopublico,.respostasdoautor{
+            width: 116px;
+            text-wrap: balance;
+        }
+
+        .conteudosextras{
+            width: 116px;
+        }
+    }
+
+    @media screen and (max-width: 980px) and (min-width: 736px){    
+        #containier_headerhaqntoClicaveis{
+            top: 489px;
+        }
+    }
+
+    @media screen and (max-width: 736px) and (min-width: 600px){    
+        #containier_headerhaqntoClicaveis{
+            top: 428px;
+        }
+    }
+
+    @media screen and (max-width: 800px) and (min-width: 725px){
+        #buttonContainer_comprarlivro{
+            padding: 0px 6rem 0px 2rem;
+        }
+    }
+
+    @media screen and (max-width: 724px) and (min-width: 659px){
+        #buttonContainer_comprarlivro{
+            padding: 0px 4rem 0px 4rem;
+        }
+        .container_sinopsemsgautor{
+            padding: 0px 3rem 0px 2rem;
+        }
+    }
+
+    @media screen and (max-width: 658px) and (min-width: 618px){
+        #buttonContainer_comprarlivro{
+            padding: 0px 4rem 0px 4rem;
+        }
+
+        .button_comprarlivrofisico, .button_comprarebook{
+            width: 210px;
+            font-size: 1.5rem;
+            padding: 0px 57px 0px 57px;
+        }
+
+        .cosmetic_comprarlivro, .cosmetic_comprarebook{
+            width: 210px;
+        }
+
+        .container_sinopsemsgautor{
+            padding: 0px 3rem 0px 2rem;
+        }
+    }
+
+    @media screen and (max-width: 617px) and (min-width: 426px){
+        #buttonContainer_comprarlivro{
+            padding: 0px 4rem 0px 4rem;
+        }
+
+        .button_comprarlivrofisico, .button_comprarebook{
+            width: 200px;
+            height: 63px;
+            font-size: 1.5rem;
+            padding: 0px 60px 0px 50px;
+        }
+
+        .cosmetic_comprarlivro, .cosmetic_comprarebook{
+            width: 200px;
+            height: 63px;
+        }
+
+        .container_sinopsemsgautor{
+            padding: 0px 3rem 0px 2rem;
+        }
+    }
+
+    @media screen and (max-width: 425px) and (min-width: 0px){
+        #containerHaqnto{
+            background-position-y: 470px;
+        }
+
         /* header haqnto */
+        #container_headerhaqnto{
+            height: 395px;
+        }
+
         #containier_headerhaqntoClicaveis {
             top: 348px;
         }
@@ -1028,11 +1241,19 @@
             font-size: 1.4rem;
             padding: 0px 60px 0px 50px;
         }
-
-        #cosmeticContainer_comprarlivro{
-            padding: 0px 2rem 0px 1rem;
-        }
         /* fim botões gerais comprar livro */
+
+        /* Polaroids */
+        #container_polaroids{
+            margin-bottom: 74px;
+            padding-left: 31px;
+            flex-direction: column;
+        }
+
+        .paper_polaroid{
+            scale: 1;
+        }
+        /* Fim polaroids */
 
         /* Menu Sinopse e Msg do Autor */
         .menu_sinopsemsgdoautor>h4{
@@ -1058,12 +1279,16 @@
         /* Fim do Menu Sinopse e Msg do Autor */
 
         /* Nuvem de palavras */
-        #container_participa{
-            top: -7px;
+        #container1Palavra>img{
+            margin-left: -5px;
         }
 
-        #participarSnack {
-            width: 90%;
+        #container_participa{
+            top: -6px;
+        }
+
+        #container_participa>p{
+            font-size: 14px;
         }
 
         #li_btn_nuvemDePalavrasHaQnto{
@@ -1072,15 +1297,6 @@
 
         #btn_enviarPalavraHaQnto {
             line-height: 2;
-        }
-
-        #form_nuvemDePalavras {
-            width: 100%;
-        }
-
-        #form_nuvemDePalavras>.field {
-            min-width: fit-content;
-            margin-right: 10px
         }
         /* Fim da nuvem de palavras */
 
@@ -1141,7 +1357,7 @@
     let comprarLivroFisico = function(c) {
         c.stopPropagation()
         let containerComprarLivroFisico = document.getElementById("comprarLivroFisicoSnack");
-        containerComprarLivroFisico[0].style.display = "inline-flex";
+        containerComprarLivroFisico.style.display = "inline-flex";
         flagComprarLivroFisicoAberto  = true;
 
         window.addEventListener('click', function(g){
@@ -1220,7 +1436,7 @@
     }
 /* FIM SINOPSE E MSG DO AUTOR */
 
-/* COMENTARIIOS RESPOSTAS E EXTRAS */
+/* COMENTARIOS RESPOSTAS E EXTRAS */
     let flagcomentariosdopublico = true;
     let flagrespostasdoautor = false;
     let flagconteudosextras = false;
@@ -1353,7 +1569,8 @@
         snackbarToClose.style.display="none";
     
         if(window.innerWidth < 980){
-            navPanelToggle.style.cssText = ''
+            let navPanelToggle = document.getElementById('navPanelToggle')
+            navPanelToggle.style.display = 'block'
         }
 
         document.body.style.cssText = 'overflow: auto';
@@ -1373,7 +1590,8 @@
         
         document.body.style.cssText = 'overflow: hidden';
         if(window.innerWidth < 980){
-            navPanelToggle.style.cssText = 'display: none';
+            let navPanelToggle = document.getElementById('navPanelToggle')
+            navPanelToggle.style.display = 'none';
         }
     },250)
         
