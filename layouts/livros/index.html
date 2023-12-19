@@ -40,7 +40,13 @@
                 </div>
             </div>
         
-            <div id="paginaDoLivroSelecionado"></div>
+            <div id="paginaDoLivroSelecionado_id0">
+                {{- partial "livros_parciais/haqntotempo.html" . -}}
+            </div>
+
+            <div id="paginaDoLivroSelecionado_id1">
+                {{- partial "livros_parciais/embreve.html" . -}}
+            </div>
 
             <div id="container_footerlivros">
                 <div id="bookend">
@@ -78,7 +84,7 @@
     <div id="compartilharContainer">
         <div id='buttonCloseCompartilhar'><span class='fa fa-times' aria-hidden='true' onclick="closeCompartilharLivro()"></span></div>
         <div id="copyUrl_sharebutton"></div>
-        <div id="wpp_sharebutton"> </div>
+        <div id="wpp_sharebutton"></div>
         <div id="twitter_sharebutton"></div>
         <div id="facebook_sharebutton"></div>
         <div id="reddit_sharebutton"></div>
@@ -142,7 +148,7 @@
         }
 
         .selected{
-            transform: scale(1.1);
+            transform: scale(1.15);
         }
 
         .imagemPainel {
@@ -206,10 +212,12 @@
         }
 
 /* Página do Livro Selecionado */
-    #paginaDoLivroSelecionado{
+    #paginaDoLivroSelecionado_id0, #paginaDoLivroSelecionado_id1{
         margin: 0;
         padding: 0;
+        display: none;
     }
+
 /* Fim da Página do Livro Selecionado */
 
 /* Footer da página */ 
@@ -230,8 +238,8 @@
         margin-right: 10px;
     }
 
-/* DEFINICOES PARA OS TAMANHOS DE DEVICE MOBILE */
-    /* Definicoes para retirar o clique de hover eterno dos mobiles */    
+
+/* Definicoes para retirar o clique de hover eterno dos mobiles */    
     @media only screen and (hover:none) and (pointer:coarse){       
         /*Fazer os botões voltarem ao normal*/        
         #prev:hover, #next:hover{
@@ -249,41 +257,152 @@
             color:#18bfef !important;
         }
     }
+/* Fim Definicoes para retirar o clique de hover eterno dos mobiles */
 </style>
 
 <script type="text/javascript">
-    // PÁGINA DO LIVRO SELECIONADO
-    let atualizaPaginaDoLivro = function(){
-        let paginaDoLivro = document.getElementById('paginaDoLivroSelecionado')
-        if(currentFocus==0){ /* livro selecionado: Ha quanto tempo você não olha para as estrelas? */
-            paginaDoLivro.innerHTML='{{- partial "livros_parciais/haqntotempo.html" . -}}'
-            function loadjscssfile(haqntotempo, js){
-                if (filetype=="js"){ //if filename is a external JavaScript file
-                    var fileref=document.createElement('script')
-                    fileref.setAttribute("type","text/javascript")
-                    fileref.setAttribute("src", haqntotempo)
-                }
+    /* COMPARTILHAMENTO */
+    function fbSharing(post_url) {
+            var url = new String(post_url);
+            window.open(post_url , "share_dialog", "width=500, height=300");
+        }
+    
+        function ttSharing(post_url){
+            var url = new String(post_url);
+            window.open(post_url , "share_dialog", "width=790, height=462");
+        }
+    
+        function redditSharing(post_url){
+            var url = new String(post_url);
+            window.open(post_url , "share_dialog", "width=790, height=742");
+        }
+    
+        function pinterestSharing(post_url){
+            var url = new String(post_url);
+            window.open(post_url , "share_dialog", "width=1080, height=727");
+        }
+        
+        /* Carregando links de compartilhamento */
+        let urlCurrentPage = window.location.href;
+    
+        /* WPP */
+        document.getElementById('wpp_sharebutton').innerHTML += 
+            `<a href="https://api.whatsapp.com/send?text=${urlCurrentPage}" target="_blank" data-action="share/whatsapp/share">
+                <div class="logoRedeContainerWpp">
+                    <i class="icon alt icon_compartilharLivro fa-whatsapp fa-lg"></i>
+                </div>
+                <div class="nomeRedeContainerWpp">WhatsApp</div>
+            </a>`
+    
+        /* Twitter */
+        document.getElementById('twitter_sharebutton').innerHTML += 
+            `<a onclick='ttSharing("https://twitter.com/share?url=` + urlCurrentPage + `%0a%0a&text=há quanto tempo você não olha para as estrelas?&hashtags=LivrosTDVadilho,AmoLer")'>
+                <div class="logoRedeContainerTwitter">
+                    <i class="icon alt icon_compartilharLivro fa-twitter fa-lg"></i>
+                </div>
+                <div class="nomeRedeContainerTwitter">Twitter</div>    
+            </a>`
+    
+        /* Facebook */
+        document.getElementById('facebook_sharebutton').innerHTML += 
+        `<a onclick='fbSharing("https://www.facebook.com/sharer/sharer.php?u=` + urlCurrentPage + `")'>
+            <div class="logoRedeContainerFacebook">
+                <i class="icon alt icon_compartilharLivro fa-facebook fa-lg"></i>
+            </div>
+            <div class="nomeRedeContainerFacebook">Facebook</div>    
+        </a>`
+    
+        /* Reddit */
+        let reddit_url = "https://www.reddit.com/submit?title=Historieta%20-%20TDVadilho&text=há%20quanto%20tempo%2você%20não%20olha%20para%20as%20estrelas?"
+        document.getElementById('reddit_sharebutton').innerHTML += 
+            `<a onclick='redditSharing("${reddit_url}(${urlCurrentPage})%0a%0a&signup_survey=true")'>
+                <div class="logoRedeContainerReddit">
+                    <i class="icon alt icon_compartilharLivro fa-reddit-alien fa-lg"></i>
+                </div>
+                <div class="nomeRedeContainerReddit">Reddit</div>
+            </a>`
+            
+        /* Pinterest */
+        let pinterest_url = "pinterestSharing('{{ .Params.linkPin }}')"
+        document.getElementById('pinterest_sharebutton').innerHTML += `<a onclick="${pinterest_url}">
+                <div class="logoRedeContainerPinterest">
+                    <i class="icon alt icon_compartilharLivro fa-pinterest fa-lg"></i>
+                </div>
+                <div class="nomeRedeContainerPinterest">Pinterest</div>    
+            </a>`
+    
+        /* Copiar URL*/    
+        document.getElementById('copyUrl_sharebutton').innerHTML += 
+            `<a onclick="copiarUrl()">
+                <div class="iconeContainerCopyUrl">
+                    <i class="icon alt icon_compartilharLivro fa-link fa-lg"></i>
+                </div>
+                <div class="nomeContainerCopyUrl">Copiar url</div>    
+            </a>`
+    
+        let copiarUrl = function() {
+            let createCopiarNotification = function() {
+                let notification = document.getElementById("urlCopiarNotification");
+                notification.style.display = "block";
+                notification.innerHTML = '<i class="fa fa-link"></i> URL COPIADA</div>';
+                
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 2800);
             }
+    
+            if(navigator.clipboard) {
+                navigator.clipboard.writeText(window.location.href);
+                createCopiarNotification();
+            }
+            createCopiarNotification();
         }
 
-        if(currentFocus!=0){ /* livro selecionado: Ha quanto tempo você não olha para as estrelas? */
-            paginaDoLivro.innerHTML='{{ partial "livros_parciais/embreve.html" . }}'
+        let closeCompartilharLivro = function () {
+            let container = document.getElementById("compartilharContainer")
+            container.style.display="none"
+            let flagCompartilharAberto = false;
         }
-    }
+        
+        let flagCompartilharAberto = false;
+        let abrirCompartilharLivro = function(e) {
+            e.stopPropagation()
+            let container = document.getElementById("compartilharContainer");
+            container.style.display = "inline-flex";
+            flagCompartilharAberto = true;
+    
+            window.addEventListener('click', function(g){
+                if (container.contains(g.target)){
+                } else{
+                    closeCompartilharLivro();  
+                }
+            }, options = {"once": true})
+        }
+    
+        document.addEventListener('keydown', (ev) => {
+            if((ev.key == 'Escape') && (flagCompartilharAberto == true)){
+                closeCompartilharLivro();
+            }
+        }) 
+    /* FIM COMPARTILHAMENTO */
 
     // CARROSSEL TODOS OS LIVROS
         let currentFocus = 0
         let images = document.getElementsByClassName('imagensPainelLivros')
-
         let setupCarousel = function() {
             for(let image of images) {
                 image.addEventListener("click", (el) => {
-                    el.preventDefault()
-                    el.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
-                    images[currentFocus].classList.remove('selected')
+                    el.preventDefault();
+                    el.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                    images[currentFocus].classList.remove('selected');
+                    let paginaDoLivro = document.getElementById('paginaDoLivroSelecionado_id' + currentFocus);
+                    paginaDoLivro.style.display="none";
+
                     currentFocus = parseInt(el.currentTarget.getAttribute('myid'))
                     el.currentTarget.classList.add('selected')
-                    atualizaPaginaDoLivro();
+                    paginaDoLivro = document.getElementById('paginaDoLivroSelecionado_id' + currentFocus);
+                    paginaDoLivro.style.display="block";
+   
                 })
             }
         }
