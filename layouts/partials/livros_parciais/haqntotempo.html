@@ -46,7 +46,7 @@
                 <h3 class="txt_overmsg_polaroid">Clique para ampliar</h3>
             </div>
             <div class="container_img_polaroid">
-                <img src="" class="img_polaroid" alt="polaroid 2. Detalhe da capa do livro, focando nas asas e texturas da borboleta.">
+                <img src="/images/haqntopag/polaroids/borboleta-HaQuantoTempoVoceNaoOlhaParaAsEstrelas-TDVadilho-Thumb-LowRes-noai-noimageai.jpg" class="img_polaroid" alt="polaroid 2. Detalhe da capa do livro, focando nas asas e texturas da borboleta.">
             </div>
             <p class="txt_polaroid">Clique para ampliar</p>
         </div>
@@ -57,7 +57,7 @@
                 <h3 class="txt_overmsg_polaroid">Clique para ler o primeiro capítulo</h3>
             </div>
             <div class="container_img_polaroid">
-                <img src="" class="img_polaroid" alt="polaroid 3. Mockup do livro aberto, chamada para leitura do primeiro capítulo do livro.">
+                <img src="/images/haqntopag/polaroids/cap1-HaQuantoTempoVoceNaoOlhaParaAsEstrelas-TDVadilho-Thumb-LowRes-noai-noimageai.jpg" class="img_polaroid" alt="polaroid 3. Mockup do livro aberto, chamada para leitura do primeiro capítulo do livro.">
             </div>
             <p class="txt_polaroid">Clique para ler o primeiro capíitulo</p>
         </div>
@@ -82,7 +82,7 @@
             </div>
 
             <div class="imageSection">
-                <img src="/images/haqntopag/1cap/1cap_2.jpg" alt="Imagem detalhe da capa do livro">
+                <img src="/images/haqntopag/polaroids/borboleta-HaQuantoTempoVoceNaoOlhaParaAsEstrelas-TDVadilho-LowRes-noai-noimageai.jpg" alt="Imagem detalhe da capa do livro">
             </div>
 
             <div class="imageSection">
@@ -138,7 +138,7 @@
     </div>
 
     <div id="livroSelecionadoDados">
-        <img src="/images/haqntopag/galhoFrente2.png" id="galhofrente" alt="ilustração de um galho de uma tartaré no qual estão marcados os seguintes dados do livro: gênero: ficção; páginas: em breve; edição: 1ª ed.; editora: Flyve; papel: pólen 80g; capa: brochura; dimensões: 21x14cm; isbn: 978-65-00-84745-1; classificação indicativa: 14">
+        <img src="/images/haqntopag/galhoFrenteDados.jpg" id="galhofrente" alt="ilustração de um galho de uma tartaré no qual estão marcados os seguintes dados do livro: gênero: ficção; páginas: em breve; edição: 1ª ed.; editora: Flyve; papel: pólen 80g; capa: brochura; dimensões: 21x14cm; isbn: 978-65-00-84745-1; classificação indicativa: 14">
     </div>
 
     <div id="container1Palavra">
@@ -603,7 +603,7 @@
             .container_img_polaroid{
                 background-color: #3f4959;
                 width: 262px;
-                height: 255px;
+                height: 254px;
             }
 
             .txt_polaroid{
@@ -883,36 +883,7 @@
             left: 50%;
             text-wrap: balance;
         }
-
-        .showsucess{
-            visibility: visible;
-            -webkit-animation: fadein 0.5s;
-            animation: fadein 0.5s;
-            border-left: 10px solid #36a34c;
-        }
-
-        .showFail {
-            visibility: visible;
-            -webkit-animation: fadein 0.5s;
-            animation: fadein 0.5s;
-            border-left: 10px solid #a33636;
-        }
-
-        .snackbarText1{
-            color: #101020;
-            font-weight: 600;
-            font-size: 18px;
-            font-family: helvetica;
-        }
-    
-        .snackbarText2{
-            margin-top: -12px;
-            font-size: 15px;
-            color: #656565;
-            font-weight: 400;
-            font-family: helvetica;
-        }
-
+         
         #participarSnack>h4{
             margin-bottom: 15px;
         }
@@ -935,6 +906,26 @@
 
         #palavraEnviadaMsg{
             display: none;
+        }
+
+        .borderAnimNuvem {
+            position: relative;
+        }
+
+        .borderAnimNuvem:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 25px;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(120deg, #043a49, #18bfef, #043a49);
+            background-size: 300% 300%;
+            clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), 2px calc(100% - 2px), 2px 100%, 100% 100%, 100% 0%, 0% 0%);
+        }
+
+        .borderAnimNuvem.inNuvem:after {
+            animation: frame-enter 2s forwards ease-in-out reverse, gradient-animation 4s ease-in-out infinite;
         }
 
     /* Comentários do público, respostas do autor e extras */
@@ -1666,11 +1657,11 @@
 /* FIM SLIDESHOW POLAROIDS */
     
 /* ENVIAR PALAVRA PARA A NUVEM DE PALAVRAS */
-    document.getElementById('txt_nuvemDePalavraHaQnto').addEventListener("submit", (e) => {
+    document.getElementById('participarSnack').addEventListener("submit", (e) => {
         e.preventDefault();
 
         document.getElementById('btn_enviarPalavraHaQnto').setAttribute('disabled', 'a');
-        document.getElementById('li_btn_nuvemDePalavrasHaQnto').classList.add('borderAnim', 'in');
+        document.getElementById('li_btn_nuvemDePalavrasHaQnto').classList.add('borderAnimNuvem', 'inNuvem');
         
     
         data = {'word': document.getElementById('txt_nuvemDePalavraHaQnto').value}
@@ -1685,39 +1676,29 @@
             body: JSON.stringify(data)
         }).then(result => {
             document.getElementById('btn_enviarPalavraHaQnto').removeAttribute('disabled');
-            document.getElementById('li_btn_nuvemDePalavrasHaQnto').classList.remove('borderAnim', 'in');
+            document.getElementById('li_btn_nuvemDePalavrasHaQnto').classList.remove('borderAnimNuvem', 'inNuvem');
             
             emailenviado();
         }).catch(error => {
             document.getElementById('btn_enviarPalavraHaQnto').removeAttribute('disabled');
-            document.getElementById('li_btn_nuvemDePalavrasHaQnto').classList.remove('borderAnim', 'in');
+            document.getElementById('li_btn_nuvemDePalavrasHaQnto').classList.remove('borderAnimNuvem', 'inNuvem');
             
             emailnaoenviado();
         })
     })
 
     let emailenviado = function(){
-        var form = document.getElementById("participarSnack");
-        form.className = "showSucess"; 
-        document.getElementById('participarSnack').innerHTML = "<h3>A sua palavra foi enviada</h3><h4>Obrigado pela sua participação! A sua palavra entrará para a nuvem na próxima atualização</h4>"
-
+        document.getElementById('participarSnack').innerHTML = "<div id='buttonCloseParticiparSnack'><span class='fa fa-times' aria-hidden='true' onclick='closeparticiparnuvemDePalavras()'></span></div><h3 style='margin-bottom: 20px'>A sua palavra foi enviada 😉</h3><h4>Obrigado pela sua participação! A palavra entrará para a nuvem na próxima atualização</h4>"
         setTimeout(function(){ 
-            form.className = form.className.replace("showSucess", "");   
-            resetForm();
-        }, 8000);
-
-        window.history.pushState('', '', '#form-enviado');
+            closeparticiparnuvemDePalavras(); 
+        }, 6000);
     }
 
     let palavraNaoEnviada = function(){
-        let palavraNaoEnviada = document.getElementById('emailenviado');
-        let form = document.getElementById("Snackbar");
-        form.className = "showFail";
-        
-        document.getElementById('participarSnack').innerHTML = "<h3>Falha no servidor<h3><h4>Desculpe, infelizmente a palavra não pode ser enviada. Por favor, tente novamente em alguns instantes</h4";
+        document.getElementById('participarSnack').innerHTML = "<div id='buttonCloseParticiparSnack'><span class='fa fa-times' aria-hidden='true' onclick='closeparticiparnuvemDePalavras()'></span></div><h3 style='margin-bottom: 20px'>Houve uma falha no servidor 😔<h3><h4>Desculpe, infelizmente a palavra não pode ser enviada. Por favor, tente novamente em alguns instantes</h4";
         setTimeout(function(){ 
-            form.className = form.className.replace("showFail", "");   
-        }, 8000);
+            closeparticiparnuvemDePalavras(); 
+        }, 6000);
     }
 /* FIM DO ENVIAR PALAVRA PARA A NUVEM DE PALAVRAS */
 </script>
