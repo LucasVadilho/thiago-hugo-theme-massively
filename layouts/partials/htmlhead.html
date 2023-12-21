@@ -697,8 +697,33 @@
         }
     }
 /* FIM DO FEEDBACK BOTAO CARREGANDO */
+
+/* Realign */
+    .realignClass{
+        margin-top: auto;
+        margin-bottom: auto;
+    }
 </style>
 
 <script>
+    let realignVertical = function(e){
+        let snackbarChildrenSize = 0;
+        let snackElement = document.getElementById(e)
+        let snackbarChildrenNumber = snackElement.children.length;
+        let i = 0;
+       
+        for(i = 0; i < snackbarChildrenNumber; i++){
+            snackbarChildrenSize += snackElement.children[i].height;
+        }
+
+        if(i = snackbarChildrenNumber){
+            console.log(snackbarChildrenSize);
+            if(snackbarChildrenSize < (snackElement.offsetHeight)){
+                snackElement.classList.add("realignClass");
+            } else{
+                snackElement.classList.remove("realignClass");
+            }
+        }
+    }
 </script>
 
