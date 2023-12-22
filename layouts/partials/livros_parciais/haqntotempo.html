@@ -140,7 +140,7 @@
         </div>
     </div>
 
-    <div id="livroSelecionadoDadosWordcloud">
+    <div id="livroSelecionadoDadosWordcloud" style="margin-top: -1px;">
         <img src="/images/haqntopag/galhoFrenteDados_Colagem.jpg" alt="ilustração de um galho de uma tartaré no qual estão marcados os seguintes dados do livro: gênero: ficção; páginas: em breve; edição: 1ª ed.; editora: Flyve; papel: pólen 80g; capa: brochura; dimensões: 21x14cm; isbn: 978-65-00-84745-1; classificação indicativa: 14">
     </div>
 
@@ -214,12 +214,12 @@
 
         <div id="containerBottomButtonsAndCosmetic">
             <div id="buttonsBottomContainer">
-                <button type="submit" class="button_comprarlivrofisico" onclick="comprarLivroFisico(event),hideNavPanel()">
+                <button type="submit" class="buttonBottom_comprarlivrofisico" onclick="comprarLivroFisico(event),hideNavPanel()">
                     <i class="fa fa-shopping-cart fa-lg"></i> Livro
                 </button>
                 <span class="cosmetic_comprarlivroBottom"></span>
 
-                <button type="submit" class="button_comprarebook" onclick="comprarLivroFisico(event),hideNavPanel()">
+                <button type="submit" class="buttonBottom_comprarebook" onclick="comprarLivroFisico(event),hideNavPanel()">
                     <i class="fa fa-shopping-cart fa-lg"></i> Ebook
                 </button>
                 <span class="cosmetic_comprarebookBottom"></span>
@@ -1118,14 +1118,54 @@
         }
     }
 
-    @media screen and (max-width: 600px){
+
+    @media screen and (max-width: 600px) and (min-width: 530px){
+        #containerBottomButtonsAndCosmetic{
+            margin-left: 0px;
+            margin-right: 0px;
+            width: auto;
+        }
+
         #buttonsBottomContainer{
             scale: 0.9;
         }
     }
 
+    @media screen and (max-width: 529px) and (min-width: 10px){
+        #containerBottomButtonsAndCosmetic{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        #buttonsBottomContainer{
+            scale: 0.8;
+            display: contents;
+        }
+
+        .buttonBottom_comprarlivrofisico{
+            margin-right: 10px;
+        }
+
+        .buttonBottom_comprarebook,.buttonBottom_comprarlivrofisico{
+            width: 40%;
+            padding: 0px 20px 0px 20px;
+            height: 54px;
+            font-size: 1.4rem;
+            z-index: 2;
+        }
+
+        .cosmetic_comprarebookBottom, .cosmetic_comprarlivroBottom{
+            z-index: 0;
+            width: 40%;
+            height: 54px;
+        }
+        .cosmetic_comprarlivroBottom{margin-right: 45%}
+        .cosmetic_comprarebookBottom{margin-right: -39%}
+    }
+
+    
     @media screen and (max-width: 546px){
-        /* Menu comentarios respostas e extras */
         .menu_textShowSelector h4{
             font-size: 1.1rem; 
         }
@@ -1153,11 +1193,6 @@
             width: 94px;
             font-size: 1.1rem;  
         }
-        /* Fim Menu comentarios respostas e extras */
-
-        #btn_enviarPalavraHaQnto {
-            margin-top: 20px;
-        }
 
         #form_nuvemDePalavras {
             width: 100%;
@@ -1168,7 +1203,31 @@
 
         #form_nuvemDePalavras>.field {
             width: 100%;
+        } 
+
+        #form_nuvemDePalavras>ul{
+            display: contents;
         }
+
+        #li_btn_nuvemDePalavrasHaQnto{
+            margin-top: 20px;
+            display: inline-flex;
+            justify-content: center;
+            margin-left: -17px;
+            width: 128px;
+            height: 43.5px;
+            margin-left: -24px;
+        }
+
+        #btn_enviarPalavraHaQnto {
+            margin-left: 9px;
+        }
+    }
+
+    @media screen and (max-width: 481px) {
+        #btn_enviarPalavraHaQnto {
+            margin-left: 24px;
+        } 
     }
 
     @media screen and (max-width: 542px){
@@ -1178,23 +1237,14 @@
             padding: 0px 10.25rem 0px 5rem;
             margin-bottom: 63px;
         }
-
-        .cosmetic_comprarebookBottom{
-            width: 222px;
-            margin-right: -208px;
-        }
-
-        .cosmetic_comprarlivroBottom{
-            width: 214px;
-        }
     }
 
-    @media screen and (max-width: 1044px) and (min-width: 888px){#containier_headerhaqntoClicaveis{top: 510px;}}
-    @media screen and (max-width: 887px) and (min-width: 796px){#containier_headerhaqntoClicaveis{top: 478px;}}
-    @media screen and (max-width: 795px) and (min-width: 737px){#containier_headerhaqntoClicaveis{top: 454px;}}
-    @media screen and (max-width: 736px) and (min-width: 605px){#containier_headerhaqntoClicaveis{top: 386px;}}
-    @media screen and (max-width: 604px) and (min-width: 441px){#containier_headerhaqntoClicaveis{top: 365px;}}
-    @media screen and (max-width: 440px) {#containier_headerhaqntoClicaveis{top: 336px;}}
+    @media screen and (max-width: 1044px) and (min-width: 888px){#containier_headerhaqntoClicaveis{top: 546px;}}
+    @media screen and (max-width: 887px) and (min-width: 796px){#containier_headerhaqntoClicaveis{top: 514px;}}
+    @media screen and (max-width: 795px) and (min-width: 737px){#containier_headerhaqntoClicaveis{top: 490px;}}
+    @media screen and (max-width: 736px) and (min-width: 605px){#containier_headerhaqntoClicaveis{top: 422px;}}
+    @media screen and (max-width: 604px) and (min-width: 441px){#containier_headerhaqntoClicaveis{top: 401px;}}
+    @media screen and (max-width: 440px) {#containier_headerhaqntoClicaveis{top: 372px;}}
 
     @media screen and (max-width: 999px) and (min-width: 976px){#container_headerhaqnto{margin-bottom: -175px;}}
     @media screen and (max-width: 975px) and (min-width: 895px){#container_headerhaqnto{margin-bottom: -105px;}}
@@ -1263,11 +1313,6 @@
         .cosmetic_comprarebookTop {
             margin-right: -216px;
             scale: 0.98;
-        }
-
-        #buttonsBottomContainer {
-            scale: 0.8;
-            margin-left: 3px;
         }
     }
 
