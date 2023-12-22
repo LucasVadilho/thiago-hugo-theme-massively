@@ -167,11 +167,11 @@
         }
 
         .image-holder >div:nth-last-child(1){
-            margin-right:3%;
+            margin-right:5%;
         }
 
         .image-holder >div:nth-child(1){
-            margin-left:3%;
+            margin-left:5%;
         }
 
         .imagensPainelLivros{
@@ -263,6 +263,21 @@
         }
         #carrousel-left:active, #carrousel-right:active{
             color:#18bfef !important;
+        }
+    }
+
+    @media screen and (max-width: 500px){
+        .arrow-holder{
+            display: none
+        }
+
+        .image-holder{
+            margin-right: 4px;
+            margin-left: 4px;
+        }
+
+        .titulolivros{
+            text-wrap: balance;
         }
     }
 /* Fim Definicoes para retirar o clique de hover eterno dos mobiles */
