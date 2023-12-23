@@ -88,9 +88,18 @@
                 </div>
 
                 <div class="imageSection">
-                    <img src="/images/haqntopag/1cap/1cap_1.jpg" alt="Página 1 do livro" style="margin-bottom: 15px;">
-                    <img src="/images/haqntopag/1cap/1cap_2.jpg" alt="Página 2 do livro" style="margin-bottom: 15px;">
-                    <img src="/images/haqntopag/1cap/1cap_3.jpg" alt="Página 3 do livro">
+                    <img src="/images/haqntopag/1cap/1.jpg" alt="Página 1 do livro" style="margin-bottom: 15px;">
+                    <img src="/images/haqntopag/1cap/2.jpg" alt="Página 2 do livro" style="margin-bottom: 15px;">
+                    <img src="/images/haqntopag/1cap/3.jpg" alt="Página 3 do livro" style="margin-bottom: 15px;">
+                    <img src="/images/haqntopag/1cap/4.jpg" alt="Página 4 do livro" style="margin-bottom: 15px;">
+                    <img src="/images/haqntopag/1cap/5.jpg" alt="Página 5 do livro" style="margin-bottom: 15px;">
+                    <img src="/images/haqntopag/1cap/6.jpg" alt="Página 6 do livro" style="margin-bottom: 15px;">
+                    <img src="/images/haqntopag/1cap/7.jpg" alt="Página 7 do livro" style="margin-bottom: 15px;">
+                    <img src="/images/haqntopag/1cap/8.jpg" alt="Página 8 do livro" style="margin-bottom: 15px;">
+                    <img src="/images/haqntopag/1cap/9.jpg" alt="Página 9 do livro" style="margin-bottom: 15px;">
+                    <img src="/images/haqntopag/1cap/10.jpg" alt="Página 10 do livro" style="margin-bottom: 15px;">
+                    <img src="/images/haqntopag/1cap/11.jpg" alt="Página 11 do livro" style="margin-bottom: 15px;">
+                    <img src="/images/haqntopag/1cap/12.jpg" alt="Página 12 do livro">
                 </div>
             </div>
             
@@ -399,17 +408,30 @@
             width: 230px;
             height: 61px;
         }
+        
+        .buttonBottom_comprarlivrofisico, .buttonBottom_comprarebook{
+            box-shadow: none;
+            color: white !important;
+            font-family: "Alegreya Sans SC";
+            font-size: 1.6rem;
+            text-transform: none;
+            padding: 0px 60px 0px 60px;
+            clip-path: polygon(0% 10%, 98% 0%, 95% 100%, 4% 94%);
+            -webkit-clip-path: polygon(0% 10%, 98% 0%, 95% 100%, 4% 94%);
+            width: 230px;
+            height: 61px;
+        }
 
-        .button_comprarlivrofisico{
+        .button_comprarlivrofisico,.buttonBottom_comprarlivrofisico{
             background-color:#f34b18;
             margin-right: 10px;
         }
 
-        .button_comprarebook{
+        .button_comprarebook, .buttonBottom_comprarebook{
             background-color:#1865f3;
         }
 
-        .button_comprarlivrofisico:hover,.button_comprarebook:hover{
+        .button_comprarlivrofisico:hover,.button_comprarebook:hover, .buttonBottom_comprarebook:hover,.buttonBottom_comprarlivrofisico:hover {
             clip-path: none;
             transition: transform 1s ease-in-out;
             color: white !important;
@@ -450,6 +472,16 @@
         }
 
         body:has(.button_comprarebook:hover) .cosmetic_comprarebookTop{
+            clip-path: none;
+            transition: transform 1s ease-in-out;
+        }
+
+        body:has(.buttonBottom_comprarebook:hover) .cosmetic_comprarebookBottom{
+            clip-path: none;
+            transition: transform 1s ease-in-out;
+        }
+
+        body:has(.buttonBottom_comprarlivrofisico:hover) .cosmetic_comprarlivroBottom{
             clip-path: none;
             transition: transform 1s ease-in-out;
         }
@@ -621,6 +653,7 @@
                 font-family: cursive;
                 font-size: 0.9rem;
                 margin-top: 40px;
+                text-align: center;
             }
 
             .paper_polaroid:nth-child(1){
