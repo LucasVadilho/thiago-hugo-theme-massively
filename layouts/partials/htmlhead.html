@@ -64,8 +64,9 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC" rel="stylesheet">
 	</head>
+    
 <style>
-    p>a{
+    p>a, .link_italico>a{
         color:#0000FF;
     }
 
@@ -193,6 +194,7 @@
 
     .img_shadow{
         box-shadow: rgba(0, 0, 0, 0.33) 0px 1px 3px 0px;
+        line-height: 0;
     }
 
     p{
@@ -320,7 +322,7 @@
 
     .p_note{
         text-align: right;
-        margin-left: 40%;
+        margin-left: 45%;
         margin-top: 16px;
         margin-bottom: 16px;
         font-size: 0.95rem;
@@ -333,7 +335,7 @@
         margin-top: 20px;
     }
 
-    #compartilharHistContainer{
+    #compartilharContainer{
         position: fixed;
         display: none;
         flex-direction: row;
@@ -359,7 +361,7 @@
         vertical-align: 1px;
     }
 
-    .icon_compartilharHistorieta{
+    .icon_compartilharHistorieta,.icon_compartilharLivro{
         margin-right: 0px;
     }
 
@@ -640,57 +642,90 @@
         cursor: pointer;
         color: #343452;
     }
+
+    .icons.alt>li{
+        scale: 1.25;
+    }
+
+/* FEEDBACK BOTAO CARREGANDO */
+    .borderAnim {
+        position: relative;
+    }
+
+    .borderAnim:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(120deg, #043a49, #18bfef, #043a49);
+        background-size: 300% 300%;
+        clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), 2px calc(100% - 2px), 2px 100%, 100% 100%, 100% 0%, 0% 0%);
+    }
+
+    .borderAnim.in:after {
+        animation: frame-enter 2s forwards ease-in-out reverse, gradient-animation 4s ease-in-out infinite;
+    }
+
+    /* motion */
+    @keyframes gradient-animation {
+        0% {
+            background-position: 15% 0%;
+        }
+        50% {
+            background-position: 85% 100%;
+        }
+        100% {
+            background-position: 15% 0%;
+        }
+    }
+
+    @keyframes frame-enter {
+        0% {
+            clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), 2px calc(100% - 2px), 2px 100%, 100% 100%, 100% 0%, 0% 0%);
+        }
+        25% {
+            clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), calc(100% - 2px) calc(100% - 2px), calc(100% - 2px) 100%, 100% 100%, 100% 0%, 0% 0%);
+        }
+        50% {
+            clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, 100% 0%, 0% 0%);
+        }
+        75% {
+            -webkit-clip-path: polygon(0% 100%, 2px 100%, 2px 2px, 2px 2px, 2px 2px, 2px 2px, 2px 2px, 2px 2px, 2px 0%, 0% 0%);
+        }
+        100% {
+            -webkit-clip-path: polygon(0% 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 0% 100%);
+        }
+    }
+/* FIM DO FEEDBACK BOTAO CARREGANDO */
+
+/* Realign */
+    .realignClass{
+        margin-top: auto;
+        margin-bottom: auto;
+    }
 </style>
 
 <script>
-/* ----------------MATERIAIS LINKS AFILIADOS---------------- */
-    let flagMateriaisAberto = false;
-    
-    let expandirmateriais = function(e){
-        e.stopPropagation();
-        let listademateriais = document.getElementsByClassName('listaMateriais')[0];
-        listademateriais.style.display = "inline-grid";
-        
-        flagMateriaisAberto = true;
-
-        let botaomateriais = document.getElementsByClassName('pinMateriaisUsados');
-        botaomateriais[0].style.display = "none";
-
-        let buttonCloseMateriais = document.getElementsByClassName('toCloseMateriais')[0];
-        buttonCloseMateriais.style.display = "block";
-
-        window.addEventListener('click', function(g){
-            if(!listademateriais.contains(g.target)){
-                fecharmateriais();
-            }
-        }, options = {"once": true})
-    }
-
-    document.addEventListener('keydown', (ev) => {
-       if(flagMateriaisAberto==true){
-            if(ev.key == 'Escape'){/* para ler quando preciona o esc*/
-                fecharmateriais();
-            }
-        }
-    }) 
-
-    function fecharmateriais(){
-        let buttonCloseMateriais = document.getElementsByClassName('toCloseMateriais')[0];
-        buttonCloseMateriais.style.display = "none";
-
-        if(window.innerWidth < 980){
-            navPanelToggle.style.cssText = ''
+    let realignVertical = function(e){
+        let snackbarChildrenSize = 0;
+        let snackElement = document.getElementById(e)
+        let snackbarChildrenNumber = snackElement.children.length;
+        let i = 0;
+       
+        for(i = 0; i < snackbarChildrenNumber; i++){
+            snackbarChildrenSize += snackElement.children[i].height;
         }
 
-        let listademateriais = document.getElementsByClassName('listaMateriais');
-        listademateriais[0].style.display = "none";
-
-        let botaomateriais = document.getElementsByClassName('pinMateriaisUsados');
-        botaomateriais[0].style.display = "inline-flex";
-
-        flagMateriaisAberto = false;
-        isMouseoverMateriais = true;
+        if(i = snackbarChildrenNumber){
+            console.log(snackbarChildrenSize);
+            if(snackbarChildrenSize < (snackElement.offsetHeight)){
+                snackElement.classList.add("realignClass");
+            } else{
+                snackElement.classList.remove("realignClass");
+            }
+        }
     }
-/* ----------------FIM DOS MATERIAIS LINKS AFILIADOS---------------- */
 </script>
 

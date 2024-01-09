@@ -625,58 +625,6 @@
             to {bottom: 30px; opacity: 1;}
         }
     
-    /* FEEDBACK BOTAO CARREGANDO */
-        .borderAnim {
-            position: relative;
-        }
-    
-        .borderAnim:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(120deg, #043a49, #18bfef, #043a49);
-            background-size: 300% 300%;
-            clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), 2px calc(100% - 2px), 2px 100%, 100% 100%, 100% 0%, 0% 0%);
-        }
-    
-        .borderAnim.in:after {
-            animation: frame-enter 2s forwards ease-in-out reverse, gradient-animation 4s ease-in-out infinite;
-        }
-    
-        /* motion */
-        @keyframes gradient-animation {
-            0% {
-                background-position: 15% 0%;
-            }
-            50% {
-                background-position: 85% 100%;
-            }
-            100% {
-                background-position: 15% 0%;
-            }
-        }
-    
-        @keyframes frame-enter {
-            0% {
-                clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), 2px calc(100% - 2px), 2px 100%, 100% 100%, 100% 0%, 0% 0%);
-            }
-            25% {
-                clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), calc(100% - 2px) calc(100% - 2px), calc(100% - 2px) 100%, 100% 100%, 100% 0%, 0% 0%);
-            }
-            50% {
-                clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, 100% 0%, 0% 0%);
-            }
-            75% {
-                -webkit-clip-path: polygon(0% 100%, 2px 100%, 2px 2px, 2px 2px, 2px 2px, 2px 2px, 2px 2px, 2px 2px, 2px 0%, 0% 0%);
-            }
-            100% {
-                -webkit-clip-path: polygon(0% 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 0% 100%);
-            }
-        }
-    
     /* MEDIA SCREEN RULES PARA IMAGEM DE LANÇAMENTO */
     
         @media screen and (min-width: 1032px){

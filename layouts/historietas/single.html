@@ -163,7 +163,7 @@
                                                         {{ end }}
 
                                                         {{ with .youtube }}
-                                                            <li><a href="{{ . }}" class="icon fa-youtube" target="_blank"><span class="label">Youtube</span></a></li>
+                                                            <li><a href="{{ . }}" class="icon alt fa-youtube-play" target="_blank"><span class="label">Youtube</span></a></li>
                                                         {{ end }}
                                                     </ul>
                                                 {{ end }}
@@ -184,7 +184,7 @@
         <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
        
         <!-- BOTÕES COMPARTILHAR -->
-        <div id="compartilharHistContainer">
+        <div id="compartilharContainer">
             <div id='buttonCloseCompartilhar'>
                 <span class='fa fa-times' aria-hidden='true' onclick="closeCompartilhar()"></span>
             </div>
@@ -716,7 +716,10 @@
         margin-top: 8px;
     }
 
-
+    .contribuicoesHistorietas>.icon.alt{
+        color: #717981;
+    }
+    
 /* REGRAS DE MIDIA */
     @media screen and (max-width: 700px) and (min-width: 551px){
         h2{
@@ -742,7 +745,7 @@
         #main {
             padding: 2rem 1.8rem 2rem 1.8rem;
         }
-        #compartilharHistContainer{
+        #compartilharContainer{
             width: 352px;
         }
         #buttonContainer_compartilharHistorietas{
@@ -755,7 +758,7 @@
     }
 
     @media screen and (max-width: 1036px) and (min-width:737px){
-        #compartilharHistContainer{
+        #compartilharContainer{
             max-width: 352px;
         }
     }
@@ -838,6 +841,56 @@
 </style>
 
 <script>
+/* ----------------MATERIAIS LINKS AFILIADOS---------------- */
+    let flagMateriaisAberto = false;
+    
+    let expandirmateriais = function(e){
+        e.stopPropagation();
+        let listademateriais = document.getElementsByClassName('listaMateriais')[0];
+        listademateriais.style.display = "inline-grid";
+        
+        flagMateriaisAberto = true;
+
+        let botaomateriais = document.getElementsByClassName('pinMateriaisUsados');
+        botaomateriais[0].style.display = "none";
+
+        let buttonCloseMateriais = document.getElementsByClassName('toCloseMateriais')[0];
+        buttonCloseMateriais.style.display = "block";
+
+        window.addEventListener('click', function(g){
+            if(!listademateriais.contains(g.target)){
+                fecharmateriais();
+            }
+        }, options = {"once": true})
+    }
+
+    document.addEventListener('keydown', (ev) => {
+       if(flagMateriaisAberto==true){
+            if(ev.key == 'Escape'){/* para ler quando preciona o esc*/
+                fecharmateriais();
+            }
+        }
+    }) 
+
+    function fecharmateriais(){
+        let buttonCloseMateriais = document.getElementsByClassName('toCloseMateriais')[0];
+        buttonCloseMateriais.style.display = "none";
+
+        if(window.innerWidth < 980){
+            navPanelToggle.style.cssText = ''
+        }
+
+        let listademateriais = document.getElementsByClassName('listaMateriais');
+        listademateriais[0].style.display = "none";
+
+        let botaomateriais = document.getElementsByClassName('pinMateriaisUsados');
+        botaomateriais[0].style.display = "inline-flex";
+
+        flagMateriaisAberto = false;
+        isMouseoverMateriais = true;
+    }
+/* ----------------FIM DOS MATERIAIS LINKS AFILIADOS---------------- */
+
     /* DESTACARR O MENU*/
     let activeMenu = document.querySelector("#nav > ul > li:nth-child(2)") || undefined;
     if(activeMenu)
@@ -947,7 +1000,7 @@
     let flagCompartilharAberto = false;
     let abrirCompartilhar = function(e) {
         e.stopPropagation()
-        let container = document.getElementById("compartilharHistContainer");
+        let container = document.getElementById("compartilharContainer");
         container.style.display = "inline-flex";
         flagCompartilharAberto = true;
 
@@ -965,7 +1018,7 @@
     }) 
 
     let closeCompartilhar = function () {
-        let container = document.getElementById("compartilharHistContainer")
+        let container = document.getElementById("compartilharContainer")
         container.style.display="none"
     }
 

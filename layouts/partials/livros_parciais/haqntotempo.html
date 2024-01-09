@@ -1,0 +1,1769 @@
+{{- partial "htmlhead" . -}}
+{{ $data := index .Site.Data .Site.Language.Lang }}
+
+<div id="containerHaqnto">
+    <div id="container_headerhaqnto">
+        <img src="/images/haqntopag/bg_topo.jpg" id="haqntobg" alt="visualização do outro lado do lago Mótil. Chuva e bicicleta caida a direita, levando o observador a seguir o caminho que Gabi fez.">
+
+        <div id="containier_headerhaqntoClicaveis">
+            <div id="buttonContainer_compartilharLivro">
+                <button type="submit" id="button_compartilharLivro" onclick="abrirCompartilharLivro(event)">
+                    <i class="fa fa-share-alt fa-lg"></i>
+                </button>
+            </div>
+            
+            <img src="/images/haqntopag/titulo.svg" id="haqntotitulo" alt="vetor do título do livro Há quanto tempo você não olha para as estrelas?">
+
+            <div id="buttonContainer_comprarlivro">
+                <button type="submit" class="button_comprarlivrofisico" onclick="comprarLivroFisico(event),hideNavPanel()">
+                    <i class="fa fa-shopping-cart fa-lg"></i> Livro
+                </button>
+                <span class="cosmetic_comprarlivroTop"></span>
+
+                <button type="submit" class="button_comprarebook" onclick="comprarLivroFisico(event),hideNavPanel()">
+                    <i class="fa fa-shopping-cart fa-lg"></i> Ebook
+                </button>
+                <span class="cosmetic_comprarebookTop"></span>
+            </div>
+        </div>
+    </div>
+
+    <div id="background_gradient1">
+        <div id="container_polaroids">
+            <div class="paper_polaroid" onclick="openSnakbarImagesLivro(1)">
+                <div class="overmsg_polaroid">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    <h3 class="txt_overmsg_polaroid">Clique para ampliar</h3>
+                </div>
+                <div class="container_img_polaroid">
+                    <img src="/images/haqntopag/polaroids/capa-HaQuantoTempoVoceNaoOlhaParaAsEstrelas-TDVadilho-thumb-LowRes-noai-noimageai.jpg" class="img_polaroid" alt="polaroid 1. Mockup do livro Há quanto tempo você não olha para as estrelas?. Nela é retratado uma borboleta aparecendo em meio ao rasgo de uma folha.">
+                </div>
+                <p class="txt_polaroid">Clique para ampliar</p>
+            </div>
+
+            <div class="paper_polaroid" onclick="openSnakbarImagesLivro(2)">
+                <div class="overmsg_polaroid">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    <h3 class="txt_overmsg_polaroid">Clique para ampliar</h3>
+                </div>
+                <div class="container_img_polaroid">
+                    <img src="/images/haqntopag/polaroids/borboleta-HaQuantoTempoVoceNaoOlhaParaAsEstrelas-TDVadilho-Thumb-LowRes-noai-noimageai.jpg" class="img_polaroid" alt="polaroid 2. Detalhe da capa do livro, focando nas asas e texturas da borboleta.">
+                </div>
+                <p class="txt_polaroid">Clique para ampliar</p>
+            </div>
+
+            <div class="paper_polaroid" onclick="openSnakbarImagesLivro(3)">
+                <div class="overmsg_polaroid">
+                    <i class="fa fa-book" aria-hidden="true" style="margin-right: 5px"></i>
+                    <h3 class="txt_overmsg_polaroid">Clique para ler o primeiro capítulo</h3>
+                </div>
+                <div class="container_img_polaroid">
+                    <img src="/images/haqntopag/polaroids/cap1-HaQuantoTempoVoceNaoOlhaParaAsEstrelas-TDVadilho-Thumb-LowRes-noai-noimageai.jpg" class="img_polaroid" alt="polaroid 3. Mockup do livro aberto, chamada para leitura do primeiro capítulo do livro.">
+                </div>
+                <p class="txt_polaroid">Clique para ler o primeiro capíitulo</p>
+            </div>
+        </div>
+
+        <div id="snackbar_showimages">
+            <div id='container_buttonCloseImgsHaQnto'>
+                <div id="buttonCloseImgsHaQnto">
+                    <span class='fa fa-times-circle fa-2x' aria-hidden='true' onclick="closeSnackbarHaQnto()"></span>
+                </div>
+            </div>
+
+            <div id="container_prevImgsHaQnto">
+                <div id="prevButtonHaQnto">
+                    <span class='fa fa-chevron-circle-left fa-2x' aria-hidden='true' onclick="prevFotoHaQnto()"></span>
+                </div>
+            </div>
+
+            <div id="container_images">
+                <div class="imageSection">
+                    <img src="/images/haqntopag/polaroids/capa-HaQuantoTempoVoceNaoOlhaParaAsEstrelas-TDVadilho-LowRes-noai-noimageai.jpg" alt="Imagem da capa do livro" style="margin-bottom: 15px;">
+                    <img src="/images/haqntopag/polaroids/capa-bigger-HaQuantoTempoVoceNaoOlhaParaAsEstrelas-TDVadilho-LowRes-noai-noimageai.jpg" alt="Imagem da capa do livro">
+                </div>
+
+                <div class="imageSection realignClass">
+                    <img src="/images/haqntopag/polaroids/borboleta-HaQuantoTempoVoceNaoOlhaParaAsEstrelas-TDVadilho-LowRes-noai-noimageai.jpg" alt="Imagem detalhe da capa do livro">
+                </div>
+
+                <div class="imageSection">
+                    <img src="/images/haqntopag/1cap/1.jpg" alt="Página 1 do livro" style="margin-bottom: 15px;">
+                    <img src="/images/haqntopag/1cap/2.jpg" alt="Página 2 do livro" style="margin-bottom: 15px;">
+                    <img src="/images/haqntopag/1cap/3.jpg" alt="Página 3 do livro" style="margin-bottom: 15px;">
+                    <img src="/images/haqntopag/1cap/4.jpg" alt="Página 4 do livro" style="margin-bottom: 15px;">
+                    <img src="/images/haqntopag/1cap/5.jpg" alt="Página 5 do livro" style="margin-bottom: 15px;">
+                    <img src="/images/haqntopag/1cap/6.jpg" alt="Página 6 do livro" style="margin-bottom: 15px;">
+                    <img src="/images/haqntopag/1cap/7.jpg" alt="Página 7 do livro" style="margin-bottom: 15px;">
+                    <img src="/images/haqntopag/1cap/8.jpg" alt="Página 8 do livro" style="margin-bottom: 15px;">
+                    <img src="/images/haqntopag/1cap/9.jpg" alt="Página 9 do livro" style="margin-bottom: 15px;">
+                    <img src="/images/haqntopag/1cap/10.jpg" alt="Página 10 do livro" style="margin-bottom: 15px;">
+                    <img src="/images/haqntopag/1cap/11.jpg" alt="Página 11 do livro" style="margin-bottom: 15px;">
+                    <img src="/images/haqntopag/1cap/12.jpg" alt="Página 12 do livro">
+                </div>
+            </div>
+            
+            <div id="container_nextImgsHaQnto">
+                <div id="nextButtonHaQnto">
+                    <span class='fa fa-chevron-circle-right fa-2x' aria-hidden='true' onclick="nextFotoHaQnto()"></span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container_sinopsemsgautor">     
+            <div class="menu_sinopsemsgdoautor">
+                <div class="sinopse selectedmenu" onclick="focus_sinopse()">
+                    <h4>Sinopse</h4>
+                </div>
+
+                <div class="msgdoautor" onclick="focus_msgautor()">
+                    <h4>Mensagem do autor</h4>
+                </div>
+            </div>
+
+            <div class="txtfield_sinopsemsgautor">
+                <span class="txt_sinopse selectedtext">
+                    <div class="boxDosTextos">
+                        <p class="txt_poema">“Me perguntei quando foi que parei de olhar para as estrelas</p>
+                        <p class="txt_poema">E percebi que já fazia pelo menos um mês…</p>
+                        <p class="txt_poema">Talvez já fizesse um ano inteiro,</p>
+                        <p class="txt_poema">Talvez já fizesse até três.</p>
+                        <p class="txt_poema">[…]</p>
+                        <p class="txt_poema">Para falar a verdade,</p>
+                        <p class="txt_poema">Eu já não tinha mais ideia de quando fora a última vez.</p>
+                        <p class="txt_poema">O que me fez perguntar,</p>
+                        <p class="txt_poema">Se eu, realmente, já havia feito isso alguma vez.”</p>
+                        <br>
+                        <p>Em meio às conturbadas férias de verão, Gabrielle Ávila foge da casa da avó e é convidada a subir em uma casa na árvore um tanto quanto peculiar, na qual o caminho do passado cruza com o caminho do presente e, dessa interseção, surgem novos olhares que fazem o conceito de viver se ressignificar.</p>
+                    </div>
+                </span>
+
+                <span class="txt_msgautor">
+                    <div class="boxDosTextos">
+                        <p>Essa história surgiu do limbo. Não era sobre estrelas, tampouco sobre o olhar. Essa história, na verdade, era apenas uma tentativa desesperada e alguém que, desesperadamente, ansiava por se encontrar.</p>
+                        <p class="notfirstparagraph">Enquanto a escrevia, no entanto, descobri que haviam gritos entalados; gritos que o meu coração e a minha mente ansiavam por <i>gritar</i>. A partir daquele momento, percebi que não havia outra saída, aquela era a hora de esgoelar. E então, eu esgoelei, e eu mesmo escutei, porque aqueles eram gritos sinceros que eu precisava escutar. Após isso, a história de uma simples casa na árvore se metamorfoseou, agregando tudo aquilo que eu passei a enxergar.</p>
+                        <p class="notfirstparagraph">Essa história surgiu na solidão da minha mente e na escuridão que fazia o meu coração gelar. Essa história surgiu no limbo, e do limbo, para que eu não retornasse mais lá. Essa história, por fim, virou algo que eu gostaria de compartilhar; para que você também não permita ao limbo se instaurar.</p>
+                    </div>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div id="livroSelecionadoDadosWordcloud" style="margin-top: -1px;">
+        <img src="/images/haqntopag/galhoFrenteDados_Colagem.jpg" alt="ilustração de um galho de uma tartaré no qual estão marcados os seguintes dados do livro: gênero: ficção; páginas: em breve; edição: 1ª ed.; editora: Flyve; papel: pólen 80g; capa: brochura; dimensões: 21x14cm; isbn: 978-65-00-84745-1; classificação indicativa: 14">
+    </div>
+
+    <div id="background_gradient2">
+        <div id="container_participa">
+            <p onclick="participarnuvemDePalavras(event),hideNavPanel()" class="participar"><u>Venha participar</u>😊</p>
+        </div>
+
+        <div class="container_comentariosRespostasExtras">
+            <div class="menu_textShowSelector">
+                <div class="comentariosdopublico selectedmenu" onclick="focus_comentariosdopublico()">
+                    <h4>Comentários selecionados</h4>
+                </div>
+
+                <div class="respostasdoautor" onclick="focus_respostasdoautor()">
+                    <h4>Respostas do autor</h4>
+                </div>
+
+                <div class="conteudosextras" onclick="focus_conteudosextras()">
+                    <h4>Conteúdos extras</h4>
+                </div>
+            </div>
+
+            <div class="txtfield_comentariosrespostasextras">
+                <div class="txt_comentariosdopublico selectedtext">
+                    <div class="boxDosTextos">
+                        <p class="frase_comentariopublico">"Esse é o espaço destinado para o comentário de número 1"</p>
+                        <p class="autoria_comentariopublico"><i>— Pessoa n1</i></p>
+                    </div>
+
+                    <div class="boxDosTextos">
+                        <p class="frase_comentariopublico">"Esse é o espaço destinado para o comentário de número 2"</p>
+                        <p class="autoria_comentariopublico"><i>— Pessoa n2</i></p>
+                    </div>
+
+                    <div class="boxDosTextos">
+                        <p class="frase_comentariopublico">"Esse é o espaço destinado para o comentário de número 3"</p>
+                        <p class="autoria_comentariopublico"><i>— Pessoa n3</i></p>
+                    </div>
+
+                    <div class="boxDosTextos">
+                        <p class="frase_comentariopublico">"Esse é o espaço destinado para o comentário de número 4"</p>
+                        <p class="autoria_comentariopublico"><i>— Pessoa n4</i></p>
+                    </div>
+                </div>
+
+                <div class="txt_respostasdoautor">
+                    <p style="color: white"><i class="fa fa-check-square" aria-hidden="true" style="margin-right:5px"></i>Respostas livres de spoilers</p>
+                    <div class="boxDosTextos">
+                        <p><b>Espaço destinado para a pergunta.</b></p>
+                        <p>Espaço destinado para a resposta.</p>
+                    </div>
+
+                    <p style="color: white"><i class="fa fa-exclamation-triangle" aria-hidden="true" style="margin-right:5px"></i>A partir deste ponto as respostas contém spoilers!</p>
+                    <div class="boxDosTextos_comSpoiler">
+                        <p><b>Espaço destinado para pergunta que envolve spoilers.</b></p>
+                        <p>Resposta com spoiler.</p>
+                    </div>
+                </div>
+
+                <div class="txt_conteudosextras">
+                    <a href="https://www.youtube.com/shorts/Xki76TqbgYE" target="_blank">
+                        <div class="boxDosTextos">
+                            <p><b>Short do Processo ilustração</b></p>
+                            <p> Assista ao vídeo (short) do processo de criação da ilustração no YouTube </p>
+                        </div>
+                    </a>
+                </div>
+            </div>  
+        </div>
+
+        <div id="containerBottomButtonsAndCosmetic">
+            <div id="buttonsBottomContainer">
+                <button type="submit" class="buttonBottom_comprarlivrofisico" onclick="comprarLivroFisico(event),hideNavPanel()">
+                    <i class="fa fa-shopping-cart fa-lg"></i> Livro
+                </button>
+                <span class="cosmetic_comprarlivroBottom"></span>
+
+                <button type="submit" class="buttonBottom_comprarebook" onclick="comprarLivroFisico(event),hideNavPanel()">
+                    <i class="fa fa-shopping-cart fa-lg"></i> Ebook
+                </button>
+                <span class="cosmetic_comprarebookBottom"></span>
+            </div>         
+        </div>
+
+        <div id="livroSelecionadoFooter">
+            <img src="/images/haqntopag/folhabaixo.png" id="folhabaixo" alt="borda inferior de uma folha rasgada">
+        </div>
+    </div>
+</div>
+
+<!-- COMPRAR LIVRO SNAKBAR -->
+<div id="comprarLivroFisicoSnack">
+    <div class='buttonCloseComprarLivroFisicoSnack'><span class='fa fa-times' aria-hidden='true' onclick="closeComprarLivroFisico()"></span></div>
+    <h3>O livro entrará na pré-venda no dia 16 de janeiro de 2024. Estamos quase lá!</h3>
+    
+    <div class="container_prePreVendaNewsletter">
+        <div class="preprevenda">
+            <h4>Se você é de Campinas ou região:</h4>
+            <p><b>A Pré pré-venda já foi liberada</b>. O objetivo é juntar os pedidos para que o frete saia de graça para você. 
+                Se estiver interessado em garantir o livro agora, por favor, clique no botão
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScPsAVWA9xEuAwZOQRigzuyRvVI6j7UusUd_o2SudQ4TlAB7g/viewform" target="_blank">
+                    <ul class="actions">
+                        <li id="btn_formularioPrePreVenda">
+                            <input type="submit" id="btn_formularioPrePreVenda" value='Pré pré-venda'/>
+                        </li>
+                    </ul>
+                </a>
+            </p>
+        </div>
+
+        <div class="lembrete">
+            <h4>Se você não se encaixa na Pré Pré-Venda:</h4>
+            <p> Será que eu poderia te lembrar da abertura da pré-venda no dia 16?
+            Basta se inscreva na minha newsletter ou, se preferir, seguir o meu perfil no instagram</p>
+
+            {{ with $data.social }}
+                <section>
+                    <ul class="icons alt">
+                        {{ with .newsletter }}
+                            <li><a href="{{ . }}" class="icon alt fa-envelope-open" target="_blank"><span class="label">Newsletter</span></a></li>
+                        {{ end }}
+
+                        {{ with .instagram}}
+                            <li><a href="{{ . }}" class="icon alt fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
+                        {{ end }}
+                    </ul>
+                </section>
+            {{ end }}
+
+        </div>
+    </div>
+
+    <h3>De coração, muito obrigado pelo seu interesse!!!</h3>
+</div>
+<!-- FIM COMPRAR LIVRO SNAKBAR -->
+
+<!-- PARTICIPAR NUVEM DE PALAVRAS SNACKBAR -->
+<div id="participarSnack">
+    <div id='buttonCloseParticiparSnack'><span class='fa fa-times' aria-hidden='true' onclick="closeparticiparnuvemDePalavras()"></span></div>
+
+    <h4>Por favor, digite <i>uma</i> nova palavra ou reforce uma já existente:</h4>
+    <form id="form_nuvemDePalavras" method="post">
+        <div class="field">
+            <input type="text" name="txt_nuvemDePalavraHaQnto" id="txt_nuvemDePalavraHaQnto" required spellcheck="true"/>
+        </div>
+
+        <ul class="actions">
+            <li id="li_btn_nuvemDePalavrasHaQnto">
+                <input type="submit" id="btn_enviarPalavraHaQnto" value='Enviar'/>
+            </li>
+        </ul>
+    </form>
+</div>
+<!-- FIM PARTICIPAR NUVEM DE PALAVRAS SNACKBAR -->
+
+<style>
+    /* HA QNTO TEMPO */
+    /* Geral */
+    #containerHaqnto{
+        padding: 0rem 0rem 0rem 0rem !important;
+    }
+
+    #background_gradient1{
+        background-image: linear-gradient(#00080b, #00080a);
+    }
+
+    #background_gradient2{
+        background-image: linear-gradient(#0d1e25, #102a31);
+        background-position-y: -7px;
+    }
+
+    .selectedmenu{
+        border-bottom: 3px solid #E0501E;
+    }
+            
+    .selectedmenu h4{
+        color:#E0501E !important;
+        font-size: 1.35rem;
+    }
+
+    #haqntobg{
+        user-select: none;
+        z-index: -1;
+    }
+            
+    /* Abertura (header)*/
+    #container_headerhaqnto{
+        margin-bottom: -170px;
+    }
+
+    #containier_headerhaqntoClicaveis{
+        position: absolute;
+        width: 100%;
+        top: 560px;
+    }
+
+    /* Haqnto SVG */
+        #haqntotitulo{
+            width: 90%;
+            margin-left: 5%;
+            filter: drop-shadow(3px 4px 2px #06071A);
+            margin-bottom: 33px;
+        }
+
+    /* Botão compartilhar livro */
+        #buttonContainer_compartilharLivro{
+            width: 100%;
+            position: relative;
+            margin-bottom: 48px;
+        }
+
+        #button_compartilharLivro{
+            color: white !important;
+            box-shadow: inset 0 0 0 2px  white;
+            border-radius: 50% 50%;
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            z-index: 10;
+            padding: 1px;
+            right: 5%;
+            display: inline-grid;
+            align-items: center;
+        }
+
+        #button_compartilharLivro>i{
+            vertical-align: 0;
+        }
+
+        #button_compartilharLivro:hover{
+            color:#18bfef !important;
+            box-shadow: inset 0 0 0 2px  #18bfef;
+        }
+
+    /* Botões comprar livro */
+        #buttonContainer_comprarlivro{
+            position: relative;
+            right: 0;
+            display: flex;
+            justify-content: flex-end;
+            padding: 0px 8rem 0px 2rem;
+            margin-bottom: -52px;
+            z-index: 2;
+        }
+
+        .button_comprarlivrofisico,.button_comprarebook{
+            box-shadow: none;
+            color: white !important;
+            font-family: "Alegreya Sans SC";
+            font-size: 1.6rem;
+            text-transform: none;
+            padding: 0px 60px 0px 60px;
+            clip-path: polygon(0% 10%, 98% 0%, 95% 100%, 4% 94%);
+            -webkit-clip-path: polygon(0% 10%, 98% 0%, 95% 100%, 4% 94%);
+            width: 230px;
+            height: 61px;
+        }
+        
+        .buttonBottom_comprarlivrofisico, .buttonBottom_comprarebook{
+            box-shadow: none;
+            color: white !important;
+            font-family: "Alegreya Sans SC";
+            font-size: 1.6rem;
+            text-transform: none;
+            padding: 0px 60px 0px 60px;
+            clip-path: polygon(0% 10%, 98% 0%, 95% 100%, 4% 94%);
+            -webkit-clip-path: polygon(0% 10%, 98% 0%, 95% 100%, 4% 94%);
+            width: 230px;
+            height: 61px;
+        }
+
+        .button_comprarlivrofisico,.buttonBottom_comprarlivrofisico{
+            background-color:#f34b18;
+            margin-right: 10px;
+        }
+
+        .button_comprarebook, .buttonBottom_comprarebook{
+            background-color:#1865f3;
+        }
+
+        .button_comprarlivrofisico:hover,.button_comprarebook:hover, .buttonBottom_comprarebook:hover,.buttonBottom_comprarlivrofisico:hover {
+            clip-path: none;
+            transition: transform 1s ease-in-out;
+            color: white !important;
+            box-shadow: none !important;
+        }
+
+        .cosmetic_comprarlivroTop{
+            clip-path: polygon(0% 10%, 98% 0%, 95% 100%, 4% 94%);
+            -webkit-clip-path: polygon(0% 10%, 98% 0%, 95% 100%, 4% 94%);
+            width: 230px;
+            height: 61px;
+            font-size: 1.6rem;
+            text-transform: none;
+            background-color: #8d2506;
+            margin-right: 247px;
+            margin-top: 10px;
+            position: absolute;
+            z-index: -1;
+        }
+        
+        .cosmetic_comprarebookTop{
+            clip-path: polygon(0% 10%, 98% 0%, 95% 100%, 4% 94%);
+            -webkit-clip-path: polygon(0% 10%, 98% 0%, 95% 100%, 4% 94%);
+            width: 230px;
+            height: 61px;
+            font-size: 1.6rem;
+            text-transform: none;
+            background-color:#0c2d6b;
+            margin-right: 7px;
+            margin-top: 10px;
+            position: absolute;
+            z-index: -1;
+        }
+
+        body:has(.button_comprarlivrofisico:hover) .cosmetic_comprarlivroTop{
+            clip-path: none;
+            transition: transform 1s ease-in-out;
+        }
+
+        body:has(.button_comprarebook:hover) .cosmetic_comprarebookTop{
+            clip-path: none;
+            transition: transform 1s ease-in-out;
+        }
+
+        body:has(.buttonBottom_comprarebook:hover) .cosmetic_comprarebookBottom{
+            clip-path: none;
+            transition: transform 1s ease-in-out;
+        }
+
+        body:has(.buttonBottom_comprarlivrofisico:hover) .cosmetic_comprarlivroBottom{
+            clip-path: none;
+            transition: transform 1s ease-in-out;
+        }
+
+        .cosmetic_comprarlivroBottom {
+            clip-path: polygon(0% 10%, 98% 0%, 95% 100%, 4% 94%);
+            -webkit-clip-path: polygon(0% 10%, 98% 0%, 95% 100%, 4% 94%);
+            width: 230px;
+            height: 61px;
+            font-size: 1.6rem;
+            text-transform: none;
+            background-color: #8d2506;
+            margin-right: 253px;
+            margin-top: 10px;
+            position: absolute;
+            z-index: -1;
+        }
+
+        .cosmetic_comprarebookBottom{
+            clip-path: polygon(0% 10%, 98% 0%, 95% 100%, 4% 94%);
+            -webkit-clip-path: polygon(0% 10%, 98% 0%, 95% 100%, 4% 94%);
+            width: 230px;
+            height: 61px;
+            font-size: 1.6rem;
+            text-transform: none;
+            background-color:#0c2d6b;
+            margin-right: -226px;
+            margin-top: 10px;
+            position: absolute;
+            z-index: -1;
+        }
+
+        body:has(.button_comprarlivrofisico:hover) .cosmetic_comprarlivroBottom{
+            clip-path: none;
+            transition: transform 1s ease-in-out;
+        }
+
+        body:has(.button_comprarebook:hover) .cosmetic_comprarebookBottom{
+            clip-path: none;
+            transition: transform 1s ease-in-out;
+        }
+
+        /* Comprar Livro Fisico Snak */
+        .buttonCloseComprarLivroFisicoSnack{
+            background-color: transparent;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 0;
+            color: #656565;
+            border: none;
+            font-family: helvetica;
+            display: flex;
+            justify-content: flex-end;
+            position: absolute;
+            right: 17px;
+            top: 7px;
+        }
+
+        .buttonCloseComprarLivroFisicoSnack:hover {
+            color: #18bfef;
+            cursor: pointer;;
+        }
+
+        #comprarLivroFisicoSnack{
+            position: fixed;
+            display: none;
+            flex-direction: row;
+            flex-wrap: wrap;
+            background-color: rgb(255, 255, 255);
+            box-shadow: 0 100vw 100vw 100vw rgba(30, 37, 45, 0.623);
+            z-index: 25;
+            -webkit-animation: fadein 0.5s;
+            animation: fadein 0.5s;
+            top: 50%;
+            padding: 25px 20px 25px 20px;
+            width: 800px;
+            justify-content: center;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            overflow-y: auto !important;
+            max-height: 100dvh;
+        }
+
+        #comprarLivroFisicoSnack>h3{
+            text-wrap: balance;
+        }
+
+        .container_prePreVendaNewsletter{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            float: left;
+            max-width: 100%;
+            margin-top: 30px;
+            justify-content: space-around;
+        }
+
+        .preprevenda, .lembrete{
+            width: 45%;   
+        }
+
+        .preprevenda>ul{
+            margin-top: 15px;
+            justify-content: center;
+        }
+        
+        .lembrete>section{
+            margin-top: 15px;
+            text-align: center;
+        }
+        
+    /* Livro selecionado, sinopse e msg do autor */
+        #livroSelecionado {  
+            position: absolute;
+            top: 1258px;
+            padding: 60px 0rem 0 0rem;
+            height: 595px;
+        }
+
+        .menu_textShowSelector{
+            display: flex;
+            width: 100%;
+            height: fit-content;
+        }
+
+        /* 1. Polaroids*/
+            #container_polaroids{
+                display: flex;
+                margin-bottom: 130px;
+                justify-content: center;
+                padding-right: 31px;
+            }
+
+            .paper_polaroid{
+                background-color: #ffffff;
+                box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
+                padding: 18px 18px 35px 18px;
+                width: 300px;
+                height: 350px;
+                transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1), box-shadow 0.5s, margin 0.5s;
+            }
+
+            .overmsg_polaroid{
+                display: none;
+                position: absolute;
+                width: 262px;
+                height: 255px;
+                background-color: rgba(0, 0, 0, 0.5);
+                color: #fff;
+            }
+
+            .overmsg_polaroid>i{
+                font-size: 4rem;
+            }
+
+            .txt_overmsg_polaroid{
+                color: white;
+                hyphens: none;
+                margin-top: 10px;
+            }
+
+            .container_img_polaroid{
+                background-color: #3f4959;
+                width: 262px;
+                height: 254px;
+            }
+
+            .txt_polaroid{
+                font-family: cursive;
+                font-size: 0.9rem;
+                margin-top: 40px;
+                text-align: center;
+            }
+
+            .paper_polaroid:nth-child(1){
+                transform: translate(40px, 30px) rotate(-30deg);
+            }
+
+            .paper_polaroid:nth-child(2){
+                transform: translate(40px, 30px) rotate(15deg);
+            }
+
+            .paper_polaroid:nth-child(3){
+                transform: translate(40px, 30px) rotate(5deg);
+            }
+
+            .paper_polaroid:nth-child(1):hover,.paper_polaroid:nth-child(2):hover,.paper_polaroid:nth-child(3):hover{
+                transform: scale(1.15) translate(40px, 30px) rotate(0);
+                cursor: pointer;
+            }
+
+            .paper_polaroid:nth-child(1):hover .overmsg_polaroid,.paper_polaroid:nth-child(2):hover .overmsg_polaroid, .paper_polaroid:nth-child(3):hover .overmsg_polaroid{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+
+            .fade {
+                animation-name: fade;
+                animation-duration: 1.5s;
+            }
+
+            @keyframes fade {
+                from {opacity: .4}
+                to {opacity: 1}
+            }
+
+            /* snackbar das imagens */
+            #snackbar_showimages{
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                z-index: 10;
+                display: none;
+                grid-template-columns: 1fr fit-content(1300px) 1fr;
+                grid-template-rows: 50px 89dvh 50px;
+                grid-column-gap: 0px;
+                grid-row-gap: 0px;
+                background-color: #080808;
+            }
+
+            #snackbar_showimages>img{
+                object-fit: contain;
+            }
+
+            .imageSection{
+                display: none;
+                margin-top: auto;
+                margin-bottom: auto;
+            }
+
+            .imageSection>img{
+                max-height: 89vh;
+                object-fit: contain;
+            }
+
+            #container_images{
+                object-fit: contain;
+                grid-row-start: 2;
+                grid-row-end: 3;
+                grid-column-start: 2;
+                grid-column-end: 3;
+                overflow-y: auto;
+                padding-left: 5px;
+                padding-right: 5px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            #container_buttonCloseImgsHaQnto{
+                grid-row-start: 1;
+                grid-row-end: 2;
+                grid-column-start: 1;
+                grid-column-end: 4;
+                display: flex;
+                justify-content: flex-end;
+                z-index: 2;
+                transition: .2s;
+            }
+
+            #container_prevImgsHaQnto{
+                position: fixed;
+                height: 100vh;
+                direction: rtl;
+                width: calc(50vw - 660px);
+                align-items: center;
+                display: flex;
+                float: left;
+                margin-right: 10px;
+            }
+
+            #container_nextImgsHaQnto{
+                position: fixed;
+                height: 100vh;
+                margin-left: 10px;
+                direction: ltr;
+                width: calc(50vw - 660px);
+                align-items: center;
+                display: flex;
+                right: 0;
+            }
+
+            #prevButtonHaQnto .fa, #nextButtonHaQnto .fa, #buttonCloseImgsHaQnto .fa {
+                padding: 10px;
+                color: rgb(230, 230, 230);
+                filter: drop-shadow(2px 2px #050d1970)
+            }
+
+            #prevButtonHaQnto .fa:hover, #nextButtonHaQnto .fa:hover, #buttonCloseImgsHaQnto .fa:hover{
+                cursor: pointer;
+                color: #18bfef; 
+            }
+
+            /* Definicoes para retirar o clique de hover eterno dos mobiles */    
+                @media only screen and (hover:none) and (pointer:coarse){          
+                    #prevButtonHaQnto .fa:hover, #nextButtonHaQnto .fa:hover{
+                        color: rgb(230, 230, 230) !important;
+                        opacity: 80%;
+                        background-color: rgba(255, 0, 0, 0);
+                    }
+                    #prevButtonHaQnto:active, #nextButtonHaQnto:active{
+                        color:#18bfef !important;
+                    }
+                }
+            /* Fim Definicoes para retirar o clique de hover eterno dos mobiles */
+
+        /* 2. Sinopse e Msg do Autor */
+            .container_sinopsemsgautor{
+                display:grid;
+                height: fit-content;
+                padding: 0px 7rem 0px 6rem;
+            }
+
+            .selectedtext{
+                display: block !important;
+            }
+
+            .sinopse{
+                float: left;
+                margin-right: 20px;
+            }
+
+            .txtfield_sinopsemsgautor{
+                padding-top:20px;
+                margin-bottom: 25px;
+            }
+
+            .txt_sinopse{
+                display: none;
+            }
+
+            .txt_sinopse>.boxDosTextos, .txt_msgautor>.boxDosTextos{
+                padding: 25px 30px 25px 30px;
+            }
+
+            .txt_poema{
+                text-align: center;
+                font-family: Georgia, Times, "Times New Roman", serif;
+                font-size: 1.15em;
+                font-style: italic;
+            }
+
+            .msgdoautor{
+                float: left;
+            }
+
+            .txt_msgautor{
+                display: none;
+            }
+
+            .notfirstparagraph{
+                text-indent: 0.8cm;
+            }
+
+            .sinopse h4:hover,.msgdoautor h4:hover,.comentariosdopublico:hover, .respostasdoautor:hover, .conteudosextras:hover, #wpp_sharebutton:hover, #twitter_sharebutton:hover, #facebook_sharebutton:hover, #reddit_sharebutton:hover, #pinterest_sharebutton:hover, #copyUrl_sharebutton:hover{
+                cursor: pointer;
+            }
+
+    /* Dados do livro */
+        #livroSelecionadoDados{
+            width: 100%;
+            pointer-events: none;
+            z-index:-1;
+        }
+    
+    /* Nuvem de palavras */
+        #container_participa{
+            color: white;
+            width: 80%;
+            margin-left: 12%;
+            top: -2px;
+            margin-bottom: 45px;
+            position: relative;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        #buttonCloseParticiparSnack{
+            background-color: transparent;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 0;
+            color: #656565;
+            border: none;
+            font-family: helvetica;
+            display: flex;
+            justify-content: flex-end;
+            position: absolute;
+            right: 17px;
+            top: 7px;
+        }
+
+        .participar{
+            font-size: 0.9rem;
+        }
+        
+        .participar:hover, #buttonCloseParticiparSnack:hover {
+            color: #18bfef;
+            cursor: pointer;
+        }
+
+        #participarSnack{
+            position: fixed;
+            display: none;
+            flex-direction: row;
+            flex-wrap: wrap;
+            background-color: rgb(255, 255, 255);
+            box-shadow: 0 100vw 100vw 100vw rgba(30, 37, 45, 0.623);
+            z-index: 25;
+            -webkit-animation: fadein 0.5s;
+            animation: fadein 0.5s;
+            top: 50%;
+            padding: 25px 20px 25px 20px;
+            width: 540px;
+            justify-content: center;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            text-wrap: balance;
+        }
+         
+        #participarSnack>h4{
+            margin-bottom: 15px;
+        }
+
+        #form_nuvemDePalavras{
+            width: 100%;
+            justify-content: center;
+        }
+
+        #form_nuvemDePalavras>.field{
+            width: 65%;
+        }
+
+        #btn_enviarPalavraHaQnto{
+            height: 43.5px;
+            line-height: 0;
+            font-size: 0.8rem;
+            margin-left: 10px;
+            width: 103px;
+        }
+
+        #palavraEnviadaMsg{
+            display: none;
+        }
+
+        .borderAnimNuvem {
+            position: relative;
+        }
+
+        .borderAnimNuvem:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 25px;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(120deg, #043a49, #18bfef, #043a49);
+            background-size: 300% 300%;
+            clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), 2px calc(100% - 2px), 2px 100%, 100% 100%, 100% 0%, 0% 0%);
+        }
+
+        .borderAnimNuvem.inNuvem:after {
+            animation: frame-enter 2s forwards ease-in-out reverse, gradient-animation 4s ease-in-out infinite;
+        }
+
+    /* Comentários do público, respostas do autor e extras */
+        .container_comentariosRespostasExtras{
+            height: 430px;
+            width: 80%;
+            margin-left: 10%;
+        }
+
+        .boxDosTextos{
+            background-color: white;
+            border-radius: 0px 10px 0px;
+            padding: 10px 20px 10px 20px;
+            margin-bottom: 20px;
+            box-shadow: rgb(89 34 215 / 88%) 6px 6px;
+            margin-right: -15px;
+        }
+
+        .boxDosTextos_comSpoiler{
+            background-color: white;
+            padding: 10px 20px 10px 20px;
+            border-radius: 0px 10px 0px;
+            margin-bottom: 20px;
+            box-shadow: rgba(255, 233, 37, 0.88) 6px 6px;
+            margin-right: -15px; 
+        }
+
+        .txtfield_comentariosrespostasextras{
+            padding-top: 20px;
+        }
+
+        .txt_comentariosdopublico, .txt_respostasdoautor, .txt_conteudosextras{
+            display: none;
+            max-height: 333px;
+            overflow: auto;
+            padding-right: 35px;
+        }
+
+        /* 1. Comentários */
+        .comentariosdopublico{
+            margin-right: 20px;
+        }
+
+        .frase_comentariopublico{
+            font-family: Georgia, Times, "Times New Roman", serif;
+            font-size: 1.25em;
+            font-style: italic;
+        }
+
+        .autoria_comentariopublico{
+            color:#3a2868;
+            text-align:right;
+            font-weight: 600; 
+            font-family: "Alegreya Sans SC";
+        }
+
+        /* 2. Respostas */
+        .respostasdoautor{
+            margin-right: 20px;
+        }
+
+    /* Encerramento */
+    #buttonsBottomContainer{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: -52px;
+        z-index:2;
+        position: relative;
+    }
+
+    #cosmeticBottomContainer_comprarlivro{
+        right: 290px;
+        z-index: -1;
+    }
+
+    #cosmeticBottomButtons{
+        padding: 0px 12rem 0px 2rem;
+    }
+
+    #folhabaixo{
+        width: 100%;
+        padding: 0;
+    }
+
+/* DEFINIÇÕES PARA TAMANHOS DE MEDIA */  
+    @media screen and (max-width: 1400px){
+        #nextButtonHaQnto{      
+            position: fixed;
+            height: 100dvh;
+            margin-left: 10px;
+            direction: ltr;
+            width: calc(50vw - 660px);
+            align-items: center;
+            display: flex;
+            transition-duration: 1s;
+            right: 49px;
+        }
+
+        #prevButtonHaQnto{
+            position: fixed;
+            align-items: center;
+            left: 6px;
+            transition-duration: 1s;
+            top: calc(50% - 24.665px);  
+        }
+    }
+
+    @media screen and (max-width: 964px){
+        #comprarLivroFisicoSnack{
+            width: 85%;
+        }
+    }
+
+    @media screen and (max-width: 646px){
+        .preprevenda, .lembrete {
+            width: 100%;
+        }
+        .container_prePreVendaNewsletter {
+            flex-direction: column;
+        }
+        #participarSnack{
+            width: 80%;
+        }
+    }
+
+    @media screen and (max-width: 980px) and (min-width: 725px) {
+        .container_sinopsemsgautor{
+            padding: 0px 5rem 0px 4rem;
+        }
+    }
+
+    @media screen and (max-width: 1111px) and (min-width: 1086px){
+        #container_polaroids{
+            scale: 0.98;
+        }
+    }
+
+    @media screen and (max-width: 1086px) and (min-width: 1031px){
+        #container_polaroids{
+            scale: 0.95;
+        }
+    }
+
+    @media screen and (max-width: 1031px) and (min-width: 976px){
+        #container_polaroids{
+            scale: 0.9;
+        }
+    }
+
+    @media screen and (max-width: 975px) and (min-width: 801px){
+        #container_polaroids{
+            flex-wrap: wrap;
+            padding: 0px 4rem 0px 0rem;
+            margin-bottom: 110px;
+        }
+    }
+
+    @media screen and (max-width: 800px) and (min-width: 750px){
+        #container_polaroids{
+            flex-wrap: wrap;
+            scale: 1;
+            padding: 0px 9rem 0px 5rem;
+            margin-bottom: 110px;
+        }
+    }
+
+    @media screen and (max-width: 750px) and (min-width: 542px){
+        #container_polaroids{
+            flex-wrap: wrap;
+            scale: 1;
+            padding: 0px 11rem 0px 5rem;
+            margin-bottom: 110px;
+        }
+    }
+
+    @media screen and (max-width: 772px) and (min-width: 426px){ /* verificar */
+        .comentariosdopublico,.respostasdoautor{
+            width: 116px;
+            text-wrap: balance;
+        }
+
+        .conteudosextras{
+            width: 116px;
+        }
+    }
+
+    @media screen and (max-width: 690px){ 
+        #button_compartilharLivro>i{
+            font-size: 14px;
+        }
+        #button_compartilharLivro{
+            width: 35px;
+            height: 35px;
+        } 
+    }
+
+    @media screen and (max-width: 724px){
+        .container_sinopsemsgautor{
+            padding: 0px 3rem 0px 2rem;
+        }
+    }
+
+
+    @media screen and (max-width: 600px) and (min-width: 530px){
+        #containerBottomButtonsAndCosmetic{
+            margin-left: 0px;
+            margin-right: 0px;
+            width: auto;
+        }
+
+        #buttonsBottomContainer{
+            scale: 0.9;
+        }
+    }
+
+    @media screen and (max-width: 529px) and (min-width: 10px){
+        #containerBottomButtonsAndCosmetic{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        #buttonsBottomContainer{
+            scale: 0.8;
+            display: contents;
+        }
+
+        .buttonBottom_comprarlivrofisico{
+            margin-right: 10px;
+        }
+
+        .buttonBottom_comprarebook,.buttonBottom_comprarlivrofisico{
+            width: 40%;
+            padding: 0px 20px 0px 20px;
+            height: 54px;
+            font-size: 1.4rem;
+            z-index: 2;
+        }
+
+        .cosmetic_comprarebookBottom, .cosmetic_comprarlivroBottom{
+            z-index: 0;
+            width: 40%;
+            height: 54px;
+        }
+        .cosmetic_comprarlivroBottom{margin-right: 45%}
+        .cosmetic_comprarebookBottom{margin-right: -39%}
+    }
+
+    
+    @media screen and (max-width: 546px){
+        .menu_textShowSelector h4{
+            font-size: 1.1rem; 
+        }
+
+        .container_comentariosRespostasExtras{
+            margin-left: 25px;
+            margin-right: 25px;
+            width: auto;
+        }
+
+        .frase_comentariopublico{
+            font-size: 1.15em;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .comentariosdopublico,.respostasdoautor{
+            margin-right: 20px;
+            width: 103px;
+            font-size: 1.1rem;
+            text-wrap: balance;
+        }
+
+        .conteudosextras{
+            width: 94px;
+            font-size: 1.1rem;  
+        }
+
+        #form_nuvemDePalavras {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #form_nuvemDePalavras>.field {
+            width: 100%;
+        } 
+
+        #form_nuvemDePalavras>ul{
+            display: contents;
+        }
+
+        #li_btn_nuvemDePalavrasHaQnto{
+            margin-top: 20px;
+            display: inline-flex;
+            justify-content: center;
+            margin-left: -17px;
+            width: 128px;
+            height: 43.5px;
+            margin-left: -24px;
+        }
+
+        #btn_enviarPalavraHaQnto {
+            margin-left: 9px;
+        }
+    }
+
+    @media screen and (max-width: 481px) {
+        #btn_enviarPalavraHaQnto {
+            margin-left: 24px;
+        } 
+    }
+
+    @media screen and (max-width: 542px){
+        #container_polaroids{
+            flex-wrap: wrap;
+            scale: 0.93;
+            padding: 0px 10.25rem 0px 5rem;
+            margin-bottom: 63px;
+        }
+    }
+
+    @media screen and (max-width: 1044px) and (min-width: 888px){#containier_headerhaqntoClicaveis{top: 546px;}}
+    @media screen and (max-width: 887px) and (min-width: 796px){#containier_headerhaqntoClicaveis{top: 514px;}}
+    @media screen and (max-width: 795px) and (min-width: 737px){#containier_headerhaqntoClicaveis{top: 490px;}}
+    @media screen and (max-width: 736px) and (min-width: 605px){#containier_headerhaqntoClicaveis{top: 422px;}}
+    @media screen and (max-width: 604px) and (min-width: 441px){#containier_headerhaqntoClicaveis{top: 401px;}}
+    @media screen and (max-width: 440px) {#containier_headerhaqntoClicaveis{top: 372px;}}
+
+    @media screen and (max-width: 999px) and (min-width: 976px){#container_headerhaqnto{margin-bottom: -175px;}}
+    @media screen and (max-width: 975px) and (min-width: 895px){#container_headerhaqnto{margin-bottom: -105px;}}
+    @media screen and (max-width: 894px) and (min-width: 724px){#container_headerhaqnto{margin-bottom: -60px;}}
+    @media screen and (max-width: 723px) and (min-width: 685px){#container_headerhaqnto{margin-bottom: -40px;}}
+    @media screen and (max-width: 684px) {#container_headerhaqnto{margin-bottom: 0px;}}
+
+    @media screen and (max-width: 815px) and (min-width: 584px){
+        #buttonContainer_comprarlivro{
+            display: inline-flex;
+            justify-content: center;
+            width: 90%;
+            left: 5%;
+            padding: 0;
+        }
+
+        .cosmetic_comprarebookTop{
+            margin-right: -226px;
+        }
+
+        .cosmetic_comprarlivroTop{
+            margin-right: 253px;
+        }
+    }
+
+    @media screen and (max-width: 583px) and (min-width: 0px){
+        #buttonContainer_comprarlivro{
+            display: inline-flex;
+            justify-content: center;
+            width: 90%;
+            left: 5%;
+            scale: 0.9;
+            padding: 0;
+        }
+
+        .cosmetic_comprarebookTop{
+            margin-right: -210px;
+            scale: 0.98;
+        }
+
+        .cosmetic_comprarlivroTop{
+            margin-right: 253px;
+            scale: 0.95;
+        }
+    }
+
+    @media screen and (max-width:445px) {
+        #container_headerhaqnto {
+            margin-bottom: -16px;
+        }
+
+        #buttonContainer_comprarlivro {
+            display: inline-flex;
+            justify-content: center;
+            width: 100%;
+            left: 3px;
+            scale: 0.8;
+            padding: 0;
+        }
+
+        .cosmetic_comprarlivroTop {
+            margin-right: 246px;
+            scale: 0.95;
+        }
+
+        .cosmetic_comprarebookTop {
+            margin-right: -216px;
+            scale: 0.98;
+        }
+    }
+
+</style>
+
+<script type="text/javascript">
+/* COMPRAR O LIVRO */
+    let flagComprarLivroFisicoAberto = false;
+    let closeComprarLivroFisico = function () {
+        let containerComprarLivroFisico = document.getElementById("comprarLivroFisicoSnack");
+        containerComprarLivroFisico.style.display="none"
+        flagComprarLivroFisicoAberto = false;
+        if(window.innerWidth < 980){
+            let navPanelToggle = document.getElementById('navPanelToggle')
+            navPanelToggle.style.display = 'block'
+        }
+
+        document.body.style.cssText = 'overflow: auto';
+    }
+    
+    let comprarLivroFisico = function(c) {
+        c.stopPropagation()
+        let containerComprarLivroFisico = document.getElementById("comprarLivroFisicoSnack");
+        containerComprarLivroFisico.style.display = "inline-flex";
+        flagComprarLivroFisicoAberto  = true;
+
+        window.addEventListener('click', function(g){
+            if (document.getElementById("comprarLivroFisicoSnack").contains(g.target)){
+            } else{
+                closeComprarLivroFisico();  
+            }
+        }, options = {"once": true})
+    }
+
+    document.addEventListener('keydown', (ev) => {
+        if((ev.key == 'Escape') && (flagComprarLivroFisicoAberto == true)){
+            closeComprarLivroFisico();
+        }
+    }) 
+/* COMPRAR O LIVRO */
+    
+/* PARTICIPAR NUVEM DE PALAVRAS */
+    let closeparticiparnuvemDePalavras = function () {
+        let containerparticiparnuvemDePalavras = document.getElementById("participarSnack");
+        containerparticiparnuvemDePalavras.style.display="none"
+        if(window.innerWidth < 980){
+            let navPanelToggle = document.getElementById('navPanelToggle')
+            navPanelToggle.style.display = 'block'
+        }
+
+        document.body.style.cssText = 'overflow: auto';
+    }
+
+    let flagParticiparSnackAberto = false;
+    let participarnuvemDePalavras = function(e) {
+        e.stopPropagation()
+        let containerparticiparnuvemDePalavras = document.getElementById("participarSnack");
+        containerparticiparnuvemDePalavras.style.display = "inline-flex";
+        flagParticiparSnackAberto  = true;
+        let selectinput = document.getElementById('txt_nuvemDePalavraHaQnto');
+        selectinput.focus();
+        selectinput.select();
+
+        window.addEventListener('click', function(g){
+            if (containerparticiparnuvemDePalavras.contains(g.target)){
+            } else{
+                closeparticiparnuvemDePalavras();  
+            }
+        }, options = {"once": true})
+    }
+
+    document.addEventListener('keydown', (ev) => {
+        if((ev.key == 'Escape') && (flagParticiparSnackAberto == true)){
+            closeparticiparnuvemDePalavras();
+        }
+    }) 
+/* FIM PARTICIPAR NUVEM DE PALAVRAS */
+    
+/* SINOPSE E MSG DO AUTOR */
+    let flagsinopseopen = true;
+    let flagmsgdoautor = false;
+    let focus_sinopse = function (){
+        if ((flagmsgdoautor == true) && (flagsinopseopen != true)){
+            document.getElementsByClassName("txt_msgautor")[0].classList.remove('selectedtext')
+            document.getElementsByClassName("txt_sinopse")[0].classList.add('selectedtext')
+
+            document.getElementsByClassName("sinopse")[0].classList.add('selectedmenu')
+            document.getElementsByClassName("msgdoautor")[0].classList.remove('selectedmenu')
+
+            flagsinopseopen = true; 
+            flagmsgdoautor = false;       
+        }
+    }
+
+    let focus_msgautor = function (){
+        if ((flagmsgdoautor != true) && (flagsinopseopen == true)){
+            document.getElementsByClassName("txt_msgautor")[0].classList.add('selectedtext')
+            document.getElementsByClassName("txt_sinopse")[0].classList.remove('selectedtext')
+
+            document.getElementsByClassName("msgdoautor")[0].classList.add('selectedmenu')
+            document.getElementsByClassName("sinopse")[0].classList.remove('selectedmenu')
+
+            flagmsgdoautor = true;
+            flagsinopseopen = false;  
+        }
+    }
+/* FIM SINOPSE E MSG DO AUTOR */
+
+/* COMENTARIOS RESPOSTAS E EXTRAS */
+    let flagcomentariosdopublico = true;
+    let flagrespostasdoautor = false;
+    let flagconteudosextras = false;
+    let focus_comentariosdopublico = function (){
+        if (flagcomentariosdopublico != true){
+            document.getElementsByClassName("txt_comentariosdopublico")[0].classList.add('selectedtext')
+            document.getElementsByClassName("txt_respostasdoautor")[0].classList.remove('selectedtext')
+            document.getElementsByClassName("txt_conteudosextras")[0].classList.remove('selectedtext')
+
+            document.getElementsByClassName("comentariosdopublico")[0].classList.add('selectedmenu')
+            document.getElementsByClassName("respostasdoautor")[0].classList.remove('selectedmenu')
+            document.getElementsByClassName("conteudosextras")[0].classList.remove('selectedmenu')
+
+            flagcomentariosdopublico = true;
+            flagrespostasdoautor = false; 
+            flagconteudosextras = false;
+        }
+    }
+
+    let focus_respostasdoautor= function (){
+        if (flagrespostasdoautor != true){
+            document.getElementsByClassName("txt_comentariosdopublico")[0].classList.remove('selectedtext')
+            document.getElementsByClassName("txt_respostasdoautor")[0].classList.add('selectedtext')
+            document.getElementsByClassName("txt_conteudosextras")[0].classList.remove('selectedtext')
+
+            document.getElementsByClassName("comentariosdopublico")[0].classList.remove('selectedmenu')
+            document.getElementsByClassName("respostasdoautor")[0].classList.add('selectedmenu')
+            document.getElementsByClassName("conteudosextras")[0].classList.remove('selectedmenu')
+
+            flagcomentariosdopublico = false;
+            flagrespostasdoautor = true; 
+            flagconteudosextras = false;
+        }
+    }
+
+    let focus_conteudosextras = function (){
+        if (flagconteudosextras != true){
+            document.getElementsByClassName("txt_comentariosdopublico")[0].classList.remove('selectedtext')
+            document.getElementsByClassName("txt_respostasdoautor")[0].classList.remove('selectedtext')
+            document.getElementsByClassName("txt_conteudosextras")[0].classList.add('selectedtext')
+
+            document.getElementsByClassName("comentariosdopublico")[0].classList.remove('selectedmenu')
+            document.getElementsByClassName("respostasdoautor")[0].classList.remove('selectedmenu')
+            document.getElementsByClassName("conteudosextras")[0].classList.add('selectedmenu')
+
+            flagcomentariosdopublico = false;
+            flagrespostasdoautor = false; 
+            flagconteudosextras = true;
+        }
+    }
+/* FIM COMENTARIIOS RESPOSTAS E EXTRAS */
+    
+/* SLIDESHOW POLAROIDS */
+    let touchsurface = document.getElementById('container_images'),
+    startX, 
+    startY,
+    dist,
+    distThreshold,
+    thresholdX = 50,
+    thresholdY = 50,
+    allowedTime = 1500,
+    elapsedTime,
+    startTime
+
+    let setupSliderHaQnto = function() {
+        touchsurface.addEventListener('touchstart', function(t) {
+            let touchobj = t.changedTouches[0]
+            
+            dist = 0
+            distThreshold = 0
+            startX = touchobj.pageX
+            startY = touchobj.pageY
+            startTime = new Date().getTime() 
+        }, false)
+
+        touchsurface.addEventListener('touchend', function(t) {
+            var touchobj = t.changedTouches[0]
+            dist = touchobj.pageX - startX
+            distThreshold = Math.abs(dist)
+            elapsedTime = new Date().getTime() - startTime
+            
+            console.log('dist ' + dist + ' threshold X ' + thresholdX)
+            console.log('abs y ' + Math.abs(touchobj.pageY - startY) + ' thrs Y ' + thresholdY)
+            console.log('elapsedTime ' + elapsedTime + ' allowed ' + allowedTime)
+
+            if (elapsedTime <= allowedTime && distThreshold >= thresholdX && Math.abs(touchobj.pageY - startY) <= thresholdY && dist > 0){
+                document.getElementById('nextButtonHaQnto').childNodes[1].click();
+            }
+
+            if (elapsedTime <= allowedTime && distThreshold >= thresholdX && Math.abs(touchobj.pageY - startY) <= thresholdY && dist < 0){                                         
+                document.getElementById('prevButtonHaQnto').childNodes[1].click();
+            }
+        }, false)
+    }
+
+    let navPanelToggle = document.getElementById("navPanelToggle")
+    let flagImagesHaqntoAberto = false;
+    document.addEventListener('keydown', (ev) => {
+        if(flagImagesHaqntoAberto==true){
+            if(ev.key == 'Escape'){/* para ler quando preciona o esc*/
+                closeSnackbarHaQnto();
+            }
+            if(ev.keyCode == '39'){/*para ler quando preciona a seta direita*/
+                nextFotoHaQnto();
+            }
+            if(ev.keyCode == '37'){/*para ler quando preciona a seta esquerda*/
+                prevFotoHaQnto();
+            }
+        }
+    })
+
+    let isMouseover = Boolean
+    let checkIfCanCloseHaQntoImages = function (){
+        if(isMouseover == false){
+            closeSnackbarHaQnto();
+        }
+    }
+
+    let checkMouseOverContainersHaQnto = function(){
+        $("#buttonCloseImgsHaQnto, #nextButtonHaQnto, #prevButtonHaQnto, .imageSection").mouseover(function() {
+            isMouseover = true;
+        })
+        $("#buttonCloseImgsHaQnto, #nextButtonHaQnto, #prevButtonHaQnto, .imageSection").mouseout(function() {
+            isMouseover = false;
+        })
+    }
+
+    function closeSnackbarHaQnto(){/*Função para fechar snack e retornar elementos ao padrão*/
+        let snackbarToClose = document.getElementById('snackbar_showimages')
+        snackbarToClose.style.display="none";
+    
+        if(window.innerWidth < 980){
+            let navPanelToggle = document.getElementById('navPanelToggle')
+            navPanelToggle.style.display = 'block'
+        }
+
+        document.body.style.cssText = 'overflow: auto';
+        flagImagesHaqntoAberto = false;
+        isMouseover = true;
+    }
+
+    let hideNavPanel = function(){
+        if(window.innerWidth < 980){
+            let navPanelToggle = document.getElementById('navPanelToggle')
+            navPanelToggle.style.display = 'none';
+            document.body.style.cssText = 'overflow: hidden';
+        }
+    }
+
+    let setupHideElementsSnackPolaroids = function(){ /* Hide quando passar determinado tempo FUNCAO DUPLICADA NO SITE, QUANDO DER, PASSAR PRA UMA LÓGICA SÓ!*/
+        if (flagImagesHaqntoAberto==true){
+            document.getElementById('container_buttonCloseImgsHaQnto').style.opacity = 0
+            document.getElementById('prevButtonHaQnto').style.opacity = 0
+            document.getElementById('nextButtonHaQnto').style.opacity = 0
+        }
+    }
+
+    let setupUnhideElementsSnackPolaroids = function(){ /* Unhide quando a pessoa mexer o mouse */
+        if (flagImagesHaqntoAberto==true){
+            document.getElementById('container_buttonCloseImgsHaQnto').style.opacity = 1
+            document.getElementById('prevButtonHaQnto').style.opacity = 1
+            document.getElementById('nextButtonHaQnto').style.opacity = 1
+        }
+    }
+
+    let timer
+    window.addEventListener("mousemove", function() {
+        setupUnhideElementsSnackPolaroids();
+        clearTimeout(timer);
+
+        timer = setTimeout(setupHideElementsSnackPolaroids, 4000);
+    })
+
+
+    let currentImageHaQnto = Number
+    let openSnakbarImagesLivro=function(e){
+        setTimeout(function(){
+        let snackbarToOpen = document.getElementById("snackbar_showimages");
+        snackbarToOpen.style.display="grid";
+        flagImagesHaqntoAberto = true;
+
+        checkMouseOverContainersHaQnto();
+        setupSliderHaQnto(); /* função responsável por permitir movimento com o touch */
+        
+        document.body.style.cssText = 'overflow: hidden';
+        hideNavPanel();
+    },250)
+        
+        if (e==1){
+            document.getElementById('container_images').childNodes[1].style="display:flex; flex-direction:column;"
+            currentImageHaQnto = 1;
+            document.getElementById('container_images').childNodes[3].style="display:none;"
+            document.getElementById('container_images').childNodes[5].style="display:none;"
+            window.addEventListener("click", checkIfCanCloseHaQntoImages);
+            hideNavPanel();
+        }
+
+        if (e==2){
+            document.getElementById('container_images').childNodes[3].style="display:flex; flex-direction:column;"
+            currentImageHaQnto = 3;
+            document.getElementById('container_images').childNodes[1].style="display:none;"
+            document.getElementById('container_images').childNodes[5].style="display:none;"
+            window.addEventListener("click", checkIfCanCloseHaQntoImages);
+            hideNavPanel();
+        }
+
+        if(e==3){
+            document.getElementById('container_images').childNodes[5].style="display:flex; flex-direction:column;"
+            currentImageHaQnto = 5;
+            document.getElementById('container_images').childNodes[1].style="display:none;"
+            document.getElementById('container_images').childNodes[3].style="display:none;"
+            window.addEventListener("click", checkIfCanCloseHaQntoImages);
+            hideNavPanel();
+        }
+    }
+
+    let nextFotoHaQnto = function(){
+        currentImageHaQnto += 2;
+        if(currentImageHaQnto >= 7){
+            currentImageHaQnto = 1;
+            document.getElementById('container_images').childNodes[3].style="display:none;"
+            document.getElementById('container_images').childNodes[5].style="display:none;"
+            document.getElementById('container_images').childNodes[1].style="display:flex;flex-direction: column;"
+            hideNavPanel();
+        }
+
+        if(currentImageHaQnto == 3){
+            document.getElementById('container_images').childNodes[1].style="display:none;"
+            document.getElementById('container_images').childNodes[5].style="display:none;"
+            document.getElementById('container_images').childNodes[3].style="display:flex;flex-direction: column;"
+        }
+
+        if(currentImageHaQnto == 5){
+            document.getElementById('container_images').childNodes[1].style="display:none;"
+            document.getElementById('container_images').childNodes[3].style="display:none;"
+            document.getElementById('container_images').childNodes[5].style="display:flex;flex-direction: column;"
+            hideNavPanel();
+        }
+    }
+
+    let prevFotoHaQnto = function(){
+        currentImageHaQnto -= 2;
+        if(currentImageHaQnto <= 0){
+            currentImageHaQnto = 5;
+            document.getElementById('container_images').childNodes[1].style="display:none;"
+            document.getElementById('container_images').childNodes[3].style="display:none;"
+            document.getElementById('container_images').childNodes[5].style="display:flex;flex-direction: column;"  
+            hideNavPanel();          
+        }
+
+        if(currentImageHaQnto == 3){
+            document.getElementById('container_images').childNodes[1].style="display:none;"
+            document.getElementById('container_images').childNodes[5].style="display:none;"
+            document.getElementById('container_images').childNodes[3].style="display:flex;flex-direction: column;"
+            hideNavPanel();
+        }
+
+        if(currentImageHaQnto == 1){
+            document.getElementById('container_images').childNodes[5].style="display:none;"
+            document.getElementById('container_images').childNodes[3].style="display:none;"
+            document.getElementById('container_images').childNodes[1].style="display:flex;flex-direction: column;"
+            hideNavPanel();
+        }
+    }
+/* FIM SLIDESHOW POLAROIDS */
+    
+/* ENVIAR PALAVRA PARA A NUVEM DE PALAVRAS */
+    document.getElementById('participarSnack').addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        document.getElementById('btn_enviarPalavraHaQnto').setAttribute('disabled', 'a');
+        document.getElementById('li_btn_nuvemDePalavrasHaQnto').classList.add('borderAnimNuvem', 'inNuvem');
+        
+    
+        data = {'word': document.getElementById('txt_nuvemDePalavraHaQnto').value}
+        url = 'https://thiago.oioipio.com/wordcloud';
+        
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(result => {
+            document.getElementById('btn_enviarPalavraHaQnto').removeAttribute('disabled');
+            document.getElementById('li_btn_nuvemDePalavrasHaQnto').classList.remove('borderAnimNuvem', 'inNuvem');
+            
+            emailenviado();
+        }).catch(error => {
+            document.getElementById('btn_enviarPalavraHaQnto').removeAttribute('disabled');
+            document.getElementById('li_btn_nuvemDePalavrasHaQnto').classList.remove('borderAnimNuvem', 'inNuvem');
+            
+            emailnaoenviado();
+        })
+    })
+
+    let emailenviado = function(){
+        document.getElementById('participarSnack').innerHTML = "<div id='buttonCloseParticiparSnack'><span class='fa fa-times' aria-hidden='true' onclick='closeparticiparnuvemDePalavras()'></span></div><h3 style='margin-bottom: 20px'>A sua palavra foi enviada 😉</h3><h4>Obrigado pela sua participação! A palavra entrará para a nuvem na próxima atualização</h4>"
+        setTimeout(function(){ 
+            closeparticiparnuvemDePalavras(); 
+        }, 6000);
+    }
+
+    let palavraNaoEnviada = function(){
+        document.getElementById('participarSnack').innerHTML = "<div id='buttonCloseParticiparSnack'><span class='fa fa-times' aria-hidden='true' onclick='closeparticiparnuvemDePalavras()'></span></div><h3 style='margin-bottom: 20px'>Houve uma falha no servidor 😔<h3><h4>Desculpe, infelizmente a palavra não pode ser enviada. Por favor, tente novamente em alguns instantes</h4";
+        setTimeout(function(){ 
+            closeparticiparnuvemDePalavras(); 
+        }, 6000);
+    }
+/* FIM DO ENVIAR PALAVRA PARA A NUVEM DE PALAVRAS */
+</script>

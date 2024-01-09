@@ -371,7 +371,7 @@
     let arrow_left = document.getElementById("dropdown_arrowClose");
 
     let close_filter = function(){
-        filter_options.classList.toggle('show_dropdownOptions');
+        filter_options.classList.remove('show_dropdownOptions');
         arrow_right.style.display = "inline-block";
         arrow_left.style.display = "none";
         

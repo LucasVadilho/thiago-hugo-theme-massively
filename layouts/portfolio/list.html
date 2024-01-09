@@ -222,7 +222,7 @@
 
     .fa, .fa-shopping-cart,.fa-pinterest, .fa-behance-square, #projLegendaContainer{
         color: rgb(230, 230, 230);
-        filter:drop-shadow(2px 2px #0808080a);
+        filter:drop-shadow(2px 2px #050d1970);
     }
     
     .fa:hover, .fa-shopping-cart:hover, .fa-pinterest:hover, .fa-behance-square:hover, #closeProj:hover, .lojaLink:hover{
@@ -683,8 +683,8 @@
     let navPanelToggle = document.getElementById("navPanelToggle")
     let flagProjAberto = false
 
-    let lastResize = 0
-    let positionCloseProject = function() {
+    let lastResize = 0  
+    let positionCloseProject = function() { /* ESSA FUNÇÃO APARENTEMENTE NÃO ESTÁ MAIS USANDO, QUANDO ESTIVER LIMPANDO O SITE, CONFERE E TIRA ELA */
         if(Date.now() - lastResize > 500) {
             lastResize = Date.now()
 
@@ -774,14 +774,6 @@
             }
         }, false)
     }
-   
-    let corrigeVertical = function(){
-        if(document.getElementById('openProject').childNodes.length > 1){
-            document.getElementById('openProject').style.justifyContent = "none";
-        }else{
-            document.getElementById('openProject').style.justifyContent = "center";            
-        }
-    }
 
     let createSnackbar = function(id) {    /* Criando Snack do projeto */
         let snackbar = document.createElement('div')
@@ -845,7 +837,7 @@
 
         window.addEventListener("click", checkIfCanClose)
 
-        corrigeVertical()
+        realignVertical("openProject");
 
         /* Slide no mobile */
         setupSlider()
