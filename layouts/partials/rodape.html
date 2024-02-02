@@ -1,0 +1,48 @@
+{{ $data := index .Site.Data .Site.Language.Lang }}
+<div id="container-rodape">
+    <div id="borda"></div>
+
+    {{ with $data.social }}
+        <section>
+            <ul class="icons alt">
+                {{ with .newsletter }}
+                    <li><a href="{{ . }}" class="icon alt fa-envelope-open" target="_blank"><span class="label">Newsletter</span></a></li>
+                {{ end }}
+
+                {{ with .instagram}}
+                    <li><a href="{{ . }}" class="icon alt fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
+                {{ end }}
+
+                {{ with .youtube }}
+                    <li><a href="{{ . }}" class="icon fa-youtube-play" target="_blank"><span class="label">Youtube</span></a></li>
+                {{ end }}
+
+                {{ with .pinterest}}
+                    <li><a href="{{ . }}" class="icon alt fa-pinterest" target="_blank"><span class="label">Pinterest</span></a></li>
+                {{ end }}
+            </ul>
+        </section>
+    {{ end }} 
+    <p class="copyrightIntern">© Todas as imagens, textos, arquivos e direitos autorais de conteúdo Thiago David Vadilho (TD Vadilho)</p>
+</div>
+
+<style>
+    #container-rodape>section{
+        text-align: center;
+    }
+
+    #container-rodape{
+        padding-top: 0px;
+    }
+
+    .icons.alt{
+        margin-bottom: 20px !important;
+    }
+
+    #borda{
+        border-bottom: 2px solid #b6b6b6;
+        border-width: thin;
+        margin-bottom: 50px;
+        margin-top: 80px;
+    }
+</style>

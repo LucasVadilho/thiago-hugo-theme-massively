@@ -35,7 +35,8 @@
             {{- $paginator := .Paginator }}
             {{- $outer := . }}
             {{- partial "posts/pagination.html" (dict "paginator" $paginator "outer" $outer)}}
-            
+
+            {{- partial "rodape.html" . }}
         </div>
 
         {{- partial "copyright" . }}
@@ -82,6 +83,11 @@
         padding-bottom: 1rem;
     }
 
+    /* Correcao borda do rodapé */
+    #borda{
+        margin-top: 30px !important;
+    }
+    
 /* HEADER DO DIÁRIO */
     #container_blogHeader{
         display: inline-flex;
