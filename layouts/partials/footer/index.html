@@ -52,10 +52,19 @@
     <section class="split contact">
         {{ with $data.contactinfo.email }}
         <section id="splitcontact">
-            <h6><span class="underline_status">Status</span></h6>
-            <a href="mailto:{{ . }}"><p>Estou <span style="font-weight: bold;">disponível</span> para projetos de <span style="font-weight: bold;">design, ilustração</span> e 
-                <span style="font-weight: bold;">textuais</span>. Sinta-se à vontade para me enviar uma mensagem via formulário ou email!</p></a>
+            <h6><span class="underline-servicos">Serviços</span></h6>
+            <div id="container-servicos">
+                <ul class="icons alt servicos">
+                    <li><a href="mailto:{{ . }}" class="icon alt fa-paint-brush"><span class="label">ilustracao-design</span><p class="text-icons-servicos">Ilustração e Design</p></a></li>
+                    <li><a href="mailto:{{ . }}" class="icon alt fa-search"><span class="label">leitura-critica</span><p class="text-icons-servicos">Leitura Crítica</p></a></li>
+                    <li><a href="mailto:{{ . }}" class="icon alt fa-align-justify"><span class="label">criacao-de-texto</span><p class="text-icons-servicos">Criação de Texto</p></a></li>
+                </ul>
+                <p>
+                    <a href="mailto:{{ . }}"><span class="servicos-status">Agenda aberta</span> para projetos. Por favor, sinta-se livre para me contar sobre a sua ideia 😊 </a>
+                </p>
+            </div>
         </section>
+
         {{ end }}
 
         <section id="splitcontact">
@@ -119,9 +128,48 @@
         padding: 0 0.5rem 0 0;
     }
 
-    .underline_status{
+    ul.icons li:first-child{
+        margin-left: 7px;
+    }
+
+    .underline-servicos{
         border-bottom: 2px solid #299928;
         border-width: medium;
+    }
+
+    #container-servicos p{
+        font-family: 'Helvetica';
+        font-weight: 500;
+        color: #717981;
+    }
+
+    #footer a:hover > .text-icons-servicos {
+        color: #18bfef !important;
+        transform: .2s;
+    }
+
+    .icons.alt.servicos{
+        margin: 0 0 1rem 0;
+    }
+
+    .icons.alt.servicos>li{
+        text-align: center;
+        height: 75px;
+        padding: 0 1rem 0 0;
+    }
+    
+    .servicos-status{
+        font-weight: bold;
+    }
+    
+    .text-icons-servicos{
+        text-align: center;
+        line-height: 1.2;
+        font-size: 0.7rem !important;
+        text-wrap: balance;
+        margin-top: 2px;
+        font-weight: bold !important;
+        width: 52px;
     }
 
     #SnackbarFAQ {
@@ -171,8 +219,7 @@
     }
     
 
-/* REGRAS DE MEDIA */
-    
+/* REGRAS DE MEDIA */   
     @media screen and (min-width: 981px){
         #message{
             width: 470px;

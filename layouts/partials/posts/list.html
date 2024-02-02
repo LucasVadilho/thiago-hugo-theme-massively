@@ -9,7 +9,7 @@
                     <h3 class="histNumList"> {{ .Params.Historietanumero }} </h3> 
                 </header>
             
-                <a href="{{ .Permalink }}" class="image fit img_shadow"><img src="{{ .Params.Imagethumb | relURL }}" alt="" /></a>
+                <a href="{{ .Permalink }}" class="image fit img_shadow"><img src="{{ .Params.Imagethumb | relURL }}" alt="Thumb da historieta" /></a>
                 
                 <p class="txt_informaçõesPost">
                     <span class="icon alt fa-calendar-o"> {{ .Params.Datapost }} </span> 
@@ -25,7 +25,6 @@
             </article>
         {{ end }}
     </section>
-    <p class="copyrightIntern">© Todas as imagens, textos, arquivos e direitos autorais de conteúdo Thiago David Vadilho (TD Vadilho)</p>
 </body>
 
 <style>

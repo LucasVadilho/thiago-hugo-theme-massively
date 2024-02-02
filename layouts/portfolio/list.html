@@ -1,5 +1,5 @@
 {{- partial "htmlhead" . -}}
-
+{{ $data := index .Site.Data .Site.Language.Lang }}
 <body lang='{{ .Site.LanguageCode | default "en-us" }}' class="is-preload">
     
     <div id="wrapper" class="fade-in">
@@ -69,8 +69,7 @@
                 </div>
 
                 <div id="containerProj"></div>
-                  
-                <p class="copyrightIntern">© Todas as imagens, textos, arquivos e direitos autorais de conteúdo Thiago David Vadilho (TD Vadilho)</p>
+                {{- partial "rodape.html" . }}
             </div>
         </div>
         {{- partial "copyright" . }} 
@@ -213,11 +212,11 @@
         text-decoration: underline;
     }
 
-    #behanceButton, #pinterestButton, #buttonCloseProject{
+    #pinterestButton, #buttonCloseProject{
         margin-left: 10px;
     }
 
-    .fa, .fa-shopping-cart,.fa-pinterest, .fa-behance-square, #projLegendaContainer{
+    .fa, .fa-shopping-cart, #projLegendaContainer{
         color: rgb(230, 230, 230);
         filter:drop-shadow(2px 2px #050d1970);
     }
