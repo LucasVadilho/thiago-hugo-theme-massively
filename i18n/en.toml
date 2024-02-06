@@ -23,9 +23,9 @@
 [NAV_CONTACT]
   other = "Contato"
 [PAGINATION_NEXT]
-  other = "Next"
+  other = "Avançar"
 [PAGINATION_PREVIOUS]
-  other = "Prev"
+  other = "Voltar"
 [PAGINATION_FIRST]
   other = "First"
 [PAGINATION_LAST]
