@@ -30,39 +30,45 @@
                                         <i class="fa fa-share-alt fa-lg"></i> Compartilhar
                                     </button>
                                 </div>
-
-                                {{ if isset .Params "processocriativo" }}
-                                    <div id="mySlidesProcessoID">
-                                        <a id="prevProcesso" onclick="plusSlides(-1)">&#10094;</a>
-                                            {{ range $processoCriativo := .Params.processoCriativo }}
-                                                <div class="mySlides fade">
-                                                    {{ if strings.Contains $processoCriativo "youtube" }}
-                                                        <iframe
-                                                            src={{ $processoCriativo }}
-                                                            title="YouTube video player" frameborder="0"
-                                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                            allowfullscreen>
-                                                        </iframe>
-                                                    {{ else }}
-                                                        <img src="{{ $processoCriativo }}" alt="imagens do processo criativo">
-                                                    {{ end }}
-                                                </div>
-                                            {{ end }}
-                                        <a id="nextProcesso" onclick="plusSlides(1)">&#10095;</a>
-                                        </div>
-                                    </div>
-
-                                    <div id="posicaoDotsProcesso">
-                                        {{ range $i := (seq (len .Params.processoCriativo)) }}
-                                            <span class="dot" onclick='currentSlide("{{ $i }}")'></span>
-                                        {{ end }}
-                                    </div>
-                                {{ end }}
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <p class="copyrightIntern">© Todas as imagens, textos, arquivos e direitos autorais de conteúdo Thiago David Vadilho (TD Vadilho)</p>
+
+            <div id="borda"></div>
+            <div id="cusdis_thread"
+                data-host="https://cusdis.com"
+                data-app-id="b935f701-f887-42b4-96cf-1852bf2005b2"
+                data-page-id="{{ .Params.UniqueID }}"
+                data-page-url="{{ .Permalink }}"
+                data-page-title="{{ .Title }}"
+                >
+            </div>
+            <script>
+            window.CUSDIS_LOCALE = {
+                powered_by: 'Powered by Cusdis',
+                post_comment: 'Postar comentário',
+                loading: 'Carregando',
+              
+                // comment
+                email: 'Email (opcional)',
+                nickname: 'Nome',
+                reply_placeholder: 'Responder...',
+                reply_btn: 'Responder',
+                sending: 'enviando...',
+              
+                // reply
+                mod_badge: 'MOD',
+                content_is_required: 'Conteúdo é requerido',
+                nickname_is_required: 'Apelido é requerido',
+              
+                comment_has_been_sent:
+                  'Seu comentário foi enviado. Por favor aguarde pela aprovação.',
+              }
+            </script>
+            <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+            
+            {{- partial "rodape.html" . }}
         </div>
 
         {{- partial "copyright" . }}
@@ -111,6 +117,7 @@
 </body>
 
 <style>
+
     .mySlides {
         flex-grow: 1
     }
@@ -453,54 +460,11 @@
         margin-left: 0px;
     }
 
-    /* processo */
-    #container_processo {
-        text-align: center;
-        margin-top: 35px;
-    }
-
-    #mySlidesProcessoID{
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: auto;
-        margin-top: 15px;
-    }
-
-    .slideshow-container {
-        position: relative;
-        margin: auto;
-    }
-
-    #prevProcesso, #nextProcesso {
-        cursor: pointer;
-        margin-top: -10px;  
-        padding: 8px;
-        transition: 0.6s ease;
-        border-radius: 0 3px 3px 0;
-        user-select: none;
-        font-size: 2rem;
-    }
-    
-    #posicaoDotsProcesso {
-        display: flex;
-        justify-content: center;
-    }
-
-    .dot {
-        cursor: pointer;
-        height: 12px;
-        width: 12px;
-        margin: 0 2px;
-        background-color: #bbb;
-        border-radius: 50%;
-        display: inline-block;
-        transition: background-color 0.6s ease;
-    }
-
-    .active, .dot:hover {
-        background-color: #717171;
+    #borda{
+        border-bottom: 2px solid #b6b6b6;
+        border-width: thin;
+        margin-bottom: 50px;
+        margin-top: 10px;
     }
 
     /* Fading animation */
