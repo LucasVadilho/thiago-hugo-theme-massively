@@ -745,23 +745,23 @@
 
 <script>
     let realignVertical = function(e){
+        // setTimeout(() => {
         let snackbarChildrenSize = 0;
-        let snackElement = document.getElementById(e)
+        let snackElement = document.getElementById(e);
+        console.log(snackElement);
         let snackbarChildrenNumber = snackElement.children.length;
-        let i = 0;
-       
-        for(i = 0; i < snackbarChildrenNumber; i++){
+               
+        for(let i = 0; i < snackbarChildrenNumber; i++){
+            console.log(snackElement.children[i].height);
             snackbarChildrenSize += snackElement.children[i].height;
         }
 
-        if(i = snackbarChildrenNumber){
-            console.log(snackbarChildrenSize);
-            if(snackbarChildrenSize < (snackElement.offsetHeight)){
-                snackElement.classList.add("realignClass");
-            } else{
-                snackElement.classList.remove("realignClass");
-            }
+        if(snackbarChildrenSize < (snackElement.offsetHeight)){
+            snackElement.classList.add("realignClass");
+        } else{
+            snackElement.classList.remove("realignClass");
         }
+        // }, 2000);
     }
 </script>
 
