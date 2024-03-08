@@ -704,7 +704,7 @@
     let flagProjAberto = false
 
     let lastResize = 0  
-    let positionCloseProject = function() { /* ESSA FUNÇÃO APARENTEMENTE NÃO ESTÁ MAIS USANDO, QUANDO ESTIVER LIMPANDO O SITE, CONFERE E TIRA ELA */
+    let positionCloseProject = function() { 
         if(Date.now() - lastResize > 500) {
             lastResize = Date.now()
 
@@ -834,10 +834,10 @@
             </div>`
 
         let openProject = `<div id='openProject'>` /* Puxando os arquivos imagem e vídeo do content */
-        let itens = JSON.parse(document.getElementById(id).getAttribute('itens'))
+        let itens = JSON.parse(document.getElementById(id).getAttribute('itens'));
         for (let item of itens){
             if (item.type == 'image'){
-                openProject += '<img src="' + item.src + '" alt="'+ item.alt +'"  style="display:block; object-fit: contain; max-height: 89vh;" class="snackZoom" id="snackZoomId"/>'
+                openProject += '<img src="' + item.src + '" width="' + item.width + 'px" height="' + item.height + 'px" alt="'+ item.alt +'"  style="display:block; object-fit: contain; max-height: 89vh;" class="snackZoom" id="snackZoomId"/>'
             } else {
                 openProject += '<div class="iframecontainer" id="snackZoomId"><iframe src="' + item.src + '" alt="' + item.alt + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" frameorder="0" vspace="0" hspace="0" marginwidth="0" marginheight="0" width="100%" style="margin: 0 0 0 0" frameBorder="0" scrolling="no" style="border: 0px" allowfullscreen></iframe></div>'
             } 
