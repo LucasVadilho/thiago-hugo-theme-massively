@@ -83,10 +83,11 @@
                                      pinterestlink="{{ .Params.pinterestlink }}"
                                      behancelink="{{ .Params.behancelink }}"
                                      class="{{ .Params.class }}"
+                                     duasoumaiscolunas="{{ .Params.specialclass }}"
                                      >
                                     <img src="{{ .Params.Thumbprojeto }}" alt="{{ .Params.altthumb }}">
                                 </div>
-                                        
+                                     
                             </div> 
                         {{ end }}
                     </div>
@@ -135,6 +136,10 @@
         margin-bottom: 15px;
         width: fit-content;
         overflow: hidden;
+    }
+
+    .container_imgThumbduascolunas{
+        break-after: avoid-column;
     }
 
     .container_imgThumb{
