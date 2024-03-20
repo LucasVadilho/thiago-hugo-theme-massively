@@ -73,7 +73,7 @@
                     <h2>Capas de livros</h2>
                     <div id="organizer_projetos">
                         {{ range where .Pages.ByDate "Params.categoriaprojeto" "Capas de Livros" }}
-                            <div class="projeto-container">
+                            <div class="{{ .Params.containerclass }}">
                                 <div id="{{ .Params.Titleprojeto }}" 
                                      onclick="abrirproj(event,'{{ .Params.Titleprojeto }}')"
                                      itens="{{ jsonify .Params.Itens }}"
@@ -83,8 +83,7 @@
                                      pinterestlink="{{ .Params.pinterestlink }}"
                                      behancelink="{{ .Params.behancelink }}"
                                      class="{{ .Params.class }}"
-                                     duasoumaiscolunas="{{ .Params.specialclass }}"
-                                     >
+                                >
                                     <img src="{{ .Params.Thumbprojeto }}" alt="{{ .Params.altthumb }}">
                                 </div>
                                      
