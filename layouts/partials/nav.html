@@ -9,10 +9,13 @@
         <li class="{{ if eq ($currentPage.RelPermalink) (`/portfolio/`) }}active{{end}}"><a href='{{ "/portfolio" | relLangURL }}'>Portfólio</a></li>
         <li class="{{ if eq ($currentPage.RelPermalink) (`/blog/`) }}active{{end}}"><a href='{{ "/blog" | relLangURL }}'>Blog</a></li>
         <li class="{{ if eq ($currentPage.RelPermalink) (`/sobre/`) }}active{{end}}"><a href='{{ "/sobre" | relLangURL }}'>Sobre</a></li>
+        
 
         {{ with $data.contactinfo }}
             <li><a href='{{ "#contatar" | relLangURL }}'>{{ i18n "NAV_CONTACT" . }}</a></li>
         {{ end }}
+
+        <li class="{{ if eq ($currentPage.RelPermalink) (`/loja/`) }}active{{end}}"><a href='https://umapenca.com/tdvadilho/' target="_blank">Loja</a></li>
         {{ if .IsTranslated }}
         {{ range .AllTranslations }}
        
@@ -21,21 +24,24 @@
     </ul>
 
     <spam id="socialicons_hide">
-        {{ with $data.social }}
+        <ul class="icons">
+            <li><a class="icon alt fa-ellipsis-h" target="_blank" onclick="displayredes()"><span class="label">Instagram</span></a></li>
+        </ul>
+        <!-- {{ with $data.social }}
             <ul class="icons">
                 {{ with .instagram}}
                     <li><a href="{{ . }}" class="icon alt fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
                 {{ end }}
 
-                {{ with .pinterest}}
-                    <li><a href="{{ . }}" class="icon alt fa-pinterest" target="_blank"><span class="label">Pinterest</span></a></li>
+                {{ with .twitter}}
+                    <li><a href="{{ . }}" class="icon alt fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
                 {{ end }}  
                 
                 {{ with .youtube }}
                     <li><a href="{{ . }}" class="icon fa-youtube-play" target="_blank"><span class="label">Youtube</span></a></li>
                 {{ end }}
             </ul>    
-        {{ end }}
+        {{ end }} -->
     </spam>
 </nav>
 

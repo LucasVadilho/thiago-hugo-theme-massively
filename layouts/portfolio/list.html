@@ -28,7 +28,7 @@
                     <h2>Ilustrações</h2>
                         <div id="organizer_projetos">
                             {{ range where .Pages.ByDate "Params.categoriaprojeto" "Ilustrações" }}
-                                <div class="projeto-container">
+                                <div class="{{ .Params.containerclass }}">
                                     <div id="{{ .Params.Titleprojeto }}" 
                                          onclick="abrirproj(event, '{{ .Params.Titleprojeto }}')"
                                          itens="{{ jsonify .Params.Itens }}"
@@ -50,7 +50,7 @@
                     <h2>Pôsteres</h2>
                     <div id="organizer_projetos">
                         {{ range where .Pages.ByDate "Params.categoriaprojeto" "Posteres" }}
-                            <div class="projeto-container">
+                            <div class="{{ .Params.containerclass }}">
                                 <div id="{{ .Params.Titleprojeto }}" 
                                      onclick="abrirproj(event,'{{ .Params.Titleprojeto }}')"
                                      itens="{{ jsonify .Params.Itens }}"
@@ -137,7 +137,7 @@
         overflow: hidden;
     }
 
-    .container_imgThumbduascolunas{
+    .proj-container-duascolunas{
         break-after: avoid-column;
     }
 
@@ -235,16 +235,20 @@
         align-items: baseline;
     }
 
+    .logoContainerLoja{
+        margin-right: 10px
+    }
+
     .lojaLink{
         color: rgb(230, 230, 230);
         text-decoration: underline;
     }
 
-    #pinterestButton, #buttonCloseProject{
-        margin-left: 10px;
+    .fa-shopping-cart{
+        color: rgb(238, 255, 235);
     }
 
-    .fa, .fa-shopping-cart, #projLegendaContainer{
+    .fa, #projLegendaContainer{
         color: rgb(230, 230, 230);
         filter:drop-shadow(2px 2px #050d1970);
     }
@@ -304,6 +308,7 @@
 
     #projLegendaContainer p{
         text-align: center;
+        font-size: 0.9rem;
     }
 
 /* ORGANIZA O FILTRO DOS PROJETOS */
