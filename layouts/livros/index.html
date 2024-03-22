@@ -434,9 +434,7 @@
                     el.currentTarget.classList.add('selected')
                     paginaDoLivro = document.getElementById('paginaDoLivroSelecionado_id' + currentFocus);
                     paginaDoLivro.style.display="block";
-                    
-                    //
-                    // window.location.href = '?id=' + currentFocus;
+                
                     window.history.replaceState('', 'title', '?id=' + currentFocus);
                 })
             }
