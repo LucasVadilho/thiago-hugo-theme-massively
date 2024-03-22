@@ -292,6 +292,20 @@
 </style>
 
 <script type="text/javascript">
+
+/*CHECAR SE ABRIU ALGUMA ID ESPECIFICA*/
+window.addEventListener('load', ()=> {
+        const id = new URLSearchParams(window.location.search).get('id');
+        console.log(id)
+        if(id=='0') {
+            document.getElementById('painel-0').click();
+        }
+        if(id=='1') {
+            document.getElementById('painel-1').click();
+        }
+    });
+
+
     /* COMPARTILHAMENTO */
     function fbSharing(post_url) {
             var url = new String(post_url);
@@ -315,6 +329,7 @@
         
         /* Carregando links de compartilhamento */
         let urlCurrentPage = window.location.href;
+        urlCurrentPage = urlCurrentPage + "/?id=haqnto"
     
         /* WPP */
         document.getElementById('wpp_sharebutton').innerHTML += 
@@ -433,7 +448,10 @@
                     el.currentTarget.classList.add('selected')
                     paginaDoLivro = document.getElementById('paginaDoLivroSelecionado_id' + currentFocus);
                     paginaDoLivro.style.display="block";
-   
+                    
+                    //
+                    // window.location.href = '?id=' + currentFocus;
+                    window.history.replaceState('', 'title', '?id=' + currentFocus);
                 })
             }
         }
@@ -441,7 +459,7 @@
         document.getElementById('carrousel-left').addEventListener("click", () => {
             currentFocus = currentFocus > 0 ? currentFocus - 1 : images.length - 1
             images[currentFocus].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })
-            })
+        })
 
         document.getElementById('carrousel-right').addEventListener("click", () => {
             currentFocus = currentFocus < images.length - 1 ? currentFocus + 1 : 0

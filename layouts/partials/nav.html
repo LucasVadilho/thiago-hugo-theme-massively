@@ -9,10 +9,13 @@
         <li class="{{ if eq ($currentPage.RelPermalink) (`/portfolio/`) }}active{{end}}"><a href='{{ "/portfolio" | relLangURL }}'>Portfólio</a></li>
         <li class="{{ if eq ($currentPage.RelPermalink) (`/blog/`) }}active{{end}}"><a href='{{ "/blog" | relLangURL }}'>Blog</a></li>
         <li class="{{ if eq ($currentPage.RelPermalink) (`/sobre/`) }}active{{end}}"><a href='{{ "/sobre" | relLangURL }}'>Sobre</a></li>
+        
 
         {{ with $data.contactinfo }}
             <li><a href='{{ "#contatar" | relLangURL }}'>{{ i18n "NAV_CONTACT" . }}</a></li>
         {{ end }}
+
+        <li class="{{ if eq ($currentPage.RelPermalink) (`/loja/`) }}active{{end}}"><a href='https://umapenca.com/tdvadilho/' target="_blank">Loja</a></li>
         {{ if .IsTranslated }}
         {{ range .AllTranslations }}
        
@@ -27,8 +30,8 @@
                     <li><a href="{{ . }}" class="icon alt fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
                 {{ end }}
 
-                {{ with .pinterest}}
-                    <li><a href="{{ . }}" class="icon alt fa-pinterest" target="_blank"><span class="label">Pinterest</span></a></li>
+                {{ with .twitter}}
+                    <li><a href="{{ . }}" class="icon alt fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
                 {{ end }}  
                 
                 {{ with .youtube }}
@@ -40,7 +43,7 @@
 </nav>
 
 <style>
-    @media screen and (max-width:1053px){
+    @media screen and (max-width:1150px) and (min-width:982px){
         #socialicons_hide{
             display: none;
         }

@@ -84,15 +84,15 @@
             <h6>{{ i18n "CONTACT_SOCIAL" . }}</h6>
             <ul class="icons alt">
                 {{ with .instagram}}
-                    <li><a href="{{ . }}" class="icon alt fa-instagram"><span class="label">Instagram</span></a></li>
+                    <li><a href="{{ . }}" class="icon alt fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
                 {{ end }}
 
-                {{ with .pinterest}}
-                    <li><a href="{{ . }}" class="icon alt fa-pinterest"><span class="label">Pinterest</span></a></li>
+                {{ with .twitter}}
+                    <li><a href="{{ . }}" class="icon alt fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
                 {{ end }}
 
                 {{ with .youtube }}
-                    <li><a href="{{ . }}" class="icon alt fa-youtube-play"><span class="label">Youtube</span></a></li>
+                    <li><a href="{{ . }}" class="icon alt fa-youtube-play" target="_blank"><span class="label">Youtube</span></a></li>
                 {{ end }}
             </ul>
         </section>
