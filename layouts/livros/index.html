@@ -292,20 +292,6 @@
 </style>
 
 <script type="text/javascript">
-
-/*CHECAR SE ABRIU ALGUMA ID ESPECIFICA*/
-window.addEventListener('load', ()=> {
-        const id = new URLSearchParams(window.location.search).get('id');
-        console.log(id)
-        if(id=='0') {
-            document.getElementById('painel-0').click();
-        }
-        if(id=='1') {
-            document.getElementById('painel-1').click();
-        }
-    });
-
-
     /* COMPARTILHAMENTO */
     function fbSharing(post_url) {
             var url = new String(post_url);
@@ -467,8 +453,10 @@ window.addEventListener('load', ()=> {
         })
 
         document.addEventListener("DOMContentLoaded", (event) => { 
-            setupCarousel()
-            images[0].click()
+            setupCarousel();
+            
+            let id = new URLSearchParams(window.location.search).get('id') || 0;
+            images[id].click();
         });
     // FIM CARROSSEL TODOS OS LIVROS
 </script>
