@@ -152,7 +152,7 @@
     </div>
 
     <div id="livroSelecionadoDadosWordcloud" style="margin-top: -1px;">
-        <img src="/images/haqntopag/galhoFrenteDados_Colagem.jpg" alt="ilustração de um galho de uma tartaré no qual estão marcados os seguintes dados do livro: gênero: ficção; páginas: em breve; edição: 1ª ed.; editora: Flyve; papel: pólen 80g; capa: brochura; dimensões: 21x14cm; isbn: 978-65-00-84745-1; classificação indicativa: 14">
+        <img src="/images/haqntopag/galhoFrenteDados_Colagem-atualizado.jpg" alt="ilustração de um galho de uma tartaré no qual estão marcados os seguintes dados do livro: gênero: ficção; páginas: em breve; edição: 1ª ed.; editora: Flyve; papel: pólen 80g; capa: brochura; dimensões: 21x14cm; isbn: 978-65-00-84745-1; classificação indicativa: 14">
     </div>
 
     <div id="background_gradient2">
@@ -178,23 +178,8 @@
             <div class="txtfield_comentariosrespostasextras">
                 <div class="txt_comentariosdopublico selectedtext">
                     <div class="boxDosTextos">
-                        <p class="frase_comentariopublico">"Esse é o espaço destinado para o comentário de número 1"</p>
-                        <p class="autoria_comentariopublico"><i>— Pessoa n1</i></p>
-                    </div>
-
-                    <div class="boxDosTextos">
-                        <p class="frase_comentariopublico">"Esse é o espaço destinado para o comentário de número 2"</p>
-                        <p class="autoria_comentariopublico"><i>— Pessoa n2</i></p>
-                    </div>
-
-                    <div class="boxDosTextos">
-                        <p class="frase_comentariopublico">"Esse é o espaço destinado para o comentário de número 3"</p>
-                        <p class="autoria_comentariopublico"><i>— Pessoa n3</i></p>
-                    </div>
-
-                    <div class="boxDosTextos">
-                        <p class="frase_comentariopublico">"Esse é o espaço destinado para o comentário de número 4"</p>
-                        <p class="autoria_comentariopublico"><i>— Pessoa n4</i></p>
+                        <p class="frase_comentariopublico">"A narrativa é desenvolvida de uma forma bonita quase poética, principalmente na parte sobrenatural da trama, envolvendo o leitor em um realismo mágico, que após a explicação final levará o leitor a se emocionar (por aqui eu enchi os olhos de lágrimas)."</p>
+                        <p class="autoria_comentariopublico"><i>— Tathiane (<a href="https://www.instagram.com/doidosporserieselivros/" target='_blank' style="text-decoration: underline; color:#3a2868">@Doidosporserieselivros</a>)</i></p>
                     </div>
                 </div>
 
@@ -245,10 +230,10 @@
     </div>
 </div>
 
-<!-- COMPRAR LIVRO SNAKBAR -->
+<!-- COMPRAR LIVRO SNAKBAR ***** MUDAR QUANDO SAIR NOS MARKETPLACES!!! ******-->
 <div id="comprarLivroFisicoSnack">
     <div class='buttonCloseComprarLivroFisicoSnack'><span class='fa fa-times' aria-hidden='true' onclick="closeComprarLivroFisico()"></span></div>
-    <h3>O livro entrará na pré-venda no dia 16 de janeiro de 2024. Estamos quase lá!</h3>
+    <h3>Por favor, escolha por onde quer comprar</h3>
     
     <div class="container_prePreVendaNewsletter">
         <div class="preprevenda">
@@ -264,30 +249,9 @@
                 </a>
             </p>
         </div>
-
-        <div class="lembrete">
-            <h4>Se você não se encaixa na Pré Pré-Venda:</h4>
-            <p> Será que eu poderia te lembrar da abertura da pré-venda no dia 16?
-            Basta se inscreva na minha newsletter ou, se preferir, seguir o meu perfil no instagram</p>
-
-            {{ with $data.social }}
-                <section>
-                    <ul class="icons alt">
-                        {{ with .newsletter }}
-                            <li><a href="{{ . }}" class="icon alt fa-envelope-open" target="_blank"><span class="label">Newsletter</span></a></li>
-                        {{ end }}
-
-                        {{ with .instagram}}
-                            <li><a href="{{ . }}" class="icon alt fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
-                        {{ end }}
-                    </ul>
-                </section>
-            {{ end }}
-
-        </div>
     </div>
 
-    <h3>De coração, muito obrigado pelo seu interesse!!!</h3>
+    <h3>De coração, muito obrigado pelo seu apoio!!!</h3>
 </div>
 <!-- FIM COMPRAR LIVRO SNAKBAR -->
 
@@ -295,7 +259,7 @@
 <div id="participarSnack">
     <div id='buttonCloseParticiparSnack'><span class='fa fa-times' aria-hidden='true' onclick="closeparticiparnuvemDePalavras()"></span></div>
 
-    <h4>Por favor, digite <i>uma</i> nova palavra ou reforce uma já existente:</h4>
+    <h4>Por favor, digite o que achou do livro ou reforce uma palavra existente:</h4>
     <form id="form_nuvemDePalavras" method="post">
         <div class="field">
             <input type="text" name="txt_nuvemDePalavraHaQnto" id="txt_nuvemDePalavraHaQnto" required spellcheck="true"/>
