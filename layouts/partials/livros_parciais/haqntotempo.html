@@ -230,28 +230,27 @@
     </div>
 </div>
 
-<!-- COMPRAR LIVRO SNAKBAR ***** MUDAR QUANDO SAIR NOS MARKETPLACES!!! ******-->
 <div id="comprarLivroFisicoSnack">
     <div class='buttonCloseComprarLivroFisicoSnack'><span class='fa fa-times' aria-hidden='true' onclick="closeComprarLivroFisico()"></span></div>
-    <h3>Por favor, escolha por onde quer comprar</h3>
+    <h3>Por favor, selecione por onde deseja adquirir o livro</h3>
     
-    <div class="container_prePreVendaNewsletter">
-        <div class="preprevenda">
-            <h4>Se você é de Campinas ou região:</h4>
-            <p><b>A Pré pré-venda já foi liberada</b>. O objetivo é juntar os pedidos para que o frete saia de graça para você. 
-                Se estiver interessado em garantir o livro agora, por favor, clique no botão
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLScPsAVWA9xEuAwZOQRigzuyRvVI6j7UusUd_o2SudQ4TlAB7g/viewform" target="_blank">
-                    <ul class="actions">
-                        <li id="btn_formularioPrePreVenda">
-                            <input type="submit" id="btn_formularioPrePreVenda" value='Pré pré-venda'/>
-                        </li>
-                    </ul>
-                </a>
-            </p>
-        </div>
+    <div class="container-locaisdecompra">
+        <a href="https://flyve.com.br/508/h-quanto-tempo-voc-n-o-olha-para-as-estrelas-" target="_blank">
+            <div class="localdecompra-flyve" style="margin-right: 35px; width: 120px; padding: 10px;">
+                <img src="/images/logos-lojas/logo-flyve.svg" alt="Logo Editora Flyve">
+                <h5 style="text-align: center; color: #FF3939">Editora<br>Flyve</h5>
+            </div>
+        </a>
+
+        <a href="https://amzn.to/3PNqnJ8" target="_blank">
+            <div class="localdecompra-amazon" style="width: 120px;padding: 10px">
+                <img src="/images/logos-lojas/logo-amazon.svg" alt="Logo Amazon">
+                <h5 style="text-align: center; color: black">Amazon<br>Store</h5>
+            </div>
+        </a>
     </div>
 
-    <h3>De coração, muito obrigado pelo seu apoio!!!</h3>
+    <h4>Muito obrigado pelo seu apoio, espero que tenha uma ótima leitura!</h4>
 </div>
 <!-- FIM COMPRAR LIVRO SNAKBAR -->
 
@@ -514,11 +513,13 @@
         }
 
         #comprarLivroFisicoSnack{
+            display: inline-flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: center;
             position: fixed;
             display: none;
-            flex-direction: row;
-            flex-wrap: wrap;
-            background-color: rgb(255, 255, 255);
+            background-color: #ffffff;
             box-shadow: 0 100vw 100vw 100vw rgba(30, 37, 45, 0.623);
             z-index: 25;
             -webkit-animation: fadein 0.5s;
@@ -526,39 +527,43 @@
             top: 50%;
             padding: 25px 20px 25px 20px;
             width: 800px;
-            justify-content: center;
             transform: translate(-50%, -50%);
             left: 50%;
             overflow-y: auto !important;
             max-height: 100dvh;
         }
 
-        #comprarLivroFisicoSnack>h3{
+        #comprarLivroFisicoSnack>h3,#comprarLivroFisicoSnack>h4{
             text-wrap: balance;
+            color: #202023;
         }
 
-        .container_prePreVendaNewsletter{
+        .container-locaisdecompra{
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             float: left;
-            max-width: 100%;
-            margin-top: 30px;
-            justify-content: space-around;
-        }
-
-        .preprevenda, .lembrete{
-            width: 45%;   
-        }
-
-        .preprevenda>ul{
-            margin-top: 15px;
+            width: 80%;
+            margin-top: 20px;
+            margin-bottom: 15px;
             justify-content: center;
         }
-        
-        .lembrete>section{
-            margin-top: 15px;
-            text-align: center;
+
+        .localdecompra-amazon:hover,.localdecompra-flyve:hover{
+            cursor: pointer;
+            transform: perspective(300px) rotateY(1deg) translateZ(10px) scale(0.97);
+            transition: transform .2s;
+        }
+
+        .localdecompra-amazon,.localdecompra-flyve{
+            -webkit-backface-visibility: hidden;
+            -webkit-transform: translateZ(0) scale(1, 1);
+            filter: blur(0);
+            -webkit-filter: blur(0);
+            transition: transform .2s;
+            border-radius: 4px;
+            box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
+            background-color: white;
         }
         
     /* Livro selecionado, sinopse e msg do autor */
@@ -1031,12 +1036,6 @@
     }
 
     @media screen and (max-width: 646px){
-        .preprevenda, .lembrete {
-            width: 100%;
-        }
-        .container_prePreVendaNewsletter {
-            flex-direction: column;
-        }
         #participarSnack{
             width: 80%;
         }
@@ -1335,8 +1334,7 @@
     }
     
     let comprarLivroFisico = function(c) {
-        window.open("https://flyve.com.br/508/h-quanto-tempo-voc-n-o-olha-para-as-estrelas-");
-        /* c.stopPropagation()
+        c.stopPropagation()
         let containerComprarLivroFisico = document.getElementById("comprarLivroFisicoSnack");
         containerComprarLivroFisico.style.display = "inline-flex";
         flagComprarLivroFisicoAberto  = true;
@@ -1346,7 +1344,7 @@
             } else{
                 closeComprarLivroFisico();  
             }
-        }, options = {"once": true}) */
+        }, options = {"once": true})
     }
 
     document.addEventListener('keydown', (ev) => {
