@@ -87,6 +87,10 @@
                     <li><a href="{{ . }}" class="icon alt fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
                 {{ end }}
 
+                {{ with .facebook}}
+                    <li><a href="{{ . }}" class="icon alt fa-facebook" target="_blank"><span class="label">Facebook</span></a></li>
+                {{ end }}
+
                 {{ with .twitter}}
                     <li><a href="{{ . }}" class="icon alt fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
                 {{ end }}

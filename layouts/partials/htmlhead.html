@@ -30,16 +30,18 @@
         {{ if and (isset .Params "og") .Params.og }}
             <meta property="og:url"                 content="{{ .Permalink }}" />
             <meta property="og:type"                content="{{ .Params.ogType }}" />
-            <meta property="og:title"               content="{{ .Params.title }}" />
-            <meta property="og:description"         content="{{ .Params.description }}" />
+            <meta property="og:title"               content="{{ .Params.ogTitle }}" />
+            <meta property="og:description"         content="{{ .Params.ogDescription }}" />
             <meta property="og:image"               itemprop="image" content="{{ absURL .Params.imageCompartilhar }}" />
-            <meta property="og:image:secure_url"    itemprop="image" content="{{ absURL .Params.imageCompartilhar }}" />
+            <meta property="og:image:secure_url"    itemprop="image" content="{{ absURL .Params.imageSecureCompartilhar }}" />
+            <meta property="article:tag"            content="{{ .Params.ogKeywords }}">
+            <meta property="article:author"         content="{{ .Params.ogAuthor }}">
         {{ else }}
             <meta property="og:type"                content="website" />
-            <meta property="og:image:secure_url"    itemprop="image" content="https://www.tdvadilho.com/images/favicon.png" />
-            <meta property="og:title"               content="TD Vadilho"/>
-            <meta property="og: description"        content="Venha conhecer o site oficial de TD Vadilho. Será um prazer te ter por lá!"/>
-            <meta property="og: url"                content="www.tdvadilho.com"/>
+            <meta property="og:image:secure_url"    itemprop="image" content="https://www.tdvadilho.com/images/NovidadeEmCadaGota-botton-©TDVadilho-noai.png" />
+            <meta property="og:title"               content="TD Vadilho | Escritor, designer e ilustrador"/>
+            <meta property="og:description"         content="Olá! Aqui você pode ler histórias e ter acesso aos meus projetos de design e ilustração. Será um prazer te ter por aqui!"/>
+            <meta property="og:url"                 content="www.tdvadilho.com"/>
         {{ end }}
         
             <meta name="robots" content="noimageai"> <!-- implementado do https://www.deviantart.com/team/journal/Tell-AI-Datasets-If-They-Can-t-Use-Your-Content-934500371 -->
