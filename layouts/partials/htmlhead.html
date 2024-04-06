@@ -19,7 +19,7 @@
 		<link rel="stylesheet" href="{{ ($style | minify).RelPermalink }}"/>
 		{{ end }}
         
-        <link rel="shortcut icon" href='https://www.tdvadilho.com/images/favicon.png?v=2'>
+        <link rel="icon" href='https://beta.tdvadilho.com/images/favicon.png'>
 		{{ $noscript := resources.Get "scss/noscript.scss" | resources.ExecuteAsTemplate "noscript.scss" . | toCSS (dict "targetPath" "assets/css/noscript.css" "enableSourceMap" false) }}
 		<noscript><link rel="stylesheet" href='{{ $noscript.RelPermalink }}' /></noscript>
 		
