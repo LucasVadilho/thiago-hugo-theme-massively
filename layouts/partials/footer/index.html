@@ -8,11 +8,11 @@
             <div class="fields">
                 <div class="field">
                     <label for="name">{{ i18n "CONTACT_FORM_FIELD_NAME" . }}</label>
-                    <input type="text" name="nome" id="name" required/>
+                    <input type="text" name="nome" id="name" autocomplete="given-name" required/>
                 </div>
                 <div class="field">
                     <label for="email">{{ i18n "CONTACT_FORM_FIELD_EMAIL" . }}</label>
-                    <input type="email" name="mail" id="email" />
+                    <input type="email" name="mail" autocomplete="email" id="email" required/>
                 </div>
                 <div class="field">
                     <label for="assunto">{{ i18n "CONTACT_FORM_FIELD_ASSUNTO" . }}</label>
