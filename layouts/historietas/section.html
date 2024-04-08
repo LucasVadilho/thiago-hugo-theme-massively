@@ -1,5 +1,9 @@
 {{- partial "htmlhead" . -}}
 
+<head>
+    <link rel="canonical" href="https://www.tdvadilho.com/historietas/"/> 
+</head>
+
 {{ $postsPerPage := 4}}
 {{ $posts := .Pages.ByDate.Reverse }}
 {{ $lastPost := first 1 $posts }}

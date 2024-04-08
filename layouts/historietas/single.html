@@ -28,22 +28,22 @@
 
                                 {{ .Content }}
                                 
-                                <p class="referenciar">
-                                    Autor e ilustrador: Thiago David Vadilho (TD Vadilho)
-                                    <br>
-                                    *Jamais venda ou monetize este conteúdo sem a autorização expressa do autor. 
-                                    <br>
-                                    Caso necessário, entre em <a  href='{{ "#contatar" | relLangURL }}' class="linkto_contato"><u>contato</u></a>.
-                                </p>
+                                <p class="referenciar" style="margin-top:10px">Autor e ilustrador: Thiago David Vadilho (TD Vadilho)</p>
+                                <p class="referenciar">*Jamais venda ou monetize este conteúdo sem a autorização expressa do autor.</p>
+                                <p class="referenciar">Caso necessário, entre em <a  href='{{ "#contatar" | relLangURL }}' class="linkto_contato"><u>contato</u></a>.</p>
 
-                                <div id="buttonContainer_compartilharHistorietas">
-                                    <button type="submit" id="button_compartilharHistorieta" onclick="abrirCompartilhar(event)">
-                                        <i class="fa fa-share-alt fa-lg"></i> Compartilhar
-                                    </button>
-
-                                    <button type="submit" id="button_imprimirHistorieta" onclick="imprimirHistorieta()">
-                                        <i class="fa fa-print fa-lg"></i> Imprimir
-                                    </button>
+                                <div id="compartilharHistorietas-titulo">
+                                    <h4>Compartilhe essa história</h4>
+                                </div>
+                                <div id="compartilharHistorietas">
+                                    <span onclick="copiarUrlSharing()"><i class="fa fa-link icon"></i></span>
+                                    <span onclick="fbSharing()"><i class="fa fa-facebook-f icon"></i></span>
+                                    <span onclick="ttSharing()"><i class="fa fa-twitter icon"></i></span>
+                                    <span onclick="ttSharing()"><i class="fa fa-instagram icon"></i></span>
+                                    <span onclick="wppSharing()"><i class="fa fa-whatsapp icon"></i></span>       
+                                    <span onclick="redditSharing()"><i class="fa fa-reddit-alien icon"></i></span>
+                                    <span onclick="ttSharing()"><i class="fa fa-linkedin icon"></i></span>
+                                    <span onclick="pinterestSharing()"><i class="fa fa-pinterest icon"></i></span>
                                 </div>
 
                                 {{ if isset .Params "processocriativo" }}
@@ -108,33 +108,34 @@
                                         <div id="container_contribuicoesHistorietas">
                                             <div class="contribuicoesHistorietas">
                                                 <h4>Diretamente</h4>
-                                                <p>Clique em um dos botões abaixo para mandar um PIX. Toda contribuição faz uma enorme diferença!</p>
+                                                <p>Doe por PIX ou cheque os produtos do meu trabalho. Toda compra e doação fazem uma enorme diferença!</p>
 
                                                 <div id="container_contribuicaopix">
-                                                        <a href="https://nubank.com.br/pagar/11jeh7/SzzazyVAuQ" class="button_contribuicaopix-container" target="_blank">
-                                                            <div class="button_contribuicaopix">
-                                                                <p class="textbutton_contribuicaopix"><img src="/images/icon_pix.svg" class="icon_pix" alt="logo do pix"> R$ 2,50</p>
-                                                            </div>
-                                                        </a>
-
-                                                        <a href="https://nubank.com.br/pagar/11jeh7/xz6pO4OTxo" class="button_contribuicaopix-container" target="_blank">
-                                                            <div class="button_contribuicaopix">
-                                                                <p class="textbutton_contribuicaopix"><img src="/images/icon_pix.svg" class="icon_pix" alt="logo do pix"> R$ 5,00</p>
-                                                            </div>
-                                                        </a>
-
                                                         <a href="https://nubank.com.br/pagar/11jeh7/8ABRsdHuzw" class="button_contribuicaopix-container" target="_blank">
                                                             <div class="button_contribuicaopix">
-                                                                <p class="textbutton_contribuicaopix"><img src="/images/icon_pix.svg" class="icon_pix" alt="logo do pix"> OUTRO</p>
+                                                                <p class="textbutton_contribuicaopix"><img src="/images/icon_pix.svg" class="icon_pix" alt="logo do pix"> DOAR</p>
                                                             </div>
-                                                        </a>
-                                                </div>    
+                                                        </a> 
+                                                
+
+                                                    <a href="https://amzn.to/49s0IwN" class="button_meuslivros-container" target="_blank">
+                                                        <div class="button_meuslivros">
+                                                            <p class="textbutton_meuslivros"><i class="fa fa-book" aria-hidden="true"></i> LIVROS</p>
+                                                        </div>
+                                                    </a>
+
+                                                    <a href="https://umapenca.com/tdvadilho/" class="button_lojaartes-container" target="_blank">
+                                                        <div class="button_lojaartes">
+                                                            <p class="textbutton_lojaartes"><i class="fa fa-paint-brush" aria-hidden="true"></i> ARTES</p>
+                                                        </div>
+                                                    </a>
+                                                </div>
                                             </div>
 
                                             <div class="contribuicoesHistorietas">
                                                 <h4>Indiretamente</h4>
                                                 <p>Comprar qualquer produto pelos links afiliados geram renda ao projeto sem qualquer custo adicional para você</p>
-                                                <div id="organizer_contribuicoesHistorietas">
+                                                <div id="organizer_contribuicoesIndiretasHistorietas">
                                                     <a href="https://www.amazon.com.br?&linkCode=ll2&tag=tdvadilho05-20&linkId=323ea7ef1891ccb812a77da02ad83348&language=pt_BR&ref_=as_li_ss_tl" class="clicavel_linkafiliado" target="_blank">
                                                         <div id="container_linkafiliado">
                                                             <div class="linkafiliado"><i class="fa fa-bookmark" aria-hidden="true"></i> AMAZON </div>
@@ -150,12 +151,16 @@
 
                                             <div class="contribuicoesHistorietas">
                                                 <h4>Sem custo</h4>
-                                                <p>Seguindo minhas redes sociais você estará me ajudando a levar o meu trabalho para um público maior</p>
+                                                <p>Me seguindo nas redes sociais, você estará me ajudando a levar as historietas para um público maior</p>
 
                                                 {{ with $data.social }}
                                                     <ul class="icons alt">
                                                         {{ with .instagram}}
                                                             <li><a href="{{ . }}" class="icon alt fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
+                                                        {{ end }}
+
+                                                        {{ with .facebook}}
+                                                            <li><a href="{{ . }}" class="icon alt fa-facebook" target="_blank"><span class="label">Facebook</span></a></li>
                                                         {{ end }}
 
                                                         {{ with .twitter}}
@@ -170,8 +175,8 @@
                                             </div>
                                         </div>
 
-                                        <p id="introHistorietasImprimir">O projeto historietas é produzido e disponibilizado gratuitamente graças ao apoio
-                                            dos leitores. Caso puder, e quiser contribuir, acesse qualquer Historieta pelo meu site (www.tdvadilho.com). Muito obrigado❤️</p>                                        
+                                        <!-- <p id="introHistorietasImprimir">O projeto historietas é produzido e disponibilizado gratuitamente graças ao apoio
+                                            dos leitores. Caso puder, e quiser contribuir, acesse qualquer Historieta pelo meu site (www.tdvadilho.com). Muito obrigado❤️</p>     -->                                    
                                     </div>
                                 </div>
                         </td>
@@ -317,18 +322,16 @@
         line-height: 1.6;
         color: rgb(122, 122, 122);
         text-align: right;
-        margin-top: 20px;
     }
 
     .linkto_contato{
         font-size: 0.9rem;
         line-height: 1.6;
         color: rgb(122, 122, 122);
-        margin-top: 25px;
     }
     
     /* imprimir */
-    #introHistorietasImprimir{
+    /* #introHistorietasImprimir{
         display: none;
     }
 
@@ -418,6 +421,105 @@
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
         }
+    } */
+
+    /* Compartilhar */
+    #compartilharHistorietas-titulo h4{
+        margin-bottom: 0;
+        margin-top: 40px;
+        margin-bottom: 10px;
+    }
+
+    #compartilharHistorietas {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 40px;
+    }
+
+    #compartilharHistorietas span {
+        width: 40px;
+        height: 40px;
+        background-color: #fff;
+        text-align: center;
+        line-height: 40px;
+        font-size: 18px;
+        margin: 0 0 0 10px;
+        display: block;
+        border-radius: 50%;
+        position: relative;
+        overflow: hidden;
+        border: 3px solid #fff;
+        z-index: 1;
+        box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
+    }
+
+    #compartilharHistorietas span:hover{
+        cursor: pointer;
+    }
+
+    #compartilharHistorietas span .icon {
+        position: relative;
+        color: #262626;
+        transition: .5s;
+        z-index: 3;
+        vertical-align: 2px !important;
+        margin-right: 0 !important;
+    }
+
+    #compartilharHistorietas span:hover .icon {
+        display: inline-block;
+        color: #fff;
+        transform: rotateY(360deg);
+        -webkit-transform: rotateY(360deg);
+        -ms-transform: rotateY(360deg);
+    }
+
+    #compartilharHistorietas span:before {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #f00;
+        transition: .5s;
+        z-index: 2;
+    }
+
+    #compartilharHistorietas span:hover:before {
+        top: 0;
+    }
+
+    #compartilharHistorietas span:nth-child(1):before{
+        background: #aab1c0;
+    }
+    
+    #compartilharHistorietas span:nth-child(2):before{
+        background: #3b5999;
+    }
+
+    #compartilharHistorietas span:nth-child(3):before{
+        background: #55acee;
+    }
+
+    #compartilharHistorietas span:nth-child(4):before{
+        background: #FE0B81;
+    }
+
+    #compartilharHistorietas span:nth-child(5):before{
+        background: #128C7E;
+    }
+
+    #compartilharHistorietas span:nth-child(6):before{
+        background: #FF4500;
+    }
+
+    #compartilharHistorietas span:nth-child(7):before{
+        background: #0077B5;
+    }
+
+    #compartilharHistorietas span:nth-child(8):before{
+        background: #C8232C;
     }
 
     /* processo */
@@ -446,6 +548,7 @@
     .mySlides iframe {
         width: 100%;
         height: 500px;
+        box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
     }
 
     .slideshow-container {
@@ -546,7 +649,7 @@
         margin-top: 12px;
     }
 
-    .button_contribuicaopix-container{
+    .button_contribuicaopix-container, .button_meuslivros-container, .button_lojaartes-container{
         -webkit-backface-visibility: hidden;
         -webkit-transform: translateZ(0) scale(1, 1);
         filter: blur(0);
@@ -554,30 +657,28 @@
         transition: transform .2s;
     }
 
-    .button_contribuicaopix-container:hover{
+    .button_contribuicaopix-container:hover, .button_meuslivros-container:hover, .button_lojaartes-container:hover{
         cursor: pointer;
-        transform: perspective(300px) rotateY(1deg) translateZ(10px) scale(0.97);
+        transform: scale(1.1);
         transition: transform .2s;
     }
 
     .button_contribuicaopix{
-        display: flex;
         margin-left: 0px;
         margin-right: 0px;
         height: 26px;
-        background-color: rgba(0,95,89,1.00);
+        background-color: rgb(31, 107, 102);
         border-radius: 3px;
-        text-align: center;
-        justify-self: center;
+        display: flex;
         align-items: center;
     }
 
     .textbutton_contribuicaopix{
         color:rgb(255, 255, 255); 
-        letter-spacing: 0.6px;
-        font-size: smaller;
-        font-weight: bold;
-        text-align: center;
+        font-family: "Source Sans Pro", Helvetica, sans-serif;
+        font-size: 0.8rem;
+        font-weight: 900;
+        letter-spacing: 0.075em;
         padding: 0 10px 0 10px;
     }
 
@@ -588,36 +689,79 @@
         padding-top: 3px;
     }
 
+    .button_meuslivros{
+        margin-left: 0px;
+        margin-right: 0px;
+        height: 26px;
+        background-color: #FFC97F;
+        border-radius: 3px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .textbutton_meuslivros{
+        color:rgb(26, 25, 25); 
+        font-family: "Source Sans Pro", Helvetica, sans-serif;
+        font-size: 0.8rem;
+        font-weight: 900;
+        letter-spacing: 0.075em;
+        padding: 0 10px 0 10px;
+    }
+
+    .button_lojaartes{
+        margin-left: 0px;
+        margin-right: 0px;
+        height: 26px;
+        background-color: #d2bbf0;
+        border-radius: 3px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .textbutton_lojaartes{
+        color:rgb(26, 25, 25); 
+        font-family: "Source Sans Pro", Helvetica, sans-serif;
+        font-size: 0.8rem;
+        font-weight: 900;
+        letter-spacing: 0.075em;
+        padding: 0 10px 0 10px;
+    }
+
     /* indiretamente */
-    #organizer_contribuicoesHistorietas{
+    #organizer_contribuicoesIndiretasHistorietas{
         display: inline-flex;
         justify-content: space-evenly;
         width: 100%;
+        margin: 12px auto 0 auto;
     }
 
     #container_linkafiliado {
-        margin-top: 8px;
         height: 26px;
-        display: flex;
-        margin: 12px auto 0 auto;
         width: fit-content;
+        -webkit-backface-visibility: hidden;
+        -webkit-transform: translateZ(0) scale(1, 1);
+        filter: blur(0);
+        -webkit-filter: blur(0);
+        transition: transform .2s;
+        display: flex;
+        align-items: center;
     }
 
-    #container_linkafiliado :hover{
+    #container_linkafiliado:hover{
         cursor: pointer;
-        transform: perspective(300px) rotateY(1deg) translateZ(10px) scale(0.97);
+        transform: scale(1.1);
         transition: transform .2s;
     }
 
     .linkafiliado {
         border-radius: 3px;
         background-color: #ffe95a;
-        color: rgb(0, 0, 0);
+        color:rgb(26, 25, 25); 
         height: 26px;
-        letter-spacing: 0.6px;
-        font-size: smaller;
-        font-weight: bold;
-        text-align: center;
+        font-family: "Source Sans Pro", Helvetica, sans-serif;
+        font-size: 0.8rem;
+        font-weight: 900;
+        letter-spacing: 0.075em;
         padding: 0 10px 0 10px;
     }
 
@@ -660,12 +804,6 @@
     @media screen and (max-width: 736px){
         #main {
             padding: 2rem 1.8rem 2rem 1.8rem;
-        }
-        #compartilharContainer{
-            width: 352px;
-        }
-        #buttonContainer_compartilharHistorietas{
-            text-align: center;
         }
 
         #prevProcesso, #nextProcesso{
@@ -740,7 +878,7 @@
             margin-right: 10px;
         }
 
-        #organizer_contribuicoesHistorietas{
+        #organizer_contribuicoesIndiretasHistorietas{
             justify-content: flex-start;
         }
 
@@ -813,24 +951,29 @@
         activeMenu.innerHTML = '<li class="active"> <a href="/historietas">Historietas</a></li>'
 
     /* COMPARTILHAMENTO */
-    function fbSharing(post_url) {
-        var url = new String(post_url);
-        window.open(post_url , "share_dialog", "width=500, height=300");
+    function fbSharing() {
+        var url = "https://www.facebook.com/sharer/sharer.php?u=" + urlCurrentPage;
+        window.open(url , "share_dialog", "width=500, height=300");
     }
 
-    function ttSharing(post_url){
-        var url = new String(post_url);
-        window.open(post_url , "share_dialog", "width=790, height=462");
+    function ttSharing(){
+        var url = "https://twitter.com/share?url=" + urlCurrentPage + "%0a%0a&text=Gente, leia {{ .Params.title }}, história escrita pelo autor @tdvadilho :) &text=🔗&hashtags=historietasTDVadilho";
+        window.open(url , "share_dialog", "width=790, height=462");
     }
 
-    function redditSharing(post_url){
-        var url = new String(post_url);
-        window.open(post_url , "share_dialog", "width=790, height=742");
+    function redditSharing(){
+        var url = "https://www.reddit.com/submit?title=Historieta%20-%20TDVadilho&text=Gente,%20leia%20{{ .Params.title }},%20história%20escrita%20pelo%20autor%20@td.vadilho";
+        window.open(url , "share_dialog", "width=790, height=742");
     }
 
-    function pinterestSharing(post_url){
-        var url = new String(post_url);
-        window.open(post_url , "share_dialog", "width=1080, height=727");
+    function pinterestSharing(){
+        var url = "pinterestSharing('{{ .Params.linkPin }}')";
+        window.open(url , "share_dialog", "width=1080, height=727");
+    }
+
+    function wppshare(){
+        var url = "https://api.whatsapp.com/send?text=Lê essa história do escritor TD Vadilho ${urlCurrentPage} "
+        window.open(url)
     }
     
     /* Carregando links de compartilhamento */
@@ -838,43 +981,16 @@
 
         /* WPP */
         document.getElementById('wpp_sharebutton').innerHTML += 
-            `<a href="https://api.whatsapp.com/send?text=${urlCurrentPage}" target="_blank" data-action="share/whatsapp/share">
+            `<a href=>
                 <div class="logoRedeContainerWpp">
                     <i class="icon alt icon_compartilharHistorieta fa-whatsapp fa-lg"></i>
                 </div>
                 <div class="nomeRedeContainerWpp">WhatsApp</div>
             </a>`
 
-        /* Twitter */
-        document.getElementById('twitter_sharebutton').innerHTML += 
-            `<a onclick='ttSharing("https://twitter.com/share?url=` + urlCurrentPage + `%0a%0a&text=Que tal ler uma historieta hoje?&hashtags=HistorietasTDVadilho,Historietas")'>
-                <div class="logoRedeContainerTwitter">
-                    <i class="icon alt icon_compartilharHistorieta fa-twitter fa-lg"></i>
-                </div>
-                <div class="nomeRedeContainerTwitter">Twitter</div>    
-            </a>`
-
-         /* Facebook */
-         document.getElementById('facebook_sharebutton').innerHTML += 
-            `<a onclick='fbSharing("https://www.facebook.com/sharer/sharer.php?u=` + urlCurrentPage + `")'>
-                <div class="logoRedeContainerFacebook">
-                    <i class="icon alt icon_compartilharHistorieta fa-facebook fa-lg"></i>
-                </div>
-                <div class="nomeRedeContainerFacebook">Facebook</div>    
-            </a>`
-
-        /* Reddit */
-        let reddit_url = "https://www.reddit.com/submit?title=Historieta%20-%20TDVadilho&text=Que%20tal%20ler%20uma%20historieta%20hoje?%20[{{ .Params.title }}]"
-        document.getElementById('reddit_sharebutton').innerHTML += 
-            `<a onclick='redditSharing("${reddit_url}(${urlCurrentPage})%0a%0a&signup_survey=true")'>
-                <div class="logoRedeContainerReddit">
-                    <i class="icon alt icon_compartilharHistorieta fa-reddit-alien fa-lg"></i>
-                </div>
-                <div class="nomeRedeContainerReddit">Reddit</div>
-            </a>`
             
         /* Pinterest */
-        let pinterest_url = "pinterestSharing('{{ .Params.linkPin }}')"
+        
         document.getElementById('pinterest_sharebutton').innerHTML += `<a onclick="${pinterest_url}">
                 <div class="logoRedeContainerPinterest">
                     <i class="icon alt icon_compartilharHistorieta fa-pinterest fa-lg"></i>
@@ -883,15 +999,7 @@
             </a>`
 
         /* Copiar URL*/    
-        document.getElementById('copyUrl_sharebutton').innerHTML += 
-            `<a onclick="copiarUrl()">
-                <div class="iconeContainerCopyUrl">
-                    <i class="icon alt icon_compartilharHistorieta fa-link fa-lg"></i>
-                </div>
-                <div class="nomeContainerCopyUrl">Copiar url</div>    
-            </a>`
-
-        let copiarUrl = function() {
+        let copiarUrlSharing = function() {
             let createCopiarNotification = function() {
                 let notification = document.getElementById("urlCopiarNotification");
                 notification.style.display = "block";
@@ -909,34 +1017,9 @@
             createCopiarNotification();
         }
 
-    let imprimirHistorieta = function (){
+    /* let imprimirHistorieta = function (){
         window.print();
-    }
-
-    let flagCompartilharAberto = false;
-    let abrirCompartilhar = function(e) {
-        e.stopPropagation()
-        let container = document.getElementById("compartilharContainer");
-        container.style.display = "inline-flex";
-        flagCompartilharAberto = true;
-
-        window.addEventListener('click', function(g){
-            if(!container.contains(g.target)){
-                closeCompartilhar();
-            }
-        }, options = {"once": true})
-    }
-
-    document.addEventListener('keydown', (ev) => {
-        if((ev.key == 'Escape') && (flagCompartilharAberto == true)){
-            closeCompartilhar();
-        }
-    }) 
-
-    let closeCompartilhar = function () {
-        let container = document.getElementById("compartilharContainer")
-        container.style.display="none"
-    }
+    } */
 
     // CARROSSEL
  

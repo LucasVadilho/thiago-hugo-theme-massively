@@ -1,5 +1,9 @@
 {{- partial "htmlhead" . -}}
 
+<head>
+    <link rel="canonical" href="https://www.tdvadilho.com/blog"/> 
+</head>
+
 {{ $postsPerPage := 5}}
 {{ $posts_blog := .Pages.ByDate.Reverse }}
 {{ $postsPaging := .Paginate $posts_blog $postsPerPage }}
