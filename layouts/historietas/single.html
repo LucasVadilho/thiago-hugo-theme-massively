@@ -19,12 +19,14 @@
                     <tr>
                         <td>
                             <div id="historietas_container">
-                        
+                                
                                 <h2> {{ .Title }} </h2>
                                 <h4> {{ .Params.Historietanumero }} |
                                     <img class="icon_classifIndicativaMiddleAlign" src= "{{ .Params.ClasIndicativa }}" > 
                                     {{ .Params.DescripIndicativa }}
                                 </h4>
+
+                                {{- partial "darkandlight" . }}
 
                                 {{ .Content }}
                                 
@@ -39,10 +41,10 @@
                                     <span onclick="copiarUrlSharing()"><i class="fa fa-link icon"></i></span>
                                     <span onclick="fbSharing()"><i class="fa fa-facebook-f icon"></i></span>
                                     <span onclick="ttSharing()"><i class="fa fa-twitter icon"></i></span>
-                                    <span onclick="ttSharing()"><i class="fa fa-instagram icon"></i></span>
+                                    <span onclick="instagramSharing()"><i class="fa fa-instagram icon"></i></span>
                                     <span onclick="wppSharing()"><i class="fa fa-whatsapp icon"></i></span>       
                                     <span onclick="redditSharing()"><i class="fa fa-reddit-alien icon"></i></span>
-                                    <span onclick="ttSharing()"><i class="fa fa-linkedin icon"></i></span>
+                                    <span onclick="linkedinSharing()"><i class="fa fa-linkedin icon"></i></span>
                                     <span onclick="pinterestSharing()"><i class="fa fa-pinterest icon"></i></span>
                                 </div>
 
@@ -173,10 +175,7 @@
                                                     </ul>
                                                 {{ end }}
                                             </div>
-                                        </div>
-
-                                        <!-- <p id="introHistorietasImprimir">O projeto historietas é produzido e disponibilizado gratuitamente graças ao apoio
-                                            dos leitores. Caso puder, e quiser contribuir, acesse qualquer Historieta pelo meu site (www.tdvadilho.com). Muito obrigado❤️</p>     -->                                    
+                                        </div>                                
                                     </div>
                                 </div>
                         </td>
@@ -329,99 +328,6 @@
         line-height: 1.6;
         color: rgb(122, 122, 122);
     }
-    
-    /* imprimir */
-    /* #introHistorietasImprimir{
-        display: none;
-    }
-
-    @page{
-        size: a4;
-        orphans: 2;
-        widows: 2;
-        page-break-after: always;
-        margin-top: 80px;
-        margin-bottom: 60px;
-    }
-
-    @media print {
-        p {
-            font-family:georgia, times, serif;
-            font-size: 13px;
-        }
-        #header, #copyright, #navPanelToggle, #nav, #button_imprimirHistorieta, #button_compartilharHistorieta, #container_processo, #posicaoDotsProcesso, .bg, #container_contribuicoesHistorietas{
-            display: none;
-        }
-        #main, #historietas_container{
-            padding: 0px;
-        }
-
-        body{
-            background-image: none;
-            background-color: #ffffff00;
-        }
-        
-        h2{
-            font-size: 2.5rem;
-            margin-top: 45px;
-        }
-
-        h2{
-            font-size: 1rem;
-        }
-
-        .referenciar{
-            font-size: 0.8rem;
-            line-height: 1.6;
-            color: rgb(122, 122, 122);
-            text-align: right;
-            margin-top: 20px;
-        }
-
-        html, body {
-            width: 210mm;
-            height: 297mm;
-        }
-
-        table td{
-            margin-left: 500px;
-        }
-
-        thead{
-            display: inline;
-        }
-
-        table th { 
-            font-family: inherit;
-            letter-spacing: 0.075em;
-            text-transform: none;
-            padding:0;
-            font-size: 0.7rem;
-            font-weight: 400;
-            line-height: 1.6;
-            color: rgb(122, 122, 122);
-            text-align: right;
-            position: fixed;
-            margin-top: 0px;
-            bottom: 0;
-            right: 0;
-        } 
-
-        #introHistorietasImprimir{
-            display: inline-block;
-        }
-
-        #introHistorietas{
-            display: none;
-        }
-    }
-
-    @media print and (color) {
-        * {
-            -webkit-print-color-adjust: exact;
-            print-color-adjust: exact;
-        }
-    } */
 
     /* Compartilhar */
     #compartilharHistorietas-titulo h4{
@@ -971,32 +877,23 @@
         window.open(url , "share_dialog", "width=1080, height=727");
     }
 
-    function wppshare(){
-        var url = "https://api.whatsapp.com/send?text=Lê essa história do escritor TD Vadilho ${urlCurrentPage} "
+    function wppSharing(){
+        var url = "https://api.whatsapp.com/send?text=Lê essa história do escritor TD Vadilho " + urlCurrentPage
         window.open(url)
+    }
+
+    function linkedinSharing(){
+        var url = "https://www.linkedin.com/feed/?shareActive=true&text=Gente, leia '{{ .Params.title }}', história do %23escritor TD Vadilho! https://tdvadilho.com/historietas/historieta6 %23historias %23literatura"
+        window.open(url, "width=790, height=742")
+    }
+
+    function instagramSharing(){
+        var url = "{{ .Params.linkInsta }}"
+        window.open(url, "width=790, height=742")
     }
     
     /* Carregando links de compartilhamento */
-        let urlCurrentPage = window.location.href;
-
-        /* WPP */
-        document.getElementById('wpp_sharebutton').innerHTML += 
-            `<a href=>
-                <div class="logoRedeContainerWpp">
-                    <i class="icon alt icon_compartilharHistorieta fa-whatsapp fa-lg"></i>
-                </div>
-                <div class="nomeRedeContainerWpp">WhatsApp</div>
-            </a>`
-
-            
-        /* Pinterest */
-        
-        document.getElementById('pinterest_sharebutton').innerHTML += `<a onclick="${pinterest_url}">
-                <div class="logoRedeContainerPinterest">
-                    <i class="icon alt icon_compartilharHistorieta fa-pinterest fa-lg"></i>
-                </div>
-                <div class="nomeRedeContainerPinterest">Pinterest</div>    
-            </a>`
+    let urlCurrentPage = window.location.href;
 
         /* Copiar URL*/    
         let copiarUrlSharing = function() {
@@ -1016,10 +913,6 @@
             }
             createCopiarNotification();
         }
-
-    /* let imprimirHistorieta = function (){
-        window.print();
-    } */
 
     // CARROSSEL
  
