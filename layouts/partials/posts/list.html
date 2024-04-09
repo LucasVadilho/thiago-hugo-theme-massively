@@ -15,12 +15,14 @@
                     <span class="icon alt fa-calendar-o"> {{ .Params.Datapost }} </span> 
                     <span class="icon alt fa-clock-o"> {{ .Params.Tempoleitura }} </span>
                     <img class="icon_classifIndicativa" src= "{{ .Params.ClasIndicativa }}" alt="imagem de classificação indicativa"> <span class="icon">{{ .Params.DescripIndicativa }}</span>
+                    <span  data-cusdis-count-page-id="{{ .Params.UniqueID }}">0 </span>
+                    comentários </span>
                 </p>
 
                 <p class="histDescriList txt_hideOverflowTrêsLinhas">{{ .Params.Description }}</p>
                 
                 <ul class="actions">
-                    <li><a href="{{ .Permalink }}" class="button">Ler Historieta</a></li>
+                    <li><a href="{{ .Permalink }}" class="button">Leia a Historieta</a></li>
                 </ul>
             </article>
         {{ end }}

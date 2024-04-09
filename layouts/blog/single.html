@@ -21,91 +21,75 @@
                             <div id="container_blogPost">
                         
                                 <h2> {{ .Title }} </h2>
-                                <h4> {{ .Params.Subtitle }} | <img class="icon_classifIndicativaMiddleAlign" src= "{{ .Params.ClasIndicativa }}" > {{ .Params.DescripIndicativa }} </h4>
+                                
+                                <h4> {{ .Params.Subtitle }} | 
+                                    <span id="comentariosblog" onclick="goToComentariosBlog()">
+                                    <span  data-cusdis-count-page-id="{{ .Params.UniqueID }}">0 </span>
+                                comentários </span> |
+                                <img class="icon_classifIndicativaMiddleAlign" src= "{{ .Params.ClasIndicativa }}" > {{ .Params.DescripIndicativa }}
+                                </h4>
 
                                 {{ .Content }}
 
-                                <div id="container_btnCompartilharBlogPost">
-                                    <button type="submit" id="btn_compartilharBlogPost" onclick="abrirCompartilhar(event)">
-                                        <i class="fa fa-share-alt fa-lg"></i> Compartilhar
-                                    </button>
+                                <div id="compartilharBlogPost-titulo">
+                                    <h4>Compartilhe esse post</h4>
+                                </div>
+                                <div id="compartilharBlogPost">
+                                    <span onclick="copiarUrlSharing()"><i class="fa fa-link icon"></i></span>
+                                    <span onclick="fbSharing()"><i class="fa fa-facebook-f icon"></i></span>
+                                    <span onclick="ttSharing()"><i class="fa fa-twitter icon"></i></span>
+                                    <span onclick="instagramSharing()"><i class="fa fa-instagram icon"></i></span>
+                                    <span onclick="wppSharing()"><i class="fa fa-whatsapp icon"></i></span>       
+                                    <span onclick="redditSharing()"><i class="fa fa-reddit-alien icon"></i></span>
+                                    <span onclick="linkedinSharing()"><i class="fa fa-linkedin icon"></i></span>
+                                    <span onclick="pinterestSharing()"><i class="fa fa-pinterest icon"></i></span>
                                 </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
 
-            <div id="borda"></div>
-            <div id="cusdis_thread"
-                data-host="https://cusdis.com"
-                data-app-id="b935f701-f887-42b4-96cf-1852bf2005b2"
-                data-page-id="{{ .Params.UniqueID }}"
-                data-page-url="{{ .Permalink }}"
-                data-page-title="{{ .Title }}"
-                >
+            <div id="comentariosblog-container">
+                <div id="cusdis_thread"
+                    data-host="https://cusdis.com"
+                    data-app-id="b935f701-f887-42b4-96cf-1852bf2005b2"
+                    data-page-id="{{ .Params.UniqueID }}"
+                    data-page-url="{{ .Permalink }}"
+                    data-page-title="{{ .Title }}"
+                    >
+                </div>
+                
+                <script>
+                window.CUSDIS_LOCALE = {
+                    powered_by: 'Powered by Cusdis',
+                    post_comment: 'Postar comentário',
+                    loading: 'Carregando',
+                
+                    // comment
+                    email: 'Email (opcional)',
+                    nickname: 'Nome',
+                    reply_placeholder: 'Comentar...',
+                    reply_btn: 'Responder',
+                    sending: 'enviando...',
+                
+                    // reply
+                    mod_badge: 'MOD',
+                    content_is_required: 'Conteúdo é requerido',
+                    nickname_is_required: 'Apelido é requerido',
+                
+                    comment_has_been_sent:
+                    'Seu comentário foi enviado. Por favor aguarde pela aprovação.',
+                }
+                </script>
+                <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+                <script defer data-host="https://cusdis.com" data-app-id="b935f701-f887-42b4-96cf-1852bf2005b2" src="https://cusdis.com/js/cusdis-count.umd.js"></script>
             </div>
-            <script>
-            window.CUSDIS_LOCALE = {
-                powered_by: 'Powered by Cusdis',
-                post_comment: 'Postar comentário',
-                loading: 'Carregando',
-              
-                // comment
-                email: 'Email (opcional)',
-                nickname: 'Nome',
-                reply_placeholder: 'Responder...',
-                reply_btn: 'Responder',
-                sending: 'enviando...',
-              
-                // reply
-                mod_badge: 'MOD',
-                content_is_required: 'Conteúdo é requerido',
-                nickname_is_required: 'Apelido é requerido',
-              
-                comment_has_been_sent:
-                  'Seu comentário foi enviado. Por favor aguarde pela aprovação.',
-              }
-            </script>
-            <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
             
             {{- partial "rodape.html" . }}
         </div>
 
         {{- partial "copyright" . }}
         <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
-       
-        <!-- BOTÕES COMPARTILHAR -->
-        <div id="share_postBlog">
-            <div id='buttonCloseCompartilhar'>
-                <span class='fa fa-times' aria-hidden='true' onclick="closeCompartilhar()"></span>
-            </div>
-
-            <!-- Copy Link -->
-
-            <div id="copyUrl_sharebutton">
-            </div>
-            
-            <!-- WPP -->
-            <div id="wpp_sharebutton"> 
-            </div>
-
-            <!-- Twitter -->
-            <div id="twitter_sharebutton">
-            </div>
-
-            <!-- Facebook -->
-            <div id="facebook_sharebutton">
-            </div>
-
-            <!-- Reddit -->
-            <div id="reddit_sharebutton">
-            </div>
-
-            <!-- Pinterest -->
-            <div id="pinterest_sharebutton">
-            </div>
-        </div>
-
         <div id="urlCopiarNotification">
         </div>
 
@@ -175,7 +159,19 @@
         margin-top: 10px;
     }
 
-/* HISTORIETA */
+/* TEXTO */
+    /* TOC */
+    #topico_principal{
+        text-align: left;
+        margin-bottom: 5px;
+        margin-top: 20px;
+    }
+
+    #subtopico{
+        text-align: left;
+        margin-bottom: 5px;
+    }
+
     /* texto */
     table td{
         padding: 0;
@@ -253,218 +249,103 @@
         margin-top: 25px;
     }
 
-    /* compartilhamento */
-    #container_btnCompartilharBlogPost{
-        text-align: left;
-        margin-top: 20px;
+    /* Compartilhar */
+    #compartilharBlogPost-titulo h4{
+        margin-bottom: 0;
+        margin-top: 40px;
+        margin-bottom: 10px;
     }
 
-    #share_postBlog{
-        position: fixed;
-        display: none;
-        flex-direction: row;
-        flex-wrap: wrap;
-        background-color: rgb(255, 255, 255);
-        box-shadow: 0 100vw 100vw 100vw rgba(30, 37, 45, 0.623);
-        z-index: 25;
-        -webkit-animation: fadein 0.5s;
-        animation: fadein 0.5s;
-        bottom: 10px;
-        padding: 32px 10px 10px 10px;
-        max-width: 520px;
-        justify-content: space-evenly;
-        transform: translate(-50%, -50%);
-        left: 50%;
+    #compartilharBlogPost {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 40px;
     }
 
-    .icon{
-        vertical-align: 1px;
+    #compartilharBlogPost span {
+        width: 40px;
+        height: 40px;
+        background-color: #fff;
+        text-align: center;
+        line-height: 40px;
+        font-size: 18px;
+        margin: 0 0 0 10px;
+        display: block;
+        border-radius: 50%;
+        position: relative;
+        overflow: hidden;
+        border: 3px solid #fff;
+        z-index: 1;
+        box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
     }
 
-    .icon_compartilharPostBlog{
-        margin-right: 0px;
-    }
-
-    #buttonCloseCompartilhar:hover{
-        color: #00aced;
+    #compartilharBlogPost span:hover{
         cursor: pointer;
     }
 
-    #buttonCloseCompartilhar{
-        background-color: transparent;
-        font-size: 20px;
-        font-weight: 600;
-        line-height: 0;
-        color: #656565;
-        border: none;
-        font-family: helvetica;
-        display: flex;
-        justify-content: flex-end;
+    #compartilharBlogPost span .icon {
+        position: relative;
+        color: #262626;
+        transition: .5s;
+        z-index: 3;
+        vertical-align: 2px !important;
+        margin-right: 0 !important;
+    }
+
+    #compartilharBlogPost span:hover .icon {
+        display: inline-block;
+        color: #fff;
+        transform: rotateY(360deg);
+        -webkit-transform: rotateY(360deg);
+        -ms-transform: rotateY(360deg);
+    }
+
+    #compartilharBlogPost span:before {
+        content: "";
         position: absolute;
-        right: 17px;
-        top: 7px;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #f00;
+        transition: .5s;
+        z-index: 2;
     }
 
-    .logoRedeContainerWpp{
-        float: left;
-        color: white;
-        width: 26px;
-        height: 26px;
-        background-color: #075E54;
-        text-align: center;
-        
+    #compartilharBlogPost span:hover:before {
+        top: 0;
     }
 
-    .nomeRedeContainerWpp{
-        width: 130px;
-        float: right;
-        background-color: #128C7E;
-        color: white;
-        font-family: inherit;
-        height: 26px;
-        letter-spacing: 1px;
-        font-size: small;
-        text-align: center;
-        margin-bottom: 5px;
-    }
-
-    .logoRedeContainerTwitter{
-        float: left;
-        color: white;
-        width: 26px;
-        height: 26px;
-        background-color: #0084b4;
-        text-align: center;
-    }
-
-    .nomeRedeContainerTwitter{
-        width: 130px;
-        float: right;
-        background-color:#00aced;
-        color: white;
-        font-family: inherit;
-        height: 26px;
-        letter-spacing: 1px;
-        font-size: small;
-        text-align: center;
-        margin-bottom: 5px;
-    }
-
-    .logoRedeContainerFacebook{
-        float: left;
-        color: white;
-        width: 26px;
-        height: 26px;
-        background-color: #3b5998;
-        text-align: center;
-    }
-
-    .nomeRedeContainerFacebook{
-        width: 130px;
-        float: right;
-        background-color:#8b9dc3;
-        color: white;
-        font-family: inherit;
-        height: 26px;
-        letter-spacing: 1px;
-        font-size: small;
-        text-align: center;
-        margin-bottom: 5px;
-    }
-
-    .logoRedeContainerReddit{
-        float: left;
-        color: white;
-        width: 26px;
-        height: 26px;
-        background-color: #b64e28;
-        text-align: center;
-    }
-
-    .nomeRedeContainerReddit{
-        width: 130px;
-        float: right;
-        background-color:#FF4500;
-        color: white;
-        font-family: inherit;
-        height: 26px;
-        letter-spacing: 1px;
-        font-size: small;
-        text-align: center;
-        margin-bottom: 5px;
+    #compartilharBlogPost span:nth-child(1):before{
+        background: #aab1c0;
     }
     
-    .logoRedeContainerPinterest{
-        float: left;
-        color: white;
-        width: 26px;
-        height: 26px;
-        background-color: #BD081C;
-        text-align: center;
+    #compartilharBlogPost span:nth-child(2):before{
+        background: #3b5999;
     }
 
-    .nomeRedeContainerPinterest{
-        width: 130px;
-        float: right;
-        background-color:#c03041;
-        color: white;
-        font-family: inherit;
-        height: 26px;
-        letter-spacing: 1px;
-        font-size: small;
-        text-align: center;
-        margin-bottom: 5px;
+    #compartilharBlogPost span:nth-child(3):before{
+        background: #55acee;
     }
 
-    .iconeContainerCopyUrl{
-        float: left;
-        color: white;
-        width: 26px;
-        height: 26px;
-        background-color: #56707D;
-        text-align: center;
+    #compartilharBlogPost span:nth-child(4):before{
+        background: #FE0B81;
     }
 
-    .nomeContainerCopyUrl{
-        width: 130px;
-        float: right;
-        background-color:#607D8B;
-        color: white;
-        font-family: inherit;
-        height: 26px;
-        letter-spacing: 1px;
-        font-size: small;
-        text-align: center;
-        margin-bottom: 5px;
+    #compartilharBlogPost span:nth-child(5):before{
+        background: #128C7E;
     }
 
-    #urlCopiarNotification{
-        display: none;
-        position: fixed;
-        top: 50px;
-        z-index: 25;
-        transform: translateY(-100%) translateX(-50%);
-        left: 50%;
-        padding: 9px 20px;
-        background: #343a40;
-        color: #eeeeee;
-        border-radius: 5px;
-        font-family: "Source Sans Pro", Helvetica, sans-serif;
-        font-size: 0.8rem;
-        font-weight: 900;
-        letter-spacing: 0.075em;
-        box-shadow: 0 0 14px rgba(0, 0, 0, 0.05); 
+    #compartilharBlogPost span:nth-child(6):before{
+        background: #FF4500;
     }
 
-    #btn_compartilharBlogPost{
-        margin-left: 0px;
+    #compartilharBlogPost span:nth-child(7):before{
+        background: #0077B5;
     }
 
-    #borda{
-        border-bottom: 2px solid #b6b6b6;
-        border-width: thin;
-        margin-bottom: 50px;
-        margin-top: 10px;
+    #compartilharBlogPost span:nth-child(8):before{
+        background: #C8232C;
     }
 
     /* Fading animation */
@@ -476,6 +357,33 @@
     @keyframes fade {
         from {opacity: .4}
         to {opacity: 1}
+    }
+
+/* GoToComentários */
+    #comentariosblog:hover{
+        cursor: pointer;
+        color: #252121 !important;
+    }
+
+    #comentariosblog{
+        position: relative;
+        display: -webkit-inline-box;
+    }
+
+    #comentariosblog::before{
+        background: hsl(45 100% 70%);
+        content: "";
+        inset: 0;
+        position: absolute;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.5s ease-in-out;
+        z-index: -1;
+    }
+
+    #comentariosblog:hover::before{
+        transform: scaleX(1);
+        transform-origin: left;
     }
 
 /* REGRAS DE MIDIA */
@@ -523,6 +431,16 @@
 </style>
 
 <script>
+    /* Mover a tela para a seção de comentários */
+    let goToComentariosBlog = function(){
+        let comentariosYPosition = document.getElementById("comentariosblog-container").offsetTop;
+        window.scrollTo({left: 0, top: comentariosYPosition, behavior: "smooth"});
+    }
+
+    let scrollTo = function(newYPosition){
+        console.log("oi")
+    } 
+
     /* DESTACARR O MENU*/
     let activeMenu = document.querySelector("#nav > ul > li:nth-child(5)") || undefined;
     if(activeMenu)
@@ -549,65 +467,48 @@
         window.open(post_url , "share_dialog", "width=1080, height=727");
     }
 
+
+    /* COMPARTILHAMENTO */
+    function fbSharing() {
+        var url = "https://www.facebook.com/sharer/sharer.php?u=" + urlCurrentPage;
+        window.open(url , "share_dialog", "width=500, height=300");
+    }
+
+    function ttSharing(){
+        var url = "https://twitter.com/share?url=" + urlCurrentPage + "%0a%0a&text=Gente, leia {{ .Params.title }}, postado no blog do autor @tdvadilho :) &text=🔗&hashtags=historietasTDVadilho";
+        window.open(url , "share_dialog", "width=790, height=462");
+    }
+
+    function redditSharing(){
+        var url = "https://www.reddit.com/submit?title=Historieta%20-%20TDVadilho&text=Gente,%20leia%20{{ .Params.title }},%20um%20post%20no%20blog%20do%20autor%20@td.vadilho";
+        window.open(url , "share_dialog", "width=790, height=742");
+    }
+
+    function pinterestSharing(){
+        var url = "pinterestSharing('{{ .Params.linkPin }}')";
+        window.open(url , "share_dialog", "width=1080, height=727");
+    }
+
+    function wppSharing(){
+        var url = "https://api.whatsapp.com/send?text=Lê esse post no blog do escritor TD Vadilho " + urlCurrentPage
+        window.open(url)
+    }
+
+    function linkedinSharing(){
+        var url = "https://www.linkedin.com/feed/?shareActive=true&text=Gente, leia '{{ .Params.title }}', postado no blog do %23escritor TD Vadilho! https://tdvadilho.com/historietas/historieta6 %23historias %23literatura"
+        window.open(url, "width=790, height=742")
+    }
+
+    function instagramSharing(){
+        var url = "{{ .Params.linkInsta }}"
+        window.open(url, "width=790, height=742")
+    }
+    
     /* Carregando links de compartilhamento */
-        let urlCurrentPage = window.location.href;
-
-        /* WPP */
-        document.getElementById('wpp_sharebutton').innerHTML += 
-            `<a href="https://api.whatsapp.com/send?text=${urlCurrentPage}" target="_blank" data-action="share/whatsapp/share">
-                <div class="logoRedeContainerWpp">
-                    <i class="icon alt icon_compartilharPostBlog fa-whatsapp fa-lg"></i>
-                </div>
-                <div class="nomeRedeContainerWpp">WhatsApp</div>
-            </a>`
-
-        /* Twitter */
-        document.getElementById('twitter_sharebutton').innerHTML += 
-            `<a onclick='ttSharing("https://twitter.com/share?url=` + urlCurrentPage + `%0a%0a&text=Dá uma olhada nesse post!&hashtags=tdVadilho,blogtdvadilho")'>
-                <div class="logoRedeContainerTwitter">
-                    <i class="icon alt icon_compartilharPostBlog fa-twitter fa-lg"></i>
-                </div>
-                <div class="nomeRedeContainerTwitter">Twitter</div>    
-            </a>`
-
-         /* Facebook */
-         document.getElementById('facebook_sharebutton').innerHTML += 
-            `<a onclick='fbSharing("https://www.facebook.com/sharer/sharer.php?u=` + urlCurrentPage + `")'>
-                <div class="logoRedeContainerFacebook">
-                    <i class="icon alt icon_compartilharPostBlog fa-facebook fa-lg"></i>
-                </div>
-                <div class="nomeRedeContainerFacebook">Facebook</div>    
-            </a>`
-
-        /* Reddit */
-        let reddit_url = "https://www.reddit.com/submit?title=Historieta%20-%20TDVadilho&text=Dá%20uma%20olhada%20nesse%20post%20!%20[{{ .Params.title }}]"
-        document.getElementById('reddit_sharebutton').innerHTML += 
-            `<a onclick='redditSharing("${reddit_url}(${urlCurrentPage})%0a%0a&signup_survey=true")'>
-                <div class="logoRedeContainerReddit">
-                    <i class="icon alt icon_compartilharPostBlog fa-reddit-alien fa-lg"></i>
-                </div>
-                <div class="nomeRedeContainerReddit">Reddit</div>
-            </a>`
-
-        /* Pinterest */
-        let pinterest_url = "pinterestSharing('{{ .Params.linkPin }}')"
-        document.getElementById('pinterest_sharebutton').innerHTML += `<a onclick="${pinterest_url}">
-                <div class="logoRedeContainerPinterest">
-                    <i class="icon alt icon_compartilharHistorieta fa-pinterest fa-lg"></i>
-                </div>
-                <div class="nomeRedeContainerPinterest">Pinterest</div>    
-            </a>`
+    let urlCurrentPage = window.location.href;
 
         /* Copiar URL*/    
-        document.getElementById('copyUrl_sharebutton').innerHTML += 
-            `<a onclick="copiarUrl()">
-                <div class="iconeContainerCopyUrl">
-                    <i class="icon alt icon_compartilharPostBlog fa-link fa-lg"></i>
-                </div>
-                <div class="nomeContainerCopyUrl">Copiar url</div>    
-            </a>`
-
-        let copiarUrl = function() {
+        let copiarUrlSharing = function() {
             let createCopiarNotification = function() {
                 let notification = document.getElementById("urlCopiarNotification");
                 notification.style.display = "block";
@@ -625,38 +526,7 @@
             createCopiarNotification();
         }
 
-    let imprimirHistorieta = function (){
-        window.print();
-    }
-
-    let flagCompartilharAberto = false;
-    let abrirCompartilhar = function(e) {
-        e.stopPropagation()
-        let container = document.getElementById("share_postBlog");
-        container.style.display = "inline-flex";
-        flagCompartilharAberto = true;
-
-        window.addEventListener('click', function(g){
-            if (container.contains(g.target)){
-            } else{
-                closeCompartilhar();  
-            }
-        }, options = {"once": true})
-    }
-
-    document.addEventListener('keydown', (ev) => {
-        if((ev.key == 'Escape') && (flagCompartilharAberto == true)){
-            closeCompartilhar();
-        }
-    }) 
-
-    let closeCompartilhar = function () {
-        let container = document.getElementById("share_postBlog")
-        container.style.display="none"
-    }
-
     // CARROSSEL
- 
     let slideIndex = 1;
     showSlides(slideIndex);
 
@@ -670,24 +540,24 @@
     showSlides(slideIndex = n);
     }
 
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-}
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+    }
 
- //SWIPE LEFT OR RIGHT
- let touchsurface = document.getElementById('container_processo'),
+    //SWIPE LEFT OR RIGHT
+    let touchsurface = document.getElementById('container_processo'),
         startX, 
         startY,
         dist,
@@ -741,5 +611,6 @@ function showSlides(n) {
     
     document.addEventListener("DOMContentLoaded", (event) => { 
         setupSlider()
+        /* Mover para hrefs âncoras do post */
     });
 </script>

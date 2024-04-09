@@ -22,8 +22,10 @@
                                 
                                 <h2> {{ .Title }} </h2>
                                 <h4> {{ .Params.Historietanumero }} |
-                                    <img class="icon_classifIndicativaMiddleAlign" src= "{{ .Params.ClasIndicativa }}" > 
-                                    {{ .Params.DescripIndicativa }}
+                                    <span id="comentarioshistorieta" onclick="goToComentarios()">
+                                        <span  data-cusdis-count-page-id="{{ .Params.UniqueID }}">0 </span>
+                                    comentários </span> |
+                                    <img class="icon_classifIndicativaMiddleAlign" src= "{{ .Params.ClasIndicativa }}" > {{ .Params.DescripIndicativa }}
                                 </h4>
 
                                 {{- partial "darkandlight" . }}
@@ -184,40 +186,45 @@
             </table>
         </div>
 
+        <!-- PARTE DOS COMENTÁRIOS -->    
+        <div id="comentarioshist-container">
+            <h2>Comentários</h2>
+            <div id="cusdis_thread"
+                data-host="https://cusdis.com"
+                data-app-id="b935f701-f887-42b4-96cf-1852bf2005b2"
+                data-page-id="{{ .Params.UniqueID }}"
+                data-page-url="{{ .Permalink }}"
+                data-page-title="{{ .Title }}"
+                >
+            </div>
+
+            <script>
+                window.CUSDIS_LOCALE = {
+                    powered_by: 'Powered by Cusdis',
+                    post_comment: 'Postar comentário',
+                    loading: 'Carregando',
+                
+                    // comment
+                    email: 'Email (opcional)',
+                    nickname: 'Nome',
+                    reply_placeholder: 'Comente...',
+                    reply_btn: 'Responder',
+                    sending: 'enviando...',
+                
+                    // reply
+                    mod_badge: 'MOD',
+                    content_is_required: 'Conteúdo é requerido',
+                    nickname_is_required: 'Apelido é requerido',
+                
+                    comment_has_been_sent:
+                    'Seu comentário foi enviado. Por favor aguarde pela aprovação.',
+                }
+            </script>
+            <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+        </div>
+
         {{- partial "copyright" . }}
         <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
-       
-        <!-- BOTÕES COMPARTILHAR -->
-        <div id="compartilharContainer">
-            <div id='buttonCloseCompartilhar'>
-                <span class='fa fa-times' aria-hidden='true' onclick="closeCompartilhar()"></span>
-            </div>
-
-            <!-- Copy Link -->
-
-            <div id="copyUrl_sharebutton">
-            </div>
-            
-            <!-- WPP -->
-            <div id="wpp_sharebutton"> 
-            </div>
-
-            <!-- Twitter -->
-            <div id="twitter_sharebutton">
-            </div>
-
-            <!-- Facebook -->
-            <div id="facebook_sharebutton">
-            </div>
-
-            <!-- Reddit -->
-            <div id="reddit_sharebutton">
-            </div>
-
-            <!-- Pinterest -->
-            <div id="pinterest_sharebutton">
-            </div>
-        </div>
 
         <div id="urlCopiarNotification">
         </div>
@@ -686,6 +693,33 @@
         color: #717981;
     }
     
+/* GoToComentários */
+    #comentarioshistorieta:hover{
+        cursor: pointer;
+        color: #252121 !important;
+    }
+
+    #comentarioshistorieta{
+        position: relative;
+        display: -webkit-inline-box;
+    }
+
+    #comentarioshistorieta::before{
+        background: hsl(45 100% 70%);
+        content: "";
+        inset: 0;
+        position: absolute;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.5s ease-in-out;
+        z-index: -1;
+    }
+
+    #comentarioshistorieta:hover::before{
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
 /* REGRAS DE MIDIA */
     @media screen and (max-width: 700px) and (min-width: 551px){
         h2{
@@ -795,6 +829,21 @@
 
         .contribuicoesHistorietas ul{
             text-align: left;
+        }
+    }
+
+    @media screen and (max-width: 464px) and (min-width: 403px){
+        #compartilharHistorietas span:nth-child(8){
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 402px){
+        #compartilharHistorietas span:nth-child(7){
+            display: none;
+        }
+        #compartilharHistorietas span:nth-child(8){
+            display: none;
         }
     }
     
@@ -999,4 +1048,9 @@
     document.addEventListener("DOMContentLoaded", (event) => { 
         setupSlider()
     });
+
+    let goToComentarios = function(){
+        let comentariosYPosition = document.getElementById("comentarioshist-container").offsetTop
+        window.scrollTo({left: 0, top: comentariosYPosition, behavior: "smooth"})
+    }
 </script>
