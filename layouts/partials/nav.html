@@ -8,12 +8,12 @@
         <li class="{{ if eq ($currentPage.RelPermalink) (`/livros/`) }}active{{end}}"><a href='{{ "/livros" | relLangURL }}'>Livros</a></li>
         <li class="{{ if eq ($currentPage.RelPermalink) (`/portfolio/`) }}active{{end}}"><a href='{{ "/portfolio" | relLangURL }}'>Portfólio</a></li>
         <li class="{{ if eq ($currentPage.RelPermalink) (`/blog/`) }}active{{end}}"><a href='{{ "/blog" | relLangURL }}'>Blog</a></li>
-        <li class="{{ if eq ($currentPage.RelPermalink) (`/sobre/`) }}active{{end}}"><a href='{{ "/sobre" | relLangURL }}'>Sobre</a></li>
-        
 
         {{ with $data.contactinfo }}
             <li><a href='{{ "#contatar" | relLangURL }}'>{{ i18n "NAV_CONTACT" . }}</a></li>
         {{ end }}
+
+        <li class="{{ if eq ($currentPage.RelPermalink) (`/sobre/`) }}active{{end}}"><a href='{{ "/sobre" | relLangURL }}'>Sobre</a></li>
 
         <li class="{{ if eq ($currentPage.RelPermalink) (`/loja/`) }}active{{end}}"><a href='https://umapenca.com/tdvadilho/' target="_blank">Loja</a></li>
         {{ if .IsTranslated }}
