@@ -17,16 +17,20 @@
             <p class="txt_informaçõesPost">
                 <span class="icon alt fa-calendar-o"> {{ .Params.Datapost }} </span> 
                 <span class="icon alt fa-clock-o"> {{ .Params.Tempoleitura }} </span>
+                <span class="icon alt fa-comment"> <span  data-cusdis-count-page-id="{{ .Params.UniqueID }}">0 </span>
+                        comentários </span> </span>
                 <img class="icon_classifIndicativa" src= "{{ .Params.ClasIndicativa }}" alt="imagem de classificação indicativa"> <span class="icon">{{ .Params.DescripIndicativa }}</span>
             </p>
 
             <p>{{ .Description }}</p>     
 
             <ul class="actions">
-                <li><a href="{{ .Permalink }}" class="button big">Ler Historieta</a></li>
+                <li><a href="{{ .Permalink }}" class="button big">Leia a Historieta</a></li>
             </ul>
         </article>
     {{ end }}
+    <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+    <script defer data-host="https://cusdis.com" data-app-id="b935f701-f887-42b4-96cf-1852bf2005b2" src="https://cusdis.com/js/cusdis-count.umd.js"></script>
 </body>
 
 <style>

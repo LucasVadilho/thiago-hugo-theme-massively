@@ -1,5 +1,9 @@
 {{- partial "htmlhead" . -}}
 
+<head>
+    <link rel="canonical" href="https://www.tdvadilho.com/blog"/> 
+</head>
+
 {{ $postsPerPage := 5}}
 {{ $posts_blog := .Pages.ByDate.Reverse }}
 {{ $postsPaging := .Paginate $posts_blog $postsPerPage }}
@@ -338,6 +342,10 @@
             justify-content: flex-end;
             width: 100%;
             display: inline-flex;
+        }
+
+        #main > .posts {
+            padding: 0rem 0rem 1rem 0rem !important;
         }
 
         #main > .post header.major h2 {

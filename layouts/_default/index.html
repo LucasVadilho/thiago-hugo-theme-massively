@@ -1,4 +1,7 @@
 {{- partial "htmlhead" . -}}
+<head>
+    <link rel="canonical" href="https://www.tdvadilho.com"/> 
+</head>
 
 	<body lang='{{ .Site.LanguageCode | default "pt-br" }}' class="is-preload">
 
@@ -35,8 +38,9 @@
                                 <div class="imgContainer_novidadeDestaque img_shadow"><img src="{{ .Params.imgUltNovidade}}" alt="{{ .Params.altUltNovidade }}"/></div >
 
                                 <p class="txt_informaçõesPost">
-                                    <span class="icon alt fa-calendar-o"> 04 de Abt de 2024</span> 
+                                    <span class="icon alt fa-calendar-o"> 04 abr 2024</span> 
                                     <span class="icon alt fa-clock-o"> 1 minuto </span>
+                                    <!-- <span class="icon alt fa-comment"> <span  data-cusdis-count-page-id="{{ .Params.UniqueID }}">0 </span> comentários </span> </span> -->
                                     <img class="icon_classifIndicativa" src="/images/classIndLivre.svg" alt="imagem de classificação indicativa"> Livre
                                 </p>
                                 <p class="txt_hideOverflowTrêsLinhas">
@@ -59,8 +63,9 @@
                                         <div class="imgContainer_outrasNovidades img_shadow"><img src="{{ .Params.imgDemNovidade1 }}" alt="{{ .Params.altDemNovidade1 }}"/></div >
         
                                         <p class="txt_informaçõesPost">
-                                            <span class="icon alt fa-calendar-o"> 22 de Mar de 2024 </span> 
+                                            <span class="icon alt fa-calendar-o"> 22 mar 2024 </span> 
                                             <span class="icon alt fa-clock-o"> 9 minutos </span>
+                                            <span class="icon alt fa-comment"> <span  data-cusdis-count-page-id="{{ .Params.UniqueID }}">0 </span> comentários </span> </span>
                                             <img class="icon_classifIndicativa" src="/images/classIndLivre.svg" alt="imagem de classificação indicativa"> Livre
                                         </p>
                             
@@ -84,8 +89,9 @@
                                         <div class="imgContainer_outrasNovidades img_shadow"><img src="{{ .Params.imgDemNovidade2 }}" alt="{{ .Params.altDemNovidade2 }}"/></div >
         
                                         <p class="txt_informaçõesPost">
-                                            <span class="icon alt fa-calendar-o"> 07 de Mar de 2024 </span> 
+                                            <span class="icon alt fa-calendar-o"> 07 mar 2024 </span> 
                                             <span class="icon alt fa-clock-o"> 2 minutos  </span>
+                                            <span class="icon alt fa-comment"> <span  data-cusdis-count-page-id="{{ .Params.UniqueID }}">0 </span> comentários </span> </span>
                                             <img class="icon_classifIndicativa" src="/images/classIndLivre.svg" alt="imagem de classificação indicativa"/> Livre
                                         </p>
                             
@@ -147,7 +153,8 @@
   
         {{- template "_internal/google_analytics.html" . }}
         {{- partial "scripts/index" . }}
-        
+        <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+        <script defer data-host="https://cusdis.com" data-app-id="b935f701-f887-42b4-96cf-1852bf2005b2" src="https://cusdis.com/js/cusdis-count.umd.js"></script>
     </body>
     
 <style>
@@ -380,21 +387,21 @@
     }
 
     #li_btn_inscrever {
-        padding: 0 !important;
-        margin-top: 28px;
-    }
-
-    #btn_inscrever{
-        box-shadow: inset 0 0 0 2px aliceblue;
-        color: aliceblue !important;
-        height: 3rem;
-        
-    }
-
-    #btn_inscrever:hover{
-        box-shadow: inset 0 0 0 2px #E0DCC5;
-        color: #E0DCC5 !important;
-    }
+            padding: 0 !important;
+            margin-top: 28px;
+            background-color: #FFC97F;
+        }
+    
+        #btn_inscrever{
+            box-shadow: inset 0 0 0 2px #FFC97F;
+            color: #5f7183 !important;
+            height: 3rem;
+        }
+    
+        #btn_inscrever:hover{
+            box-shadow: inset 0 0 0 2px #725e5e;
+            color: #725e5e !important;
+        }
 
     #nomenewsl, #emailnewsl{
         background-color: aliceblue;

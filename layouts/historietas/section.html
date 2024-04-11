@@ -1,5 +1,9 @@
 {{- partial "htmlhead" . -}}
 
+<head>
+    <link rel="canonical" href="https://www.tdvadilho.com/historietas/"/> 
+</head>
+
 {{ $postsPerPage := 4}}
 {{ $posts := .Pages.ByDate.Reverse }}
 {{ $lastPost := first 1 $posts }}
@@ -103,7 +107,7 @@
         }
 
         #main > .posts {
-            padding: 0rem 0rem 1rem 0rem;
+            padding: 0rem 0rem 1rem 0rem !important;
         }
 
         #main > .post header.major h2 {

@@ -52,29 +52,7 @@
                 <div id="bookend">
                     <img src="/images/haqntopag/mybookshelf.svg" class="bookshelf" alt="a estante do autor, contendo vetores dos livros já escritos para ilustrar a cena">
                 </div>
-
-                {{ with $data.social }}
-                    <section>
-                        <ul class="icons alt">
-                            {{ with .newsletter }}
-                                <li><a href="{{ . }}" class="icon alt fa-envelope-open" target="_blank"><span class="label">Newsletter</span></a></li>
-                            {{ end }}
-
-                            {{ with .instagram}}
-                                <li><a href="{{ . }}" class="icon alt fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
-                            {{ end }}
-
-                            {{ with .youtube }}
-                                <li><a href="{{ . }}" class="icon fa-youtube-play" target="_blank"><span class="label">Youtube</span></a></li>
-                            {{ end }}
-
-                            {{ with .pinterest}}
-                                <li><a href="{{ . }}" class="icon alt fa-pinterest" target="_blank"><span class="label">Pinterest</span></a></li>
-                            {{ end }}
-                        </ul>
-                    </section>
-                {{ end }} 
-                <p class="copyrightIntern">© Todas as imagens, textos, arquivos e direitos autorais de conteúdo Thiago David Vadilho (TD Vadilho)</p>
+            {{- partial "rodape" . }} 
             </div>        
         </div>
         {{- partial "copyright" . }}
@@ -292,6 +270,11 @@
 </style>
 
 <script type="text/javascript">
+    /* CORRECAO TEMPORARIA */
+    function excludeborder(){
+        document.getElementById("borda").remove();
+    }
+    
     /* COMPARTILHAMENTO */
     function fbSharing(post_url) {
             var url = new String(post_url);
@@ -452,7 +435,7 @@
 
         document.addEventListener("DOMContentLoaded", (event) => { 
             setupCarousel();
-            
+            excludeborder();
             let id = new URLSearchParams(window.location.search).get('id') || 0;
             images[id].click();
         });

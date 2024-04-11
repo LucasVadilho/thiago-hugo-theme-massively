@@ -1,4 +1,9 @@
 {{- partial "htmlhead" . -}}
+
+<head>
+    <link rel="canonical" href="https://www.tdvadilho.com/portfolio/"/> 
+</head>
+
 {{ $data := index .Site.Data .Site.Language.Lang }}
 <body lang='{{ .Site.LanguageCode | default "en-us" }}' class="is-preload">
     
@@ -250,7 +255,7 @@
 
     .fa, #projLegendaContainer{
         color: rgb(230, 230, 230);
-        filter:drop-shadow(2px 2px #050d1970);
+        /* filter:drop-shadow(2px 2px #050d1970); */
     }
     
     .fa:hover, .fa-shopping-cart:hover, .fa-pinterest:hover, .fa-behance-square:hover, #closeProj:hover, .lojaLink:hover{
@@ -340,10 +345,6 @@
 
     #snackbar_filtroAbrir{
         display: block;
-    }
-
-    #goTo_capas,#goTo_ilustrações{
-        display: none;
     }
 
     .goToClass:hover{
