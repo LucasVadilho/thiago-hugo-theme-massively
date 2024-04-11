@@ -44,60 +44,149 @@
                                     <span onclick="linkedinSharing()"><i class="fa fa-linkedin icon"></i></span>
                                     <span onclick="pinterestSharing()"><i class="fa fa-pinterest icon"></i></span>
                                 </div>
+                               
+                                <div id="suporteoblog">
+                                    <h2>Quer ajudar o blog?</h2>
+                                    <div id="explicacoes-blog">
+                                        <p id="intro-blog">Toda ajuda me permite continuar criando. Toda ajuda é muito bem-vinda! Muito obrigado❤️
+                                        </p>
+                                        
+                                        <div id="container_contribuicoes-blog">
+                                            <div class="contribuicoes-blog">
+                                                <h4>Diretamente</h4>
+                                                <p>Doe por PIX ou cheque os produtos do meu trabalho. Toda compra e doação fazem uma enorme diferença!</p>
+
+                                                <div id="container_contribuicaopix-blog">
+                                                        <a href="https://nubank.com.br/pagar/11jeh7/8ABRsdHuzw" class="button_contribuicaopix-container" target="_blank">
+                                                            <div class="button_contribuicaopix">
+                                                                <p class="textbutton_contribuicaopix"><img src="/images/icon_pix.svg" class="icon_pix" alt="logo do pix"> DOAR</p>
+                                                            </div>
+                                                        </a> 
+                                                
+
+                                                    <a href="https://amzn.to/49s0IwN" class="button_meuslivros-container" target="_blank">
+                                                        <div class="button_meuslivros">
+                                                            <p class="textbutton_meuslivros"><i class="fa fa-book" aria-hidden="true"></i> LIVROS</p>
+                                                        </div>
+                                                    </a>
+
+                                                    <a href="https://umapenca.com/tdvadilho/" class="button_lojaartes-container" target="_blank">
+                                                        <div class="button_lojaartes">
+                                                            <p class="textbutton_lojaartes"><i class="fa fa-paint-brush" aria-hidden="true"></i> ARTES</p>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="contribuicoes-blog">
+                                                <h4>Indiretamente</h4>
+                                                <p>Comprar qualquer produto pelos links afiliados geram renda ao blog sem qualquer custo adicional para você</p>
+                                                <div id="organizer_contribuicoesIndiretas-blog">
+                                                    <a href="https://www.amazon.com.br?&linkCode=ll2&tag=tdvadilho05-20&linkId=323ea7ef1891ccb812a77da02ad83348&language=pt_BR&ref_=as_li_ss_tl" class="clicavel_linkafiliado" target="_blank">
+                                                        <div id="container_linkafiliado">
+                                                            <div class="linkafiliado"><i class="fa fa-bookmark" aria-hidden="true"></i> AMAZON </div>
+                                                        </div>
+                                                    </a>
+                                                    <a href="https://www.magazinevoce.com.br/magazinetdvadilho/" class="clicavel_linkafiliado"  target="_blank">
+                                                        <div id="container_linkafiliado">
+                                                            <div class="linkafiliado lu"><i class="fa fa-bookmark" aria-hidden="true"></i> MAGAZINE LUIZA </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="contribuicoes-blog">
+                                                <h4>Sem custo</h4>
+                                                <p>Me seguindo nas redes sociais, você estará me ajudando a levar o meu trabalho para um público maior</p>
+
+                                                {{ with $data.social }}
+                                                    <ul class="icons alt">
+                                                        {{ with .instagram}}
+                                                            <li><a href="{{ . }}" class="icon alt fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
+                                                        {{ end }}
+
+                                                        {{ with .facebook}}
+                                                            <li><a href="{{ . }}" class="icon alt fa-facebook" target="_blank"><span class="label">Facebook</span></a></li>
+                                                        {{ end }}
+
+                                                        {{ with .twitter}}
+                                                            <li><a href="{{ . }}" class="icon alt fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
+                                                        {{ end }}
+
+                                                        {{ with .youtube }}
+                                                            <li><a href="{{ . }}" class="icon alt fa-youtube-play" target="_blank"><span class="label">Youtube</span></a></li>
+                                                        {{ end }}
+                                                    </ul>
+                                                {{ end }}
+                                            </div>
+                                        </div>                                
+                                    </div>
+                                    </div>
+                                </div>
+                                
                         </td>
                     </tr>
+                    
                 </tbody>
+                
             </table>
-
-            <div id="comentariosblog-container">
-                <div id="cusdis_thread"
-                    data-host="https://cusdis.com"
-                    data-app-id="b935f701-f887-42b4-96cf-1852bf2005b2"
-                    data-page-id="{{ .Params.UniqueID }}"
-                    data-page-url="{{ .Permalink }}"
-                    data-page-title="{{ .Title }}"
-                    >
-                </div>
-                
-                <script>
-                window.CUSDIS_LOCALE = {
-                    powered_by: 'Powered by Cusdis',
-                    post_comment: 'Postar comentário',
-                    loading: 'Carregando',
-                
-                    // comment
-                    email: 'Email (opcional)',
-                    nickname: 'Nome',
-                    reply_placeholder: 'Comentar...',
-                    reply_btn: 'Responder',
-                    sending: 'enviando...',
-                
-                    // reply
-                    mod_badge: 'MOD',
-                    content_is_required: 'Conteúdo é requerido',
-                    nickname_is_required: 'Apelido é requerido',
-                
-                    comment_has_been_sent:
-                    'Seu comentário foi enviado. Por favor aguarde pela aprovação.',
-                }
-                </script>
-                <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
-                <script defer data-host="https://cusdis.com" data-app-id="b935f701-f887-42b4-96cf-1852bf2005b2" src="https://cusdis.com/js/cusdis-count.umd.js"></script>
-            </div>
-            
-            {{- partial "rodape.html" . }}
-        </div>
-
-        {{- partial "copyright" . }}
+        
         <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
         <div id="urlCopiarNotification">
         </div>
-
     </div>
 
     {{- template "_internal/google_analytics.html" . }}
     {{- partial "scripts/index" . }}
 
+
+    <div id="comentariosblog-container">
+        <h2>Comentários</h2>
+        <h4>Vamos conversar sobre o post?</h4>
+
+        <p class="avisos-pre-comentarios">• A aprovação dos comentários tem o intuito <b>apenas</b> de barrar mensagens desrespeitosas ou spams;</p>
+        <p class="avisos-pre-comentarios">• Aqui, nenhum dos seus dados são salvos, e, por isso, ainda não temos todas as funcionalidades típicas 
+            de uma seção de comentários. Com o tempo chegaremos lá 😊
+        </p>
+
+        <div id="cusdis_thread"
+            data-host="https://cusdis.com"
+            data-app-id="b935f701-f887-42b4-96cf-1852bf2005b2"
+            data-page-id="{{ .Params.UniqueID }}"
+            data-page-url="{{ .Permalink }}"
+            data-page-title="{{ .Title }}"
+            >
+        </div>
+
+        <script>
+            window.CUSDIS_LOCALE = {
+                powered_by: 'Powered by Cusdis',
+                post_comment: 'Postar comentário',
+                loading: 'Carregando',
+            
+                // comment
+                email: 'Email (opcional)',
+                nickname: 'Nome',
+                reply_placeholder: 'Comentar...',
+                reply_btn: 'Responder',
+                sending: 'enviando...',
+            
+                // reply
+                mod_badge: 'MOD',
+                content_is_required: 'Conteúdo é requerido',
+                nickname_is_required: 'Apelido é requerido',
+            
+                comment_has_been_sent:
+                'Seu comentário foi enviado. Por favor aguarde pela aprovação.',
+            }
+        </script>
+
+        <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+        <script defer data-host="https://cusdis.com" data-app-id="b935f701-f887-42b4-96cf-1852bf2005b2" src="https://cusdis.com/js/cusdis-count.umd.js"></script>
+    </div>
+    
+    {{- partial "copyright" . }}
+</div>
 </body>
 
 <style>
@@ -359,6 +448,190 @@
         to {opacity: 1}
     }
 
+/* ENCERRAMENTO */    
+    #suporteoblog{
+        margin-top: 35px;
+        padding-top: 35px;
+        border-top: 2px solid #b6b6b6;
+        border-width: thin;
+    }
+
+    #intro-blog{
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    #explicacoes-blog{
+        margin-top: 20px;
+    }
+
+    #historieta-encerramento h2{
+        text-align: center;
+    }
+
+    #container_contribuicoes-blog{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-top: 35px;
+    }
+
+    .contribuicoes-blog{
+        width: 30%;
+        min-width: 20%;
+    }
+
+    .contribuicoes-blog h4{
+        margin-bottom: 15px;
+    }
+
+    .title_contribuicoes-blog{
+        text-align: center;
+        font-size: 1rem;
+        line-height: 1.6;
+        text-transform: uppercase;
+    }
+
+    /* diretamente */
+    #container_contribuicaopix-blog{
+        width: 100%;
+        display: inline-flex;
+        justify-content: space-evenly;
+        margin-top: 12px;
+    }
+
+    .button_contribuicaopix-container, .button_meuslivros-container, .button_lojaartes-container{
+        -webkit-backface-visibility: hidden;
+        -webkit-transform: translateZ(0) scale(1, 1);
+        filter: blur(0);
+        -webkit-filter: blur(0);
+        transition: transform .2s;
+    }
+
+    .button_contribuicaopix-container:hover, .button_meuslivros-container:hover, .button_lojaartes-container:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+        transition: transform .2s;
+    }
+
+    .button_contribuicaopix{
+        margin-left: 0px;
+        margin-right: 0px;
+        height: 26px;
+        background-color: rgb(31, 107, 102);
+        border-radius: 3px;
+        display: flex;
+        align-items: center;
+    }
+
+    .textbutton_contribuicaopix{
+        color:rgb(255, 255, 255); 
+        font-family: "Source Sans Pro", Helvetica, sans-serif;
+        font-size: 0.8rem;
+        font-weight: 900;
+        letter-spacing: 0.075em;
+        padding: 0 10px 0 10px;
+    }
+
+    .icon_pix{
+        filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(323deg) brightness(102%) contrast(101%);
+        width: 9.344px;
+        height: 12.219px;
+        padding-top: 3px;
+    }
+
+    .button_meuslivros{
+        margin-left: 0px;
+        margin-right: 0px;
+        height: 26px;
+        background-color: #FFC97F;
+        border-radius: 3px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .textbutton_meuslivros{
+        color:rgb(26, 25, 25); 
+        font-family: "Source Sans Pro", Helvetica, sans-serif;
+        font-size: 0.8rem;
+        font-weight: 900;
+        letter-spacing: 0.075em;
+        padding: 0 10px 0 10px;
+    }
+
+    .button_lojaartes{
+        margin-left: 0px;
+        margin-right: 0px;
+        height: 26px;
+        background-color: #d2bbf0;
+        border-radius: 3px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .textbutton_lojaartes{
+        color:rgb(26, 25, 25); 
+        font-family: "Source Sans Pro", Helvetica, sans-serif;
+        font-size: 0.8rem;
+        font-weight: 900;
+        letter-spacing: 0.075em;
+        padding: 0 10px 0 10px;
+    }
+
+    /* indiretamente */
+    #organizer_contribuicoesIndiretas-blog{
+        display: inline-flex;
+        justify-content: space-evenly;
+        width: 100%;
+        margin: 12px auto 0 auto;
+    }
+
+    #container_linkafiliado {
+        height: 26px;
+        width: fit-content;
+        -webkit-backface-visibility: hidden;
+        -webkit-transform: translateZ(0) scale(1, 1);
+        filter: blur(0);
+        -webkit-filter: blur(0);
+        transition: transform .2s;
+        display: flex;
+        align-items: center;
+    }
+
+    #container_linkafiliado:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+        transition: transform .2s;
+    }
+
+    .linkafiliado {
+        border-radius: 3px;
+        background-color: #ffe95a;
+        color:rgb(26, 25, 25); 
+        height: 26px;
+        font-family: "Source Sans Pro", Helvetica, sans-serif;
+        font-size: 0.8rem;
+        font-weight: 900;
+        letter-spacing: 0.075em;
+        padding: 0 10px 0 10px;
+    }
+
+    .lu{
+        background-color: #4B83F9 !important;
+        color: white;
+    }
+
+    /* sem custo */
+    .contribuicoes-blog ul{
+        text-align: center;
+        margin-top: 8px;
+    }
+
+    .contribuicoes-blog>.icon.alt{
+        color: #717981;
+    }
+
 /* GoToComentários */
     #comentariosblog:hover{
         cursor: pointer;
@@ -427,7 +700,98 @@
         #share_postBlog{
             max-width: 352px;
         }
-    }  
+    }
+
+    /* REGRAS DE MIDIA */
+    @media screen and (max-width: 1080px) and (min-width:890px){
+        #container_contribuicoes-blog{
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .contribuicoes-blog{
+            width: 40%;
+            margin-bottom: 50px;
+        }
+
+        .contribuicoes-blog:first-of-type{
+            margin-right: 50px;
+        }
+
+        .contribuicoes-blog:last-of-type{
+            margin-bottom: 0;
+        }
+    }
+
+    @media screen and (max-width: 889px){
+        .txt_pinMateriaisUsados{
+            font-size: 0.75rem;
+        }
+
+        .fa-thumb-tack {
+            font-size: small;
+        }
+
+        .pinMateriaisUsados{
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        #container_contribuicoes-blog{
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .contribuicoes-blog{
+            width: 90%;
+            margin-bottom: 50px;
+        }
+
+        .contribuicoes-blog:last-of-type{
+            margin-bottom: 0;
+        }
+
+        .contribuicoes-blog h4{
+            text-align: left;
+        }
+
+        #container_contribuicaopix-blog{
+            justify-content: flex-start;
+        }
+
+
+        .button_contribuicaopix-container, .button_meuslivros-container{
+            margin-right: 10px;
+        }
+
+        #organizer_contribuicoesIndiretas-blog{
+            justify-content: flex-start;
+        }
+
+        #container_linkafiliado{
+            margin-right: 10px;
+            margin-top: 12px;
+        }
+
+        .contribuicoes-blog ul{
+            text-align: left;
+        }
+    }
+
+    @media screen and (max-width: 464px) and (min-width: 403px){
+        #compartilharBlogPost span:nth-child(8){
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 402px){
+        #compartilharBlogPost span:nth-child(7){
+            display: none;
+        }
+        #compartilharBlogPost span:nth-child(8){
+            display: none;
+        }
+    }
 </style>
 
 <script>
