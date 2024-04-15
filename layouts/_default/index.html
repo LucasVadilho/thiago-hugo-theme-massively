@@ -40,7 +40,9 @@
                                 <p class="txt_informaçõesPost">
                                     <span class="icon alt fa-calendar-o"> 15 abr 2024</span> 
                                     <span class="icon alt fa-clock-o"> 10 minuto </span>
-                                    <span class="icon alt fa-comment"> <span  data-cusdis-count-page-id="{{ .Params.UniqueID }}">0 </span> comentários </span> </span>
+                                    {{ range where .Site.Pages ".Params.uniqueID" "blog_post_08" }}
+                                        <span class="icon alt fa-comment"> <span  data-cusdis-count-page-id="{{ .Params.UniqueID }}">0 </span> comentários </span> </span>
+                                    {{ end }} 
                                     <img class="icon_classifIndicativa" src="/images/classIndLivre.svg" alt="imagem de classificação indicativa"> Livre
                                 </p>
 
@@ -92,13 +94,15 @@
                                         <p class="txt_informaçõesPost">
                                             <span class="icon alt fa-calendar-o"> 22 mar 2024 </span> 
                                             <span class="icon alt fa-clock-o">  9 minutos  </span>
-                                            <span class="icon alt fa-comment"> <span  data-cusdis-count-page-id="{{ .Params.UniqueID }}">0 </span> comentários </span> </span>
-                                            <img class="icon_classifIndicativa" src="/images/classIndLivre.svg" alt="imagem de classificação indicativa"/> Livre
+                                            {{ range where .Site.Pages ".Params.uniqueID" "blog_post_07" }}
+                                                <span class="icon alt fa-comment"> <span  data-cusdis-count-page-id="{{ .Params.UniqueID }}">0 </span> comentários </span> </span>
+                                            {{ end }} 
+                                                <img class="icon_classifIndicativa" src="/images/classIndLivre.svg" alt="imagem de classificação indicativa"/> Livre
                                         </p>
                             
                                         <p class="txt_hideOverflowTrêsLinhas">
                                             Resolvi falar um pouco sobre o que estou fazendo, liberar uma <i>surpresa</i>, e conversar também sobre as coisas novas que apareceram no site.
-                                        </p>           
+                                        </p>          
                                     </article>
                                 </div>
                             </a>
