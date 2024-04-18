@@ -159,7 +159,6 @@ const setPreference = () => {
 }
 
 const reflectPreference = () => {
-  console.log(theme);
   document.firstElementChild
     .setAttribute('data-theme', theme.value)
 
@@ -173,11 +172,13 @@ const theme = {
 }
 
 // set early so no page flashes / CSS is made aware
-reflectPreference()
+// reflectPreference()
 
 window.onload = () => {
   // set on load so screen readers can see latest value on the button
   reflectPreference();
+
+  setPreference();
 
   // now this script can find and listen for clicks on the control
   document
@@ -186,10 +187,10 @@ window.onload = () => {
 }
 
 // sync with system changes
-  window
+window
     .matchMedia('(prefers-color-scheme: dark)')
     .addEventListener('change', ({matches:isDark}) => {
-      theme.value = isDark ? 'dark' : 'light'
-      setPreference()
-  })
+        theme.value = isDark ? 'dark' : 'light';
+        setPreference();
+    })
 </script>
