@@ -59,4 +59,15 @@
 			border-bg:		rgba(#ffffff,0.075),
 			accent:			#18bfef,
 		),
+
+		darkmode: (
+			bg:				#292A2D, /* mudou o fundo da scrollbar */
+			bg-alt:			#1c19a5,
+			fg:				#3903fc,
+			fg-bold:		rgb(245, 245, 245), /* mudou cor dos h's, icones e a's */
+			fg-light:		rgba(#694f48, 0.5),
+			border:			#b9b9b9, /* mudou o círculo em volta dos ícones */
+			border-bg:		#292A2D, /* fundo do content */
+			accent:			#18bfef,
+		),
 	);

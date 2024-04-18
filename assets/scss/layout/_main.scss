@@ -5,6 +5,80 @@
 ///
 
 /* Main */
+#darkmode{
+	@include color(darkmode);
+	background-color: _palette(darkmode, bg);
+	color: _palette(fg-light);
+	
+	#comentariosblog-container{
+		background-color:  _palette(darkmode, bg);
+	}
+
+	#comentarioshist-container{
+		background-color:  _palette(darkmode, bg);
+	}
+
+	#root{
+		color: #f5f5f5 !important;
+		font-weight: bold;
+	}
+
+	h2{ 
+		color: #f5f5f5;
+	}
+
+	h4{
+		color: #ffc02d;
+	}
+	
+	p{
+		color:  #e5e5e5;
+	}
+
+	.referenciar{
+		color: _palette(darkmode, border);
+	}
+
+	figcaption{
+		color: _palette(darkmode, border);
+	}
+
+	#container_contribuicaopix p{
+		color: _palette(darkmode, bg);
+	}
+
+	#container_contribuicaopix img{
+		filter: invert(13%) sepia(11%) saturate(323%) hue-rotate(187deg) brightness(92%) contrast(89%);
+	}
+
+	.button_contribuicaopix{
+		background-color: #5de0d8;
+	}
+
+	.lu {
+		background-color: #8ee5ff !important;
+	}
+
+	#container_linkafiliado .linkafiliado{
+		color: _palette(darkmode, bg);
+	}
+
+	#main{
+		background-color: _palette(darkmode, bg);
+	}
+
+	#nav ul.links li.active {
+		background-color: _palette(darkmode, bg);
+	}
+
+	#nav ul.links li.active a {
+		color: #f5f5f5
+	}
+
+	.content-container img{
+		box-shadow: #000000 0px 10px 20px -10px;
+	}
+}
 
 	#main {
 		background-color: _palette(bg);

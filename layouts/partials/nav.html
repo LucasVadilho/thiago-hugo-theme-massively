@@ -16,11 +16,6 @@
         <li class="{{ if eq ($currentPage.RelPermalink) (`/sobre/`) }}active{{end}}"><a href='{{ "/sobre" | relLangURL }}'>Sobre</a></li>
 
         <li class="{{ if eq ($currentPage.RelPermalink) (`/loja/`) }}active{{end}}"><a href='https://umapenca.com/tdvadilho/' target="_blank">Loja</a></li>
-        {{ if .IsTranslated }}
-        {{ range .AllTranslations }}
-       
-        {{ end }}
-        {{ end }}
     </ul>
 
    <!--  <spam id="socialicons_hide">
