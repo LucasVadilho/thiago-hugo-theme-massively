@@ -1,0 +1,270 @@
+/*! tailwindcss v2.1.1 | MIT License | https://tailwindcss.com */
+/*! modern-normalize v1.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
+    ::-webkit-scrollbar {
+        width: 5px;              /* width of the entire scrollbar */
+        height: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: none;       /* color of the tracking area */
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: rgb(131, 131, 131);    /* color of the scroll thumb */
+        border-radius: 20px;       /* roundness of the scroll thumb */
+        cursor: pointer !important;
+    }
+                    
+    *::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    *::-webkit-scrollbar-track {
+        background: none;
+    }
+
+    *::-webkit-scrollbar-thumb {
+        background-color:rgb(131, 131, 131);
+        border-radius: 20px;
+    }
+
+    body {
+        scrollbar-width: thin;   /* "auto" or "thin" */
+        scrollbar-color: rgb(131, 131, 131);   /* scroll thumb and track */
+    }
+
+    ::-webkit-scrollbar-thumb:active { 
+        background-color: rgb(100, 100, 100);
+    }
+
+
+body {
+    font-family: inherit;
+    line-height: inherit;
+}
+
+.mb-2{ /* Títulos > nome,email e comentar */
+    line-height: 1.5;
+    letter-spacing: .075em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    color: #64686f;
+    font-size: 11px;
+    font-weight: 700;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+.border-gray-200 {/* cor das bordas dos campos */
+    border-color: #e2e2e2;
+    border-width: 2px;
+    padding: 0 1rem;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: #e5e7eb;
+}
+
+/* Comentário em si */
+    .font-medium {/* fonte do nome */
+        font-weight: 700;
+        font-size: 16px;
+        font-family: "Alegreya Sans SC";
+        color: rgb(22, 22, 22);
+    }
+
+    .text-sm { /* Data e, por algum motivo, fonte do botão */
+        font-size: .875rem;
+        line-height: 1.25rem;
+    }
+
+    .my-2{/* font do comentário */
+        font-size: 16px;
+        color: rgb(64, 68, 77);
+        font-family: sans-serif;
+    }
+
+    .pl-4 { /* identação dos comentários */
+        padding-left: 1rem;
+    }
+
+    .border-l-2 {/* barra de identação dos comentários */
+        border-left-width: 2px;
+    }
+
+    .my-4 {/* margin comentários e responder */
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+/* Botão postar comentário */
+button{
+    background-color: #e1e17d;
+    background-color: #e1e17d;
+    font-size: 10px !important;
+    color: #212931 !important;
+    letter-spacing: .075em;
+    text-transform: uppercase;
+    padding: 0 1rem 0 1rem !important;
+}
+
+button:hover{
+    cursor: pointer;
+    box-shadow: inset 0 0 0 2px #6f6f28;
+    color: #6f6f28 !important;
+}
+
+.font-bold {/* fonte do botão postar */
+    font-family: source sans pro, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: 900;
+    line-height: 2.7rem;
+}
+
+/* PARTE ESTRUTURAL */
+    .my-8 {/* espaço entre o botão postar e o primeiro comentário */
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .w-full { /* Faz os campos preencherem todo o espaço horizontal e impossibilita resize horizontal */
+        width: 100%;
+        resize: vertical;
+    }
+
+    .p-2 { /* aumenta a height dos campos e determina a estilização da fonte dentro dos campos*/
+        padding: .7rem;
+        font-size: 16px;
+        font-family: source sans pro, Helvetica, sans-serif;
+    }
+
+    .h-24 {/* aumenta verticalmente o campo de comentários */
+        height: 6rem;
+    }
+
+    .block {
+        display: block;
+    }
+
+    .flex {
+        display: flex;
+    }
+
+    .grid{
+        display: grid;
+    }
+
+    .gap-4 {
+        gap: 1rem;
+    }
+
+    .grid-cols-1 {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    .grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* Powered by cusdis */
+    .underline {
+        text-decoration: underline;
+    }
+    .text-xs {
+        font-size: .75rem;
+        line-height: 1rem;
+        color: rgb(136, 136, 136) !important;
+    }
+    .text-center {
+        text-align: center;
+    }
+    a {
+        color: inherit;
+        text-decoration: inherit;
+    }
+
+@-webkit-keyframes spin {
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+@-webkit-keyframes ping {
+    100%, 75% {
+        transform: scale(2);
+        opacity: 0
+    }
+}
+
+@keyframes ping {
+    100%, 75% {
+        transform: scale(2);
+        opacity: 0
+    }
+}
+
+@-webkit-keyframes pulse {
+    50% {
+        opacity: .5
+    }
+}
+
+@keyframes pulse {
+    50% {
+        opacity: .5
+    }
+}
+
+@-webkit-keyframes bounce {
+    0%, 100% {
+        transform: translateY(-25%);
+        -webkit-animation-timing-function: cubic-bezier(.8, 0, 1, 1);
+        animation-timing-function: cubic-bezier(.8, 0, 1, 1)
+    }
+
+    50% {
+        transform: none;
+        -webkit-animation-timing-function: cubic-bezier(0, 0, .2, 1);
+        animation-timing-function: cubic-bezier(0, 0, .2, 1)
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(-25%);
+        -webkit-animation-timing-function: cubic-bezier(.8, 0, 1, 1);
+        animation-timing-function: cubic-bezier(.8, 0, 1, 1)
+    }
+
+    50% {
+        transform: none;
+        -webkit-animation-timing-function: cubic-bezier(0, 0, .2, 1);
+        animation-timing-function: cubic-bezier(0, 0, .2, 1)
+    }
+}
+
+blockquote {
+    --tw-bg-opacity: 1;
+    background-color: rgba(243, 244, 246, var(--tw-bg-opacity))
+}
+
+.dark blockquote {
+    --tw-bg-opacity: 1;
+    background-color: rgb(197, 197, 197);
+}
+
+blockquote {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    padding-left: 1rem;
+    padding-right: 1rem
+}
