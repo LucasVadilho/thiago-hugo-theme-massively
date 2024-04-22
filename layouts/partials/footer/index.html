@@ -39,14 +39,6 @@
             </ul>
            
         </form>
-
-        <div id = "SnackbarFAQ">
-            <span id="close" onclick="closeSnackbarFAQ()">x</span>
-            <p> Área ainda em construção. Peço que tenha paciência. </p> 
-            <p> Além disso, por favor, não hesite em me mandar perguntas por meio do formulário ou email para que eu
-            possa construir uma área de FAQ de real relevância.</p>
-            <p> Obrigado! </p>
-        </div>
     </section>
     {{ end }}
 
@@ -56,7 +48,7 @@
             <h6><span class="underline-servicos">Serviços (agenda aberta)</span></h6>
             
             <div id="container-servicos">
-                <div class="container-individual-servicos">
+                <div class="container-individual-servicos" onclick="abreSnackServicos('ilustracaoDesign')">
                     <div class="container-imagethumb-servicos">
                     <img src="http://www.tdvadilho.com/imagens/portfolio/projeto1/ImiNoCampoDeFlores-TDVadilho-thumb-LowRes-noai-noimageai.jpg" alt="Imi em Meio ao Campo de Flores. Personagem imaginário amarelo."/>
                 </div>
@@ -66,9 +58,9 @@
                     </div>
                 </div>
 
-                <div class="container-individual-servicos">
+                <div class="container-individual-servicos" onclick="abreSnackServicos('leituraCritica')">
                     <div class="container-imagethumb-servicos">
-                    <img src="/images/leitura-critica.jpg" alt=""/>
+                    <img src="/images/leitura-critica.jpg" alt="Imagem de um óculos em cima de um caderno com anotações sobre um de meus textos"/>
                 </div>
                     <div class="nome-chamada-servicos">
                       <h1>Leitura Crítica</h1>
@@ -76,9 +68,9 @@
                     </div>
                 </div>
 
-                <div class="container-individual-servicos">
+                <div class="container-individual-servicos" onclick="abreSnackServicos('criacaoDeTextos')">
                     <div class="container-imagethumb-servicos">
-                    <img src="/images/criacao-de-texto.jpg" alt="" />
+                    <img src="/images/criacao-de-texto.jpg" alt="Imagem dos materiais que uso para escrever meus textos - caderno, caneta, teclado e livros de inspiração" />
                 </div>
                     <div class="nome-chamada-servicos">
                       <h1>Criação Textual</h1>
@@ -86,7 +78,7 @@
                     </div>
                 </div>
 
-                <div class="container-individual-servicos">
+                <div class="container-individual-servicos" onclick="abreSnackServicos('outros')">
                     <div class="container-imagethumb-servicos">
                     <img src="/images/outros.jpg" alt="Processo de criação da arte para Os Sapos que Fingem Perfeição"/>
                 </div>
@@ -96,9 +88,19 @@
                     </div>
                 </div>
             </div>
-        
-
         {{ end }}
+
+        
+        <div id = "SnackbarSaibaMais">
+            <span id="close" onclick="closeSnackbarSaibaMais()">x</span>
+            <div id="servicos-outros-criativos">
+                {{ with .Site.GetPage "servicos-outros-criativos" }}
+                    <h2>Outros</h2>
+                    {{ .Content }}
+                {{ end }}    
+            </div>
+        </div>
+        
 
         {{ with $data.contactinfo.email }}
         <section id="splitcontact">
@@ -268,7 +270,7 @@
     }
 
     /* snack serviços daqui para baixo */
-    #SnackbarFAQ {
+    #SnackbarSaibaMais {
         display: none;
         text-align: left;
         padding: 5px;
@@ -287,7 +289,7 @@
         animation: fadein 0.5s;
     }
 
-    #SnackbarFAQ p{
+    #SnackbarSaibaMais p{
         color: #101020;
         font-weight: 500;
         font-size: 15px;
@@ -486,6 +488,7 @@
 </style>
 
 <script>
+/* Formulário de contato */
     document.getElementById('contato').addEventListener("submit", (e) => {
         e.preventDefault();
 
@@ -546,5 +549,30 @@
             form.className = form.className.replace("showFail", "");   
         }, 8000);
     }
+
+/* Saiba Mais - Serviços */
+/* SNACKBAR FAQ */
+let SnackbarSaibaMais = document.getElementById("SnackbarSaibaMais")
+
+let abreSnackServicos = function(tipoServico){
+    event.stopPropagation();
+    SnackbarSaibaMais.style.display = "block";
+
+    /* confere se pode fechar ao clicar */
+    window.addEventListener('click', function(v){
+        if (document.getElementById('SnackbarSaibaMais').contains(v.target)){
+        } else{
+            SnackbarSaibaMais.style.display = "none";
+        }
+    }, options = {"once": true})
+
+    if (tipoServico === "leituraCritica"){
+
+    }
+}
+
+let closeSnackbarSaibaMais = function(){
+    SnackbarSaibaMais.style.display = "none"
+}
 
 </script>

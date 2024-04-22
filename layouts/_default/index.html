@@ -951,24 +951,4 @@ var form = document.getElementById("Snackbar");
       let resetContatoForm = document.getElementById('contato')
       resetContatoForm.reset()
     }
-
-/* SNACKBAR FAQ */
-    let snackbarFAQ = document.getElementById("SnackbarFAQ")
-
-    let openFAQ=function(e){  
-        e.stopPropagation()
-        snackbarFAQ.style.display = "block"
-
-        window.addEventListener('click', function(v){
-            if (document.getElementById('SnackbarFAQ').contains(v.target)){
-            } else{
-                snackbarFAQ.style.display = "none"  
-            }
-        }, options = {"once": true})
-    }
-    
-    let closeSnackbarFAQ = function(){
-        snackbarFAQ.style.display = "none"
-    }
-    
 </script>

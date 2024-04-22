@@ -47,7 +47,6 @@
                                     <span onclick="wppSharing()"><i class="fa fa-whatsapp icon"></i></span>       
                                     <span onclick="redditSharing()"><i class="fa fa-reddit-alien icon"></i></span>
                                     <span onclick="linkedinSharing()"><i class="fa fa-linkedin icon"></i></span>
-                                    <span onclick="pinterestSharing()"><i class="fa fa-pinterest icon"></i></span>
                                 </div>
                                
                                 <div id="suporteoblog">
@@ -853,10 +852,10 @@
         window.open(post_url , "share_dialog", "width=790, height=742");
     }
 
-    function pinterestSharing(post_url){
+/*     function pinterestSharing(post_url){
         var url = new String(post_url);
         window.open(post_url , "share_dialog", "width=1080, height=727");
-    }
+    } */
 
 
     /* COMPARTILHAMENTO */
@@ -875,10 +874,10 @@
         window.open(url , "share_dialog", "width=790, height=742");
     }
 
-    function pinterestSharing(){
+/*     function pinterestSharing(){
         var url = "pinterestSharing('{{ .Params.linkPin }}')";
         window.open(url , "share_dialog", "width=1080, height=727");
-    }
+    } */
 
     function wppSharing(){
         var url = "https://api.whatsapp.com/send?text=Lê esse post no blog do escritor TD Vadilho " + urlCurrentPage
