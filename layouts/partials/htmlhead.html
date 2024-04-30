@@ -71,86 +71,7 @@
 	</head>
     
 <style>
-/* Adequação container content para melhor leitura */
-@media screen and (min-width:1000px) {
-    .content-container{
-        padding: 0rem 4rem 0rem 4rem;
-    }
-}
-
-/* Adequação do nav por conta do serviços e contatos*/
-@media screen and (max-width: 1034px) and (min-width: 980px){
-    #nav ul.links li a {
-        padding: 0 1.75rem;
-    }
-}
-
-/* Correções  no botão */
-.button,#footer input[type="submit"] {
-    background-color: #e1e17d;
-    box-shadow: none;
-    color: #212931;
-}
-
-.button:hover,#footer input[type="submit"]:hover{
-    box-shadow: inset 0 0 0 2px #6f6f28;
-    color: #6f6f28 !important;
-}
-
-/* Hover em palavra link */
-    p>a, figcaption>a{
-        color:#0000FF;
-        position: relative;
-        display: -webkit-inline-box;
-    }
-
-    p>a::before, figcaption a::before{
-        background: hsl(45 100% 70%);
-        content: "";
-        inset: 0;
-        position: absolute ;
-        transform: scaleX(0);
-        transform-origin: right;
-        transition: transform 0.5s ease-in-out;
-        z-index: -1;
-    }
-
-    p>a:hover::before, figcaption a:hover::before{
-        transform: scaleX(1);
-        transform-origin: left;
-    }
-
-    p>a:hover, figcaption>a:hover{
-        color: #252121 !important;
-    }
-
-    /* hover em palavra link no dark mode */
-    #darkmode .content-container a {
-        color: #76b8ff;
-        position: sticky;
-    }
-
-    #darkmode .content-container a::before{
-        background: hsl(45 100% 70%);
-        content: "";
-        inset: 0;
-        position: absolute ;
-        transform: scaleX(0);
-        transform-origin: right;
-        transition: transform 0.5s ease-in-out;
-        z-index: -1;
-    }
-
-    #darkmode .content-container a:hover::before{
-        transform: scaleX(1);
-        transform-origin: left;
-    }
-
-    #darkmode .content-container a:hover{
-        color: #252121 !important;
-    }
-
-/* Gerais */
+/* GERAIS */
     #main > *{
         border-top: none;
     }
@@ -168,6 +89,54 @@
         -ms-interpolation-mode: nearest-neighbor;   /* IE (non-standard property) */
 	}
 
+    #wrapper.fade-in:before { /* animação de fade no background */
+        pointer-events: none;
+        -moz-transition: opacity 1s ease-in-out;
+        -webkit-transition: opacity 1s ease-in-out;
+        -ms-transition: opacity 1s ease-in-out;
+        transition: opacity 1s ease-in-out;
+        -moz-transition-delay: 0.25s;
+        -webkit-transition-delay: 0.25s;
+        -ms-transition-delay: 0.25s;
+        transition-delay: 0.25s;
+        background: #1e252d;
+        content: '';
+        display: block;
+        height: 100%;
+        left: 0;
+        opacity: 0;
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+
+    /* Adequação container content para melhor leitura */
+    @media screen and (min-width:1000px) {
+        .content-container{
+            padding: 0rem 4rem 0rem 4rem;
+        }
+    }
+
+    /* Adequação do nav por conta do serviços e contatos*/
+    @media screen and (max-width: 1034px) and (min-width: 980px){
+        #nav ul.links li a {
+            padding: 0 1.75rem;
+        }
+    }
+
+    /* Correções no botão comum */
+    .button,#footer input[type="submit"] {
+        background-color: #e1e17d;
+        box-shadow: none;
+        color: #212931;
+    }
+
+    .button:hover,#footer input[type="submit"]:hover{
+        box-shadow: inset 0 0 0 2px #6f6f28;
+        color: #6f6f28 !important;
+    }
+
+/* TRATAMENTO DAS PARTES TEXTUAIS */
     h1 { /* Título da seção */
         font-size: 3rem;
         line-height: 1.1;
@@ -181,13 +150,11 @@
 
     h2{ /* Títulos gerais */
         font-size: 2.7rem;
-        /* line-height: 1.1; */
         margin-bottom: 0px;
         hyphens: none;
         font-family: "Alegreya Sans SC";
         font-weight: bold;
         line-height: 0.9;
-        /* font-variant: small-caps; */
         text-transform: none;
         color: #0e1216;
         word-spacing: normal;
@@ -199,7 +166,6 @@
 
     h3{ /* subtítulo da seção*/
         font-size: 1.75rem;
-        /* line-height: 1.1; */
         margin-bottom: 3px; 
         line-height: 0.9;
         font-family: "Alegreya Sans SC";
@@ -215,7 +181,6 @@
 
     h4{ /* Subtítulo gerais */
         font-size: 1.25rem;
-        /* line-height: 1.1; */
         line-height: 0.9;
         font-family: "Alegreya Sans SC";
         text-transform: none;
@@ -242,6 +207,20 @@
         font-family: "Source Sans Pro", Helvetica, sans-serif;
     }
 
+    p{
+        text-justify: distribute;
+        line-height: 1.7;
+        font-size: 1.1rem;
+        word-break: break-word;
+        hyphens: auto;
+        -ms-hyphens: auto;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        margin-bottom: 0px;    
+    }
+
     .txt_informaçõesPost{ /* Legenda informativa das postagens (data, tempo de leitura e classificação indicativa) */
        font-style: italic;
         text-align: left;
@@ -258,43 +237,35 @@
         text-overflow: ellipsis;
     }
 
-    .txt_hideOverflowUmaLinha{
+    .txt_hideOverflowUmaLinha{ /* Esconder o texto quando passar de uma linha */
         word-break: break-word;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
     }
 
-    .txt_hideOverflowTrêsLinhas{
+    .txt_hideOverflowTrêsLinhas{ /* Esconder o texto quando passar de três linhas */
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
-        -webkit-line-clamp: 3; /* max nb lines to show */
+        -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
     }
 
-    .img_shadow{
-        box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
-        line-height: 0;
+    .topico{/* "capítulos" dentro do texto */
+        margin-top: 40px;
+        margin-bottom: 15px;
     }
 
-    .imgandfig_shadow img{
-        box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
-        line-height: 0;
+    .subtopico{
+        margin-bottom: 15px !important;
+        margin-top: 30px;
     }
 
-    p{
-        text-justify: distribute;
-        line-height: 1.7;
-        font-size: 1.1rem;
-        word-break: break-word;
-        hyphens: auto;
-        -ms-hyphens: auto;
-        -webkit-hyphens: auto;
-        -moz-hyphens: auto;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        margin-bottom: 0px;    
+    .divisaomesmocapitulo{
+        transform-origin: 0% 0%;
+        margin-left: 50%;
+        margin-top: 30px;
     }
 
     .actions2{
@@ -311,77 +282,137 @@
         z-index:1;
     }
 
-    #wrapper.fade-in:before {
-        pointer-events: none;
-        -moz-transition: opacity 1s ease-in-out;
-        -webkit-transition: opacity 1s ease-in-out;
-        -ms-transition: opacity 1s ease-in-out;
-        transition: opacity 1s ease-in-out;
-        -moz-transition-delay: 0.25s;
-        -webkit-transition-delay: 0.25s;
-        -ms-transition-delay: 0.25s;
-        transition-delay: 0.25s;
-        background: #1e252d;
-        content: '';
-        display: block;
-        height: 100%;
-        left: 0;
-        opacity: 0;
-        position: fixed;
-        top: 0;
-        width: 100%;
-    }
-	/*Estilizacao scrollbar*/
-    ::-webkit-scrollbar {
-        width: 5px;              /* width of the entire scrollbar */
-        height: 5px;
+    /* Hover em palavra link */
+    p>a, figcaption>a{
+        color:#0000FF;
+        position: relative;
+        display: -webkit-inline-box;
     }
 
-    ::-webkit-scrollbar-track {
-        background: none;       /* color of the tracking area */
+    p>a::before, figcaption a::before{
+        background: hsl(45 100% 70%);
+        content: "";
+        inset: 0;
+        position: absolute ;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.5s ease-in-out;
+        z-index: -1;
     }
 
-    ::-webkit-scrollbar-thumb {
-        background-color: rgb(131, 131, 131);    /* color of the scroll thumb */
-        border-radius: 20px;       /* roundness of the scroll thumb */
-        cursor: pointer !important;
-    }
-                    
-    *::-webkit-scrollbar {
-        width: 5px;
+    p>a:hover::before, figcaption a:hover::before{
+        transform: scaleX(1);
+        transform-origin: left;
     }
 
-    *::-webkit-scrollbar-track {
-        background: none;
+    p>a:hover, figcaption>a:hover{
+        color: #252121 !important;
     }
 
-    *::-webkit-scrollbar-thumb {
-        background-color:rgb(131, 131, 131);
-        border-radius: 20px;
+    /* Hover em palavra link no dark mode */
+    #darkmode .content-container a {
+        color: #76b8ff;
+        position: sticky;
     }
 
-    body {
-        scrollbar-width: thin;   /* "auto" or "thin" */
-        scrollbar-color: rgb(131, 131, 131);   /* scroll thumb and track */
+    #darkmode .content-container a::before{
+        background: hsl(45 100% 70%);
+        content: "";
+        inset: 0;
+        position: absolute ;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.5s ease-in-out;
+        z-index: -1;
     }
 
-    ::-webkit-scrollbar-thumb:active { 
-        background-color: rgb(100, 100, 100);
-    }
-    
-    HTML {
-        cursor: pointer;
+    #darkmode .content-container a:hover::before{
+        transform: scaleX(1);
+        transform-origin: left;
     }
 
-    body {
-        cursor: default; 
+    #darkmode .content-container a:hover{
+        color: #252121 !important;
     }
 
-    ul.icons li:last-child {
-        padding: 0 0.5rem 0 0;
+    /*Autoria e Referencia*/
+    .referenciar{
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: rgb(122, 122, 122);
+        text-align: right;
     }
 
-/* Classificação Indicativa */
+    .linkto_contato{
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: rgb(122, 122, 122);
+    }
+
+
+/* TRATANDO AS IMAGENS */
+    /* Realign - arruma a imagem verticalmente quando, no portfólio, só aparece uma imagem */
+    .realignClass{
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+   .imgcentralizada{
+        max-width: 100%;
+        max-height: 96vh;
+        text-align: center;
+        line-height: 0;
+    }
+
+    .imgAlinhadaEsq{
+        max-width: 60%;
+        margin-left: 0;
+        float: left;
+        padding-right: 20px;
+        line-height: 0;
+    }
+
+    .imgmargintopbottom{
+        margin-top: 18px;
+        margin-bottom: 18px;
+    }
+
+    .imgmarginbottomonly{
+        margin-bottom: 18px;
+    }
+
+    figcaption{
+        margin-top: 3px;
+    }
+
+    figcaption p{
+        text-align: center;
+        font-size: 0.85rem;
+        line-height: 1.6;
+        color: rgba(136, 136, 136, 0.877) !important;
+    }
+
+    figcaption a{
+        text-align: center;
+        font-size: 0.85rem;
+        line-height: 1.6;
+        color:hsla(240, 100%, 50%, 0.877);
+        text-decoration: underline;
+    }
+
+    /* Sombra das imagens */
+    .img_shadow{
+        box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
+        line-height: 0;
+    }
+
+    .imgandfig_shadow img{ /* Para quando usa figcaption na imagem */
+        box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
+        line-height: 0;
+    }
+
+
+/* CLASSIFICAÇÕES INDICATIVAS */
     .icon_classifIndicativa{
         width: 1.65em;
         vertical-align: top;
@@ -406,7 +437,7 @@
         font-size: 1.25rem;
     }    
 
-/* BLOG */
+/* BLOG - destaques, citações e notas do texto*/
     blockquote{
         border-left-color: #18bfef82;
         margin: 0 0 0 7%;
@@ -429,8 +460,7 @@
         font-size: 0.95rem;
     }
 
-    /* Compartilhar Style */
-     /* compartilhamento */
+/* COMPARTILHAMENTO DO CONTEUDO */
     #buttonContainer_compartilharHistorietas{
         text-align: left;
         margin-top: 20px;
@@ -636,6 +666,7 @@
         box-shadow: 0 0 14px rgba(0, 0, 0, 0.05); 
     }
 
+/* MATERIAIS UTILIZADOS - PIN E LINKS */
     #container_slidesAndMateriais{
         position: relative;
         width: 100%;
@@ -747,7 +778,56 @@
         scale: 1.25;
     }
 
-/* FEEDBACK BOTAO CARREGANDO */
+
+/* PAGINATOR E CORREÇÕES DAS BORDAS DOS POSTS*/
+    .pagination{
+        margin: 0 0 0 2px !important;
+    }
+
+    #main>* {
+        border-top: none !important;
+    }
+
+    #main > .posts {
+        padding: 0rem 2rem 0rem 2rem !important;
+        border-top: solid 2px #eee !important;
+        border-bottom: solid 2px #eee !important;
+    }
+
+/* SEÇÃO DOS COMENTÁRIOS */
+    #comentariosblog-container, #comentarioshist-container{
+        background-color: #ffffff;
+        position: relative;
+        margin: 0 auto;
+        width: calc(100% - 4rem);
+        max-width: 72rem;
+        z-index: 2;
+        border: none;
+        padding: 4rem 5rem 2rem 5rem;
+        margin-top: 100px;
+    }
+
+    @media screen and (max-width: 736px){
+    #comentariosblog-container, #comentarioshist-container {
+        padding: 2rem 1.8rem 2rem 1.8rem;
+    }}
+
+    @media screen and (max-width: 480px){
+    #comentariosblog-container, #comentarioshist-container{
+        width: 100%;
+    }}
+
+    .avisos-pre-comentarios{
+        color: grey;
+    }
+
+    #cusdis_thread{
+        margin-top: 40px;
+        max-height: 600px;
+        overflow-y: auto;
+    }
+
+/* FEEDBACK - BOTAO CARREGANDO */
     .borderAnim {
         position: relative;
     }
@@ -798,68 +878,55 @@
             -webkit-clip-path: polygon(0% 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 0% 100%);
         }
     }
-/* FIM DO FEEDBACK BOTAO CARREGANDO */
 
-/* Realign */
-    .realignClass{
-        margin-top: auto;
-        margin-bottom: auto;
+/*ESTILIZAÇÃO DA SCROLLBAR*/
+::-webkit-scrollbar {
+        width: 5px;              /* width of the entire scrollbar */
+        height: 5px;
     }
 
-/* Paginator e bordas correções */
-    .pagination{
-        margin: 0 0 0 2px !important;
+    ::-webkit-scrollbar-track {
+        background: none;       /* color of the tracking area */
     }
 
-    #main>* {
-        border-top: none !important;
+    ::-webkit-scrollbar-thumb {
+        background-color: rgb(131, 131, 131);    /* color of the scroll thumb */
+        border-radius: 20px;       /* roundness of the scroll thumb */
+        cursor: pointer !important;
+    }
+                    
+    *::-webkit-scrollbar {
+        width: 5px;
     }
 
-    #main > .posts {
-        padding: 0rem 2rem 0rem 2rem !important;
-        border-top: solid 2px #eee !important;
-        border-bottom: solid 2px #eee !important;
+    *::-webkit-scrollbar-track {
+        background: none;
     }
 
-/* comentarios */
-    #comentariosblog-container, #comentarioshist-container{
-        background-color: #ffffff;
-        position: relative;
-        margin: 0 auto;
-        width: calc(100% - 4rem);
-        max-width: 72rem;
-        z-index: 2;
-        border: none;
-        padding: 4rem 5rem 2rem 5rem;
-        margin-top: 100px;
+    *::-webkit-scrollbar-thumb {
+        background-color:rgb(131, 131, 131);
+        border-radius: 20px;
     }
 
-    @media screen and (max-width: 736px){
-    #comentariosblog-container, #comentarioshist-container {
-        padding: 2rem 1.8rem 2rem 1.8rem;
-    }}
-
-    @media screen and (max-width: 480px){
-    #comentariosblog-container, #comentarioshist-container{
-        width: 100%;
-    }}
-
-    .avisos-pre-comentarios{
-        color: grey;
+    body {
+        scrollbar-width: thin;   /* "auto" or "thin" */
+        scrollbar-color: rgb(131, 131, 131);   /* scroll thumb and track */
     }
 
-    #cusdis_thread{
-        margin-top: 40px;
-        max-height: 600px;
-        overflow-y: auto;
+    ::-webkit-scrollbar-thumb:active { 
+        background-color: rgb(100, 100, 100);
+    }
+    
+    HTML {
+        cursor: pointer;
     }
 
-    #unhide-blogcomentarios{
-        position: relative;
-        margin-top: 50px;
-        left: 50%;
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
+    body {
+        cursor: default; 
+    }
+
+    ul.icons li:last-child {
+        padding: 0 0.5rem 0 0;
     }
 </style>
 

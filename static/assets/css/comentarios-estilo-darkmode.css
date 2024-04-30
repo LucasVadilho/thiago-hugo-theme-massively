@@ -122,6 +122,15 @@ button:hover{
     line-height: 2.7rem;
 }
 
+/* Feedback de comentário enviado */
+.text-white {
+    color: #ffffff !important;
+}
+
+.bg-blue-500 {
+    background-color: #3b82f6 !important;
+}
+
 /* PARTE ESTRUTURAL */
     .my-8 {/* espaço entre o botão postar e o primeiro comentário */
         margin-top: 2rem;
