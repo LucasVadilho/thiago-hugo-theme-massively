@@ -99,6 +99,7 @@ body {
         margin-top: 1rem;
         margin-bottom: 1rem;
     }
+    
 /* Botão postar comentário */
 button{
     background-color: #e1e17d;
@@ -129,6 +130,7 @@ button:hover{
 
 .bg-blue-500 {
     background-color: #3b82f6 !important;
+    margin-bottom: 10px;
 }
 
 /* PARTE ESTRUTURAL */

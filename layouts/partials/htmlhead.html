@@ -400,17 +400,30 @@
         text-decoration: underline;
     }
 
-    /* Sombra das imagens */
+    /* Sombra das imagens e vídeos */
     .img_shadow{
         box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
-        line-height: 0;
+        line-height: 0; 
     }
 
-    .imgandfig_shadow img{ /* Para quando usa figcaption na imagem */
+    .content-container img{
+		box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
+        line-height: 0;
+	}
+
+    .content-container :has(iframe){
+		box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
+        line-height: 0;
+	}
+
+    .mySlides img{
         box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
         line-height: 0;
     }
 
+    .cancelshadow img{ /* Pelo padrão, as imagens tem shadow. Eu adiciono cancelshadow quando uma imagem ficaria melhor sem a sombra*/
+        box-shadow: none !important;
+    }
 
 /* CLASSIFICAÇÕES INDICATIVAS */
     .icon_classifIndicativa{

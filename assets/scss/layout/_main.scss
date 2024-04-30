@@ -78,6 +78,16 @@
 	.content-container img{
 		box-shadow: #000000 0px 10px 20px -10px;
 	}
+
+	.content-container :has(iframe){
+		box-shadow: #000000 0px 10px 20px -10px;
+        line-height: 0;
+	}
+
+	.mySlides img {
+        box-shadow: #000000 0px 10px 20px -10px;
+        line-height: 0;
+    }
 }
 
 	#main {
