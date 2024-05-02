@@ -67,6 +67,16 @@ body {
     border-color: #e5e7eb;
 }
 
+/* Feedback de comentário enviado */
+.text-white {
+    color: #ffffff !important;
+}
+
+.bg-blue-500 {
+    background-color: #3b82f6 !important;
+    margin-bottom: 10px;
+}
+
 /* Comentário em si */
     .font-medium {/* fonte do nome */
         font-weight: 700;
@@ -98,6 +108,7 @@ body {
         margin-top: 1rem;
         margin-bottom: 1rem;
     }
+    
 /* Botão postar comentário */
 button{
     background-color: #e1e17d;
