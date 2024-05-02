@@ -136,15 +136,3 @@
         text-align: left;
     }
 </style>
-
-<script>
-    window.onload = function(){
-        let flagpaginator = document.querySelector("#main > footer > div > ul > li:nth-child(2) > a").classList.contains("active")
-        console.log(flagpaginator)
-        if (flagpaginator === false){
-            console.log("sim, é === false")
-            document.getElementsByClassName("posts")[0].style.borderTop = "none"
-        }
-    }
-    
-</script>
