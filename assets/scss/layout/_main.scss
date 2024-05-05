@@ -43,11 +43,11 @@
 		color: _palette(darkmode, border);
 	}
 
-	#container_contribuicaopix p{
+	#container_contribuicaopix p,#container_contribuicaopix-blog p{
 		color: _palette(darkmode, bg);
 	}
 
-	#container_contribuicaopix img{
+	#container_contribuicaopix img, #container_contribuicaopix-blog img{
 		filter: invert(13%) sepia(11%) saturate(323%) hue-rotate(187deg) brightness(92%) contrast(89%);
 	}
 
