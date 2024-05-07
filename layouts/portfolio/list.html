@@ -40,8 +40,6 @@
                                          legenda="{{ .Params.Legenda }}"
                                          lojalink="{{ .Params.lojalink }}"
                                          youtubelink="{{ .Params.youtubelink}}"
-                                         pinterestlink="{{ .Params.pinterestlink }}"
-                                         behancelink="{{ .Params.behancelink }}"
                                          class="{{ .Params.class }}"
                                         >
                                         <img src="{{ .Params.Thumbprojeto }}" alt="{{ .Params.altthumb }}">
@@ -62,8 +60,6 @@
                                      legenda="{{ .Params.Legenda }}"
                                      lojalink="{{ .Params.lojalink }}"
                                      youtubelink="{{ .Params.youtubelink}}"
-                                     pinterestlink="{{ .Params.pinterestlink }}"
-                                     behancelink="{{ .Params.behancelink }}"
                                      class="{{ .Params.class }}"
                                      >
                                     <img src="{{ .Params.Thumbprojeto }}" alt="{{ .Params.altthumb }}">
@@ -85,8 +81,6 @@
                                      legenda="{{ .Params.Legenda }}"
                                      lojalink="{{ .Params.lojalink }}"
                                      youtubelink="{{ .Params.youtubelink}}"
-                                     pinterestlink="{{ .Params.pinterestlink }}"
-                                     behancelink="{{ .Params.behancelink }}"
                                      class="{{ .Params.class }}"
                                 >
                                     <img src="{{ .Params.Thumbprojeto }}" alt="{{ .Params.altthumb }}">
@@ -199,6 +193,7 @@
 
     #openProject img{
         object-fit: contain;
+        margin-bottom: 20px;
     }
 
     .iframecontainer{
@@ -819,7 +814,7 @@
         let youtubeButton = ""
 
         if (lojalink != ""){ /* Checando se existe o link da loja para construir o botão e o link na legenda */
-            projLegendaContainer = `<div id="projLegendaContainer"><p>`+ legenda + `<a class="lojaLink" href="` + lojalink + `" target='_blank'>loja do site</a>.</p>`     
+            projLegendaContainer = `<div id="projLegendaContainer"><p>`+ legenda + `<a class="lojaLink" href="` + lojalink + `" target='_blank'>loja</a>.</p>`     
             lojaButton =  `<a id='lojaButton'><div class="logoContainerLoja"><i class="icon alt  fa-shopping-cart fa-2x" onclick="openLink('` + lojalink + `')"></i></div></a>`
         } else{
             projLegendaContainer = `<div id="projLegendaContainer"><p>`+ legenda + `</p></div>`

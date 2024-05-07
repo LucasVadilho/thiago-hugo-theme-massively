@@ -93,9 +93,26 @@
         
         <div id = "SnackbarSaibaMais">
             <span id="close" onclick="closeSnackbarSaibaMais()">x</span>
-            <div id="servicos-outros-criativos">
-                {{ with .Site.GetPage "servicos-outros-criativos" }}
-                    <h2>Outros</h2>
+            <div id="servicosoutroscriativos">
+                {{ with .Site.GetPage "servicosoutroscriativos" }}
+                    {{ .Content }}
+                {{ end }}    
+            </div>
+
+            <div id="servicoscriacaodetextos">
+                {{ with .Site.GetPage "servicoscriacaodetextos" }}
+                    {{ .Content }}
+                {{ end }}    
+            </div>
+
+            <div id="servicoscriacaodetextos">
+                {{ with .Site.GetPage "servicosleituracritica" }}
+                    {{ .Content }}
+                {{ end }}    
+            </div>
+
+            <div id="servicoscriacaodetextos">
+                {{ with .Site.GetPage "servicosilustracaoedesign" }}
                     {{ .Content }}
                 {{ end }}    
             </div>
@@ -551,12 +568,19 @@
     }
 
 /* Saiba Mais - Serviços */
-/* SNACKBAR FAQ */
+let flagServicosAbertos = false;
+document.addEventListener('keydown', (ev) => {
+    if((ev.key == 'Escape') && (flagServicosAbertos == true)){
+        closeSnackbarSaibaMais();
+    }
+}) 
+
 let SnackbarSaibaMais = document.getElementById("SnackbarSaibaMais")
 
 let abreSnackServicos = function(tipoServico){
     event.stopPropagation();
     SnackbarSaibaMais.style.display = "block";
+    flagServicosAbertos = true;
 
     /* confere se pode fechar ao clicar */
     window.addEventListener('click', function(v){
@@ -566,9 +590,9 @@ let abreSnackServicos = function(tipoServico){
         }
     }, options = {"once": true})
 
-    if (tipoServico === "leituraCritica"){
+    /* if (tipoServico === "leituraCritica"){
+    } */
 
-    }
 }
 
 let closeSnackbarSaibaMais = function(){
