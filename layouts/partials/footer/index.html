@@ -93,25 +93,25 @@
         
         <div id = "SnackbarSaibaMais">
             <span id="close" onclick="closeSnackbarSaibaMais()">x</span>
-            <div id="servicosoutroscriativos">
+            <div id="container-outroscriativos">
                 {{ with .Site.GetPage "servicosoutroscriativos" }}
                     {{ .Content }}
                 {{ end }}    
             </div>
 
-            <div id="servicoscriacaodetextos">
+            <div id="container-criacaodetextos">
                 {{ with .Site.GetPage "servicoscriacaodetextos" }}
                     {{ .Content }}
                 {{ end }}    
             </div>
 
-            <div id="servicoscriacaodetextos">
+            <div id="container-leituracritica"> 
                 {{ with .Site.GetPage "servicosleituracritica" }}
                     {{ .Content }}
                 {{ end }}    
             </div>
 
-            <div id="servicoscriacaodetextos">
+            <div id="container-ilustracaoedesign">
                 {{ with .Site.GetPage "servicosilustracaoedesign" }}
                     {{ .Content }}
                 {{ end }}    
@@ -146,9 +146,12 @@
                     <a href="{{ . }}" target="_blank"><i class="fa fa-youtube-play icon"></i></a>
                 {{ end }}
 
-                {{ with .wattapad }}
+                {{ with .pinterest }}
+                    <a href="{{ . }}" target="_blank"><i class="fa fa-pinterest icon"></i></a>
+                {{ end }}
+                <!-- {{ with .wattapad }}
                     <a href="{{ . }}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24" id="wattpad"><path d="m13.471 3.086c.371.056.764.081 1.089.286 1.682.854 1.729 3.628 1.415 5.497 1.332-1.865 4.845-5.905 7.017-5.126.462.143.879.524.963 1.014.306 1.278-.749 2.088-2.713 5.291-3.24 5.286-3.464 8.568-6.556 8.704-1.502.07-3.175-1.317-3.412-3.674-.118-.839-.125-1.69-.058-2.533-2.518 4.116-3.141 9.135-7.4 8.289-3.948-1.07-4.269-9.22-3.54-13.182.083-.663.317-1.43.714-2.249 1.059-2.049 3.513-2.062 4.559-.846 1.073 1.248.76 3.81.595 5.487 1.383-2.408 4.557-7.19 7.327-6.958z"></path></svg></i></a>
-                {{ end }}              
+                {{ end }}    -->           
             </div>
         </section>
         {{ end }}       
@@ -296,7 +299,7 @@
         border-radius: 2px;
         position: fixed;
         bottom: 30px;
-        background-color: rgb(255, 255, 255);
+        background-color: rgb(243 243 243);
         box-shadow: 0 100vw 100vw 100vw rgba(30, 37, 45, 0.623);
         color: #212931;
         transform: translate(-50%,0);
@@ -304,15 +307,62 @@
         z-index: 7;
         -webkit-animation: fadein 0.5s;
         animation: fadein 0.5s;
+        width: calc(100% - 6rem);
+        max-width: 60rem;
+        max-height: 70dvh;
+        overflow-y: auto;
     }
 
+    @media screen and (max-width: 481px) {
+        #SnackbarSaibaMais {
+            width: 96%;
+        }
+
+        #SnackbarSaibaMais h2{
+            font-size: 2.4rem !important;
+        }
+    }
     #SnackbarSaibaMais p{
-        color: #101020;
+        color: #131318;
         font-weight: 500;
         font-size: 15px;
         font-family: helvetica;
-        line-height: normal;
+        line-height: 1.6;
         margin-bottom: 18px;
+    }
+
+    #SnackbarSaibaMais strong{
+        color: #131318 !important;
+    }
+
+    #SnackbarSaibaMais a{
+        color: #0000FF;
+        text-decoration: underline;
+    }
+
+    #SnackbarSaibaMais a:hover{
+        color: #252121 !important;
+        cursor: pointer;
+    }
+
+    #SnackbarSaibaMais h2{
+        color: #2F5A80;
+        margin-bottom: 35px;
+        text-wrap: balance;
+    }
+
+    #SnackbarSaibaMais h3{
+        font-size: 1.25rem;
+        color: #313030;
+    }
+
+    .container_destaqueTxtServicos{
+        border-left: 3px solid #af93c382;
+        margin: 0 0 18px 5%;
+    }
+
+    .destaqueTxtServicos{
+        margin: 0 0 5px 2% !important;
     }
 
     #close:hover{
@@ -332,6 +382,11 @@
         display: flex;
         justify-content: flex-end;
         margin-bottom: 10px;
+    }
+
+    #container-criacaodetextos, #container-leituracritica, #container-outroscriativos, #container-ilustracaoedesign{
+        display: none;
+        padding: 20px;
     }
 /* fim dos serviços */
 
@@ -431,7 +486,7 @@
     }
 
     #redes-sociais a:nth-child(5):before{
-        background: #FF4500;
+        background: #DF0022;
     }
 
 /* fim das redes */
@@ -576,11 +631,34 @@ document.addEventListener('keydown', (ev) => {
 }) 
 
 let SnackbarSaibaMais = document.getElementById("SnackbarSaibaMais")
-
 let abreSnackServicos = function(tipoServico){
     event.stopPropagation();
     SnackbarSaibaMais.style.display = "block";
     flagServicosAbertos = true;
+    console.log("abriu a snack");
+
+    /* primeiro retira o block de todos */
+    document.getElementById("container-leituracritica").style.display = "none";
+    document.getElementById("container-ilustracaoedesign").style.display = "none";
+    document.getElementById("container-criacaodetextos").style.display = "none";
+    document.getElementById("container-outroscriativos").style.display = "none";
+
+    if (tipoServico === "leituraCritica"){
+        console.log("entrou no if leitura critica");
+        document.getElementById("container-leituracritica").style.display = "block";
+    }
+
+    if (tipoServico === "ilustracaoDesign"){
+        document.getElementById("container-ilustracaoedesign").style.display = "block";
+    }
+
+    if (tipoServico === "criacaoDeTextos"){
+        document.getElementById("container-criacaodetextos").style.display = "block";
+    }
+
+    if (tipoServico === "outros"){
+        document.getElementById("container-outroscriativos").style.display = "block";
+    }
 
     /* confere se pode fechar ao clicar */
     window.addEventListener('click', function(v){
@@ -589,14 +667,10 @@ let abreSnackServicos = function(tipoServico){
             SnackbarSaibaMais.style.display = "none";
         }
     }, options = {"once": true})
-
-    /* if (tipoServico === "leituraCritica"){
-    } */
-
 }
 
 let closeSnackbarSaibaMais = function(){
-    SnackbarSaibaMais.style.display = "none"
+    SnackbarSaibaMais.style.display = "none";
 }
 
 </script>
