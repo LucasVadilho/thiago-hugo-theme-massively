@@ -915,7 +915,7 @@
     }
 
     function pinterestSharing(){
-        var url = "pinterestSharing('{{ .Params.linkPin }}')";
+        var url = "{{ .Params.linkPin }}";
         window.open(url , "share_dialog", "width=1080, height=727");
     }
 
