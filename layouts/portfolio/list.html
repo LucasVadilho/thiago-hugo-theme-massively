@@ -39,7 +39,6 @@
                                          itens="{{ jsonify .Params.Itens }}"
                                          legenda="{{ .Params.Legenda }}"
                                          lojalink="{{ .Params.lojalink }}"
-                                         youtubelink="{{ .Params.youtubelink}}"
                                          class="{{ .Params.class }}"
                                         >
                                         <img src="{{ .Params.Thumbprojeto }}" alt="{{ .Params.altthumb }}">
@@ -59,7 +58,6 @@
                                      itens="{{ jsonify .Params.Itens }}"
                                      legenda="{{ .Params.Legenda }}"
                                      lojalink="{{ .Params.lojalink }}"
-                                     youtubelink="{{ .Params.youtubelink}}"
                                      class="{{ .Params.class }}"
                                      >
                                     <img src="{{ .Params.Thumbprojeto }}" alt="{{ .Params.altthumb }}">
@@ -80,7 +78,6 @@
                                      itens="{{ jsonify .Params.Itens }}"
                                      legenda="{{ .Params.Legenda }}"
                                      lojalink="{{ .Params.lojalink }}"
-                                     youtubelink="{{ .Params.youtubelink}}"
                                      class="{{ .Params.class }}"
                                 >
                                     <img src="{{ .Params.Thumbprojeto }}" alt="{{ .Params.altthumb }}">
@@ -808,10 +805,10 @@
 
         let legenda = document.getElementById(id).getAttribute('legenda') /* pegando os parametros e declarando as variaveis correspondentes */
         let lojalink = document.getElementById(id).getAttribute('lojalink')
-        let youtubelink = document.getElementById(id).getAttribute('youtubelink')
+/*         let youtubelink = document.getElementById(id).getAttribute('youtubelink') */
         let projLegendaContainer = ""
         let lojaButton = ""
-        let youtubeButton = ""
+/*         let youtubeButton = "" */
 
         if (lojalink != ""){ /* Checando se existe o link da loja para construir o botão e o link na legenda */
             projLegendaContainer = `<div id="projLegendaContainer"><p>`+ legenda + `<a class="lojaLink" href="` + lojalink + `" target='_blank'>loja</a>.</p>`     
@@ -820,14 +817,13 @@
             projLegendaContainer = `<div id="projLegendaContainer"><p>`+ legenda + `</p></div>`
         }
      
-        if (youtubelink && youtubelink != ""){
+/*         if (youtubelink && youtubelink != ""){
             youtubeButton =  `<a id='youtubeButton'><div class="logoContainerLoja"><i class="icon alt  fa  fa-youtube fa-2x" onclick="openLink('` + youtubelink + `')" target="_blank"></i></div></a>`
         } else{ 
-            /* não faz nada */ 
-        } 
+        }  */
 
         let topButtonsContainer = /* Criando os botões com os links correspondentes */
-            `<div id='topButtonsToClose'><div id='topProjButtonsContainer'>`+ lojaButton + youtubeButton +`
+            `<div id='topButtonsToClose'><div id='topProjButtonsContainer'>`+ lojaButton + `
                 <div id='buttonCloseProject'><span class='fa fa-times-circle fa-2x' aria-hidden='true' onclick="closeSnackbarProj()"></span></div>
             </div></div>`
 
