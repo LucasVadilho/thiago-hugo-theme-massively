@@ -3,3 +3,4 @@ exampleSite/public
 exampleSite/resources
 .publish
 test/videos
+resources/_gen
