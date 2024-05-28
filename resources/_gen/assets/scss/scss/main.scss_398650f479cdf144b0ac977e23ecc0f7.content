@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+@charset "UTF-8";
+>>>>>>> beta
 @import url(font-awesome.min.css);
 @import url("https://fonts.googleapis.com/css?family=Merriweather:300,700,300italic,700italic|Source+Sans+Pro:900");
 /*
@@ -1338,14 +1342,24 @@ button,
 .button {
   background-color: transparent;
   box-shadow: inset 0 0 0 2px #212931;
+<<<<<<< HEAD
   color: #212931 !important; }
+=======
+  color: #212931; }
+>>>>>>> beta
   input[type="submit"]:hover,
   input[type="reset"]:hover,
   input[type="button"]:hover,
   button:hover,
   .button:hover {
+<<<<<<< HEAD
     box-shadow: inset 0 0 0 2px #18bfef;
     color: #18bfef !important; }
+=======
+    /* texto dos botões retangulares */
+    box-shadow: inset 0 0 0 2px #18bfef;
+    color: #18bfef; }
+>>>>>>> beta
   input[type="submit"].primary,
   input[type="reset"].primary,
   input[type="button"].primary,
@@ -1353,7 +1367,11 @@ button,
   .button.primary {
     background-color: #212931;
     box-shadow: none;
+<<<<<<< HEAD
     color: #ffffff !important; }
+=======
+    color: #ffffff; }
+>>>>>>> beta
     input[type="submit"].primary:hover,
     input[type="reset"].primary:hover,
     input[type="button"].primary:hover,
@@ -1576,6 +1594,7 @@ input[type="radio"]:focus + label:before {
   border-color: #18bfef; }
 
 ::-webkit-input-placeholder {
+<<<<<<< HEAD
   color: #909498 !important; }
 
 :-moz-placeholder {
@@ -1589,6 +1608,21 @@ input[type="radio"]:focus + label:before {
 
 .formerize-placeholder {
   color: #909498 !important; }
+=======
+  color: #909498; }
+
+:-moz-placeholder {
+  color: #909498; }
+
+::-moz-placeholder {
+  color: #909498; }
+
+:-ms-input-placeholder {
+  color: #909498; }
+
+.formerize-placeholder {
+  color: #909498; }
+>>>>>>> beta
 
 /* Icon */
 .icon {
@@ -2114,14 +2148,24 @@ table.alt tbody tr td {
   #intro .button {
     background-color: transparent;
     box-shadow: inset 0 0 0 2px #ffffff;
+<<<<<<< HEAD
     color: #ffffff !important; }
+=======
+    color: #ffffff; }
+>>>>>>> beta
     #intro input[type="submit"]:hover,
     #intro input[type="reset"]:hover,
     #intro input[type="button"]:hover,
     #intro button:hover,
     #intro .button:hover {
+<<<<<<< HEAD
       box-shadow: inset 0 0 0 2px #18bfef;
       color: #18bfef !important; }
+=======
+      /* texto dos botões retangulares */
+      box-shadow: inset 0 0 0 2px #18bfef;
+      color: #18bfef; }
+>>>>>>> beta
     #intro input[type="submit"].primary,
     #intro input[type="reset"].primary,
     #intro input[type="button"].primary,
@@ -2129,7 +2173,11 @@ table.alt tbody tr td {
     #intro .button.primary {
       background-color: #ffffff;
       box-shadow: none;
+<<<<<<< HEAD
       color: #1e252d !important; }
+=======
+      color: #1e252d; }
+>>>>>>> beta
       #intro input[type="submit"].primary:hover,
       #intro input[type="reset"].primary:hover,
       #intro input[type="button"].primary:hover,
@@ -2386,6 +2434,189 @@ table.alt tbody tr td {
     #nav {
       display: none; } }
 /* Main */
+<<<<<<< HEAD
+=======
+#darkmode {
+  color: #3903fc;
+  background-color: #292A2D;
+  color: #909498; }
+  #darkmode input, #darkmode select, #darkmode textarea {
+    color: whitesmoke; }
+  #darkmode a {
+    color: whitesmoke;
+    border-bottom-color: rgba(57, 3, 252, 0.5); }
+    #darkmode a:hover {
+      border-bottom-color: transparent;
+      color: #18bfef !important; }
+  #darkmode strong, #darkmode b {
+    color: whitesmoke; }
+  #darkmode h1, #darkmode h2, #darkmode h3, #darkmode h4, #darkmode h5, #darkmode h6 {
+    color: whitesmoke; }
+  #darkmode blockquote {
+    border-left-color: #b9b9b9; }
+  #darkmode code {
+    background: #292A2D;
+    border-color: #b9b9b9; }
+  #darkmode hr {
+    border-bottom-color: #b9b9b9; }
+  #darkmode .box {
+    border-color: #b9b9b9; }
+  #darkmode input[type="submit"],
+  #darkmode input[type="reset"],
+  #darkmode input[type="button"],
+  #darkmode button,
+  #darkmode .button {
+    background-color: transparent;
+    box-shadow: inset 0 0 0 2px whitesmoke;
+    color: whitesmoke; }
+    #darkmode input[type="submit"]:hover,
+    #darkmode input[type="reset"]:hover,
+    #darkmode input[type="button"]:hover,
+    #darkmode button:hover,
+    #darkmode .button:hover {
+      /* texto dos botões retangulares */
+      box-shadow: inset 0 0 0 2px #18bfef;
+      color: #18bfef; }
+    #darkmode input[type="submit"].primary,
+    #darkmode input[type="reset"].primary,
+    #darkmode input[type="button"].primary,
+    #darkmode button.primary,
+    #darkmode .button.primary {
+      background-color: whitesmoke;
+      box-shadow: none;
+      color: #292A2D; }
+      #darkmode input[type="submit"].primary:hover,
+      #darkmode input[type="reset"].primary:hover,
+      #darkmode input[type="button"].primary:hover,
+      #darkmode button.primary:hover,
+      #darkmode .button.primary:hover {
+        background-color: #18bfef; }
+  #darkmode label {
+    color: whitesmoke; }
+  #darkmode input[type="text"],
+  #darkmode input[type="password"],
+  #darkmode input[type="email"],
+  #darkmode select,
+  #darkmode textarea {
+    border-color: #b9b9b9; }
+    #darkmode input[type="text"]:focus,
+    #darkmode input[type="password"]:focus,
+    #darkmode input[type="email"]:focus,
+    #darkmode select:focus,
+    #darkmode textarea:focus {
+      border-color: #18bfef; }
+  #darkmode select {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' preserveAspectRatio='none' viewBox='0 0 40 40'%3E%3Cpath d='M9.4,12.3l10.4,10.4l10.4-10.4c0.2-0.2,0.5-0.4,0.9-0.4c0.3,0,0.6,0.1,0.9,0.4l3.3,3.3c0.2,0.2,0.4,0.5,0.4,0.9 c0,0.4-0.1,0.6-0.4,0.9L20.7,31.9c-0.2,0.2-0.5,0.4-0.9,0.4c-0.3,0-0.6-0.1-0.9-0.4L4.3,17.3c-0.2-0.2-0.4-0.5-0.4-0.9 c0-0.4,0.1-0.6,0.4-0.9l3.3-3.3c0.2-0.2,0.5-0.4,0.9-0.4S9.1,12.1,9.4,12.3z' fill='%23b9b9b9' /%3E%3C/svg%3E"); }
+    #darkmode select option {
+      background-color: #292A2D;
+      color: #3903fc; }
+  #darkmode .select-wrapper:before {
+    color: #b9b9b9; }
+  #darkmode input[type="checkbox"] + label,
+  #darkmode input[type="radio"] + label {
+    color: #3903fc; }
+    #darkmode input[type="checkbox"] + label:before,
+    #darkmode input[type="radio"] + label:before {
+      border-color: #b9b9b9; }
+  #darkmode input[type="checkbox"]:checked + label:before,
+  #darkmode input[type="radio"]:checked + label:before {
+    background-color: whitesmoke;
+    border-color: whitesmoke;
+    color: #292A2D; }
+  #darkmode input[type="checkbox"]:focus + label:before,
+  #darkmode input[type="radio"]:focus + label:before {
+    border-color: #18bfef; }
+  #darkmode ::-webkit-input-placeholder {
+    color: rgba(105, 79, 72, 0.5); }
+  #darkmode :-moz-placeholder {
+    color: rgba(105, 79, 72, 0.5); }
+  #darkmode ::-moz-placeholder {
+    color: rgba(105, 79, 72, 0.5); }
+  #darkmode :-ms-input-placeholder {
+    color: rgba(105, 79, 72, 0.5); }
+  #darkmode .formerize-placeholder {
+    color: rgba(105, 79, 72, 0.5); }
+  #darkmode ul.divided li {
+    border-top-color: #b9b9b9; }
+  #darkmode ul.icons li a.icon:hover:before {
+    color: #18bfef; }
+  #darkmode ul.icons.alt li .icon:before {
+    box-shadow: inset 0 0 0 2px #b9b9b9; }
+  #darkmode ul.icons.alt li a.icon:hover:before {
+    box-shadow: inset 0 0 0 2px #18bfef; }
+  #darkmode header.major .date:before, #darkmode header.major .date:after {
+    border-top-color: #b9b9b9; }
+  #darkmode table tbody tr {
+    border-color: #b9b9b9; }
+    #darkmode table tbody tr:nth-child(2n + 1) {
+      background-color: #292A2D; }
+  #darkmode table th {
+    color: whitesmoke; }
+  #darkmode table thead {
+    border-bottom-color: #b9b9b9; }
+  #darkmode table tfoot {
+    border-top-color: #b9b9b9; }
+  #darkmode table.alt tbody tr td {
+    border-color: #b9b9b9; }
+  #darkmode .pagination a, #darkmode .pagination span {
+    border-color: #b9b9b9; }
+  #darkmode .pagination a {
+    color: whitesmoke !important; }
+    #darkmode .pagination a:hover {
+      color: #18bfef !important;
+      border-color: #18bfef;
+      z-index: 1; }
+      #darkmode .pagination a:hover + a, #darkmode .pagination a:hover + span {
+        border-left-color: #18bfef; }
+    #darkmode .pagination a.active {
+      background-color: #b9b9b9; }
+  #darkmode .pagination span {
+    color: #b9b9b9; }
+  #darkmode #comentariosblog-container {
+    background-color: #292A2D; }
+  #darkmode #comentarioshist-container {
+    background-color: #292A2D; }
+  #darkmode #root {
+    color: #f5f5f5 !important;
+    font-weight: bold; }
+  #darkmode h2 {
+    color: #f5f5f5; }
+  #darkmode h4 {
+    color: #ffc02d; }
+  #darkmode p {
+    color: #e5e5e5; }
+  #darkmode .referenciar {
+    color: #b9b9b9; }
+  #darkmode figcaption {
+    color: #b9b9b9; }
+  #darkmode #container_contribuicaopix p, #darkmode #container_contribuicaopix-blog p {
+    color: #292A2D; }
+  #darkmode #container_contribuicaopix img, #darkmode #container_contribuicaopix-blog img {
+    filter: invert(13%) sepia(11%) saturate(323%) hue-rotate(187deg) brightness(92%) contrast(89%); }
+  #darkmode .button_contribuicaopix {
+    background-color: #5de0d8; }
+  #darkmode .lu {
+    background-color: #8ee5ff !important; }
+  #darkmode #container_linkafiliado .linkafiliado {
+    color: #292A2D; }
+  #darkmode #main {
+    background-color: #292A2D; }
+  #darkmode #nav ul.links li.active {
+    background-color: #292A2D; }
+  #darkmode #nav ul.links li.active a {
+    color: #f5f5f5; }
+  #darkmode #navPanel {
+    background-color: #292A2D; }
+  #darkmode .content-container img {
+    box-shadow: #000000 0px 10px 20px -10px; }
+  #darkmode .content-container :has(iframe) {
+    box-shadow: #000000 0px 10px 20px -10px;
+    line-height: 0; }
+  #darkmode .mySlides img {
+    box-shadow: #000000 0px 10px 20px -10px;
+    line-height: 0; }
+
+>>>>>>> beta
 #main {
   background-color: #ffffff;
   position: relative;
@@ -2539,14 +2770,24 @@ table.alt tbody tr td {
   #footer .button {
     background-color: transparent;
     box-shadow: inset 0 0 0 2px #717981;
+<<<<<<< HEAD
     color: #717981 !important; }
+=======
+    color: #717981; }
+>>>>>>> beta
     #footer input[type="submit"]:hover,
     #footer input[type="reset"]:hover,
     #footer input[type="button"]:hover,
     #footer button:hover,
     #footer .button:hover {
+<<<<<<< HEAD
       box-shadow: inset 0 0 0 2px #18bfef;
       color: #18bfef !important; }
+=======
+      /* texto dos botões retangulares */
+      box-shadow: inset 0 0 0 2px #18bfef;
+      color: #18bfef; }
+>>>>>>> beta
     #footer input[type="submit"].primary,
     #footer input[type="reset"].primary,
     #footer input[type="button"].primary,
@@ -2554,7 +2795,11 @@ table.alt tbody tr td {
     #footer .button.primary {
       background-color: #717981;
       box-shadow: none;
+<<<<<<< HEAD
       color: #f5f5f5 !important; }
+=======
+      color: #f5f5f5; }
+>>>>>>> beta
       #footer input[type="submit"].primary:hover,
       #footer input[type="reset"].primary:hover,
       #footer input[type="button"].primary:hover,
@@ -2597,6 +2842,7 @@ table.alt tbody tr td {
   #footer input[type="radio"]:focus + label:before {
     border-color: #18bfef; }
   #footer ::-webkit-input-placeholder {
+<<<<<<< HEAD
     color: #b3b7bb !important; }
   #footer :-moz-placeholder {
     color: #b3b7bb !important; }
@@ -2606,6 +2852,17 @@ table.alt tbody tr td {
     color: #b3b7bb !important; }
   #footer .formerize-placeholder {
     color: #b3b7bb !important; }
+=======
+    color: #b3b7bb; }
+  #footer :-moz-placeholder {
+    color: #b3b7bb; }
+  #footer ::-moz-placeholder {
+    color: #b3b7bb; }
+  #footer :-ms-input-placeholder {
+    color: #b3b7bb; }
+  #footer .formerize-placeholder {
+    color: #b3b7bb; }
+>>>>>>> beta
   #footer ul.divided li {
     border-top-color: #e2e2e2; }
   #footer ul.icons li a.icon:hover:before {

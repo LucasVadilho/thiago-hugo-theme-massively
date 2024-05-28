@@ -23,8 +23,8 @@
                     <a id="snackbar_filtroAbrir" class='goToClass' onclick="openBar()">Seção &#10095;</a>
                     <a id="snackbar_filtroFechar" class='goToClass' onclick="closeBar()">Seção &#10094;</a>
                     <a id="goTo_ilustrações" class='goToClass' onclick="goToPosition(id)">Ilustrações</a>
-                    <a id="goTo_posteres" class='goToClass' onclick="goToPosition(id)">Pôsteres</a>
-                    <a id="goTo_capas" class='goToClass' onclick="goToPosition(id)">Capas de Livros</a>
+                    <!-- <a id="goTo_posteres" class='goToClass' onclick="goToPosition(id)">Páginas de Livros</a> -->
+                    <a id="goTo_capas" class='goToClass' onclick="goToPosition(id)">Capas</a>
                 </div>
                 
                 <span id="array" idsArray="{{ .Params.ProjetosIds }}"></span>
@@ -48,10 +48,10 @@
                         </div>
                 </div>
 
-                <div id="container_listaPosteres">
-                    <h2>Pôsteres</h2>
+<!--            <div id="container_listaPosteres">
+                    <h2>Páginas de Livros</h2>
                     <div id="organizer_projetos">
-                        {{ range where .Pages.ByDate "Params.categoriaprojeto" "Posteres" }}
+                        {{ range where .Pages.ByDate "Params.categoriaprojeto" "Pag de Livro" }}
                             <div class="{{ .Params.containerclass }}">
                                 <div id="{{ .Params.Titleprojeto }}" 
                                      onclick="abrirproj(event,'{{ .Params.Titleprojeto }}')"
@@ -66,7 +66,7 @@
                             </div> 
                         {{ end }}
                     </div>
-                </div>
+                </div> -->
 
                 <div id="container_listaCapas">
                     <h2>Capas de livros</h2>
@@ -958,15 +958,15 @@
     let goToPosition = function (id){
         let capasYPosition = document.getElementById("container_listaCapas").offsetTop
         let ilustracoesYPosition = document.getElementById("container_listaIlustrações").offsetTop
-        let posteresYPosition = document.getElementById("container_listaPosteres").offsetTop
+        /* let posteresYPosition = document.getElementById("container_listaPosteres").offsetTop */
 
         if (id == "goTo_capas"){
             window.scrollTo({left: 0, top: capasYPosition, behavior: "smooth"})
         }
 
-        if (id == "goTo_posteres"){
+        /* if (id == "goTo_posteres"){
             window.scrollTo({left: 0, top: posteresYPosition, behavior: "smooth"})
-        }
+        } */
 
         if (id == "goTo_ilustrações"){
             window.scrollTo({left: 0, top: ilustracoesYPosition, behavior: "smooth"})
@@ -979,14 +979,14 @@
     let fechar = document.getElementById('snackbar_filtroFechar')
     let goTo_capas = document.getElementById('goTo_capas')
     let goTo_ilustrações = document.getElementById('goTo_ilustrações')
-    let goTo_posteres = document.getElementById('goTo_posteres')
+    /* let goTo_posteres = document.getElementById('goTo_posteres') */
 
     let openBar = function(){
         abrir.style.display = 'none'
         fechar.style.display = 'inline-block'
         goTo_capas.style.display = 'inline-block'
         goTo_ilustrações.style.display = 'inline-block'
-        goTo_posteres.style.display = 'inline-block'
+        /* goTo_posteres.style.display = 'inline-block' */
     }
 
     let closeBar = function(){
@@ -994,7 +994,7 @@
         fechar.style.display = 'none'
         goTo_capas.style.display = 'none'
         goTo_ilustrações.style.display = 'none'
-        goTo_posteres.style.display = 'none'
+        /* goTo_posteres.style.display = 'none' */
     }
     
 </script>
