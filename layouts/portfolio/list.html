@@ -48,7 +48,7 @@
                         </div>
                 </div>
 
-<!--                 <div id="container_listaPosteres">
+<!--            <div id="container_listaPosteres">
                     <h2>Páginas de Livros</h2>
                     <div id="organizer_projetos">
                         {{ range where .Pages.ByDate "Params.categoriaprojeto" "Pag de Livro" }}
@@ -964,9 +964,9 @@
             window.scrollTo({left: 0, top: capasYPosition, behavior: "smooth"})
         }
 
-        if (id == "goTo_posteres"){
+        /* if (id == "goTo_posteres"){
             window.scrollTo({left: 0, top: posteresYPosition, behavior: "smooth"})
-        }
+        } */
 
         if (id == "goTo_ilustrações"){
             window.scrollTo({left: 0, top: ilustracoesYPosition, behavior: "smooth"})
@@ -979,14 +979,14 @@
     let fechar = document.getElementById('snackbar_filtroFechar')
     let goTo_capas = document.getElementById('goTo_capas')
     let goTo_ilustrações = document.getElementById('goTo_ilustrações')
-    let goTo_posteres = document.getElementById('goTo_posteres')
+    /* let goTo_posteres = document.getElementById('goTo_posteres') */
 
     let openBar = function(){
         abrir.style.display = 'none'
         fechar.style.display = 'inline-block'
         goTo_capas.style.display = 'inline-block'
         goTo_ilustrações.style.display = 'inline-block'
-        goTo_posteres.style.display = 'inline-block'
+        /* goTo_posteres.style.display = 'inline-block' */
     }
 
     let closeBar = function(){
@@ -994,7 +994,7 @@
         fechar.style.display = 'none'
         goTo_capas.style.display = 'none'
         goTo_ilustrações.style.display = 'none'
-        goTo_posteres.style.display = 'none'
+        /* goTo_posteres.style.display = 'none' */
     }
     
 </script>
