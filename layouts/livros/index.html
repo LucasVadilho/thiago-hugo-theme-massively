@@ -1,14 +1,9 @@
 {{- partial "htmlhead" . -}}
-{{ $data := index .Site.Data .Site.Language.Lang }}
 
 <body lang='{{ .Site.LanguageCode | default "en-us" }}' class="is-preload">
 
     <!-- Wrapper -->
     <div id="wrapper" class="fade-in">
-
-        {{- partial "header" . -}}
-        {{- partial "nav" . -}}
-
         <!-- Main -->
         <div id="main">
             <div id="livros"> 
@@ -48,14 +43,13 @@
                 {{- partial "livros_parciais/embreve.html" . -}}
             </div>
 
-            <div id="container_footerlivros">
+            <div id="container_contactinglivros">
                 <div id="bookend">
                     <img src="/images/haqntopag/mybookshelf.svg" class="bookshelf" alt="a estante do autor, contendo vetores dos livros já escritos para ilustrar a cena">
                 </div>
             {{- partial "rodape" . }} 
             </div>        
         </div>
-        {{- partial "copyright" . }}
         <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
     </div>
 
@@ -206,16 +200,16 @@
 
 /* Fim da Página do Livro Selecionado */
 
-/* Footer da página */ 
-    #container_footerlivros>section{
+/* contacting da página */ 
+    #container_contactinglivros>section{
         text-align: center;
     }
 
-    #container_footerlivros{
+    #container_contactinglivros{
         padding-top: 0px;
     }
 
-    #livroSelecionadoFooter{
+    #livroSelecionadocontacting{
         margin-top: 80px;
     }
 

@@ -1,0 +1,27 @@
+{{ $data := index .Site.Data .Site.Language.Lang }}
+{{ with $data.social }}
+<section>
+    <div id="redes-sociais">
+        {{ with .youtube }}
+            <a href="{{ . }}" target="_blank"><i class="fa fa-youtube-play icon"></i></a>
+        {{ end }}
+
+        {{ with .instagram }}
+            <a href="{{ . }}" target="_blank"><i class="fa fa-instagram icon"></i></a>
+        {{ end }}
+        
+        {{ with .pinterest }}
+            <a href="{{ . }}" target="_blank"><i class="fa fa-pinterest icon"></i></a>
+        {{ end }}
+        
+        {{ with .facebook}}
+            <a href="{{ . }}" target="_blank"><i class="fa fa-facebook-f icon"></i></a>
+        {{ end }}
+
+        {{ with .tiktok}}
+            <a href="{{ . }}" target="_blank"><i class="fa fa-tiktok icon"></i></a>
+        {{ end }}
+    </div>
+</section>
+{{ end }}
+

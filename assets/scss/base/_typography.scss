@@ -4,11 +4,6 @@
 /// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 ///
 
-
-	body {
-		color: _palette(fg);
-	}
-
 	body, input, select, textarea {
 		font-family: _font(family);
 		font-weight: _font(weight);
@@ -23,7 +18,7 @@
 			'border-color #{_duration(transition)} ease-in-out',
 			'box-shadow #{_duration(transition)} ease-in-out'
 		));
-		border-bottom: dotted 1px;
+		border-bottom: none;
 		text-decoration: none;
 
 		&:hover {
@@ -40,18 +35,28 @@
 	}
 
 	p {
-		text-align: justify;
-		margin: 0 0 _size(element-margin) 0;
+		text-justify: left;
+		line-height: 1.7;
+		font-size: 1.15rem;
+		word-break: break-word;
+		hyphens: auto;
+		-ms-hyphens: auto;
+		-webkit-hyphens: auto;
+		-moz-hyphens: auto;
+		text-rendering: optimizeLegibility;
+		-webkit-font-smoothing: antialiased;
+		margin-bottom: 0px; 
 	}
 
 	h1, h2, h3, h4, h5, h6 {
 		font-family: _font(family-heading);
 		font-weight: _font(weight-heading);
 		line-height: 1.5;
-		letter-spacing: 0.075em;
-		text-transform: uppercase;
-		margin: 0 0 (_size(element-margin) * 0.5) 0;
-
+		text-wrap: balance;
+		hyphens: none;
+		word-break: break-word;
+		text-rendering: optimizeLegibility;
+    	-webkit-font-smoothing: antialiased;
 		a {
 			border-bottom: 0;
 			color: inherit;
@@ -60,7 +65,7 @@
 	}
 
 	h1 {
-		font-size: 4rem;
+		font-size: 4.25rem;
 		line-height: 1.1;
 		margin: 0 0 _size(element-margin) 0;
 	}

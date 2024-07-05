@@ -1,0 +1,690 @@
+:root{
+    --main-bg-color: #f0f0f0;
+    --main-accent: #B3C0F5;
+    
+    --support-bg-color: #AACCCC;
+    --support-h1-color: #335C67;
+    --support-h3-color: #FFC97F;;
+    --support-p-color: #141414;
+    --imortalizados-da-vez: #F79256; 
+
+    --accent-yellowish: #FFC97F;
+    --accent-avocadish: #C1B241;
+    --accent-blueish: #4199c1;
+    --accent-redish: #FFC7AF;
+
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+    --whitesmoke-color: #f5f5f5;
+    --big-header-color: #2d303f;
+    --sumario-top-color: #bcb535;
+    --sumario-bottom-color: #a09665;
+
+    --highlight-color-text: #554c58;
+    --dark-color-text: #131313;
+    --grey-color-text: #888888e0;
+    --light-color-text: #f5f5f5;
+
+    --hover-accent: #B3C0F5;
+}
+
+a{
+    border: none;
+}
+
+#wrapper{
+    display: contents;
+}
+
+body{
+    height: 100%;
+    width: 100%;
+    color: var(--dark-color-text);
+}
+
+#main{
+    background-color: var(--main-bg-color);
+}
+
+#logo{
+    left: 20px;
+    position: fixed;
+}
+
+#menu-to-navigate{
+    right: 20px;
+    position: fixed;
+}
+
+#logo:hover, #menu-to-navigate:hover,.closethings:hover{
+    cursor: pointer;
+}
+
+@keyframes smooth-appear {
+    from{
+        bottom: -100%;
+    }
+    to{
+      bottom: 0;
+    }
+}
+
+#nav{
+    display: none;
+    text-align: center;
+    background-color: var(--accent-yellowish);
+    width: 100dvw;
+    height: 100dvh;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: 1s smooth-appear;
+    z-index: 10;
+}
+
+th{
+    display: none;
+}
+
+figcaption{
+    margin-top: 5px;
+}
+/*--------------------PAGEs HEADER------------------------*/
+.container-header-name{
+    height: 200px;
+    width: 100%;
+    margin-bottom: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-header-text{
+    max-width: 860px;
+    margin: auto;
+    margin-bottom: 40px;
+}
+
+#blog-header-name{
+    background-color: var(--accent-redish);
+    color: var(--dark-color-text);
+}
+/* -------------------END OF PAGEs HEADER-------------------------- */
+
+/*--------------------PAGINATOR------------------------*/
+#container-paginator{
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+/*--------------------END OF PAGINATOR------------------------*/
+
+/*--------------------FEEDBACK BOTAO CARREGANDO--------------------*/
+    .borderAnim {
+        position: relative;
+    }
+
+    .borderAnim:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(120deg, #043a49, #18bfef, #043a49);
+        background-size: 300% 300%;
+        clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), 2px calc(100% - 2px), 2px 100%, 100% 100%, 100% 0%, 0% 0%);
+    }
+
+    .borderAnim.in:after {
+        animation: frame-enter 2s forwards ease-in-out reverse, gradient-animation 4s ease-in-out infinite;
+    }
+
+    /* motion */
+    @keyframes gradient-animation {
+        0% {
+            background-position: 15% 0%;
+        }
+        50% {
+            background-position: 85% 100%;
+        }
+        100% {
+            background-position: 15% 0%;
+        }
+    }
+
+    @keyframes frame-enter {
+        0% {
+            clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), 2px calc(100% - 2px), 2px 100%, 100% 100%, 100% 0%, 0% 0%);
+        }
+        25% {
+            clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), calc(100% - 2px) calc(100% - 2px), calc(100% - 2px) 100%, 100% 100%, 100% 0%, 0% 0%);
+        }
+        50% {
+            clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, 100% 0%, 0% 0%);
+        }
+        75% {
+            -webkit-clip-path: polygon(0% 100%, 2px 100%, 2px 2px, 2px 2px, 2px 2px, 2px 2px, 2px 2px, 2px 2px, 2px 0%, 0% 0%);
+        }
+        100% {
+            -webkit-clip-path: polygon(0% 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 0% 100%);
+        }
+    } 
+/*--------------------FIM FEEDBACK BOTAO CARREGANDO--------------------*/
+
+/*--------------------ESTILIZAÇÃO DA SCROLLBAR--------------------*/
+::-webkit-scrollbar {
+    width: 5px;              /* width of the entire scrollbar */
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: none;       /* color of the tracking area */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(131, 131, 131);    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    cursor: pointer !important;
+}
+                
+*::-webkit-scrollbar {
+    width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+    background: none;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color:rgb(131, 131, 131);
+    border-radius: 20px;
+}
+
+body {
+    scrollbar-width: thin;   /* "auto" or "thin" */
+    scrollbar-color: rgb(131, 131, 131);   /* scroll thumb and track */
+}
+
+::-webkit-scrollbar-thumb:active { 
+    background-color: rgb(100, 100, 100);
+}
+/*--------------------FIM ESTILIZAÇÃO DA SCROLLBAR--------------------*/
+
+/* -------------Hover em Palavra Link--------------- */
+p>a, figcaption>a{
+    color:#0000FF;
+    text-decoration: underline;
+    position: relative;
+    display: -webkit-inline-box;
+}
+
+p>a::before, figcaption a::before{
+    background: hsl(45 100% 70%);
+    content: "";
+    inset: 0;
+    position: absolute ;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s ease-in-out;
+    z-index: -1;
+}
+
+p>a:hover::before, figcaption a:hover::before{
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+p>a:hover, figcaption>a:hover{
+    color: #252121 !important;
+}
+    /* Especial span dos singles (historietas e blog) */
+    .span-link>a{
+        position: sticky;
+    }
+
+    .span-link a::before{
+        background: hsl(45 100% 70%);
+        content: "";
+        inset: 0;
+        position: absolute ;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.5s ease-in-out;
+        z-index: -1;
+    }
+
+    .span-link>a:hover::before{
+        transform: scaleX(1);
+        transform-origin: left;       
+    }
+
+    .span-link>a:hover{
+        color: #252121 !important;
+        cursor: pointer;
+    }
+
+/* -------------Fim Hover em Palavra Link--------------- */
+
+/* -----------------Double Line Text-------------------- */
+.container-double-line{
+    display: flex;
+    flex-direction: column;
+    margin-right: 50px;
+}
+
+.double-line-seccond-line{
+    padding-left: 30px;
+}
+/* -----------------End Double Line Text------------------- */
+
+
+                                                            /* >> Daqui pra Baixo tem que corrigir o que vai ficar */
+
+/* GERAIS */
+/* Correções no botão comum */
+.button,#contacting input[type="submit"] {
+    background-color: #e1e17d;
+    box-shadow: none;
+    color: #212931;
+}
+
+.button:hover,#contacting input[type="submit"]:hover{
+    box-shadow: inset 0 0 0 2px #6f6f28;
+    color: #6f6f28 !important;
+}
+
+/* TRATAMENTO DAS PARTES TEXTUAIS */
+
+.txt_informaçõesPost{ /* Legenda informativa das postagens (data, tempo de leitura e classificação indicativa) */
+    font-style: italic;
+    text-align: left;
+    font-size: 0.95rem;
+    color: #757575 !important;
+    font-weight: 400;
+    margin-top: 2px;
+    margin-bottom: 8px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+
+.divisaomesmocapitulo{
+    transform-origin: 0% 0%;
+    margin-left: 50%;
+    margin-top: 30px;
+}
+
+.actions2{
+    list-style: none;
+    padding: 0;
+}
+
+/*Autoria e Referencia*/
+.referenciar{
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgb(122, 122, 122);
+    text-align: right;
+}
+
+.linkto_contato{
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgb(122, 122, 122);
+}
+
+
+/* TRATANDO AS IMAGENS */
+/* Realign - arruma a imagem verticalmente quando, no portfólio, só aparece uma imagem */
+.realignClass{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+/* CLASSIFICAÇÕES INDICATIVAS */
+.icon_classifIndicativa{
+    width: 1.65em;
+    vertical-align: top;
+    margin-left: -3px;
+    margin-right: -2px;
+}
+
+.icon_classifIndicativaMiddleAlign{
+    width: 1.65em;
+    vertical-align: middle;
+    margin-left: -3px;
+    margin-right: -2px;
+}
+
+.icon{
+    margin-right: 4px;
+}
+
+.button.icon.solo:before {
+    top: 1.5px;
+    left: 0.5px;
+    font-size: 1.25rem;
+}    
+
+/* BLOG - destaques, citações e notas do texto*/
+blockquote{
+    border-left-color: #18bfef82;
+    margin: 0 0 0 7%;
+}
+
+.container_destaqueTxtBlog{
+    border-left: 3px solid #af93c382;
+    margin: 0 0 0 5%;
+}
+
+.destaqueTxtBlog{
+    margin: 0 0 0 2%;
+}
+
+/* COMPARTILHAMENTO DO CONTEUDO */
+#buttonContainer_compartilharHistorietas{
+    text-align: left;
+    margin-top: 20px;
+}
+
+#compartilharContainer{
+    position: fixed;
+    display: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 100vw 100vw 100vw rgba(30, 37, 45, 0.623);
+    z-index: 25;
+    -webkit-animation: fadein 0.5s;
+    animation: fadein 0.5s;
+    bottom: 10px;
+    padding: 32px 10px 10px 10px;
+    max-width: 520px;
+    justify-content: space-evenly;
+    transform: translate(-50%, -50%);
+    left: 50%;
+}
+
+#button_compartilharHistorieta{
+    margin-left: 0px;
+}
+
+.icon{
+    vertical-align: 1px;
+}
+
+.icon_compartilharHistorieta,.icon_compartilharLivro{
+    margin-right: 0px;
+}
+
+#buttonCloseCompartilhar:hover{
+    color: #00aced;
+    cursor: pointer;
+}
+
+#buttonCloseCompartilhar{
+    background-color: transparent;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 0;
+    color: #656565;
+    border: none;
+
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    right: 17px;
+    top: 7px;
+}
+
+.logoRedeContainerWpp{
+    float: left;
+    color: white;
+    width: 26px;
+    height: 26px;
+    background-color: #075E54;
+    text-align: center;
+}
+
+.nomeRedeContainerWpp{
+    width: 130px;
+    float: right;
+    background-color: #128C7E;
+    color: white;
+    font-family: inherit;
+    height: 26px;
+    letter-spacing: 1px;
+    font-size: small;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.logoRedeContainerTwitter{
+    float: left;
+    color: white;
+    width: 26px;
+    height: 26px;
+    background-color: #0084b4;
+    text-align: center;
+}
+
+.nomeRedeContainerTwitter{
+    width: 130px;
+    float: right;
+    background-color:#00aced;
+    color: white;
+    font-family: inherit;
+    height: 26px;
+    letter-spacing: 1px;
+    font-size: small;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.logoRedeContainerFacebook{
+    float: left;
+    color: white;
+    width: 26px;
+    height: 26px;
+    background-color: #3b5998;
+    text-align: center;
+}
+
+.nomeRedeContainerFacebook{
+    width: 130px;
+    float: right;
+    background-color:#8b9dc3;
+    color: white;
+    font-family: inherit;
+    height: 26px;
+    letter-spacing: 1px;
+    font-size: small;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.logoRedeContainerReddit{
+    float: left;
+    color: white;
+    width: 26px;
+    height: 26px;
+    background-color: #b64e28;
+    text-align: center;
+}
+
+.nomeRedeContainerReddit{
+    width: 130px;
+    float: right;
+    background-color:#FF4500;
+    color: white;
+    font-family: inherit;
+    height: 26px;
+    letter-spacing: 1px;
+    font-size: small;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.logoRedeContainerPinterest{
+    float: left;
+    color: white;
+    width: 26px;
+    height: 26px;
+    background-color: #BD081C;
+    text-align: center;
+}
+
+.nomeRedeContainerPinterest{
+    width: 130px;
+    float: right;
+    background-color:#c03041;
+    color: white;
+    font-family: inherit;
+    height: 26px;
+    letter-spacing: 1px;
+    font-size: small;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.iconeContainerCopyUrl{
+    float: left;
+    color: white;
+    width: 26px;
+    height: 26px;
+    background-color: #56707D;
+    text-align: center;
+}
+
+.nomeContainerCopyUrl{
+    width: 130px;
+    float: right;
+    background-color:#607D8B;
+    color: white;
+    font-family: inherit;
+    height: 26px;
+    letter-spacing: 1px;
+    font-size: small;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+#urlCopiarNotification{
+    display: none;
+    position: fixed;
+    top: 50px;
+    z-index: 25;
+    transform: translateY(-100%) translateX(-50%);
+    left: 50%;
+    padding: 9px 20px;
+    background: #343a40;
+    color: #eeeeee;
+    border-radius: 5px;
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 900;
+    letter-spacing: 0.075em;
+    box-shadow: 0 0 14px rgba(0, 0, 0, 0.05); 
+}
+
+/* SEÇÃO DOS COMENTÁRIOS */
+#comentariosblog-container, #comentarioshist-container{
+    background-color: #ffffff;
+    position: relative;
+    margin: 0 auto;
+    width: calc(100% - 4rem);
+    max-width: 72rem;
+    z-index: 2;
+    border: none;
+    padding: 4rem 5rem 2rem 5rem;
+    margin-top: 100px;
+}
+
+@media screen and (max-width: 736px){
+#comentariosblog-container, #comentarioshist-container {
+    padding: 2rem 1.8rem 2rem 1.8rem;
+}}
+
+@media screen and (max-width: 480px){
+#comentariosblog-container, #comentarioshist-container{
+    width: 100%;
+}}
+
+.avisos-pre-comentarios{
+    color: grey;
+}
+
+#cusdis_thread{
+    margin-top: 40px;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+/* FEEDBACK - BOTAO CARREGANDO */
+.borderAnim {
+    position: relative;
+}
+
+.borderAnim:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(120deg, #043a49, #18bfef, #043a49);
+    background-size: 300% 300%;
+    clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), 2px calc(100% - 2px), 2px 100%, 100% 100%, 100% 0%, 0% 0%);
+}
+
+.borderAnim.in:after {
+    animation: frame-enter 2s forwards ease-in-out reverse, gradient-animation 4s ease-in-out infinite;
+}
+
+/* motion */
+@keyframes gradient-animation {
+    0% {
+        background-position: 15% 0%;
+    }
+    50% {
+        background-position: 85% 100%;
+    }
+    100% {
+        background-position: 15% 0%;
+    }
+}
+
+@keyframes frame-enter {
+    0% {
+        clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), 2px calc(100% - 2px), 2px 100%, 100% 100%, 100% 0%, 0% 0%);
+    }
+    25% {
+        clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), calc(100% - 2px) calc(100% - 2px), calc(100% - 2px) 100%, 100% 100%, 100% 0%, 0% 0%);
+    }
+    50% {
+        clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, 100% 0%, 0% 0%);
+    }
+    75% {
+        -webkit-clip-path: polygon(0% 100%, 2px 100%, 2px 2px, 2px 2px, 2px 2px, 2px 2px, 2px 2px, 2px 2px, 2px 0%, 0% 0%);
+    }
+    100% {
+        -webkit-clip-path: polygon(0% 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 0% 100%);
+    }
+}
+
+
+
+HTML {
+    cursor: pointer;
+}
+
+body {
+    cursor: default; 
+}
+
+ul.icons li:last-child {
+    padding: 0 0.5rem 0 0;
+}

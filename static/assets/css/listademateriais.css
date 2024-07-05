@@ -1,0 +1,128 @@
+#container_slidesAndMateriais{
+    position: relative;
+    line-height: 0;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.pinMateriaisUsados{
+    color: rgb(255 255 255);
+    font-size: large;
+    position: absolute;
+    top: 2%;
+    right: 1.5%;
+    background-color: rgba(168, 168, 184, 0.712);
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 30px;
+    align-items: center;
+    display: inline-flex;
+    z-index: 3;
+}
+
+.txt_pinMateriaisUsados{
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    line-height: 3em;
+    margin-right: 10px;
+}
+
+.fa-thumb-tack{
+    transform: rotate(45deg);
+}
+
+.pinMateriaisUsados:hover{
+    cursor: pointer;
+    background-color: rgba(133, 133, 146, 0.87);
+}
+
+.txt_pinMateriaisUsadosAberto{
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    background-color: rgb(133, 133, 146);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    line-height: 3em;
+    margin-right: 10px;
+    width: 100%;
+    color: white;
+}
+
+.listaMateriais{
+    display: none;
+    position: absolute;
+    justify-items: start;
+    top: 2%;
+    right: 1.5%;
+    border-radius: 3%;
+    background-color: rgb(231 231 231);
+}
+
+.itemDaLista>a{
+   padding-left: 10px;
+   padding-right: 10px;
+   color:#0000FF;
+}
+
+.itemDaLista, .itemDaLista>a{
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+
+.txt_pinMateriaisUsadosAbertoAviso{
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 5px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    width: 300px;
+    text-align: center;
+    border: 0; 
+}
+
+.divisoriaBonitaMateriais{
+    display: block;
+    height: 1px; 
+    background-image: -webkit-linear-gradient(left, rgb(231 231 231), #8c8b8bc5,  rgb(231 231 231));
+    background-image: -moz-linear-gradient(left, rgb(231 231 231), #8c8b8bc5,  rgb(231 231 231));
+    background-image: -ms-linear-gradient(left, rgb(231 231 231), #8c8b8bc5,  rgb(231 231 231));
+    background-image: -o-linear-gradient(left, rgb(231 231 231), #8c8b8bc5,  rgb(231 231 231));
+}
+
+.toCloseMateriais{
+    display: none;
+    position: absolute;
+    z-index: 2;
+    font-size: x-large;
+    color: white;
+    line-height: 0;
+    top: 1.3%;
+    right: 2.5%;
+}
+
+.toCloseMateriais:hover{
+    cursor: pointer;
+    color: #343452;
+}
+
+.icons.alt>li{
+    scale: 1.25;
+}
+
+@media screen and (max-width: 889px){
+    .txt_pinMateriaisUsados{
+        font-size: 0.75rem;
+    }
+
+    .fa-thumb-tack {
+        font-size: small;
+    }
+
+    .pinMateriaisUsados{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}

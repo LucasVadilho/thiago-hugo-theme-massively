@@ -1,0 +1,26 @@
+<link rel="stylesheet" type="text/css" href="/assets/css/geral.css"> <!-- Chamando CSS Nav -->
+
+{{ $data := index .Site.Data .Site.Language.Lang }}
+{{ $currentPage := .Page }}
+
+<nav id="nav">
+    <div class="closethings" onclick="closethis('navigationmenu')">
+        <i class="fa-solid fa-x"></i>
+    </div>
+
+    <ul class="links">
+        <li class="{{ if eq ($currentPage.RelPermalink) (`/`) }}active{{end}}"><a href='{{ "/" | relLangURL }}'>Home</a></li>
+        <li class="{{ if eq ($currentPage.RelPermalink) (`/historietas/`) }}active{{end}}"><a href='{{ "/historietas" | relLangURL }}'>Historietas</a></li>
+        <li class="{{ if eq ($currentPage.RelPermalink) (`/livros/`) }}active{{end}}"><a href='{{ "/livros" | relLangURL }}'>Livros</a></li>
+        <li class="{{ if eq ($currentPage.RelPermalink) (`/galeriailustracoes/`) }}active{{end}}"><a href='{{ "/galeriailustracoes" | relLangURL }}'>Galeria Ilustrações</a></li>
+        <li class="{{ if eq ($currentPage.RelPermalink) (`/blog/`) }}active{{end}}"><a href='{{ "/blog" | relLangURL }}'>Blog</a></li>
+
+        {{ with $data.contactinfo }}
+            <li><a href='{{ "#contatar" | relLangURL }}'>{{ i18n "NAV_CONTACT" . }}</a></li>
+        {{ end }}
+
+        <li class="{{ if eq ($currentPage.RelPermalink) (`/sobre/`) }}active{{end}}"><a href='{{ "/sobre" | relLangURL }}'>Sobre</a></li>
+
+        <li class="{{ if eq ($currentPage.RelPermalink) (`/loja/`) }}active{{end}}"><a href='https://umapenca.com/tdvadilho/' target="_blank">Loja</a></li>
+    </ul>
+</nav>

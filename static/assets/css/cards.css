@@ -1,0 +1,97 @@
+/* CARDS BLOG E HISTORIETAS CSS */
+.posts-container{
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-count: 3;
+    column-gap: 30px;
+}
+
+.post-card{
+    max-width: 300px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    color: var(--whitesmoke-color);
+    margin-bottom: 30px;
+}
+
+.categories-container{
+    margin-top: auto;
+}
+
+.category{
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px; 
+    border-radius: 5px;
+    padding: 3px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    letter-spacing: 0.025rem;
+}
+
+.tags-container{
+    text-transform: capitalize;
+}
+
+.category-container:hover, .tags-container:hover{
+    cursor: pointer;
+}
+
+.category-container:hover{
+    transform: scale(1.1);
+    transition: transform .2s ease;
+}
+
+.post-card:hover{
+    cursor: pointer;
+}
+
+.post-card-description{
+    line-height: 1.3rem;
+    hyphens: none;
+    text-wrap: balance;
+    text-shadow: 1px 1px 1px var(--dark-color-text);
+}
+
+.post-card-info{
+    text-shadow: rgb(20, 20, 22) 1px 0 10px;
+}
+
+.post-card-info-list{
+    margin: 0;
+    text-align: right;
+    padding: 0;
+}
+
+.post-card-info-list li{
+    margin: 0 5px 0 0;
+    display: inline-block;
+    font-size:0.8em;
+}
+
+.post-card-info-list li a{
+    color: white;
+    text-decoration: underline;
+}
+
+.post-card-info-list li span{
+    margin-right: 5px;
+}
+
+/* COLOR CODE CATEGORIES */
+.artes{
+    background-color: rgb(179, 102, 250);
+    text-transform: capitalize;
+}
+
+.atualizações{
+    background-color: rgb(250, 102, 102);
+    text-transform: capitalize;
+}
+
+.recomendações{
+    background-color: bisque;
+    text-transform: capitalize;
+}

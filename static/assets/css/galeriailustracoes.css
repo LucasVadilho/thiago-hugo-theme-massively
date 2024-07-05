@@ -1,0 +1,170 @@
+/* -------------------PROJETO FECHADO---------------------- */
+#container-galeriailustracoes-introtext{
+    text-align: left; /* só para ter algo, apagar dps */
+}
+
+#container-galeria-ilustracoes{
+    display: flex;
+    justify-content: center;
+}
+
+#organizer-galeria-ilustracoes{
+    margin-top: 20px;
+    -webkit-column-count: 3; /* Chrome, Safari, Opera */
+    -moz-column-count: 3; /* Firefox */
+    column-count: 3;
+    -webkit-column-gap: 15px;
+    -moz-column-gap: 15px;
+    column-gap: 15px;
+    display: inline-block;
+}
+
+.projeto-container{
+    max-width: 400px;
+    line-height: 0;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.container_imgThumb img{
+    width: 100%;
+    transition: transform 1s;
+}
+
+.container_imgThumb img:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+/* -------------------PROJETO ABERTO---------------------- */
+.snackbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9;
+    display: flex;
+    background-color: #3e3f41f0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#container-top-buttons-snackbarproj {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    margin-top: 15px;
+    justify-content: flex-end;
+    padding-right: 15px;
+}
+
+.logoContainerLoja, .infos-project, .buttonCloseProject{
+    margin-right: 10px;
+    color: rgb(238, 255, 235);
+}
+
+#container-openProject-and-legenda{
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+#container-openProject-and-arrows{
+    width: 95%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#openProject {  
+    object-fit: contain;
+    display: flex;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: fit-content;
+    max-height: calc(100dvh - 45px);
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+#openProject img{
+    margin-bottom: 10px;
+}
+
+#container-prev-button-gallery-ilustracoes{
+    margin-right: 15px;
+    transition-duration: 1s;
+    padding: 10px;
+}
+
+#container-next-button-gallery-ilustracoes{
+    margin-left: 15px;
+    transition-duration: 1s;
+    padding: 10px;
+}
+
+#next-button-gallery-ilustracoes, #prev-button-gallery-ilustracoes, #container-top-buttons-snackbarproj {
+    transition-duration: 1s;
+}
+
+#openProject img{
+    display: block;
+    object-fit: contain;
+    max-height: 95vh;
+}
+
+.fa:hover{
+    cursor: pointer;
+    color: #18bfef; 
+}
+
+.iframecontainer{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+}
+
+.iframecontainer iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+#projLegendaContainer {
+    hyphens: auto;
+    line-height: 1rem;
+    padding: 0px 10px 0px 10px;
+    color: rgb(230, 230, 230);
+    transition-duration: 1s;
+}
+
+.ilustration-title-on-snackopen{
+    margin-bottom: 15px;
+}
+
+/* -------------------CORREÇÕES DE MEDIA SCREEN---------------------- */
+@media screen and (max-width: 1000px) and (min-width: 600px) {
+    #organizer-galeria-ilustracoes{
+        -webkit-column-count: 2; /* Chrome, Safari, Opera */
+        -moz-column-count: 2; /* Firefox */
+        column-count: 2;
+    }
+}
+
+@media screen and (max-width: 599px) {
+    #organizer-galeria-ilustracoes{
+        -webkit-column-count: 1; /* Chrome, Safari, Opera */
+        -moz-column-count: 1; /* Firefox */
+        column-count: 1;
+    }
+}

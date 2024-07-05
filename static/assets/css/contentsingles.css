@@ -1,0 +1,174 @@
+table{
+    width: 100%;
+}
+
+.header-single-posts{
+    width: 100%;
+    background: linear-gradient(180deg, var(--big-header-color) 0%, var(--big-header-color) 80%, rgba(240, 240, 240, 1) 80%, rgba(240, 240, 240, 1) 100%);
+    padding-top:15%;
+    padding-left: 80px;
+    padding-right: 80px;
+    hyphens: none;
+    text-wrap: balance;
+    text-align: center;
+}
+
+.header-single-posts h1{
+    color: whitesmoke;
+    margin: 0 0 0.5rem 0;
+}
+
+.header-infos-divider-single-post{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.header-infos-single-post h4{
+    margin-bottom: 25px;
+    color: var(--accent-yellowish);
+    text-transform: capitalize;
+}
+
+.container-texto-and-image-content{
+    margin: auto;
+    margin-top: 40px;
+}
+
+.container-texto-and-image-content p{
+    max-width: 860px;
+    margin: auto;
+}
+
+.container-iframe-for-content{
+    max-width: 900px;
+    margin: 2rem auto 2rem auto;   
+}
+
+.container-img-centralizada, .container-img-alinhada-esq{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.container-img-centralizada{
+    text-align: center;
+    line-height: 0;
+}
+
+.container-img-alinhada-esq{
+    max-width: 60%;
+    margin-left: 0;
+    float: left;
+    padding-right: 20px;
+    line-height: 0;
+}
+
+
+figcaption p{
+    margin-top: 5px;
+    text-align: center;
+    line-height: 1.5;
+    color: var(--grey-color-text) !important;
+    font-size: 0.9rem;
+    font-style: italic;
+
+}
+
+.container-chamada-content{
+    max-width: 860px;
+    margin: auto;
+    font-style: italic;
+    text-align: right;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    padding-left: 10%;
+}
+
+h2{ /* Tópicos principais do content */
+    text-align: left;
+    margin: 50px auto 0.75rem auto !important;
+    max-width: 860px
+}
+
+h3{ /* Subtópicosdo content */
+    text-align: left;
+    margin: 0px auto 0.75rem auto !important;
+    max-width: 860px
+}
+
+.container-notes-on-post{
+    max-width: 860px;
+    margin: auto;
+    font-style: italic;
+    text-align: right;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    padding-left: 10%;
+    margin: 1rem auto 1rem auto !important;
+}
+
+/* Table of Contents */
+.container-table-of-contents{
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.container-table-of-contents h2{
+    color: var(--whitesmoke-color);
+    background-color: var(--sumario-top-color);
+    margin: 0px auto 0px auto !important;
+    padding: 10px 20px;
+}
+
+#TableOfContents{
+    background-color: #a7a16f;
+    max-width: 860px;
+    margin: 0 auto 0 auto;;
+    line-height: 1.7;
+    font-size: 1.2rem;
+    color: var(--whitesmoke-color);
+}
+
+#TableOfContents ul{
+    list-style-type: "-";
+    padding-left: 2.5rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#TableOfContents a{
+    color: var(--whitesmoke-color);
+    text-decoration: underline;
+}
+
+#TableOfContents ul > li > ul{
+    padding-top: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+/* More like this part (double line no geral) */
+#container-mais-posts-como-esse{
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    padding-top: 100px;
+    padding-bottom: 80px;
+    padding-left: 80px;
+    padding-right: 80px;
+}
+
+#container-mais-posts-como-esse-cards{
+    display: inline-flex;
+    justify-content: space-around;
+    overflow: hidden;
+}
+
+#container-mais-posts-como-esse-cards>.post-card{
+    margin-right: 20px;
+}
+
+#container-mais-posts-como-esse-cards:last-child{
+    margin-right: none !important;
+}

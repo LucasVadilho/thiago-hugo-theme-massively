@@ -1,0 +1,110 @@
+<link rel="stylesheet" type="text/css" href="/assets/css/emailing.css"> <!-- Chamando CSS emailing-->
+
+<div id="container-newsletterForm" id="newsletterFocus">
+    <form id="newsletterForm" method="post">
+        <div id="de-eu-para-voce">aaaaa</div>
+        
+        <div id="de-eu-para-voce-miolo">
+            <h4 class="subtitle_seçãoNewsletter">Quase tão mágicas quanto as de Hogwarts. Cartas mensais para compartilhar, inspirar e respirar; entregues direto no seu email!</h4>
+                <div id="form_newsletter">
+                <div id="emailOrganizer">
+                    <div class="fields">
+                        <input type="email" name="mailnewsl" id="emailnewsl" autocomplete="email"  placeholder="Digite seu email aqui" required/>
+                        <span class="button-inscrever-de-eu-para-voce">Inscrever</span>
+                    </div>
+                </div>
+                <!-- <div id="botaoInscreverOrganizer">
+                    <ul class="actions">
+                        <li id="li_btn_inscrever"><input type="submit" id="btn_inscrever" value="Inscrever"/></li>
+                    </ul>
+                </div> -->
+            </div>
+            <p class="txt_newsletterAviso">Não se preocupe, sua privacidade será respeitada e a qualquer momento você poderá se desinscrever</p>
+        </div>
+
+        <div id="de-eu-para-voce">pru pru pru</div>
+    </form>
+    {{- partial "Redes/redesToFollow" . -}}
+</div>
+
+<div id="Snackbar" onclick="closeSnackbar()"> <!-- SNACKBAR's de avisos (email enviado, não enviado) -->
+    <div id="SnackbarText1"></div>
+    <div id="SnackbarText2"></div>
+    <a id="close">x</a>
+</div>  
+
+<script>
+/* ----------------EMAILING (NEWSLETTER)---------------- */
+var form = document.getElementById("Snackbar");
+
+document.getElementById('newsletterForm').addEventListener("submit", (e) => {		
+    e.preventDefault()
+
+    document.getElementById('btn_inscrever').setAttribute('disabled', 'a')
+    document.getElementById('li_btn_inscrever').classList.add('borderAnim', 'in')
+
+    data = {
+        'mail': document.getElementById('emailnewsl').value,
+        'assunto': '[Newsletter] Signup'
+    }
+    
+    url = 'https://thiago.oioipio.com/contato'
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(result => {
+        document.getElementById('btn_inscrever').removeAttribute('disabled')
+        document.getElementById('li_btn_inscrever').classList.remove('borderAnim', 'in')
+
+        formularioEnviado()
+    }).catch(error => {
+        document.getElementById('btn_inscrever').removeAttribute('disabled')
+        document.getElementById('li_btn_inscrever').classList.remove('borderAnim', 'in')
+
+        formularioNaoEnviado()
+    })
+})
+
+let formularioEnviado = function(){
+    form.className = "showSucess";     
+    document.getElementById('SnackbarText1').innerHTML = "Inscrição realizada"
+    document.getElementById('SnackbarText2').innerHTML = "Muito obrigado por seu interesse pelo meu trabalho!"
+    setTimeout(function(){ 
+        form.className = form.className.replace("showSucess", "");   
+        resetForm();
+    }, 8000);
+
+    window.history.pushState('', '', '#form-enviado');
+}
+
+let formularioNaoEnviado = function(){
+    form.className = "showFail";
+    document.getElementById('SnackbarText1').innerHTML = "Falha no servidor"
+    document.getElementById('SnackbarText2').innerHTML = "Desculpe pelo erro. Por favor, tente novamente em alguns instantes"
+    setTimeout(function(){ 
+        form.className = form.className.replace("showFail", ""); 
+    }, 8000);
+}
+
+function closeSnackbar(){
+    if(form.classList.contains("showSucess")){
+        resetForm();
+        form.className = form.classList.remove("showSucess")
+    }else{
+        form.className = form.classList.remove("showFail")    
+    }
+}
+
+let resetForm = function(){
+    let resetNewsForm = document.getElementById('newsletterForm')
+    resetNewsForm.reset()
+    let resetContatoForm = document.getElementById('contato')
+    resetContatoForm.reset()
+}
+/* ----------------FIM EMAILING (NEWSLETTER)---------------- */
+</script>

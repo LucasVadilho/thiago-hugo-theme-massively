@@ -1,0 +1,34 @@
+<link rel="stylesheet" type="text/css" href="/assets/css/geral.css"> <!-- Chamando CSS GERAL -->
+<link rel="stylesheet" type="text/css" href="/assets/css/cards.css"> <!-- Chamando CSS CARDS -->
+
+<div class="posts-container">
+	{{ range .Pages.ByDate.Reverse }}
+		<div class="post-card" style="background-image: url('{{ .Params.Imagethumb }}');" onclick="window.location.href='{{ .Permalink }}';">
+			<div class="categories-container">
+				{{ range $categories := .Params.Categories }}
+				<a onclick="window.location.href='/categories/{{ $categories }}';event.stopPropagation()" class="category-container">
+					<span class="category {{ $categories }}">{{ $categories }}</span>
+				</a>
+				{{ end }}
+			</div>
+			<div class="post-card-description">
+					{{ .Params.Description }}
+			</div>
+			<div class="post-card-info">
+				<ul class="post-card-info-list">
+					<li><span class="fa-solid fa-clock"></span>{{ .Params.Tempoleitura }}</li>
+					<li class="comments-container"><span class="fa-solid fa-comments"></span>12<!-- Trocar para a variável do cusdis (ou do outro comentário que eu achei) --></li> 
+					<li><span class="fa-solid fa-tags" aria-hidden="true"></span>
+						{{ range $k, $v := .GetTerms "tags" }}
+							{{- if $k }}| {{ end }}
+							<a class="tags-container" onclick="window.location.href='/tags/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+						{{ end }}
+					</li>
+				</ul>
+			</div>
+		</div>
+	{{ end }}
+
+	<script defer data-host="https://cusdis.com" data-app-id="b935f701-f887-42b4-96cf-1852bf2005b2" src="https://cusdis.com/js/cusdis-count.umd.js"></script>
+</div>
+

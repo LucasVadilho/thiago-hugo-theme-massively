@@ -1,11 +1,8 @@
 {{- partial "htmlhead" . -}}
-{{ $data := index .Site.Data .Site.Language.Lang }}
 
 <body lang='{{ .Site.LanguageCode | default "en-us" }}' class="is-preload">
     <!-- Wrapper -->
     <div id="wrapper">
-        {{- partial "header" . -}}
-        {{- partial "nav" . }}
 
         <div id="main">
             <table>
@@ -30,7 +27,7 @@
                                                 <span  data-cusdis-count-page-id="{{ .Params.UniqueID }}">0 </span>
                                             comentários</span>
                                             <span class="barravertical-subtitulo">|</span>
-                                            {{- partial "darkandlight" . }}
+                                            
                                         </h4>
                                     </div>
                                     {{ .Content }}
@@ -54,135 +51,16 @@
                                     <span onclick="pinterestSharing()"><i class="fa fa-pinterest icon"></i></span>
                                 </div>
 
-                                {{ if isset .Params "processocriativo" }}
-                                    <div id="container_processo"> 
-                                        <h2>Processo criativo</h2>
-
-                                        <div id="mySlidesProcessoID">
-                                            <a id="prevProcesso" onclick="plusSlides(-1)"><span class='fa fa-chevron-circle-left fa' aria-hidden='true'></span></a>
-                                                <div id="container_slidesAndMateriais">
-                                                    {{ if isset .Params "listamateriais" }}
-                                                        <span class="pinMateriaisUsados" onclick="expandirmateriais(event)">
-                                                        <span class="txt_pinMateriaisUsados">MATERIAIS</span><i class="fa fa-thumb-tack" aria-hidden="true"></i></span>
-                                                        
-                                                        <div class="listaMateriais">
-                                                            <span class="txt_pinMateriaisUsadosAberto">MATERIAIS (LINKS AFILIADOS) <i class="fa fa-thumb-tack" aria-hidden="true"></i>
-                                                                <span class='toCloseMateriais' onclick="fecharmateriais()"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
-                                                            </span>
-                                                            {{ range $item := .Params.listaMateriais }}
-                                                                <span class="itemDaLista">
-                                                                    <a href="{{ $item.link }}" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i> {{ $item.nome }}</a>
-                                                                </span>
-                                                            {{ end }}
-                                                            <span class="txt_pinMateriaisUsadosAbertoAviso">
-                                                            <span class="divisoriaBonitaMateriais"></span>
-                                                            Comprar pelos links gera renda para o site <b>sem</b> alterar o custo da sua compra</span>
-                                                        </div>
-                                                    {{ end }}
-                                                
-                                                    {{ range $processoCriativo := .Params.processoCriativo }}
-                                                        <div class="mySlides fade">
-                                                            {{ if strings.Contains $processoCriativo "youtube" }}
-                                                                <iframe
-                                                                    src={{ $processoCriativo }}
-                                                                    title="YouTube video player" frameborder="0" scrolling="no"
-                                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                                    allowfullscreen>
-                                                                </iframe>
-                                                            {{ else }}
-                                                                <img src="{{ $processoCriativo }}" alt="imagens do processo criativo da historieta">
-                                                            {{ end }}
-                                                        </div>
-                                                    {{ end }}
-                                                </div>
-                                            <a id="nextProcesso" onclick="plusSlides(1)"><span class='fa fa-chevron-circle-right fa' aria-hidden='true'></span></a>
-                                        </div>                               
-
-                                        <div id="posicaoDotsProcesso">
-                                            {{ range $i := (seq (len .Params.processoCriativo)) }}
-                                                <span class="dot" onclick='currentSlide("{{ $i }}")'></span>
-                                            {{ end }}
-                                        </div>
-                                    </div>
+                                {{ if isset .Params "slidersgallery" }}
+                                <div id="container_processo"> 
+                                    <h2>Processo criativo</h2>
+                                    {{- partial "slider" . }}
+                                </div>
                                 {{ end }}
 
                             <div id="historieta-encerramento">
                                 <h2>Quer ajudar o projeto?</h2>
-                                <div id="explicacoes">
-                                    <p id="introHistorietas">O projeto historietas é produzido e disponibilizado gratuitamente graças ao apoio
-                                        dos leitores. Cada ajuda me permite continuar esse trabalho, e cada ajuda é extremamente apreciada! Muito obrigado❤️
-                                    </p>
-                                    
-                                    <div id="container_contribuicoesHistorietas">
-                                        <div class="contribuicoesHistorietas">
-                                            <h4>Diretamente</h4>
-                                            <p>Doe por PIX ou cheque os produtos do meu trabalho. Toda compra e doação fazem uma enorme diferença!</p>
-
-                                            <div id="container_contribuicaopix">
-                                                    <a href="https://nubank.com.br/pagar/11jeh7/8ABRsdHuzw" class="button_contribuicaopix-container" target="_blank">
-                                                        <div class="button_contribuicaopix">
-                                                            <p class="textbutton_contribuicaopix"><img src="/images/icon_pix.svg" class="icon_pix" alt="logo do pix"> DOAR</p>
-                                                        </div>
-                                                    </a> 
-                                            
-
-                                                <a href="https://amzn.to/49s0IwN" class="button_meuslivros-container" target="_blank">
-                                                    <div class="button_meuslivros">
-                                                        <p class="textbutton_meuslivros"><i class="fa fa-book" aria-hidden="true"></i> LIVROS</p>
-                                                    </div>
-                                                </a>
-
-                                                <a href="https://umapenca.com/tdvadilho/" class="button_lojaartes-container" target="_blank">
-                                                    <div class="button_lojaartes">
-                                                        <p class="textbutton_lojaartes"><i class="fa fa-paint-brush" aria-hidden="true"></i> ARTES</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-
-                                        <div class="contribuicoesHistorietas">
-                                            <h4>Indiretamente</h4>
-                                            <p>Comprar qualquer produto pelos links afiliados geram renda ao projeto sem qualquer custo adicional para você</p>
-                                            <div id="organizer_contribuicoesIndiretasHistorietas">
-                                                <a href="https://www.amazon.com.br?&linkCode=ll2&tag=tdvadilho05-20&linkId=323ea7ef1891ccb812a77da02ad83348&language=pt_BR&ref_=as_li_ss_tl" class="clicavel_linkafiliado" target="_blank">
-                                                    <div id="container_linkafiliado">
-                                                        <div class="linkafiliado"><i class="fa fa-bookmark" aria-hidden="true"></i> AMAZON </div>
-                                                    </div>
-                                                </a>
-                                                <a href="https://www.magazinevoce.com.br/magazinetdvadilho/" class="clicavel_linkafiliado"  target="_blank">
-                                                    <div id="container_linkafiliado">
-                                                        <div class="linkafiliado lu"><i class="fa fa-bookmark" aria-hidden="true"></i> MAGAZINE LUIZA </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-
-                                        <div class="contribuicoesHistorietas">
-                                            <h4>Sem custo</h4>
-                                            <p>Me seguindo nas redes sociais, você estará me ajudando a levar as historietas para um público maior</p>
-
-                                            {{ with $data.social }}
-                                                <ul class="icons alt">
-                                                    {{ with .instagram}}
-                                                        <li><a href="{{ . }}" class="icon alt fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
-                                                    {{ end }}
-
-                                                    {{ with .facebook}}
-                                                        <li><a href="{{ . }}" class="icon alt fa-facebook" target="_blank"><span class="label">Facebook</span></a></li>
-                                                    {{ end }}
-
-                                                    {{ with .twitter}}
-                                                        <li><a href="{{ . }}" class="icon alt fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
-                                                    {{ end }}
-
-                                                    {{ with .youtube }}
-                                                        <li><a href="{{ . }}" class="icon alt fa-youtube-play" target="_blank"><span class="label">Youtube</span></a></li>
-                                                    {{ end }}
-                                                </ul>
-                                            {{ end }}
-                                        </div>
-                                    </div>                                
-                                </div>
+                                
                             </div>
                         </td>
                     </tr>
@@ -231,33 +109,10 @@
                     'Seu comentário foi enviado. Por favor aguarde pela aprovação.',
                 }
             </script>
-
-            <script>
-                let hajaluzcomentarios = function (){
-                    window.CUSDIS={};let e;function t(t){return e||(e=document.createElement("iframe"),function(e,t){const s=window.matchMedia("(prefers-color-scheme: dark)"),d=d=>{try{const i=JSON.parse(d.data);if("cusdis"===i.from)switch(i.event){case"onload":"auto"===t.dataset.theme&&n("setTheme",s.matches?"dark":"light");break;case"resize":e.style.height=i.data+"px"}}catch(i){}};function i(e){const s=e.matches;"auto"===t.dataset.theme&&n("setTheme",s?"dark":"light")}window.addEventListener("message",d),s.addEventListener("change",i)}(e,t)),e.srcdoc=(e=>{const t=e.dataset.host||"https://cusdis.com",n=e.dataset.iframe||`${t}/js/iframe.umd.js`;return`<!DOCTYPE html>\n<html>\n  <head>\n    <link rel="stylesheet" href="/assets/css/comentarios-estilo-lightmode.css">\n    <base target="_parent" />\n    <link>\n    <script>\n      window.CUSDIS_LOCALE = ${JSON.stringify(window.CUSDIS_LOCALE)}\n      window.__DATA__ = ${JSON.stringify(e.dataset)}\n    <\/script>\n    <style>\n      :root {\n        color-scheme: light;\n      }\n    </style>\n  </head>\n  <body>\n    <div id="root"></div>\n    <script src="${n}" type="module">\n      \n    <\/script>\n  </body>\n</html>`})(t),e.style.width="100%",e.style.border="0",e}function n(t,n){e&&e.contentWindow.postMessage(JSON.stringify({from:"cusdis",event:t,data:n}))}function s(e){if(e){e.innerHTML="";const n=t(e);e.appendChild(n)}}function d(){let e;window.cusdisElementId?e=document.querySelector(`#${window.cusdisElementId}`):document.querySelector("#cusdis_thread")?e=document.querySelector("#cusdis_thread"):document.querySelector("#cusdis")&&(console.warn("id `cusdis` is deprecated. Please use `cusdis_thread` instead"),e=document.querySelector("#cusdis")),!0===window.CUSDIS_PREVENT_INITIAL_RENDER||e&&s(e)}window.renderCusdis=s,window.CUSDIS.renderTo=s,window.CUSDIS.setTheme=function(e){n("setTheme",e)},window.CUSDIS.initial=d,d();
-                }
-
-                let deshajaluzcomentarios = function(){
-                    window.CUSDIS={};let e;function t(t){return e||(e=document.createElement("iframe"),function(e,t){const s=window.matchMedia("(prefers-color-scheme: dark)"),d=d=>{try{const i=JSON.parse(d.data);if("cusdis"===i.from)switch(i.event){case"onload":"auto"===t.dataset.theme&&n("setTheme",s.matches?"dark":"light");break;case"resize":e.style.height=i.data+"px"}}catch(i){}};function i(e){const s=e.matches;"auto"===t.dataset.theme&&n("setTheme",s?"dark":"light")}window.addEventListener("message",d),s.addEventListener("change",i)}(e,t)),e.srcdoc=(e=>{const t=e.dataset.host||"https://cusdis.com",n=e.dataset.iframe||`${t}/js/iframe.umd.js`;return`<!DOCTYPE html>\n<html>\n  <head>\n    <link rel="stylesheet" href="/assets/css/comentarios-estilo-darkmode.css">\n    <base target="_parent" />\n    <link>\n    <script>\n      window.CUSDIS_LOCALE = ${JSON.stringify(window.CUSDIS_LOCALE)}\n      window.__DATA__ = ${JSON.stringify(e.dataset)}\n    <\/script>\n    <style>\n      :root {\n        color-scheme: light;\n      }\n    </style>\n  </head>\n  <body>\n    <div id="root"></div>\n    <script src="${n}" type="module">\n      \n    <\/script>\n  </body>\n</html>`})(t),e.style.width="100%",e.style.border="0",e}function n(t,n){e&&e.contentWindow.postMessage(JSON.stringify({from:"cusdis",event:t,data:n}))}function s(e){if(e){e.innerHTML="";const n=t(e);e.appendChild(n)}}function d(){let e;window.cusdisElementId?e=document.querySelector(`#${window.cusdisElementId}`):document.querySelector("#cusdis_thread")?e=document.querySelector("#cusdis_thread"):document.querySelector("#cusdis")&&(console.warn("id `cusdis` is deprecated. Please use `cusdis_thread` instead"),e=document.querySelector("#cusdis")),!0===window.CUSDIS_PREVENT_INITIAL_RENDER||e&&s(e)}window.renderCusdis=s,window.CUSDIS.renderTo=s,window.CUSDIS.setTheme=function(e){n("setTheme",e)},window.CUSDIS.initial=d,d();   
-                }
-
-                let ajustasecaocomentario = function(mode){
-                    if (mode === "lightmode"){
-                        hajaluzcomentarios();
-                    } else {
-                        deshajaluzcomentarios();
-                    }
-                }
-            </script>
             <script defer data-host="https://cusdis.com" data-app-id="b935f701-f887-42b4-96cf-1852bf2005b2" src="https://cusdis.com/js/cusdis-count.umd.js"></script>
         </div>
-
-        {{- partial "copyright" . }}
         <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
-
-        <div id="urlCopiarNotification">
-        </div>
-
+        <div id="urlCopiarNotification"></div>
     </div>
 
     {{- template "_internal/google_analytics.html" . }}
@@ -267,15 +122,6 @@
 
 <style>
 /* GERAIS */
-    #main{
-        border: none;
-        padding: 4rem 5rem 3rem 5rem;
-    }
-
-    a{
-        border: none;
-    }
-
     a:hover{
         cursor: pointer;
     }
@@ -433,80 +279,6 @@
 
     #compartilharHistorietas span:nth-child(8):before{
         background: #C8232C;
-    }
-
-    /* processo */
-    #container_processo {
-        text-align: center;
-        margin-top: 35px;
-    }
-
-    #mySlidesProcessoID{
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: auto;
-        margin-top: 15px;
-        position: relative;
-    }
-
-    .mySlides {
-        flex-grow: 1;
-        border: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    .mySlides iframe {
-        width: 100%;
-        height: 500px;
-    }
-
-    .slideshow-container {
-        position: relative;
-        margin: auto;
-    }
-
-    #prevProcesso, #nextProcesso {
-        cursor: pointer;
-        margin-top: -10px;  
-        padding: 8px;
-        transition: 0.6s ease;
-        border-radius: 0 3px 3px 0;
-        user-select: none;
-        font-size: 2rem;
-    }
-    
-    #posicaoDotsProcesso {
-        display: flex;
-        justify-content: center;
-    }
-
-    .dot {
-        cursor: pointer;
-        height: 12px;
-        width: 12px;
-        margin: 0 2px;
-        background-color: #bbb;
-        border-radius: 50%;
-        display: inline-block;
-        transition: background-color 0.6s ease;
-    }
-
-    .active, .dot:hover {
-        background-color: #717171;
-    }
-
-    /* Fading animation */
-    .fade {
-        animation-name: fade;
-        animation-duration: 1.5s;
-    }
-
-    @keyframes fade {
-        from {opacity: .4}
-        to {opacity: 1}
     }
     
 /* ENCERRAMENTO */
@@ -771,19 +543,6 @@
     }
 
     @media screen and (max-width: 889px){
-        .txt_pinMateriaisUsados{
-            font-size: 0.75rem;
-        }
-
-        .fa-thumb-tack {
-            font-size: small;
-        }
-
-        .pinMateriaisUsados{
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-
         #container_contribuicoesHistorietas{
             flex-wrap: wrap;
             justify-content: center;
@@ -843,56 +602,6 @@
 </style>
 
 <script>
-/* ----------------MATERIAIS LINKS AFILIADOS---------------- */
-    let flagMateriaisAberto = false;
-    
-    let expandirmateriais = function(e){
-        e.stopPropagation();
-        let listademateriais = document.getElementsByClassName('listaMateriais')[0];
-        listademateriais.style.display = "inline-grid";
-        
-        flagMateriaisAberto = true;
-
-        let botaomateriais = document.getElementsByClassName('pinMateriaisUsados');
-        botaomateriais[0].style.display = "none";
-
-        let buttonCloseMateriais = document.getElementsByClassName('toCloseMateriais')[0];
-        buttonCloseMateriais.style.display = "block";
-
-        window.addEventListener('click', function(g){
-            if(!listademateriais.contains(g.target)){
-                fecharmateriais();
-            }
-        }, options = {"once": true})
-    }
-
-    document.addEventListener('keydown', (ev) => {
-       if(flagMateriaisAberto==true){
-            if(ev.key == 'Escape'){/* para ler quando preciona o esc*/
-                fecharmateriais();
-            }
-        }
-    }) 
-
-    function fecharmateriais(){
-        let buttonCloseMateriais = document.getElementsByClassName('toCloseMateriais')[0];
-        buttonCloseMateriais.style.display = "none";
-
-        if(window.innerWidth < 980){
-            navPanelToggle.style.cssText = ''
-        }
-
-        let listademateriais = document.getElementsByClassName('listaMateriais');
-        listademateriais[0].style.display = "none";
-
-        let botaomateriais = document.getElementsByClassName('pinMateriaisUsados');
-        botaomateriais[0].style.display = "inline-flex";
-
-        flagMateriaisAberto = false;
-        isMouseoverMateriais = true;
-    }
-/* ----------------FIM DOS MATERIAIS LINKS AFILIADOS---------------- */
-
     /* DESTACARR O MENU*/
     let activeMenu = document.querySelector("#nav > ul > li:nth-child(2)") || undefined;
     if(activeMenu)
@@ -956,91 +665,7 @@
             createCopiarNotification();
         }
 
-    // CARROSSEL
- 
-    let slideIndex = 1;
-        showSlides(slideIndex);
-
-    // Next/previous controls
-    function plusSlides(n) {
-        showSlides(slideIndex += n);
-    }
-
-    // Thumbnail image controls
-    function currentSlide(n) {
-        showSlides(slideIndex = n);
-    }
-
-    function showSlides(n) {
-        let i;
-        let slides = document.getElementsByClassName("mySlides");
-        let dots = document.getElementsByClassName("dot");
-        if (n > slides.length) {slideIndex = 1}
-        if (n < 1) {slideIndex = slides.length}
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex-1].style.display = "block";
-        dots[slideIndex-1].className += " active";
-    }
-
-    //SWIPE LEFT OR RIGHT
-    let touchsurface = document.getElementById('container_processo'),
-        startX, 
-        startY,
-        dist,
-        distThreshold,
-        thresholdX = 50,
-        thresholdY = 50,
-        allowedTime = 1500,
-        elapsedTime,
-        startTime
-
-    let setupSlider = function() {
-        touchsurface.addEventListener('touchstart', function(e) {
-            let touchobj = e.changedTouches[0]
-            
-            dist = 0
-            distThreshold = 0
-            startX = touchobj.pageX
-            startY = touchobj.pageY
-            startTime = new Date().getTime() 
-        }, false)
-
-        touchsurface.addEventListener('touchend', function(e) {
-            var touchobj = e.changedTouches[0]
-            dist = touchobj.pageX - startX
-            distThreshold = Math.abs(dist)
-            elapsedTime = new Date().getTime() - startTime
-
-            if (
-                elapsedTime <= allowedTime &&
-                distThreshold >= thresholdX &&
-                Math.abs(touchobj.pageY - startY) <= thresholdY &&
-                dist > 0 &&
-                flagMateriaisAberto == false
-            ){
-                document.getElementById('prevProcesso').click()
-            }
-
-            if (
-                elapsedTime <= allowedTime &&
-                distThreshold >= thresholdX &&
-                Math.abs(touchobj.pageY - startY) <= thresholdY &&
-                dist < 0 &&
-                flagMateriaisAberto == false
-            ){                                         
-                document.getElementById('nextProcesso').click()
-            }
-        }, false)
-    }
-    
-    document.addEventListener("DOMContentLoaded", (event) => { 
-        setupSlider()
-    });
+   
 
     let goToComentarios = function(){
         let comentariosYPosition = document.getElementById("comentarioshist-container").offsetTop

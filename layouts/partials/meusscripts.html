@@ -1,0 +1,375 @@
+<script>
+
+/* ----------------GO TO COMMENTS FROM POSTS CARD---------------- */
+let flagCameFromCard = false;
+let goToCommentsFromCard = function(event,link){
+    event.cancelBubble = true;
+    if(event.stopPropagation) event.stopPropagation();
+
+    flagCameFromCard = true;
+    window.open(link);
+}
+/* ----------------END GO TO COMMENTS FROM POSTS CARD---------------- */
+
+/* ----------------NAVIGATION---------------- */
+let flagnavigationisopen = false;
+let opennavigationmenu = function(){
+    document.getElementById("nav").style.display = "block";
+    document.body.style.overflow = 'hidden';
+    flagnavigationisopen = true;
+}
+/* ---------------- END NAVIGATION ---------------- */
+
+/* ----------------CLOSE THINGS---------------- */
+//close things with X
+let closethis = function(what){
+    if(what === 'navigationmenu'){
+        document.getElementById("nav").style.display = "none";
+        flagnavigationisopen = false;
+        document.body.style.overflow = 'auto';
+    }
+}
+
+//close things with ESC
+document.addEventListener('keydown', (ev) => {
+    if((ev.key == 'Escape') && (flagnavigationisopen == true)){
+        closethis('navigationmenu');
+    }
+    if(flagProjAberto==true){
+        if(ev.key == 'Escape'){
+            closeSnackbarProj();
+        }
+        if(ev.keyCode == '39'){ //Projetos abertos na galeria tem esses adicionais para poder movimentar com a setinha
+            changeSlideProj(1);
+        }
+        if(ev.keyCode == '37'){
+            changeSlideProj(-1);
+        }
+    }
+})
+/* ----------------END CLOSE THINGS---------------- */
+
+/* ----------------SLIDESHOW---------------- */
+let slideIndex = 1; //inicializando slide
+function plusSlides(n) { //prev and next click
+    showSlides(slideIndex += n);
+}
+
+function currentSlide(n) { //slide que está mostrando na tela
+    showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("slider-gallery");
+    let squaresnavigation = document.getElementsByClassName("square-navigation-slider");
+    if (n > slides.length) {
+        slideIndex = 1
+    }
+    if (n < 1) {
+        slideIndex = slides.length
+    }
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (i = 0; i < squaresnavigation.length; i++) {
+        squaresnavigation[i].className = squaresnavigation[i].className.replace(" activeslide", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    squaresnavigation[slideIndex-1].className += " activeslide";
+}
+    //SWIPE LEFT OR RIGHT
+    let touchsurface = document.getElementById('slider-container'),
+        startX, 
+        startY,
+        dist,
+        distThreshold,
+        thresholdX = 50,
+        thresholdY = 50,
+        allowedTime = 1500,
+        elapsedTime,
+        startTime
+
+    let setupSliderforswipe = function() {
+        touchsurface.addEventListener('touchstart', function(touch) {
+            let touchobj = touch.changedTouches[0]
+            
+            dist = 0
+            distThreshold = 0
+            startX = touchobj.pageX
+            startY = touchobj.pageY
+            startTime = new Date().getTime() 
+        }, false)
+
+        touchsurface.addEventListener('touchend', function(touch) {
+            var touchobj = touch.changedTouches[0]
+            dist = touchobj.pageX - startX
+            distThreshold = Math.abs(dist)
+            elapsedTime = new Date().getTime() - startTime
+
+            if (
+                elapsedTime <= allowedTime &&
+                distThreshold >= thresholdX &&
+                Math.abs(touchobj.pageY - startY) <= thresholdY &&
+                dist > 0 &&
+                flagMateriaisAberto == false
+            ){
+                document.getElementById('prevSlide').click()
+            }
+
+            if (
+                elapsedTime <= allowedTime &&
+                distThreshold >= thresholdX &&
+                Math.abs(touchobj.pageY - startY) <= thresholdY &&
+                dist < 0 &&
+                flagMateriaisAberto == false
+            ){                                         
+                document.getElementById('nextSlide').click()
+            }
+        }, false)
+    }
+/* ----------------FIM DO SLIDESHOW---------------- */
+
+/* ----------------REALIGN VERTICAL---------------- */
+    let realignVertical = function(projetoaberto){
+        // setTimeout(() => {
+        let snackbarChildrenSize = 0;
+        let snackElement = document.getElementById(projetoaberto);
+        console.log(snackElement);
+        let snackbarChildrenNumber = snackElement.children.length;
+                
+        for(let i = 0; i < snackbarChildrenNumber; i++){
+            console.log(snackElement.children[i].height);
+            snackbarChildrenSize += snackElement.children[i].height;
+        }
+
+        if(snackbarChildrenSize < (snackElement.offsetHeight)){
+            snackElement.classList.add("realignClass");
+        } else{
+            snackElement.classList.remove("realignClass");
+        }
+        // }, 2000);
+    }
+/* ----------------FIM REALIGN VERTICAL---------------- */
+
+
+
+/* ----------------CONTACTING SCRIPTS---------------- */
+/* document.getElementById('contato').addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    document.getElementById('btn_enviar').setAttribute('disabled', 'a');
+    document.getElementById('li_btn_contato').classList.add('borderAnim', 'in');
+    
+
+    data = Object.fromEntries(new FormData(e.target).entries());
+    url = 'https://thiago.oioipio.com/contato';
+    
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(result => {
+        document.getElementById('btn_enviar').removeAttribute('disabled');
+        document.getElementById('li_btn_contato').classList.remove('borderAnim', 'in');
+        
+        emailenviado();
+    }).catch(error => {
+        document.getElementById('btn_enviar').removeAttribute('disabled');
+        document.getElementById('li_btn_contato').classList.remove('borderAnim', 'in');
+        
+        emailnaoenviado();
+    })
+})
+
+let emailenviado = function(){
+    var form = document.getElementById("Snackbar");
+    
+    form.className = "showSucess";
+
+    document.getElementById('SnackbarText1').innerHTML = "Mensagem enviada"
+    document.getElementById('SnackbarText2').innerHTML = "Entrarei em contato assim que possível"
+    
+    setTimeout(function(){ 
+        form.className = form.className.replace("showSucess", "");   
+        resetForm();
+    }, 8000);
+
+    window.history.pushState('', '', '#form-enviado');
+}
+
+let emailnaoenviado = function(){
+    let emailenviado = document.getElementById('emailenviado');
+    let form = document.getElementById("Snackbar");
+
+    emailenviado.innerHTML = "Infelizmente o email não pode ser enviado. Por favor, tente novamente em alguns instantes";
+    form.className = "showFail";
+    
+    document.getElementById('SnackbarText1').innerHTML = "Falha no servidor";
+    document.getElementById('SnackbarText2').innerHTML = "Desculpe, infelizmente o email não pode ser enviado. Por favor, tente novamente em alguns instantes";
+    
+    setTimeout(function(){ 
+        form.className = form.className.replace("showFail", "");   
+    }, 8000);
+} */
+
+/* Saiba Mais - Serviços */
+/* let flagServicosAbertos = false;
+document.addEventListener('keydown', (ev) => {
+    if((ev.key == 'Escape') && (flagServicosAbertos == true)){
+        closeSnackbarSaibaMais();
+    }
+}) 
+
+let SnackbarSaibaMais = document.getElementById("SnackbarSaibaMais")
+let abreSnackServicos = function(tipoServico){
+    event.stopPropagation();
+    SnackbarSaibaMais.style.display = "block";
+    flagServicosAbertos = true;
+    console.log("abriu a snack");
+
+    document.getElementById("container-leituracritica").style.display = "none";
+    document.getElementById("container-ilustracaoedesign").style.display = "none";
+    document.getElementById("container-criacaodetextos").style.display = "none";
+    document.getElementById("container-outroscriativos").style.display = "none";
+
+    if (tipoServico === "leituraCritica"){
+        console.log("entrou no if leitura critica");
+        document.getElementById("container-leituracritica").style.display = "block";
+    }
+
+    if (tipoServico === "ilustracaoDesign"){
+        document.getElementById("container-ilustracaoedesign").style.display = "block";
+    }
+
+    if (tipoServico === "criacaoDeTextos"){
+        document.getElementById("container-criacaodetextos").style.display = "block";
+    }
+
+    if (tipoServico === "outros"){
+        document.getElementById("container-outroscriativos").style.display = "block";
+    }
+
+    window.addEventListener('click', function(v){
+        if (document.getElementById('SnackbarSaibaMais').contains(v.target)){
+        } else{
+            SnackbarSaibaMais.style.display = "none";
+        }
+    }, options = {"once": true})
+}
+
+let closeSnackbarSaibaMais = function(){
+    SnackbarSaibaMais.style.display = "none";
+} */
+/* ----------------FIM CONTACTING SCRIPTS---------------- */
+
+/* ----------------PIN MATERIAIS LINKS AFILIADOS---------------- */
+let flagMateriaisAberto = false;
+    
+    let expandirmateriais = function(e){
+        e.stopPropagation();
+        let listademateriais = document.getElementsByClassName('listaMateriais')[0];
+        listademateriais.style.display = "inline-grid";
+        
+        flagMateriaisAberto = true;
+
+        let botaomateriais = document.getElementsByClassName('pinMateriaisUsados');
+        botaomateriais[0].style.display = "none";
+
+        let buttonCloseMateriais = document.getElementsByClassName('toCloseMateriais')[0];
+        buttonCloseMateriais.style.display = "block";
+
+        window.addEventListener('click', function(g){
+            if(!listademateriais.contains(g.target)){
+                fecharmateriais();
+            }
+        }, options = {"once": true})
+    }
+
+    document.addEventListener('keydown', (ev) => {
+        if(flagMateriaisAberto==true){
+            if(ev.key == 'Escape'){/* para ler quando preciona o esc*/
+                fecharmateriais();
+            }
+        }
+    }) 
+
+    function fecharmateriais(){
+        let buttonCloseMateriais = document.getElementsByClassName('toCloseMateriais')[0];
+        buttonCloseMateriais.style.display = "none";
+
+        if(window.innerWidth < 980){
+            navPanelToggle.style.cssText = ''
+        }
+
+        let listademateriais = document.getElementsByClassName('listaMateriais');
+        listademateriais[0].style.display = "none";
+
+        let botaomateriais = document.getElementsByClassName('pinMateriaisUsados');
+        botaomateriais[0].style.display = "inline-flex";
+
+        flagMateriaisAberto = false;
+        isMouseoverMateriais = true;
+    }
+/* ----------------FIM DOS PINS MATERIAIS LINKS AFILIADOS---------------- */
+
+/* ----------------ANIMAÇÃO DE CARREGAMENTO ILUSTRAÇÕES---------------- */
+/*Interactivity to determine when an animated element in in view. In view elements trigger our animation*/
+$(document).ready(function() {
+
+//window and animation items
+var animation_elements = $.find('.animation-element');
+var web_window = $(window);
+
+//check to see if any animation containers are currently in view
+function check_if_in_view() {
+  //get current window information
+  var window_height = web_window.height();
+  var window_top_position = web_window.scrollTop();
+  var window_bottom_position = (window_top_position + window_height);
+
+  //iterate through elements to see if its in view
+  $.each(animation_elements, function() {
+
+    //get the element sinformation
+    var element = $(this);
+    var element_height = $(element).outerHeight();
+    var element_top_position = $(element).offset().top;
+    var element_bottom_position = (element_top_position + element_height);
+
+    //check to see if this current container is visible (its viewable if it exists between the viewable space of the viewport)
+    if ((element_bottom_position >= window_top_position) && (element_top_position <= window_bottom_position)) {
+      element.addClass('in-view');
+    } else {
+      element.removeClass('in-view');
+    }
+  });
+
+}
+
+//on or scroll, detect elements in view
+$(window).on('scroll resize', function() {
+    check_if_in_view()
+  })
+  //trigger our scroll event on initial load
+$(window).trigger('scroll');
+
+});
+/* ----------------FIM ANIMAÇÃO DE CARREGAMENTO ILUSTRAÇÕES---------------- */
+
+/* ----------------DOM CONTENT LOADED---------------- */
+document.addEventListener("DOMContentLoaded", (event) => {
+
+    let regularSlideGallery = document.getElementsByClassName("slider-gallery");
+    if (regularSlideGallery.length > 0){ //checando se existe regular slide para chamar (regular slide é todo slide com exceção do slide da página de ilustração)
+        setupSliderforswipe();
+        showSlides(slideIndex);
+    }  
+});
+/* ----------------FIM DOM CONTENT LOADED---------------- */
+</script>
+    
+    

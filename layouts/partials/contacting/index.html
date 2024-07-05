@@ -1,0 +1,165 @@
+<link rel="stylesheet" type="text/css" href="/assets/css/contacting.css"> <!-- Chamando CSS contacting-->
+
+<!-- contacting -->
+{{ $data := index .Site.Data .Site.Language.Lang }}
+
+<div id="contatar" class="contato">
+    <h1 id="title_seçãoContato">CONTATO</h1>
+</div>
+
+<contacting id="contacting">
+    {{ with $data.contactinfo.contactformaction }}
+    <section>
+        <form id="contato" method="post">
+            <div class="fields">
+                <div class="field">
+                    <label for="name">{{ i18n "CONTACT_FORM_FIELD_NAME" . }}</label>
+                    <input type="text" name="nome" id="name" autocomplete="given-name" required/>
+                </div>
+                <div class="field">
+                    <label for="email">{{ i18n "CONTACT_FORM_FIELD_EMAIL" . }}</label>
+                    <input type="email" name="mail" autocomplete="email" id="email" required/>
+                </div>
+                <div class="field">
+                    <label for="assunto">{{ i18n "CONTACT_FORM_FIELD_ASSUNTO" . }}</label>
+                    <select id="assunto" name="assunto" required>
+                        <option value="Gostaria de te contratar">Gostaria de te contratar</option>
+                        <option value="Vamos fazer uma parceria?">Vamos fazer uma parceria?</option>
+                        <option value="Um convite para você">Um convite para você</option>
+                        <option value="Só queria falar que...">Só queria falar que...</option>
+                        <option value="Tenho uma sugestão">Tenho uma sugestão</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                    
+                </div>
+                <div class="field">
+                    <label for="message">{{ i18n "CONTACT_FORM_FIELD_MESSAGE" . }}</label>
+                    <textarea name="mensagem" id="message" rows="3" required></textarea>
+                </div>
+            </div>
+         
+            <ul class="actions">
+                <li id="li_btn_contato">
+                <input type="submit" id="btn_enviar" value='{{ i18n "CONTACT_FORM_SUBMIT_SEND_MESSAGE" . }}'/>
+                </li>
+            </ul>
+           
+        </form>
+    </section>
+    {{ end }}
+
+    <section class="split contact">
+        {{ with $data.contactinfo.email }}
+        
+            <h6><span class="underline-servicos">Serviços (agenda aberta)</span></h6>
+            
+            <div id="container-servicos">
+                <div class="container-individual-servicos" onclick="abreSnackServicos('ilustracaoDesign')">
+                    <div class="container-imagethumb-servicos">
+                    <img src="http://www.tdvadilho.com/imagens/galeria-ilustracoes/projeto1/ImiNoCampoDeFlores-TDVadilho-thumb-LowRes-noai-noimageai.jpg" alt="Imi em Meio ao Campo de Flores. Personagem imaginário amarelo."/>
+                </div>
+                    <div class="nome-chamada-servicos">
+                      <h1>Ilustração e Design</h1>
+                      <h1>Saiba mais</h1>
+                    </div>
+                </div>
+
+                <div class="container-individual-servicos" onclick="abreSnackServicos('leituraCritica')">
+                    <div class="container-imagethumb-servicos">
+                    <img src="/images/leitura-critica.jpg" alt="Imagem de um óculos em cima de um caderno com anotações sobre um de meus textos"/>
+                </div>
+                    <div class="nome-chamada-servicos">
+                      <h1>Leitura Crítica</h1>
+                      <h1>Saiba mais</h1>
+                    </div>
+                </div>
+
+                <div class="container-individual-servicos" onclick="abreSnackServicos('criacaoDeTextos')">
+                    <div class="container-imagethumb-servicos">
+                    <img src="/images/criacao-de-texto.jpg" alt="Imagem dos materiais que uso para escrever meus textos - caderno, caneta, teclado e livros de inspiração" />
+                </div>
+                    <div class="nome-chamada-servicos">
+                      <h1>Criação Textual</h1>
+                      <h1>Saiba mais</h1>
+                    </div>
+                </div>
+
+                <div class="container-individual-servicos" onclick="abreSnackServicos('outros')">
+                    <div class="container-imagethumb-servicos">
+                    <img src="/images/outros.jpg" alt="Processo de criação da arte para Os Sapos que Fingem Perfeição"/>
+                </div>
+                    <div class="nome-chamada-servicos">
+                      <h1>Outros Projetos</h1>
+                      <h1>Saiba mais</h1>
+                    </div>
+                </div>
+            </div>
+        {{ end }}
+
+        
+        <div id = "SnackbarSaibaMais">
+            <span id="close" onclick="closeSnackbarSaibaMais()">x</span>
+            <div id="container-outroscriativos">
+                {{ with .Site.GetPage "servicosoutroscriativos" }}
+                    {{ .Content }}
+                {{ end }}    
+            </div>
+
+            <div id="container-criacaodetextos">
+                {{ with .Site.GetPage "servicoscriacaodetextos" }}
+                    {{ .Content }}
+                {{ end }}    
+            </div>
+
+            <div id="container-leituracritica"> 
+                {{ with .Site.GetPage "servicosleituracritica" }}
+                    {{ .Content }}
+                {{ end }}    
+            </div>
+
+            <div id="container-ilustracaoedesign">
+                {{ with .Site.GetPage "servicosilustracaoedesign" }}
+                    {{ .Content }}
+                {{ end }}    
+            </div>
+        </div>
+        
+
+        {{ with $data.contactinfo.email }}
+        <section id="splitcontact">
+            <h6>{{ i18n "CONTACT_EMAIL" . }}</h6>
+            <a href="mailto:{{ . }}"><p>{{ . }}</p></a>
+        </section>
+        {{ end }}
+
+        {{ with $data.social }}
+        <section>
+            <h6>{{ i18n "CONTACT_SOCIAL" . }}</h6>
+            <div id="redes-sociais">
+                {{ with .facebook}}
+                    <a href="{{ . }}" target="_blank"><i class="fa fa-facebook-f icon"></i></a>
+                {{ end }}
+
+                {{ with .twitter}}
+                    <a href="{{ . }}" target="_blank"><i class="fa fa-twitter icon"></i></a>
+                {{ end }}
+
+                {{ with .instagram }}
+                    <a href="{{ . }}" target="_blank"><i class="fa fa-instagram icon"></i></a>
+                {{ end }}
+
+                {{ with .youtube }}
+                    <a href="{{ . }}" target="_blank"><i class="fa fa-youtube-play icon"></i></a>
+                {{ end }}
+
+                {{ with .pinterest }}
+                    <a href="{{ . }}" target="_blank"><i class="fa fa-pinterest icon"></i></a>
+                {{ end }}
+                <!-- {{ with .wattapad }}
+                    <a href="{{ . }}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24" id="wattpad"><path d="m13.471 3.086c.371.056.764.081 1.089.286 1.682.854 1.729 3.628 1.415 5.497 1.332-1.865 4.845-5.905 7.017-5.126.462.143.879.524.963 1.014.306 1.278-.749 2.088-2.713 5.291-3.24 5.286-3.464 8.568-6.556 8.704-1.502.07-3.175-1.317-3.412-3.674-.118-.839-.125-1.69-.058-2.533-2.518 4.116-3.141 9.135-7.4 8.289-3.948-1.07-4.269-9.22-3.54-13.182.083-.663.317-1.43.714-2.249 1.059-2.049 3.513-2.062 4.559-.846 1.073 1.248.76 3.81.595 5.487 1.383-2.408 4.557-7.19 7.327-6.958z"></path></svg></i></a>
+                {{ end }}    -->           
+            </div>
+        </section>
+        {{ end }}       
+    </section>
+</contacting>

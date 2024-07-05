@@ -1,0 +1,77 @@
+#slider-container {
+    text-align: center;
+    width: 100%;
+}
+
+#prevSlide, #nextSlide {
+    cursor: pointer;
+    margin-top: -10px;  
+    padding: 8px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    font-size: 2rem;
+}
+
+#gallery-and-materials-container{
+    position: relative;
+    line-height: 0;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.slider-gallery{
+    display: none; /* hides image by default */
+}
+
+#square-navigation-slider-container {
+    display: flex;
+    justify-content: center;
+}
+
+.square-navigation-slider {
+    cursor: pointer;
+    height: 8px;
+    width: 50px;
+    margin: 0 5px;
+    background-color: var(--whitesmoke-color) 80%;
+    display: inline-block;
+    transition: .8s ease-in-out;
+    margin: 3px;
+}
+
+.square-navigation-slider:hover{
+    transform: scaleY(1.6);
+}
+
+.activeslide, .square-navigation-slider:hover {
+    background-color: var(--whitesmoke-color);
+}
+
+.youtube-container-hideui-specialhome{
+    overflow: hidden;
+    width: 100%;
+    /* Keep it the right aspect-ratio */
+    aspect-ratio: 16/9;
+    /* No clicking/hover effects */
+    pointer-events: none;
+}
+
+.youtube-container-hideui-spécialhome iframe{
+    /* Extend it beyond the viewport... */
+    width: 300%;
+    height: 100%;
+    /* ...and bring it back again */
+    margin-left: -100%;
+}
+
+/* Fading animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}

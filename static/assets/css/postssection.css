@@ -1,0 +1,14 @@
+#container-post-all-after-header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#container-postagens{
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    max-width: 1200px;
+}

@@ -1,0 +1,266 @@
+<link rel="stylesheet" type="text/css" href="/assets/css/geral.css"> <!-- Chamando CSS geral -->
+<link rel="stylesheet" type="text/css" href="/assets/css/galeriailustracoes.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/scroll.css">
+
+{{- partial "htmlhead" . -}}<!-- puxando as metatags -->
+{{- partial "navigationlinks" . -}}<!-- puxando os menus -->
+
+<body lang='{{ .Site.LanguageCode | default "pt-br" }}' class="is-preload">
+    
+    <div id="wrapper" class="fade-in"> 
+        <div id="main">
+            <!-- Logo -->
+            <h1 id="logo">LOGO</h1>
+
+            <!-- Navmenu -->
+            <span id="menu-to-navigate" onclick="opennavigationmenu()">Menu</span>
+            
+            <div id="container-galeriailustracoes-introtext">
+                <h1>Portfólio</h1>
+                <h3>Atualmente disponível para trabalhos</h3>
+            </div>
+
+            <span id="array" idsArray="{{ .Params.ProjetosIds }}"></span>
+
+            <div id="container-galeria-ilustracoes">
+                    <div id="organizer-galeria-ilustracoes">
+                        {{ range .Pages.ByWeight }}
+                            <div class="{{ .Params.containerclass }}">
+                                <div id="{{ .Params.Projectid }}"
+                                    titulo = "{{ .Params.Title }}"
+                                    onclick="abrirproj(event, '{{ .Params.Projectid }}')"
+                                    itens="{{ jsonify .Params.Itens }}"
+                                    legenda="{{ .Content }}"
+                                    lojalink="{{ .Params.Lojalink }}"
+                                    class="{{ .Params.Class }}"
+                                    >
+                                    <!-- <div class="animation-element bounce-up"> -->
+                                        <img src="{{ .Params.Thumbprojeto }}" alt="{{ .Params.altthumb }}"> 
+                                    <!-- </div> -->
+                                </div>           
+                            </div>
+                        {{ end }}
+                    </div>
+            </div>
+            {{- partial "rodape.html" . }}
+        </div>
+        <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
+    </div>   
+    {{- template "_internal/google_analytics.html" . }}
+    {{- partial "scripts/index" . }}
+    {{- partial "meusscripts" . }}
+</body>
+
+<script>
+    //Checa se já entrou na página com algum ID aberto
+    window.addEventListener('load', ()=> {
+        const id = new URLSearchParams(window.location.search).get('id'); 
+        if(id) {
+            abrirproj('', id);
+        } else{
+            //não veio com id setado, não abrir nenhum automaticamente
+        }
+    });
+
+    let navPanelToggle = document.getElementById("navPanelToggle");
+    let flagProjAberto = false;
+
+    let lastResize = 0;
+    let changePositionOfCloseButton = function() { 
+        if(Date.now() - lastResize > 500) {
+            lastResize = Date.now();
+
+            rect = document.getElementById('openProject').getBoundingClientRect();
+            
+            buttonClose = document.getElementById('topButtonsContainer');
+            console.log(rect.x, rect.width, buttonClose.clientWidth);
+            buttonClose.style.paddingLeft = `${rect.x + rect.width - buttonClose.scrollWidth}px`;
+        }
+    }
+
+    let openLink = function(link){    //Para abrir os links
+        window.open(link)
+    }
+
+    /* Slide no mobile */
+    let setupSlider = function() {
+        let touchsurface = document.getElementById('snackbarId'),
+        startX, 
+        startY,
+        dist,
+        distThreshold,
+        thresholdX = 50,
+        thresholdY = 50,
+        allowedTime = 1500,
+        elapsedTime,
+        startTime
+
+        touchsurface.addEventListener ('touchstart', function(e) {
+            let touchobj = e.changedTouches[0]
+            
+            dist = 0
+            distThreshold = 0
+            startX = touchobj.pageX
+            startY = touchobj.pageY
+            startTime = new Date().getTime() 
+        }, false)
+
+        touchsurface.addEventListener('touchend', function(e) {
+            var touchobj = e.changedTouches[0]
+            dist = touchobj.pageX - startX
+            distThreshold = Math.abs(dist)
+            elapsedTime = new Date().getTime() - startTime
+           
+            if (
+                elapsedTime <= allowedTime &&
+                distThreshold >= thresholdX &&
+                Math.abs(touchobj.pageY - startY) <= thresholdY &&
+                dist > 0
+            ){
+                plusSlides(-1);
+            }
+
+            if (
+                elapsedTime <= allowedTime &&
+                distThreshold >= thresholdX &&
+                Math.abs(touchobj.pageY - startY) <= thresholdY &&
+                dist < 0)
+            {                                         
+                plusSlides(1);
+            }
+        }, false)
+    }
+
+    let createSnackbar = function(id) {   
+        let snackbar = document.createElement('div')
+        snackbar.classList = 'snackbar'
+        snackbar.id = 'snackbarId'
+        document.body.style.cssText = 'overflow: hidden'
+
+        let legenda = document.getElementById(id).getAttribute('legenda')
+        let lojalink = document.getElementById(id).getAttribute('lojalink')
+        let projLegendaContainer = ""
+        let lojaButton = ""
+        let titulo = document.getElementById(id).getAttribute('titulo')
+
+        if (lojalink != ""){ /* Checando se existe o link da loja para construir o botão e o link na legenda */
+            projLegendaContainer = `<div id="projLegendaContainer"  style="display:none">` + `<div class="ilustration-title-on-snackopen">` + titulo + `</div>`
+                + `<div class="subtitle-content-snackopen">` + legenda + `</div></div>`
+            lojaButton =  `<a id='lojaButton'><div class="logoContainerLoja"><spann class="fa-shopping-cart fa-2x" onclick="openLink('` + lojalink + `')"></i></div></a>`
+        } else{
+            projLegendaContainer =  `<div id="projLegendaContainer">` + `<div class="ilustration-title-on-snackopen">` + titulo + `</div>`
+                + `<div class="subtitle-content-snackopen">` + legenda + `</div></div>`
+        }
+     
+        let topButtonsContainer = // Criando os botões do topo com os links correspondentes
+            `<div id='container-top-buttons-snackbarproj'>`+ 
+                lojaButton + 
+                `<div class='infos-project'>
+                    <span class="fa-solid fa-circle-info" onclick="toggleLegenda();"></span>
+                </div>
+                <div class='buttonCloseProject'>
+                    <span class='fa fa-times-circle fa-2x' aria-hidden='true' onclick="closeSnackbarProj()"></span>
+                </div>
+            </div>`
+
+        
+        let openProject = `<div id='container-openProject-and-arrows'>` 
+         // Criando o botão prev 
+            + `<div id="container-prev-button-gallery-ilustracoes">
+                <div id="prev-button-gallery-ilustracoes">
+                    <span class='fa fa-chevron-circle-left fa-2x' aria-hidden='true' onclick="changeSlideProj(-1)"></span>
+                </div>
+            </div>`
+            + `<div id="openProject">`
+        // Inserindo o conteúdo    
+            let itens = JSON.parse(document.getElementById(id).getAttribute('itens'));
+            for (let item of itens){
+                if (item.type == 'image'){
+                    openProject += '<img src="' + item.src + '" width="' + item.width + 'px" height="' + item.height + 'px" alt="'+ item.alt +'"  style="display:block; object-fit: contain; max-height: 89vh;" class="snackZoom" id="snackZoomId"/>'
+                } else {
+                    openProject += '<div class="iframecontainer" id="snackZoomId"><iframe src="' + item.src + '" alt="' + item.alt + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" frameorder="0" vspace="0" hspace="0" marginwidth="0" marginheight="0" width="100%" style="margin: 0 0 0 0" frameBorder="0" scrolling="no" style="border: 0px" allowfullscreen></iframe></div>'
+                } 
+            }
+        // Criando o botão next 
+            
+        openProject += ` </div>
+                            <div id="container-next-button-gallery-ilustracoes">
+                                <div id="next-button-gallery-ilustracoes">
+                                    <span class='fa fa-chevron-circle-right fa-2x' aria-hidden='true' onclick="changeSlideProj(1);event.stopPropagation()"></span>
+                                </div>
+                            </div> 
+                        </div>`;
+
+        
+        snackbar.innerHTML = topButtonsContainer + `<div id="container-openProject-and-legenda"> `+  openProject  + projLegendaContainer + `</div> `; // Snackbar totalmente construida
+        document.body.append(snackbar); // Adiciona a snack ao body
+
+        realignVertical("openProject");
+        setupSlider()// Slide no mobile
+    }
+
+    let toggleLegenda = function(){
+        let x = document.getElementById("projLegendaContainer");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+   
+    let checkFlag = function() { //Projeto aberto > esconde o filtro e o menu
+        if (flagProjAberto == true){
+            navPanelToggle.style.cssText = 'display: none'         
+        }
+    }
+    window.addEventListener('scroll', checkFlag)
+
+    let idsArray = document.getElementById("array").getAttribute("idsArray"); //Criando array com os projetos existentes para permitir funcionamento dos slides
+    let splitIdsArray = idsArray.replace("]","").replace("[","").split(' ')
+    let totalProjectNum = splitIdsArray.length
+
+    let changeSlideProj = function(botao){  //Funcionamento dos slides
+        closeSnackbarProj(); //Fecha o projeto aberto
+
+        if(botao == 1) {
+            if(currentFocusProject + 1 >= totalProjectNum) {
+                currentFocusProject = 0;
+            } else {
+                currentFocusProject += 1;
+            }
+        } else {
+            if(currentFocusProject == 0) {
+                currentFocusProject = totalProjectNum - 1;
+            } else {
+                currentFocusProject -= 1;
+            }
+        }
+        abrirproj('', splitIdsArray[currentFocusProject]); //Cria a nova snack com a nova id
+    }
+    
+    let currentFocusProject;
+    let id;
+    let abrirproj = function (e, id){
+        if (e) e.stopPropagation();
+        document.getElementById(id);
+
+        flagProjAberto = true;
+        checkFlag();
+        createSnackbar(id);
+        
+        currentFocusProject = splitIdsArray.indexOf(id);
+    }
+  
+    function closeSnackbarProj(){/*Função para fechar snack e retornar elementos ao padrão*/
+        let snackbarToClose = document.getElementById('snackbarId')
+        snackbarToClose.remove()
+    
+        if(window.innerWidth < 980){
+            navPanelToggle.style.cssText = ''
+        }
+        
+        document.body.style.cssText = 'overflow: auto';
+        document.body.className = 'normal';
+        flagProjAberto = false;
+    }
+</script>
