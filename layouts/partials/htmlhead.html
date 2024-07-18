@@ -33,12 +33,14 @@
             <meta property="og:description" content="{{ site.Params.Description }}" />
             <meta property="og:url" content="{{ site.BaseURL }}" />
             <meta name="og:image" content="{{ site.Params.Image }}" />
+            <meta name="author" content="TD Vadilho">
         {{- else -}}
             <meta name="og:title" content="{{ .Params.Title }}" />
             <meta property="og:type" content="{{ .Params.ogtype }}" />
             <meta property="og:description" content="{{ .Params.Description }}" />
             <meta property="og:url" content="{{ .Page.Permalink }}" />
             <meta name="og:image" content="{{ .Params.Imagethumb }}" />
+            <meta name="author" content="TD Vadilho">
         {{- end -}} 
 
         <!--------------------------- CSS setado pelo tema (não mexer) ---------------------------->
@@ -70,10 +72,14 @@
         <!--------------------------- Font Awesome 6 ---------------------------->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-        <!-- Font -->
+        <!-- Font Lora -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-	</head>
+	
+        <!-- Font Sanchez -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Sanchez:ital@0;1&display=swap" rel="stylesheet">
+    </head>
 </html>
-    

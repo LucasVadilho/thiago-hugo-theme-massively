@@ -1,10 +1,16 @@
-{{- partial "htmlhead" . -}}
+<link rel="stylesheet" type="text/css" href="/assets/css/geral.css"> <!-- Chamando CSS geral -->
+<link rel="stylesheet" type="text/css" href="/assets/css/contentsingles.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/suporte.css">
 
-<body lang='{{ .Site.LanguageCode | default "en-us" }}' class="is-preload">
+{{- partial "htmlhead" . -}}
+{{- partial "navigationlinks" . -}}<!-- puxando os menus -->
+
+<body lang='{{ .Site.LanguageCode | default "pt-br" }}'>
     <!-- Wrapper -->
     <div id="wrapper">
 
         <div id="main">
+            {{- partial "pageHeaderMenuAndLogo" . -}}
             <table>
                 <thead>
                     <tr>
@@ -15,660 +21,85 @@
                 <tbody>
                     <tr>
                         <td>
-                            <div id="historietas_container">
-                                <div class="content-container">
-                                    <h2> {{ .Title }} </h2>
-                                    
-                                    <div class="container-comentarioseluz">
-                                        <h4> 
-                                            {{ .Params.Historietanumero }}
-                                            <span class="barravertical-subtitulo">|</span>
-                                            <span id="comentarioshistorieta" onclick="goToComentarios()">
-                                                <span  data-cusdis-count-page-id="{{ .Params.UniqueID }}">0 </span>
-                                            comentários</span>
-                                            <span class="barravertical-subtitulo">|</span>
+                            <div class="container-header-single-post">
+                                <div class="header-single-posts-historietas" style="background-color: {{ .Params.Backgroundhistcolor | safeCSS }};">
+                                    <div class="header-title-single-post-historietas">
+                                        <span class="image-title-historieta  fadeIn">
+                                            <img src="{{ .Params.Imgtitle }}" alt="{{ .Params.Imagetitlealt }}"> 
+                                        </span>
+                                        <span class="header-historietas-bg">
+                                            <img src="{{ .Params.Imagebackgroundtitle }}" alt="{{ .Params.Altimagebackgroundtitle }}"> 
+                                        </span>
+                                    </div>
+                                    <div class="header-infos-single-post-historietas">
+                                        <h4 style="color: {{ .Params.Infoinsidetxtcolor| safeCSS }};"> 
+                                            <span class="header-infos-divider-single-post"><i class="fa-solid fa-folder"></i></span>      
+                                            {{ range $v, $categories := .GetTerms "categories" }}
+                                                {{- if $v }}<span style="text-transform: none">e </span>{{ end }}
+                                                <span class="span-link">
+                                                    <a onclick="window.location.href='/categories/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+                                                </span>
+                                            {{ end}}
+                                           
+                                            <span class="header-infos-divider-single-post">
+                                                <span class="header-infos-will-disappear">|&nbsp&nbsp</span>
+                                                <i class="fa-solid fa-tags"></i>
+                                            </span>                                        
+                                                   
+                                            {{ range $k, $tags := .GetTerms "tags" }}
+                                                {{- if $k }}, {{ end }}
+                                                <span class="span-link">
+                                                    <a class="tags-container" onclick="window.location.href='/tags/{{ .LinkTitle | safeURL }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+                                                </span>
+                                            {{ end }}
                                             
+                                            <span class="header-infos-divider-single-post">
+                                                <span class="header-infos-will-disappear">|&nbsp&nbsp</span>
+                                                <i class="fa-solid fa-comments"></i>
+                                            </span>
+                                            
+                                            <span class="span-link">
+                                                <a onclick="goToComentariosBlog()"><span  data-cusdis-count-page-id="{{ .Params.UniqueID }}">0</span> comentários</a>
+                                            </span>    
                                         </h4>
                                     </div>
-                                    {{ .Content }}
-                                
-                                    <p class="referenciar" style="margin-top:30px">Autor e ilustrador: ©Thiago David Vadilho (TD Vadilho)</p>
-                                    <p class="referenciar">*Jamais venda ou monetize este conteúdo sem a autorização expressa do autor.</p>
-                                    <p class="referenciar">Caso necessário, entre em <a  href='{{ "#contatar" | relLangURL }}' class="linkto_contato"><u>contato</u></a>.</p>
+                                    <img src="{{ .Params.Imageheader }}" alt="{{ .Params.Imageheaderalt }}">
                                 </div>
-
-                                <div id="compartilharHistorietas-titulo">
-                                    <h4>Compartilhe essa história</h4>
-                                </div>
-                                <div id="compartilharHistorietas">
-                                    <span onclick="copiarUrlSharing()"><i class="fa fa-link icon"></i></span>
-                                    <span onclick="fbSharing()"><i class="fa fa-facebook-f icon"></i></span>
-                                    <span onclick="ttSharing()"><i class="fa fa-twitter icon"></i></span>
-                                    <span onclick="instagramSharing()"><i class="fa fa-instagram icon"></i></span>
-                                    <span onclick="wppSharing()"><i class="fa fa-whatsapp icon"></i></span>       
-                                    <span onclick="redditSharing()"><i class="fa fa-reddit-alien icon"></i></span>
-                                    <span onclick="linkedinSharing()"><i class="fa fa-linkedin icon"></i></span>
-                                    <span onclick="pinterestSharing()"><i class="fa fa-pinterest icon"></i></span>
-                                </div>
-
-                                {{ if isset .Params "slidersgallery" }}
-                                <div id="container_processo"> 
-                                    <h2>Processo criativo</h2>
-                                    {{- partial "slider" . }}
-                                </div>
-                                {{ end }}
-
-                            <div id="historieta-encerramento">
-                                <h2>Quer ajudar o projeto?</h2>
-                                
                             </div>
+
+                            <div class="container-texto-and-image-content">
+                                {{ .Content }}
+                                <p class="referenciar" style="margin-top:30px">Autor e ilustrador: ©Thiago David Vadilho (TD Vadilho)</p>
+                                <p class="referenciar">*Jamais venda ou monetize este conteúdo sem a autorização expressa do autor.</p>
+                                <p class="referenciar">Caso necessário, entre em <a  href='{{ "#contatar" | relLangURL }}' class="linkto_contato"><u>contato</u></a>.</p>
+                            </div>
+
+                            <div id="suporteashistorietas">
+                                <h1>Apoie as Historietas❤️</h1>
+                                <div class="container-imortalizados-da-vez">
+                                    <p>A criação do conteúdo que você aproveitou somente é possível graças ao apoio dos leitores e leitoras do site.
+                                         O agradecimento especial dessa edição vai para
+                                        {{- range $key, $value := .Params.Imortalizadosdavez -}}
+                                            {{ if $key }} e {{ end }}
+                                            <img class="nomes-imortalizados" src="{{ $value }}" alt="Nomes dos imortalizados da vez">
+                                        {{- end -}}
+                                        , que apoiaram o meu trabalho, e agora estão sendo <i>imortalizados</i> na página dessa história :)
+                                    </p>
+                                </div>
+                                {{- partial "suporte" . }}
+                            </div>
+                            {{- partial "similarHistsAndProcess" .}}
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <div class="paperOverlay"></div>
         </div>
-
-        <!-- PARTE DOS COMENTÁRIOS -->    
-        <div id="comentarioshist-container">
-            <h2>Comentários</h2>
-            <h4>Vamos conversar sobre o post?</h4>
-    
-            <p class="avisos-pre-comentarios">• A aprovação dos comentários tem o intuito <b>apenas</b> de barrar mensagens desrespeitosas ou spams;</p>
-            <p class="avisos-pre-comentarios">• Aqui nenhum dos seus dados são salvos;
-            <p class="avisos-pre-comentarios">• O visual ainda está sendo atualizado, mas a parte de comentar e responder já é funcional 😊
-            </p>
-    
-            <div id="cusdis_thread"
-                data-host="https://cusdis.com"
-                data-app-id="b935f701-f887-42b4-96cf-1852bf2005b2"
-                data-page-id="{{ .Params.UniqueID }}"
-                data-page-url="{{ .Permalink }}"
-                data-page-title="{{ .Title }}"
-                >
-            </div>
-    
-            <script>
-                window.CUSDIS_LOCALE = {
-                    powered_by: 'Powered by Cusdis',
-                    post_comment: 'Postar comentário',
-                    loading: 'Carregando',
-                
-                    // comment
-                    email: 'Email (opcional)',
-                    nickname: 'Nome',
-                    reply_placeholder: 'Comentar...',
-                    reply_btn: 'Responder',
-                    sending: 'enviando...',
-                
-                    // reply
-                    mod_badge: 'MOD',
-                    content_is_required: 'Conteúdo é requerido',
-                    nickname_is_required: 'Apelido é requerido',
-                
-                    comment_has_been_sent:
-                    'Seu comentário foi enviado. Por favor aguarde pela aprovação.',
-                }
-            </script>
-            <script defer data-host="https://cusdis.com" data-app-id="b935f701-f887-42b4-96cf-1852bf2005b2" src="https://cusdis.com/js/cusdis-count.umd.js"></script>
-        </div>
-        <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
+        {{- partial "emailing" . -}}
+        {{- partial "rodape.html" . }}
         <div id="urlCopiarNotification"></div>
     </div>
-
     {{- template "_internal/google_analytics.html" . }}
     {{- partial "scripts/index" . }}
-
+    {{- partial "meusscripts" . -}}
 </body>
-
-<style>
-/* GERAIS */
-    a:hover{
-        cursor: pointer;
-    }
-
-    h4{
-        margin-bottom: 30px;
-    }
-
-    button{
-        margin-left: 3px;
-        margin-right: 3px;
-        margin-top: 10px;
-    }
-
-/* HISTORIETA */
-    /* titulo e subtitulo */
-    .content-container {
-        margin-top: 20px;
-    }
-
-    .container-comentarioseluz{
-        text-align: center;
-    }
-
-    .content-container h4{
-        margin-bottom: 30px;
-        display: inline-flex;
-        align-items: center;
-    }
-
-    .barravertical-subtitulo{
-        margin-left: 5px;
-        margin-right: 5px;
-    }
-
-    /* texto */
-    table td{
-        padding: 0;
-    }
-
-    table thead{
-        border: none;
-    }
-
-    thead{
-        display: none;
-    }
-
-    table tbody tr:nth-child(2n + 1) {
-        background-color: rgba(255, 255, 255, 0);C
-    }
-
-    table tbody tr {
-        border: none;
-    }
-    
-    /* Compartilhar */
-    #compartilharHistorietas-titulo h4{
-        margin-bottom: 0;
-        margin-top: 40px;
-        margin-bottom: 10px;
-    }
-
-    #compartilharHistorietas {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 40px;
-    }
-
-    #compartilharHistorietas span {
-        width: 40px;
-        height: 40px;
-        background-color: #fff;
-        text-align: center;
-        line-height: 40px;
-        font-size: 18px;
-        margin: 0 0 0 10px;
-        display: block;
-        border-radius: 50%;
-        position: relative;
-        overflow: hidden;
-        border: 3px solid #fff;
-        z-index: 1;
-        box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
-    }
-
-    #compartilharHistorietas span:first-child{
-        margin-left: 0;
-    }
-
-    #compartilharHistorietas span:hover{
-        cursor: pointer;
-    }
-
-    #compartilharHistorietas span .icon {
-        position: relative;
-        color: #262626;
-        transition: .5s;
-        z-index: 3;
-        vertical-align: 2px !important;
-        margin-right: 0 !important;
-    }
-
-    #compartilharHistorietas span:hover .icon {
-        display: inline-block;
-        color: #fff;
-        transform: rotateY(360deg);
-        -webkit-transform: rotateY(360deg);
-        -ms-transform: rotateY(360deg);
-    }
-
-    #compartilharHistorietas span:before {
-        content: "";
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: #f00;
-        transition: .5s;
-        z-index: 2;
-    }
-
-    #compartilharHistorietas span:hover:before {
-        top: 0;
-    }
-
-    #compartilharHistorietas span:nth-child(1):before{
-        background: #aab1c0;
-    }
-    
-    #compartilharHistorietas span:nth-child(2):before{
-        background: #3b5999;
-    }
-
-    #compartilharHistorietas span:nth-child(3):before{
-        background: #55acee;
-    }
-
-    #compartilharHistorietas span:nth-child(4):before{
-        background: #FE0B81;
-    }
-
-    #compartilharHistorietas span:nth-child(5):before{
-        background: #128C7E;
-    }
-
-    #compartilharHistorietas span:nth-child(6):before{
-        background: #FF4500;
-    }
-
-    #compartilharHistorietas span:nth-child(7):before{
-        background: #0077B5;
-    }
-
-    #compartilharHistorietas span:nth-child(8):before{
-        background: #C8232C;
-    }
-    
-/* ENCERRAMENTO */
-    #explicacoes{
-        margin-top: 20px;
-    }
-    
-    #introHistorietas{
-        margin-bottom: 25px;
-    }
-
-    #historieta-encerramento{
-        margin-top: 35px;
-        padding-top: 35px;
-        border-top: 2px solid #b6b6b6;
-        border-width: thin;
-    }
-
-    #historieta-encerramento h2{
-        text-align: center;
-    }
-
-    #container_contribuicoesHistorietas{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-top: 35px;
-    }
-
-    .contribuicoesHistorietas{
-        width: 30%;
-        min-width: 20%;
-    }
-
-    .contribuicoesHistorietas h4{
-        margin-bottom: 15px;
-    }
-
-    .title_contribuicoesHistorietas{
-        text-align: center;
-        font-size: 1rem;
-        line-height: 1.6;
-        text-transform: uppercase;
-    }
-
-    /* diretamente */
-    #container_contribuicaopix{
-        width: 100%;
-        display: inline-flex;
-        justify-content: space-evenly;
-        margin-top: 12px;
-    }
-
-    .button_contribuicaopix-container, .button_meuslivros-container, .button_lojaartes-container{
-        -webkit-backface-visibility: hidden;
-        -webkit-transform: translateZ(0) scale(1, 1);
-        filter: blur(0);
-        -webkit-filter: blur(0);
-        transition: transform .2s;
-    }
-
-    .button_contribuicaopix-container:hover, .button_meuslivros-container:hover, .button_lojaartes-container:hover{
-        cursor: pointer;
-        transform: scale(1.1);
-        transition: transform .2s;
-    }
-
-    .button_contribuicaopix{
-        margin-left: 0px;
-        margin-right: 0px;
-        height: 26px;
-        background-color: rgb(31, 107, 102);
-        border-radius: 3px;
-        display: flex;
-        align-items: center;
-    }
-
-    .textbutton_contribuicaopix{
-        color:rgb(255, 255, 255); 
-        font-family: "Source Sans Pro", Helvetica, sans-serif;
-        font-size: 0.8rem;
-        font-weight: 900;
-        letter-spacing: 0.075em;
-        padding: 0 10px 0 10px;
-    }
-
-    .icon_pix{
-        filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(323deg) brightness(102%) contrast(101%);
-        width: 9.344px;
-        height: 12.219px;
-        padding-top: 3px;
-    }
-
-    .button_meuslivros{
-        margin-left: 0px;
-        margin-right: 0px;
-        height: 26px;
-        background-color: #FFC97F;
-        border-radius: 3px;
-        display: flex;
-        align-items: center;
-    }
-    
-    .textbutton_meuslivros{
-        color:rgb(26, 25, 25); 
-        font-family: "Source Sans Pro", Helvetica, sans-serif;
-        font-size: 0.8rem;
-        font-weight: 900;
-        letter-spacing: 0.075em;
-        padding: 0 10px 0 10px;
-    }
-
-    .button_lojaartes{
-        margin-left: 0px;
-        margin-right: 0px;
-        height: 26px;
-        background-color: #d2bbf0;
-        border-radius: 3px;
-        display: flex;
-        align-items: center;
-    }
-    
-    .textbutton_lojaartes{
-        color:rgb(26, 25, 25); 
-        font-family: "Source Sans Pro", Helvetica, sans-serif;
-        font-size: 0.8rem;
-        font-weight: 900;
-        letter-spacing: 0.075em;
-        padding: 0 10px 0 10px;
-    }
-
-    /* indiretamente */
-    #organizer_contribuicoesIndiretasHistorietas{
-        display: inline-flex;
-        justify-content: space-evenly;
-        width: 100%;
-        margin: 12px auto 0 auto;
-    }
-
-    #container_linkafiliado {
-        height: 26px;
-        width: fit-content;
-        -webkit-backface-visibility: hidden;
-        -webkit-transform: translateZ(0) scale(1, 1);
-        filter: blur(0);
-        -webkit-filter: blur(0);
-        transition: transform .2s;
-        display: flex;
-        align-items: center;
-    }
-
-    #container_linkafiliado:hover{
-        cursor: pointer;
-        transform: scale(1.1);
-        transition: transform .2s;
-    }
-
-    .linkafiliado {
-        border-radius: 3px;
-        background-color: #ffe95a;
-        color:rgb(26, 25, 25); 
-        height: 26px;
-        font-family: "Source Sans Pro", Helvetica, sans-serif;
-        font-size: 0.8rem;
-        font-weight: 900;
-        letter-spacing: 0.075em;
-        padding: 0 10px 0 10px;
-    }
-
-    .lu{
-        background-color: #4B83F9 !important;
-        color: white;
-    }
-
-    /* sem custo */
-    .contribuicoesHistorietas ul{
-        text-align: center;
-        margin-top: 8px;
-    }
-
-    .contribuicoesHistorietas>.icon.alt{
-        color: #717981;
-    }
-    
-/* GoToComentários */
-    #comentarioshistorieta:hover{
-        cursor: pointer;
-        color: #252121 !important;
-    }
-
-    #comentarioshistorieta{
-        position: sticky;
-        display: -webkit-inline-box;
-    }
-
-    #comentarioshistorieta::before{
-        background: hsl(45 100% 70%);
-        content: "";
-        inset: 0;
-        position: absolute;
-        transform: scaleX(0);
-        transform-origin: right;
-        transition: transform 0.5s ease-in-out;
-        z-index: -1;
-    }
-
-    #comentarioshistorieta:hover::before{
-        transform: scaleX(1);
-        transform-origin: left;
-    }
-
-/* REGRAS DE MIDIA */
-    @media screen and (max-width: 700px) and (min-width: 551px){
-        h2{
-            font-size: 2.5rem;
-        }
-
-        h4{
-            font-size: 1.2rem;
-        } 
-    }
-
-    @media screen and (max-width: 550px){
-        h2{
-            font-size: 2.2rem;
-        }
-
-        h4{
-            font-size: 1.1rem;
-        } 
-    }
-
-    @media screen and (max-width: 736px){
-        #main {
-            padding: 2rem 1.8rem 2rem 1.8rem;
-        }
-
-        #prevProcesso, #nextProcesso{
-            display: none;
-        }
-    }
-
-    @media screen and (max-width: 1080px) and (min-width:890px){
-        #container_contribuicoesHistorietas{
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .contribuicoesHistorietas{
-            width: 40%;
-            margin-bottom: 50px;
-        }
-
-        .contribuicoesHistorietas:first-of-type{
-            margin-right: 50px;
-        }
-
-        .contribuicoesHistorietas:last-of-type{
-            margin-bottom: 0;
-        }
-    }
-
-    @media screen and (max-width: 889px){
-        #container_contribuicoesHistorietas{
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .contribuicoesHistorietas{
-            width: 90%;
-            margin-bottom: 50px;
-        }
-
-        .contribuicoesHistorietas:last-of-type{
-            margin-bottom: 0;
-        }
-
-        .contribuicoesHistorietas h4{
-            text-align: left;
-        }
-
-        #container_contribuicaopix{
-            justify-content: flex-start;
-        }
-
-
-        .button_contribuicaopix-container, .button_meuslivros-container{
-            margin-right: 10px;
-        }
-
-        #organizer_contribuicoesIndiretasHistorietas{
-            justify-content: flex-start;
-        }
-
-        #container_linkafiliado{
-            margin-right: 10px;
-            margin-top: 12px;
-        }
-
-        .contribuicoesHistorietas ul{
-            text-align: left;
-        }
-    }
-
-    @media screen and (max-width: 464px) and (min-width: 403px){
-        #compartilharHistorietas span:nth-child(8){
-            display: none;
-        }
-    }
-
-    @media screen and (max-width: 402px){
-        #compartilharHistorietas span:nth-child(7){
-            display: none;
-        }
-        #compartilharHistorietas span:nth-child(8){
-            display: none;
-        }
-    }
-    
-</style>
-
-<script>
-    /* DESTACARR O MENU*/
-    let activeMenu = document.querySelector("#nav > ul > li:nth-child(2)") || undefined;
-    if(activeMenu)
-        activeMenu.innerHTML = '<li class="active"> <a href="/historietas">Historietas</a></li>'
-
-    /* COMPARTILHAMENTO */
-    function fbSharing() {
-        var url = "https://www.facebook.com/sharer/sharer.php?u=" + urlCurrentPage;
-        window.open(url , "share_dialog", "width=500, height=300");
-    }
-
-    function ttSharing(){
-        var url = "https://twitter.com/share?url=" + urlCurrentPage + "%0a%0a&text=Gente, leia {{ .Params.title }}, história escrita pelo autor @tdvadilho :) &text=🔗&hashtags=historietasTDVadilho";
-        window.open(url , "share_dialog", "width=790, height=462");
-    }
-
-    function redditSharing(){
-        var url = "https://www.reddit.com/submit?title=Historieta%20-%20TDVadilho&text=Gente,%20leia%20{{ .Params.title }},%20história%20escrita%20pelo%20autor%20@td.vadilho";
-        window.open(url , "share_dialog", "width=790, height=742");
-    }
-
-    function pinterestSharing(){
-        var url = "{{ .Params.linkPin }}";
-        window.open(url , "share_dialog", "width=1080, height=727");
-    }
-
-    function wppSharing(){
-        var url = "https://api.whatsapp.com/send?text=Lê essa história do escritor TD Vadilho " + urlCurrentPage
-        window.open(url)
-    }
-
-    function linkedinSharing(){
-        var url = "https://www.linkedin.com/feed/?shareActive=true&text=Gente, leia '{{ .Params.title }}', história do %23escritor TD Vadilho! https://tdvadilho.com/historietas/historieta6 %23historias %23literatura"
-        window.open(url, "width=790, height=742")
-    }
-
-    function instagramSharing(){
-        var url = "{{ .Params.linkInsta }}"
-        window.open(url, "width=790, height=742")
-    }
-    
-    /* Carregando links de compartilhamento */
-    let urlCurrentPage = window.location.href;
-
-        /* Copiar URL*/    
-        let copiarUrlSharing = function() {
-            let createCopiarNotification = function() {
-                let notification = document.getElementById("urlCopiarNotification");
-                notification.style.display = "block";
-                notification.innerHTML = '<i class="fa fa-link"></i> URL COPIADA</div>';
-                
-                setTimeout(() => {
-                    notification.style.display = 'none';
-                }, 2800);
-            }
-
-            if(navigator.clipboard) {
-                navigator.clipboard.writeText(window.location.href);
-                createCopiarNotification();
-            }
-            createCopiarNotification();
-        }
-
-   
-
-    let goToComentarios = function(){
-        let comentariosYPosition = document.getElementById("comentarioshist-container").offsetTop
-        window.scrollTo({left: 0, top: comentariosYPosition, behavior: "smooth"})
-    }
-</script>

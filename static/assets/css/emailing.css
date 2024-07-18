@@ -6,182 +6,140 @@
     padding-bottom: 90px;
 }
 
-#container-newsletterForm{
-    max-width: 1200px;
-}
-
-#title_seçãoNewsletter{
-    margin-bottom: 5px;
-    color: aliceblue;
-}
-
-.subtitle_seçãoNewsletter{
-    font-size: 1.25rem;
-    margin-bottom: 20px;
-    color: aliceblue;
-    line-height: 1.7;
-    letter-spacing: 0.1rem;
-}
-
-#newsletterForm{
-    margin-bottom: 0;
-}
-
-#nomeOrganizer{
-    position: relative;
-    float: left;
-    width: 40%;
-}
-
-#emailOrganizer{
-    margin-left: 30px;
-    margin-right: 30px;
-    float: left;
-    width: 40%;
-}
-
-.txt_newsletterAviso{
+#text-chamada-emailing-letter{
+    max-width: 500px;
+    line-height: 1.5;
+    font-size: 1.5rem;
     text-align: center;
-    font-size: 15px;
-    color: aliceblue;
+    text-wrap: balance;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    font-style: italic;
 }
 
-label{
-    color: aliceblue; 
+#de-eu-para-voce-miolo{/* container do miolo */
+    max-width: 900px;
+    position: relative;
 }
 
-#form_newsletter{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-ul.actions{
-    margin-left:0;
-}
-
-#li_btn_inscrever {
-        padding: 0 !important;
-        margin-top: 28px;
-        background-color: #FFC97F;
-    }
-
-    #btn_inscrever{
-        box-shadow: inset 0 0 0 2px #FFC97F;
-        color: #5f7183 !important;
-        height: 3rem;
-    }
-
-    #btn_inscrever:hover{
-        box-shadow: inset 0 0 0 2px #725e5e;
-        color: #725e5e !important;
-    }
-
-#nomenewsl, #emailnewsl{
-    background-color: aliceblue;
-}
-
-/* area de inscrição */
-.fields{
+#container-input-emailing-letter{
+    border-radius: 30px;
+    position: relative;
+    overflow: hidden;
     display: inline-flex;
     flex-wrap: nowrap;
     width: 100%;
-    margin-bottom: 20px;
+    height: 60px;
+    -webkit-transition: transform 0.2s ease-in-out 0s;
+       -moz-transition: transform 0.2s ease-in-out 0s;
+         -o-transition: transform 0.2s ease-in-out 0s;
+            transition: transform 0.2s ease-in-out 0s;
 }
 
-.fields input{
-    height: 50px;
-    border-radius: 25px 0px 0px 25px;
+#container-input-emailing-letter input{
+    height: 60px;
+    background-color: var(--whitesmoke-color);
+    border-radius: 30px 0px 0px 30px;
 }
 
 .button-inscrever-de-eu-para-voce{
     background-color: var(--accent-avocadish);
-    padding-left: 25px;
-    padding-right: 25px;
-    border-radius: 0px 25px 25px 0px;
+    padding: 78px 30px 0px 30px;
+    font-weight: 500;
     display: flex;
+    justify-content: center;
+    font-family: system-ui, sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    height: 120px;
+    transform: translateY(-50%);
+	color: var(--whitesmoke-color);
+	-webkit-transition: transform 1s ease 0s ;
+	   -moz-transition: transform 1s ease 0s ;
+	     -o-transition: transform 1s ease 0s ;
+	        transition: transform 1s ease 0s ;
+}
+
+.subscribing-emailing-letter{
+	background: #682e29;
+    width: 100%;
+	height: 60px;
+    transform: translateX(-100%);
+    position: absolute;
+	z-index: 5;
+	display: inline-block;
+	-webkit-transition: transform 2s ease 0s ;
+	   -moz-transition: transform 2s ease 0s ;
+	     -o-transition: transform 2s ease 0s ;
+	        transition: transform 2s ease 0s ;
+}
+
+.email-inscrito-msg, .email-fail-inscrito-msg{
+    width: 100%;
+    height: 60px;
+    z-index: 5;
+    position: absolute;
+    display: inline-flex;
+    color: var(--whitesmoke-color);
     align-items: center;
+    justify-content: center;
+    font-family: "Lora";
+    font-weight: 600;
+    font-size: 1rem;
+    transform: translateY(50px);
+	-webkit-transition: transform 0.5s ease 0.25s ;
+	   -moz-transition: transform 0.5s ease 0.25s ;
+	     -o-transition: transform 0.5s ease 0.25s ;
+	        transition: transform 0.5s ease 0.25s ;
+}
+
+#text-disclaimer-letter-emailing{
+    font-size: 10px;
+}
+
+#container-newsletterForm section{
+    margin-top: 50px;
+    text-align: center;
 }
 
 /* Feedback */
-/* SNACKBAR CSS */
-#Snackbar {
-    visibility: hidden;
-    text-align: left;
-    padding: 5px;
-    padding-left: 12px;
-    padding-right: 12px;
-    border-radius: 2px;
-    position: fixed;
-    bottom: 30px;
-    background-color: rgba(255, 255, 255, 0.875);
-    box-shadow: 0 0.125rem 0.75rem 0 rgba(30, 37, 45, 0.25);
-    color: #212931;
-    transform: translate(-50%,0);
-    left: 50%;
-    z-index: 7;
+.container-input-emailing-letter-loading {
+	-webkit-transform: translateX(0);
+	   -moz-transform: translateX(0);
+	    -ms-transform: translateX(0);
+	     -o-transform: translateX(0);
+	        transform: translateX(0);
 }
 
-#Snackbar.showSucess {
-    visibility: visible;
-    -webkit-animation: fadein 0.5s;
-    animation: fadein 0.5s;
-    border-left: 10px solid #36a34c;
-}
-
-#Snackbar.showFail {
-    visibility: visible;
-    -webkit-animation: fadein 0.5s;
-    animation: fadein 0.5s;
-    border-left: 10px solid #a33636;
-}
-
-#SnackbarText1{
-    color: #101020;
-    font-weight: 600;
-    font-size: 18px;
-    font-family: helvetica;
-}
-
-#SnackbarText2{
-    margin-top: -12px;
-    font-size: 15px;
-    color: #656565;
-    font-weight: 400;
-    font-family: helvetica;
-}
-
-#Snackbar a{
-    position: absolute;
-    right: 5px;
-    top:  5px;
-    padding-right: 10px;
-    padding-top: 10px;
-    background-color: transparent;
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 0;
-    color: #656565;
-    border: none;
-    font-family: helvetica;
-}
-
-#Snackbar:hover{
+.button-inscrever-de-eu-para-voce:hover{
     cursor: pointer;
+    background-color: aquamarine;
 }
 
-#Snackbar:hover a{
+.button-inscrever-de-eu-para-voce-active{
+    -webkit-transform: translateY(0%);
+	   -moz-transform: translateY(0%);
+	    -ms-transform: translateY(0%);
+	     -o-transform: translateY(0%);
+	        transform: translateY(0%);
+}
+
+.email-inscrito-msg-active, .email-fail-inscrito-msg-active {
+	-webkit-transform: translateY(0px);
+	   -moz-transform: translateY(0px);
+	    -ms-transform: translateY(0px);
+	     -o-transform: translateY(0px);
+	        transform: translateY(0px);
+}
+
+.email-fail-inscrito-msg a{
+    text-decoration: underline;
+    color: var(--whitesmoke-color);
+}
+
+.email-fail-inscrito-msg a:hover{
     cursor: pointer;
-    color: #18bfef;
+    color: #220907 !important
 }
-
-@-webkit-keyframes fadein {
-    from {bottom: 0; opacity: 0;} 
-    to {bottom: 30px; opacity: 1;}
-}
-
-@keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
-}   

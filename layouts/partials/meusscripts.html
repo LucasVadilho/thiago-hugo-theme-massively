@@ -9,7 +9,7 @@ let goToCommentsFromCard = function(event,link){
     flagCameFromCard = true;
     window.open(link);
 }
-/* ----------------END GO TO COMMENTS FROM POSTS CARD---------------- */
+
 
 /* ----------------NAVIGATION---------------- */
 let flagnavigationisopen = false;
@@ -18,7 +18,7 @@ let opennavigationmenu = function(){
     document.body.style.overflow = 'hidden';
     flagnavigationisopen = true;
 }
-/* ---------------- END NAVIGATION ---------------- */
+
 
 /* ----------------CLOSE THINGS---------------- */
 //close things with X
@@ -31,11 +31,12 @@ let closethis = function(what){
 }
 
 //close things with ESC
+let flagProjAberto = false;
 document.addEventListener('keydown', (ev) => {
     if((ev.key == 'Escape') && (flagnavigationisopen == true)){
         closethis('navigationmenu');
     }
-    if(flagProjAberto==true){
+    if(flagProjAberto == true){
         if(ev.key == 'Escape'){
             closeSnackbarProj();
         }
@@ -47,7 +48,7 @@ document.addEventListener('keydown', (ev) => {
         }
     }
 })
-/* ----------------END CLOSE THINGS---------------- */
+
 
 /* ----------------SLIDESHOW---------------- */
 let slideIndex = 1; //inicializando slide
@@ -128,7 +129,7 @@ function showSlides(n) {
             }
         }, false)
     }
-/* ----------------FIM DO SLIDESHOW---------------- */
+
 
 /* ----------------REALIGN VERTICAL---------------- */
     let realignVertical = function(projetoaberto){
@@ -150,121 +151,7 @@ function showSlides(n) {
         }
         // }, 2000);
     }
-/* ----------------FIM REALIGN VERTICAL---------------- */
 
-
-
-/* ----------------CONTACTING SCRIPTS---------------- */
-/* document.getElementById('contato').addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    document.getElementById('btn_enviar').setAttribute('disabled', 'a');
-    document.getElementById('li_btn_contato').classList.add('borderAnim', 'in');
-    
-
-    data = Object.fromEntries(new FormData(e.target).entries());
-    url = 'https://thiago.oioipio.com/contato';
-    
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    }).then(result => {
-        document.getElementById('btn_enviar').removeAttribute('disabled');
-        document.getElementById('li_btn_contato').classList.remove('borderAnim', 'in');
-        
-        emailenviado();
-    }).catch(error => {
-        document.getElementById('btn_enviar').removeAttribute('disabled');
-        document.getElementById('li_btn_contato').classList.remove('borderAnim', 'in');
-        
-        emailnaoenviado();
-    })
-})
-
-let emailenviado = function(){
-    var form = document.getElementById("Snackbar");
-    
-    form.className = "showSucess";
-
-    document.getElementById('SnackbarText1').innerHTML = "Mensagem enviada"
-    document.getElementById('SnackbarText2').innerHTML = "Entrarei em contato assim que possível"
-    
-    setTimeout(function(){ 
-        form.className = form.className.replace("showSucess", "");   
-        resetForm();
-    }, 8000);
-
-    window.history.pushState('', '', '#form-enviado');
-}
-
-let emailnaoenviado = function(){
-    let emailenviado = document.getElementById('emailenviado');
-    let form = document.getElementById("Snackbar");
-
-    emailenviado.innerHTML = "Infelizmente o email não pode ser enviado. Por favor, tente novamente em alguns instantes";
-    form.className = "showFail";
-    
-    document.getElementById('SnackbarText1').innerHTML = "Falha no servidor";
-    document.getElementById('SnackbarText2').innerHTML = "Desculpe, infelizmente o email não pode ser enviado. Por favor, tente novamente em alguns instantes";
-    
-    setTimeout(function(){ 
-        form.className = form.className.replace("showFail", "");   
-    }, 8000);
-} */
-
-/* Saiba Mais - Serviços */
-/* let flagServicosAbertos = false;
-document.addEventListener('keydown', (ev) => {
-    if((ev.key == 'Escape') && (flagServicosAbertos == true)){
-        closeSnackbarSaibaMais();
-    }
-}) 
-
-let SnackbarSaibaMais = document.getElementById("SnackbarSaibaMais")
-let abreSnackServicos = function(tipoServico){
-    event.stopPropagation();
-    SnackbarSaibaMais.style.display = "block";
-    flagServicosAbertos = true;
-    console.log("abriu a snack");
-
-    document.getElementById("container-leituracritica").style.display = "none";
-    document.getElementById("container-ilustracaoedesign").style.display = "none";
-    document.getElementById("container-criacaodetextos").style.display = "none";
-    document.getElementById("container-outroscriativos").style.display = "none";
-
-    if (tipoServico === "leituraCritica"){
-        console.log("entrou no if leitura critica");
-        document.getElementById("container-leituracritica").style.display = "block";
-    }
-
-    if (tipoServico === "ilustracaoDesign"){
-        document.getElementById("container-ilustracaoedesign").style.display = "block";
-    }
-
-    if (tipoServico === "criacaoDeTextos"){
-        document.getElementById("container-criacaodetextos").style.display = "block";
-    }
-
-    if (tipoServico === "outros"){
-        document.getElementById("container-outroscriativos").style.display = "block";
-    }
-
-    window.addEventListener('click', function(v){
-        if (document.getElementById('SnackbarSaibaMais').contains(v.target)){
-        } else{
-            SnackbarSaibaMais.style.display = "none";
-        }
-    }, options = {"once": true})
-}
-
-let closeSnackbarSaibaMais = function(){
-    SnackbarSaibaMais.style.display = "none";
-} */
-/* ----------------FIM CONTACTING SCRIPTS---------------- */
 
 /* ----------------PIN MATERIAIS LINKS AFILIADOS---------------- */
 let flagMateriaisAberto = false;
@@ -314,7 +201,7 @@ let flagMateriaisAberto = false;
         flagMateriaisAberto = false;
         isMouseoverMateriais = true;
     }
-/* ----------------FIM DOS PINS MATERIAIS LINKS AFILIADOS---------------- */
+
 
 /* ----------------ANIMAÇÃO DE CARREGAMENTO ILUSTRAÇÕES---------------- */
 /*Interactivity to determine when an animated element in in view. In view elements trigger our animation*/
@@ -358,7 +245,43 @@ $(window).on('scroll resize', function() {
 $(window).trigger('scroll');
 
 });
-/* ----------------FIM ANIMAÇÃO DE CARREGAMENTO ILUSTRAÇÕES---------------- */
+
+
+/*---------------- Copiar URL ----------------*/
+let urlCurrentPage = window.location.href;
+
+let copiarUrlSharing = function() {
+    let createCopiarNotification = function() {
+        let notification = document.getElementById("urlCopiarNotification");
+        notification.style.opacity = 1;
+        notification.innerHTML = '<i class="fa fa-link"></i> URL copiada. Agora é só colar :)</div>';
+        
+        setTimeout(() => {
+            notification.style.opacity = 0;
+        }, 4000);
+    }
+
+    if(navigator.clipboard) {
+        navigator.clipboard.writeText(window.location.href);
+        createCopiarNotification();
+    }
+    createCopiarNotification();
+}
+
+
+/*-----------------GO TO COMENTARIOS------------------*/
+let goToComentarios = function(){
+    let comentariosYPosition = document.getElementById("comentarioshist-container").offsetTop
+    window.scrollTo({left: 0, top: comentariosYPosition, behavior: "smooth"})
+}
+
+
+/* ----------------TURN PAGE HISTORIETAS---------------- */
+let turnpage = function (id){
+    document.getElementById(id).children[0].classList.toggle("flipcapa");
+    document.getElementById(id).children[1].classList.toggle("flipcontracapa");
+}
+
 
 /* ----------------DOM CONTENT LOADED---------------- */
 document.addEventListener("DOMContentLoaded", (event) => {
@@ -369,7 +292,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
         showSlides(slideIndex);
     }  
 });
-/* ----------------FIM DOM CONTENT LOADED---------------- */
 </script>
     
     

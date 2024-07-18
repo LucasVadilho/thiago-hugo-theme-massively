@@ -1,28 +1,25 @@
 /* -------------------PROJETO FECHADO---------------------- */
-#container-galeriailustracoes-introtext{
-    text-align: left; /* só para ter algo, apagar dps */
-}
-
-#container-galeria-ilustracoes{
+/* #container-galeria-ilustracoes{
     display: flex;
     justify-content: center;
+    margin-bottom: 40px;
 }
 
 #organizer-galeria-ilustracoes{
     margin-top: 20px;
-    -webkit-column-count: 3; /* Chrome, Safari, Opera */
-    -moz-column-count: 3; /* Firefox */
+    -webkit-column-count: 3; 
+    -moz-column-count: 3; 
     column-count: 3;
-    -webkit-column-gap: 15px;
-    -moz-column-gap: 15px;
-    column-gap: 15px;
+    -webkit-column-gap: 25px;
+    -moz-column-gap: 25px;
+    column-gap: 25px;
     display: inline-block;
 }
 
 .projeto-container{
     max-width: 400px;
     line-height: 0;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     overflow: hidden;
 }
 
@@ -34,6 +31,59 @@
 .container_imgThumb img:hover{
     cursor: pointer;
     transform: scale(1.2);
+}
+ */
+
+#organizer-galeria-ilustracoes{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+    grid-auto-rows: 280px;
+    grid-gap: 20px;
+    grid-auto-flow: dense;
+    overflow: auto;
+    padding-right: 20px;
+    margin: auto;
+    max-width: 1200px;
+}
+
+#organizer-galeria-ilustracoes>div{
+    z-index: 1;
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    transition: all .3s ease-in-out;
+}
+
+#organizer-galeria-ilustracoes img{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    transition: all .6s ease-in-out;
+}
+
+.small {
+    grid-row: span 1;
+    grid-column: span 1;
+}
+
+.horizontal {
+    grid-column: span 2;
+}
+
+.vertical {
+    grid-row: span 2;
+}
+
+.big {
+    grid-row: span 2;
+    grid-column: span 2;
+}
+
+.bighorizontal{
+    grid-column: span 3;
 }
 
 /* -------------------PROJETO ABERTO---------------------- */
@@ -71,6 +121,9 @@
     display: inline-flex;
     flex-wrap: nowrap;
     align-items: center;
+    transform-origin: center;
+    margin-bottom: 50px;
+    width: 1600px;
 }
 
 #container-openProject-and-arrows{
@@ -85,14 +138,15 @@
     display: flex;
     padding-left: 5px;
     padding-right: 5px;
-    height: fit-content;
-    max-height: calc(100dvh - 45px);
+    width: 100%;
+    max-height: calc(100dvh - 100px);
     flex-direction: column;
     overflow-y: auto;
 }
 
 #openProject img{
-    margin-bottom: 10px;
+    object-fit: contain;
+    max-height: calc(99dvh - 100px);
 }
 
 #container-prev-button-gallery-ilustracoes{
@@ -109,12 +163,6 @@
 
 #next-button-gallery-ilustracoes, #prev-button-gallery-ilustracoes, #container-top-buttons-snackbarproj {
     transition-duration: 1s;
-}
-
-#openProject img{
-    display: block;
-    object-fit: contain;
-    max-height: 95vh;
 }
 
 .fa:hover{

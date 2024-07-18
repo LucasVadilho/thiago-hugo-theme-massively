@@ -45,7 +45,8 @@
 		-moz-hyphens: auto;
 		text-rendering: optimizeLegibility;
 		-webkit-font-smoothing: antialiased;
-		margin-bottom: 0px; 
+		margin-bottom: 0px;
+		text-wrap: pretty;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
@@ -65,8 +66,8 @@
 	}
 
 	h1 {
-		font-size: 4.25rem;
-		line-height: 1.1;
+		font-size: 4rem;
+		line-height: 1.2;
 		margin: 0 0 _size(element-margin) 0;
 	}
 
@@ -167,7 +168,6 @@
 		}
 
 		a {
-			color: _palette($p, fg-bold);
 			border-bottom-color: transparentize(_palette($p, fg), 0.5);
 
 			&:hover {

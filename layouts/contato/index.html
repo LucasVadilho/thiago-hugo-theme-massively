@@ -1,0 +1,183 @@
+<link rel="stylesheet" type="text/css" href="/assets/css/geral.css"> <!-- Chamando CSS geral -->
+<link rel="stylesheet" type="text/css" href="/assets/css/contato.css">
+
+{{- partial "htmlhead" . -}}<!-- puxando as metatags -->
+{{- partial "navigationlinks" . -}}<!-- puxando os menus -->
+{{ $data := index .Site.Data .Site.Language.Lang }}
+
+<body lang='{{ .Site.LanguageCode | default "pt-br" }}' class="is-preload">
+    <div id="wrapper" class="fade-in"> 
+        <div id="main">
+            {{- partial "pageHeaderMenuAndLogo" . -}}
+            <div id="container-contatoHeader">
+                <div class="container-header-name" id="contato-header-name">
+                    <h1>Contato</h1>
+                </div>
+            </div>
+
+            <div id="contato-form-container">
+                {{ with $data.contactinfo.contactformaction }}
+                <section>
+                    <form id="contato" method="post">
+                        <div class="fields">
+                            <div class="field">
+                                <label for="name">{{ i18n "CONTACT_FORM_FIELD_NAME" . }}</label>
+                                <input type="text" name="nome" id="name" autocomplete="given-name" placeholder="Como posso te chamar?" required/>
+                            </div>
+                            <div class="field">
+                                <label for="email">{{ i18n "CONTACT_FORM_FIELD_EMAIL" . }}</label>
+                                <input type="email" name="mail" autocomplete="email" id="email" placeholder="Digite seu email aqui" required/>
+                            </div>
+                            <div class="field" onclick="invertArrow()">
+                                <label for="assunto">{{ i18n "CONTACT_FORM_FIELD_ASSUNTO" . }}</label>
+                                <span class="arrow"><i class="fa-solid fa-caret-down"></i></span>
+                                <select id="assunto" name="assunto" required>
+                                    <option value="" disabled selected style="color: rgb(165, 165, 165) !important;background-color:  rgb(218, 218, 218) !important;">Selecione o assunto</option>
+                                    <option value="Gostaria de te contratar">Gostaria de te contratar</option>
+                                    <option value="Vamos fazer uma parceria?">Vamos fazer uma parceria?</option>
+                                    <option value="Um convite para você">Um convite para você</option>
+                                    <option value="Tenho uma sugestão">Tenho uma sugestão</option>
+                                    <option value="Só queria falar que...">Só queria falar que...</option>
+                                    <option value="Outro">Outro</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label for="message">{{ i18n "CONTACT_FORM_FIELD_MESSAGE" . }}</label>
+                                <textarea name="mensagem" id="message" rows="3" placeholder="E, por fim, a sua mensagem..." required></textarea>
+                            </div>
+                        </div>
+                    
+                        <ul class="actions">
+                            <li id="li_btn_contato">
+                                <input type="submit" id="btn_enviar" value='{{ i18n "CONTACT_FORM_SUBMIT_SEND_MESSAGE" . }}'/>
+                                <span class="messaging-contato"></span>
+                                <span class="email-enviado-msg">Mensagem enviada. Responderei o mais breve que possível! </span>
+                                <span class="email-fail-envio-msg">Desculpe, algo deu errado. Podemos tentar outra vez?&nbsp
+                                    <a onclick="tryagainContato()">Tentar outra vez</a>
+                                </span>
+                            </li>
+                        </ul>
+                    </form>
+                </section>
+
+                <div id="container-outside-form">
+                    <section class="split contact">
+                        {{ with $data.contactinfo.email }}
+                        <section id="splitcontact">
+                            <label for="meuemail" style="margin-bottom: -5px">Meu email</label>
+                            <a href="mailto:{{ . }}">{{ . }}</a>
+                        </section>
+                        {{ end }}
+        
+                        {{ with $data.social }}
+                        <section>
+                            <label for="socials" style="margin-bottom: -5px">Me encontre em</label>
+                            <div id="redes-sociais">
+                                {{ with .instagram }}
+                                    <a href="{{ . }}" target="_blank"><i class="fa fa-instagram icon"></i></a>
+                                {{ end }}
+
+                                {{ with .facebook}}
+                                    <a href="{{ . }}" target="_blank"><i class="fa fa-facebook-f icon"></i></a>
+                                {{ end }}
+        
+                                {{ with .pinterest }}
+                                    <a href="{{ . }}" target="_blank"><i class="fa fa-pinterest icon"></i></a>
+                                {{ end }}
+
+                                {{ with .discord }}
+                                    <a href="{{ . }}" target="_blank"><i class="fa fa-discord icon"></i></a>
+                                {{ end }}
+                                
+                                {{ with .youtube }}
+                                    <a href="{{ . }}" target="_blank"><i class="fa fa-youtube-play icon"></i></a>
+                                {{ end }}
+                            </div>
+                        </section>
+                        {{ end }}       
+                    </section>
+                    <img src="/images/A-pesca-do-Crocoré-Art-©tdvadilho-noai-noaiart.png" alt="A pesca do Crocoré Arte ©tdvadilho">
+                </div>
+                {{ end }}
+            </div>
+            {{- partial "meusscripts" . -}}
+            {{- partial "emailing" . -}}
+            {{- partial "rodape" . -}}
+    </div>
+</body>
+
+<script>
+let flagOptionsContato = false;
+let invertArrow = function(){
+    var arrow = document.querySelector(".arrow");
+    event.stopPropagation();
+    
+    if (flagOptionsContato == false){
+        arrow.style.transform = "rotate(180deg)";
+        flagOptionsContato = true;
+    } else{
+        arrow.style.transform = "rotate(0deg)";
+        flagOptionsContato = false;
+    }
+}
+
+/* ----------------CONTACTING SCRIPTS---------------- */
+var contatobutton = document.querySelector("#btn_enviar");
+var loadingbar = document.querySelector(".messaging-contato");
+var msgemailenviado = document.querySelector(".email-enviado-msg");
+var msgemailnaoenviado = document.querySelector(".email-fail-envio-msg");
+
+let emailsendoenviado = function (){
+    contatobutton.classList.add("btn_enviar-active")
+	setTimeout(function(){
+        loadingbar.classList.add("container-input-emailing-contato-loading")
+	}, 1000);
+}
+
+let emailEnviado = function(){
+    let formulario = document.getElementById("contato");
+    msgemailenviado.classList.add("email-enviado-msg-active");
+
+	setTimeout(function(){
+        msgemailenviado.classList.remove("email-enviado-msg-active")
+        loadingbar.classList.remove("container-input-emailing-contato-loading")
+		contatobutton.classList.remove("btn_enviar-active")
+	}, 9000);
+    formulario.reset();
+}
+
+let tryagainContato = function (){
+    msgemailnaoenviado.classList.remove("email-fail-contato-msg-active")
+    loadingbar.classList.remove("container-input-emailing-contato-loading")
+    contatobutton.classList.remove("btn_enviar-active")
+    contatobutton.click();
+}
+
+let emailNaoEnviado = function(){
+    console.log("chamou email não enviado")
+    msgemailnaoenviado.classList.add("email-fail-envio-msg-active")
+}
+
+document.getElementById('contato').addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    emailsendoenviado();
+    data = Object.fromEntries(new FormData(e.target).entries());
+    url = 'https://thiago.oioipio.com/contato';
+    
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(result => {
+        console.log("chamou func emailenviado")
+        emailEnviado();
+    }).catch(error => {   
+        emailNaoEnviado();
+    })
+})
+/* ----------------FIM CONTACTING SCRIPTS---------------- */
+</script>

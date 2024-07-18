@@ -14,13 +14,7 @@
         <li class="{{ if eq ($currentPage.RelPermalink) (`/livros/`) }}active{{end}}"><a href='{{ "/livros" | relLangURL }}'>Livros</a></li>
         <li class="{{ if eq ($currentPage.RelPermalink) (`/galeriailustracoes/`) }}active{{end}}"><a href='{{ "/galeriailustracoes" | relLangURL }}'>Galeria Ilustrações</a></li>
         <li class="{{ if eq ($currentPage.RelPermalink) (`/blog/`) }}active{{end}}"><a href='{{ "/blog" | relLangURL }}'>Blog</a></li>
-
-        {{ with $data.contactinfo }}
-            <li><a href='{{ "#contatar" | relLangURL }}'>{{ i18n "NAV_CONTACT" . }}</a></li>
-        {{ end }}
-
         <li class="{{ if eq ($currentPage.RelPermalink) (`/sobre/`) }}active{{end}}"><a href='{{ "/sobre" | relLangURL }}'>Sobre</a></li>
-
-        <li class="{{ if eq ($currentPage.RelPermalink) (`/loja/`) }}active{{end}}"><a href='https://umapenca.com/tdvadilho/' target="_blank">Loja</a></li>
+        <li class="{{ if eq ($currentPage.RelPermalink) (`/contato/`) }}active{{end}}"><a href='{{ "/contato" | relLangURL }}'>Contato</a></li>
     </ul>
 </nav>

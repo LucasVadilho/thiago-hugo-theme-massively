@@ -8,8 +8,8 @@
 {{ $posts_blog := .Pages.ByDate.Reverse }}
 {{ $postsPaging := .Paginate $posts_blog $postsPerPage }}
 
-<body lang='{{ .Site.LanguageCode | default "pt-br" }}' class="is-preload">
-    <div id="wrapper" class="fade-in">
+<body lang='{{ .Site.LanguageCode | default "pt-br" }}'>
+    <div id="wrapper">
         <!-- Main -->
         <div id="main">
             {{- partial "pageHeaderMenuAndLogo" . -}}
@@ -18,10 +18,10 @@
                     <h1>A Toca (Blog)</h1>
                 </div>
                 <div class="container-header-text">
-                    <p>Blog criativo por TD</p>
+                    <p>A Toca é um blog voltado para postagens sobre criatividade, vida criativa e tudo o mais que permite e colabora para
+                        a libertação criativa. Com postagens mensais, o objetivo aqui é o de compartilhar, inspirar e conversar.</p>
                 </div>
             </div>
-
             <div id="container-post-all-after-header">
                 <div id="container-postagens">
                     {{ partial "posts_blog/list.html" (dict "posts" $postsPaging "siteData" (index .Site.Data .Site.Language.Lang)) }}
@@ -33,9 +33,7 @@
                     {{- partial "pagination.html" (dict "paginator" $paginator "outer" $outer)}}
                 </div>
             </div>
-            <div id="container-emailing">
-                {{- partial "emailing" . -}}
-            </div>
+            {{- partial "emailing" . -}}
             {{- partial "rodape.html" . }}
         </div>
     </div>

@@ -1,0 +1,19 @@
+#container-contents-sobre{
+    padding: 30px;
+}
+
+.group-contents-sobre{
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.contents-box{
+    max-width: 567px;
+    text-wrap: balance;
+    height: fit-content;
+    margin: 0px 20px 20px;
+    align-items: center;
+}
+

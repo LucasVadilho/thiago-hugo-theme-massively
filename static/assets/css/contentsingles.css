@@ -1,10 +1,14 @@
+.topico{ /* PROVISÓRIO */
+    text-align: center;
+}
+
 table{
     width: 100%;
 }
 
 .header-single-posts{
     width: 100%;
-    background: linear-gradient(180deg, var(--big-header-color) 0%, var(--big-header-color) 80%, rgba(240, 240, 240, 1) 80%, rgba(240, 240, 240, 1) 100%);
+    background: linear-gradient(180deg, var(--big-header-color) 0%, var(--big-header-color) 80%, var(--single-post-h1-color) 80%, var(--single-post-h1-color) 100%);
     padding-top:15%;
     padding-left: 80px;
     padding-right: 80px;
@@ -14,7 +18,7 @@ table{
 }
 
 .header-single-posts h1{
-    color: whitesmoke;
+    color: var(--single-post-h1-color);
     margin: 0 0 0.5rem 0;
 }
 
@@ -24,14 +28,14 @@ table{
 }
 
 .header-infos-single-post h4{
-    margin-bottom: 25px;
+    margin-bottom: 80px;
     color: var(--accent-yellowish);
     text-transform: capitalize;
 }
 
 .container-texto-and-image-content{
     margin: auto;
-    margin-top: 40px;
+    margin-top: 80px;
 }
 
 .container-texto-and-image-content p{
@@ -49,19 +53,22 @@ table{
     margin-bottom: 2rem;
 }
 
+.changeto1rem{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
 .container-img-centralizada{
     text-align: center;
     line-height: 0;
 }
 
 .container-img-alinhada-esq{
-    max-width: 60%;
-    margin-left: 0;
-    float: left;
     padding-right: 20px;
     line-height: 0;
+    float: left;
+    margin-left: 25%;
 }
-
 
 figcaption p{
     margin-top: 5px;
@@ -70,7 +77,6 @@ figcaption p{
     color: var(--grey-color-text) !important;
     font-size: 0.9rem;
     font-style: italic;
-
 }
 
 .container-chamada-content{
@@ -85,13 +91,13 @@ figcaption p{
 
 h2{ /* Tópicos principais do content */
     text-align: left;
-    margin: 50px auto 0.75rem auto !important;
+    margin: 40px auto 0.75rem auto !important;
     max-width: 860px
 }
 
 h3{ /* Subtópicosdo content */
     text-align: left;
-    margin: 0px auto 0.75rem auto !important;
+    margin: 2rem auto 0.25rem auto !important;
     max-width: 860px
 }
 
@@ -106,6 +112,48 @@ h3{ /* Subtópicosdo content */
     margin: 1rem auto 1rem auto !important;
 }
 
+.container-destaques-on-post{
+    margin: auto;
+    max-width: 860px;
+}
+
+.destaques-on-post{
+    max-width: 860px;
+    padding-left: 25px;
+    border-left: var(--accent-blueish) 4px solid;
+    margin-left: 40px;
+}
+
+.first-words-destaques{
+    font-weight: bold;
+    color: var(--first-words-color);
+    font-size: 1.4rem;
+}
+
+.first-letter{
+    font-weight: bold;
+    color: var(--first-words-color);
+    font-size: 3.7rem;
+    line-height: 1;
+}
+
+/* BG TESTE */
+body {
+    position: relative;
+}
+  
+.paperOverlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-repeat: repeat;
+    background-image: url("http://s.ytimg.com/yt/imgbin/www-refreshbg-vflC3wnbM.png");
+    mix-blend-mode: darken;
+    opacity: 20%;
+    pointer-events: none;  
+}
 /* Table of Contents */
 .container-table-of-contents{
     margin-top: 1.5rem;
@@ -146,6 +194,10 @@ h3{ /* Subtópicosdo content */
     padding-bottom: 0px;
 }
 
+.no-table-of-contents{
+    height: 50px;
+}
+
 /* More like this part (double line no geral) */
 #container-mais-posts-como-esse{
     display: inline-flex;
@@ -170,5 +222,45 @@ h3{ /* Subtópicosdo content */
 }
 
 #container-mais-posts-como-esse-cards:last-child{
-    margin-right: none !important;
+    margin-right: 0 !important;
+}
+
+/* ESPECIAL HISTORIETAS */
+.header-title-single-post-historietas{
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+    height: 100dvh;
+    align-items: center;
+}
+
+.image-title-historieta img{
+    position: absolute;
+    transform: translateY(-50%);
+}
+
+.header-title-single-post img{
+    max-height: 100dvh;
+}
+
+.header-historietas-bg img{
+    height: 100dvh;
+}
+
+.header-single-posts-historietas{
+    width: 100%;
+    height: 100dvh;
+}
+
+.header-infos-single-post-historietas{
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: -50px;
+    text-transform: capitalize;
+}
+
+/* Enfeites */
+.riscado{
+    text-decoration: line-through;
 }

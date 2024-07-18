@@ -1,281 +1,282 @@
-{{- partial "htmlhead" . -}}
+<body lang='{{ .Site.LanguageCode | default "pt-br" }}'>
+    <div id="containerHaqnto">
+        <div id="container_headerhaqnto">
+            <img src="/images/haqntopag/bg_topo.jpg" id="haqntobg" alt="visualização do outro lado do lago Mótil. Chuva e bicicleta caida a direita, levando o observador a seguir o caminho que Gabi fez.">
 
-<div id="containerHaqnto">
-    <div id="container_headerhaqnto">
-        <img src="/images/haqntopag/bg_topo.jpg" id="haqntobg" alt="visualização do outro lado do lago Mótil. Chuva e bicicleta caida a direita, levando o observador a seguir o caminho que Gabi fez.">
-
-        <div id="containier_headerhaqntoClicaveis">
-            <div id="buttonContainer_compartilharLivro">
-                <button type="submit" id="button_compartilharLivro" onclick="abrirCompartilharLivro(event)">
-                    <i class="fa fa-share-alt fa-lg"></i>
-                </button>
-            </div>
-            
-            <img src="/images/haqntopag/titulo.svg" id="haqntotitulo" alt="vetor do título do livro Há quanto tempo você não olha para as estrelas?">
-
-            <div id="buttonContainer_comprarlivro">
-                <button type="submit" class="button_comprarlivrofisico" onclick="comprarLivroFisico(event),hideNavPanel()">
-                    <i class="fa fa-shopping-cart fa-lg"></i> Livro
-                </button>
-                <span class="cosmetic_comprarlivroTop"></span>
-
-                <a href="https://amzn.to/3TSStFf" target="_blank">
-                    <button type="submit" class="button_comprarebook" onclick="hideNavPanel()">
-                        <i class="fa fa-shopping-cart fa-lg"></i> Ebook
+            <div id="containier_headerhaqntoClicaveis">
+                <div id="buttonContainer_compartilharLivro">
+                    <button type="submit" id="button_compartilharLivro" onclick="abrirCompartilharLivro(event)">
+                        <i class="fa fa-share-alt fa-lg"></i>
                     </button>
-                </a>
-                <span class="cosmetic_comprarebookTop"></span>
+                </div>
                 
-            </div>
-        </div>
-    </div>
+                <img src="/images/haqntopag/titulo.svg" id="haqntotitulo" alt="vetor do título do livro Há quanto tempo você não olha para as estrelas?">
 
-    <div id="background_gradient1">
-        <div id="container_polaroids">
-            <div class="paper_polaroid" onclick="openSnakbarImagesLivro(1)">
-                <div class="overmsg_polaroid">
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                    <h3 class="txt_overmsg_polaroid">Clique para ampliar</h3>
-                </div>
-                <div class="container_img_polaroid">
-                    <img src="/images/haqntopag/polaroids/capa-HaQuantoTempoVoceNaoOlhaParaAsEstrelas-TDVadilho-thumb2-LowRes-noai-noimageai.jpg" class="img_polaroid" alt="polaroid 1. Mockup do livro Há quanto tempo você não olha para as estrelas?. Nela é retratado uma borboleta aparecendo em meio ao rasgo de uma folha.">
-                </div>
-                <p class="txt_polaroid">Clique para ampliar</p>
-            </div>
+                <div id="buttonContainer_comprarlivro">
+                    <button type="submit" class="button_comprarlivrofisico" onclick="comprarLivroFisico(event),hideNavPanel()">
+                        <i class="fa fa-shopping-cart fa-lg"></i> Livro
+                    </button>
+                    <span class="cosmetic_comprarlivroTop"></span>
 
-            <div class="paper_polaroid" onclick="openSnakbarImagesLivro(2)">
-                <div class="overmsg_polaroid">
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                    <h3 class="txt_overmsg_polaroid">Clique para ampliar</h3>
+                    <a href="https://amzn.to/3TSStFf" target="_blank">
+                        <button type="submit" class="button_comprarebook" onclick="hideNavPanel()">
+                            <i class="fa fa-shopping-cart fa-lg"></i> Ebook
+                        </button>s
+                    </a>
+                    <span class="cosmetic_comprarebookTop"></span>
+                    
                 </div>
-                <div class="container_img_polaroid">
-                    <img src="/images/haqntopag/polaroids/borboleta-HaQuantoTempoVoceNaoOlhaParaAsEstrelas-TDVadilho-Thumb-LowRes-noai-noimageai.jpg" class="img_polaroid" alt="polaroid 2. Detalhe da capa do livro, focando nas asas e texturas da borboleta.">
-                </div>
-                <p class="txt_polaroid">Clique para ampliar</p>
-            </div>
-
-            <div class="paper_polaroid" onclick="openSnakbarImagesLivro(3)">
-                <div class="overmsg_polaroid">
-                    <i class="fa fa-book" aria-hidden="true" style="margin-right: 5px"></i>
-                    <h3 class="txt_overmsg_polaroid">Clique para ler o primeiro capítulo</h3>
-                </div>
-                <div class="container_img_polaroid">
-                    <img src="/images/haqntopag/polaroids/cap1-HaQuantoTempoVoceNaoOlhaParaAsEstrelas-TDVadilho-Thumb-LowRes-noai-noimageai.jpg" class="img_polaroid" alt="polaroid 3. Mockup do livro aberto, chamada para leitura do primeiro capítulo do livro.">
-                </div>
-                <p class="txt_polaroid">Clique para ler o primeiro capíitulo</p>
             </div>
         </div>
 
-        <div id="snackbar_showimages">
-            <div id='container_buttonCloseImgsHaQnto'>
-                <div id="buttonCloseImgsHaQnto">
-                    <span class='fa fa-times-circle fa-2x' aria-hidden='true' onclick="closeSnackbarHaQnto()"></span>
+        <div id="background_gradient1">
+            <div id="container_polaroids">
+                <div class="paper_polaroid" onclick="openSnakbarImagesLivro(1)">
+                    <div class="overmsg_polaroid">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                        <h3 class="txt_overmsg_polaroid">Clique para ampliar</h3>
+                    </div>
+                    <div class="container_img_polaroid">
+                        <img src="/images/haqntopag/polaroids/capa-HaQuantoTempoVoceNaoOlhaParaAsEstrelas-TDVadilho-thumb2-LowRes-noai-noimageai.jpg" class="img_polaroid" alt="polaroid 1. Mockup do livro Há quanto tempo você não olha para as estrelas?. Nela é retratado uma borboleta aparecendo em meio ao rasgo de uma folha.">
+                    </div>
+                    <p class="txt_polaroid">Clique para ampliar</p>
+                </div>
+
+                <div class="paper_polaroid" onclick="openSnakbarImagesLivro(2)">
+                    <div class="overmsg_polaroid">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                        <h3 class="txt_overmsg_polaroid">Clique para ampliar</h3>
+                    </div>
+                    <div class="container_img_polaroid">
+                        <img src="/images/haqntopag/polaroids/borboleta-HaQuantoTempoVoceNaoOlhaParaAsEstrelas-TDVadilho-Thumb-LowRes-noai-noimageai.jpg" class="img_polaroid" alt="polaroid 2. Detalhe da capa do livro, focando nas asas e texturas da borboleta.">
+                    </div>
+                    <p class="txt_polaroid">Clique para ampliar</p>
+                </div>
+
+                <div class="paper_polaroid" onclick="openSnakbarImagesLivro(3)">
+                    <div class="overmsg_polaroid">
+                        <i class="fa fa-book" aria-hidden="true" style="margin-right: 5px"></i>
+                        <h3 class="txt_overmsg_polaroid">Clique para ler o primeiro capítulo</h3>
+                    </div>
+                    <div class="container_img_polaroid">
+                        <img src="/images/haqntopag/polaroids/cap1-HaQuantoTempoVoceNaoOlhaParaAsEstrelas-TDVadilho-Thumb-LowRes-noai-noimageai.jpg" class="img_polaroid" alt="polaroid 3. Mockup do livro aberto, chamada para leitura do primeiro capítulo do livro.">
+                    </div>
+                    <p class="txt_polaroid">Clique para ler o primeiro capíitulo</p>
                 </div>
             </div>
 
-            <div id="container_prevImgsHaQnto">
-                <div id="prevButtonHaQnto">
-                    <span class='fa fa-chevron-circle-left fa-2x' aria-hidden='true' onclick="prevFotoHaQnto()"></span>
-                </div>
-            </div>
-
-            <div id="container_images">
-                <div class="imageSection">
-                    <img src="/images/haqntopag/polaroids/capa-HaQuantoTempoVoceNaoOlhaParaAsEstrelas-TDVadilho-LowRes-noai-noimageai.jpg" alt="Imagem da capa do livro" style="margin-bottom: 15px;">
-                    <img src="/images/haqntopag/polaroids/capa-HaQuantoTempoVoceNaoOlhaParaAsEstrelas-TDVadilho-thumbBigger-LowRes-noai-noimageai.jpg" alt="Imagem da capa do livro">
+            <div id="snackbar_showimages">
+                <div id='container_buttonCloseImgsHaQnto'>
+                    <div id="buttonCloseImgsHaQnto">
+                        <span class='fa fa-times-circle fa-2x' aria-hidden='true' onclick="closeSnackbarHaQnto()"></span>
+                    </div>
                 </div>
 
-                <div class="imageSection realignClass">
-                    <img src="/images/haqntopag/polaroids/borboleta-HaQuantoTempoVoceNaoOlhaParaAsEstrelas-TDVadilho-LowRes-noai-noimageai.jpg" alt="Imagem detalhe da capa do livro">
+                <div id="container_prevImgsHaQnto">
+                    <div id="prevButtonHaQnto">
+                        <span class='fa fa-chevron-circle-left fa-2x' aria-hidden='true' onclick="prevFotoHaQnto()"></span>
+                    </div>
                 </div>
 
-                <div class="imageSection">
-                    <img src="/images/haqntopag/1cap/pag1.jpg" alt="Página 1 do capítulo 1" style="margin-bottom: 15px;">
-                    <img src="/images/haqntopag/1cap/pag2.jpg" alt="Página 2 do capítulo 1" style="margin-bottom: 15px;">
-                    <img src="/images/haqntopag/1cap/pag3.jpg" alt="Página 3 do capítulo 1" style="margin-bottom: 15px;">
-                    <img src="/images/haqntopag/1cap/pag4.jpg" alt="Página 4 do capítulo 1" style="margin-bottom: 15px;">
-                    <img src="/images/haqntopag/1cap/pag5.jpg" alt="Página 5 do capítulo 1" style="margin-bottom: 15px;">
-                    <img src="/images/haqntopag/1cap/pag6.jpg" alt="Página 6 do capítulo 1" style="margin-bottom: 15px;">
-                    <img src="/images/haqntopag/1cap/pag7.jpg" alt="Página 7 do capítulo 1" style="margin-bottom: 15px;">
-                    <img src="/images/haqntopag/1cap/pag8.jpg" alt="Página 8 do capítulo 1" style="margin-bottom: 15px;">
-                    <img src="/images/haqntopag/1cap/pag9.jpg" alt="Página 9 do capítulo 1" style="margin-bottom: 15px;">
-                    <img src="/images/haqntopag/1cap/pag10.jpg" alt="Página 10 do capítulo 1" style="margin-bottom: 15px;">
-                    <img src="/images/haqntopag/1cap/pag11.jpg" alt="Página 11 do capítulo 1" style="margin-bottom: 15px;">
+                <div id="container_images">
+                    <div class="imageSection">
+                        <img src="/images/haqntopag/polaroids/capa-HaQuantoTempoVoceNaoOlhaParaAsEstrelas-TDVadilho-LowRes-noai-noimageai.jpg" alt="Imagem da capa do livro" style="margin-bottom: 15px;">
+                        <img src="/images/haqntopag/polaroids/capa-HaQuantoTempoVoceNaoOlhaParaAsEstrelas-TDVadilho-thumbBigger-LowRes-noai-noimageai.jpg" alt="Imagem da capa do livro">
+                    </div>
+
+                    <div class="imageSection realignClass">
+                        <img src="/images/haqntopag/polaroids/borboleta-HaQuantoTempoVoceNaoOlhaParaAsEstrelas-TDVadilho-LowRes-noai-noimageai.jpg" alt="Imagem detalhe da capa do livro">
+                    </div>
+
+                    <div class="imageSection">
+                        <img src="/images/haqntopag/1cap/pag1.jpg" alt="Página 1 do capítulo 1" style="margin-bottom: 15px;">
+                        <img src="/images/haqntopag/1cap/pag2.jpg" alt="Página 2 do capítulo 1" style="margin-bottom: 15px;">
+                        <img src="/images/haqntopag/1cap/pag3.jpg" alt="Página 3 do capítulo 1" style="margin-bottom: 15px;">
+                        <img src="/images/haqntopag/1cap/pag4.jpg" alt="Página 4 do capítulo 1" style="margin-bottom: 15px;">
+                        <img src="/images/haqntopag/1cap/pag5.jpg" alt="Página 5 do capítulo 1" style="margin-bottom: 15px;">
+                        <img src="/images/haqntopag/1cap/pag6.jpg" alt="Página 6 do capítulo 1" style="margin-bottom: 15px;">
+                        <img src="/images/haqntopag/1cap/pag7.jpg" alt="Página 7 do capítulo 1" style="margin-bottom: 15px;">
+                        <img src="/images/haqntopag/1cap/pag8.jpg" alt="Página 8 do capítulo 1" style="margin-bottom: 15px;">
+                        <img src="/images/haqntopag/1cap/pag9.jpg" alt="Página 9 do capítulo 1" style="margin-bottom: 15px;">
+                        <img src="/images/haqntopag/1cap/pag10.jpg" alt="Página 10 do capítulo 1" style="margin-bottom: 15px;">
+                        <img src="/images/haqntopag/1cap/pag11.jpg" alt="Página 11 do capítulo 1" style="margin-bottom: 15px;">
+                    </div>
+                </div>
+                
+                <div id="container_nextImgsHaQnto">
+                    <div id="nextButtonHaQnto">
+                        <span class='fa fa-chevron-circle-right fa-2x' aria-hidden='true' onclick="nextFotoHaQnto()"></span>
+                    </div>
                 </div>
             </div>
             
-            <div id="container_nextImgsHaQnto">
-                <div id="nextButtonHaQnto">
-                    <span class='fa fa-chevron-circle-right fa-2x' aria-hidden='true' onclick="nextFotoHaQnto()"></span>
-                </div>
-            </div>
-        </div>
-        
-        <div class="container_sinopsemsgautor">     
-            <div class="menu_sinopsemsgdoautor">
-                <div class="sinopse selectedmenu" onclick="focus_sinopse()">
-                    <h4>Sinopse</h4>
-                </div>
-
-                <div class="msgdoautor" onclick="focus_msgautor()">
-                    <h4>Mensagem do autor</h4>
-                </div>
-            </div>
-
-            <div class="txtfield_sinopsemsgautor">
-                <span class="txt_sinopse selectedtext">
-                    <div class="boxDosTextos">
-                        <p class="txt_poema">“Me perguntei quando foi que parei de olhar para as estrelas</p>
-                        <p class="txt_poema">E percebi que já fazia pelo menos um mês…</p>
-                        <p class="txt_poema">Talvez já fizesse um ano inteiro,</p>
-                        <p class="txt_poema">Talvez já fizesse até três.</p>
-                        <p class="txt_poema">[…]</p>
-                        <p class="txt_poema">Para falar a verdade,</p>
-                        <p class="txt_poema">Eu já não tinha mais ideia de quando fora a última vez.</p>
-                        <p class="txt_poema">O que me fez perguntar,</p>
-                        <p class="txt_poema">Se eu, realmente, já havia feito isso alguma vez.”</p>
-                        <br>
-                        <p>Em meio às conturbadas férias de verão, Gabrielle Ávila foge da casa da avó e é convidada a subir em uma casa na árvore um tanto quanto peculiar, na qual o caminho do passado cruza com o caminho do presente e, dessa interseção, surgem novos olhares que fazem o conceito de viver se ressignificar.</p>
-                    </div>
-                </span>
-
-                <span class="txt_msgautor">
-                    <div class="boxDosTextos">
-                        <p>Essa história surgiu do limbo. Não era sobre estrelas, tampouco sobre o olhar. Essa história, na verdade, era apenas uma tentativa desesperada de alguém que, desesperadamente, ansiava por se encontrar.</p>
-                        <p class="notfirstparagraph">Enquanto a escrevia, no entanto, descobri que haviam gritos entalados; gritos que o meu coração e a minha mente ansiavam por <i>gritar</i>. A partir daquele momento, percebi que não havia outra saída, aquela era a hora de esgoelar. E então, eu esgoelei, e eu mesmo escutei, porque aqueles eram gritos sinceros que eu precisava escutar. Após isso, a história de uma simples casa na árvore se metamorfoseou, agregando tudo aquilo que eu passei a enxergar.</p>
-                        <p class="notfirstparagraph">Essa história surgiu na solidão da minha mente e na escuridão que fazia o meu coração gelar. Essa história surgiu no limbo, e do limbo, para que eu não retornasse mais lá. Essa história, por fim, virou algo que eu gostaria de compartilhar; para que você também não permita ao limbo se instaurar.</p>
-                    </div>
-                </span>
-            </div>
-        </div>
-    </div>
-
-    <div id="livroSelecionadoDadosWordcloud" style="margin-top: -1px;">
-        <img src="/images/haqntopag/galhoFrenteDados_Colagem-atualizado.jpg" alt="ilustração de um galho de uma tartaré no qual estão marcados os seguintes dados do livro: gênero: ficção; páginas: em breve; edição: 1ª ed.; editora: Flyve; papel: pólen 80g; capa: brochura; dimensões: 21x14cm; isbn: 978-65-00-84745-1; classificação indicativa: 14">
-    </div>
-
-    <div id="background_gradient2">
-        <div id="container_participa">
-            <p onclick="participarnuvemDePalavras(event),hideNavPanel()" class="participar"><u>Venha participar</u>😊</p>
-        </div>
-
-        <div class="container_comentariosRespostasExtras">
-            <div class="menu_textShowSelector">
-                <div class="comentariosdopublico selectedmenu" onclick="focus_comentariosdopublico()">
-                    <h4>Comentários selecionados</h4>
-                </div>
-
-                <div class="respostasdoautor" onclick="focus_respostasdoautor()">
-                    <h4>Respostas do autor</h4>
-                </div>
-
-                <div class="conteudosextras" onclick="focus_conteudosextras()">
-                    <h4>Conteúdos extras</h4>
-                </div>
-            </div>
-
-            <div class="txtfield_comentariosrespostasextras">
-                <div class="txt_comentariosdopublico selectedtext">
-                    <div class="boxDosTextos">
-                        <p class="frase_comentariopublico">"A narrativa é desenvolvida de uma forma bonita quase poética, principalmente na parte sobrenatural da trama, envolvendo o leitor em um realismo mágico, que após a explicação final levará o leitor a se emocionar (por aqui eu enchi os olhos de lágrimas)."</p>
-                        <p class="autoria_comentariopublico"><i>— Tathiane (<a href="https://www.instagram.com/p/C5GKdewOLss/" target='_blank' style="text-decoration: underline; color:#3a2868">@Doidosporserieselivros</a>)</i></p>
+            <div class="container_sinopsemsgautor">     
+                <div class="menu_sinopsemsgdoautor">
+                    <div class="sinopse selectedmenu" onclick="focus_sinopse()">
+                        <h4>Sinopse</h4>
                     </div>
 
-                    <div class="boxDosTextos">
-                        <p class="frase_comentariopublico">"Me senti parte da família Ávila. Quis tomar café com a Dona Isabel; quis dar um sossego na irmã mais nova; quis ter o Isaque de pai; e o principal: quis ter a Gabi como amiga. E de certa forma tive, porque eu me irritei, tive medo, ri e chorei com ela. Obrigado por esse livro, Thi. Já tô doido para o próximo."</p>
-                        <p class="autoria_comentariopublico"><i>— <a href="https://www.instagram.com/p/C6Zxh2wPTB3/" target='_blank' style="text-decoration: underline; color:#3a2868">Bruno Scandolara</a></i></p>
+                    <div class="msgdoautor" onclick="focus_msgautor()">
+                        <h4>Mensagem do autor</h4>
                     </div>
                 </div>
 
-                <div class="txt_respostasdoautor">
-                    <p style="color: white"><i class="fa fa-check-square" aria-hidden="true" style="margin-right:5px"></i>Respostas livres de spoilers</p>
-                    <div class="boxDosTextos">
-                        <p><b>Espaço destinado para a pergunta.</b></p>
-                        <p>Espaço destinado para a resposta.</p>
-                    </div>
-
-                    <p style="color: white"><i class="fa fa-exclamation-triangle" aria-hidden="true" style="margin-right:5px"></i>A partir deste ponto as respostas contém spoilers!</p>
-                    <div class="boxDosTextos_comSpoiler">
-                        <p><b>Espaço destinado para pergunta que envolve spoilers.</b></p>
-                        <p>Resposta com spoiler.</p>
-                    </div>
-                </div>
-
-                <div class="txt_conteudosextras">
-                    <a href="https://www.youtube.com/shorts/Xki76TqbgYE" target="_blank">
+                <div class="txtfield_sinopsemsgautor">
+                    <span class="txt_sinopse selectedtext">
                         <div class="boxDosTextos">
-                            <p><b>Short do Processo ilustração</b></p>
-                            <p> Assista ao vídeo (short) do processo de criação da ilustração no YouTube </p>
+                            <p class="txt_poema">“Me perguntei quando foi que parei de olhar para as estrelas</p>
+                            <p class="txt_poema">E percebi que já fazia pelo menos um mês…</p>
+                            <p class="txt_poema">Talvez já fizesse um ano inteiro,</p>
+                            <p class="txt_poema">Talvez já fizesse até três.</p>
+                            <p class="txt_poema">[…]</p>
+                            <p class="txt_poema">Para falar a verdade,</p>
+                            <p class="txt_poema">Eu já não tinha mais ideia de quando fora a última vez.</p>
+                            <p class="txt_poema">O que me fez perguntar,</p>
+                            <p class="txt_poema">Se eu, realmente, já havia feito isso alguma vez.”</p>
+                            <br>
+                            <p>Em meio às conturbadas férias de verão, Gabrielle Ávila foge da casa da avó e é convidada a subir em uma casa na árvore um tanto quanto peculiar, na qual o caminho do passado cruza com o caminho do presente e, dessa interseção, surgem novos olhares que fazem o conceito de viver se ressignificar.</p>
                         </div>
-                    </a>
+                    </span>
+
+                    <span class="txt_msgautor">
+                        <div class="boxDosTextos">
+                            <p>Essa história surgiu do limbo. Não era sobre estrelas, tampouco sobre o olhar. Essa história, na verdade, era apenas uma tentativa desesperada de alguém que, desesperadamente, ansiava por se encontrar.</p>
+                            <p class="notfirstparagraph">Enquanto a escrevia, no entanto, descobri que haviam gritos entalados; gritos que o meu coração e a minha mente ansiavam por <i>gritar</i>. A partir daquele momento, percebi que não havia outra saída, aquela era a hora de esgoelar. E então, eu esgoelei, e eu mesmo escutei, porque aqueles eram gritos sinceros que eu precisava escutar. Após isso, a história de uma simples casa na árvore se metamorfoseou, agregando tudo aquilo que eu passei a enxergar.</p>
+                            <p class="notfirstparagraph">Essa história surgiu na solidão da minha mente e na escuridão que fazia o meu coração gelar. Essa história surgiu no limbo, e do limbo, para que eu não retornasse mais lá. Essa história, por fim, virou algo que eu gostaria de compartilhar; para que você também não permita ao limbo se instaurar.</p>
+                        </div>
+                    </span>
                 </div>
-            </div>  
+            </div>
         </div>
 
-        <div id="containerBottomButtonsAndCosmetic">
-            <div id="buttonsBottomContainer">
-                <button type="submit" class="buttonBottom_comprarlivrofisico" onclick="comprarLivroFisico(event),hideNavPanel()">
-                    <i class="fa fa-shopping-cart fa-lg"></i> Livro
-                </button>
-                <span class="cosmetic_comprarlivroBottom"></span>
+        <div id="livroSelecionadoDadosWordcloud" style="margin-top: -1px;">
+            <img src="/images/haqntopag/galhoFrenteDados_Colagem-atualizado.jpg" alt="ilustração de um galho de uma tartaré no qual estão marcados os seguintes dados do livro: gênero: ficção; páginas: em breve; edição: 1ª ed.; editora: Flyve; papel: pólen 80g; capa: brochura; dimensões: 21x14cm; isbn: 978-65-00-84745-1; classificação indicativa: 14">
+        </div>
 
-                <a href="https://amzn.to/3TSStFf" target="_blank">
-                    <button type="submit" class="buttonBottom_comprarebook" onclick="hideNavPanel()">
-                        <i class="fa fa-shopping-cart fa-lg"></i> Ebook
+        <div id="background_gradient2">
+            <div id="container_participa">
+                <p onclick="participarnuvemDePalavras(event),hideNavPanel()" class="participar"><u>Venha participar</u>😊</p>
+            </div>
+
+            <div class="container_comentariosRespostasExtras">
+                <div class="menu_textShowSelector">
+                    <div class="comentariosdopublico selectedmenu" onclick="focus_comentariosdopublico()">
+                        <h4>Comentários selecionados</h4>
+                    </div>
+
+                    <div class="respostasdoautor" onclick="focus_respostasdoautor()">
+                        <h4>Respostas do autor</h4>
+                    </div>
+
+                    <div class="conteudosextras" onclick="focus_conteudosextras()">
+                        <h4>Conteúdos extras</h4>
+                    </div>
+                </div>
+
+                <div class="txtfield_comentariosrespostasextras">
+                    <div class="txt_comentariosdopublico selectedtext">
+                        <div class="boxDosTextos">
+                            <p class="frase_comentariopublico">"A narrativa é desenvolvida de uma forma bonita quase poética, principalmente na parte sobrenatural da trama, envolvendo o leitor em um realismo mágico, que após a explicação final levará o leitor a se emocionar (por aqui eu enchi os olhos de lágrimas)."</p>
+                            <p class="autoria_comentariopublico"><i>— Tathiane (<a href="https://www.instagram.com/p/C5GKdewOLss/" target='_blank' style="text-decoration: underline; color:#3a2868">@Doidosporserieselivros</a>)</i></p>
+                        </div>
+
+                        <div class="boxDosTextos">
+                            <p class="frase_comentariopublico">"Me senti parte da família Ávila. Quis tomar café com a Dona Isabel; quis dar um sossego na irmã mais nova; quis ter o Isaque de pai; e o principal: quis ter a Gabi como amiga. E de certa forma tive, porque eu me irritei, tive medo, ri e chorei com ela. Obrigado por esse livro, Thi. Já tô doido para o próximo."</p>
+                            <p class="autoria_comentariopublico"><i>— <a href="https://www.instagram.com/p/C6Zxh2wPTB3/" target='_blank' style="text-decoration: underline; color:#3a2868">Bruno Scandolara</a></i></p>
+                        </div>
+                    </div>
+
+                    <div class="txt_respostasdoautor">
+                        <p style="color: white"><i class="fa fa-check-square" aria-hidden="true" style="margin-right:5px"></i>Respostas livres de spoilers</p>
+                        <div class="boxDosTextos">
+                            <p><b>Espaço destinado para a pergunta.</b></p>
+                            <p>Espaço destinado para a resposta.</p>
+                        </div>
+
+                        <p style="color: white"><i class="fa fa-exclamation-triangle" aria-hidden="true" style="margin-right:5px"></i>A partir deste ponto as respostas contém spoilers!</p>
+                        <div class="boxDosTextos_comSpoiler">
+                            <p><b>Espaço destinado para pergunta que envolve spoilers.</b></p>
+                            <p>Resposta com spoiler.</p>
+                        </div>
+                    </div>
+
+                    <div class="txt_conteudosextras">
+                        <a href="https://www.youtube.com/shorts/Xki76TqbgYE" target="_blank">
+                            <div class="boxDosTextos">
+                                <p><b>Short do Processo ilustração</b></p>
+                                <p> Assista ao vídeo (short) do processo de criação da ilustração no YouTube </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>  
+            </div>
+
+            <div id="containerBottomButtonsAndCosmetic">
+                <div id="buttonsBottomContainer">
+                    <button type="submit" class="buttonBottom_comprarlivrofisico" onclick="comprarLivroFisico(event),hideNavPanel()">
+                        <i class="fa fa-shopping-cart fa-lg"></i> Livro
                     </button>
-                </a>
-                <span class="cosmetic_comprarebookBottom"></span>
-            </div>         
-        </div>
+                    <span class="cosmetic_comprarlivroBottom"></span>
 
-        <div id="livroSelecionadocontacting">
-            <img src="/images/haqntopag/folhabaixo.png" id="folhabaixo" alt="borda inferior de uma folha rasgada">
+                    <a href="https://amzn.to/3TSStFf" target="_blank">
+                        <button type="submit" class="buttonBottom_comprarebook" onclick="hideNavPanel()">
+                            <i class="fa fa-shopping-cart fa-lg"></i> Ebook
+                        </button>
+                    </a>
+                    <span class="cosmetic_comprarebookBottom"></span>
+                </div>         
+            </div>
+
+            <div id="livroSelecionadocontacting">
+                <img src="/images/haqntopag/folhabaixo.png" id="folhabaixo" alt="borda inferior de uma folha rasgada">
+            </div>
         </div>
     </div>
-</div>
 
-<div id="comprarLivroFisicoSnack">
-    <div class='buttonCloseComprarLivroFisicoSnack'><span class='fa fa-times' aria-hidden='true' onclick="closeComprarLivroFisico()"></span></div>
-    <h3>Por favor, selecione por onde deseja adquirir o livro</h3>
-    
-    <div class="container-locaisdecompra">
-        <a href="https://flyve.com.br/508/h-quanto-tempo-voc-n-o-olha-para-as-estrelas-" target="_blank">
-            <div class="localdecompra-flyve" style="margin-right: 35px; width: 120px; padding: 10px;">
-                <img src="/images/logos-lojas/logo-flyve.svg" alt="Logo Editora Flyve">
-                <h5 style="text-align: center; color: #FF3939">Editora<br>Flyve</h5>
-            </div>
-        </a>
+    <div id="comprarLivroFisicoSnack">
+        <div class='buttonCloseComprarLivroFisicoSnack'><span class='fa fa-times' aria-hidden='true' onclick="closeComprarLivroFisico()"></span></div>
+        <h3>Por favor, selecione por onde deseja adquirir o livro</h3>
+        
+        <div class="container-locaisdecompra">
+            <a href="https://flyve.com.br/508/h-quanto-tempo-voc-n-o-olha-para-as-estrelas-" target="_blank">
+                <div class="localdecompra-flyve" style="margin-right: 35px; width: 120px; padding: 10px;">
+                    <img src="/images/logos-lojas/logo-flyve.svg" alt="Logo Editora Flyve">
+                    <h5 style="text-align: center; color: #FF3939">Editora<br>Flyve</h5>
+                </div>
+            </a>
 
-        <a href="https://amzn.to/3PNqnJ8" target="_blank">
-            <div class="localdecompra-amazon" style="width: 120px;padding: 10px">
-                <img src="/images/logos-lojas/logo-amazon.svg" alt="Logo Amazon">
-                <h5 style="text-align: center; color: black">Amazon<br>Store</h5>
-            </div>
-        </a>
-    </div>
-
-    <h4>Muito obrigado pelo seu apoio, espero que tenha uma ótima leitura!</h4>
-</div>
-<!-- FIM COMPRAR LIVRO SNAKBAR -->
-
-<!-- PARTICIPAR NUVEM DE PALAVRAS SNACKBAR -->
-<div id="participarSnack">
-    <div id='buttonCloseParticiparSnack'><span class='fa fa-times' aria-hidden='true' onclick="closeparticiparnuvemDePalavras()"></span></div>
-
-    <h4>Por favor, digite o que achou do livro ou reforce uma palavra existente:</h4>
-    <form id="form_nuvemDePalavras" method="post">
-        <div class="field">
-            <input type="text" name="txt_nuvemDePalavraHaQnto" id="txt_nuvemDePalavraHaQnto" required spellcheck="true"  autocomplete="off" required/>
+            <a href="https://amzn.to/3PNqnJ8" target="_blank">
+                <div class="localdecompra-amazon" style="width: 120px;padding: 10px">
+                    <img src="/images/logos-lojas/logo-amazon.svg" alt="Logo Amazon">
+                    <h5 style="text-align: center; color: black">Amazon<br>Store</h5>
+                </div>
+            </a>
         </div>
 
-        <ul class="actions">
-            <li id="li_btn_nuvemDePalavrasHaQnto">
-                <input type="submit" id="btn_enviarPalavraHaQnto" value='Enviar'/>
-            </li>
-        </ul>
-    </form>
-</div>
-<!-- FIM PARTICIPAR NUVEM DE PALAVRAS SNACKBAR -->
+        <h4>Muito obrigado pelo seu apoio, espero que tenha uma ótima leitura!</h4>
+    </div>
+    <!-- FIM COMPRAR LIVRO SNAKBAR -->
+
+    <!-- PARTICIPAR NUVEM DE PALAVRAS SNACKBAR -->
+    <div id="participarSnack">
+        <div id='buttonCloseParticiparSnack'><span class='fa fa-times' aria-hidden='true' onclick="closeparticiparnuvemDePalavras()"></span></div>
+
+        <h4>Por favor, digite o que achou do livro ou reforce uma palavra existente:</h4>
+        <form id="form_nuvemDePalavras" method="post">
+            <div class="field">
+                <input type="text" name="txt_nuvemDePalavraHaQnto" id="txt_nuvemDePalavraHaQnto" required spellcheck="true"  autocomplete="off" required/>
+            </div>
+
+            <ul class="actions">
+                <li id="li_btn_nuvemDePalavrasHaQnto">
+                    <input type="submit" id="btn_enviarPalavraHaQnto" value='Enviar'/>
+                </li>
+            </ul>
+        </form>
+    </div>
+    <!-- FIM PARTICIPAR NUVEM DE PALAVRAS SNACKBAR -->
+</body>
+
 
 <style>
     /* HA QNTO TEMPO */

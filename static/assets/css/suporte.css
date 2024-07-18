@@ -1,5 +1,5 @@
 /* ENCERRAMENTO */    
-#suporteoblog{
+#suporteoblog, #suporteashistorietas{
     margin-top: 35px;
     padding-bottom: 150px;
     padding-top: 150px;
@@ -9,9 +9,10 @@
     /* color: var(--support-p-color); */
 }
 
-#suporteoblog h1{
+#suporteoblog h1, #suporteashistorietas h1{
     margin-top: 0 !important;
     color: var(--support-h1-color);
+    margin-bottom: 25px !important;
 }
 
 .container-apoio h3{
@@ -26,9 +27,10 @@
 }
 
 .nomes-imortalizados{
-    color: var(--imortalizados-da-vez);
-    font-weight: 500;
-    font-style: italic;
+    position: relative;
+    top: 13px;
+    height: 2.5rem;
+    margin-top: -17px;
 }
 
 #container-modos-de-apoiar{
@@ -50,7 +52,6 @@
 
 .container-apoio p{
     hyphens: none !important;
-    text-wrap: balance;
 }
 
 #container-contribuicaodireta-buttons, #container-contribuicaoindireta-buttons{
@@ -62,10 +63,10 @@
 
 /* direta */
 .button-contribuicao-direta{
-    height: 26px;
+    height: 35px;
     display: flex;
     align-items: center;
-    padding: 7px;
+    padding: 8px;
     border-radius: 3px; 
 }
 
@@ -102,15 +103,15 @@
     font-size: 0.8rem;
     font-weight: 900;
     letter-spacing: 0.075em;
-    padding: 0px 10px 0px 10px;
+    padding: 0px 0px 0px 4px;
 }
 
 /* indiretamente */
 .button-linkafiliado{
-    height: 26px;
+    height: 35px;
     display: flex;
     align-items: center;
-    padding: 7px;
+    padding: 8px;
     border-radius: 3px;
 }
 
@@ -135,15 +136,33 @@
     font-size: 0.8rem;
     font-weight: 900;
     letter-spacing: 0.075em;
-    padding: 0px 10px 0px 10px;
+    padding: 0px 0px 0px 4px;
 }
 
 /* sem custo */
-.contribuicoes-blog ul{
-    text-align: center;
-    margin-top: 8px;
+.button-compartilhar-post{
+    height: 35px;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-radius: 3px;
+    background-color: var(--accent-yellowish);
+    width: fit-content;
+    margin: auto;
+    margin-top: 12px;
 }
 
-.contribuicoes-blog>.icon.alt{
-    color: #717981;
+.button-compartilhar-post:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: transform .2s ease;
+}
+
+.button-compartilhar-post-text{
+    color: rgb(26, 25, 25);
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 900;
+    letter-spacing: 0.075em;
+    padding: 0px 0px 0px 4px;
 }

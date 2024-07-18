@@ -1,5 +1,5 @@
 :root{
-    --main-bg-color: #f0f0f0;
+    --main-bg-color: #F3EEEC;
     --main-accent: #B3C0F5;
     
     --support-bg-color: #AACCCC;
@@ -15,17 +15,31 @@
 
     scroll-behavior: smooth;
     scroll-padding-top: 100px;
-    --whitesmoke-color: #f5f5f5;
+
     --big-header-color: #2d303f;
     --sumario-top-color: #bcb535;
     --sumario-bottom-color: #a09665;
+    --hover-accent: #B3C0F5;
+
+/* A PARTIR DAQUI É CERTEZA */
+    --blueish-bg-color: #202025fa;
+
+    --single-post-h1-color: #F3EEEC;
 
     --highlight-color-text: #554c58;
     --dark-color-text: #131313;
     --grey-color-text: #888888e0;
-    --light-color-text: #f5f5f5;
+    --first-words-color: #4b1717;
 
-    --hover-accent: #B3C0F5;
+    --accent-color: #682e29;
+    
+    --pure-white-color: #ffffff;
+    --whitesmoke-color: #f5f5f5;
+
+    --blockquote-color:var(--accent-yellowish);
+
+    --text-shadow: #202020;
+    --overlay-color: #1118447a;
 }
 
 a{
@@ -104,11 +118,45 @@ figcaption{
     max-width: 860px;
     margin: auto;
     margin-bottom: 40px;
+    text-align: center;
+    hyphens: none !important;
+    text-wrap: balance;
+}
+
+#historietas-header-name{
+    background-color: var(--hover-accent);
+    color: var(--dark-color-text);
+    margin-bottom: 50px;
+}
+
+#galeria-ilustracoes-header-name{
+    background-color: var(--hover-accent);
+    color: var(--dark-color-text);
+    margin-bottom: 100px;  
 }
 
 #blog-header-name{
     background-color: var(--accent-redish);
     color: var(--dark-color-text);
+    margin-bottom: 50px;
+}
+
+#sobre-header-name{
+    background-color: var(--highlight-color-text);
+    color: var(--dark-color-text);
+    margin-bottom: 100px;
+}
+
+#contato-header-name{
+    background-color: var(--accent-redish);
+    color: var(--dark-color-text);
+    margin-bottom: 100px;
+}
+
+#livros-header-name{
+    background-color: var(--accent-redish);
+    color: var(--dark-color-text);
+    margin-bottom: 100px;
 }
 /* -------------------END OF PAGEs HEADER-------------------------- */
 
@@ -119,57 +167,102 @@ figcaption{
 }
 /*--------------------END OF PAGINATOR------------------------*/
 
-/*--------------------FEEDBACK BOTAO CARREGANDO--------------------*/
-    .borderAnim {
-        position: relative;
-    }
+/*---------------------- DESTAQUES NO TEXTO ----------------------*/
+.blockquote {
+    margin: 10px auto 10px auto !important;
+    max-width: 700px !important;
+    position: relative;
+    color: var(--highlight-color-text);
+    font-family: 'Sanchez', serif;
+    font-size: 1.5rem;
+    line-height: 1;
 
-    .borderAnim:after {
-        content: '';
+    blockquoteautor {
+      font-family: sans-serif;
+      font-size: 0.6em;
+      font-weight: 700;
+      color: var(--grey-color-text);
+      right: 0;
+      bottom: 0;
+      position: absolute;
+      
+      &:before {
+        content: '\2015';  
+      }
+    }
+    &:after {
+        content: '\201D';
         position: absolute;
-        top: 0;
-        left: 0;
+        top: -1.5rem;
         right: 0;
-        bottom: 0;
-        background: linear-gradient(120deg, #043a49, #18bfef, #043a49);
-        background-size: 300% 300%;
+        font-size: 6em;
+        font-style: italic;
+        color: var(--grey-color-text);
+        z-index: -1;
+     }
+  }
+
+.container_destaqueTxtBlog{
+    border-left: 3px solid #af93c382;
+    margin: 0 0 0 5%;
+}
+
+.destaqueTxtBlog{
+    margin: 0 0 0 2%;
+}
+/* --------------------- FIM DESTAQUES NO TEXTO ----------------------*/
+
+/*--------------------FEEDBACK BOTAO CARREGANDO--------------------*/
+.borderAnim {
+    position: relative;
+}
+
+.borderAnim:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(120deg, #043a49, #18bfef, #043a49);
+    background-size: 300% 300%;
+    clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), 2px calc(100% - 2px), 2px 100%, 100% 100%, 100% 0%, 0% 0%);
+}
+
+.borderAnim.in:after {
+    animation: frame-enter 2s forwards ease-in-out reverse, gradient-animation 4s ease-in-out infinite;
+}
+
+/* motion */
+@keyframes gradient-animation {
+    0% {
+        background-position: 15% 0%;
+    }
+    50% {
+        background-position: 85% 100%;
+    }
+    100% {
+        background-position: 15% 0%;
+    }
+}
+
+@keyframes frame-enter {
+    0% {
         clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), 2px calc(100% - 2px), 2px 100%, 100% 100%, 100% 0%, 0% 0%);
     }
-
-    .borderAnim.in:after {
-        animation: frame-enter 2s forwards ease-in-out reverse, gradient-animation 4s ease-in-out infinite;
+    25% {
+        clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), calc(100% - 2px) calc(100% - 2px), calc(100% - 2px) 100%, 100% 100%, 100% 0%, 0% 0%);
     }
-
-    /* motion */
-    @keyframes gradient-animation {
-        0% {
-            background-position: 15% 0%;
-        }
-        50% {
-            background-position: 85% 100%;
-        }
-        100% {
-            background-position: 15% 0%;
-        }
+    50% {
+        clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, 100% 0%, 0% 0%);
     }
-
-    @keyframes frame-enter {
-        0% {
-            clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), 2px calc(100% - 2px), 2px 100%, 100% 100%, 100% 0%, 0% 0%);
-        }
-        25% {
-            clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), calc(100% - 2px) calc(100% - 2px), calc(100% - 2px) 100%, 100% 100%, 100% 0%, 0% 0%);
-        }
-        50% {
-            clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, 100% 0%, 0% 0%);
-        }
-        75% {
-            -webkit-clip-path: polygon(0% 100%, 2px 100%, 2px 2px, 2px 2px, 2px 2px, 2px 2px, 2px 2px, 2px 2px, 2px 0%, 0% 0%);
-        }
-        100% {
-            -webkit-clip-path: polygon(0% 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 0% 100%);
-        }
-    } 
+    75% {
+        -webkit-clip-path: polygon(0% 100%, 2px 100%, 2px 2px, 2px 2px, 2px 2px, 2px 2px, 2px 2px, 2px 2px, 2px 0%, 0% 0%);
+    }
+    100% {
+        -webkit-clip-path: polygon(0% 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 0% 100%);
+    }
+} 
 /*--------------------FIM FEEDBACK BOTAO CARREGANDO--------------------*/
 
 /*--------------------ESTILIZAÇÃO DA SCROLLBAR--------------------*/
@@ -273,283 +366,33 @@ p>a:hover, figcaption>a:hover{
     margin-right: 50px;
 }
 
+.container-double-line h1{
+    font-size: 3.25rem !important;
+}
+
 .double-line-seccond-line{
     padding-left: 30px;
 }
 /* -----------------End Double Line Text------------------- */
 
-
-                                                            /* >> Daqui pra Baixo tem que corrigir o que vai ficar */
-
-/* GERAIS */
-/* Correções no botão comum */
-.button,#contacting input[type="submit"] {
-    background-color: #e1e17d;
-    box-shadow: none;
-    color: #212931;
+/*------------------------ Fadein and Scale animation -------------------------*/
+@keyframes fadeIn{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
-.button:hover,#contacting input[type="submit"]:hover{
-    box-shadow: inset 0 0 0 2px #6f6f28;
-    color: #6f6f28 !important;
+.fadeIn{
+    animation-duration: 3s;
+    animation-name: fadeIn;
+    animation-timing-function: cubic-bezier(.71,.55,.62,1.57);
 }
+/* ----------------------- End of Fadein and Scale animation ------------------------*/
 
-/* TRATAMENTO DAS PARTES TEXTUAIS */
-
-.txt_informaçõesPost{ /* Legenda informativa das postagens (data, tempo de leitura e classificação indicativa) */
-    font-style: italic;
-    text-align: left;
-    font-size: 0.95rem;
-    color: #757575 !important;
-    font-weight: 400;
-    margin-top: 2px;
-    margin-bottom: 8px;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
-}
-
-.divisaomesmocapitulo{
-    transform-origin: 0% 0%;
-    margin-left: 50%;
-    margin-top: 30px;
-}
-
-.actions2{
-    list-style: none;
-    padding: 0;
-}
-
-/*Autoria e Referencia*/
-.referenciar{
-    font-size: 0.9rem;
-    line-height: 1.6;
-    color: rgb(122, 122, 122);
-    text-align: right;
-}
-
-.linkto_contato{
-    font-size: 0.9rem;
-    line-height: 1.6;
-    color: rgb(122, 122, 122);
-}
-
-
-/* TRATANDO AS IMAGENS */
-/* Realign - arruma a imagem verticalmente quando, no portfólio, só aparece uma imagem */
-.realignClass{
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-/* CLASSIFICAÇÕES INDICATIVAS */
-.icon_classifIndicativa{
-    width: 1.65em;
-    vertical-align: top;
-    margin-left: -3px;
-    margin-right: -2px;
-}
-
-.icon_classifIndicativaMiddleAlign{
-    width: 1.65em;
-    vertical-align: middle;
-    margin-left: -3px;
-    margin-right: -2px;
-}
-
-.icon{
-    margin-right: 4px;
-}
-
-.button.icon.solo:before {
-    top: 1.5px;
-    left: 0.5px;
-    font-size: 1.25rem;
-}    
-
-/* BLOG - destaques, citações e notas do texto*/
-blockquote{
-    border-left-color: #18bfef82;
-    margin: 0 0 0 7%;
-}
-
-.container_destaqueTxtBlog{
-    border-left: 3px solid #af93c382;
-    margin: 0 0 0 5%;
-}
-
-.destaqueTxtBlog{
-    margin: 0 0 0 2%;
-}
-
-/* COMPARTILHAMENTO DO CONTEUDO */
-#buttonContainer_compartilharHistorietas{
-    text-align: left;
-    margin-top: 20px;
-}
-
-#compartilharContainer{
-    position: fixed;
-    display: none;
-    flex-direction: row;
-    flex-wrap: wrap;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0 100vw 100vw 100vw rgba(30, 37, 45, 0.623);
-    z-index: 25;
-    -webkit-animation: fadein 0.5s;
-    animation: fadein 0.5s;
-    bottom: 10px;
-    padding: 32px 10px 10px 10px;
-    max-width: 520px;
-    justify-content: space-evenly;
-    transform: translate(-50%, -50%);
-    left: 50%;
-}
-
-#button_compartilharHistorieta{
-    margin-left: 0px;
-}
-
-.icon{
-    vertical-align: 1px;
-}
-
-.icon_compartilharHistorieta,.icon_compartilharLivro{
-    margin-right: 0px;
-}
-
-#buttonCloseCompartilhar:hover{
-    color: #00aced;
-    cursor: pointer;
-}
-
-#buttonCloseCompartilhar{
-    background-color: transparent;
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 0;
-    color: #656565;
-    border: none;
-
-    display: flex;
-    justify-content: flex-end;
-    position: absolute;
-    right: 17px;
-    top: 7px;
-}
-
-.logoRedeContainerWpp{
-    float: left;
-    color: white;
-    width: 26px;
-    height: 26px;
-    background-color: #075E54;
-    text-align: center;
-}
-
-.nomeRedeContainerWpp{
-    width: 130px;
-    float: right;
-    background-color: #128C7E;
-    color: white;
-    font-family: inherit;
-    height: 26px;
-    letter-spacing: 1px;
-    font-size: small;
-    text-align: center;
-    margin-bottom: 5px;
-}
-
-.logoRedeContainerTwitter{
-    float: left;
-    color: white;
-    width: 26px;
-    height: 26px;
-    background-color: #0084b4;
-    text-align: center;
-}
-
-.nomeRedeContainerTwitter{
-    width: 130px;
-    float: right;
-    background-color:#00aced;
-    color: white;
-    font-family: inherit;
-    height: 26px;
-    letter-spacing: 1px;
-    font-size: small;
-    text-align: center;
-    margin-bottom: 5px;
-}
-
-.logoRedeContainerFacebook{
-    float: left;
-    color: white;
-    width: 26px;
-    height: 26px;
-    background-color: #3b5998;
-    text-align: center;
-}
-
-.nomeRedeContainerFacebook{
-    width: 130px;
-    float: right;
-    background-color:#8b9dc3;
-    color: white;
-    font-family: inherit;
-    height: 26px;
-    letter-spacing: 1px;
-    font-size: small;
-    text-align: center;
-    margin-bottom: 5px;
-}
-
-.logoRedeContainerReddit{
-    float: left;
-    color: white;
-    width: 26px;
-    height: 26px;
-    background-color: #b64e28;
-    text-align: center;
-}
-
-.nomeRedeContainerReddit{
-    width: 130px;
-    float: right;
-    background-color:#FF4500;
-    color: white;
-    font-family: inherit;
-    height: 26px;
-    letter-spacing: 1px;
-    font-size: small;
-    text-align: center;
-    margin-bottom: 5px;
-}
-
-.logoRedeContainerPinterest{
-    float: left;
-    color: white;
-    width: 26px;
-    height: 26px;
-    background-color: #BD081C;
-    text-align: center;
-}
-
-.nomeRedeContainerPinterest{
-    width: 130px;
-    float: right;
-    background-color:#c03041;
-    color: white;
-    font-family: inherit;
-    height: 26px;
-    letter-spacing: 1px;
-    font-size: small;
-    text-align: center;
-    margin-bottom: 5px;
-}
-
+/*-------------------- COPIAR URL ------------------*/
 .iconeContainerCopyUrl{
     float: left;
     color: white;
@@ -573,118 +416,42 @@ blockquote{
 }
 
 #urlCopiarNotification{
-    display: none;
+    opacity: 0;
     position: fixed;
     top: 50px;
     z-index: 25;
     transform: translateY(-100%) translateX(-50%);
+    transition: 1s ease;
     left: 50%;
     padding: 9px 20px;
     background: #343a40;
     color: #eeeeee;
     border-radius: 5px;
-    font-family: "Source Sans Pro", Helvetica, sans-serif;
-    font-size: 0.8rem;
-    font-weight: 900;
-    letter-spacing: 0.075em;
+    letter-spacing: 1px;
+    font-family: system-ui, sans-serif;
+    font-variant: all-petite-caps;
+    font-weight: 500;
     box-shadow: 0 0 14px rgba(0, 0, 0, 0.05); 
 }
+/*-------------------- END COPIAR URL ------------------*/
 
-/* SEÇÃO DOS COMENTÁRIOS */
-#comentariosblog-container, #comentarioshist-container{
-    background-color: #ffffff;
-    position: relative;
-    margin: 0 auto;
-    width: calc(100% - 4rem);
-    max-width: 72rem;
-    z-index: 2;
-    border: none;
-    padding: 4rem 5rem 2rem 5rem;
-    margin-top: 100px;
+/*-----------------Autoria e Referencia-----------------*/
+.referenciar{
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--grey-color-text);
+    text-align: right;
 }
 
-@media screen and (max-width: 736px){
-#comentariosblog-container, #comentarioshist-container {
-    padding: 2rem 1.8rem 2rem 1.8rem;
-}}
-
-@media screen and (max-width: 480px){
-#comentariosblog-container, #comentarioshist-container{
-    width: 100%;
-}}
-
-.avisos-pre-comentarios{
-    color: grey;
+.linkto_contato{
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--grey-color-text);
 }
+/*----------------- FIM Autoria e Referencia-----------------*/
 
-#cusdis_thread{
-    margin-top: 40px;
-    max-height: 600px;
-    overflow-y: auto;
-}
-
-/* FEEDBACK - BOTAO CARREGANDO */
-.borderAnim {
-    position: relative;
-}
-
-.borderAnim:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(120deg, #043a49, #18bfef, #043a49);
-    background-size: 300% 300%;
-    clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), 2px calc(100% - 2px), 2px 100%, 100% 100%, 100% 0%, 0% 0%);
-}
-
-.borderAnim.in:after {
-    animation: frame-enter 2s forwards ease-in-out reverse, gradient-animation 4s ease-in-out infinite;
-}
-
-/* motion */
-@keyframes gradient-animation {
-    0% {
-        background-position: 15% 0%;
-    }
-    50% {
-        background-position: 85% 100%;
-    }
-    100% {
-        background-position: 15% 0%;
-    }
-}
-
-@keyframes frame-enter {
-    0% {
-        clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), 2px calc(100% - 2px), 2px 100%, 100% 100%, 100% 0%, 0% 0%);
-    }
-    25% {
-        clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), calc(100% - 2px) calc(100% - 2px), calc(100% - 2px) 100%, 100% 100%, 100% 0%, 0% 0%);
-    }
-    50% {
-        clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, 100% 0%, 0% 0%);
-    }
-    75% {
-        -webkit-clip-path: polygon(0% 100%, 2px 100%, 2px 2px, 2px 2px, 2px 2px, 2px 2px, 2px 2px, 2px 2px, 2px 0%, 0% 0%);
-    }
-    100% {
-        -webkit-clip-path: polygon(0% 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 0% 100%);
-    }
-}
-
-
-
-HTML {
-    cursor: pointer;
-}
-
-body {
-    cursor: default; 
-}
-
-ul.icons li:last-child {
-    padding: 0 0.5rem 0 0;
+/* Realign - arruma a imagem verticalmente quando, no portfólio, só aparece uma imagem */
+.realignClass{
+    margin-top: auto;
+    margin-bottom: auto;
 }

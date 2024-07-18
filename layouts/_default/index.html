@@ -4,77 +4,56 @@
 {{- partial "htmlhead" . -}}<!-- puxando as metatags -->
 {{- partial "navigationlinks" . -}}<!-- puxando os menus -->
 
+<body>
     <!-- Wrapper -->
     <div id="wrapper" class="fade-in">
+        <!-- Main --> 
+        <div id="main">
+            {{- partial "pageHeaderMenuAndLogo" . -}}
+            <div id="container-home">     
+                <div id="container-home-topo-items">
+                    <a href="https://www.tdvadilho.com/sobre/"><h1 class = "intro-nome">TD Vadilho</h1></a>
+                    <p class = "intro-paragraph">
+                        Acima de tudo, sou um criador de histórias, sejam elas <a href="https://www.tdvadilho.com/livros/">escritas</a>, <a href="https://www.tdvadilho.com/galeriailustracoes/">visuais</a>, ou uma <a href="https://www.tdvadilho.com/historietas/">mistura de imagens e palavras</a>.
+                    </p>
+                    <p class = "intro-paragraph">
+                        Cada história que crio, carrega o cerne do <a href="">meu estilo</a>, e tudo o mais que a história e o processo criativo em mim despertarem. 
+                    </p>
+                    <p class = "intro-paragraph">
+                        Eu acredito na capacidade emocional das histórias criativas, e é por isso que, além de <a href="https://www.tdvadilho/blog/">falar sobre</a> o assunto, coloco no mundo <a onclick="opennavigationmenu()">aquilo que gostaria de encontrar</a>.
+                    </p>
+                </div>
 
-            <!-- Main --> 
-            <div id="main">
-                {{- partial "pageHeaderMenuAndLogo" . -}}
-                <div id="slider-home">     
-                    {{- partial "slider" . -}}                  
-                    <div id="slider-container">
-                      
-                        <div class="slider-gallery fade">
-                            <div id="container-home-first-slide">
-                                <a href="https://www.tdvadilho.com/sobre/"><h1 class = "intro-nome">TD Vadilho</h1></a>
-                                <p class = "intro-paragraph">
-                                    Acima de tudo, sou um criador de histórias, sejam elas <a href="https://www.tdvadilho.com/livros/">escritas</a>, <a href="https://www.tdvadilho.com/galeriailustracoes/">visuais</a>, ou uma <a href="https://www.tdvadilho.com/historietas/">mistura de imagens e palavras</a>.
-                                </p>
-                                <p class = "intro-paragraph">
-                                    Cada história que crio, carrega o cerne do <a href="">meu estilo</a>, e tudo o mais que a história e o processo criativo em mim despertarem. 
-                                </p>
-                                <p class = "intro-paragraph">
-                                    Eu acredito na capacidade emocional das histórias criativas, e é por isso que, além de <a href="https://www.tdvadilho/blog/">falar sobre</a> o assunto, coloco no mundo <a onclick="opennavigationmenu()">aquilo que gostaria de encontrar</a>.
-                                </p>
-                            </div>
+                <div id="container-home-topo-items-sub"></div>
+            
+                <div id="container-home-bottom-items">
+                    {{ range where .Site.RegularPages "Params.Lastpost1" true }}
+                    <div class="item-bottom-esq" onclick="window.location.href='{{ .Permalink | safeURL }}'">
+                        <div class="novidade-notice">Novidade</div>
+                        <div class="overlay-home-news"></div>
+                        <div class="organizer-home-news-text">
+                            <p class="home-news-type">{{ .Params.Lastpost1type }}</p>
+                            <h2 class="home-news-title">{{ .Params.Title }}</h2>
                         </div>
+                        <img id="home-novidade-1" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
+                    </div>
+                    {{ end }}
 
-                        <div class="slider-gallery fade">
-                            {{ with .GetPage "/historietas" }}
-                                {{ range where .Pages ".Params.lastposthistorietas" true }}
-                                    <a href="{{ .RelPermalink }}">
-                                        <img src="{{ .Params.imageCompartilhar }}" alt="altimgthumb">
-                                    </a>
-                                {{ end }}
-                            {{ end }}
+                    {{ range where .Site.RegularPages "Params.Lastpost2" true }}
+                    <div class="item-bottom-dir" onclick="window.location.href='{{ .Permalink | safeURL }}'">
+                        <div class="novidade-notice">Novidade</div>
+                        <div class="overlay-home-news"></div>
+                        <div class="organizer-home-news-text">
+                            <p class="home-news-type">{{  .Params.Lastpost2type }}</p>
+                            <h2 class="home-news-title">{{ .Params.Title }}</h2>
                         </div>
-
-                        <div class="slider-gallery fade">
-                            {{ with .GetPage "/galeria-ilustracoes" }}
-                                {{ range where .Pages ".Params.lastpostgaleriailustracoes" true }}
-                                    <a href="{{ .RelPermalink }}">
-                                        <img src="{{ .Params.thumbprojeto }}" alt="{{ .Params.lastpostalt}}">
-                                    </a>
-                                {{ end }}
-                            {{ end }}
-                        </div>
-
-                        <div class="slider-gallery fade">
-                            {{ with .GetPage "/blog" }}
-                                {{ range where .Pages ".Params.lastpostblog" true }}
-                                    <a href="{{ .RelPermalink }}">
-                                        <img src="{{ .Params.imagethumb }}" alt="altimgthumb">
-                                    </a>
-                                {{ end }}
-                            {{ end }}
-                        </div>
-
-                        <div class="slider-gallery fade">
-                            <h1>Loja</h1>
-                        </div>
-                    </div>                               
-                
-                    <div id="square-navigation-slider-container-home">
-                        <span class="square-navigation-slider" onclick='currentSlide(1)'></span>
-                        <span class="square-navigation-slider" onclick='currentSlide(2)'></span>
-                        <span class="square-navigation-slider" onclick='currentSlide(3)'></span>
-                        <span class="square-navigation-slider" onclick='currentSlide(4)'></span>
-                        <span class="square-navigation-slider" onclick='currentSlide(5)'></span>
-                    </div>   
+                        <img id="home-novidade-2" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
+                    </div>
+                    {{ end }}
                 </div>
             </div>
+        </div>
     </div>
-
     {{- template "_internal/google_analytics.html" . }}
     {{- partial "scripts/index" . }}
     {{- partial "meusscripts" . -}}

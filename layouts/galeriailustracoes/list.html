@@ -9,20 +9,16 @@
     
     <div id="wrapper" class="fade-in"> 
         <div id="main">
-            <!-- Logo -->
-            <h1 id="logo">LOGO</h1>
-
-            <!-- Navmenu -->
-            <span id="menu-to-navigate" onclick="opennavigationmenu()">Menu</span>
-            
-            <div id="container-galeriailustracoes-introtext">
-                <h1>Portfólio</h1>
-                <h3>Atualmente disponível para trabalhos</h3>
+            {{- partial "pageHeaderMenuAndLogo" . -}}
+            <div id="container-ilustracoesHeader">
+                <div class="container-header-name" id="galeria-ilustracoes-header-name">
+                    <h1>Portfólio</h1>
+                </div>
             </div>
 
             <span id="array" idsArray="{{ .Params.ProjetosIds }}"></span>
 
-            <div id="container-galeria-ilustracoes">
+            <!-- <div id="container-galeria-ilustracoes">
                     <div id="organizer-galeria-ilustracoes">
                         {{ range .Pages.ByWeight }}
                             <div class="{{ .Params.containerclass }}">
@@ -34,17 +30,35 @@
                                     lojalink="{{ .Params.Lojalink }}"
                                     class="{{ .Params.Class }}"
                                     >
-                                    <!-- <div class="animation-element bounce-up"> -->
-                                        <img src="{{ .Params.Thumbprojeto }}" alt="{{ .Params.altthumb }}"> 
-                                    <!-- </div> -->
+                                    <img src="{{ .Params.Thumbprojeto }}" alt="{{ .Params.altthumb }}"> 
                                 </div>           
                             </div>
                         {{ end }}
                     </div>
-            </div>
-            {{- partial "rodape.html" . }}
+            </div> -->
+            <!-- <div id="container-galeria-ilustracoes"> -->
+                <div id="organizer-galeria-ilustracoes">
+                    {{ range .Pages.ByWeight }}
+                        <div class="{{ .Params.Class }}">
+                            <div id="{{ .Params.Projectid }}"
+                                titulo = "{{ .Params.Title }}"
+                                onclick="abrirproj(event, '{{ .Params.Projectid }}')"
+                                itens="{{ jsonify .Params.Itens }}"
+                                legenda="{{ .Content }}"
+                                lojalink="{{ .Params.Lojalink }}"
+                                class="{{ .Params.Class }}" 
+                                >
+                                <!-- 3 types of class: vertical, horizontal, big -->
+                                <img src="{{ .Params.Thumbprojeto }}" alt="{{ .Params.altthumb }}"> 
+                            </div>           
+                        </div>
+                    {{ end }}
+                </div>
+            <!-- </div> -->
+
+            {{- partial "emailing.html" . -}}
+            {{- partial "rodape.html" . -}}
         </div>
-        <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
     </div>   
     {{- template "_internal/google_analytics.html" . }}
     {{- partial "scripts/index" . }}
@@ -61,9 +75,7 @@
             //não veio com id setado, não abrir nenhum automaticamente
         }
     });
-
-    let navPanelToggle = document.getElementById("navPanelToggle");
-    let flagProjAberto = false;
+    /* let flagProjAberto = false; >declarado nos meusscripts */
 
     let lastResize = 0;
     let changePositionOfCloseButton = function() { 
@@ -207,13 +219,7 @@
             x.style.display = "none";
         }
     }
-   
-    let checkFlag = function() { //Projeto aberto > esconde o filtro e o menu
-        if (flagProjAberto == true){
-            navPanelToggle.style.cssText = 'display: none'         
-        }
-    }
-    window.addEventListener('scroll', checkFlag)
+
 
     let idsArray = document.getElementById("array").getAttribute("idsArray"); //Criando array com os projetos existentes para permitir funcionamento dos slides
     let splitIdsArray = idsArray.replace("]","").replace("[","").split(' ')
@@ -245,7 +251,6 @@
         document.getElementById(id);
 
         flagProjAberto = true;
-        checkFlag();
         createSnackbar(id);
         
         currentFocusProject = splitIdsArray.indexOf(id);
@@ -254,11 +259,7 @@
     function closeSnackbarProj(){/*Função para fechar snack e retornar elementos ao padrão*/
         let snackbarToClose = document.getElementById('snackbarId')
         snackbarToClose.remove()
-    
-        if(window.innerWidth < 980){
-            navPanelToggle.style.cssText = ''
-        }
-        
+
         document.body.style.cssText = 'overflow: auto';
         document.body.className = 'normal';
         flagProjAberto = false;

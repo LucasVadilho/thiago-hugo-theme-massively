@@ -1,0 +1,37 @@
+<link rel="stylesheet" type="text/css" href="/assets/css/cards.css"> <!-- Chamando CSS CARDS -->
+<link rel="stylesheet" type="text/css" href="/assets/css/geral.css"> <!-- Chamando CSS CARDS -->
+
+<div id="container-mais-posts-como-esse">
+    {{ $relatedhist := .Site.RegularPages.Related . | first 3 }}
+    {{ with $relatedhist }}
+		<div class="container-double-line">
+			<h1 class="double-line-first-line">Conteúdos</h1>
+			<h1 class="double-line-seccond-line"> relacionados...</h1>
+		</div>
+        <div id="container-mais-posts-como-esse-cards">
+            {{ range . }}
+            <div class="post-card" style="background-image: url('{{ .Params.Imagethumb }}');" onclick="window.location.href='{{ .Permalink }}';">
+                <div class="categories-container-conteudos-relacionados">
+                    {{ range $categories := .Params.categories }}
+                    <a onclick="window.location.href='/v/{{ $categories }}';event.stopPropagation()" class="category-container">
+                        <span class="category {{ $categories }}">{{ $categories }}</span>
+                    </a>
+                    {{ end }}
+                </div>
+                <div class="post-card-info-conteudos-relacionados">
+                    <ul class="post-card-info-list">
+                        <li><span class="fa-solid fa-clock"></span>{{ .Params.Tempoleitura }}</li>
+                        <li class="comments-container"><span class="fa-solid fa-comments"></span>12<!-- Trocar para a variável do cusdis (ou do outro comentário que eu achei) --></li> 
+                        <li><span class="fa-solid fa-tags" aria-hidden="true"></span>
+                            {{ range $k, $v := .GetTerms "tags" }}
+                                {{- if $k }}| {{ end }}
+                                <a class="tags-container" onclick="window.location.href='/tags/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+                            {{ end }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    {{ end }}
+</div>

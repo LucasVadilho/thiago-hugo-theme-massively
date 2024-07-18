@@ -63,10 +63,14 @@
 
                             <div class="container-texto-and-image-content">
                                 <div class="container-chamada-content">{{ .Params.Description }}</div>
-                                <div class="container-table-of-contents">
-                                    <h2>Sumário</h2>
-                                    {{ .Page.TableOfContents }}
-                                </div>
+                                {{ if strings.Contains .TableOfContents "li" }}
+                                    <div class="container-table-of-contents">
+                                        <h2>Sumário</h2>
+                                        {{ .Page.TableOfContents }}
+                                    </div>
+                                {{ else }}
+                                    <div class="no-table-of-contents"></div>
+                                {{ end }}
                                 {{ .Content }}
                                 <p class="referenciar" style="margin-top:30px">Texto e imagens: ©Thiago David Vadilho (TD Vadilho)</p>
                                 <p class="referenciar">*Jamais venda ou monetize este conteúdo sem a autorização expressa do autor.</p>
@@ -74,166 +78,31 @@
                             </div>    
                                
                             <div id="suporteoblog">
-                                <h1>Apoie a Toca!</h1>
+                                <h1>Apoie a Toca❤️</h1>
                                 <div class="container-imortalizados-da-vez">
-                                    <p>A criação do conteúdo que você acabou de ler somente é possível graças ao apoio das queridas pessoas 
-                                        que leem este blog. O agradecimento especial desta edição vai para
-                                        {{- range $key, $value := .Params.Imortalizadosdavez -}}
-                                            {{ if $key }} e {{ end }}
-                                            <span class="nomes-imortalizados">{{ $value }}</span>
-                                        {{- end -}}
-                                        , que apoiaram o meu trabalho 
-                                        e agora, como forma de agradecimento, estão sendo imortalizados nessa página❤️
-                                    </p>
+                                    <p>A criação do conteúdo que você aproveitou somente é possível graças ao apoio dos leitores e leitoras do site.
+                                        O agradecimento especial desse post vai para
+                                       {{- range $key, $value := .Params.Imortalizadosdavez -}}
+                                           {{ if $key }} e {{ end }}
+                                           <img class="nomes-imortalizados" src="{{ $value }}" alt="Nomes dos imortalizados da vez">
+                                       {{- end -}}
+                                       , que apoiaram o meu trabalho, e agora estão sendo <i>imortalizados</i> nessa postagem do blog :)
+                                   </p>
                                 </div>
                                 {{- partial "suporte" . }}
                             </div>
-                            {{- partial "similarPostAndSubs" .}}
+                            {{- partial "similarPostsBlog" .}}
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <div class="paperOverlay"></div>
+        </div>
+        {{- partial "emailing" . -}}
+        {{- partial "rodape.html" . }}
         <div id="urlCopiarNotification"></div>
     </div>
-
     {{- template "_internal/google_analytics.html" . }}
     {{- partial "scripts/index" . }}
     {{- partial "meusscripts" . -}}
-
-    <div id="comentariosblog-container">
-        <h2>Comentários</h2>
-        <h4>Vamos conversar sobre o post?</h4>
-
-        <p class="avisos-pre-comentarios">• A aprovação dos comentários tem o intuito <b>apenas</b> de barrar mensagens desrespeitosas ou spams;</p>
-        <p class="avisos-pre-comentarios">• Aqui, nenhum dos seus dados são salvos, e, por isso, ainda não temos todas as funcionalidades típicas 
-            de uma seção de comentários. Com o tempo chegaremos lá 😊
-        </p>
-
-        <div id="cusdis_thread"
-            data-host="https://cusdis.com"
-            data-app-id="b935f701-f887-42b4-96cf-1852bf2005b2"
-            data-page-id="{{ .Params.UniqueID }}"
-            data-page-url="{{ .Permalink }}"
-            data-page-title="{{ .Title }}"
-            >
-        </div>
-
-        <script>
-            window.CUSDIS_LOCALE = {
-                powered_by: 'Powered by Cusdis',
-                post_comment: 'Postar comentário',
-                loading: 'Carregando',
-            
-                // comment
-                email: 'Email (opcional)',
-                nickname: 'Nome',
-                reply_placeholder: 'Comentar...',
-                reply_btn: 'Responder',
-                sending: 'enviando...',
-            
-                // reply
-                mod_badge: 'MOD',
-                content_is_required: 'Conteúdo é requerido',
-                nickname_is_required: 'Apelido é requerido',
-            
-                comment_has_been_sent:
-                'Seu comentário foi enviado. Por favor aguarde pela aprovação.',
-            }
-        </script>
-
-        <script defer data-host="https://cusdis.com" data-app-id="b935f701-f887-42b4-96cf-1852bf2005b2" src="https://cusdis.com/js/cusdis-count.umd.js"></script>
-    </div>
 </body>
-
-<script>
-    /* Mover a tela para a seção de comentários */
-    let goToComentariosBlog = function(){
-        let comentariosYPosition = document.getElementById("comentariosblog-container").offsetTop;
-        window.scrollTo({left: 0, top: comentariosYPosition, behavior: "smooth"});
-        flagCameFromCard = false;
-    }
-
-    let scrollTo = function(newYPosition){
-        console.log("oi")
-    } 
-
-    /* COMPARTILHAMENTO */
-    function fbSharing(post_url) {
-        var url = new String(post_url);
-        window.open(post_url , "share_dialog", "width=500, height=300");
-    }
-
-    function ttSharing(post_url){
-        var url = new String(post_url);
-        window.open(post_url , "share_dialog", "width=790, height=462");
-    }
-
-    function redditSharing(post_url){
-        var url = new String(post_url);
-        window.open(post_url , "share_dialog", "width=790, height=742");
-    }
-
-/*     function pinterestSharing(post_url){
-        var url = new String(post_url);
-        window.open(post_url , "share_dialog", "width=1080, height=727");
-    } */
-
-
-    /* COMPARTILHAMENTO */
-    function fbSharing() {
-        var url = "https://www.facebook.com/sharer/sharer.php?u=" + urlCurrentPage;
-        window.open(url , "share_dialog", "width=500, height=300");
-    }
-
-    function ttSharing(){
-        var url = "https://twitter.com/share?url=" + urlCurrentPage + "%0a%0a&text=Gente, leia {{ .Params.title }}, postado no blog do autor @tdvadilho :) &text=🔗&hashtags=historietasTDVadilho";
-        window.open(url , "share_dialog", "width=790, height=462");
-    }
-
-    function redditSharing(){
-        var url = "https://www.reddit.com/submit?title=Historieta%20-%20TDVadilho&text=Gente,%20leia%20{{ .Params.title }},%20um%20post%20no%20blog%20do%20autor%20@td.vadilho";
-        window.open(url , "share_dialog", "width=790, height=742");
-    }
-
-/*     function pinterestSharing(){
-        var url = "pinterestSharing('{{ .Params.linkPin }}')";
-        window.open(url , "share_dialog", "width=1080, height=727");
-    } */
-
-    function wppSharing(){
-        var url = "https://api.whatsapp.com/send?text=Lê esse post no blog do escritor TD Vadilho " + urlCurrentPage
-        window.open(url)
-    }
-
-    function linkedinSharing(){
-        var url = "https://www.linkedin.com/feed/?shareActive=true&text=Gente, leia '{{ .Params.title }}', postado no blog do %23escritor TD Vadilho! https://tdvadilho.com/historietas/historieta6 %23historias %23literatura"
-        window.open(url, "width=790, height=742")
-    }
-
-    function instagramSharing(){
-        var url = "{{ .Params.linkInsta }}"
-        window.open(url, "width=790, height=742")
-    }
-    
-    /* Carregando links de compartilhamento */
-    let urlCurrentPage = window.location.href;
-
-        /* Copiar URL*/    
-        let copiarUrlSharing = function() {
-            let createCopiarNotification = function() {
-                let notification = document.getElementById("urlCopiarNotification");
-                notification.style.display = "block";
-                notification.innerHTML = '<i class="fa fa-link"></i> URL COPIADA</div>';
-                
-                setTimeout(() => {
-                    notification.style.display = 'none';
-                }, 2800);
-            }
-
-            if(navigator.clipboard) {
-                navigator.clipboard.writeText(window.location.href);
-                createCopiarNotification();
-            }
-            createCopiarNotification();
-        }
-</script>
