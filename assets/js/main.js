@@ -8,7 +8,6 @@
 
 	var	$window = $(window),
 		$body = $('body'),
-		$wrapper = $('#wrapper'),
 		$nav = $('#nav'),
 		$navPanel, $navPanelInner;
 

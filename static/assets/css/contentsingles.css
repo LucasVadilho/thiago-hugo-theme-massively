@@ -198,33 +198,6 @@ body {
     height: 50px;
 }
 
-/* More like this part (double line no geral) */
-#container-mais-posts-como-esse{
-    display: inline-flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 100%;
-    padding-top: 100px;
-    padding-bottom: 80px;
-    padding-left: 80px;
-    padding-right: 80px;
-}
-
-#container-mais-posts-como-esse-cards{
-    display: inline-flex;
-    justify-content: space-around;
-    overflow: hidden;
-}
-
-#container-mais-posts-como-esse-cards>.post-card{
-    margin-right: 20px;
-}
-
-#container-mais-posts-como-esse-cards:last-child{
-    margin-right: 0 !important;
-}
-
 /* ESPECIAL HISTORIETAS */
 .header-title-single-post-historietas{
     display: inline-flex;

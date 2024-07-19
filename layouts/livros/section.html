@@ -5,43 +5,40 @@
 {{- partial "navigationlinks" . -}}<!-- puxando os menus -->
 
 <body lang='{{ .Site.LanguageCode | default "pt-br" }}'>
-    <!-- Wrapper -->
-    <div id="wrapper">
-        <!-- Main -->
-        <div id="main">
-            {{- partial "pageHeaderMenuAndLogo" . -}}
-            <div id="container-livrosHeader">
-                <div class="container-header-name" id="livros-header-name">
-                    <h1>Biblioteca de Livros</h1>
-                </div>
-                <div class="container-header-text">
-                    <p>Blog criativo por TD</p>
-                </div>
+    <!-- Main -->
+    <div id="main">
+        {{- partial "pageHeaderMenuAndLogo" . -}}
+        <div id="container-livrosHeader">
+            <div class="container-header-name" id="livros-header-name">
+                <h1>Biblioteca de Livros</h1>
             </div>
-            <div id="container-post-all-after-header">
-                {{ range .Pages.ByWeight }}
-                    <div class="container-livros-all-content" onclick="window.location.href='{{ .Params.Idlink | safeURL }}';event.stopPropagation()">
-                        <div class="container-livro-image">
-                            <img src="{{ .Params.Imagemselecaolivros }}" alt="{{ .Params.Altimagemselecaolivros }}">
-                        </div>
-                        <div class="container-livro-infos-and-buttons">
-                            <h4>{{ .Params.Titulolivro }}</h4>
-                            <img src="{{ .Params.Frasedestaque }}" alt="{{ .Params.Altfrasedestaque }}">
-                            <h5>{{ .Params.Categoria }}</h5>
-                            <img src="{{ .Params.Compreolivro }}" alt="{{ .Params.Altcompreolivro }}">
-                            <img src="{{ .Params.Saibamais }}" alt="{{ .Params.Saibamais }}">
-                        </div>
-                    </div>
-                {{ end }}
+            <div class="container-header-text">
+                <p>Blog criativo por TD</p>
             </div>
-            <!-- <div id="container_contactinglivros">
-                <div id="bookend">
-                    <img src="/images/haqntopag/mybookshelf.svg" class="bookshelf" alt="a estante do autor, contendo vetores dos livros já escritos para ilustrar a cena">
-                </div>
-            </div> --> 
-            {{- partial "emailing" . -}}
-            {{- partial "rodape.html" . }}
         </div>
+        <div id="container-post-all-after-header">
+            {{ range .Pages.ByWeight }}
+                <div class="container-livros-all-content" onclick="window.location.href='{{ .Params.Idlink | safeURL }}';event.stopPropagation()">
+                    <div class="container-livro-image">
+                        <img src="{{ .Params.Imagemselecaolivros }}" alt="{{ .Params.Altimagemselecaolivros }}">
+                    </div>
+                    <div class="container-livro-infos-and-buttons">
+                        <h4>{{ .Params.Titulolivro }}</h4>
+                        <img src="{{ .Params.Frasedestaque }}" alt="{{ .Params.Altfrasedestaque }}">
+                        <h5>{{ .Params.Categoria }}</h5>
+                        <img src="{{ .Params.Compreolivro }}" alt="{{ .Params.Altcompreolivro }}">
+                        <img src="{{ .Params.Saibamais }}" alt="{{ .Params.Saibamais }}">
+                    </div>
+                </div>
+            {{ end }}
+        </div>
+        <!-- <div id="container_contactinglivros">
+            <div id="bookend">
+                <img src="/images/haqntopag/mybookshelf.svg" class="bookshelf" alt="a estante do autor, contendo vetores dos livros já escritos para ilustrar a cena">
+            </div>
+        </div> --> 
+        {{- partial "emailing" . -}}
+        {{- partial "rodape.html" . }}
     </div>
     {{- template "_internal/google_analytics.html" . }}
     {{- partial "scripts/index" . }}

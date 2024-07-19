@@ -6,60 +6,37 @@
 {{- partial "navigationlinks" . -}}<!-- puxando os menus -->
 
 <body lang='{{ .Site.LanguageCode | default "pt-br" }}' class="is-preload">
-    
-    <div id="wrapper" class="fade-in"> 
-        <div id="main">
-            {{- partial "pageHeaderMenuAndLogo" . -}}
-            <div id="container-ilustracoesHeader">
-                <div class="container-header-name" id="galeria-ilustracoes-header-name">
-                    <h1>Portfólio</h1>
-                </div>
+    <div id="main">
+        {{- partial "pageHeaderMenuAndLogo" . -}}
+        <div id="container-ilustracoesHeader">
+            <div class="container-header-name" id="galeria-ilustracoes-header-name">
+                <h1>Portfólio</h1>
             </div>
-
-            <span id="array" idsArray="{{ .Params.ProjetosIds }}"></span>
-
-            <!-- <div id="container-galeria-ilustracoes">
-                    <div id="organizer-galeria-ilustracoes">
-                        {{ range .Pages.ByWeight }}
-                            <div class="{{ .Params.containerclass }}">
-                                <div id="{{ .Params.Projectid }}"
-                                    titulo = "{{ .Params.Title }}"
-                                    onclick="abrirproj(event, '{{ .Params.Projectid }}')"
-                                    itens="{{ jsonify .Params.Itens }}"
-                                    legenda="{{ .Content }}"
-                                    lojalink="{{ .Params.Lojalink }}"
-                                    class="{{ .Params.Class }}"
-                                    >
-                                    <img src="{{ .Params.Thumbprojeto }}" alt="{{ .Params.altthumb }}"> 
-                                </div>           
-                            </div>
-                        {{ end }}
-                    </div>
-            </div> -->
-            <!-- <div id="container-galeria-ilustracoes"> -->
-                <div id="organizer-galeria-ilustracoes">
-                    {{ range .Pages.ByWeight }}
-                        <div class="{{ .Params.Class }}">
-                            <div id="{{ .Params.Projectid }}"
-                                titulo = "{{ .Params.Title }}"
-                                onclick="abrirproj(event, '{{ .Params.Projectid }}')"
-                                itens="{{ jsonify .Params.Itens }}"
-                                legenda="{{ .Content }}"
-                                lojalink="{{ .Params.Lojalink }}"
-                                class="{{ .Params.Class }}" 
-                                >
-                                <!-- 3 types of class: vertical, horizontal, big -->
-                                <img src="{{ .Params.Thumbprojeto }}" alt="{{ .Params.altthumb }}"> 
-                            </div>           
-                        </div>
-                    {{ end }}
-                </div>
-            <!-- </div> -->
-
-            {{- partial "emailing.html" . -}}
-            {{- partial "rodape.html" . -}}
         </div>
-    </div>   
+
+        <span id="array" idsArray="{{ .Params.ProjetosIds }}"></span>
+
+        <div id="organizer-galeria-ilustracoes">
+            {{ range .Pages.ByWeight  }}
+                <div class="{{ .Params.Class }}">
+                    <div id="{{ .Params.Projectid }}"
+                        titulo = "{{ .Params.Title }}"
+                        onclick="abrirproj(event, '{{ .Params.Projectid }}')"
+                        itens="{{ jsonify .Params.Itens }}"
+                        legenda="{{ .Content }}"
+                        lojalink="{{ .Params.Lojalink }}"
+                        class="{{ .Params.Class }}" 
+                        >
+                        <!-- 3 types of class: vertical, horizontal, big -->
+                        <img src="{{ .Params.Thumbprojeto }}" class="animation-element not-shown-img-state" alt="{{ .Params.altthumb }}"> 
+                    </div>           
+                </div>
+            {{ end }}
+        </div>
+        {{- partial "listademateriais" . -}}
+        {{- partial "emailing.html" . -}}
+        {{- partial "rodape.html" . -}}
+    </div>
     {{- template "_internal/google_analytics.html" . }}
     {{- partial "scripts/index" . }}
     {{- partial "meusscripts" . }}

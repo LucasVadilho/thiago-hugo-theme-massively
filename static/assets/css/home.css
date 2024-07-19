@@ -6,6 +6,10 @@
     background-color: white !important;
 }
 
+#logo{
+    display: none;
+}
+
 #container-home {
     width: 100%;
     height: 100dvh;
@@ -13,19 +17,44 @@
     overflow: hidden;
 }
 
+#organizer-container-text-items{
+    height: 87%;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-left: 80px;
+    max-width: 900px;
+}
+
+#organizer-container-text-items a{
+    width: fit-content;
+}
+
+h1{
+    font-size: 3rem;
+    color: var(--accent-yellowish) !important;
+}
+
 .intro-paragraph{
-    font-size: 2.5rem;
+    font-size: 1.75rem;
     line-height: 1.4;
     margin-bottom: 20px;
     hyphens: none;
     text-wrap: balance;
-    font-weight: 500;
+    color: white;
+}
+
+.intro-paragraph:last-of-type{
+    margin-bottom: 0px;
+}
+
+p a{
+    color: var(--accent-yellowish) !important;
 }
 
 #container-home-topo-items{
     height: 70dvh;
     width: 100%;
-    background-color: #d7dbfa;
     overflow: hidden;
     clip-path: polygon(0 0, 100% 0, 100% 87%, 0% 100%);
     z-index: 2;
@@ -33,7 +62,8 @@
 }
 
 #container-home-topo-items-sub{
-    height: calc(70dvh + 10px);
+    height: calc(70dvh);
+    top: 10px;
     width: 100%;
     background-color: #ffffff;
     clip-path: polygon(0 0, 100% 0, 100% 87%, 0% 100%);
@@ -56,11 +86,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
-    height: 40dvh;
-    width: 50%;
+    height: calc(40dvh - 10px);
+    width: calc(50% - 10px);
     position: relative;
     overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.item-bottom-esq{
+    margin-left: 10px;
+}
+
+.item-bottom-dir{
+    margin-right: 10px;
 }
 
 .item-bottom-esq img,.item-bottom-dir img{
@@ -131,4 +169,18 @@
 .item-bottom-dir:hover .overlay-home-news{
     opacity: 0;
     transition: 0.5s ease-in-out;
+}
+
+/* bg */
+#bghome{
+    position: absolute;
+    top: 10;
+    left: 10;
+    width: calc(100% - 20px);
+    height: 100%;
+    background-image: url(../../images/overlay.png), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(../../images/bg.jpg);
+    background-size: auto, auto, 100% auto;
+    background-position: center, center, top center;
+    background-repeat: repeat, no-repeat, no-repeat;
+    z-index: -1;
 }

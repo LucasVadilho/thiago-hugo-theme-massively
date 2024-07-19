@@ -1,18 +1,23 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/listademateriais.css"> <!-- Chamando CSS lista de materiais-->
 
-<span class="pinMateriaisUsados" onclick="expandirmateriais(event)">
-<span class="txt_pinMateriaisUsados">MATERIAIS</span><i class="fa fa-thumb-tack" aria-hidden="true"></i></span>
-    
-<div class="listaMateriais">
-    <span class="txt_pinMateriaisUsadosAberto">MATERIAIS (LINKS AFILIADOS) <i class="fa fa-thumb-tack" aria-hidden="true"></i>
-        <span class='toCloseMateriais' onclick="fecharmateriais()"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
-    </span>
-    {{ range $item := .Params.listaMateriais }}
-        <span class="itemDaLista">
-            <a href="{{ $item.link }}" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i> {{ $item.nome }}</a>
-        </span>
-    {{ end }}
-    <span class="txt_pinMateriaisUsadosAbertoAviso">
-    <span class="divisoriaBonitaMateriais"></span>
-    Comprar pelos links gera renda para o site <b>sem</b> alterar o custo da sua compra</span>
+<div id="listaMateriais">
+    <div id="header-listaMateriais">
+        <h3>Materiais Utilizados</h3>
+        <span id='toCloseMateriais' onclick="fecharmateriais()"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+    </div>
+        
+    <div id="container-materiais-utilizados">
+        {{ range .Params.materiais }}
+            <span material-id="{{ . }}"></span>
+        {{ end }}
+    </div>
+
+    <div id="footer-listaMateriais">
+        <p>Compras através dos links geram comissões 
+            que me permitem continuar criando. Clique 
+            no link desejado e compre normalmente; o preço <b>não</b> muda.
+            <br>
+            Muito obrigado :)
+        </p>
+    </div>
 </div>

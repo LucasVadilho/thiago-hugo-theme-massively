@@ -198,12 +198,6 @@
 			}
 		}
 
-		.select-wrapper {
-			&:before {
-				color: _palette($p, border);
-			}
-		}
-
 		input[type="checkbox"],
 		input[type="radio"], {
 			& + label {

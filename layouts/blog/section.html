@@ -9,33 +9,31 @@
 {{ $postsPaging := .Paginate $posts_blog $postsPerPage }}
 
 <body lang='{{ .Site.LanguageCode | default "pt-br" }}'>
-    <div id="wrapper">
-        <!-- Main -->
-        <div id="main">
-            {{- partial "pageHeaderMenuAndLogo" . -}}
-            <div id="container-blogHeader">
-                <div class="container-header-name" id="blog-header-name">
-                    <h1>A Toca (Blog)</h1>
-                </div>
-                <div class="container-header-text">
-                    <p>A Toca é um blog voltado para postagens sobre criatividade, vida criativa e tudo o mais que permite e colabora para
-                        a libertação criativa. Com postagens mensais, o objetivo aqui é o de compartilhar, inspirar e conversar.</p>
-                </div>
+    <!-- Main -->
+    <div id="main">
+        {{- partial "pageHeaderMenuAndLogo" . -}}
+        <div id="container-blogHeader">
+            <div class="container-header-name" id="blog-header-name">
+                <h1>A Toca (Blog)</h1>
             </div>
-            <div id="container-post-all-after-header">
-                <div id="container-postagens">
-                    {{ partial "posts_blog/list.html" (dict "posts" $postsPaging "siteData" (index .Site.Data .Site.Language.Lang)) }}
-                </div>
-
-                <div id="container-paginator">
-                    {{- $paginator := .Paginator }}
-                    {{- $outer := . }}
-                    {{- partial "pagination.html" (dict "paginator" $paginator "outer" $outer)}}
-                </div>
+            <div class="container-header-text">
+                <p>A Toca é um blog voltado para postagens sobre criatividade, vida criativa e tudo o mais que permite e colabora para
+                    a libertação criativa. Com postagens mensais, o objetivo aqui é o de compartilhar, inspirar e conversar.</p>
             </div>
-            {{- partial "emailing" . -}}
-            {{- partial "rodape.html" . }}
         </div>
+        <div id="container-post-all-after-header">
+            <div id="container-postagens">
+                {{ partial "posts_blog/list.html" (dict "posts" $postsPaging "siteData" (index .Site.Data .Site.Language.Lang)) }}
+            </div>
+
+            <div id="container-paginator">
+                {{- $paginator := .Paginator }}
+                {{- $outer := . }}
+                {{- partial "pagination.html" (dict "paginator" $paginator "outer" $outer)}}
+            </div>
+        </div>
+        {{- partial "emailing" . -}}
+        {{- partial "rodape.html" . }}
     </div>
     {{- template "_internal/google_analytics.html" . }}
     {{- partial "scripts/index" . }}

@@ -9,35 +9,32 @@
 {{ $postsPaging := .Paginate $posts_historietas $postsPerPage }}
 
 <body lang='{{ .Site.LanguageCode | default "en-us" }}' class="is-preload">
-    <div id="wrapper" class="fade-in">
-        <!-- Main -->
-        <div id="main">
-            {{- partial "pageHeaderMenuAndLogo" . -}}
-            <div id="container-historietasHeader">
-                <div class="container-header-name" id="historietas-header-name">
-                    <h1>Historietas</h1>
-                </div>
-                <div class="container-header-text">
-                    <p><i>"Histórias curtas são pequenas janelas para outros mundos, outras mentes e outros sonhos. 
-                        São viagens que você pode fazer ao outro lado do universo e ainda voltar a tempo para o jantar." <br>—&nbspNeil&nbspGaiman [traduzido]</i></p>
-                </div>
+    <div id="main">
+        {{- partial "pageHeaderMenuAndLogo" . -}}
+        <div id="container-historietasHeader">
+            <div class="container-header-name" id="historietas-header-name">
+                <h1>Historietas</h1>
+            </div>
+            <div class="container-header-text">
+                <p><i>"Histórias curtas são pequenas janelas para outros mundos, outras mentes e outros sonhos. 
+                    São viagens que você pode fazer ao outro lado do universo e ainda voltar a tempo para o jantar." <br>—&nbspNeil&nbspGaiman [traduzido]</i></p>
+            </div>
+        </div>
+
+        <div id="container-post-all-after-header">
+            <div id="container-postagens">
+                {{ partial "posts_historietas/list.html" (dict "posts" $postsPaging "siteData" (index .Site.Data .Site.Language.Lang)) }}
             </div>
 
-            <div id="container-post-all-after-header">
-                <div id="container-postagens">
-                    {{ partial "posts_historietas/list.html" (dict "posts" $postsPaging "siteData" (index .Site.Data .Site.Language.Lang)) }}
-                </div>
-
-                <div id="container-paginator">
-                    {{- $paginator := .Paginator }}
-                    {{- $outer := . }}
-                    {{- partial "pagination.html" (dict "paginator" $paginator "outer" $outer)}}
-                </div>
+            <div id="container-paginator">
+                {{- $paginator := .Paginator }}
+                {{- $outer := . }}
+                {{- partial "pagination.html" (dict "paginator" $paginator "outer" $outer)}}
             </div>
+        </div>
         {{- partial "emailing" . -}}
         {{- partial "rodape.html" . }}
-        </div>   
-    </div>
+    </div>   
     {{- template "_internal/google_analytics.html" . }}
     {{- partial "scripts/index" . }}
     {{- partial "meusscripts" . -}}

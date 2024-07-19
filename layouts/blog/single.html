@@ -6,102 +6,100 @@
 {{- partial "navigationlinks" . -}}<!-- puxando os menus -->
 
 <body lang='{{ .Site.LanguageCode | default "en-us" }}' class="is-preload">
-    <!-- Wrapper -->
-    <div id="wrapper">
-        <div id="main">
-            {{- partial "pageHeaderMenuAndLogo" . -}}
-            <table>
-                <thead>
-                    <tr>
-                      <th>Fonte: www.tdvadilho.com</th>
-                    </tr>
-                </thead>
+    <div id="main">
+        {{- partial "pageHeaderMenuAndLogo" . -}}
+        <table>
+            <thead>
+                <tr>
+                    <th>Fonte: www.tdvadilho.com</th>
+                </tr>
+            </thead>
 
-                <tbody>
-                    <tr>
-                        <td>
-                            <div class="container-header-single-post">
-                                <div class="header-single-posts">
-                                    <div class="header-title-single-post">
-                                        <h1> {{ .Title }} </h1>
-                                    </div>
-                                    <div class="header-infos-single-post">
-                                        <h4> 
-                                            <span class="header-infos-divider-single-post"><i class="fa-solid fa-folder"></i></span>      
-                                            {{ range $v, $categories := .GetTerms "categories" }}
-                                                {{- if $v }}<span style="text-transform: none">e </span>{{ end }}
-                                                <span class="span-link">
-                                                    <a onclick="window.location.href='/categories/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
-                                                </span>
-                                            {{ end}}
-                                           
-                                            <span class="header-infos-divider-single-post">
-                                                <span class="header-infos-will-disappear">|&nbsp&nbsp</span>
-                                                <i class="fa-solid fa-tags"></i>
-                                            </span>                                        
-                                                   
-                                            {{ range $k, $tags := .GetTerms "tags" }}
-                                                {{- if $k }}, {{ end }}
-                                                <span class="span-link">
-                                                    <a class="tags-container" onclick="window.location.href='/tags/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
-                                                </span>
-                                            {{ end }}
-                                            
-                                            <span class="header-infos-divider-single-post">
-                                                <span class="header-infos-will-disappear">|&nbsp&nbsp</span>
-                                                <i class="fa-solid fa-comments"></i>
-                                            </span>
-                                            
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="container-header-single-post">
+                            <div class="header-single-posts">
+                                <div class="header-title-single-post">
+                                    <h1> {{ .Title }} </h1>
+                                </div>
+                                <div class="header-infos-single-post">
+                                    <h4> 
+                                        <span class="header-infos-divider-single-post"><i class="fa-solid fa-folder"></i></span>      
+                                        {{ range $v, $categories := .GetTerms "categories" }}
+                                            {{- if $v }}<span style="text-transform: none">e </span>{{ end }}
                                             <span class="span-link">
-                                                <a onclick="goToComentariosBlog()"><span  data-cusdis-count-page-id="{{ .Params.UniqueID }}">0</span> comentários</a>
-                                            </span>    
-                                        </h4>
-                                    </div>
-                                    <img src="{{ .Params.Imageheader }}" alt="{{ .Params.Imageheaderalt }}">
+                                                <a onclick="window.location.href='/categories/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+                                            </span>
+                                        {{ end}}
+                                        
+                                        <span class="header-infos-divider-single-post">
+                                            <span class="header-infos-will-disappear">|&nbsp&nbsp</span>
+                                            <i class="fa-solid fa-tags"></i>
+                                        </span>                                        
+                                                
+                                        {{ range $k, $tags := .GetTerms "tags" }}
+                                            {{- if $k }}, {{ end }}
+                                            <span class="span-link">
+                                                <a class="tags-container" onclick="window.location.href='/tags/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+                                            </span>
+                                        {{ end }}
+                                        
+                                        <span class="header-infos-divider-single-post">
+                                            <span class="header-infos-will-disappear">|&nbsp&nbsp</span>
+                                            <i class="fa-solid fa-comments"></i>
+                                        </span>
+                                        
+                                        <span class="span-link">
+                                            <a onclick="goToComentariosBlog()"><span  data-cusdis-count-page-id="{{ .Params.UniqueID }}">0</span> comentários</a>
+                                        </span>    
+                                    </h4>
                                 </div>
+                                <img src="{{ .Params.Imageheader }}" alt="{{ .Params.Imageheaderalt }}">
                             </div>
+                        </div>
 
-                            <div class="container-texto-and-image-content">
-                                <div class="container-chamada-content">{{ .Params.Description }}</div>
-                                {{ if strings.Contains .TableOfContents "li" }}
-                                    <div class="container-table-of-contents">
-                                        <h2>Sumário</h2>
-                                        {{ .Page.TableOfContents }}
-                                    </div>
-                                {{ else }}
-                                    <div class="no-table-of-contents"></div>
-                                {{ end }}
-                                {{ .Content }}
-                                <p class="referenciar" style="margin-top:30px">Texto e imagens: ©Thiago David Vadilho (TD Vadilho)</p>
-                                <p class="referenciar">*Jamais venda ou monetize este conteúdo sem a autorização expressa do autor.</p>
-                                <p class="referenciar">Caso necessário, entre em <a  href='{{ "#contatar" | relLangURL }}' class="linkto_contato"><u>contato</u></a>.</p>
-                            </div>    
-                               
-                            <div id="suporteoblog">
-                                <h1>Apoie a Toca❤️</h1>
-                                <div class="container-imortalizados-da-vez">
-                                    <p>A criação do conteúdo que você aproveitou somente é possível graças ao apoio dos leitores e leitoras do site.
-                                        O agradecimento especial desse post vai para
-                                       {{- range $key, $value := .Params.Imortalizadosdavez -}}
-                                           {{ if $key }} e {{ end }}
-                                           <img class="nomes-imortalizados" src="{{ $value }}" alt="Nomes dos imortalizados da vez">
-                                       {{- end -}}
-                                       , que apoiaram o meu trabalho, e agora estão sendo <i>imortalizados</i> nessa postagem do blog :)
-                                   </p>
+                        <div class="container-texto-and-image-content">
+                            <div class="container-chamada-content">{{ .Params.Description }}</div>
+                            {{ if strings.Contains .TableOfContents "li" }}
+                                <div class="container-table-of-contents">
+                                    <h2>Sumário</h2>
+                                    {{ .Page.TableOfContents }}
                                 </div>
-                                {{- partial "suporte" . }}
+                            {{ else }}
+                                <div class="no-table-of-contents"></div>
+                            {{ end }}
+                            {{ .Content }}
+                            <p class="referenciar" style="margin-top:30px">Texto e imagens: ©Thiago David Vadilho (TD Vadilho)</p>
+                            <p class="referenciar">*Jamais venda ou monetize este conteúdo sem a autorização expressa do autor.</p>
+                            <p class="referenciar">Caso necessário, entre em <a  href='{{ "#contatar" | relLangURL }}' class="linkto_contato"><u>contato</u></a>.</p>
+                        </div>    
+                            
+                        <div id="suporteoblog">
+                            <h1>Apoie a Toca❤️</h1>
+                            <div class="container-imortalizados-da-vez">
+                                <p>A criação do conteúdo que você aproveitou somente é possível graças ao apoio dos leitores e leitoras do site.
+                                    O agradecimento especial desse post vai para
+                                    {{- range $key, $value := .Params.Imortalizadosdavez -}}
+                                        {{ if $key }} e {{ end }}
+                                        <img class="nomes-imortalizados" src="{{ $value }}" alt="Nomes dos imortalizados da vez">
+                                    {{- end -}}
+                                    , que apoiaram o meu trabalho, e agora estão sendo <i>imortalizados</i> nessa postagem do blog :)
+                                </p>
                             </div>
-                            {{- partial "similarPostsBlog" .}}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="paperOverlay"></div>
-        </div>
+                            {{- partial "suporte" . }}
+                        </div>
+                        {{- partial "similarPostsBlog" .}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="paperOverlay"></div>
+        {{- partial "listademateriais" . -}}
         {{- partial "emailing" . -}}
         {{- partial "rodape.html" . }}
-        <div id="urlCopiarNotification"></div>
     </div>
+    <div id="urlCopiarNotification"></div>
     {{- template "_internal/google_analytics.html" . }}
     {{- partial "scripts/index" . }}
     {{- partial "meusscripts" . -}}

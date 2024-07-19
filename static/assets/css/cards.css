@@ -15,6 +15,16 @@
     padding: 15px;
     color: var(--whitesmoke-color);
     margin-bottom: 30px;
+    -webkit-filter: blur(0);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    transition: all 1s;
+}
+
+.post-card:hover{
+    background-size: 120%;
+    transition: all 1s;
 }
 
 .categories-container{
@@ -36,8 +46,6 @@
 
 .category-container{
     transition: transform .2s ease;
-    transform: perspective(1px) translateZ(0);
-    backface-visibility: hidden;
     -webkit-filter: blur(0);
 }
 
@@ -129,14 +137,12 @@
     object-fit: cover;
     object-position: 50% 50%;
     transition: transform 1s;
-    transform: perspective(1px) translateZ(0);
-    backface-visibility: hidden;
     -webkit-filter: blur(0);
 }
 
 .capa img:hover{
     cursor: pointer;
-    transform: scale(1.19);
+    transform: scale(1.2);
 }
 
 .flipcapa{
@@ -234,14 +240,41 @@
     margin-right: 5px;
 }
 
-/* especial conteudos relacionados */
-.categories-container-conteudos-relacionados{
+/* SIMILAR POSTS */
+#container-mais-posts-como-esse{
     display: inline-flex;
-    justify-content: flex-end; 
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    padding-left: 80px;
+    padding-right: 80px;
 }
 
-.post-card-info-conteudos-relacionados{
-    margin-top: auto;
+#container-mais-posts-como-esse-cards{
+    display: inline-flex;
+    justify-content: space-around;
+    overflow: hidden;
+}
+
+#container-mais-posts-como-esse-cards>.post-container{
+    margin-right: 20px;
+    margin-bottom: 0px !important;
+}
+
+#container-mais-posts-como-esse-cards:last-child{
+    margin-right: 0 !important;
+}
+
+#correction-height{
+    padding-top: 30.39px;
+    margin-right: 20px;
+}
+
+#container-mais-posts-como-esse-cards .post-card-info-historietas{
+    margin-bottom: 0 !important;
 }
 
 /* COLOR CODE CATEGORIES */

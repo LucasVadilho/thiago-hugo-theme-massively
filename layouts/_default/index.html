@@ -5,14 +5,13 @@
 {{- partial "navigationlinks" . -}}<!-- puxando os menus -->
 
 <body>
-    <!-- Wrapper -->
-    <div id="wrapper" class="fade-in">
-        <!-- Main --> 
-        <div id="main">
-            {{- partial "pageHeaderMenuAndLogo" . -}}
-            <div id="container-home">     
-                <div id="container-home-topo-items">
-                    <a href="https://www.tdvadilho.com/sobre/"><h1 class = "intro-nome">TD Vadilho</h1></a>
+    <!-- Main --> 
+    <div id="main">
+        {{- partial "pageHeaderMenuAndLogo" . -}}
+        <div id="container-home">     
+            <div id="container-home-topo-items">
+                <div id="organizer-container-text-items">
+                    <a href="https://www.tdvadilho.com/sobre/"><h1>TD Vadilho</h1></a>
                     <p class = "intro-paragraph">
                         Acima de tudo, sou um criador de histórias, sejam elas <a href="https://www.tdvadilho.com/livros/">escritas</a>, <a href="https://www.tdvadilho.com/galeriailustracoes/">visuais</a>, ou uma <a href="https://www.tdvadilho.com/historietas/">mistura de imagens e palavras</a>.
                     </p>
@@ -23,35 +22,37 @@
                         Eu acredito na capacidade emocional das histórias criativas, e é por isso que, além de <a href="https://www.tdvadilho/blog/">falar sobre</a> o assunto, coloco no mundo <a onclick="opennavigationmenu()">aquilo que gostaria de encontrar</a>.
                     </p>
                 </div>
-
-                <div id="container-home-topo-items-sub"></div>
-            
-                <div id="container-home-bottom-items">
-                    {{ range where .Site.RegularPages "Params.Lastpost1" true }}
-                    <div class="item-bottom-esq" onclick="window.location.href='{{ .Permalink | safeURL }}'">
-                        <div class="novidade-notice">Novidade</div>
-                        <div class="overlay-home-news"></div>
-                        <div class="organizer-home-news-text">
-                            <p class="home-news-type">{{ .Params.Lastpost1type }}</p>
-                            <h2 class="home-news-title">{{ .Params.Title }}</h2>
-                        </div>
-                        <img id="home-novidade-1" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
-                    </div>
-                    {{ end }}
-
-                    {{ range where .Site.RegularPages "Params.Lastpost2" true }}
-                    <div class="item-bottom-dir" onclick="window.location.href='{{ .Permalink | safeURL }}'">
-                        <div class="novidade-notice">Novidade</div>
-                        <div class="overlay-home-news"></div>
-                        <div class="organizer-home-news-text">
-                            <p class="home-news-type">{{  .Params.Lastpost2type }}</p>
-                            <h2 class="home-news-title">{{ .Params.Title }}</h2>
-                        </div>
-                        <img id="home-novidade-2" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
-                    </div>
-                    {{ end }}
+                <div id="bghome">
                 </div>
             </div>
+
+            <div id="container-home-topo-items-sub"></div>
+        
+            <div id="container-home-bottom-items">
+                {{ range where .Site.RegularPages "Params.Lastpost1" true }}
+                <div class="item-bottom-esq" onclick="window.location.href='{{ .Permalink | safeURL }}'">
+                    <div class="novidade-notice">Novidade</div>
+                    <div class="overlay-home-news"></div>
+                    <div class="organizer-home-news-text">
+                        <p class="home-news-type">{{ .Params.Lastpost1type }}</p>
+                        <h2 class="home-news-title">{{ .Params.Title }}</h2>
+                    </div>
+                    <img id="home-novidade-1" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
+                </div>
+                {{ end }}
+
+                {{ range where .Site.RegularPages "Params.Lastpost2" true }}
+                <div class="item-bottom-dir" onclick="window.location.href='{{ .Permalink | safeURL }}'">
+                    <div class="novidade-notice">Novidade</div>
+                    <div class="overlay-home-news"></div>
+                    <div class="organizer-home-news-text">
+                        <p class="home-news-type">{{  .Params.Lastpost2type }}</p>
+                        <h2 class="home-news-title">{{ .Params.Title }}</h2>
+                    </div>
+                    <img id="home-novidade-2" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
+                </div>
+                {{ end }}
+            </div>   
         </div>
     </div>
     {{- template "_internal/google_analytics.html" . }}

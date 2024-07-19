@@ -46,8 +46,8 @@ a{
     border: none;
 }
 
-#wrapper{
-    display: contents;
+a:hover{
+    cursor: pointer;
 }
 
 body{
@@ -58,6 +58,15 @@ body{
 
 #main{
     background-color: var(--main-bg-color);
+}
+
+.main-header-menu-and-logo{
+    position: absolute;
+    z-index: 10;
+    display: inline-flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    margin-top: 10px;
 }
 
 #logo{
@@ -455,3 +464,29 @@ p>a:hover, figcaption>a:hover{
     margin-top: auto;
     margin-bottom: auto;
 }
+
+/*---------ANIM SCROLL IMAGE-------------*/
+.not-shown-img-state{
+    opacity: 0;
+    -moz-transition: all 1s ease-out;
+    -webkit-transition: all 1s ease-out;
+    -o-transition: all 1s ease-out;
+    transition: all 1s ease-out;
+    -moz-transform: translate3d(0px, 200px, 0px);
+    -webkit-transform: translate3d(0px, 200px, 0px);
+    -o-transform: translate(0px, 200px);
+    -ms-transform: translate(0px, 200px);
+    transform: translate3d(0px, 200, 0px);
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
+  .shown-img-state{
+    opacity: 1;
+    -moz-transform: translate3d(0px, 0px, 0px);
+    -webkit-transform: translate3d(0px, 0px, 0px);
+    -o-transform: translate(0px, 0px);
+    -ms-transform: translate(0px, 0px);
+    transform: translate3d(0px, 0px, 0px);
+  }
