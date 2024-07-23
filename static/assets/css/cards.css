@@ -259,12 +259,12 @@
     overflow: hidden;
 }
 
-#container-mais-posts-como-esse-cards>.post-container{
+#container-mais-posts-como-esse-cards .post-card{
     margin-right: 20px;
     margin-bottom: 0px !important;
 }
 
-#container-mais-posts-como-esse-cards:last-child{
+#container-mais-posts-como-esse-cards .post-card:last-child{
     margin-right: 0 !important;
 }
 

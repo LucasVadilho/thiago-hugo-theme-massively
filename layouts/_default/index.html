@@ -30,7 +30,11 @@
         
             <div id="container-home-bottom-items">
                 {{ range where .Site.RegularPages "Params.Lastpost1" true }}
-                <div class="item-bottom-esq" onclick="window.location.href='{{ .Permalink | safeURL }}'">
+                    {{ if eq .Params.Lastpost2type "galeria de ilustrações"}}
+                        <div class="item-bottom-center" onclick="window.location.href='galeriailustracoes/?id={{ .Params.Projectid | safeURL }}'">
+                    {{ else }}
+                        <div class="item-bottom-center" onclick="window.location.href='{{ .Permalink | safeURL }}'">
+                    {{ end }}
                     <div class="novidade-notice">Novidade</div>
                     <div class="overlay-home-news"></div>
                     <div class="organizer-home-news-text">
@@ -42,14 +46,34 @@
                 {{ end }}
 
                 {{ range where .Site.RegularPages "Params.Lastpost2" true }}
-                <div class="item-bottom-dir" onclick="window.location.href='{{ .Permalink | safeURL }}'">
+                    {{ if eq .Params.Lastpost2type "galeria de ilustrações"}}
+                        <div class="item-bottom-center" onclick="window.location.href='galeriailustracoes/?id={{ .Params.Projectid | safeURL }}'">
+                    {{ else }}
+                        <div class="item-bottom-center" onclick="window.location.href='{{ .Permalink | safeURL }}'">
+                    {{ end }}
+                            <div class="novidade-notice">Novidade</div>
+                            <div class="overlay-home-news"></div>
+                            <div class="organizer-home-news-text">
+                                <p class="home-news-type">{{  .Params.Lastpost2type }}</p>
+                                <h2 class="home-news-title">{{ .Params.Title }}</h2>
+                            </div>
+                            <img id="home-novidade-2" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
+                        </div>
+                {{ end }}
+
+                {{ range where .Site.RegularPages "Params.Lastpost3" true }}
+                    {{ if eq .Params.Lastpost2type "galeria de ilustrações"}}
+                        <div class="item-bottom-center" onclick="window.location.href='galeriailustracoes/?id={{ .Params.Projectid | safeURL }}'">
+                    {{ else }}
+                        <div class="item-bottom-center" onclick="window.location.href='{{ .Permalink | safeURL }}'">
+                    {{ end }}
                     <div class="novidade-notice">Novidade</div>
                     <div class="overlay-home-news"></div>
                     <div class="organizer-home-news-text">
                         <p class="home-news-type">{{  .Params.Lastpost2type }}</p>
                         <h2 class="home-news-title">{{ .Params.Title }}</h2>
                     </div>
-                    <img id="home-novidade-2" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
+                    <img id="home-novidade-3" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
                 </div>
                 {{ end }}
             </div>   

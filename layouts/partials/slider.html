@@ -2,33 +2,32 @@
 
 {{ if isset .Params "slidersgallery" }}
     <div id="slider-container">
-        <a id="prevSlide" onclick="plusSlides(-1)"><span class='fa fa-chevron-circle-left fa' aria-hidden='true'></span></a>
-            <div id="gallery-and-materials-container">
-                {{ if isset .Params "listamateriais" }} <!-- Se tiver lista de materiais no arquivo, vai puxar aqui -->
-                    {{- partial "listademateriais" . }}
-                {{ end }}
-            
-                {{ range $slidersgallery := .Params.slidersgallery }}
-                    <div class="slider-gallery fade">
-                        {{ if strings.Contains $slidersgallery "youtube" }}
-                            <iframe
-                                src={{ $slidersgallery }}
-                                title="YouTube video player" frameborder="0" scrolling="no"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen>
-                            </iframe>
-                        {{ else }}
-                            <img src="{{ $slidersgallery }}" alt="slider gallery image not able to render. Sorry">
-                        {{ end }}
-                    </div>
-                {{ end }}
-            </div>
-        <a id="nextSlide" onclick="plusSlides(1)"><span class='fa fa-chevron-circle-right fa' aria-hidden='true'></span></a>
-    </div>                               
-
-    <div id="square-navigation-slider-container">
-        {{ range $i := (seq (len .Params.slidersgallery)) }}
-            <span class="square-navigation-slider" onclick='currentSlide("{{ $i }}")'></span>
-        {{ end }}
+        <div id="container-gallery-images">
+            {{ range $slidersgallery := .Params.Slidersgallery }}
+                <div class="slider-gallery">
+                    {{ if eq $slidersgallery.type "video" }}
+                        <iframe
+                            src="{{ $slidersgallery.src }}"
+                            title="YouTube video player" frameborder="0" scrolling="no"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen
+                            alt="{{ $slidersgallery.alt }}">
+                        </iframe>
+                    {{ else }}
+                        <img src="{{ $slidersgallery.src }}" alt="{{ $slidersgallery.alt }}" onclick="window.open('{{ $slidersgallery.link | safeURL }}')">
+                    {{ end }}
+                </div>
+            {{ end }}
+        </div>
+        <div id="square-navigation-slider-container">
+            {{ range $i := (seq (len .Params.slidersgallery)) }}
+                <span class="square-navigation-slider" onclick='currentSlide({{ $i }})'></span>
+            {{ end }}
+        </div>
+    </div>
+    <div id="arrows-slider-container">                            
+        <a id="prevSlide" onclick="plusSlides(-1)"><span class='fa-solid fa-chevron-left' aria-hidden='true'></span></a>
+        <p id="currentSlideText" length="{{len .Params.slidersgallery }}"></p>
+        <a id="nextSlide" onclick="plusSlides(1)"><span class='fa-solid fa-chevron-right' aria-hidden='true'></span></a>
     </div>
 {{ end }}

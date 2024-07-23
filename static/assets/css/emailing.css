@@ -1,26 +1,37 @@
 #container-emailing{
-    background-color: #5F7183;
+    background-color: var(--accent-blueish);
     display: flex;
     justify-content: center;
     padding-top: 90px;
     padding-bottom: 90px;
+    column-gap: 40px;
+    align-items: center;
 }
 
-#text-chamada-emailing-letter{
-    max-width: 500px;
-    line-height: 1.5;
-    font-size: 1.5rem;
-    text-align: center;
-    text-wrap: balance;
-    margin-bottom: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    font-style: italic;
+#container-newsletterForm{
+    display: inline-flex;
+    flex-direction: column;
 }
 
 #de-eu-para-voce-miolo{/* container do miolo */
     max-width: 900px;
-    position: relative;
+}
+
+#text-chamada-emailing-letter{
+    max-width: 700px;
+    line-height: 1.5;
+    font-size: 1.5rem;
+    text-align: center;
+    text-wrap: balance;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    font-style: italic;
+    color: var(--whitesmoke-color);
+}
+
+#newsletterForm{
+    margin-bottom: 40px;
 }
 
 #container-input-emailing-letter{
@@ -95,8 +106,10 @@
 	        transition: transform 0.5s ease 0.25s ;
 }
 
-#text-disclaimer-letter-emailing{
-    font-size: 10px;
+#text-disclaimer-emailing-letter{
+    font-size: 1rem;
+    color: var(--whitesmoke-color);
+    text-align: center;
 }
 
 #container-newsletterForm section{

@@ -57,6 +57,12 @@ document.addEventListener('keydown', (ev) => {
 
 /* ----------------SLIDESHOW---------------- */
 let slideIndex = 1; //inicializando slide
+let currentSlideText = document.getElementById("currentSlideText");
+
+if(currentSlideText != null){
+    currentSlideText.innerHTML = (slideIndex + 1) + '/' + currentSlideText.getAttribute("length");
+}
+
 function plusSlides(n) { //prev and next click
     showSlides(slideIndex += n);
 }
@@ -70,10 +76,10 @@ function showSlides(n) {
     let slides = document.getElementsByClassName("slider-gallery");
     let squaresnavigation = document.getElementsByClassName("square-navigation-slider");
     if (n > slides.length) {
-        slideIndex = 1
+        slideIndex = 1;
     }
     if (n < 1) {
-        slideIndex = slides.length
+        slideIndex = slides.length;
     }
     for (i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
@@ -83,57 +89,54 @@ function showSlides(n) {
     }
     slides[slideIndex-1].style.display = "block";
     squaresnavigation[slideIndex-1].className += " activeslide";
+    currentSlideText.innerHTML = (slideIndex) + '/' + currentSlideText.getAttribute("length");
 }
     //SWIPE LEFT OR RIGHT
     let touchsurface = document.getElementById('slider-container'),
-        startX, 
-        startY,
-        dist,
-        distThreshold,
-        thresholdX = 50,
-        thresholdY = 50,
-        allowedTime = 1500,
-        elapsedTime,
-        startTime
+    startX, 
+    startY,
+    dist,
+    distThreshold,
+    thresholdX = 50,
+    thresholdY = 50,
+    allowedTime = 1500,
+    elapsedTime,
+    startTime
 
     let setupSliderforswipe = function() {
         touchsurface.addEventListener('touchstart', function(touch) {
-            let touchobj = touch.changedTouches[0]
+        let touchobj = touch.changedTouches[0];
             
-            dist = 0
-            distThreshold = 0
-            startX = touchobj.pageX
-            startY = touchobj.pageY
-            startTime = new Date().getTime() 
-        }, false)
+        dist = 0;
+        distThreshold = 0;
+        startX = touchobj.pageX;
+        startY = touchobj.pageY;
+        startTime = new Date().getTime() ;
+    }, false)
 
-        touchsurface.addEventListener('touchend', function(touch) {
-            var touchobj = touch.changedTouches[0]
-            dist = touchobj.pageX - startX
-            distThreshold = Math.abs(dist)
-            elapsedTime = new Date().getTime() - startTime
+    touchsurface.addEventListener('touchend', function(touch) {
+        var touchobj = touch.changedTouches[0]
+        dist = touchobj.pageX - startX
+        distThreshold = Math.abs(dist)
+        elapsedTime = new Date().getTime() - startTime
 
-            if (
-                elapsedTime <= allowedTime &&
-                distThreshold >= thresholdX &&
-                Math.abs(touchobj.pageY - startY) <= thresholdY &&
-                dist > 0 &&
-                flagMateriaisAberto == false
-            ){
-                document.getElementById('prevSlide').click()
-            }
+        if (
+            elapsedTime <= allowedTime &&
+            distThreshold >= thresholdX &&
+            Math.abs(touchobj.pageY - startY) <= thresholdY &&
+            dist > 0){
+            document.getElementById('prevSlide').click()
+        }
 
-            if (
-                elapsedTime <= allowedTime &&
-                distThreshold >= thresholdX &&
-                Math.abs(touchobj.pageY - startY) <= thresholdY &&
-                dist < 0 &&
-                flagMateriaisAberto == false
-            ){                                         
+         if (
+            elapsedTime <= allowedTime &&
+            distThreshold >= thresholdX &&
+            Math.abs(touchobj.pageY - startY) <= thresholdY &&
+            dist < 0){                                         
                 document.getElementById('nextSlide').click()
-            }
-        }, false)
-    }
+             }
+         }, false)
+     }
 
 
 /* ----------------REALIGN VERTICAL---------------- */
@@ -141,11 +144,11 @@ function showSlides(n) {
         // setTimeout(() => {
         let snackbarChildrenSize = 0;
         let snackElement = document.getElementById(projetoaberto);
-        console.log(snackElement);
+        /* console.log(snackElement); */
         let snackbarChildrenNumber = snackElement.children.length;
                 
         for(let i = 0; i < snackbarChildrenNumber; i++){
-            console.log(snackElement.children[i].height);
+            /* console.log(snackElement.children[i].height); */
             snackbarChildrenSize += snackElement.children[i].height;
         }
 
@@ -158,73 +161,49 @@ function showSlides(n) {
     }
 
 /* ----------------ANIMAÇÃO DE CARREGAMENTO ILUSTRAÇÕES---------------- */
-let i= () => console.log(4);
 /*Interactivity to determine when an animated element in in view. In view elements trigger our animation*/
-$(document).ready(function() {
+let check_if_in_view = function () {
     //window and animation items
     var animation_elements = $.find('.animation-element');
+    
     var web_window = $(window);
+    
+    //get current window information
+    var window_height = web_window.height();
+    var window_top_position = web_window.scrollTop();
+    var window_bottom_position = (window_top_position + window_height);
 
-    //check to see if any animation containers are currently in view
-    function check_if_in_view() {
-        //get current window information
-        var window_height = web_window.height();
-        var window_top_position = web_window.scrollTop();
-        var window_bottom_position = (window_top_position + window_height);
+    //iterate through elements to see if its in view
+    $.each(animation_elements, function(i) {
+        var element = $(this);
+
+        if(element.attr("flagImagemMostrada") === "true"){
+            return;
+        }
         
-        // for(let i = 0; i < animation_elements.length; i++){
-        //     //get the element sinformation
-        //     let element = animation_elements[i];
+        var element_height = $(element).outerHeight();
+        var element_top_position = $(element).offset().top;
+        var element_bottom_position = (element_top_position + element_height);
 
-        //     if(element.getAttribute("flagImagemMostrada") === "true"){
-        //         return;
-        //     }
-                
-        //     // setTimeout(() => {
-        //         // console.log(element);
-        //         // console.log($(element).attr("src"));
-
-        //         var element_height = $(element).outerHeight();
-        //         var element_top_position = $(element).offset().top;
-        //         var element_bottom_position = (element_top_position + element_height);
-
-        //         console.log(element_height, element_top_position);
-
-        //         //check to see if this current container is visible (its viewable if it exists between the viewable space of the viewport)
-        //         if ((element_bottom_position >= window_top_position) && (element_top_position <= window_bottom_position)) {
-        //             element.classList.add('shown-img-state');
-        //             element.setAttribute("flagImagemMostrada", true);
-        //         }
-        //     // }, 100);
-        // }
-
-        //iterate through elements to see if its in view
-        $.each(animation_elements, function () {
-            //get the element sinformation
-            var element = $(this);
-
-            if(element.attr("flagImagemMostrada")==="true"){
-                return;
-            }
-            
-            var element_height = $(element).outerHeight();
-            var element_top_position = $(element).offset().top;
-            var element_bottom_position = (element_top_position + element_height);
-
-            //check to see if this current container is visible (its viewable if it exists between the viewable space of the viewport)
-            if ((element_bottom_position >= window_top_position) && (element_top_position <= window_bottom_position)) {
+        if ((element_bottom_position >= window_top_position) && (element_top_position <= window_bottom_position)) {
+            setTimeout(() => {
                 element.addClass('shown-img-state');
-                element.attr("flagImagemMostrada",true);
-            } else {
-                element.removeClass('shown-img-state');
-            }
-        });
-    }
+                element.attr("flagImagemMostrada", true);
+            }, i * 100);
+        }
+    });
+}
 
-    //on or scroll, detect elements in view
+$(document).ready(function() {
+    //check to see if any animation containers are currently in view
+
     $(window).on('scroll resize', function() {check_if_in_view()})
     /* $(window).trigger('scroll'); */
+
+    setInterval(check_if_in_view, 1);
 });
+
+
 
 
 /*---------------- Copiar URL ----------------*/
@@ -501,11 +480,11 @@ let renderMateriaisUtilizados = function (){
 /* ----------------DOM CONTENT LOADED---------------- */
 document.addEventListener("DOMContentLoaded", (event) => {
     /* slide */
-let regularSlideGallery = document.getElementsByClassName("slider-gallery");
-if (regularSlideGallery.length > 0){ //checando se existe regular slide para chamar (regular slide é todo slide com exceção do slide da página de ilustração)
-    setupSliderforswipe();
-    showSlides(slideIndex);
-}  
+    let regularSlideGallery = document.getElementsByClassName("slider-gallery");
+    if (regularSlideGallery.length != ""){ //checando se existe regular slide para chamar (regular slide é todo slide com exceção do slide da página de ilustração)
+        setupSliderforswipe();
+        showSlides(slideIndex);
+    }
 });
 </script>
     

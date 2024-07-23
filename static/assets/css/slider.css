@@ -3,17 +3,7 @@
     width: 100%;
 }
 
-#prevSlide, #nextSlide {
-    cursor: pointer;
-    margin-top: -10px;  
-    padding: 8px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-    font-size: 2rem;
-}
-
-#gallery-and-materials-container{
+#container-gallery-images{
     position: relative;
     line-height: 0;
     width: 100%;
@@ -22,11 +12,35 @@
 
 .slider-gallery{
     display: none; /* hides image by default */
+    overflow: hidden;
+}
+
+.slider-gallery img, .slider-gallery iframe{
+    -webkit-animation: fadeInSlide 2s;
+    animation: fadeInSlide 2s;
+}
+
+@-webkit-keyframes fadeInSlide {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+@keyframes fadeInSlide {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
+.slider-gallery img:hover{
+    scale: 1.2;
+    cursor: pointer;
 }
 
 #square-navigation-slider-container {
     display: flex;
     justify-content: center;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .square-navigation-slider {
@@ -34,9 +48,10 @@
     height: 8px;
     width: 50px;
     margin: 0 5px;
-    background-color: var(--whitesmoke-color) 80%;
+    background-color: var(--highlight-color-text);
+    opacity: 40%;
     display: inline-block;
-    transition: .8s ease-in-out;
+    transition: .3s ease-in-out;
     margin: 3px;
 }
 
@@ -46,6 +61,7 @@
 
 .activeslide, .square-navigation-slider:hover {
     background-color: var(--whitesmoke-color);
+    opacity: 100%;
 }
 
 .youtube-container-hideui-specialhome{
@@ -63,6 +79,28 @@
     height: 100%;
     /* ...and bring it back again */
     margin-left: -100%;
+}
+
+#arrows-slider-container{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: inline-flex;
+    align-items: center;
+    scale: 1.4;
+}
+
+#prevSlide, #nextSlide {
+    cursor: pointer;
+    padding: 8px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+#currentSlideText p{
+    pointer-events: none;
+    font-style: italic;
 }
 
 /* Fading animation */
