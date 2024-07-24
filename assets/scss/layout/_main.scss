@@ -133,12 +133,6 @@
 			}
 		}
 
-		@include breakpoint('<=small') {
-			> * {
-				@include padding((_size(padding) * 1), (_size(padding) * 1));
-			}
-		}
-
 		@include breakpoint('<=xsmall') {
 			width: 100%;
 		}

@@ -1,9 +1,10 @@
 #contato-form-container{
-    transform: translateX(-50%);
-    margin-left: 50%;
     display: inline-flex;
     column-gap: 20px;
     margin-bottom: 100px;
+    justify-content: center;
+    width: 100%;
+    padding: 0px 0px 0px 20px;
 }
 
 #container-outside-form{
@@ -11,10 +12,12 @@
     flex-direction: column;
     text-align: center;
     height: 100%;
+    margin-top: auto;
 }
 
 #container-outside-form img{
     max-height: 300px;
+    object-fit: contain;
 }
 
 #splitcontact{
@@ -59,10 +62,9 @@
 .arrow{
     transition: transform ease-in-out 0.3s;
     position: absolute;
-    right: 10px;
-    top: 50%;
+    right: 20px;
+    top: 42px;
     pointer-events: none;
-    transform: translateY(-50%);
 }
 
 /* Feedback msg enviada ou não */
@@ -159,4 +161,26 @@
 .email-fail-contato-msg a:hover{
     cursor: pointer;
     color: #220907 !important
+}
+
+@media screen and (max-width: 870px) and (min-width: 768px) {
+    .field{
+        width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 765px) and (min-width: 0px) {
+    #contato-form-container {
+        padding: 0px 20px 0px 20px;
+        flex-direction: column;
+    }
+    #container-outside-form{
+        margin-top: 40px;
+    }
+    .field input,.field select,.field textarea{
+        padding: 0 0.75rem !important;
+    }
+    .field{
+        width: 100% !important;
+    }
 }

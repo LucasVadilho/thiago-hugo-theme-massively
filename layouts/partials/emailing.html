@@ -25,36 +25,37 @@
 </div>
 
 <script>
-/* ----------------SENDING EMAIL---------------- */
 var inscreverbutton = document.querySelector(".button-inscrever-de-eu-para-voce");
-var loadingbar = document.querySelector(".subscribing-emailing-letter");
 var emailinscrito = document.querySelector(".email-inscrito-msg");
 var emailnaoinscrito = document.querySelector(".email-fail-inscrito-msg");
 
 let emailsendoincrito = function(){
-    inscreverbutton.classList.add("button-inscrever-de-eu-para-voce-active")
+    var loadingbar = document.querySelector(".subscribing-emailing-letter");
+    inscreverbutton.classList.add("button-inscrever-de-eu-para-voce-active");
 	setTimeout(function(){
-        loadingbar.classList.add("container-input-emailing-letter-loading")
+        loadingbar.classList.add("container-input-emailing-letter-loading");
 	}, 1000);
 }
 
 let emailInscrito = function(){ 
     emailinscrito.classList.add("email-inscrito-msg-active");
-	setTimeout(function(){
-        emailinscrito.classList.remove("email-inscrito-msg-active")
-        loadingbar.classList.remove("container-input-emailing-letter-loading")
-		inscreverbutton.classList.remove("button-inscrever-de-eu-para-voce-active")
-	}, 18000);
+    setTimeout(function(){
+        emailinscrito.classList.remove("email-inscrito-msg-active");
+        loadingbar.classList.remove("container-input-emailing-letter-loading");
+        inscreverbutton.classList.remove("button-inscrever-de-eu-para-voce-active");
+        flagbarcarregada = false;
+    }, 180000);
 }
 
 let tryagain = function (){
-    emailnaoinscrito.classList.remove("email-fail-inscrito-msg-active")
-    loadingbar.classList.remove("container-input-emailing-letter-loading")
-    inscreverbutton.classList.remove("button-inscrever-de-eu-para-voce-active")
+    emailnaoinscrito.classList.remove("email-fail-inscrito-msg-active");
+    loadingbar.classList.remove("container-input-emailing-letter-loading");
+    inscreverbutton.classList.remove("button-inscrever-de-eu-para-voce-active");
+    flagbarcarregada = false;
 }
 
 let emailNaoInscrito = function(){
-    emailnaoinscrito.classList.add("email-fail-inscrito-msg-active")
+    emailnaoinscrito.classList.add("email-fail-inscrito-msg-active");
 }
 
 let subscribeEmailing = function(){

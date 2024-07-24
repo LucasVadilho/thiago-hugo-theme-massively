@@ -42,6 +42,12 @@
     --overlay-color: #1118447a;
 }
 
+html, body { overflow-x:hidden; }
+
+main {
+    width: 100%;
+}
+
 a{
     border: none;
 }
@@ -57,6 +63,7 @@ body{
 }
 
 #main{
+    width: 100%;
     background-color: var(--main-bg-color);
 }
 
@@ -96,7 +103,7 @@ body{
     display: none;
     text-align: center;
     background-color: var(--accent-yellowish);
-    width: 100dvw;
+    width: 100.1%;
     height: 100dvh;
     position: fixed;
     left: 50%;
@@ -130,6 +137,7 @@ figcaption{
     text-align: center;
     hyphens: none !important;
     text-wrap: balance;
+    padding: 0px 20px 0px 20px;
 }
 
 #historietas-header-name{
@@ -177,8 +185,8 @@ figcaption{
 
 /*--------------------PAGINATOR------------------------*/
 #container-paginator{
-    margin-top: 10px;
-    margin-bottom: 30px;
+    margin-top: 20px;
+    margin-bottom: 100px;
 }
 /*--------------------END OF PAGINATOR------------------------*/
 
@@ -281,40 +289,42 @@ figcaption{
 /*--------------------FIM FEEDBACK BOTAO CARREGANDO--------------------*/
 
 /*--------------------ESTILIZAÇÃO DA SCROLLBAR--------------------*/
-::-webkit-scrollbar {
-    width: 5px;              /* width of the entire scrollbar */
-    height: 5px;
+html {
+/* Firefox - Hides track and changes thumb color */
+    scrollbar-color: hsla(0, 0%, 33%, 0.5);
+    background-color: var(--main-bg-color);
 }
 
-::-webkit-scrollbar-track {
-    background: none;       /* color of the tracking area */
+@media screen and (min-width: 551px) {
+    ::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: hsla(0, 0%, 33%, 0.5);
+    }
+
+    ::-webkit-scrollbar-thumb:active {
+        background-color: hsl(0, 0%, 33%);
+    }
+    
+    ::-webkit-scrollbar-thumb:hover{
+        cursor: pointer;
+    }
+    
 }
 
-::-webkit-scrollbar-thumb {
-    background-color: rgb(95, 95, 95);    /* color of the scroll thumb */
-    cursor: pointer !important;
-}
-                
-*::-webkit-scrollbar {
-    width: 5px;
-}
-
-*::-webkit-scrollbar-track {
-    background: none;
+@media screen and (max-width:550px) {
+    ::-webkit-scrollbar-track-piece:start {
+        background: transparent url('images/backgrounds/scrollbar.png') repeat-y !important;
+    }
+    
+    ::-webkit-scrollbar-track-piece:end {
+        background: transparent url('images/backgrounds/scrollbar.png') repeat-y !important;
+    }
 }
 
-*::-webkit-scrollbar-thumb {
-    background-color:rgb(95, 95, 95);
-}
-
-body {
-    scrollbar-width: thin;   /* "auto" or "thin" */
-    scrollbar-color: rgb(95, 95, 95);   /* scroll thumb and track */
-}
-
-::-webkit-scrollbar-thumb:active { 
-    background-color: rgb(100, 100, 100);
-}
 /*--------------------FIM ESTILIZAÇÃO DA SCROLLBAR--------------------*/
 
 /* -------------Hover em Palavra Link--------------- */

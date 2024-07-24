@@ -30,8 +30,6 @@
 			> .fields {
 				$gutter: (_size(element-margin) * 0.75);
 				max-width:  700px; 
-				margin: ($gutter * -1) 0 _size(element-margin) ($gutter * -1);
-
 			}
 		}
 	}

@@ -2,7 +2,7 @@
 #loja-promocao{
     position: relative;
     max-width: 1000px;
-    margin: 80px auto;
+    margin: 80px auto 40px auto;
 }
 
 #container-text-promocao{
@@ -15,6 +15,7 @@
 	text-align: right;
     z-index: 5;
     pointer-events: none;
+    padding: 0 5px 0 5px;
 }
 
 #container-text-promocao h2{
@@ -25,9 +26,14 @@
 
 #dataFinal{
     font-size: 2.5rem;
+    line-height: 1.2;
 }
 
 /* dps do slide */
+.container-header-text p{
+    hyphens: none !important;
+}
+
 #loja-no-promocao{
     display: inline-flex;
     column-gap: 40px;
@@ -36,12 +42,15 @@
     flex-wrap: wrap;
     justify-content: center;
     margin-bottom: 100px;
+    padding: 0 20px 0 20px;
 }
 
 .container-clicavel-and-title{
     padding: 10px;
     background-color: white;
     position: relative;
+    max-width: 450px;
+    max-height: 450px;
 }
 
 .container-clicavel-and-title:hover{
@@ -49,12 +58,14 @@
 }
 
 .clicavel-lojas{
-    max-width: 500px;
+    width: 100%;
     overflow: hidden;
+    height: 100%;
 }
 
 .clicavel-lojas img{
     transition: all 1s ease-in-out;
+    width: 100%;
 }
 
 .container-clicavel-and-title:hover > .clicavel-lojas img{
@@ -81,4 +92,10 @@
     transform: translateY(-50%);
     top: -100%;
     position: relative;
+}
+
+@media screen and (max-width: 680px) {
+    #dataFinal {
+        font-size: 2rem;
+    }
 }

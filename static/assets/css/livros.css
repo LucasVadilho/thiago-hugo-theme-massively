@@ -1,18 +1,30 @@
 #container-post-all-after-header{
     display: flex;
     justify-content: center;
+    margin-bottom: 100px;
 }
 
 .container-livros-all-content{
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .container-livros-all-content:hover{
     cursor: pointer;
 }
 
+.container-livros-all-content:hover > .container-livro-image img{
+    scale: 1.2;
+}
+
+.container-livro-image{
+    overflow: hidden;
+}
+
 .container-livro-image img{
     width: 500px;
+    transition: scale 1s ease-in-out;
 }
 
 .container-livro-infos-and-buttons{

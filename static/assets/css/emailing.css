@@ -96,20 +96,25 @@
     color: var(--whitesmoke-color);
     align-items: center;
     justify-content: center;
+    text-align: center;
     font-family: "Lora";
     font-weight: 600;
     font-size: 1rem;
+    padding: 0px 20px;
+    opacity: 0;
     transform: translateY(50px);
 	-webkit-transition: transform 0.5s ease 0.25s ;
 	   -moz-transition: transform 0.5s ease 0.25s ;
 	     -o-transition: transform 0.5s ease 0.25s ;
 	        transition: transform 0.5s ease 0.25s ;
+            pointer-events: none;
 }
 
 #text-disclaimer-emailing-letter{
     font-size: 1rem;
     color: var(--whitesmoke-color);
     text-align: center;
+    text-wrap: balance !important;
 }
 
 #container-newsletterForm section{
@@ -145,6 +150,8 @@
 	    -ms-transform: translateY(0px);
 	     -o-transform: translateY(0px);
 	        transform: translateY(0px);
+            opacity: 100%;
+            pointer-events: all;
 }
 
 .email-fail-inscrito-msg a{
@@ -155,4 +162,60 @@
 .email-fail-inscrito-msg a:hover{
     cursor: pointer;
     color: #220907 !important
+}
+
+@media screen and (max-width:1025px) and (min-width: 0px){
+    #container-emailing{
+        flex-direction: column;
+        padding: 90px 20px 90px 20px;
+    }
+}
+
+@media screen and (max-width:615px) and (min-width: 326px){
+    #text-chamada-emailing-letter {
+        font-size: 1.35rem;
+    }
+    #text-disclaimer-emailing-letter{
+        font-size: 0.9rem;
+    }
+    .button-inscrever-de-eu-para-voce{
+        padding: 78px 20px 0px 20px;
+    }
+    .email-inscrito-msg-active,.email-fail-inscrito-msg-active{
+        hyphens: auto;
+        line-height: 1.5;
+        font-size: 0.9rem;
+    }
+    .email-fail-inscrito-msg-active{
+        display: block;
+        padding: 10px 30px;
+    }
+}
+
+@media screen and (max-width:375px) {
+    input{
+        padding: 0px 22px;
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width:325px) and (min-width: 0px){
+    #text-chamada-emailing-letter {
+        font-size: 1.1rem;
+    }
+    #text-disclaimer-emailing-letter{
+        font-size: 0.85rem;
+    }
+    .button-inscrever-de-eu-para-voce{
+        padding: 78px 20px 0px 20px;
+    }
+    .email-inscrito-msg-active,.email-fail-inscrito-msg-active{
+        hyphens: auto;
+        line-height: 1.5;
+        font-size: 0.8rem;
+    }
+    .email-fail-inscrito-msg-active{
+        display: block;
+        padding: 10px 20px;
+    }
 }

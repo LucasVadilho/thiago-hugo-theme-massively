@@ -7,17 +7,22 @@
     position: relative;
     line-height: 0;
     width: 100%;
-    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
 }
 
 .slider-gallery{
     display: none; /* hides image by default */
     overflow: hidden;
+    padding: 10px;
+    background-color: white;
 }
 
 .slider-gallery img, .slider-gallery iframe{
     -webkit-animation: fadeInSlide 2s;
     animation: fadeInSlide 2s;
+    transition: scale 1s ease-in-out;
+    width: 100%;
 }
 
 @-webkit-keyframes fadeInSlide {
@@ -84,10 +89,11 @@
 #arrows-slider-container{
     position: absolute;
     bottom: 0;
-    right: 0;
+    right: 5px;
     display: inline-flex;
     align-items: center;
     scale: 1.4;
+    padding: 0px 5px 0px 5px;
 }
 
 #prevSlide, #nextSlide {
