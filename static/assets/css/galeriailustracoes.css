@@ -6,7 +6,7 @@
     grid-gap: 20px;
     grid-auto-flow: dense;
     overflow: auto;
-    /* padding-right: 20px; */
+    padding: 0px 20px 0px 20px;
     margin: 0px auto 100px auto;
     max-width: 1200px;
 }
@@ -170,18 +170,12 @@
 
 
 /* -------------------CORREÇÕES DE MEDIA SCREEN---------------------- */
-@media screen and (max-width: 1000px) and (min-width: 600px) {
-    #organizer-galeria-ilustracoes{
-        -webkit-column-count: 2; /* Chrome, Safari, Opera */
-        -moz-column-count: 2; /* Firefox */
-        column-count: 2;
+@media screen and (max-width:785px) {
+    .vertical{
+        grid-column: span 2;
     }
-}
-
-@media screen and (max-width: 599px) {
-    #organizer-galeria-ilustracoes{
-        -webkit-column-count: 1; /* Chrome, Safari, Opera */
-        -moz-column-count: 1; /* Firefox */
-        column-count: 1;
+    
+    .bighorizontal{
+        grid-column: span 2 !important;
     }
 }

@@ -119,6 +119,28 @@ th{
 figcaption{
     margin-top: 5px;
 }
+
+/*--------------------NAV MENU INSIDE------------------------*/
+#header-navigation-menu{
+    display: inline-flex;
+    width: 100%;
+    padding: 0px 10px;
+    font-size: 2.5rem;
+    justify-content: space-between;
+}
+
+.links{
+    font-size: 2rem;
+    display: inline-flex;
+    flex-direction: column;
+    margin-top: 100px;
+    height: calc(100dvh - 200px);
+    position: absolute;
+    justify-content: space-between;
+    top: 0;
+    right: 50%;
+    transform: translateX(50%);
+}
 /*--------------------PAGEs HEADER------------------------*/
 .container-header-name{
     height: 200px;

@@ -4,18 +4,22 @@
 {{ $currentPage := .Page }}
 
 <nav id="nav">
-    <div class="closethings" onclick="closethis('navigationmenu')">
-        <i class="fa-solid fa-x"></i>
+    <div id="header-navigation-menu">
+        <div id="home-image-logo">
+            <span class="{{ if eq ($currentPage.RelPermalink) (`/`) }}active{{end}}"><a href='{{ "/" | relLangURL }}'>TD Vadilho</a></span>
+        </div>
+        <div class="closethings" onclick="closethis('navigationmenu')">
+            <i class="fa-solid fa-x">close</i>
+        </div>
     </div>
 
-    <ul class="links">
-        <li class="{{ if eq ($currentPage.RelPermalink) (`/`) }}active{{end}}"><a href='{{ "/" | relLangURL }}'>TD Vadilho</a></li>
-        <li class="{{ if eq ($currentPage.RelPermalink) (`/historietas/`) }}active{{end}}"><a href='{{ "/historietas" | relLangURL }}'>Historietas</a></li>
-        <li class="{{ if eq ($currentPage.RelPermalink) (`/livros/`) }}active{{end}}"><a href='{{ "/livros" | relLangURL }}'>Livros</a></li>
-        <li class="{{ if eq ($currentPage.RelPermalink) (`/galeriilustracoes/`) }}active{{end}}"><a href='{{ "/galeriailustracoes" | relLangURL }}'>Galeria de Ilustrações</a></li>
-        <li class="{{ if eq ($currentPage.RelPermalink) (`/blog/`) }}active{{end}}"><a href='{{ "/blog" | relLangURL }}'>Blog</a></li>
-        <li class="{{ if eq ($currentPage.RelPermalink) (`/loja/`) }}active{{end}}"><a href='{{ "/loja" | relLangURL }}'>Comprar coisas legais</a></li>
-        <li class="{{ if eq ($currentPage.RelPermalink) (`/sobre/`) }}active{{end}}"><a href='{{ "/sobre" | relLangURL }}'>Sobre</a></li>
-        <li class="{{ if eq ($currentPage.RelPermalink) (`/contato/`) }}active{{end}}"><a href='{{ "/contato" | relLangURL }}'>Contato</a></li>
-    </ul>
+    <div class="links">
+        <span class="{{ if eq ($currentPage.RelPermalink) (`/historietas/`) }}active{{end}}"><a href='{{ "/historietas" | relLangURL }}'>Historietas</a></span>
+        <span class="{{ if eq ($currentPage.RelPermalink) (`/livros/`) }}active{{end}}"><a href='{{ "/livros" | relLangURL }}'>Livros</a></span>
+        <span class="{{ if eq ($currentPage.RelPermalink) (`/galeriilustracoes/`) }}active{{end}}"><a href='{{ "/galeriailustracoes" | relLangURL }}'>Galeria de Ilustrações</a></span>
+        <span class="{{ if eq ($currentPage.RelPermalink) (`/blog/`) }}active{{end}}"><a href='{{ "/blog" | relLangURL }}'>Blog</a></span>
+        <span class="{{ if eq ($currentPage.RelPermalink) (`/loja/`) }}active{{end}}"><a href='{{ "/loja" | relLangURL }}'>Comprar coisas legais</a></span>
+        <span class="{{ if eq ($currentPage.RelPermalink) (`/sobre/`) }}active{{end}}"><a href='{{ "/sobre" | relLangURL }}'>Sobre</a></span>
+        <span class="{{ if eq ($currentPage.RelPermalink) (`/contato/`) }}active{{end}}"><a href='{{ "/contato" | relLangURL }}'>Contato</a></span>
+    </div>
 </nav>
