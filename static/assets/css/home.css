@@ -36,7 +36,7 @@ h1{
 }
 
 .intro-paragraph{
-    font-size: 2.5rem; /*antes estava 1.75*/
+    font-size: 1.8rem; 
     line-height: 1.4;
     margin-bottom: 20px;
     hyphens: none;
@@ -100,11 +100,11 @@ p a{
 .organizer-home-news-text{
     position: absolute;
     text-align: center;
-    padding-top: 80px;
+    padding-top: 40%;
 }
 
 .home-news-type{
-    color: var(--accent-avocadish);
+    color:  var(--accent-yellowish);
     font-size: 1rem;
     font-weight: 500;
     letter-spacing: 3px;
@@ -112,14 +112,14 @@ p a{
     text-transform: uppercase;
     text-shadow: 1px 1px 1px var(--text-shadow);
     transition: 0.5s ease-in-out;
-    padding: 0px 10px 0px 10px;
+    padding: 0px 20px 0px 20px;
 }
 
 .home-news-title{
     color: var(--pure-white-color);
     text-shadow: 1px 1px 1px var(--text-shadow);
     transition: 0.5s ease-in-out;
-    padding: 0px 10px 0px 10px;
+    padding: 0px 20px 0px 20px;
 }
 
 .novidade-notice{
@@ -134,12 +134,12 @@ p a{
     position: absolute;
     z-index: 3;
     width: 130px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    padding-left: 12px;
+    padding: 12px 0px 12px 12px;
     left: 0;
     bottom: 20px;
+    display: flex;
+    align-items: center;
+    line-height: normal;
 }
 
 .overlay-home-news{
@@ -184,6 +184,7 @@ p a{
     z-index: -1;
 }
 
+/* quantas novidades vai mostrar? */
 @media screen and (max-width: 1024px) and (min-width:801px){
     #item-bottom-dir{
         display: none;
@@ -198,117 +199,159 @@ p a{
         display: none;
     }
     #item-bottom-center{
-        display: none;
+        width: 50%;
     }
     #item-bottom-esq{
-        width: 100%;
+        width: 50%;
     }
 }
 
-@media screen and (max-width: 1500px) and (min-width: 1024px) {
+/* media screen para sizes */
+@media screen and (max-width: 1300px) and (min-width: 1176px) {
     #organizer-container-text-items h1{
-        font-size: 3rem;
+        font-size: 3.5rem;
     }
     #organizer-container-text-items {
-        max-width: 1064px
+        padding-left: 70px;
     }
     .intro-paragraph{
-        font-size: 1.4rem;
+        font-size: 1.7rem;
     }
 }
 
-@media screen and (max-width: 1023px) and (min-width: 741px) {
+@media screen and (max-width: 1175px) and (min-width: 1035px) {
     #organizer-container-text-items {
-        max-width: 740px;
         padding-left: 60px;
         padding-right: 80px;
     }
     #organizer-container-text-items h1{
-        font-size: 3rem;
+        font-size: 3.25rem;
     }
     .intro-paragraph{
-        font-size: 1.25rem;
+        font-size: 1.5rem;
     }
 }
 
-@media screen and (max-width: 740px) and (min-width: 451px) {
+@media screen and (max-width: 1034px) and (min-width: 830px) {
     #organizer-container-text-items {
-        max-width: 600px;
         padding-left: 60px;
         padding-right: 70px;
     }
     #organizer-container-text-items h1{
-        font-size: 3rem;
+        font-size: 3.2rem;
     }
     .intro-paragraph{
-        font-size: 1.2rem;
-        text-wrap: balance;
-    }
-    #organizer-container-text-items p:nth-of-type(2){
-        text-wrap: pretty !important;
+        font-size: 1.5rem;
     }
 }
 
-@media screen and (max-width: 740px) and (min-width: 601px){
-    .home-news-title{
-        font-size: 1.65rem;
-    }
-}
-
-@media screen and (max-width: 600px) and (min-width: 451px) {
-    .home-news-title{
-        font-size: 1.55rem;
-    }
-    .home-news-type{
-        font-size: 1rem;
-    }
-}
-
-@media screen and (max-width: 450px) and (min-width: 376px) {
+@media screen and (max-width: 829px) and (min-width: 734px) {
     #organizer-container-text-items {
-        max-width: 400px;
-        padding-left: 40px;
-        padding-right: 45px;
+        padding-left: 50px;
+        padding-right: 60px;
     }
     #organizer-container-text-items h1{
-        font-size: 2.5rem;
+        font-size: 3.2rem;
     }
     .intro-paragraph{
-        font-size: 1.125rem;
-    }
-    #organizer-container-text-items p:first-of-type{
-        max-width: 295px;
+        font-size: 1.5rem;
         text-wrap: pretty;
     }
-    .home-news-title{
-        font-size: 1.55rem;
-    }
-    .home-news-type{
-        font-size: 1rem;
+    #organizer-container-text-items p:last-child{
+        text-wrap: balance !important;
     }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 733px) and (min-width: 577px) {
     #organizer-container-text-items {
-        max-width: 400px;
+        padding-left: 50px;
+        padding-right: 60px;
+        max-width: 700px;
+    }
+    #organizer-container-text-items h1{
+        font-size: 3.2rem;
+    }
+    .intro-paragraph{
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 425px) and (min-width: 376px) {
+    #bghome{
+        top: 8;
+        left: 8;
+        width: calc(100% - 16px);
+    }
+    #container-home-topo-items-sub{
+        top: 8px;
+    }
+    #container-home-bottom-items{
+        column-gap: 8px;
+        padding: 0px 8px 8px 8px;
+    }
+    #item-bottom-esq, #item-bottom-center{
+        height: calc(40dvh - 8px);
+    }
+    #organizer-container-text-items{
         padding-left: 30px;
-        padding-right: 30px;
-        height: 83%;
+        padding-right: 40px;
+        height: 85%;
     }
     #organizer-container-text-items h1{
         font-size: 2.2rem;
     }
     .intro-paragraph{
-        font-size: 1.125rem;
-    }
-    #organizer-container-text-items p:first-of-type{
-        max-width: 295px;
-        text-wrap: balance;
-    }
-    .home-news-title{
-        font-size: 1.5rem;
+        font-size: 1rem;
     }
     .home-news-type{
-        font-size: 0.95rem;
+        font-size: 0.8rem;
+    }
+    .home-news-title{
+        font-size: 1rem;
+    }
+    .novidade-notice{
+        font-size: 0.75rem;
+        width: 125px;
+        bottom: 14px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    #bghome{
+        top: 5;
+        left: 5;
+        width: calc(100% - 10px);
+    }
+    #container-home-topo-items-sub{
+        top: 5px;
+    }
+    #container-home-bottom-items{
+        column-gap: 5px;
+        padding: 0px 5px 5px 5px;
+    }
+    #item-bottom-esq, #item-bottom-center{
+        height: calc(40dvh - 5px);
+    }
+    #organizer-container-text-items{
+        padding-left: 30px;
+        padding-right: 30px;
+        height: 85%;
+    }
+    #organizer-container-text-items h1{
+        font-size: 2rem;
+    }
+    .intro-paragraph{
+        font-size: 1rem;
+    }
+    .home-news-type{
+        font-size: 0.8rem;
+    }
+    .home-news-title{
+        font-size: 1rem;
+    }
+    .novidade-notice{
+        font-size: 0.7rem;
+        width: 125px;
+        bottom: 14px;
     }
 }

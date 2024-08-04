@@ -18,13 +18,13 @@
             <tbody>
                 <tr>
                     <td>
-                        <div class="container-header-single-post">
-                            <div class="header-single-posts">
-                                <div class="header-title-single-post">
+                        <div id="container-header-single-post">
+                            <div id="header-single-posts">
+                                <div id="header-title-single-post">
                                     <h1> {{ .Title }} </h1>
                                 </div>
-                                <div class="header-infos-single-post">
-                                    <h4> 
+                                <div id="header-infos-single-post">
+                                    <h4 class="header-infos-single-post-categories">
                                         <span class="header-infos-divider-single-post"><i class="fa-solid fa-folder"></i></span>      
                                         {{ range $v, $categories := .GetTerms "categories" }}
                                             {{- if $v }}<span style="text-transform: none">e </span>{{ end }}
@@ -32,9 +32,11 @@
                                                 <a onclick="window.location.href='/categories/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
                                             </span>
                                         {{ end}}
-                                        
+                                    </h4>
+                                    
+                                    <h4 class="header-infos-single-post-categories">
                                         <span class="header-infos-divider-single-post">
-                                            <span class="header-infos-will-disappear">|&nbsp&nbsp</span>
+                                            <span id="header-infos-will-disappear">&nbsp|&nbsp</span>
                                             <i class="fa-solid fa-tags"></i>
                                         </span>                                        
                                                 
@@ -44,25 +46,24 @@
                                                 <a class="tags-container" onclick="window.location.href='/tags/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
                                             </span>
                                         {{ end }}
-                                        
+                                    </h4>
+                                    
+                                    <h4 class="header-infos-single-post-categories">
                                         <span class="header-infos-divider-single-post">
-                                            <span class="header-infos-will-disappear">|&nbsp&nbsp</span>
-                                            <i class="fa-solid fa-comments"></i>
+                                            <span id="header-infos-will-disappear">&nbsp|&nbsp</span>
+                                            <i class="fa-solid fa-clock"></i>
                                         </span>
-                                        
-                                        <span class="span-link">
-                                            <a onclick="goToComentariosBlog()"><span  data-cusdis-count-page-id="{{ .Params.UniqueID }}">0</span> comentários</a>
-                                        </span>    
+                                        <span>{{ .Params.Tempoleitura }}utos</span>
                                     </h4>
                                 </div>
                                 <img src="{{ .Params.Imageheader }}" alt="{{ .Params.Imageheaderalt }}">
                             </div>
                         </div>
 
-                        <div class="container-texto-and-image-content">
-                            <div class="container-chamada-content">{{ .Params.Description }}</div>
+                        <div id="container-texto-and-image-content">
+                            <div id="container-chamada-content">{{ .Params.Description }}</div>
                             {{ if strings.Contains .TableOfContents "li" }}
-                                <div class="container-table-of-contents">
+                                <div id="container-table-of-contents">
                                     <h2>Sumário</h2>
                                     {{ .Page.TableOfContents }}
                                 </div>

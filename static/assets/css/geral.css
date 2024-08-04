@@ -39,10 +39,9 @@
     --blockquote-color:var(--accent-yellowish);
 
     --text-shadow: #202020;
-    --overlay-color: #1118447a;
+    --overlay-color: #1118449c;
 }
 
-html, body { overflow-x:hidden; }
 
 main {
     width: 100%;
@@ -193,8 +192,8 @@ figcaption{
 }
 
 #livros-header-name{
-    background-color: var(--accent-redish);
-    color: var(--dark-color-text);
+    background-color: #122c55;
+    color: #bbc0fb;
     margin-bottom: 100px;
 }
 
@@ -317,7 +316,7 @@ html {
     background-color: var(--main-bg-color);
 }
 
-@media screen and (min-width: 551px) {
+@media screen and (min-width: 769px) {
     ::-webkit-scrollbar {
         width: 5px;
         height: 5px;
@@ -337,7 +336,7 @@ html {
     
 }
 
-@media screen and (max-width:550px) {
+@media screen and (max-width:768px) {
     ::-webkit-scrollbar-track-piece:start {
         background: transparent url('images/backgrounds/scrollbar.png') repeat-y !important;
     }
@@ -346,7 +345,6 @@ html {
         background: transparent url('images/backgrounds/scrollbar.png') repeat-y !important;
     }
 }
-
 /*--------------------FIM ESTILIZAÇÃO DA SCROLLBAR--------------------*/
 
 /* -------------Hover em Palavra Link--------------- */
@@ -355,6 +353,7 @@ p>a, figcaption>a{
     text-decoration: underline;
     position: relative;
     display: -webkit-inline-box;
+    position: sticky;
 }
 
 p>a::before, figcaption a::before{
@@ -405,22 +404,22 @@ p>a:hover, figcaption>a:hover{
 /* -------------Fim Hover em Palavra Link--------------- */
 
 /* -----------------Double Line Text-------------------- */
-.container-double-line{
+#container-double-line{
     display: flex;
     flex-direction: column;
     margin-right: 50px;
 }
 
-.container-double-line h1{
-    font-size: 3.25rem !important;
+#container-double-line h1{
+    font-size: 3rem;
 }
 
-.double-line-seccond-line{
+#double-line-seccond-line{
     padding-left: 30px;
 }
 /* -----------------End Double Line Text------------------- */
 
-/*------------------------ Fadein and Scale animation -------------------------*/
+/*------------------------ Fadein animation -------------------------*/
 @keyframes fadeIn{
     from {
         opacity: 0;
@@ -435,7 +434,19 @@ p>a:hover, figcaption>a:hover{
     animation-name: fadeIn;
     animation-timing-function: cubic-bezier(.71,.55,.62,1.57);
 }
-/* ----------------------- End of Fadein and Scale animation ------------------------*/
+
+.fadeInHistorietas{
+    animation-duration: 2s;
+    animation-name: fadeIn;
+    animation-timing-function: cubic-bezier(.71,.55,.62,1.57);
+}
+
+.fadeInHistorietasBG{
+    animation-duration: 3s;
+    animation-name: fadeIn;
+    animation-timing-function: cubic-bezier(.71,.55,.62,1.57);
+}
+/* ----------------------- End of Fadeinanimation ------------------------*/
 
 /*-------------------- COPIAR URL ------------------*/
 .iconeContainerCopyUrl{
@@ -526,3 +537,12 @@ p>a:hover, figcaption>a:hover{
     -ms-transform: translate(0px, 0px);
     transform: translate3d(0px, 0px, 0px);
   }
+
+/* -----------------text system ui-------------------*/
+.text-sysui{
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    font-family: system-ui;
+    text-transform: uppercase;
+}

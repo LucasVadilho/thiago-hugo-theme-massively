@@ -10,14 +10,17 @@
         {{- partial "pageHeaderMenuAndLogo" . -}}
         <div id="container-livrosHeader">
             <div class="container-header-name" id="livros-header-name">
-                <h1>Biblioteca de Livros</h1>
+                <img src="/images/titulosPaginas/biblioteca-de-livros-td-vadilho.jpg" alt="Seja bem-vindo(a) a biblioteca de livros do TD :)">
             </div>
             <div class="container-header-text">
-                <p><i>Escrevo e ilustro porque pouquíssimas coisas na vida me fazem sentir tão vivo quanto escrever e ilustrar. No final, acho que só quero ser criativo,
+                <p><i>Escrevo e ilustro porque pouquíssimas coisas na vida me fazem sentir tão vivo quanto escrever e ilustrar. No final das contas, acho que só quero ser criativo,
                      e criar histórias para compartilhar</i>
                 </p>
             </div>
         </div>
+        
+        <!-- BookShelf(One Day Will be here) --> 
+
         <div id="container-post-all-after-header">
             {{ range .Pages.ByWeight }}
                 <div class="container-livros-all-content" onclick="window.location.href='{{ .Params.Idlink | safeURL }}';event.stopPropagation()">
@@ -25,20 +28,17 @@
                         <img src="{{ .Params.Imagemselecaolivros }}" alt="{{ .Params.Altimagemselecaolivros }}">
                     </div>
                     <div class="container-livro-infos-and-buttons">
-                        <h4>{{ .Params.Titulolivro }}</h4>
-                        <img src="{{ .Params.Frasedestaque }}" alt="{{ .Params.Altfrasedestaque }}">
-                        <h5>{{ .Params.Categoria }}</h5>
-                        <img src="{{ .Params.Compreolivro }}" alt="{{ .Params.Altcompreolivro }}">
-                        <img src="{{ .Params.Saibamais }}" alt="{{ .Params.Saibamais }}">
+                        <h5 style="color: {{ .Params.Colortext | safeCSS }}">{{ .Params.Categoria }}</h5>
+                        <img src="{{ .Params.Tema }}" alt="{{ .Params.Temaalt }}">
+                        <div class="saiba-mais-compre">
+                            <span class="span-link"><a onclick="window.open('{{ .Params.Idcompradolivro | safeURL }}');event.stopPropagation()"><h5 style="color: {{ .Params.Colortext | safeCSS }}">Comprar livro</h5></a></span>
+                            <span class="span-link"><a onclick="window.open('{{ .Params.Idcompradoebook | safeURL }}');event.stopPropagation()"><h5 style="color: {{ .Params.Colortext | safeCSS }}">Comprar ebook</h5></a></span>
+                            <span class="span-link"><a onclick="window.location.href='{{ .Params.Idlink | safeURL }}';event.stopPropagation()"><h5 style="color: {{ .Params.Colortext | safeCSS }}">Saiba mais</h5></a></span>
+                        </div>
                     </div>
                 </div>
             {{ end }}
         </div>
-        <!-- <div id="container_contactinglivros">
-            <div id="bookend">
-                <img src="/images/haqntopag/mybookshelf.svg" class="bookshelf" alt="a estante do autor, contendo vetores dos livros já escritos para ilustrar a cena">
-            </div>
-        </div> --> 
         {{- partial "emailing" . -}}
         {{- partial "rodape.html" . }}
     </div>

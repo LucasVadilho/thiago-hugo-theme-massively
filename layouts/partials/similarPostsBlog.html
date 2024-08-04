@@ -4,9 +4,9 @@
 <div id="container-mais-posts-como-esse">
 	{{ $related := .Site.RegularPages.Related . | first 3 }}
 	{{ with $related }}
-		<div class="container-double-line">
-			<h1 class="double-line-first-line">Mais posts</h1>
-			<h1 class="double-line-seccond-line"> como esse...</h1>
+		<div id="container-double-line">
+			<h1 id="double-line-first-line">Mais postagens</h1>
+			<h1 id="double-line-seccond-line"> como essa, aqui...&nbsp&nbsp&nbsp</h1>
 		</div>
 			<div id="container-mais-posts-como-esse-cards">
 				{{ range . }}

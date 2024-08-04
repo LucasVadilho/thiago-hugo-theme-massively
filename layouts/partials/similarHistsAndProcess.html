@@ -2,9 +2,9 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/geral.css"> <!-- Chamando CSS CARDS -->
 
 <div id="container-mais-posts-como-esse">
-    <div class="container-double-line">
-        <h1 class="double-line-first-line">Conteúdos</h1>
-        <h1 class="double-line-seccond-line"> relacionados...</h1>
+    <div id="container-double-line">
+        <h1 id="double-line-first-line">Mais historietas</h1>
+        <h1 id="double-line-seccond-line"> como essa, aqui...&nbsp&nbsp&nbsp</h1>
     </div>
     {{ $relatedhist := .Site.RegularPages.Related . | first 3 }}
     {{ with $relatedhist }}
@@ -79,3 +79,11 @@
             </div>    
     {{ end }}
 </div>
+
+<script>
+    window.addEventListener("load", (event) => {
+        if(document.getElementById("correction-height") != null){
+            document.getElementById("double-line-seccond-line").innerHTML = "e Making Of dessa..."
+        }
+    });
+</script>

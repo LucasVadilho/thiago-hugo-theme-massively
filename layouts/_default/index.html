@@ -13,10 +13,10 @@
                 <div id="organizer-container-text-items">
                     <a href="https://www.tdvadilho.com/sobre/"><h1>TD Vadilho</h1></a>
                     <p class = "intro-paragraph">
-                        Acima de tudo, sou um criador de histórias, sejam elas <span><a href="https://www.tdvadilho.com/livros/">escritas</a>,</span> <span><a href="https://www.tdvadilho.com/galeriailustracoes/">visuais</a>,</span> ou uma <a href="https://www.tdvadilho.com/historietas/">mistura de imagens e palavras</a>.
+                        Acima de tudo, sou um <i>criador de histórias</i>, sejam elas <span><a href="https://www.tdvadilho.com/livros/">escritas</a>,</span> <span><a href="https://www.tdvadilho.com/galeriailustracoes/">visuais</a>,</span> ou uma <a href="https://www.tdvadilho.com/historietas/">mistura de imagens e palavras</a>.
                     </p>
                     <p class = "intro-paragraph">
-                        Cada história que crio, carrega o cerne do <span><a href="">meu estilo</a>,</span> e tudo o mais que a história e o processo criativo em mim despertarem. 
+                        Cada história que crio, carrega o cerne do <span><a href="https://www.tdvadilho.com/sobre/">meu estilo</a>,</span> e tudo o mais que a história e o processo criativo em mim despertarem. 
                     </p>
                     <p class = "intro-paragraph">
                         Eu acredito na capacidade emocional das histórias criativas, e é por isso que, além de <a href="https://www.tdvadilho/blog/">falar sobre</a> o assunto, coloco no mundo <a onclick="opennavigationmenu()">aquilo que gostaria de encontrar</a>.
@@ -35,7 +35,8 @@
                     {{ else }}
                         <div id="item-bottom-esq" onclick="window.location.href='{{ .Permalink | safeURL }}'">
                     {{ end }}
-                    <div class="novidade-notice">Novidade</div>
+                    <div class="novidade-notice">
+                        <span>Novidade</span></div>
                     <div class="overlay-home-news"></div>
                     <div class="organizer-home-news-text">
                         <p class="home-news-type">{{ .Params.Lastpost1type }}</p>

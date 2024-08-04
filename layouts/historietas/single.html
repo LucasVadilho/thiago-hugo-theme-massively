@@ -18,57 +18,73 @@
             <tbody>
                 <tr>
                     <td>
-                        <div class="container-header-single-post">
-                            <div class="header-single-posts-historietas" style="background-color: {{ .Params.Backgroundhistcolor | safeCSS }};">
-                                <div class="header-title-single-post-historietas">
-                                    <span class="image-title-historieta  fadeIn">
-                                        <img src="{{ .Params.Imgtitle }}" alt="{{ .Params.Imagetitlealt }}"> 
+                        <div id="container-header-single-post">
+                            <div id="header-single-posts-historietas" style="background-color: {{ .Params.Backgroundhistcolor | safeCSS }};">
+                                <div id="header-title-single-post-historietas">
+                                    <span id="image-title-historieta">
+                                        <img src="{{ .Params.Imgtitle }}" alt="{{ .Params.Imagetitlealt }}" class="fadeInHistorietas"> 
                                     </span>
-                                    <span class="header-historietas-bg">
-                                        <img src="{{ .Params.Imagebackgroundtitle }}" alt="{{ .Params.Altimagebackgroundtitle }}"> 
+                                    <span id="header-historietas-bg">
+                                        <img src="{{ .Params.Imagebackgroundtitle }}" alt="{{ .Params.Altimagebackgroundtitle }}" class="fadeInHistorietasBG"> 
                                     </span>
                                 </div>
-                                <div class="header-infos-single-post-historietas">
+
+                                <div id="header-infos-single-post-historietas">
                                     <h4 style="color: {{ .Params.Infoinsidetxtcolor| safeCSS }};"> 
                                         <span class="header-infos-divider-single-post"><i class="fa-solid fa-folder"></i></span>      
                                         {{ range $v, $categories := .GetTerms "categories" }}
-                                            {{- if $v }}<span style="text-transform: none">e </span>{{ end }}
-                                            <span class="span-link">
-                                                <a onclick="window.location.href='/categories/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
-                                            </span>
-                                        {{ end}}
-                                        
+                                            {{- if $v }}({{ end }}
+                                                {{ $firstChar := substr .LinkTitle 0 1 }}
+                                                {{ if eq $firstChar "a" }}
+                                                    <span class="span-link" style="text-transform: uppercase">
+                                                        <a onclick="window.location.href='/categories/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+                                                    </span>
+                                                {{ else }}
+                                                    <span class="span-link">
+                                                        <a onclick="window.location.href='/categories/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+                                                    </span>
+                                                {{ end }}
+                                        {{ end }}
+                                        )
+                                    </h4>
+
+                                    <h4 style="color: {{ .Params.Infoinsidetxtcolor| safeCSS }};">
                                         <span class="header-infos-divider-single-post">
-                                            <span class="header-infos-will-disappear">|&nbsp&nbsp</span>
+                                            <span class="header-infos-will-disappear">&nbsp&nbsp|&nbsp&nbsp</span>
                                             <i class="fa-solid fa-tags"></i>
                                         </span>                                        
                                                 
                                         {{ range $k, $tags := .GetTerms "tags" }}
-                                            {{- if $k }}, {{ end }}
+                                            {{- if $k }}<span style="text-transform: none">e </span>{{ end }}
                                             <span class="span-link">
                                                 <a class="tags-container" onclick="window.location.href='/tags/{{ .LinkTitle | safeURL }}';event.stopPropagation()">{{ .LinkTitle }}</a>
                                             </span>
                                         {{ end }}
-                                        
+                                    </h4>
+                                    
+                                    <h4 style="color: {{ .Params.Infoinsidetxtcolor| safeCSS }};">
                                         <span class="header-infos-divider-single-post">
-                                            <span class="header-infos-will-disappear">|&nbsp&nbsp</span>
-                                            <i class="fa-solid fa-comments"></i>
+                                                <span id="header-infos-will-disappear">&nbsp|&nbsp</span>
+                                                <i class="fa-solid fa-clock"></i>
+                                            </span>
+                                            <span>{{ .Params.Tempoleitura }}utos</span>
                                         </span>
-                                        
-                                        <span class="span-link">
-                                            <a onclick="goToComentariosBlog()"><span  data-cusdis-count-page-id="{{ .Params.UniqueID }}">0</span> comentários</a>
-                                        </span>    
                                     </h4>
                                 </div>
                                 <img src="{{ .Params.Imageheader }}" alt="{{ .Params.Imageheaderalt }}">
                             </div>
                         </div>
 
-                        <div class="container-texto-and-image-content">
-                            {{ .Content }}
-                            <p class="referenciar" style="margin-top:30px">Autor e ilustrador: ©Thiago David Vadilho (TD Vadilho)</p>
-                            <p class="referenciar">*Jamais venda ou monetize este conteúdo sem a autorização expressa do autor.</p>
-                            <p class="referenciar">Caso necessário, entre em <a  href='{{ "#contatar" | relLangURL }}' class="linkto_contato"><u>contato</u></a>.</p>
+                        <div id="container-transition-title-text" style="background: {{ .Params.TransitionalGradient | safeCSS }}">
+                        </div>
+
+                        <div id="container-texto-and-image-content" style="background-color: {{ .Params.Bgcontentcolor | safeCSS }}">
+                            <span class="correcting-figcaption-color" style="color: {{ .Params.ContentTextColor | safeCSS }}">
+                                {{ .Content }}
+                            </span>
+                            <p class="referenciar" style="margin-top:30px; color: {{ .Params.ContentTextColor | safeCSS }}80">Autor e ilustrador: ©Thiago David Vadilho (TD Vadilho)</p>
+                            <p class="referenciar" style="color: {{ .Params.ContentTextColor | safeCSS }}80">*Jamais venda ou monetize este conteúdo sem a autorização expressa do autor.</p>
+                            <p class="referenciar" style="color: {{ .Params.ContentTextColor | safeCSS }}80">Caso necessário, entre em <a  href='{{ "contato" | relLangURL }}' style="color: {{ .Params.DestaqueLettersColor | safeCSS }}">contato</a>.</p>
                         </div>
 
                         <div id="suporteashistorietas">

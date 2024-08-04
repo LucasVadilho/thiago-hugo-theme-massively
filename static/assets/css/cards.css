@@ -257,24 +257,82 @@
     display: inline-flex;
     justify-content: space-around;
     overflow: hidden;
+    column-gap: 30px;
 }
 
 #container-mais-posts-como-esse-cards .post-card{
-    margin-right: 20px;
     margin-bottom: 0px !important;
-}
-
-#container-mais-posts-como-esse-cards .post-card:last-child{
-    margin-right: 0 !important;
 }
 
 #correction-height{
     padding-top: 30.39px;
-    margin-right: 20px;
 }
 
 #container-mais-posts-como-esse-cards .post-card-info-historietas{
     margin-bottom: 0 !important;
+}
+
+/* Mais como esse media */
+@media screen and (max-width: 1657px) and (min-width: 1327px) {
+    #container-mais-posts-como-esse-cards{
+        >:nth-child(3){
+            display: none;
+    }
+    }
+}
+
+@media screen and (max-width: 1326px) and (min-width: 981px){
+    #container-mais-posts-como-esse{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    #container-double-line{
+        margin-bottom: 40px;
+        margin-right: 0px !important;
+    }
+}
+
+@media screen and (max-width: 980px) and (min-width: 658px){
+    #container-mais-posts-como-esse-cards{
+        >:nth-child(3){
+            display: none;
+    }
+    }
+
+    #container-mais-posts-como-esse{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    #container-double-line{
+        margin-bottom: 40px;
+        margin-right: 0px !important;
+    }
+}
+
+@media screen and (max-width: 657px){
+    #container-mais-posts-como-esse-cards{
+        flex-direction: column;
+        height: 1500px;
+        justify-content: space-between;
+    }
+
+    #container-mais-posts-como-esse{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    #container-double-line{
+        margin-bottom: 40px;
+        margin-right: 0px !important;
+    }
+}
+
+@media screen and (max-width: 551px){
+    #container-double-line h1, #container-double-line-blog h1{
+        font-size: 2.6rem !important;
+    }
 }
 
 /* COLOR CODE CATEGORIES */
