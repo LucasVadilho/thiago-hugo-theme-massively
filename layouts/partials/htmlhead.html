@@ -3,10 +3,9 @@
 	<head>
         <!---------------------------  METATAGS ---------------------------->
         <meta charset="utf-8" />
-
         <meta name="robots" content="noimageai"> <!-- implementado do https://www.deviantart.com/team/journal/Tell-AI-Datasets-If-They-Can-t-Use-Your-Content-934500371 -->
         <meta name="robots" content="noai">
-
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
         <title>
             {{- if .IsHome -}}
                 {{ .Site.Title }} | Escritor e Ilustrador
@@ -24,8 +23,6 @@
         {{- end }}
 
         <link rel="canonical" href="{{ .Permalink }}" />
-
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         {{- if .IsHome -}}
             <meta name="og:title" content="{{ site.Title }}" />
@@ -81,5 +78,14 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Sanchez:ital@0;1&display=swap" rel="stylesheet">
+    
+        <!-- Bakersville -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Baskervville+SC" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&display=swap" rel="stylesheet">
     </head>
 </html>

@@ -140,15 +140,12 @@ function showSlides(n) {
 
 
 /* ----------------REALIGN VERTICAL---------------- */
-    let realignVertical = function(projetoaberto){
-        // setTimeout(() => {
+    let realignVertical = function(openProject){
         let snackbarChildrenSize = 0;
-        let snackElement = document.getElementById(projetoaberto);
-        /* console.log(snackElement); */
+        let snackElement = document.getElementById(openProject);
         let snackbarChildrenNumber = snackElement.children.length;
                 
         for(let i = 0; i < snackbarChildrenNumber; i++){
-            /* console.log(snackElement.children[i].height); */
             snackbarChildrenSize += snackElement.children[i].height;
         }
 
@@ -157,7 +154,6 @@ function showSlides(n) {
         } else{
             snackElement.classList.remove("realignClass");
         }
-        // }, 2000);
     }
 
 /* ----------------ANIMAÇÃO DE CARREGAMENTO ILUSTRAÇÕES---------------- */

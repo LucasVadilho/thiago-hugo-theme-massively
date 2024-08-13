@@ -24,9 +24,17 @@
                                     <span id="image-title-historieta">
                                         <img src="{{ .Params.Imgtitle }}" alt="{{ .Params.Imagetitlealt }}" class="fadeInHistorietas"> 
                                     </span>
+                                    {{ if (isset .Params "imagebackgroundtitle" ) }}
                                     <span id="header-historietas-bg">
                                         <img src="{{ .Params.Imagebackgroundtitle }}" alt="{{ .Params.Altimagebackgroundtitle }}" class="fadeInHistorietasBG"> 
                                     </span>
+                                    {{ end }}
+
+                                    {{ if (isset .Params "imagebackgroundtitleextra50" ) }}
+                                    <span id="header-historietas-bg-extra">
+                                        <img src="{{ .Params.Imagebackgroundtitleextra50 }}" alt="{{ .Params.Altimagebackgroundtitle }}" class="fadeInHistorietasBG"> 
+                                    </span>
+                                    {{ end }}
                                 </div>
 
                                 <div id="header-infos-single-post-historietas">
@@ -71,12 +79,10 @@
                                         </span>
                                     </h4>
                                 </div>
-                                <img src="{{ .Params.Imageheader }}" alt="{{ .Params.Imageheaderalt }}">
                             </div>
                         </div>
 
-                        <div id="container-transition-title-text" style="background: {{ .Params.TransitionalGradient | safeCSS }}">
-                        </div>
+                        <span id="container-div-color" style="background-color: {{ .Params.Backgroundhistcolor | safeCSS }};"></span>
 
                         <div id="container-texto-and-image-content" style="background-color: {{ .Params.Bgcontentcolor | safeCSS }}">
                             <span class="correcting-figcaption-color" style="color: {{ .Params.ContentTextColor | safeCSS }}">

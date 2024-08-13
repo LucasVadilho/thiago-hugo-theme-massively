@@ -1,6 +1,9 @@
+<link rel="stylesheet" type="text/css" href="/assets/css/redesToFollow.css">
+
 {{ $data := index .Site.Data .Site.Language.Lang }}
 {{ with $data.social }}
 <section>
+    <h2>Acompanhe a minha jornada criativa</h2>
     <div id="redes-sociais">
         {{ with .youtube }}
             <a href="{{ . }}" target="_blank"><i class="fa fa-youtube-play icon"></i></a>

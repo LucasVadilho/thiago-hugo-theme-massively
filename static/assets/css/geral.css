@@ -42,6 +42,9 @@
     --overlay-color: #1118449c;
 }
 
+.noclick{
+    pointer-events: none;
+}
 
 main {
     width: 100%;
@@ -199,6 +202,12 @@ figcaption{
 
 #loja-header-name{
     background-color: var(--accent-redish);
+    color: var(--dark-color-text);
+    margin-bottom: 100px;
+}
+
+#portfolio-header-name{
+    background-color: var(--accent-blueish);
     color: var(--dark-color-text);
     margin-bottom: 100px;
 }
@@ -508,8 +517,7 @@ p>a:hover, figcaption>a:hover{
 
 /* Realign - arruma a imagem verticalmente quando, no portfólio, só aparece uma imagem */
 .realignClass{
-    margin-top: auto;
-    margin-bottom: auto;
+    justify-content: center;
 }
 
 /*---------ANIM SCROLL IMAGE-------------*/

@@ -30,3 +30,15 @@
   other = "First"
 [PAGINATION_LAST]
   other = "Last"
+
+[RODAPE_TEXT]
+  other = "©Thiago David Vadilho (TD Vadilho). Todos os direitos reservados."
+
+[PORTFOLIO]
+  other = "Portfólio"
+[ABOUT_ME_WORK]
+  other = "Sobre Mim & Meu Trabalho"
+[CONTACT_PORTFOLIO]
+  other = "Contato"
+[CURRENT_LENGUAGE]
+  other = "PT-BR"

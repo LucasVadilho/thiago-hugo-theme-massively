@@ -123,12 +123,12 @@
     z-index: 0;
     overflow: hidden;
 
-    transform-style:preserve-3d;
     transition: all ease-out 0.6s;
     -webkit-transition: all ease-out 0.6s;
     -moz-transition: all ease-out 0.6s;
     -ms-transition: all ease-out 0.6s;
     -o-transition: all ease-out 0.6s;
+    filter: blur(0);
 }
 
 .capa img{
@@ -156,18 +156,36 @@
     z-index: -1;
     position:absolute;
     transform:rotateY(180deg);
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     padding: 15px;
+    overflow: hidden;
 
-    transform-style:preserve-3d;
     transition: all ease-out 0.6s;
     -webkit-transition: all ease-out 0.6s;
     -moz-transition: all ease-out 0.6s;
     -ms-transition: all ease-out 0.6s;
     -o-transition: all ease-out 0.6s;
+    filter: blur(0);
+}
+
+.contracapa:hover{
+    cursor: pointer;
+}
+
+.contracapa-to-scale{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    transition: all ease-out 0.6s;
+    -webkit-transition: all ease-out 0.6s;
+    -moz-transition: all ease-out 0.6s;
+    -ms-transition: all ease-out 0.6s;
+    -o-transition: all ease-out 0.6s;
+    filter: blur(0);
+}
+
+.contracapa:hover > .contracapa-to-scale{
+    transform: scale(1.2);
 }
 
 .flipcontracapa{
@@ -190,6 +208,10 @@
     font-weight: bold;
 }
 
+.turn-page:hover{
+    color: #8D3B13;
+}
+
 .contracapa-title{
     text-align: center;
     margin-top: auto;
@@ -202,11 +224,16 @@
 }
 
 .contracapa-chamada{
-    margin-bottom: 20px;
+    margin-top: auto;
+    line-height: 1.5;
+    text-align: center;
+    text-wrap: balance;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
 }
 
 .contracapa img{
-    max-height: 80px;
+    max-width: 30%;
     transform: translateX(-50%);
     margin-left: 50%;
 }

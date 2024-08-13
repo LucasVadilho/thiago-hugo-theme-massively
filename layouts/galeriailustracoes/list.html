@@ -28,6 +28,7 @@
                     lojalink="{{ .Params.Lojalink }}"
                     class="{{ .Params.Class }}"
                     backgroundcolor="{{ .Params.Backgroundcolor | safeCSS }}"
+                    scrollbarinactive="{{ .Params.Scrollbarinactive | safeCSS }}"
                     >
                     <img src="{{ .Params.Thumbprojeto }}" class="animation-element not-shown-img-state" alt="{{ .Params.altthumb }}"> 
                 </div>           
@@ -59,7 +60,7 @@
         history.replaceState({}, "New Page", newURL);
     }
 
-    /* let lastResize = 0;
+    let lastResize = 0;
     let changePositionOfCloseButton = function() { 
         if(Date.now() - lastResize > 500) {
             lastResize = Date.now();
@@ -70,7 +71,7 @@
             console.log(rect.x, rect.width, buttonClose.clientWidth);
             buttonClose.style.paddingLeft = `${rect.x + rect.width - buttonClose.scrollWidth}px`;
         }
-    } */
+    }
 
     let createSnackbar = function(id) {   
         //CRIANDO SNACKBAR DA ONDE VAI ENTRAR OS TRABALHOS
@@ -79,7 +80,8 @@
         snackbar.id = 'snackbarId';
         document.body.style.cssText = 'overflow: hidden';
         snackbar.style.backgroundColor = document.getElementById(id).getAttribute('backgroundcolor');
-    
+        
+
         //CRIANDO TOP PART
         let topButtonsContainer = "";
         let lojalink = document.getElementById(id).getAttribute('lojalink');
@@ -94,11 +96,11 @@
                     <span class='fa-solid fa-x fa-lg'></span>
                 </div>
             </div>`
-        } else {
+        }else{
             topButtonsContainer = 
-            `<div class='container-top-buttons-snackbarproj'>
-                <div class='buttonCloseProject' onclick="closeSnackbarProj()>
-                    <span class='fa-solid fa-x fa-lg' aria-hidden='true'"></span>
+            `<div id='container-top-buttons-snackbarproj'>
+                <div class='buttonCloseProject' onclick="closeSnackbarProj()">
+                    <span class='fa-solid fa-x fa-lg'></span>
                 </div>
             </div>`
         }
@@ -106,8 +108,8 @@
         //CRIANDO MIOLO
         // Criando o botão prev 
         let openProject = `<div id='container-openProject-and-arrows'>` 
-            + `<div id="container-prev-button-gallery-ilustracoes">
-                <div id="prev-button-gallery-ilustracoes" onclick="changeSlideProj(-1)">
+            + `<div id="container-prev-button-gallery-ilustracoes" onclick="changeSlideProj(-1)">
+                <div id="prev-button-gallery-ilustracoes">
                     <span class='fa fa-chevron-left fa-lg' aria-hidden='true'></span>
                 </div>
             </div><div id="openProject">`
@@ -116,12 +118,12 @@
         let itens = JSON.parse(document.getElementById(id).getAttribute('itens'));
         for (let item of itens){
             if (item.type == 'image'){
-                openProject += '<img src="' + item.src + '" width="' + item.width + 'px" height="' + item.height + 'px" alt="'+ item.alt +'"  style="display:block; object-fit: contain; max-height: 89vh; margin:'+item.margin+'" class="snackZoom '+ item.class +'" id="snackZoomId"/>'
+                openProject += '<img src="' + item.src + '" max-width="100%"  alt="'+ item.alt +'"  style="display:block; object-fit: contain; margin:'+item.margin+'" class="snackZoom '+ item.class +'" id="snackZoomId"/>'
             }
             if (item.type == 'imageSide'){
                 openProject += '<div class="imagesSideBySide" margin:"'+item.margin+' column-gap:' + item.columngap +'">'
                 for(i=0; i < item.src.length; i++){
-                    openProject += '<img src="' + item.src[i] + '" alt="'+ item.alt[i] +'"  style="display:block; object-fit: contain; max-height: 89vh;margin-top:'+ item.imgmargintop[i] +'" class="snackZoom ' + item.class + '" id="snackZoomId"/>';
+                    openProject += '<img src="' + item.src[i] + '" alt="'+ item.alt[i] +'"  style="display:block; object-fit: contain;margin-top:'+ item.imgmargintop[i] +'" class="snackZoom ' + item.class + '" id="snackZoomId"/>';
                 }
                 openProject += '</div>'
             }
@@ -135,8 +137,8 @@
 
         // Criando o botão next 
         openProject += ` </div>
-            <div id="container-next-button-gallery-ilustracoes">
-                <div id="next-button-gallery-ilustracoes" onclick="changeSlideProj(1)">
+            <div id="container-next-button-gallery-ilustracoes" onclick="changeSlideProj(1)">
+                <div id="next-button-gallery-ilustracoes">
                     <span class='fa fa-chevron-right fa-lg' aria-hidden='true'></span>
                 </div>
             </div> 

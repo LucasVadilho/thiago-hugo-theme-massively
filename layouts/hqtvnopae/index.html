@@ -22,6 +22,11 @@
                 <h1 class="frase-destaque">as estrelas não existissem. Acho que é porque</h1>
                 <h1 class="frase-destaque">elas são de graça e ninguém nunca dá</h1>
                 <h1 class="frase-destaque">valor ao que tem por garantido</h1>
+
+                <h1 class="frase-destaque-when-hit-width">
+                    A maioria das pessoas vivem como se as estrelas não existissem. Acho que é porque 
+                    elas são de graça e ninguém nunca dá valor ao que tem por garantido
+                </h1>
             </div>
 
             <p class="text-sysui capa-e-contra-text" style="color: #96d5dd; text-align: center;">Romance Psicológico Ficcional | Drama</p>
@@ -76,7 +81,7 @@
                 </div>
             </div>
 
-            <div id="container-polaroids">
+            <div id="container-polaroids" class="margin-top-correction-visual-bug">
                 <div id="container-correct-margin-to-center">
                     <div class="paper-polaroid">
                         <div class="container-img-polaroid">
@@ -92,7 +97,7 @@
                 </div>
             </div>
 
-            <div id="container-comentarios-selecionados">
+            <div id="container-comentarios-selecionados" class="margin-top-correction-visual-bug">
                 <div class="comentario-selecionado-box">
                     <img src="/images/haqntopag/aspas.png" alt="Abre aspas">
                     <p class="frase-comentario-leitor">"A narrativa é desenvolvida de uma forma bonita quase poética, principalmente na parte sobrenatural da trama, envolvendo o leitor em um realismo mágico, que após a explicação final levará o leitor a se emocionar (por aqui eu enchi os olhos de lágrimas)."</p>
@@ -107,7 +112,7 @@
                     <img src="/images/haqntopag/aspas.png" alt="Abre aspas">
                     <p class="frase-comentario-leitor">"Me senti parte da família Ávila. Quis tomar café com a Dona Isabel; quis dar um sossego na irmã mais nova; quis ter o Isaque de pai; e o principal: quis ter a Gabi como amiga. E de certa forma tive, porque eu me irritei, tive medo, ri e chorei com ela. Obrigado por esse livro, Thi. Já tô doido para o próximo."</p>
                     <p class="autoria-comentariopublico">
-                        <p class="leitor">
+                        <p class="leitor leitor2">
                             <a href="https://www.instagram.com/p/C6Zxh2wPTB3/" target='_blank'>
                                 <span class="leitor">— Bruno Scandolara</span>
                             </a>
@@ -115,9 +120,10 @@
                 </div>
             </div>
 
-            <div id="container-word-cloud">
-                <h1>O Livro nas Palavras dos Leitores</h1>
+            <div id="container-word-cloud" class="margin-top-correction-visual-bug">
+                <h1>Nas Palavras dos Leitores</h1>
                 <h5 class="text-sysui">Nuvem de palavras aberta a todos :)</h5>
+                <img src="/images/haqntopag/wordcloud-ha-quanto-tempo-voce-nao-olha-para-as-estrelas.jpg" alt="ilustração de um cordão de pisca pisca">
                 <img style="filter: brightness(90%);" src="/images/haqntopag/wordcloud-path.svg" alt="Nuvem de palavras para descrever o livro. Construída pelos leitores">
                 <div id="container-wc-invitation-and-lastupdate">
                     <div id="container-last-update-text">
@@ -128,8 +134,15 @@
                 </div>
             </div>
 
-            <h1 id="compre-o-livro-titulo">Compre o Livro</h1>
+            <h1 id="compre-o-livro-titulo" class="margin-top-correction-visual-bug">Compre o Livro</h1>
             <div id="container-botoes-comprar-livro-offset-marker"></div>
+
+            <div id="container-specialcase-botoes-comprar-livro" onclick="openComprarSpecialCase(event)">
+                <div id="specialcase-botoes-comprar-livro">
+                    <i class="fa-solid fa-basket-shopping"></i>
+                    <i class="fa-solid fa-x"></i>
+                </div>
+            </div>
 
             <div id="container-botoes-comprar-livro">
                 {{ if eq .Params.AvailableEditora true}}
@@ -164,10 +177,10 @@
                             <img src="/images/logos-lojas/logo-amazon.svg" alt="Logo Amazon">
                         </div>
                     </a>
-                </div>
-            {{ end }}
+                {{ end }}
+            </div>
 
-            <div id="ainda-em-duvida-chamada">
+            <div id="ainda-em-duvida-chamada" class="margin-top-correction-visual-bug">
                 <p id="ainda-em-duvida-clicavel"><a onclick="openTextAinda()">Ainda em dúvida se vai pegar o livro?</a></p>
                 <div id="container-text-ainda-em-duvida">
                     <p>E se eu disesse que é a obra favorita da dona Neusa?</p>
@@ -227,6 +240,24 @@
 
 
 <script>
+    let comprarButtonOpen = false;
+    let openComprarSpecialCase = function(e){
+        if (comprarButtonOpen == false){
+            document.getElementById("container-botoes-comprar-livro").style.display = "flex";
+            document.getElementById("specialcase-botoes-comprar-livro").children[1].style.display = "block";
+            document.getElementById("specialcase-botoes-comprar-livro").children[0].style.display = "none";
+            
+            comprarButtonOpen = true;
+        } else{
+            document.getElementById("container-botoes-comprar-livro").style.display = "none";
+            document.getElementById("specialcase-botoes-comprar-livro").children[1].style.display = "none";
+            document.getElementById("specialcase-botoes-comprar-livro").children[0].style.display = "block";
+
+            comprarButtonOpen = false;
+        }
+        
+    }
+
     /* Display text ainda em duvida */
     let openTextAinda = function (){
         document.getElementById("container-text-ainda-em-duvida").style.display = "block";
@@ -246,6 +277,13 @@
                 closeAgradecimento();
             }, { once: true });
         }, 1000);
+
+        if(comprarButtonOpen == true){
+            document.getElementById("container-botoes-comprar-livro").style.display = "none";
+            document.getElementById("specialcase-botoes-comprar-livro").children[1].style.display = "none";
+            document.getElementById("specialcase-botoes-comprar-livro").children[0].style.display = "block";
+            comprarButtonOpen = false;
+        }
     }
 
     /* Leitura do capitulo */
@@ -258,6 +296,10 @@
         document.body.style.overflowY = "hidden";
         document.getElementById("container-botoes-comprar-livro").style.opacity = "0%";
         document.getElementById("container-botoes-comprar-livro").style.pointerEvents = "none";
+
+        document.getElementById("container-specialcase-botoes-comprar-livro").style.opacity = "0%";
+        document.getElementById("container-specialcase-botoes-comprar-livro").style.pointerEvents = "none";
+        
         flagCanCloseWithEsq = true;
 
         document.addEventListener('keydown', (e) => {
@@ -276,35 +318,59 @@
         document.body.style.overflowY = "auto";
         document.getElementById("container-botoes-comprar-livro").style.opacity = "100%";
         document.getElementById("container-botoes-comprar-livro").style.pointerEvents = "auto";
+
+        document.getElementById("container-specialcase-botoes-comprar-livro").style.opacity = "100%";
+        document.getElementById("container-specialcase-botoes-comprar-livro").style.pointerEvents = "auto";
     }
 
     /* Botões Comprar o Livro */
     let offsetContainer = 0;
     $(function fixedUntilPoint() {
-        var container = $('#container-botoes-comprar-livro-offset-marker');
-        var offsetContainer = container.offset().top;
-        var buttons = $('#container-botoes-comprar-livro');
-
         function adjustDivPosition() {
+            var container = $('#container-botoes-comprar-livro-offset-marker');
+            var offsetContainer = container.offset().top;
+            var buttons = $('#container-botoes-comprar-livro');
             var offsetFloat = $(document).scrollTop() + $(window).height() - container.outerHeight();
+
             if(offsetContainer <= offsetFloat){
+                flagBotoesCompraLivres = true;
                 buttons.css({
-                    bottom:   'auto',
-                    position: 'absolute',
-                    top:      offsetContainer
+                    position: 'relative',
+                    bottom: 0,
+                    background: '#0d1e25'
                 });
-            } else {
+                if ($(window).width() <= 770) {
+                    buttons.css("display", "flex");
+                    buttons.css("padding-bottom", "0");
+                    $('#container-specialcase-botoes-comprar-livro').css("display", "none");
+                    $('#ainda-em-duvida-chamada').css("z-index", "25");
+                    $('#ainda-em-duvida-chamada').css("padding", "0px 0px 8rem 0px");
+                }
+            }else {
                 buttons.css({
                     bottom:   0,
                     position: 'fixed',
-                    top:      'auto'
+                    top:      'auto',
+                    background: '#0d1e2500',
                 });
+                if (($(window).width() > 770)) {
+                    $('#container-specialcase-botoes-comprar-livro').css("display", "none");
+                    buttons.css("display", "flex");
+                    buttons.css('padding-bottom', 15);
+                }
+                if (($(window).width() <= 770)) {
+                    buttons.css('padding-bottom', 90);
+                    $('#container-specialcase-botoes-comprar-livro').css("display", "flex");
+                }
+                if (($(window).width() <= 770) && (comprarButtonOpen == false)) {
+                    buttons.css("display", "none");
+                }
             }
         }
 
         $(document).ready(function() {
             $(window).on('scroll resize', function() {adjustDivPosition()})
-            /* setInterval(adjustDivPosition, 1); */
+            
         });
     });
 

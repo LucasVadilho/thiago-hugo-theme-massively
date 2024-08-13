@@ -59,6 +59,13 @@
     overflow: hidden;
 }
 
+.wow-this-is-really-big{
+    grid-row: span 4;
+    grid-column: span 4;
+    transform: scale .6s ease-in-out;
+    overflow: hidden;
+}
+
 .small img:hover, .horizontal img:hover, .big img:hover, .bighorizontal img:hover, .vertical img:hover{
     scale: 1.2;
     cursor: pointer;
@@ -68,8 +75,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100dvw;
+    height: 100dvh;
     z-index: 9;
     display: flex;
     flex-wrap: wrap;
@@ -81,6 +88,8 @@
     display: inline-flex;
     justify-content: flex-end;
     height: 50px;
+    position: absolute;
+    align-items: center;
 }
 
 .buttonLojaProject{
@@ -91,10 +100,15 @@
     padding: 10px 10px 10px 5px;
 }
 
-.buttonLojaProject:hover, .buttonCloseProject:hover,#next-button-gallery-ilustracoes:hover,#prev-button-gallery-ilustracoes:hover{
+.buttonLojaProject:hover, .buttonCloseProject:hover{
     cursor: pointer;
     color: #18bfef;
 }
+
+#container-next-button-gallery-ilustracoes:hover,#container-prev-button-gallery-ilustracoes:hover{
+    cursor: pointer;
+    color: #18bfef;
+} 
 
 .snackbar span{
     line-height: normal !important;
@@ -117,23 +131,23 @@
 }
 
 #openProject {  
-    object-fit: contain;
     display: flex;
-    padding-left: 5px;
-    padding-right: 5px;
-    width: 100%;
-    max-height: calc(100dvh - 100px);
+    max-width: 100dvw;
+    height: calc(100dvh);
     flex-direction: column;
     overflow-y: auto;
+    width: 100%;
+    align-items: center;
 }
 
 #openProject img{
     object-fit: contain;
-    max-height: calc(99dvh - 100px);
+    max-height: calc(100dvh);
+    max-width: 100%;
 }
 
 #container-prev-button-gallery-ilustracoes,#container-next-button-gallery-ilustracoes{
-    height: calc(100dvh - 100px);
+    height: calc(100dvh);
 }
 
 #prev-button-gallery-ilustracoes,#next-button-gallery-ilustracoes{
@@ -166,8 +180,9 @@
     display: flex;
     flex-direction: row;
     column-gap: 40px; 
+    flex-wrap: wrap;
+    justify-content: center;
 }
-
 
 /* -------------------CORREÇÕES DE MEDIA SCREEN---------------------- */
 @media screen and (max-width:785px) {
@@ -177,5 +192,33 @@
     
     .bighorizontal{
         grid-column: span 2 !important;
+    }
+}
+
+@media screen and (max-width: 1024px){
+    #container-prev-button-gallery-ilustracoes, #container-next-button-gallery-ilustracoes{
+        position: absolute;
+        height: 50px;
+        bottom: 0;
+        display: flex;
+        padding: 0px 25dvw;
+    }
+    #container-next-button-gallery-ilustracoes{
+        right: 0;
+    }
+    #container-prev-button-gallery-ilustracoes{
+        left: 0;
+    }
+    #prev-button-gallery-ilustracoes,#next-button-gallery-ilustracoes{
+        width: 0;
+    }
+    #openProject {  
+        height: calc(100dvh - 100px);
+    }
+    #openProject img{
+        height: calc(100dvh - 100px);
+    }
+    #container-top-buttons-snackbarproj{
+        position: relative;
     }
 }

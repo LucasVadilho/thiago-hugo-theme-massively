@@ -9,17 +9,49 @@
             <span class="{{ if eq ($currentPage.RelPermalink) (`/`) }}active{{end}}"><a href='{{ "/" | relLangURL }}'>TD Vadilho</a></span>
         </div>
         <div class="closethings" onclick="closethis('navigationmenu')">
-            <i class="fa-solid fa-x">close</i>
+            <i class="fa-solid fa-x"></i>
         </div>
     </div>
 
+    <p>
+        <i>Me diga o que quer fazer<br>Que eu levo você</i>
+    </p>
+
     <div class="links">
-        <span class="{{ if eq ($currentPage.RelPermalink) (`/historietas/`) }}active{{end}}"><a href='{{ "/historietas" | relLangURL }}'>Historietas</a></span>
-        <span class="{{ if eq ($currentPage.RelPermalink) (`/livros/`) }}active{{end}}"><a href='{{ "/livros" | relLangURL }}'>Livros</a></span>
-        <span class="{{ if eq ($currentPage.RelPermalink) (`/galeriilustracoes/`) }}active{{end}}"><a href='{{ "/galeriailustracoes" | relLangURL }}'>Galeria de Ilustrações</a></span>
-        <span class="{{ if eq ($currentPage.RelPermalink) (`/blog/`) }}active{{end}}"><a href='{{ "/blog" | relLangURL }}'>Blog</a></span>
-        <span class="{{ if eq ($currentPage.RelPermalink) (`/loja/`) }}active{{end}}"><a href='{{ "/loja" | relLangURL }}'>Comprar coisas legais</a></span>
-        <span class="{{ if eq ($currentPage.RelPermalink) (`/sobre/`) }}active{{end}}"><a href='{{ "/sobre" | relLangURL }}'>Sobre</a></span>
-        <span class="{{ if eq ($currentPage.RelPermalink) (`/contato/`) }}active{{end}}"><a href='{{ "/contato" | relLangURL }}'>Contato</a></span>
+        <span class="{{ if eq ($currentPage.RelPermalink) (`/historietas/`) }}active{{end}}">
+            <a href='{{ "/historietas" | relLangURL }}'>
+                Ler histórias curtas
+            </a>
+        </span>
+        <span class="{{ if eq ($currentPage.RelPermalink) (`/livros/`) }}active{{end}}">
+            <a href='{{ "/livros" | relLangURL }}'>
+                Conhecer os Seus Livros
+            </a>
+        </span>
+        <span class="{{ if eq ($currentPage.RelPermalink) (`/galeriilustracoes/`) }}active{{end}}">
+            <a href='{{ "/galeriailustracoes" | relLangURL }}'>
+                Ver a galeria de ilustrações
+            </a>
+        </span>
+        <span class="{{ if eq ($currentPage.RelPermalink) (`/blog/`) }}active{{end}}">
+            <a href='{{ "/blog" | relLangURL }}'>
+                Checar posts do blog criativo
+            </a>
+        </span>
+        <span class="{{ if eq ($currentPage.RelPermalink) (`/loja/`) }}active{{end}}">
+            <a href='{{ "/loja" | relLangURL }}'>
+                Comprar coisas legais
+            </a>
+        </span>
+        <span class="{{ if eq ($currentPage.RelPermalink) (`/sobre/`) }}active{{end}}">
+            <a href='{{ "/sobre" | relLangURL }}'>
+                Saber mais sobre mim & meu estilo
+            </a>
+        </span>
+        <span class="{{ if eq ($currentPage.RelPermalink) (`/contato/`) }}active{{end}}">
+            <a href='{{ "/contato" | relLangURL }}'>
+                Entrar em contato
+            </a>
+        </span>
     </div>
 </nav>
