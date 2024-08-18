@@ -10,7 +10,7 @@
         {{- partial "pageHeaderMenuAndLogo" . -}}
         <div id="container-sobreHeader">
             <div class="container-header-name" id="sobre-header-name">
-                <h1>Sobre</h1>
+                <img src="/images/menu/sobre-header.png" alt="Sobre" class="img-page-header">
             </div>
         </div>
 
@@ -18,7 +18,7 @@
             <img src="/images/TD-Vadilho.jpg" alt="Foto do TD Vadilho, tirada por Bruno Scandolara">
         </div>
 
-        <div id="container-navigation-sobre" class="menu-text">
+        <div id="container-navigation-sobre" class="menu-navegation-inside-sobre">
             <div id="go-to-modo-funny" class="active-menu" onclick="openFunnyMode()">Informal</div>
             <div id="go-to-modo-serio" onclick="openSeriousMode()">Sucinto e Formal</div>
             <div id="go-to-modo-poem" onclick="openPoem()">O Poema Original</div>
@@ -68,8 +68,9 @@
                 </div>
             </div>
 
-            <div class="contents-box">
-                <img src="/images/NovidadeEmCadaGota-botton-©TDVadilho-noai.png" alt="">
+            <div id="container-imagens-estilo">
+                <img src='{{ .Params.Imgsobreestilo1 }}' alt="{{ .Params.Altimgsobreestilo1 }}" class="animation-element not-shown-img-state">
+                <img src='{{ .Params.Imgsobreestilo2 }}' alt="{{ .Params.Altimgsobreestilo2 }}" class="animation-element not-shown-img-state">
             </div>
 
             <div id="estilo-visual">
@@ -91,8 +92,19 @@
                     <p>Eu acho que sim e, por isso, o meu processo criativo envolve tentar encontrar formas de representar visualmente a voz da história — seja ela criada por mim ou por outros <i>storytellers</i> —, e misturar com o meu estilo de ilustrar.</p>
                 </div>
 
-                Extre Things
-                No fim, eu só quero ser criativo. Criar histórias e ilustrar.
+                <div id="final-text">
+                    <p>Acho que é isso.</p>
+                    <p>Se bem que eu poderia contar mais…</p>
+                    <p>Mas te interessaria saber que eu amo macarrão, sou louco por catchup e trocaria qualquer refeição pela lasanha que a minha mãe faz?</p>
+                    <p>Eu não sei…</p>
+                    <p>Talvez fosse mais interessante contar que eu atuo enquanto escrevo, e constantemente esqueço, palavras do português que gostaria de usar. O engraçado é que me lembro delas no inglês, e eu nunca saí do Brasil, embora tenha o sonho de conhecer a natureza do Canadá.</p>
+                    <p>Acho que às vezes o cérebro é confuso mesmo; deixa tudo espalhado e é difícil de encontrar. A ordem dos meses, por exemplo, eu sei que tenho ela guardada em algum canto da minha cabeça; eu só não sei onde está… </p>
+                    <p>E acredita que o mesmo aconteceu com o rascunho de coisas que eu achei que poderiam ser interessantes de contar? It disappeared, escafedeu-se, entrou no vórtex. Eu não sei mais onde está.</p>
+                    <p>Agora, acho que esse texto está fadado ao fracasso…</p>
+                    <p>Se bem que, te interessaria saber se eu tivesse algo a mais para contar?</p>
+                    <p>Não. Acho que não… </p>
+                    <p>Então é melhor deixarmos todo esse trecho pra lá :)</p>
+                </div>
             </div>
         </div>
 
@@ -164,7 +176,14 @@
         </div>
 
         <div id="no-funny-buisness-be-formal">
-
+            <p>Formado em Design Digital, juntei meu interesse pelo campo visual ao meu interesse pelo textual e, desde então, atuo como escritor e ilustrador em projetos pessoais ou trabalhos freelance (autônomo). </p>
+            <p>Sou autor e ilustrador da capa do livro ‘há quanto tempo você não olha para as estrelas?’, publicado pela editora Flyve, escritor e ilustrador das Historietas e do blog a Toca, disponíveis aqui mesmo, no site, e já trabalhei para clientes como a SAD, organização atuante na Faculdade de Educação da Unicamp.</p>
+            <p>Acredito que as histórias movem as palavras e as pinceladas, e acredito que isso é feito de modo particular, dependendo do quê, e da forma como, a história quer mostrar e se mostrar. </p>
+            <p>Sendo assim, a minha escrita e o meu trabalho visual trazem sempre algo de diferente, a depender desse particular. Porém, se for para estabelecer uma base de estilo, eu digo:</p>
+            <p>A minha escrita envolve trazer o não natural ao natural, e explorar jogos de palavras e de sonorização para sincronizar o ritmo de leitura ao ritmo que a história quer passar.</p>
+            <p>Já nas ilustrações, traços mais soltos, texturas e misturas de mídias — físicas e digitais —  é o que guia o meu expressar.</p>
+            <p>Em resumo, o meu objetivo é bem simples, e pode ser descrito como o ato de criar e co-criar histórias criativas; aquelas histórias que valem a pena serem contadas.</p>
+            <div>Entre em contato</div>
         </div>
         {{- partial "emailing" . -}}                    
         {{- partial "rodape.html" . }}   

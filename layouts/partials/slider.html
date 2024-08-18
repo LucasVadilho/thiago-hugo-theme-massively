@@ -24,10 +24,12 @@
                 <span class="square-navigation-slider" onclick='currentSlide({{ $i }})'></span>
             {{ end }}
         </div>
+
+        <div id="arrows-slider-container">                            
+            <a id="prevSlide" onclick="plusSlides(-1)"><span class='fa-solid fa-chevron-left' aria-hidden='true'></span></a>
+            <p id="currentSlideText" length="{{len .Params.slidersgallery }}"></p>
+            <a id="nextSlide" onclick="plusSlides(1)"><span class='fa-solid fa-chevron-right' aria-hidden='true'></span></a>
+        </div>
     </div>
-    <div id="arrows-slider-container">                            
-        <a id="prevSlide" onclick="plusSlides(-1)"><span class='fa-solid fa-chevron-left' aria-hidden='true'></span></a>
-        <p id="currentSlideText" length="{{len .Params.slidersgallery }}"></p>
-        <a id="nextSlide" onclick="plusSlides(1)"><span class='fa-solid fa-chevron-right' aria-hidden='true'></span></a>
-    </div>
+    
 {{ end }}

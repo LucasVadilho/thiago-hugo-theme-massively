@@ -36,6 +36,9 @@ document.addEventListener('keydown', (ev) => {
     if((ev.key == 'Escape') && (flagnavigationisopen == true)){
         closethis('navigationmenu');
     }
+    if((ev.key == 'Escape') && (canCloseImortalizados == true)){
+        fecharImortalizados();
+    }
     if(flagProjAberto == true){
         if(ev.key == 'Escape'){
             closeSnackbarProj();

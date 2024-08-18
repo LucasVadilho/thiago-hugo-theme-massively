@@ -5,7 +5,10 @@
         <meta charset="utf-8" />
         <meta name="robots" content="noimageai"> <!-- implementado do https://www.deviantart.com/team/journal/Tell-AI-Datasets-If-They-Can-t-Use-Your-Content-934500371 -->
         <meta name="robots" content="noai">
-        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+       
+        <!-- window.innerHeight no chrome do mobile conta o tamanho do techado. -->
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, interactive-widget=resizes-content">
+        
         <title>
             {{- if .IsHome -}}
                 {{ .Site.Title }} | Escritor e Ilustrador
@@ -49,7 +52,7 @@
 		    <link rel="stylesheet" href="{{ ($style | minify).RelPermalink }}"/>
 		{{ end }}
         
-        <link rel="icon" href='https://beta.tdvadilho.com/images/favicon.png'>
+        <link rel="icon" href='https://beta.tdvadilho.com/images/favicon.jpg'>
 		{{ $noscript := resources.Get "scss/noscript.scss" | resources.ExecuteAsTemplate "noscript.scss" . | toCSS (dict "targetPath" "assets/css/noscript.css" "enableSourceMap" false) }}
 		<noscript><link rel="stylesheet" href='{{ $noscript.RelPermalink }}' /></noscript>
 

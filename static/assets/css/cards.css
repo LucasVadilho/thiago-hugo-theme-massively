@@ -221,6 +221,7 @@
     hyphens: none;
     line-height: 1.2;
     margin-top: 20px;
+    font-weight: 500;
 }
 
 .contracapa-chamada{
@@ -356,11 +357,24 @@
     }
 }
 
-@media screen and (max-width: 551px){
+@media screen and (max-width: 551px) and (min-width: 418px){
     #container-double-line h1, #container-double-line-blog h1{
-        font-size: 2.6rem !important;
+        font-size: 1.95rem !important; 
+    }
+    #container-double-line{
+        padding: 0px 20px;
     }
 }
+
+@media screen and (max-width: 417px){
+    #container-double-line h1, #container-double-line-blog h1{
+        font-size: 2.15rem !important; 
+    }
+    #container-double-line{
+        padding: 0px 20px;
+    }
+}
+
 
 /* COLOR CODE CATEGORIES */
 .artes{
@@ -383,6 +397,12 @@
 
 .contos{
     background-color: rgb(184, 76, 76);
+    text-transform: capitalize; 
+    color: var(--whitesmoke-color);
+}
+
+.crônica{
+    background-color: rgb(45, 115, 128);
     text-transform: capitalize; 
     color: var(--whitesmoke-color);
 }

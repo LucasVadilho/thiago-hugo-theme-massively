@@ -2,9 +2,9 @@
     --main-bg-color: #F3EEEC;
     --main-accent: #B3C0F5;
     
-    --support-bg-color: #AACCCC;
+    --support-bg-color: #b3c0f5;
     --support-h1-color: #335C67;
-    --support-h3-color: #FFC97F;;
+    --support-h3-color: #111844b3;
     --support-p-color: #141414;
     --imortalizados-da-vez: #F79256; 
 
@@ -21,7 +21,6 @@
     --sumario-bottom-color: #a09665;
     --hover-accent: #B3C0F5;
 
-/* A PARTIR DAQUI É CERTEZA */
     --blueish-bg-color: #202025fa;
 
     --single-post-h1-color: #F3EEEC;
@@ -70,27 +69,26 @@ body{
 }
 
 .main-header-menu-and-logo{
-    position: absolute;
-    z-index: 10;
+    position: fixed;
+    z-index: 25;
     display: inline-flex;
     justify-content: space-around;
     flex-wrap: nowrap;
-    margin-top: 10px;
-}
-
-#logo{
-    left: 20px;
-    position: fixed;
+    margin-top: 15px;
+    left: 15px;
 }
 
 #menu-to-navigate{
-    right: 20px;
+    right: 15px;
     position: fixed;
 }
 
-#logo:hover, #menu-to-navigate:hover,.closethings:hover{
+#logo:hover, .menu-text:hover,.closethings:hover, .menu-hamburguer:hover{
     cursor: pointer;
+    filter:invert(20%) sepia(11%) saturate(2890%) hue-rotate(316deg) brightness(99%) contrast(93%);
 }
+
+.menu-hamburger{display: none;}
 
 @keyframes smooth-appear {
     from{
@@ -131,27 +129,61 @@ figcaption{
     justify-content: space-between;
 }
 
+#container-all-text-menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100dvh;
+}
+
 .links{
-    font-size: 2rem;
     display: inline-flex;
     flex-direction: column;
-    margin-top: 100px;
-    height: calc(100dvh - 200px);
-    position: absolute;
-    justify-content: space-between;
+    position: relative;
     top: 0;
     right: 50%;
     transform: translateX(50%);
-}
-/*--------------------PAGEs HEADER------------------------*/
-.container-header-name{
-    height: 200px;
     width: 100%;
+    height: 100%;
+    justify-content: space-evenly;
+}
+
+.links img{
+    max-width: 100%;
+}
+
+.links img:hover, .first-td:hover, .closethings:hover, .seccond-td:hover{
+    cursor: pointer;
+    filter: invert(20%) sepia(11%) saturate(2890%) hue-rotate(316deg) brightness(99%) contrast(93%);
+}
+
+/*--------------------PAGEs HEADER------------------------*/
+.img-page-header{
+    max-width: 100%;
+}
+
+.container-header-name{
+    height: 260px;
+    width: 100%;
+    padding: 0px 30px;
     margin-bottom: 30px;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.container-header-name img{
+    max-width: 100%;
+    padding: 40px;
+}
+
+#historietas-header-name img, #blog-header-name img, #contato-header-name img {
+    width: 800px;
+}
+
+#livros-header-name img, #loja-header-name img, #galeria-ilustracoes-header-name img, #sobre-header-name img{
+    width: 600px;
 }
 
 .container-header-text{
@@ -164,53 +196,56 @@ figcaption{
     padding: 0px 20px 0px 20px;
 }
 
+.container-header-text p{
+    font-size: 1.15rem;
+}
+
 #historietas-header-name{
-    background-color: var(--hover-accent);
-    color: var(--dark-color-text);
+    background-color: #7963a1;
     margin-bottom: 50px;
 }
 
 #galeria-ilustracoes-header-name{
-    background-color: var(--hover-accent);
-    color: var(--dark-color-text);
+    background-color: #dd7052;
     margin-bottom: 100px;  
 }
 
 #blog-header-name{
-    background-color: var(--accent-redish);
-    color: var(--dark-color-text);
+    background-color: var(--main-accent);
     margin-bottom: 50px;
 }
 
 #sobre-header-name{
-    background-color: var(--highlight-color-text);
-    color: var(--dark-color-text);
+    background-color: #8b3932;
     margin-bottom: 100px;
 }
 
 #contato-header-name{
-    background-color: var(--accent-redish);
-    color: var(--dark-color-text);
+    background-color: var(--big-header-color);
     margin-bottom: 100px;
 }
 
 #livros-header-name{
-    background-color: #122c55;
-    color: #bbc0fb;
+    background-color: #d9b4ce;
     margin-bottom: 100px;
 }
 
 #loja-header-name{
-    background-color: var(--accent-redish);
-    color: var(--dark-color-text);
+    background-color: #d2d73c;
     margin-bottom: 100px;
 }
 
 #portfolio-header-name{
-    background-color: var(--accent-blueish);
-    color: var(--dark-color-text);
+    background-color: #dd7052;
     margin-bottom: 100px;
 }
+
+@media screen and (max-width: 768px) {
+    .container-header-name{
+        height: 200px;
+    }
+}
+
 /* -------------------END OF PAGEs HEADER-------------------------- */
 
 /*--------------------PAGINATOR------------------------*/
@@ -502,7 +537,7 @@ p>a:hover, figcaption>a:hover{
 
 /*-----------------Autoria e Referencia-----------------*/
 .referenciar{
-    font-size: 0.9rem;
+    font-size: 0.9rem !important;
     line-height: 1.6;
     color: var(--grey-color-text);
     text-align: right;

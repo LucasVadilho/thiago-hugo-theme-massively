@@ -11,7 +11,7 @@
     border-width: thin;
     text-align: center;
     background-color: var(--support-bg-color);
-    padding: 120px 30px 90px 30px;
+    padding: 120px 14px 90px 14px;
 }
 
 #suporteoblog h1, #suporteashistorietas h1{
@@ -20,22 +20,42 @@
     margin-bottom: 25px !important;
 }
 
+#suporteoblog p, #suporteashistorietas p{
+    font-size: 1.15rem;
+}
+
 .container-apoio h3{
     color: var(--support-h3-color);
 }
 
 .container-imortalizados-da-vez{
     margin:auto;
-    max-width: 900px;
-    hyphens: none !important;
+    max-width: 1000px;
     text-align: center;
 }
 
+.container-imortalizados-da-vez p{
+    hyphens: none !important;
+    padding: 0px 15px;
+}
+
+.imortalizados{
+    text-decoration: underline;
+}
+
+#toCloseImortalizados{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+#toCloseImortalizados:hover{
+    cursor: pointer;
+}
+
 .nomes-imortalizados{
+    max-width: 100%;
     position: relative;
-    top: 13px;
-    height: 2.5rem;
-    margin-top: -17px;
 }
 
 #container-modos-de-apoiar{
@@ -67,6 +87,28 @@
     margin-top: 12px;
 }
 
+#snackbar-imortalizados-da-vez{
+    display: none;
+    position: fixed;
+    max-width: 800px;
+    bottom: 40px;
+    background: var(--big-header-color);
+    color: var(--whitesmoke-color);
+    border: 10px solid;
+    transform: translateX(-50%);
+    left: 50%;
+    z-index: 20;
+    padding: 30px;
+    width: 90%;
+    max-width: 900px;
+
+}
+
+#snackbar-imortalizados-da-vez p{
+    text-align: left;
+    margin-bottom: 20px;
+}
+
 /* direta */
 .button-contribuicao-direta{
     display: flex;
@@ -84,17 +126,21 @@
 }
 
 .button-contribuicao-direta:nth-child(1){
-    background-color: var(--accent-yellowish);
+    background-color:#007566;
     margin-right: 10px;
+}
+
+.fa-pix, .pix{
+    color: f5f5f5;
 }
 
 .button-contribuicao-direta:nth-child(2){
-    background-color: var(--accent-redish);
+    background-color: #dd7052;
     margin-right: 10px;
 }
 
-.button-contribuicao-direta:nth-child(3){
-    background-color: var(--accent-avocadish);
+.fa-store, .store{
+    color: #f5f5f5;
 }
 
 /* indiretamente */
@@ -114,21 +160,28 @@
 }
 
 .button-linkafiliado:nth-child(1){
-    background-color: var(--accent-yellowish);
+    background-color: #3b3b3b;
     margin-right: 10px;
 }
 
-.button-linkafiliado:nth-child(2){
-    background-color: var(--accent-redish);
+.amazon{
+    color: #f5f5f5;
 }
 
+.button-linkafiliado:nth-child(2){
+    background-color: #4B83F9;
+}
+
+.magalu{
+    color: #f5f5f5;
+}
 
 /* sem custo */
 .button-compartilhar-post{
     display: flex;
     align-items: center;
     border-radius: 3px;
-    background-color: var(--accent-yellowish);
+    background-color: #1e355f;
     width: fit-content;
     margin: auto;
     margin-top: 12px;
@@ -148,12 +201,16 @@
 
 /* text inside button */
 .button-text{
-    color: rgb(26, 25, 25);
     font-family: system-ui, sans-serif;
     font-size: 0.75rem;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.075em;
     padding: 0px 0px 0px 4px;
+    filter: blur(0);
+}
+
+.fa-link, .compartilhar{
+    color: #f5f5f5;
 }
 
 @media  screen and (max-width:700px) {

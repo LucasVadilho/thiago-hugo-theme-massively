@@ -21,9 +21,18 @@
                         <div id="container-header-single-post">
                             <div id="header-single-posts-historietas" style="background-color: {{ .Params.Backgroundhistcolor | safeCSS }};">
                                 <div id="header-title-single-post-historietas">
+                                    {{ if (isset .Params "imgtitle" ) }}
                                     <span id="image-title-historieta">
                                         <img src="{{ .Params.Imgtitle }}" alt="{{ .Params.Imagetitlealt }}" class="fadeInHistorietas"> 
                                     </span>
+                                    {{ end }}
+
+                                    {{ if (isset .Params "imgtitleextra50" ) }}
+                                    <span id="image-title-historieta-extra">
+                                        <img src="{{ .Params.Imgtitleextra50 }}" alt="{{ .Params.Imagetitlealt }}" class="fadeInHistorietas"> 
+                                    </span>
+                                    {{ end }}
+
                                     {{ if (isset .Params "imagebackgroundtitle" ) }}
                                     <span id="header-historietas-bg">
                                         <img src="{{ .Params.Imagebackgroundtitle }}" alt="{{ .Params.Altimagebackgroundtitle }}" class="fadeInHistorietasBG"> 
@@ -94,16 +103,10 @@
                         </div>
 
                         <div id="suporteashistorietas">
-                            <h1>Apoie as Historietas❤️</h1>
+                            <h1>Apoie as Historietas</h1>
                             <div class="container-imortalizados-da-vez">
-                                <p>A criação do conteúdo que você aproveitou somente é possível graças ao apoio dos leitores e leitoras do site.
-                                        O agradecimento especial dessa edição vai para
-                                    {{- range $key, $value := .Params.Imortalizadosdavez -}}
-                                        {{ if $key }} e {{ end }}
-                                        <img class="nomes-imortalizados" src="{{ $value }}" alt="Nomes dos imortalizados da vez">
-                                    {{- end -}}
-                                    , que apoiaram o meu trabalho, e agora estão sendo <i>imortalizados</i> na página dessa história :)
-                                </p>
+                                <p>A criação desse conteúdo somente foi possível graças ao apoio dos incríveis leitores e leitoras do site.  Como forma de representar o meu agradecimento, deixo alguns de vocês <i><a class="imortalizados" onclick="openImortalizados()">imortalizados</a></i> nesta historieta. É uma homenagem simples, eu sei, mas a simplicidade é ótima em carregar coisas do coração.</p>
+                                <img class="nomes-imortalizados" src="{{ .Params.Imortalizadosdavez }}" alt="{{ .Params.Imortalizadosdavezalt }}">
                             </div>
                             {{- partial "suporte" . }}
                         </div>

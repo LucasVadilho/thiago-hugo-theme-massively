@@ -3,20 +3,20 @@
 <div id="container-modos-de-apoiar">
     <div class="container-apoio">
         <h3>Diretamente</h3>
-        <p>Contribua por PIX ou com a compra dos meus livros, prints e canecas. Todas as contribuições e compras fazem uma <i>enorme diferença!</i></p>
+        <p>Apoie por PIX ou com a compra dos meus livros, prints e canecas. Todas as contribuições e compras fazem uma <i>enorme diferença!</i></p>
 
         <div id="container-contribuicaodireta-buttons">
             <div class="button-contribuicao-direta">
                 <a href="https://nubank.com.br/pagar/11jeh7/8ABRsdHuzw"target="_blank">
                     <span class="fa-brands fa-pix" aria-hidden="true"></span>
-                    <span class="button-text"> CONTRIBUIR</span>
+                    <span class="button-text pix"> APOIAR</span>
                 </a> 
             </div>
 
             <div class="button-contribuicao-direta">
                 <a href="https://www.tdvadilho.com/loja/">
                     <span class="fa fa-store" aria-hidden="true"></span>
-                    <span class="button-text"> COMPRAR COISAS CRIATIVAS</span>
+                    <span class="button-text store"> COMPRAR COISAS CRIATIVAS</span>
                 </a>
             </div>
         </div>
@@ -28,14 +28,14 @@
         <div id="container-contribuicaoindireta-buttons">
             <div class="button-linkafiliado">
                 <a href="https://www.amazon.com.br?&linkCode=ll2&tag=tdvadilho05-20&linkId=323ea7ef1891ccb812a77da02ad83348&language=pt_BR&ref_=as_li_ss_tl" target="_blank">
-                    <span class="fa fa-bookmark" aria-hidden="true"></span>
-                    <span class="button-text"> AMAZON</span>
+                    <span class="fa fa-bookmark amazon" aria-hidden="true"></span>
+                    <span class="button-text amazon"> AMAZON</span>
                 </a>
             </div>
             <div class="button-linkafiliado">
                 <a href="https://www.magazinevoce.com.br/magazinetdvadilho/" target="_blank">
-                    <span class="fa fa-bookmark" aria-hidden="true"></span>
-                    <span class="button-text"> MAGAZINE LUIZA</span>
+                    <span class="fa fa-bookmark magalu" aria-hidden="true"></span>
+                    <span class="button-text magalu"> MAGAZINE LUIZA</span>
                 </a>
             </div>
             
@@ -48,9 +48,29 @@
         <div class="button-compartilhar-post">
             <span class="button-compartilhar-container" onclick="copiarUrlSharing()">
                 <span i class="fa fa-link icon"></span>
-                <span class="button-text"> COMPARTILHAR</span>
+                <span class="button-text compartilhar"> COMPARTILHAR</span>
             </span> 
         </div>
     </div>                            
 </div>
 
+<div id="snackbar-imortalizados-da-vez">
+    <span id='toCloseImortalizados' onclick="fecharImortalizados()"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+    <p>Os imortalizados da vez são escolhidos sem qualquer condição ou comparação. Todo apoio faz uma enorme diferença, e escrever o nome de alguns dos apoiadores é uma forma que encontrei para tornar mais palpável e mais pessoal o meu sentimento de gratidão.</p>
+    <p>Esse sentimento é para com todos vocês, e ainda que seu nome não tenha, propriamente, aparecido, saiba que os imortalizados da vez estão te representando, e que o ato de colocá-los nessa página foi feito com você nos pensamentos, e no coração.</p>
+</div>
+
+<script>
+    let canCloseImortalizados = false;
+    let fecharImortalizados = function (){
+        let snack = document.getElementById("snackbar-imortalizados-da-vez");
+        snack.style.display = "none";
+        canCloseImortalizados = false;
+    }
+
+    let openImortalizados = function (){
+        let snack = document.getElementById("snackbar-imortalizados-da-vez");
+        snack.style.display = "block";
+        canCloseImortalizados = true;
+    }
+</script>

@@ -1,5 +1,5 @@
-.topico{ /* PROVISÓRIO */
-    text-align: center;
+#main{
+    overflow: hidden;
 }
 
 table{
@@ -67,7 +67,8 @@ td{
 }
 
 #container-div-color{
-    height: 50px;
+    height: 53px;
+    margin-top: -3px;
     display: block;
 }
 
@@ -256,6 +257,17 @@ body {
     max-height: 93dvh;
     max-width: 100%;
     z-index: 5;
+    will-change: transform;
+}
+
+#image-title-historieta-extra img{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: calc(93dvh + 50px);
+    max-width: 100%;
+    z-index: 5;
+    will-change: transform;
 }
 
 #header-historietas-bg img{
@@ -302,7 +314,7 @@ body {
 /* REGRAS DE MEDIA */
 @media  screen and (max-width: 861px){
     #container-texto-and-image-content{
-        padding: 80px 20px 0px 20px;
+        padding: 80px 20px 80px 20px;
     }
 }
 

@@ -6,8 +6,8 @@
     background-color: white !important;
 }
 
-#logo{
-    display: none;
+.first-td, .seccond-td{
+    display: none !important;
 }
 
 #container-home {

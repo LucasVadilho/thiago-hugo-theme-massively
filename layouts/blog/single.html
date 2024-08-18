@@ -77,16 +77,12 @@
                         </div>    
                             
                         <div id="suporteoblog">
-                            <h1>Apoie a Toca❤️</h1>
+                            <h1>Apoie a Toca</h1>
                             <div class="container-imortalizados-da-vez">
-                                <p>A criação do conteúdo que você aproveitou somente é possível graças ao apoio dos leitores e leitoras do site.
-                                    O agradecimento especial desse post vai para
-                                    {{- range $key, $value := .Params.Imortalizadosdavez -}}
-                                        {{ if $key }} e {{ end }}
-                                        <img class="nomes-imortalizados" src="{{ $value }}" alt="Nomes dos imortalizados da vez">
-                                    {{- end -}}
-                                    , que apoiaram o meu trabalho, e agora estão sendo <i>imortalizados</i> nessa postagem do blog :)
-                                </p>
+                                <div class="container-imortalizados-da-vez">
+                                    <p>A criação desse conteúdo somente foi possível graças ao apoio dos incríveis leitores e leitoras do site.  Como forma de representar o meu agradecimento, deixo alguns de vocês <i><a class="imortalizados" onclick="openImortalizados()">imortalizados</a></i> nesta postagem. É uma homenagem simples, eu sei, mas a simplicidade é ótima em carregar coisas do coração.</p>
+                                    <img class="nomes-imortalizados" src="{{ .Params.Imortalizadosdavez }}" alt="{{ .Params.Imortalizadosdavezalt }}">
+                                </div>
                             </div>
                             {{- partial "suporte" . }}
                         </div>
