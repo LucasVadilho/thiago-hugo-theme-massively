@@ -1,0 +1,41 @@
+<link rel="stylesheet" type="text/css" href="/assets/css/geral.css"> <!-- Chamando CSS geral -->
+<link rel="stylesheet" type="text/css" href="/assets/css/postssection.css"> <!-- Chamando CSS geral -->
+
+{{- partial "htmlhead" . -}}
+{{- partial "navigationlinks" . -}}<!-- puxando os menus -->
+
+{{ $postsPerPage := 6}}
+{{ $posts_historietas := .Pages.ByDate.Reverse }}
+{{ $postsPaging := .Paginate $posts_historietas $postsPerPage }}
+
+<body lang='{{ .Site.LanguageCode | default "en-us" }}' class="is-preload">
+    <div id="main">
+        {{- partial "pageHeaderMenuAndLogo" . -}}
+        <div id="container-historietasHeader">
+            <div class="container-header-name" id="historietas-header-name">
+                <img src="/images/menu/historietas-header.png" alt="Historietas" class="img-page-header">
+            </div>
+            <div class="container-header-text">
+                <p><i>"Histórias curtas são pequenas janelas para outros mundos, outras mentes e outros sonhos. 
+                    São viagens que você pode fazer ao outro lado do universo e ainda voltar a tempo para o jantar." <br>—&nbspNeil&nbspGaiman [traduzido]</i></p>
+            </div>
+        </div>
+
+        <div id="container-post-all-after-header">
+            <div id="container-postagens">
+                {{ partial "posts_historietas/list.html" (dict "posts" $postsPaging "siteData" (index .Site.Data .Site.Language.Lang)) }}
+            </div>
+
+            <div id="container-paginator">
+                {{- $paginator := .Paginator }}
+                {{- $outer := . }}
+                {{- partial "pagination.html" (dict "paginator" $paginator "outer" $outer)}}
+            </div>
+        </div>
+        {{- partial "emailing" . -}}
+        {{- partial "rodape.html" . }}
+    </div>   
+    {{- template "_internal/google_analytics.html" . }}
+    {{- partial "scripts/index" . }}
+    {{- partial "meusscripts" . -}}
+</body>

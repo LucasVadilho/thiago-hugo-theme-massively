@@ -49,6 +49,14 @@
     right: 5px;
 }
 
+#toCloseImortalizados img{
+    filter: invert(99%) sepia(0%) saturate(27%) hue-rotate(136deg) brightness(114%) contrast(92%);
+}
+
+#toCloseImortalizados img:hover{
+    filter: invert(20%) sepia(11%) saturate(2890%) hue-rotate(316deg) brightness(99%) contrast(93%);
+}
+
 #toCloseImortalizados:hover{
     cursor: pointer;
 }

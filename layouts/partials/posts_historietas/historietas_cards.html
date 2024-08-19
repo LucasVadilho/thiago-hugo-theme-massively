@@ -11,8 +11,8 @@
 					</div>
 				</a>
 				<div class="categories-historietas">
-					{{- range $categories := .Params.Categories -}}
-					<a onclick="window.location.href='/categories/{{ $categories }}'" class="category-container">
+					{{- range $categories := .Params.bs -}}
+					<a onclick="window.location.href='/bs/{{ $categories }}'" class="category-container">
 						<span class="category {{ $categories }}">{{- $categories }}</span>
 					</a>
 					{{- end -}}

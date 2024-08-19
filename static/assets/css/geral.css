@@ -76,6 +76,7 @@ body{
     flex-wrap: nowrap;
     margin-top: 15px;
     left: 15px;
+    mix-blend-mode: color-burn;
 }
 
 #menu-to-navigate{
@@ -124,8 +125,7 @@ figcaption{
 #header-navigation-menu{
     display: inline-flex;
     width: 100%;
-    padding: 0px 10px;
-    font-size: 2.5rem;
+    padding: 10px 10px;
     justify-content: space-between;
 }
 

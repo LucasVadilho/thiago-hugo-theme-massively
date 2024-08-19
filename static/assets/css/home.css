@@ -6,6 +6,14 @@
     background-color: white !important;
 }
 
+.main-header-menu-and-logo{
+    mix-blend-mode: normal !important;
+}
+
+.menu-text, .menu-hamburguer{
+    filter: brightness(0) invert(69%) sepia(75%) saturate(296%) hue-rotate(348deg) brightness(101%) contrast(101%);
+}
+
 .first-td, .seccond-td{
     display: none !important;
 }

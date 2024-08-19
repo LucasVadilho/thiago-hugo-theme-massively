@@ -29,6 +29,15 @@
     right: 5px;
 }
 
+#toCloseMateriais img{
+    filter: invert(99%) sepia(0%) saturate(27%) hue-rotate(136deg) brightness(114%) contrast(92%);
+}
+
+#toCloseMateriais img:hover{
+    filter: invert(20%) sepia(11%) saturate(2890%) hue-rotate(316deg) brightness(99%) contrast(93%);
+}
+
+
 #header-listaMateriais h3{
     margin: 20px 0px 20px 0px !important;
 }
