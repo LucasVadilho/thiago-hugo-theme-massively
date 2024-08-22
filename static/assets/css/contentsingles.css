@@ -2,6 +2,10 @@
     overflow: hidden;
 }
 
+#container-all-rodape{
+    background-color: var(--whitesmoke-color);
+}
+
 table{
     width: 100%;
     table-layout: fixed;
