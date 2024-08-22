@@ -35,9 +35,7 @@
 					<li><span class="fa-solid fa-clock"></span>{{ .Params.Tempoleitura }}</li>
 					<li class="comments-container">
 						<span class="fa-solid fa-comments"></span>
-						<span class="remark42__counter"
-							data-url="{{ .Permalink | safeURL }}">
-						</span>
+						<span class="remark42__counter" data-url="{{ .Permalink | safeURL }}"></span>
 					</li> 
 					<li><span class="fa-solid fa-tags" aria-hidden="true"></span>
 						{{ range $k, $v := .GetTerms "historietastags" }}
