@@ -272,6 +272,10 @@
     margin-right: 5px;
 }
 
+.comments-container a{
+    color:  var(--dark-color-text);
+}
+
 /* SIMILAR POSTS */
 #container-mais-posts-como-esse{
     display: inline-flex;
