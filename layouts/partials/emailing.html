@@ -12,6 +12,7 @@
                     <input type="email" name="mailnewsl" id="emailnewsl" autocomplete="email" placeholder="Digite seu email aqui" required/>
                     <span class="button-inscrever-de-eu-para-voce" onclick="subscribeEmailing()" tabindex="0">Inscrever</span>
                     <span class="subscribing-emailing-letter"></span>
+                    <span class="email-sendo-inscrito-msg">Carregando... Por favor, aguarde...</span>
                     <span class="email-inscrito-msg">Deu tudo certo. Agora é só esperar pelos pombos correios!</span>
                     <span class="email-fail-inscrito-msg">Desculpe, algo deu errado. Podemos tentar outra vez?&nbsp
                         <a onclick="tryagain()">Tentar outra vez</a>
@@ -31,20 +32,23 @@
 var inscreverbutton = document.querySelector(".button-inscrever-de-eu-para-voce");
 var emailinscrito = document.querySelector(".email-inscrito-msg");
 var emailnaoinscrito = document.querySelector(".email-fail-inscrito-msg");
+var emailsendoinscrito = document.querySelector(".email-sendo-inscrito-msg")
+var loadingbarnewsletter = document.querySelector(".subscribing-emailing-letter");
 
 let emailsendoincrito = function(){
-    var loadingbar = document.querySelector(".subscribing-emailing-letter");
     inscreverbutton.classList.add("button-inscrever-de-eu-para-voce-active");
 	setTimeout(function(){
-        loadingbar.classList.add("container-input-emailing-letter-loading");
+        loadingbarnewsletter.classList.add("container-input-emailing-letter-loading");
+        emailsendoinscrito.classList.add("email-sendo-inscrito-msg-active");
 	}, 1000);
 }
 
 let emailInscrito = function(){ 
     emailinscrito.classList.add("email-inscrito-msg-active");
+    emailsendoinscrito.classList.remove("email-sendo-inscrito-msg-active");
+    loadingbarnewsletter.classList.add("loadingbarnewsletter-success");
     setTimeout(function(){
         emailinscrito.classList.remove("email-inscrito-msg-active");
-        loadingbar.classList.remove("container-input-emailing-letter-loading");
         inscreverbutton.classList.remove("button-inscrever-de-eu-para-voce-active");
         flagbarcarregada = false;
     }, 180000);
@@ -52,12 +56,15 @@ let emailInscrito = function(){
 
 let tryagain = function (){
     emailnaoinscrito.classList.remove("email-fail-inscrito-msg-active");
-    loadingbar.classList.remove("container-input-emailing-letter-loading");
+    loadingbarnewsletter.classList.remove("container-input-emailing-letter-loading");
+    loadingbarnewsletter.classList.remove("loadingbarnewsletter-fail");
     inscreverbutton.classList.remove("button-inscrever-de-eu-para-voce-active");
     flagbarcarregada = false;
 }
 
 let emailNaoInscrito = function(){
+    loadingbarnewsletter.classList.add("loadingbarnewsletter-fail");
+    emailsendoinscrito.classList.remove("email-sendo-inscrito-msg-active");
     emailnaoinscrito.classList.add("email-fail-inscrito-msg-active");
 }
 

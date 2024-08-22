@@ -50,7 +50,8 @@
                         <li id="li_btn_contato">
                             <input type="submit" id="btn_enviar" value='{{ i18n "CONTACT_FORM_SUBMIT_SEND_MESSAGE" . }}'/>
                             <span class="messaging-contato"></span>
-                            <span class="email-enviado-msg">Mensagem enviada. Responderei o mais breve que possível! </span>
+                            <span class="email-enviando-msg">Carregando... Por favor, aguarde...</span>
+                            <span class="email-enviado-msg">Mensagem enviada. Responderei o mais breve possível. Obrigado! </span>
                             <span class="email-fail-envio-msg">Desculpe, algo deu errado. Podemos tentar outra vez?&nbsp
                                 <a onclick="tryagainContato()">Tentar outra vez</a>
                             </span>
@@ -127,36 +128,43 @@ var contatobutton = document.querySelector("#btn_enviar");
 var loadingbar = document.querySelector(".messaging-contato");
 var msgemailenviado = document.querySelector(".email-enviado-msg");
 var msgemailnaoenviado = document.querySelector(".email-fail-envio-msg");
+var msgsendoenviada = document.querySelector(".email-enviando-msg");
 
 let emailsendoenviado = function (){
-    contatobutton.classList.add("btn_enviar-active")
+    contatobutton.classList.add("btn_enviar-active");
 	setTimeout(function(){
-        loadingbar.classList.add("container-input-emailing-contato-loading")
+        loadingbar.classList.add("container-input-emailing-contato-loading");
+        msgsendoenviada.classList.add("email-sendo-enviado-msg-active");
 	}, 1000);
 }
 
 let emailEnviado = function(){
     let formulario = document.getElementById("contato");
     msgemailenviado.classList.add("email-enviado-msg-active");
+    loadingbar.classList.add("loadingbar-success");
+    msgsendoenviada.classList.remove("email-sendo-enviado-msg-active");
 
 	setTimeout(function(){
-        msgemailenviado.classList.remove("email-enviado-msg-active")
-        loadingbar.classList.remove("container-input-emailing-contato-loading")
-		contatobutton.classList.remove("btn_enviar-active")
+        msgemailenviado.classList.remove("email-enviado-msg-active");
+        loadingbar.classList.remove("container-input-emailing-contato-loading");
+		contatobutton.classList.remove("btn_enviar-active");
+        loadingbar.classList.remove("loadingbar-success");
 	}, 9000);
     formulario.reset();
 }
 
 let tryagainContato = function (){
-    msgemailnaoenviado.classList.remove("email-fail-contato-msg-active")
-    loadingbar.classList.remove("container-input-emailing-contato-loading")
-    contatobutton.classList.remove("btn_enviar-active")
+    msgemailnaoenviado.classList.remove("email-fail-contato-msg-active");
+    loadingbar.classList.remove("container-input-emailing-contato-loading");
+    contatobutton.classList.remove("btn_enviar-active");
+    loadingbar.classList.remove("loadingbar-fail");
     contatobutton.click();
 }
 
 let emailNaoEnviado = function(){
-    console.log("chamou email não enviado")
-    msgemailnaoenviado.classList.add("email-fail-envio-msg-active")
+    msgsendoenviada.classList.remove("email-sendo-enviado-msg-active");
+    msgemailnaoenviado.classList.add("email-fail-envio-msg-active");
+    loadingbar.classList.add("loadingbar-fail");
 }
 
 document.getElementById('contato').addEventListener("submit", (e) => {

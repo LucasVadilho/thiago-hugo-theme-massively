@@ -74,7 +74,7 @@
 }
 
 .subscribing-emailing-letter{
-	background: #682e29;
+	background: #424252;
     width: 100%;
 	height: 60px;
     transform: translateX(-100%);
@@ -87,7 +87,10 @@
 	        transition: transform 2s ease 0s ;
 }
 
-.email-inscrito-msg, .email-fail-inscrito-msg{
+.email-inscrito-msg, .email-fail-inscrito-msg, .email-sendo-inscrito-msg{
+    hyphens: auto;
+    line-height: 1.2;
+    padding: 10px 20px;
     width: 100%;
     height: 60px;
     z-index: 5;
@@ -133,7 +136,7 @@
 
 .button-inscrever-de-eu-para-voce:hover{
     cursor: pointer;
-    background-color: aquamarine;
+    background-color: #9d902d;
 }
 
 .button-inscrever-de-eu-para-voce-active{
@@ -144,7 +147,7 @@
 	        transform: translateY(0%);
 }
 
-.email-inscrito-msg-active, .email-fail-inscrito-msg-active {
+.email-inscrito-msg-active, .email-fail-inscrito-msg-active, .email-sendo-inscrito-msg-active{
 	-webkit-transform: translateY(0px);
 	   -moz-transform: translateY(0px);
 	    -ms-transform: translateY(0px);
@@ -154,6 +157,14 @@
             pointer-events: all;
 }
 
+.loadingbarnewsletter-success{
+    background: #29683e !important;
+}
+
+.loadingbarnewsletter-fail{
+    background-color: #441310 !important;
+}
+
 .email-fail-inscrito-msg a{
     text-decoration: underline;
     color: var(--whitesmoke-color);
@@ -161,7 +172,7 @@
 
 .email-fail-inscrito-msg a:hover{
     cursor: pointer;
-    color: #220907 !important
+    color: #e79e99 !important
 }
 
 @media screen and (max-width: 1300px){
@@ -193,15 +204,6 @@
     .button-inscrever-de-eu-para-voce{
         padding: 78px 20px 0px 20px;
     }
-    .email-inscrito-msg-active,.email-fail-inscrito-msg-active{
-        hyphens: auto;
-        line-height: 1.5;
-        font-size: 0.9rem;
-    }
-    .email-fail-inscrito-msg-active{
-        display: block;
-        padding: 10px 30px;
-    }
 }
 
 @media screen and (max-width:375px) {
@@ -221,13 +223,10 @@
     .button-inscrever-de-eu-para-voce{
         padding: 78px 20px 0px 20px;
     }
-    .email-inscrito-msg-active,.email-fail-inscrito-msg-active{
-        hyphens: auto;
-        line-height: 1.5;
-        font-size: 0.8rem;
-    }
-    .email-fail-inscrito-msg-active{
-        display: block;
-        padding: 10px 20px;
+}
+
+@media screen and (max-width: 500px) {
+    .email-inscrito-msg, .email-fail-inscrito-msg, .email-sendo-inscrito-msg{
+        font-size: 0.9rem;
     }
 }

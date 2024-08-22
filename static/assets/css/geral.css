@@ -589,3 +589,23 @@ p>a:hover, figcaption>a:hover{
     font-family: system-ui;
     text-transform: uppercase;
 }
+
+/* -----------------------Comentários-------------------------- */
+#container-comentarios-section{
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 100px auto;
+    padding: 0px 20px;
+}
+
+#remark42{
+    width: 100%;
+}
+
+.comentarios-avisos{
+    text-align: center;
+    font-size: 1rem;
+    text-wrap: balance;
+}

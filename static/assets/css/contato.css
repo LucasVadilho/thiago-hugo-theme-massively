@@ -86,7 +86,7 @@
 }
 
 .messaging-contato{/* loading bar */
-	background: #682e29;
+	background: #424252;
     width: 100%;
     transform: translateX(-100%);
     position: absolute;
@@ -98,7 +98,7 @@
 	        transition: transform 2s ease 0s ;
 }
 
-.email-enviado-msg, .email-fail-envio-msg{
+.email-enviado-msg, .email-fail-envio-msg, .email-enviando-msg{
     width: 100%;
     height: 47px;
     z-index: 5;
@@ -111,10 +111,24 @@
     font-weight: 600;
     font-size: 1rem;
     transform: translateY(100px);
+    line-height: 1.2;
+    hyphens: auto;
+    text-align: center;
+    padding: 10px 20px;
 	-webkit-transition: transform 0.5s ease 0.25s ;
 	   -moz-transition: transform 0.5s ease 0.25s ;
 	     -o-transition: transform 0.5s ease 0.25s ;
 	        transition: transform 0.5s ease 0.25s ;
+}
+
+.email-fail-envio-msg a{
+    text-decoration: underline;
+    color: var(--whitesmoke-color);
+}
+
+.email-fail-envio-msg a:hover{
+    cursor: pointer;
+    color: #ffc3be !important;
 }
 
 #btn_enviar{
@@ -125,7 +139,7 @@
 
 #btn_enviar:hover{
     cursor: pointer;
-    background-color: aquamarine;
+    background-color: #9d902d;
 }
 
 .btn_enviar-active{
@@ -145,12 +159,20 @@
 	        transform: translateX(0);
 }
 
-.email-enviado-msg-active, .email-fail-contato-msg-active{
+.email-enviado-msg-active, .email-fail-contato-msg-active, .email-sendo-enviado-msg-active{
 	-webkit-transform: translateY(0px);
 	   -moz-transform: translateY(0px);
 	    -ms-transform: translateY(0px);
 	     -o-transform: translateY(0px);
 	        transform: translateY(0px);
+}
+
+.loadingbar-success{
+    background: #29683e !important;
+}
+
+.loadingbar-fail{
+    background-color: #441310 !important;
 }
 
 .email-fail-contato-msg a{
@@ -160,7 +182,7 @@
 
 .email-fail-contato-msg a:hover{
     cursor: pointer;
-    color: #220907 !important
+    color: #e79e99 !important
 }
 
 @media screen and (max-width: 870px) and (min-width: 768px) {
@@ -182,5 +204,11 @@
     }
     .field{
         width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .email-enviado-msg, .email-fail-envio-msg, .email-enviando-msg{
+        font-size: 0.9rem;
     }
 }
