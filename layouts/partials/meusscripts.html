@@ -144,19 +144,11 @@ function showSlides(n) {
 
 /* ----------------REALIGN VERTICAL---------------- */
     let realignVertical = function(openProject){
-        let snackbarChildrenSize = 0;
-        let snackElement = document.getElementById(openProject);
-        let snackbarChildrenNumber = snackElement.children.length;
-                
-        for(let i = 0; i < snackbarChildrenNumber; i++){
-            snackbarChildrenSize += snackElement.children[i].height;
-        }
-
-        if(snackbarChildrenSize < (snackElement.offsetHeight)){
-            snackElement.classList.add("realignClass");
-        } else{
-            snackElement.classList.remove("realignClass");
-        }
+        let snackElement = document.getElementById('openProject');
+        let firstchildheight = snackElement.children[0].height;
+        console.log(window.innerHeight);
+        console.log(firstchildheight);
+        firstchilg.style.marginTop = ((window.innerHeight - firstchildheight)/2);
     }
 
 /* ----------------ANIMAÇÃO DE CARREGAMENTO ILUSTRAÇÕES---------------- */
@@ -188,7 +180,7 @@ let check_if_in_view = function () {
             setTimeout(() => {
                 element.addClass('shown-img-state');
                 element.attr("flagImagemMostrada", true);
-            }, i * 100);
+            }, i * 70);
         }
     });
 }

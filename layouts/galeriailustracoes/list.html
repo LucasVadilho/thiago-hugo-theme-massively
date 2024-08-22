@@ -28,11 +28,18 @@
                     lojalink="{{ .Params.Lojalink }}"
                     class="{{ .Params.Class }}"
                     backgroundcolor="{{ .Params.Backgroundcolor | safeCSS }}"
-                    scrollbarinactive="{{ .Params.Scrollbarinactive | safeCSS }}"
+                    naturalcoloricons="{{ .Params.Naturalcoloricons | safeCSS }}"
                     >
-                    <img src="{{ .Params.Thumbprojeto }}" class="animation-element not-shown-img-state" alt="{{ .Params.altthumb }}"> 
+                    <img src="{{ .Params.Thumbprojeto }}" class="animation-element not-shown-img-state {{ .Params.Imgthumbposition | safeCSS }}" alt="{{ .Params.altthumb }}"> 
                 </div>           
             {{ end }}
+        </div>
+        <div id="container-encaminhando-ao-contato">
+            <p class="encaminhandoAoContato">
+                <i>
+                    Caso queira contratar meus serviços de ilustração, por favor, encaminhe uma mensagem através da aba <a href="https://www.tdvadilho.com/contato/">contato</a>. Obrigado!
+                </i>
+            </p>
         </div>
         {{- partial "listademateriais" . -}}
         {{- partial "emailing.html" . -}}
@@ -73,6 +80,40 @@
         }
     }
 
+    let isBgWhite = function(bg){
+        if(bg == '#ffffff'){
+            $("#container-next-button-gallery-ilustracoes").hover(function() {
+                $(this).addClass("mix-blend-hard-light");
+            }, function() {
+                $(this).removeClass("mix-blend-hard-light");
+            });
+
+            $("#container-prev-button-gallery-ilustracoes").hover(function() {
+                $(this).addClass("mix-blend-hard-light");
+            }, function() {
+                $(this).removeClass("mix-blend-hard-light");
+            });
+
+            $(".buttonLojaProject").hover(function() {
+                $(this).addClass("mix-blend-hard-light");
+            }, function() {
+                $(this).removeClass("mix-blend-hard-light");
+            });
+
+            $(".buttonCloseProject").hover(function() {
+                $(this).addClass("mix-blend-hard-light");
+            }, function() {
+                $(this).removeClass("mix-blend-hard-light");
+            });
+
+            $(".buythistext").hover(function() {
+                $(this).addClass("mix-blend-hard-light");
+            }, function() {
+                $(this).removeClass("mix-blend-hard-light");
+            });
+        } 
+    }
+
     let createSnackbar = function(id) {   
         //CRIANDO SNACKBAR DA ONDE VAI ENTRAR OS TRABALHOS
         let snackbar = document.createElement('div');
@@ -80,7 +121,8 @@
         snackbar.id = 'snackbarId';
         document.body.style.cssText = 'overflow: hidden';
         snackbar.style.backgroundColor = document.getElementById(id).getAttribute('backgroundcolor');
-        
+        let backgroundOfProject = document.getElementById(id).getAttribute('backgroundcolor');
+        let naturalcoloricons =  document.getElementById(id).getAttribute('naturalcoloricons');
 
         //CRIANDO TOP PART
         let topButtonsContainer = "";
@@ -90,17 +132,17 @@
             topButtonsContainer = 
             `<div id='container-top-buttons-snackbarproj'>
                 <div class='buttonLojaProject' onclick="openLink(' `+ lojalink +` ')">
-                    <span class='fa-solid fa-cart-shopping fa-lg'></span> 
+                    <img src="/images/menu/cart-icon.png" alt="shopping cart" style=' `+ naturalcoloricons +`'">
                 </div>
                 <div class='buttonCloseProject' onclick="closeSnackbarProj()">
-                    <span class='fa-solid fa-x fa-lg'></span>
+                    <img src="/images/menu/close-things.png" alt="close" style='`+ naturalcoloricons +`'">
                 </div>
             </div>`
         }else{
             topButtonsContainer = 
             `<div id='container-top-buttons-snackbarproj'>
                 <div class='buttonCloseProject' onclick="closeSnackbarProj()">
-                    <span class='fa-solid fa-x fa-lg'></span>
+                    <img src="/images/menu/close-things.png" alt="close" style='`+ naturalcoloricons +`'">
                 </div>
             </div>`
         }
@@ -110,13 +152,16 @@
         let openProject = `<div id='container-openProject-and-arrows'>` 
             + `<div id="container-prev-button-gallery-ilustracoes" onclick="changeSlideProj(-1)">
                 <div id="prev-button-gallery-ilustracoes">
-                    <span class='fa fa-chevron-left fa-lg' aria-hidden='true'></span>
+                    <img src="/images/menu/prev-icon.png" alt="close" style='`+ naturalcoloricons +`'">
                 </div>
             </div><div id="openProject">`
 
         // Inserindo o conteúdo    
         let itens = JSON.parse(document.getElementById(id).getAttribute('itens'));
         for (let item of itens){
+            if (item.type == 'firstimage'){
+                openProject += '<div id="first-image"><img src="' + item.src + '" max-width="100%"  alt="'+ item.alt +'"  style="display:block; object-fit: contain; margin:'+item.margin+'" class="snackZoom '+ item.class +'" id="snackZoomId"/></div>'
+            }
             if (item.type == 'image'){
                 openProject += '<img src="' + item.src + '" max-width="100%"  alt="'+ item.alt +'"  style="display:block; object-fit: contain; margin:'+item.margin+'" class="snackZoom '+ item.class +'" id="snackZoomId"/>'
             }
@@ -127,11 +172,20 @@
                 }
                 openProject += '</div>'
             }
+            if (item.type == 'imagebuythis'){
+                openProject += '<img src="' + item.src + '" max-width="100%"  alt="'+ item.alt +'"  style="display:block; object-fit: contain; margin:'+item.margin+'; filter:'+item.filter+'" class="snackZoom '+ item.class +'" id="snackZoomId" onclick="openLink(`'+ lojalink +'`);"/>'
+            }
             if (item.type == 'video') {
                 openProject += '<div style="margin:'+ item.margin +';" class="iframecontainer" id="snackZoomId"><iframe src="' + item.src + '" alt="' + item.alt + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" frameorder="0" vspace="0" hspace="0" marginwidth="0" marginheight="0" width="100%" style="margin: 0 0 0 0" frameBorder="0" scrolling="no" style="border: 0px" allowfullscreen></iframe></div>'
             }
-            if(item.type == 'text'){
-                openProject += '<p style="color:'+ item.textcolor + '!important; margin:'+ item.margin +';text-align:'+ item.textalign +'">'+ item.text +'</p>'
+            if(item.type == 'textleft'){
+                openProject += '<div class="container-text-inside-proj-left"><p class="'+ item.class +'"; style="color:'+ item.textcolor + '!important; margin:'+ item.margin +';text-align:'+ item.textalign +' !important' +';font-style:'+ item.fontstyle +' !important">'+ item.text +'</p></div>'
+            }
+            if(item.type == 'textcenter'){
+                openProject += '<div class="container-text-inside-proj-center"><p class="'+ item.class +'"; style="color:'+ item.textcolor + '!important; margin:'+ item.margin +';text-align:'+ item.textalign +' !important' +';font-style:'+ item.fontstyle +' !important">'+ item.text +'</p></div>'
+            }
+            if(item.type == 'textright'){
+                openProject += '<div class="container-text-inside-proj-right"><p class="'+ item.class +'"; style="color:'+ item.textcolor + '!important; margin:'+ item.margin +';text-align:'+ item.textalign +' !important' +';font-style:'+ item.fontstyle +' !important">'+ item.text +'</p></div>'
             }
         }
 
@@ -139,7 +193,7 @@
         openProject += ` </div>
             <div id="container-next-button-gallery-ilustracoes" onclick="changeSlideProj(1)">
                 <div id="next-button-gallery-ilustracoes">
-                    <span class='fa fa-chevron-right fa-lg' aria-hidden='true'></span>
+                    <img src="/images/menu/next-icon.png" alt="close" style='`+ naturalcoloricons +`'">
                 </div>
             </div> 
         </div>`;
@@ -147,9 +201,15 @@
         snackbar.innerHTML = topButtonsContainer + `<div id="container-openProject"> `+  openProject  + `</div> `; // Snackbar totalmente construida
         document.body.append(snackbar); // Adiciona a snack ao body
 
-        realignVertical("openProject");
+       /*  realignVertical("openProject"); */
         setupSliderGaleria();// Slide da galeria no mobile
         updateURLNoDisturbing(id);
+        isBgWhite(backgroundOfProject);
+
+        document.addEventListener('keydown', (ev) => {
+        if((ev.key == 'Escape') && (flagProjAberto == true)){
+            closeSnackbarProj();
+        }})
     }
 
     /* Slide no mobile */

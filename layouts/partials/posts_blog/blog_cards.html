@@ -5,8 +5,8 @@
 	{{ range .Pages.ByDate.Reverse }}
 		<div class="post-card" style="background-image: url('{{ .Params.Imagethumb }}');" onclick="window.location.href='{{ .Permalink | safeURL }}';">
 			<div class="categories-container">
-				{{- range $categories := .Params.Categories -}}
-				<a onclick="window.location.href='/categories/{{ $categories }}';event.stopPropagation()" class="category-container">
+				{{- range $categories := .Params.Blogcategorias -}}
+				<a onclick="window.location.href='/Blogcategorias/{{ $categories }}';event.stopPropagation()" class="category-container">
 					<span class="category {{ $categories }}">{{- $categories }}</span>
 				</a>
 				{{- end -}}
@@ -19,9 +19,9 @@
 					<li><span class="fa-solid fa-clock"></span>{{ .Params.Tempoleitura }}</li>
 					<li class="comments-container"><span class="fa-solid fa-comments"></span>12<!-- Trocar para a variável do cusdis (ou do outro comentário que eu achei) --></li> 
 					<li><span class="fa-solid fa-tags" aria-hidden="true"></span>
-						{{ range $k, $v := .GetTerms "tags" }}
+						{{ range $k, $v := .GetTerms "blogtags" }}
 							{{- if $k -}}| {{ end }}
-							<a class="tags-container" onclick="window.location.href='/tags/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+							<a class="tags-container" onclick="window.location.href='/blogtags/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
 						{{ end }}
 					</li>
 				</ul>

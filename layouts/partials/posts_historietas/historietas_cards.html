@@ -11,8 +11,8 @@
 					</div>
 				</a>
 				<div class="categories-historietas">
-					{{- range $categories := .Params.bs -}}
-					<a onclick="window.location.href='/bs/{{ $categories }}'" class="category-container">
+					{{- range $categories := .Params.historietascategorias -}}
+					<a onclick="window.location.href='/historietascategorias/{{ $categories }}'" class="category-container">
 						<span class="category {{ $categories }}">{{- $categories }}</span>
 					</a>
 					{{- end -}}
@@ -35,9 +35,9 @@
 					<li><span class="fa-solid fa-clock"></span>{{ .Params.Tempoleitura }}</li>
 					<li class="comments-container"><span class="fa-solid fa-comments"></span>12<!-- Trocar para a variável do cusdis (ou do outro comentário que eu achei) --></li> 
 					<li><span class="fa-solid fa-tags" aria-hidden="true"></span>
-						{{ range $k, $v := .GetTerms "tags" }}
+						{{ range $k, $v := .GetTerms "historietastags" }}
 							{{- if $k -}}| {{ end }}
-							<a class="tags-container" onclick="window.location.href='/tags/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+							<a class="tags-container" onclick="window.location.href='/historietastags/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
 						{{ end }}
 					</li>
 				</ul>
