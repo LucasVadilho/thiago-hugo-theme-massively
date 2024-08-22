@@ -10,9 +10,7 @@
         {{- partial "pageHeaderMenuAndLogo" . -}}
         <table>
             <thead>
-                <tr>
-                    <th>Fonte: www.tdvadilho.com</th>
-                </tr>
+                <tr><th>Fonte: www.tdvadilho.com</th></tr>
             </thead>
 
             <tbody>
@@ -88,13 +86,17 @@
                         </div>
                         {{- partial "similarPostsBlog" .}}
                     </td>
-                    {{- partial "comentario" .}}
                 </tr>
             </tbody>
         </table>
         <div class="paperOverlay"></div>
         {{- partial "listademateriais" . -}}
         {{- partial "emailing" . -}}
+        <div id="container-comentarios-section">
+            <h1>Comentários</h1>
+            <p class="comentarios-avisos">Para comentar, clique em entrar e escolha se quer comentar como anônimo ou criando um usuário. Depois escreva a sua mensagem e voilà :)</p>
+            {{- partial "comentario" . }}
+        </div>
         {{- partial "rodape.html" . }}
     </div>
     <div id="urlCopiarNotification"></div>
