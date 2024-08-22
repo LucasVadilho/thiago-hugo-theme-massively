@@ -1,0 +1,85 @@
+<link rel="stylesheet" type="text/css" href="/assets/css/geral.css"> <!-- Chamando CSS geral -->
+<link rel="stylesheet" type="text/css" href="/assets/css/loja.css">
+
+{{- partial "htmlhead" . -}}<!-- puxando as metatags -->
+{{- partial "navigationlinks" . -}}<!-- puxando os menus -->
+
+<body lang='{{ .Site.LanguageCode | default "pt-br" }}'>
+    <div id="main">
+        {{- partial "pageHeaderMenuAndLogo" . -}}
+        <div id="container-lojaHeader">
+            <div class="container-header-name" id="loja-header-name">
+                <img src="/images/menu/loja-header.png" alt="Compre coisas legais" class="img-page-header">
+            </div>
+        </div>
+
+        <div id="container-loja-all">
+            <div id="loja-promocao">
+                <div id="container-text-promocao">
+                    <h2>Em<br>promoção</h2>
+                    <div id="dataFinal">
+                        {{ .Params.Datafinalpromo }}
+                    </div>
+                </div>
+                {{- partial "slider" . -}}
+            </div>
+
+            <div class="container-header-text">
+                <p><i>Na compra de qualquer produto das ilustrações, R$1 é destinado para instituições beneficientes</i></p>
+            </div>
+
+            <div id="loja-no-promocao">
+                <div class="container-clicavel-and-title">
+                    <div class="clicavel-lojas" onclick="window.open('{{ .Params.Linklivros | safeURL }}')">
+                        <img src="{{ .Params.Thumblivros }}" alt="{{ .Params.Altthumblivros }}">
+                    </div>
+                    <div class="title-tipo-product">
+                        <span>Livros</span>
+                    </div>
+                </div>
+
+                <div class="container-clicavel-and-title">
+                    <div class="clicavel-lojas" onclick="window.open('{{ .Params.Linkcanecas | safeURL }}')">
+                        <img src="{{ .Params.Thumbcanecas }}" alt="{{ .Params.Altthumbcanecas }}">
+                    </div>
+                    <div class="title-tipo-product">
+                        <span>Canecas</span>
+                    </div>
+                </div>
+
+                <div class="container-clicavel-and-title">  
+                    <div class="clicavel-lojas" onclick="window.open('{{ .Params.Linkprints | safeURL }}')">
+                        <img src="{{ .Params.Thumbprints }}" alt="{{ .Params.Altthumbprints }}">
+                    </div>
+                    <div class="title-tipo-product">
+                        <span>Prints (Pôsteres)</span>
+                    </div>
+                </div>
+
+                <div class="container-clicavel-and-title">  
+                    <div class="clicavel-lojas" onclick="window.open('{{ .Params.Linkecobag | safeURL }}')">
+                        <img src="{{ .Params.Thumbecobag }}" alt="{{ .Params.Altthumbecobag }}">
+                    </div>
+                    <div class="title-tipo-product">
+                        <span>Ecobags</span>
+                    </div>
+                </div>
+
+                <div class="container-clicavel-and-title">  
+                    <div class="clicavel-lojas" onclick="window.open('{{ .Params.Linkbottomsandimas | safeURL }}')">
+                        <img src="{{ .Params.Thumbbottomsandimas }}" alt="{{ .Params.Altthumbbottomsandimas }}">
+                    </div>
+                    <div class="title-tipo-product">
+                        <span>Bottons e Imãs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{- partial "listademateriais" . -}}
+        {{- partial "emailing.html" . -}}
+        {{- partial "rodape.html" . -}}
+    </div>
+    {{- template "_internal/google_analytics.html" . }}
+    {{- partial "scripts/index" . }}
+    {{- partial "meusscripts" . }}
+</body>

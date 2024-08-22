@@ -1,0 +1,44 @@
+[CONTACT_EMAIL]
+  other = "Email"
+[CONTACT_FORM_FIELD_EMAIL]
+  other = "Email*"
+[CONTACT_FORM_FIELD_MESSAGE]
+  other = "Mensagem*"
+[CONTACT_FORM_FIELD_NAME]
+  other = "Nome*"
+[CONTACT_FORM_FIELD_ASSUNTO]
+  other = "Assunto*"
+[CONTACT_FORM_SUBMIT_SEND_MESSAGE]
+  other = "Enviar mensagem"
+[CONTACT_SOCIAL]
+  other = "Social"
+[COPYRIGHT_MESSAGE_1]
+  other = "Design: [HTML5 UP](https://html5up.net)"
+[COPYRIGHT_MESSAGE_2]
+  other = "Hugo Port: [curtiscode](https://curtiscode.dev)"
+[INTRO_CONTINUE]
+  other = "Continue"
+[NAV_MENU]
+  other = "Menu"
+[NAV_CONTACT]
+  other = "Contato"
+[PAGINATION_NEXT]
+  other = ""
+[PAGINATION_PREVIOUS]
+  other = ""
+[PAGINATION_FIRST]
+  other = "First"
+[PAGINATION_LAST]
+  other = "Last"
+
+[RODAPE_TEXT]
+  other = "©Thiago David Vadilho (TD Vadilho). Todos os direitos reservados."
+
+[PORTFOLIO]
+  other = "Portfólio"
+[ABOUT_ME_WORK]
+  other = "Sobre Mim & Meu Trabalho"
+[CONTACT_PORTFOLIO]
+  other = "Contato"
+[CURRENT_LENGUAGE]
+  other = "PT-BR"

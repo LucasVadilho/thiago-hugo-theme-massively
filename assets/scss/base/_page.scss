@@ -32,17 +32,3 @@
 		*, *:before, *:after {
 			box-sizing: inherit;
 		}
-
-	body {
-
-		background-color: _palette(invert, bg);
-
-		// Stops initial animations until page loads.
-			&.is-preload {
-				*, *:before, *:after {
-					@include vendor('animation', 'none !important');
-					@include vendor('transition', 'none !important');
-				}
-			}
-
-	}

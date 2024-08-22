@@ -1,0 +1,5 @@
+<!-- Posts -->
+{{ $data := .siteData }}
+<body lang='{{ .Site.LanguageCode | default "en-us" }}' class="is-preload">
+    {{ partial "partials/posts_historietas/historietas_cards" .posts }}
+</body>

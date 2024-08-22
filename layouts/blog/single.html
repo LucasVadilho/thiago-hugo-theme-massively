@@ -1,953 +1,106 @@
-{{- partial "htmlhead" . -}}
-{{ $data := index .Site.Data .Site.Language.Lang }}
+<link rel="stylesheet" type="text/css" href="/assets/css/geral.css"> <!-- Chamando CSS geral -->
+<link rel="stylesheet" type="text/css" href="/assets/css/contentsingles.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/suporte.css">
+
+{{- partial "htmlhead" . -}}<!-- puxando as metatags -->
+{{- partial "navigationlinks" . -}}<!-- puxando os menus -->
 
 <body lang='{{ .Site.LanguageCode | default "en-us" }}' class="is-preload">
-    <!-- Wrapper -->
-    <div id="wrapper">
-        {{- partial "header" . -}}
-        {{- partial "nav" . }}
+    <div id="main">
+        {{- partial "pageHeaderMenuAndLogo" . -}}
+        <table>
+            <thead>
+                <tr><th>Fonte: www.tdvadilho.com</th></tr>
+            </thead>
 
-        <div id="main">
-            <table>
-                <thead>
-                    <tr>
-                      <th>Fonte: www.tdvadilho.com</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <td>
-                            <div id="container_blogPost">
-                                <div class="content-container">
-                                    <h2> {{ .Title }} </h2>
+            <tbody>
+                <tr>
+                    <td>
+                        <div id="container-header-single-post">
+                            <div id="header-single-posts">
+                                <div id="header-title-single-post">
+                                    <h1> {{ .Title }} </h1>
+                                </div>
+                                <div id="header-infos-single-post">
+                                    <h4 class="header-infos-single-post-categories">
+                                        <span class="header-infos-divider-single-post"><i class="fa-solid fa-folder"></i></span>      
+                                        {{ range $v, $categories := .GetTerms "categories" }}
+                                            {{- if $v }}<span style="text-transform: none">e </span>{{ end }}
+                                            <span class="span-link">
+                                                <a onclick="window.location.href='/blogcategorias/{{ replace .LinkTitle " " "-" }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+                                            </span>
+                                        {{ end}}
+                                    </h4>
                                     
-                                    <div class="container-comentarioseluz">
-                                        <h4> 
-                                            {{ .Params.Subtitle }}<span class="barravertical-subtitulo">|</span>
-                                            <span id="comentariosblog" onclick="goToComentariosBlog()">
-                                                <span  data-cusdis-count-page-id="{{ .Params.UniqueID }}">0 </span>
-                                            comentários</span>
-                                            <span class="barravertical-subtitulo">|</span>
-                                            {{- partial "darkandlight" . }}
-                                        </h4>
-                                    </div>
-                                    {{ .Content }}
-                                    <p class="referenciar" style="margin-top:30px">Texto e imagens: ©Thiago David Vadilho (TD Vadilho)</p>
-                                    <p class="referenciar">*Jamais venda ou monetize este conteúdo sem a autorização expressa do autor.</p>
-                                    <p class="referenciar">Caso necessário, entre em <a  href='{{ "#contatar" | relLangURL }}' class="linkto_contato"><u>contato</u></a>.</p>
-                                </div>
-
-                                <div id="compartilharBlogPost-titulo">
-                                    <h4>Compartilhe esse post</h4>
-                                </div>
-                                <div id="compartilharBlogPost">
-                                    <span onclick="copiarUrlSharing()"><i class="fa fa-link icon"></i></span>
-                                    <span onclick="fbSharing()"><i class="fa fa-facebook-f icon"></i></span>
-                                    <span onclick="ttSharing()"><i class="fa fa-twitter icon"></i></span>
-                                    <span onclick="instagramSharing()"><i class="fa fa-instagram icon"></i></span>
-                                    <span onclick="wppSharing()"><i class="fa fa-whatsapp icon"></i></span>       
-                                    <span onclick="redditSharing()"><i class="fa fa-reddit-alien icon"></i></span>
-                                    <span onclick="linkedinSharing()"><i class="fa fa-linkedin icon"></i></span>
-                                </div>
-                               
-                                <div id="suporteoblog">
-                                    <h2>Quer ajudar o blog?</h2>
-                                    <div id="explicacoes-blog">
-                                        <p id="intro-blog">Toda ajuda me permite continuar criando. Toda ajuda é muito bem-vinda! Muito obrigado❤️
-                                        </p>
-                                        
-                                        <div id="container_contribuicoes-blog">
-                                            <div class="contribuicoes-blog">
-                                                <h4>Diretamente</h4>
-                                                <p>Doe por PIX ou cheque os produtos do meu trabalho. Toda compra e doação fazem uma enorme diferença!</p>
-
-                                                <div id="container_contribuicaopix-blog">
-                                                        <a href="https://nubank.com.br/pagar/11jeh7/8ABRsdHuzw" class="button_contribuicaopix-container" target="_blank">
-                                                            <div class="button_contribuicaopix">
-                                                                <p class="textbutton_contribuicaopix"><img src="/images/icon_pix.svg" class="icon_pix" alt="logo do pix"> DOAR</p>
-                                                            </div>
-                                                        </a> 
+                                    <h4 class="header-infos-single-post-categories">
+                                        <span class="header-infos-divider-single-post">
+                                            <span id="header-infos-will-disappear">&nbsp|&nbsp</span>
+                                            <i class="fa-solid fa-tags"></i>
+                                        </span>                                        
                                                 
-
-                                                    <a href="https://amzn.to/49s0IwN" class="button_meuslivros-container" target="_blank">
-                                                        <div class="button_meuslivros">
-                                                            <p class="textbutton_meuslivros"><i class="fa fa-book" aria-hidden="true"></i> LIVROS</p>
-                                                        </div>
-                                                    </a>
-
-                                                    <a href="https://umapenca.com/tdvadilho/" class="button_lojaartes-container" target="_blank">
-                                                        <div class="button_lojaartes">
-                                                            <p class="textbutton_lojaartes"><i class="fa fa-paint-brush" aria-hidden="true"></i> ARTES</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-
-                                            <div class="contribuicoes-blog">
-                                                <h4>Indiretamente</h4>
-                                                <p>Comprar qualquer produto pelos links afiliados geram renda ao blog sem qualquer custo adicional para você</p>
-                                                <div id="organizer_contribuicoesIndiretas-blog">
-                                                    <a href="https://www.amazon.com.br?&linkCode=ll2&tag=tdvadilho05-20&linkId=323ea7ef1891ccb812a77da02ad83348&language=pt_BR&ref_=as_li_ss_tl" class="clicavel_linkafiliado" target="_blank">
-                                                        <div id="container_linkafiliado">
-                                                            <div class="linkafiliado"><i class="fa fa-bookmark" aria-hidden="true"></i> AMAZON </div>
-                                                        </div>
-                                                    </a>
-                                                    <a href="https://www.magazinevoce.com.br/magazinetdvadilho/" class="clicavel_linkafiliado"  target="_blank">
-                                                        <div id="container_linkafiliado">
-                                                            <div class="linkafiliado lu"><i class="fa fa-bookmark" aria-hidden="true"></i> MAGAZINE LUIZA </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-
-                                            <div class="contribuicoes-blog">
-                                                <h4>Sem custo</h4>
-                                                <p>Me seguindo nas redes sociais, você estará me ajudando a levar o meu trabalho para um público maior</p>
-
-                                                {{ with $data.social }}
-                                                    <ul class="icons alt">
-                                                        {{ with .instagram}}
-                                                            <li><a href="{{ . }}" class="icon alt fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
-                                                        {{ end }}
-
-                                                        {{ with .facebook}}
-                                                            <li><a href="{{ . }}" class="icon alt fa-facebook" target="_blank"><span class="label">Facebook</span></a></li>
-                                                        {{ end }}
-
-                                                        {{ with .twitter}}
-                                                            <li><a href="{{ . }}" class="icon alt fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
-                                                        {{ end }}
-
-                                                        {{ with .youtube }}
-                                                            <li><a href="{{ . }}" class="icon alt fa-youtube-play" target="_blank"><span class="label">Youtube</span></a></li>
-                                                        {{ end }}
-                                                    </ul>
-                                                {{ end }}
-                                            </div>
-                                        </div>                                
-                                    </div>
-                                    </div>
+                                        {{ range $k, $tags := .GetTerms "tags" }}
+                                            {{- if $k }}, {{ end }}
+                                            <span class="span-link">
+                                                <a class="tags-container" onclick="window.location.href='/blogtags/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+                                            </span>
+                                        {{ end }}
+                                    </h4>
+                                    
+                                    <h4 class="header-infos-single-post-categories">
+                                        <span class="header-infos-divider-single-post">
+                                            <span id="header-infos-will-disappear">&nbsp|&nbsp</span>
+                                            <i class="fa-solid fa-clock"></i>
+                                        </span>
+                                        <span>{{ .Params.Tempoleitura }}utos</span>
+                                    </h4>
                                 </div>
-                                
-                        </td>
-                    </tr>
-                    
-                </tbody>
-                
-            </table>
-        
-        <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
-        <div id="urlCopiarNotification">
-        </div>
-    </div>
+                                <img src="{{ .Params.Imageheader }}" alt="{{ .Params.Imageheaderalt }}">
+                            </div>
+                        </div>
 
+                        <div id="container-texto-and-image-content">
+                            <div id="container-chamada-content">{{ .Params.Description }}</div>
+                            {{ if strings.Contains .TableOfContents "li" }}
+                                <div id="container-table-of-contents">
+                                    <h2>Sumário</h2>
+                                    {{ .Page.TableOfContents }}
+                                </div>
+                            {{ else }}
+                                <div class="no-table-of-contents"></div>
+                            {{ end }}
+                            {{ .Content }}
+                            <p class="referenciar" style="margin-top:30px">Texto e imagens: ©Thiago David Vadilho (TD Vadilho)</p>
+                            <p class="referenciar">*Jamais venda ou monetize este conteúdo sem a autorização expressa do autor.</p>
+                            <p class="referenciar">Caso necessário, entre em <a  href='{{ "#contatar" | relLangURL }}' class="linkto_contato"><u>contato</u></a>.</p>
+                        </div>    
+                            
+                        <div id="suporteoblog">
+                            <h1>Apoie a Toca</h1>
+                            <div class="container-imortalizados-da-vez">
+                                <div class="container-imortalizados-da-vez">
+                                    <p>A criação desse conteúdo somente foi possível graças ao apoio dos incríveis leitores e leitoras do site.  Como forma de representar o meu agradecimento, deixo alguns de vocês <i><a class="imortalizados" onclick="openImortalizados()">imortalizados</a></i> nesta postagem. É uma homenagem simples, eu sei, mas a simplicidade é ótima em carregar coisas do coração.</p>
+                                    <img class="nomes-imortalizados" src="{{ .Params.Imortalizadosdavez }}" alt="{{ .Params.Imortalizadosdavezalt }}">
+                                </div>
+                            </div>
+                            {{- partial "suporte" . }}
+                        </div>
+                        {{- partial "similarPostsBlog" .}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="paperOverlay"></div>
+        {{- partial "listademateriais" . -}}
+        {{- partial "emailing" . -}}
+        <div id="container-comentarios-section">
+            <h1>Comentários</h1>
+            <p class="comentarios-avisos">Para comentar, clique em entrar e escolha se quer comentar como anônimo ou criando um usuário. Depois escreva a sua mensagem e voilà :)</p>
+            {{- partial "comentario" . }}
+        </div>
+        {{- partial "rodape.html" . }}
+    </div>
+    <div id="urlCopiarNotification"></div>
     {{- template "_internal/google_analytics.html" . }}
     {{- partial "scripts/index" . }}
-
-
-    <div id="comentariosblog-container">
-        <h2>Comentários</h2>
-        <h4>Vamos conversar sobre o post?</h4>
-
-        <p class="avisos-pre-comentarios">• A aprovação dos comentários tem o intuito <b>apenas</b> de barrar mensagens desrespeitosas ou spams;</p>
-        <p class="avisos-pre-comentarios">• Aqui, nenhum dos seus dados são salvos, e, por isso, ainda não temos todas as funcionalidades típicas 
-            de uma seção de comentários. Com o tempo chegaremos lá 😊
-        </p>
-
-        <div id="cusdis_thread"
-            data-host="https://cusdis.com"
-            data-app-id="b935f701-f887-42b4-96cf-1852bf2005b2"
-            data-page-id="{{ .Params.UniqueID }}"
-            data-page-url="{{ .Permalink }}"
-            data-page-title="{{ .Title }}"
-            >
-        </div>
-
-        <script>
-            window.CUSDIS_LOCALE = {
-                powered_by: 'Powered by Cusdis',
-                post_comment: 'Postar comentário',
-                loading: 'Carregando',
-            
-                // comment
-                email: 'Email (opcional)',
-                nickname: 'Nome',
-                reply_placeholder: 'Comentar...',
-                reply_btn: 'Responder',
-                sending: 'enviando...',
-            
-                // reply
-                mod_badge: 'MOD',
-                content_is_required: 'Conteúdo é requerido',
-                nickname_is_required: 'Apelido é requerido',
-            
-                comment_has_been_sent:
-                'Seu comentário foi enviado. Por favor aguarde pela aprovação.',
-            }
-        </script>
-
-        <script>
-            let hajaluzcomentarios = function (){
-                window.CUSDIS={};let e;function t(t){return e||(e=document.createElement("iframe"),function(e,t){const s=window.matchMedia("(prefers-color-scheme: dark)"),d=d=>{try{const i=JSON.parse(d.data);if("cusdis"===i.from)switch(i.event){case"onload":"auto"===t.dataset.theme&&n("setTheme",s.matches?"dark":"light");break;case"resize":e.style.height=i.data+"px"}}catch(i){}};function i(e){const s=e.matches;"auto"===t.dataset.theme&&n("setTheme",s?"dark":"light")}window.addEventListener("message",d),s.addEventListener("change",i)}(e,t)),e.srcdoc=(e=>{const t=e.dataset.host||"https://cusdis.com",n=e.dataset.iframe||`${t}/js/iframe.umd.js`;return`<!DOCTYPE html>\n<html>\n  <head>\n    <link rel="stylesheet" href="/assets/css/comentarios-estilo-lightmode.css">\n    <base target="_parent" />\n    <link>\n    <script>\n      window.CUSDIS_LOCALE = ${JSON.stringify(window.CUSDIS_LOCALE)}\n      window.__DATA__ = ${JSON.stringify(e.dataset)}\n    <\/script>\n    <style>\n      :root {\n        color-scheme: light;\n      }\n    </style>\n  </head>\n  <body>\n    <div id="root"></div>\n    <script src="${n}" type="module">\n      \n    <\/script>\n  </body>\n</html>`})(t),e.style.width="100%",e.style.border="0",e}function n(t,n){e&&e.contentWindow.postMessage(JSON.stringify({from:"cusdis",event:t,data:n}))}function s(e){if(e){e.innerHTML="";const n=t(e);e.appendChild(n)}}function d(){let e;window.cusdisElementId?e=document.querySelector(`#${window.cusdisElementId}`):document.querySelector("#cusdis_thread")?e=document.querySelector("#cusdis_thread"):document.querySelector("#cusdis")&&(console.warn("id `cusdis` is deprecated. Please use `cusdis_thread` instead"),e=document.querySelector("#cusdis")),!0===window.CUSDIS_PREVENT_INITIAL_RENDER||e&&s(e)}window.renderCusdis=s,window.CUSDIS.renderTo=s,window.CUSDIS.setTheme=function(e){n("setTheme",e)},window.CUSDIS.initial=d,d();
-            }
-
-            let deshajaluzcomentarios = function(){
-                window.CUSDIS={};let e;function t(t){return e||(e=document.createElement("iframe"),function(e,t){const s=window.matchMedia("(prefers-color-scheme: dark)"),d=d=>{try{const i=JSON.parse(d.data);if("cusdis"===i.from)switch(i.event){case"onload":"auto"===t.dataset.theme&&n("setTheme",s.matches?"dark":"light");break;case"resize":e.style.height=i.data+"px"}}catch(i){}};function i(e){const s=e.matches;"auto"===t.dataset.theme&&n("setTheme",s?"dark":"light")}window.addEventListener("message",d),s.addEventListener("change",i)}(e,t)),e.srcdoc=(e=>{const t=e.dataset.host||"https://cusdis.com",n=e.dataset.iframe||`${t}/js/iframe.umd.js`;return`<!DOCTYPE html>\n<html>\n  <head>\n    <link rel="stylesheet" href="/assets/css/comentarios-estilo-darkmode.css">\n    <base target="_parent" />\n    <link>\n    <script>\n      window.CUSDIS_LOCALE = ${JSON.stringify(window.CUSDIS_LOCALE)}\n      window.__DATA__ = ${JSON.stringify(e.dataset)}\n    <\/script>\n    <style>\n      :root {\n        color-scheme: light;\n      }\n    </style>\n  </head>\n  <body>\n    <div id="root"></div>\n    <script src="${n}" type="module">\n      \n    <\/script>\n  </body>\n</html>`})(t),e.style.width="100%",e.style.border="0",e}function n(t,n){e&&e.contentWindow.postMessage(JSON.stringify({from:"cusdis",event:t,data:n}))}function s(e){if(e){e.innerHTML="";const n=t(e);e.appendChild(n)}}function d(){let e;window.cusdisElementId?e=document.querySelector(`#${window.cusdisElementId}`):document.querySelector("#cusdis_thread")?e=document.querySelector("#cusdis_thread"):document.querySelector("#cusdis")&&(console.warn("id `cusdis` is deprecated. Please use `cusdis_thread` instead"),e=document.querySelector("#cusdis")),!0===window.CUSDIS_PREVENT_INITIAL_RENDER||e&&s(e)}window.renderCusdis=s,window.CUSDIS.renderTo=s,window.CUSDIS.setTheme=function(e){n("setTheme",e)},window.CUSDIS.initial=d,d();   
-            }
-
-            let ajustasecaocomentario = function(mode){
-                if (mode === "lightmode"){
-                    hajaluzcomentarios();
-                } else {
-                    deshajaluzcomentarios();
-                }
-            }
-        </script>
-        <script defer data-host="https://cusdis.com" data-app-id="b935f701-f887-42b4-96cf-1852bf2005b2" src="https://cusdis.com/js/cusdis-count.umd.js"></script>
-    </div>
-    
-    {{- partial "copyright" . }}
-</div>
+    {{- partial "meusscripts" . -}}
 </body>
-
-<style>
-
-    .mySlides {
-        flex-grow: 1
-    }
-
-    .mySlides iframe {
-        width: 100%;
-        height: 500px;
-    }
-
-    .iframecontainer{
-        position: relative;
-        overflow: hidden;
-        width: 100%;
-        padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
-    }
-
-    .iframecontainer iframe{
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        border: none;
-    }
-
-/* GERAIS */
-    #main{
-        border: none;
-        padding: 4rem 5rem 3rem 5rem;
-    }
-
-    a{
-        border: none;
-    }
-
-    p>a{
-        text-decoration: underline;
-    }
-
-    a:hover{
-        cursor: pointer;
-    }
-
-
-    button{
-        margin-left: 3px;
-        margin-right: 3px;
-        margin-top: 10px;
-    }
-
-/* TEXTO */
- /* titulo e subtitulo */
-    .content-container {
-        margin-top: 10px;
-    }
-
-    .container-comentarioseluz{
-        text-align: center;
-    }
-
-    .content-container h4{
-        margin-bottom: 30px;
-        display: inline-flex;
-        align-items: center;
-    }
-
-    .barravertical-subtitulo{
-        margin-left: 5px;
-        margin-right: 5px;
-    }
-
-    /* GoToComentários */
-    #comentariosblog:hover{
-        cursor: pointer;
-        color: #252121 !important;
-    }
-
-    #comentariosblog{
-        position: sticky;
-        display: -webkit-inline-box;
-    }
-
-    #comentariosblog::before{
-        background: hsl(45 100% 70%);
-        content: "";
-        inset: 0;
-        position: absolute;
-        transform: scaleX(0);
-        transform-origin: right;
-        transition: transform 0.5s ease-in-out;
-        z-index: -1;
-    }
-
-    #comentariosblog:hover::before{
-        transform: scaleX(1);
-        transform-origin: left;
-    }
-
-    /* texto do content */
-    table td{
-        padding: 0;
-    }
-
-    table thead{
-        border: none;
-    }
-
-    thead{
-        display: none;
-    }
-
-    table tbody tr:nth-child(2n + 1) {
-        background-color: rgba(255, 255, 255, 0);C
-    }
-
-    table tbody tr {
-        border: none;
-    }
-    
-    /* Compartilhar */
-    #compartilharBlogPost-titulo h4{
-        margin-bottom: 0;
-        margin-top: 40px;
-        margin-bottom: 10px;
-    }
-
-    #compartilharBlogPost {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 40px;
-    }
-
-    #compartilharBlogPost span {
-        width: 40px;
-        height: 40px;
-        background-color: #fff;
-        text-align: center;
-        line-height: 40px;
-        font-size: 18px;
-        margin: 0 0 0 10px;
-        display: block;
-        border-radius: 50%;
-        position: relative;
-        overflow: hidden;
-        border: 3px solid #fff;
-        z-index: 1;
-        box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
-    }
-
-    #compartilharBlogPost span:first-child{
-        margin-left: 0;
-    }
-
-    #compartilharBlogPost span:hover{
-        cursor: pointer;
-    }
-
-    #compartilharBlogPost span .icon {
-        position: relative;
-        color: #262626;
-        transition: .5s;
-        z-index: 3;
-        vertical-align: 2px !important;
-        margin-right: 0 !important;
-    }
-
-    #compartilharBlogPost span:hover .icon {
-        display: inline-block;
-        color: #fff;
-        transform: rotateY(360deg);
-        -webkit-transform: rotateY(360deg);
-        -ms-transform: rotateY(360deg);
-    }
-
-    #compartilharBlogPost span:before {
-        content: "";
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: #f00;
-        transition: .5s;
-        z-index: 2;
-    }
-
-    #compartilharBlogPost span:hover:before {
-        top: 0;
-    }
-
-    #compartilharBlogPost span:nth-child(1):before{
-        background: #aab1c0;
-    }
-    
-    #compartilharBlogPost span:nth-child(2):before{
-        background: #3b5999;
-    }
-
-    #compartilharBlogPost span:nth-child(3):before{
-        background: #55acee;
-    }
-
-    #compartilharBlogPost span:nth-child(4):before{
-        background: #FE0B81;
-    }
-
-    #compartilharBlogPost span:nth-child(5):before{
-        background: #128C7E;
-    }
-
-    #compartilharBlogPost span:nth-child(6):before{
-        background: #FF4500;
-    }
-
-    #compartilharBlogPost span:nth-child(7):before{
-        background: #0077B5;
-    }
-
-    #compartilharBlogPost span:nth-child(8):before{
-        background: #C8232C;
-    }
-
-    /* Fading animation */
-    .fade {
-        animation-name: fade;
-        animation-duration: 1.5s;
-    }
-
-    @keyframes fade {
-        from {opacity: .4}
-        to {opacity: 1}
-    }
-
-/* ENCERRAMENTO */    
-    #suporteoblog{
-        margin-top: 35px;
-        padding-top: 35px;
-        border-top: 2px solid #b6b6b6;
-        border-width: thin;
-    }
-
-    #intro-blog{
-        margin-bottom: 25px;
-        text-align: center;
-    }
-
-    #explicacoes-blog{
-        margin-top: 20px;
-    }
-
-    #historieta-encerramento h2{
-        text-align: center;
-    }
-
-    #container_contribuicoes-blog{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-top: 35px;
-    }
-
-    .contribuicoes-blog{
-        width: 30%;
-        min-width: 20%;
-    }
-
-    .contribuicoes-blog h4{
-        margin-bottom: 15px;
-    }
-
-    .title_contribuicoes-blog{
-        text-align: center;
-        font-size: 1rem;
-        line-height: 1.6;
-        text-transform: uppercase;
-    }
-
-    /* diretamente */
-    #container_contribuicaopix-blog{
-        width: 100%;
-        display: inline-flex;
-        justify-content: space-evenly;
-        margin-top: 12px;
-    }
-
-    .button_contribuicaopix-container, .button_meuslivros-container, .button_lojaartes-container{
-        -webkit-backface-visibility: hidden;
-        -webkit-transform: translateZ(0) scale(1, 1);
-        filter: blur(0);
-        -webkit-filter: blur(0);
-        transition: transform .2s;
-    }
-
-    .button_contribuicaopix-container:hover, .button_meuslivros-container:hover, .button_lojaartes-container:hover{
-        cursor: pointer;
-        transform: scale(1.1);
-        transition: transform .2s;
-    }
-
-    .button_contribuicaopix{
-        margin-left: 0px;
-        margin-right: 0px;
-        height: 26px;
-        background-color: rgb(31, 107, 102);
-        border-radius: 3px;
-        display: flex;
-        align-items: center;
-    }
-
-    .textbutton_contribuicaopix{
-        color:rgb(255, 255, 255); 
-        font-family: "Source Sans Pro", Helvetica, sans-serif;
-        font-size: 0.8rem;
-        font-weight: 900;
-        letter-spacing: 0.075em;
-        padding: 0 10px 0 10px;
-    }
-
-    .icon_pix{
-        filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(323deg) brightness(102%) contrast(101%);
-        width: 9.344px;
-        height: 12.219px;
-        padding-top: 3px;
-    }
-
-    .button_meuslivros{
-        margin-left: 0px;
-        margin-right: 0px;
-        height: 26px;
-        background-color: #FFC97F;
-        border-radius: 3px;
-        display: flex;
-        align-items: center;
-    }
-    
-    .textbutton_meuslivros{
-        color:rgb(26, 25, 25); 
-        font-family: "Source Sans Pro", Helvetica, sans-serif;
-        font-size: 0.8rem;
-        font-weight: 900;
-        letter-spacing: 0.075em;
-        padding: 0 10px 0 10px;
-    }
-
-    .button_lojaartes{
-        margin-left: 0px;
-        margin-right: 0px;
-        height: 26px;
-        background-color: #d2bbf0;
-        border-radius: 3px;
-        display: flex;
-        align-items: center;
-    }
-    
-    .textbutton_lojaartes{
-        color:rgb(26, 25, 25); 
-        font-family: "Source Sans Pro", Helvetica, sans-serif;
-        font-size: 0.8rem;
-        font-weight: 900;
-        letter-spacing: 0.075em;
-        padding: 0 10px 0 10px;
-    }
-
-    /* indiretamente */
-    #organizer_contribuicoesIndiretas-blog{
-        display: inline-flex;
-        justify-content: space-evenly;
-        width: 100%;
-        margin: 12px auto 0 auto;
-    }
-
-    #container_linkafiliado {
-        height: 26px;
-        width: fit-content;
-        -webkit-backface-visibility: hidden;
-        -webkit-transform: translateZ(0) scale(1, 1);
-        filter: blur(0);
-        -webkit-filter: blur(0);
-        transition: transform .2s;
-        display: flex;
-        align-items: center;
-    }
-
-    #container_linkafiliado:hover{
-        cursor: pointer;
-        transform: scale(1.1);
-        transition: transform .2s;
-    }
-
-    .linkafiliado {
-        border-radius: 3px;
-        background-color: #ffe95a;
-        color:rgb(26, 25, 25); 
-        height: 26px;
-        font-family: "Source Sans Pro", Helvetica, sans-serif;
-        font-size: 0.8rem;
-        font-weight: 900;
-        letter-spacing: 0.075em;
-        padding: 0 10px 0 10px;
-    }
-
-    .lu{
-        background-color: #4B83F9 !important;
-        color: white;
-    }
-
-    /* sem custo */
-    .contribuicoes-blog ul{
-        text-align: center;
-        margin-top: 8px;
-    }
-
-    .contribuicoes-blog>.icon.alt{
-        color: #717981;
-    }
-
-/* REGRAS DE MIDIA */
-    @media screen and (max-width: 700px) and (min-width: 551px){
-        h2{
-            font-size: 2.5rem;
-        }
-
-        h4{
-            font-size: 1.2rem;
-        } 
-    }
-
-    @media screen and (max-width: 550px){
-        h2{
-            font-size: 2.2rem;
-        }
-
-        h4{
-            font-size: 1.1rem;
-        } 
-    }
-
-    @media screen and (max-width: 736px){
-        #main {
-            padding: 2rem 1.8rem 2rem 1.8rem;
-        }
-        #share_postBlog{
-            width: 352px;
-        }
-        #container_btnCompartilharBlogPost{
-            text-align: center;
-        }
-
-        #prevProcesso, #nextProcesso{
-            display: none;
-        }
-    }
-
-    @media screen and (max-width: 1036px) and (min-width:737px){
-        #share_postBlog{
-            max-width: 352px;
-        }
-    }
-
-    /* REGRAS DE MIDIA */
-    @media screen and (max-width: 1080px) and (min-width:890px){
-        #container_contribuicoes-blog{
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .contribuicoes-blog{
-            width: 40%;
-            margin-bottom: 50px;
-        }
-
-        .contribuicoes-blog:first-of-type{
-            margin-right: 50px;
-        }
-
-        .contribuicoes-blog:last-of-type{
-            margin-bottom: 0;
-        }
-    }
-
-    @media screen and (max-width: 889px){
-        .txt_pinMateriaisUsados{
-            font-size: 0.75rem;
-        }
-
-        .fa-thumb-tack {
-            font-size: small;
-        }
-
-        .pinMateriaisUsados{
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-
-        #container_contribuicoes-blog{
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .contribuicoes-blog{
-            width: 90%;
-            margin-bottom: 50px;
-        }
-
-        .contribuicoes-blog:last-of-type{
-            margin-bottom: 0;
-        }
-
-        .contribuicoes-blog h4{
-            text-align: left;
-        }
-
-        #container_contribuicaopix-blog{
-            justify-content: flex-start;
-        }
-
-
-        .button_contribuicaopix-container, .button_meuslivros-container{
-            margin-right: 10px;
-        }
-
-        #organizer_contribuicoesIndiretas-blog{
-            justify-content: flex-start;
-        }
-
-        #container_linkafiliado{
-            margin-right: 10px;
-            margin-top: 12px;
-        }
-
-        .contribuicoes-blog ul{
-            text-align: left;
-        }
-    }
-
-    @media screen and (max-width: 464px) and (min-width: 403px){
-        #compartilharBlogPost span:nth-child(8){
-            display: none;
-        }
-    }
-
-    @media screen and (max-width: 402px){
-        #compartilharBlogPost span:nth-child(7){
-            display: none;
-        }
-        #compartilharBlogPost span:nth-child(8){
-            display: none;
-        }
-    }
-</style>
-
-<script>
-    /* Mover a tela para a seção de comentários */
-    let goToComentariosBlog = function(){
-        let comentariosYPosition = document.getElementById("comentariosblog-container").offsetTop;
-        window.scrollTo({left: 0, top: comentariosYPosition, behavior: "smooth"});
-    }
-
-    let scrollTo = function(newYPosition){
-        console.log("oi")
-    } 
-
-    /* DESTACARR O MENU*/
-    let activeMenu = document.querySelector("#nav > ul > li:nth-child(5)") || undefined;
-    if(activeMenu)
-        activeMenu.innerHTML = '<li class="active"> <a href="/blog">Blog</a></li>'
-
-    /* COMPARTILHAMENTO */
-    function fbSharing(post_url) {
-        var url = new String(post_url);
-        window.open(post_url , "share_dialog", "width=500, height=300");
-    }
-
-    function ttSharing(post_url){
-        var url = new String(post_url);
-        window.open(post_url , "share_dialog", "width=790, height=462");
-    }
-
-    function redditSharing(post_url){
-        var url = new String(post_url);
-        window.open(post_url , "share_dialog", "width=790, height=742");
-    }
-
-/*     function pinterestSharing(post_url){
-        var url = new String(post_url);
-        window.open(post_url , "share_dialog", "width=1080, height=727");
-    } */
-
-
-    /* COMPARTILHAMENTO */
-    function fbSharing() {
-        var url = "https://www.facebook.com/sharer/sharer.php?u=" + urlCurrentPage;
-        window.open(url , "share_dialog", "width=500, height=300");
-    }
-
-    function ttSharing(){
-        var url = "https://twitter.com/share?url=" + urlCurrentPage + "%0a%0a&text=Gente, leia {{ .Params.title }}, postado no blog do autor @tdvadilho :) &text=🔗&hashtags=historietasTDVadilho";
-        window.open(url , "share_dialog", "width=790, height=462");
-    }
-
-    function redditSharing(){
-        var url = "https://www.reddit.com/submit?title=Historieta%20-%20TDVadilho&text=Gente,%20leia%20{{ .Params.title }},%20um%20post%20no%20blog%20do%20autor%20@td.vadilho";
-        window.open(url , "share_dialog", "width=790, height=742");
-    }
-
-/*     function pinterestSharing(){
-        var url = "pinterestSharing('{{ .Params.linkPin }}')";
-        window.open(url , "share_dialog", "width=1080, height=727");
-    } */
-
-    function wppSharing(){
-        var url = "https://api.whatsapp.com/send?text=Lê esse post no blog do escritor TD Vadilho " + urlCurrentPage
-        window.open(url)
-    }
-
-    function linkedinSharing(){
-        var url = "https://www.linkedin.com/feed/?shareActive=true&text=Gente, leia '{{ .Params.title }}', postado no blog do %23escritor TD Vadilho! https://tdvadilho.com/historietas/historieta6 %23historias %23literatura"
-        window.open(url, "width=790, height=742")
-    }
-
-    function instagramSharing(){
-        var url = "{{ .Params.linkInsta }}"
-        window.open(url, "width=790, height=742")
-    }
-    
-    /* Carregando links de compartilhamento */
-    let urlCurrentPage = window.location.href;
-
-        /* Copiar URL*/    
-        let copiarUrlSharing = function() {
-            let createCopiarNotification = function() {
-                let notification = document.getElementById("urlCopiarNotification");
-                notification.style.display = "block";
-                notification.innerHTML = '<i class="fa fa-link"></i> URL COPIADA</div>';
-                
-                setTimeout(() => {
-                    notification.style.display = 'none';
-                }, 2800);
-            }
-
-            if(navigator.clipboard) {
-                navigator.clipboard.writeText(window.location.href);
-                createCopiarNotification();
-            }
-            createCopiarNotification();
-        }
-
-    // CARROSSEL
-    let slideIndex = 1;
-    showSlides(slideIndex);
-
-    // Next/previous controls
-    function plusSlides(n) {
-    showSlides(slideIndex += n);
-    }
-
-    // Thumbnail image controls
-    function currentSlide(n) {
-    showSlides(slideIndex = n);
-    }
-
-    function showSlides(n) {
-        let i;
-        let slides = document.getElementsByClassName("mySlides");
-        let dots = document.getElementsByClassName("dot");
-        if (n > slides.length) {slideIndex = 1}
-        if (n < 1) {slideIndex = slides.length}
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex-1].style.display = "block";
-        dots[slideIndex-1].className += " active";
-    }
-
-    //SWIPE LEFT OR RIGHT
-    let touchsurface = document.getElementById('container_processo'),
-        startX, 
-        startY,
-        dist,
-        distThreshold,
-        thresholdX = 50,
-        thresholdY = 50,
-        allowedTime = 1500,
-        elapsedTime,
-        startTime
-
-    let setupSlider = function() {
-        touchsurface.addEventListener('touchstart', function(e) {
-            let touchobj = e.changedTouches[0]
-            
-            dist = 0
-            distThreshold = 0
-            startX = touchobj.pageX
-            startY = touchobj.pageY
-            startTime = new Date().getTime() 
-        }, false)
-
-        touchsurface.addEventListener('touchend', function(e) {
-            var touchobj = e.changedTouches[0]
-            dist = touchobj.pageX - startX
-            distThreshold = Math.abs(dist)
-            elapsedTime = new Date().getTime() - startTime
-           
-            console.log('dist ' + dist + ' threshold X ' + thresholdX)
-            console.log('abs y ' + Math.abs(touchobj.pageY - startY) + ' thrs Y ' + thresholdY)
-            console.log('elapsedTime ' + elapsedTime + ' allowed ' + allowedTime)
-
-            if (
-                elapsedTime <= allowedTime &&
-                distThreshold >= thresholdX &&
-                Math.abs(touchobj.pageY - startY) <= thresholdY &&
-                dist > 0
-            ){
-                document.getElementById('prevProcesso').click()
-            }
-
-            if (
-                elapsedTime <= allowedTime &&
-                distThreshold >= thresholdX &&
-                Math.abs(touchobj.pageY - startY) <= thresholdY &&
-                dist < 0)
-            {                                         
-                document.getElementById('nextProcesso').click()
-            }
-        }, false)
-    }
-    
-    document.addEventListener("DOMContentLoaded", (event) => { 
-        setupSlider()
-        /* Mover para hrefs âncoras do post */
-    });
-</script>

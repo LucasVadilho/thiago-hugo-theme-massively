@@ -1,0 +1,35 @@
+<link rel="stylesheet" type="text/css" href="/assets/css/slider.css"> <!-- Chamando CSS slider -->
+
+{{ if isset .Params "slidersgallery" }}
+    <div id="slider-container">
+        <div id="container-gallery-images">
+            {{ range $slidersgallery := .Params.Slidersgallery }}
+                <div class="slider-gallery">
+                    {{ if eq $slidersgallery.type "video" }}
+                        <iframe
+                            src="{{ $slidersgallery.src }}"
+                            title="YouTube video player" frameborder="0" scrolling="no"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen
+                            alt="{{ $slidersgallery.alt }}">
+                        </iframe>
+                    {{ else }}
+                        <img src="{{ $slidersgallery.src }}" alt="{{ $slidersgallery.alt }}" onclick="window.open('{{ $slidersgallery.link | safeURL }}')">
+                    {{ end }}
+                </div>
+            {{ end }}
+        </div>
+        <div id="square-navigation-slider-container">
+            {{ range $i := (seq (len .Params.slidersgallery)) }}
+                <span class="square-navigation-slider" onclick='currentSlide({{ $i }})'></span>
+            {{ end }}
+        </div>
+
+        <div id="arrows-slider-container">                            
+            <a id="prevSlide" onclick="plusSlides(-1)"><span class='fa-solid fa-chevron-left' aria-hidden='true'></span></a>
+            <p id="currentSlideText" length="{{len .Params.slidersgallery }}"></p>
+            <a id="nextSlide" onclick="plusSlides(1)"><span class='fa-solid fa-chevron-right' aria-hidden='true'></span></a>
+        </div>
+    </div>
+    
+{{ end }}

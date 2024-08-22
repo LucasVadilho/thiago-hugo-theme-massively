@@ -1,0 +1,44 @@
+<link rel="stylesheet" type="text/css" href="/assets/css/geral.css"> <!-- Chamando CSS GERAL -->
+<link rel="stylesheet" type="text/css" href="/assets/css/cards.css"> <!-- Chamando CSS CARDS -->
+
+<div class="posts-container">
+	{{ range .Pages.ByDate.Reverse }}
+		<div class="post-card" style="background-image: url('{{ .Params.Imagethumb }}');" onclick="window.location.href='{{ .Permalink | safeURL }}';">
+			<div class="categories-container">
+				{{- range $categories := .Params.Blogcategorias -}}
+				<a onclick="window.location.href='/blogcategorias/{{ replace $categories " " "-"}}';event.stopPropagation()" class="category-container">
+					<span class="category {{ $categories }}">{{- $categories }}</span>
+				</a>
+				{{- end -}}
+			</div>
+			<div class="post-card-description">
+				{{ .Params.Description }}
+			</div>
+			<div class="post-card-info">
+				<ul class="post-card-info-list">
+					<li><span class="fa-solid fa-clock"></span>{{ .Params.Tempoleitura }}</li>
+					<li class="comments-container">
+						<span class="fa-solid fa-comments"></span>
+						<a href="{{ .Permalink | safeURL }}#remark42"><span class="remark42__counter" data-url="{{ .Permalink | safeURL }}"></span></a>
+					</li>  
+					<li><span class="fa-solid fa-tags" aria-hidden="true"></span>
+						{{ range $k, $v := .GetTerms "blogtags" }}
+							{{- if $k -}}| {{ end }}
+							<a class="tags-container" onclick="window.location.href='/blogtags/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+						{{ end }}
+					</li>
+				</ul>
+			</div>
+		</div>
+	{{ end }}
+</div>
+
+<script>
+    var remark_config = {
+      host: 'https://remark42.tdvadilho.com',
+      site_id: 'tdvadilho',
+      components: ['counter']
+    }
+</script>
+
+<script>!function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);</script>

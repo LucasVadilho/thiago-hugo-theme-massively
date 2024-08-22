@@ -1,153 +1,232 @@
-{{- partial "htmlhead" . -}}
+<link rel="stylesheet" type="text/css" href="/assets/css/geral.css"> <!-- Chamando CSS geral -->
+<link rel="stylesheet" type="text/css" href="/assets/css/sobre.css">
 
-<head>
-    <link rel="canonical" href="https://www.tdvadilho.com/sobre/"/> 
-</head>
+{{- partial "htmlhead" . -}}<!-- puxando as metatags -->
+{{- partial "navigationlinks" . -}}<!-- puxando os menus -->
 
-	<body lang='{{ .Site.LanguageCode | default "en-us" }}' class="is-preload">
-
-        <!-- Wrapper -->
-        <div id="wrapper" class="fade-in">
-
-            {{- partial "header" . -}}
-            {{- partial "nav" . }}
-
-            <!-- Main -->
-            <div id="main">
-                <div id="sobre-container">
-                    
-                    <h2 id="apresentacao">{{ .Title }}</h2>
-                           
-                    <div id="caixaTexto">
-                        <p class="firstLine">Para a minha cabeça, a verdade é simples:</p>
-                        <p class="lastLine">Eu demorei muito para me encontrar.</p>
-
-                        <p class="firstLine">Eu estava em um outro caminho,</p> 
-                        <p class="normalLine">No meio do limbo,</p>
-                        <p class="lastLine">Que era muito mais pra lá do que pra cá.</p>
-
-                        <p class="firstLine">Nessa época eu pensava, e me enganava, dizendo:</p>  
-                        <p class="normalLine">É muito mais fácil, seguir passo a passo, sem sequer desviar o olhar.</p>  
-                        <p class="normalLine">Se eu fizer tudo com perfeição, vou chegar no ápice da emoção;</p>  
-                        <p class="lastLine">E vou me garantir e me encaixar.</p>
-
-                        <p class="firstLine">O problema foi, como você supôs, que chegou o momento de me confrontar:  </p>
-                        <p class="normalLine specialLine">Quem eu sou?</p>
-                        <p class="normalLine specialLine">O que eu valorizo?</p>
-                        <p class="lastLine specialLine">E para qual lado eu realmente quero caminhar?</p>
-
-                        <p class="firstLine">Eu pensei, me questionei, e percebi que não tinha muita resposta para dar.</p>
-                        <p class="normalLine">E por isso eu travei, me isolei, adoeci e… enfim,</p>
-                        <p class="lastLine">Meu vício passou a ser o de me julgar e condenar.</p>
-                          
-                        <p class="firstLine">Eu não sei ao certo quanto tempo passou,</p>
-                        <p class="normalLine">E nem me lembro de tudo o que rolou,</p>
-                        <p class="lastLine">Mas eventualmente certas coisas começaram a me atrair para cá.</p>
-
-                        <p class="firstLine">Coisas como plantar.</p>
-                        <p class="normalLine">Como escrever.</p>
-                        <p class="lastLine">Como ler e desenhar.</p>
-
-                        <p class="firstLine">Ou como Neil Gaiman,</p>
-                        <p class="normalLine">Dr. Seuss,</p>
-                        <p class="lastLine">Um Pequeno Príncipe, e a ideia que levou Nora Seed a continuar.</p>
-
-                        <p class="firstLine">E então eu me redescobri,</p>
-                        <p class="normalLine">Com a ajuda daqueles que não me deixaram afundar.</p>
-                        <p class="normalLine"> Eu sou alguém simples,</p>
-                        <p class="lastLine">Que apenas aprecia e anseia pela dedicação genuína ao criar.</p>   
-
-                        <p class="firstLine specialLine">Esse é quem eu sou,</p>
-                        <p class="normalLine specialLine">Isso é o que eu valorizo,</p>
-                        <p class="lastLine specialLine">E é por esse caminho que eu quero caminhar.</p>
-
-                        <p class="firstLine">Fora isso, querido(a), só resta falar:</p>
-                        <p class="normalLine">Me chamo Thiago.</p>
-                        <p class="normalLine">O D vem de David.</p>
-                        <p class="normalLine">E a única coisa que fiz foi me graduar.</p>
-                        <p class="normalLine">Design Digital, turma 018.</p>
-                        <p class="normalLine">Só que por hora trabalho com algo que foge do meu caminhar…</p>
-                        <p class="normalLine">Não é que eu não tenha tentado.</p>
-                        <p class="normalLine">É mais como se não tivesse rolado…</p>
-                        <p class="lastLine">Espero que seja porque é aqui que eu deva estar.</p>    
-                    </div>
-
-                    <p class="assinatura"> {{ .Params.Assinatura }} </p>
-                    {{- partial "rodape.html" . }}
-                </div>
-            </div> 
-        
-            {{- partial "copyright" . }}
-            <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
-            
+<body lang='{{ .Site.LanguageCode | default "pt-br" }}'>
+    <!-- Main -->
+    <div id="main">
+        {{- partial "pageHeaderMenuAndLogo" . -}}
+        <div id="container-sobreHeader">
+            <div class="container-header-name" id="sobre-header-name">
+                <img src="/images/menu/sobre-header.png" alt="Sobre" class="img-page-header">
+            </div>
         </div>
-  
-        {{- template "_internal/google_analytics.html" . }}
-        {{- partial "scripts/index" . }}
-        
-    </body>
 
-<style>
+        <div id="container-ola-e-foto">
+            <img src="/images/TD-Vadilho.jpg" alt="Foto do TD Vadilho, tirada por Bruno Scandolara">
+        </div>
 
-    .firstLine{
-        font-variant: small-caps;
-        letter-spacing: 0.75px;
-        font-size: 1.12rem;
-        margin-bottom: 0px;
-    }
+        <div id="container-navigation-sobre" class="menu-navegation-inside-sobre">
+            <div id="go-to-modo-funny" class="active-menu" onclick="openFunnyMode()">Informal</div>
+            <div id="go-to-modo-serio" onclick="openSeriousMode()">Sucinto e Formal</div>
+            <div id="go-to-modo-poem" onclick="openPoem()">O Poema Original</div>
+        </div>
 
-    .normalLine{
-        margin-top: 0px;
-        margin-bottom: 0px;
-        margin-left: 10px;
-    }
+        <div id="be-funny">
+            <div class="container-left-align-text">
+                <p>Me formei em Design Digital em 2021, e hoje atuo como <i>escritor-ilustrador</i>, ou um <i>ilustrador-escritor</i>, dependendo de como você, ou o projeto, quiserem me ver. Seja como for, acima de tudo, sou o tal do <i>storyteller</i>, aquele que utiliza de palavras e imagens, para criar e contar histórias, na esperança de que elas deixem uma marca em você.</p>
+            </div>
 
-    .lastLine{
-        margin-bottom: 1.5rem;
-        margin-left: 10px;
-    }
+            <div class="container-right-align-text">
+                <p>Se achou complicado, eu prometo que não é. Pense, por exemplo, em livros. Eu <b>escrevo</b> livros. 
+                    E eu também <b>ilustro</b> livros. E o mesmo conceito poderia ser aplicado a um jogo de computador; 
+                    ou mesmo a um comercial de TV — ainda que, primordialmente, eu trabalhe com livros. <i>Capiche?</i>
+            </div>
 
-    .specialLine{
-        font-style: italic;
-    }
+            <div id="container-exemple">
+                <div id="container-exemple-text">
+                    <p>Por exemplo. Está vendo esse livro?<p>
+                </div>
+                <div id="container-exemple-foto">
+                    <img src="/images/Capa-e-Contra-ex-de-trabalho.jpg" alt="Exemplo de trabalho. Livro 'Há quanto tempo você não olha para as estrelas?', o qual escrevi e fiz a ilustração da capa">
+                </div>
+                <div id="container-exemple-text">
+                    <p>Fui eu que escrevi!<br> E está vendo a ilustração da capa?<br> Aham. Essa mesmo. A borboleta no meio. <br>Então, foi eu que ilustrei! <br> <i>:)</i></p>
+                </div>
+            </div>
 
-    #apresentacao{
-        margin-bottom: 0px;
-        text-align: left !important;
-    }
+            <div id="estilo-escrita">
+                <div class="container-box-estilo">
+                    <div id="container-double-line">
+                        <div id="container-double-line-first-line">
+                            <h1>Sobre o meu</h1>
+                        </div>
+                        <div id="double-line-seccond-line">
+                            <h1>estilo de escrita</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-estilo-text">
+                    <p>As minhas histórias favoritas são as de ficção, porque, claro, elas me dão total liberdade para mentir adoidado para você.</p>
+                    <p>Calma. É brincadeira, poxa! Eu jamais faria isso. A nossa amizade é preciosa e a verdade é que eu só escrevo ficção porque gosto
+                        de misturar o não natural ao natural, acrescentar um pouco de <i>nonsense</i>, e brincar com a sonoridade das palavras — e com as palavras 
+                        — enquanto falo de assuntos que me interessam; como, a natureza, as memórias de infância, a criatividade e tudo o mais que importa.</p>
+                    <p>“O que importa é algo muito relativo, Thiago…” Concordo. Você me pegou. Eu só escrevi isso porque os interesses mudam e, consequentemente, as histórias mudam e, <i>consequentementemente</i>, a minha escrita tem que mudar. Além disso, escrever algo relativo, e falar sobre ser relativo, talvez tenha sido suficiente para você esquecer o fato de que não tem sentido falar que escrevo ficção porque gosto de brincar com as palavras e com o ritmo de leitura que a sonoridade tem potencial de passar…
+                    </p>
+                </div>
+            </div>
 
-    #caixaTexto{
-        font-size: 1.1rem;
-        line-height: 1.8;
-        word-break: break-word;
-        text-align: left;
-        margin: 35px 20px 0 20px;
-        font-family: Georgia;
-    }
+            <div id="container-imagem-estilo-escrita">
+                <img src='{{ .Params.Imgsobreestilo3 }}' alt="{{ .Params.Altimgsobreestilo3 }}" class="animation-element not-shown-img-state">
+            </div>
 
-    .assinatura{
-        font-style: italic;
-        font-variant: small-caps;
-        font-family: Georgia;
-    }
+            <div id="estilo-visual">
+                <div class="container-box-estilo">
+                    <div id="container-double-line">
+                        <div id="container-double-line-first-line">
+                            <h1>Sobre o meu</h1>
+                        </div>
+                        <div id="double-line-seccond-line">
+                            <h1>estilo de ilustração</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-estilo-text">
+                    <p>Para ser completamente franco, eu gosto de experimentar.</p>
+                    <p>Não me entenda mal, eu tenho o meu estilo. Ele envolve cores, texturas, traços mais soltos e formas mais abstratas; além da mistura de mídias, físicas e digitais, para tentar gerar um resultado de encantar.</p>
+                    <p>Mas o que move a ilustração, ao menos na minha opinião, são as histórias que elas vão contar. E, sendo assim, não seria errado se eu não deixasse a história participar 
+                        e me guiar? '-'</p>
+                    <p>Eu acho que sim e, por isso, o meu processo criativo envolve tentar encontrar formas de representar visualmente a voz da história — seja ela criada por mim ou por outros <i>storytellers</i> —, e misturar com o meu estilo de ilustrar.</p>
+                </div>
 
-    @media screen and (max-width: 736px){
-        #sobre-container{
-            padding: 3rem 2rem 3rem 2rem;
-        }
-        #apresentacao{
-            font-size: 2.2rem;
-            display: flex;
-            justify-content: center;
-        }
-        #caixaTexto{
-            margin: 35px 0px 0px 0px;
-        }
-    }
+                <div id="container-imagens-estilo">
+                    <img src='{{ .Params.Imgsobreestilo1 }}' alt="{{ .Params.Altimgsobreestilo1 }}" class="animation-element not-shown-img-state">
+                    <img src='{{ .Params.Imgsobreestilo2 }}' alt="{{ .Params.Altimgsobreestilo2 }}" class="animation-element not-shown-img-state">
+                </div>
 
-</style>
+                <div id="final-text">
+                    <p>Acho que é isso.</p>
+                    <p>Se bem que eu poderia contar mais…</p>
+                    <p>Mas te interessaria saber que eu amo macarrão, sou louco por catchup e trocaria qualquer refeição pela lasanha que a minha mãe faz?</p>
+                    <p>Eu não sei…</p>
+                    <p>Talvez fosse mais interessante contar que eu atuo enquanto escrevo, e constantemente esqueço, palavras do português que gostaria de usar. O engraçado é que me lembro delas no inglês, e eu nunca saí do Brasil, embora tenha o sonho de conhecer a natureza do Canadá.</p>
+                    <p>Acho que às vezes o cérebro é confuso mesmo; deixa tudo espalhado e é difícil de encontrar. A ordem dos meses, por exemplo, eu sei que tenho ela guardada em algum canto da minha cabeça; eu só não sei onde está… </p>
+                    <p>E acredita que o mesmo aconteceu com o rascunho de coisas que eu achei que poderiam ser interessantes de contar? It disappeared, escafedeu-se, entrou no vórtex. Eu não sei mais onde está.</p>
+                    <p>Agora, acho que esse texto está fadado ao fracasso…</p>
+                    <p>Se bem que, te interessaria saber se eu tivesse algo a mais para contar?</p>
+                    <p>Não. Acho que não… </p>
+                    <p>Então é melhor deixarmos todo esse trecho pra lá :)</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="be-poetic">
+            <div id="container-poem" class="container-poem">  
+                <div id="caixaTexto-original-poem">
+                    <p id="poem-title">Sobre mim e a critividade</p>
+                    <p class="firstLine">Para a minha cabeça, a verdade é simples:</p>
+                    <p class="lastLine">Eu demorei muito para me encontrar.</p>
+
+                    <p class="firstLine">Eu estava em um outro caminho,</p> 
+                    <p class="normalLine">No meio do limbo,</p>
+                    <p class="lastLine">Que era muito mais pra lá do que pra cá.</p>
+
+                    <p class="firstLine">Nessa época eu pensava, e me enganava, dizendo:</p>  
+                    <p class="normalLine">É muito mais fácil, seguir passo a passo, sem sequer desviar o olhar.</p>  
+                    <p class="normalLine">Se eu fizer tudo com perfeição, vou chegar no ápice da emoção;</p>  
+                    <p class="lastLine">E vou me garantir e me encaixar.</p>
+
+                    <p class="firstLine">O problema foi, como você supôs, que chegou o momento de me confrontar:  </p>
+                    <p class="normalLine specialLine">Quem eu sou?</p>
+                    <p class="normalLine specialLine">O que eu valorizo?</p>
+                    <p class="lastLine specialLine">E para qual lado eu realmente quero caminhar?</p>
+
+                    <p class="firstLine">Eu pensei, me questionei, e percebi que não tinha muita resposta para dar.</p>
+                    <p class="normalLine">E por isso eu travei, me isolei, adoeci e… enfim,</p>
+                    <p class="lastLine">Meu vício passou a ser o de me julgar e condenar.</p>
+                        
+                    <p class="firstLine">Eu não sei ao certo quanto tempo passou,</p>
+                    <p class="normalLine">E nem me lembro de tudo o que rolou,</p>
+                    <p class="lastLine">Mas eventualmente certas coisas começaram a me atrair para cá.</p>
+
+                    <p class="firstLine">Coisas como plantar.</p>
+                    <p class="normalLine">Como escrever.</p>
+                    <p class="lastLine">Como ler e desenhar.</p>
+
+                    <p class="firstLine">Ou como Neil Gaiman,</p>
+                    <p class="normalLine">Dr. Seuss,</p>
+                    <p class="lastLine">Um Pequeno Príncipe, e a ideia que levou Nora Seed a continuar.</p>
+
+                    <p class="firstLine">E então eu me redescobri,</p>
+                    <p class="normalLine">Com a ajuda daqueles que não me deixaram afundar.</p>
+                    <p class="normalLine"> Eu sou alguém simples,</p>
+                    <p class="lastLine">Que apenas aprecia e anseia pela dedicação genuína ao criar.</p>   
+
+                    <p class="firstLine specialLine">Esse é quem eu sou,</p>
+                    <p class="normalLine specialLine">Isso é o que eu valorizo,</p>
+                    <p class="lastLine specialLine">E é por esse caminho que eu quero caminhar.</p>
+
+                    <p class="firstLine">Fora isso, querido(a), só resta falar:</p>
+                    <p class="normalLine">Me chamo Thiago.</p>
+                    <p class="normalLine">O D vem de David.</p>
+                    <p class="normalLine">E a única coisa que fiz foi me graduar.</p>
+                    <p class="normalLine">Design Digital, turma 018.</p>
+                    <p class="normalLine">Só que por hora trabalho com algo que foge do meu caminhar…</p>
+                    <p class="normalLine">Não é que eu não tenha tentado.</p>
+                    <p class="normalLine">É mais como se não tivesse rolado…</p>
+                    <p class="lastLine">Espero que seja porque é aqui que eu deva estar.</p>
+
+                    <p class="assinatura"><i>-&nbspTD Vadilho</i></p>
+
+                    <p class="final-explanation-poem">
+                        Para mim esse poema é como um marco, que me lembra de como tudo começou.
+                        <br> 
+                        Mas mais importante do que isso, ele me lembra de tudo o que me motivou.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="no-funny-buisness-be-formal">
+            <p>Formado em Design Digital, juntei meu interesse pelo campo visual ao meu interesse pelo textual e, desde então, atuo como escritor e ilustrador em projetos pessoais ou trabalhos freelance (autônomo). </p>
+            <p>Sou autor e ilustrador do livro <a href="http://www.tdvadilho.com/hqtvnopae/" target="_blank"><i>‘há quanto tempo você não olha para as estrelas?’</i></a>, publicado pela editora Flyve, escritor e ilustrador das <a href="http://www.tdvadilho.com/historietas/" target="_blank"><i>Historietas</i></a> e do blog <a href="http://www.tdvadilho.com/blog/" target="_blank"><i>a Toca</i></a>, disponíveis aqui mesmo, no site, e já trabalhei para clientes como a SAD, organização atuante na Faculdade de Educação da Unicamp.</p>
+            <p>Acredito que as histórias movem as palavras e as pinceladas, e acredito que isso é feito de modo particular, dependendo do quê, e da forma como, a história quer mostrar e se mostrar. Sendo assim, a minha escrita e o meu trabalho visual trazem sempre algo de diferente, a depender desse particular. Porém, se for para estabelecer uma base de estilo, eu digo:</p>
+            <p>A minha escrita envolve trazer o não natural ao natural, e explorar jogos de palavras e de sonorização para sincronizar o ritmo de leitura ao ritmo que a história quer passar.</p>
+            <p>Já nas ilustrações, traços mais soltos, texturas e misturas de mídias — físicas e digitais —  é o que guia o meu expressar.</p>
+            <p>Em resumo, o meu objetivo é bem simples, e pode ser descrito como o ato de criar e co-criar histórias criativas; aquelas histórias que valem a pena serem contadas.</p>
+            
+            <div id="no-funny-contato">
+                <p>Caso queira entrar em contato, estou à disposição. Basta acessar o link <a href="http://www.tdvadilho.com/contato/">contato</a> ou enviar um email para <a href="mailto:td.vadilho@gmail.com">td.vadilho@gmail.com</a>. Responderei o mais breve possível :)</p>    
+            </div>
+        </div>
+        {{- partial "emailing" . -}}                    
+        {{- partial "rodape.html" . }}   
+    </div>
+    {{- template "_internal/google_analytics.html" . }}
+    {{- partial "scripts/index" . }}
+    {{- partial "meusscripts" . -}}
+</body>
 
 <script>
-    let titulo = document.getElementById('sobreMiolo')
-    console.log(titulo)
+    let openPoem = function(){
+        document.getElementById("be-poetic").style.display = "inline-flex";
+        document.getElementById("be-funny").style.display = "none";
+        document.getElementById("no-funny-buisness-be-formal").style.display = "none";
+
+        document.getElementById("go-to-modo-funny").classList.remove("active-menu");
+        document.getElementById("go-to-modo-serio").classList.remove("active-menu");
+        document.getElementById("go-to-modo-poem").classList.add("active-menu");
+    }
+
+    let openFunnyMode = function(){
+        document.getElementById("be-funny").style.display = "block";
+        document.getElementById("be-poetic").style.display = "none";
+        document.getElementById("no-funny-buisness-be-formal").style.display = "none";
+
+        document.getElementById("go-to-modo-funny").classList.add("active-menu");
+        document.getElementById("go-to-modo-serio").classList.remove("active-menu");
+        document.getElementById("go-to-modo-poem").classList.remove("active-menu");
+    }
+
+    let openSeriousMode = function(){
+        document.getElementById("no-funny-buisness-be-formal").style.display = "block";
+        document.getElementById("be-funny").style.display = "none";
+        document.getElementById("be-poetic").style.display = "none";
+
+        document.getElementById("go-to-modo-funny").classList.remove("active-menu");
+        document.getElementById("go-to-modo-serio").classList.add("active-menu");
+        document.getElementById("go-to-modo-poem").classList.remove("active-menu");
+    }
 </script>

@@ -12,16 +12,15 @@
 // Size.
 	$size: (
 		element-height:		3rem,
-		element-margin:		2rem,
+		element-margin:		1rem,
 		padding:			2rem,
-		wrapper:			72rem
 	);
 
 // Font.
 	$font: (
-		family:				('Merriweather', Georgia, serif),
-		family-heading:		('Source Sans Pro', Helvetica, sans-serif),
-		family-fixed:		('Courier New', monospace),
+		family:				('Lora'),
+		family-heading:		('Lora'),
+		family-fixed:		('Lora'),
 		weight:				300,
 		weight-bold:		600,
 		weight-heading:		900
@@ -29,45 +28,34 @@
 
 // Palette.
 	$palette: (
-		wrapper-bg:			#212931,
-
-		bg:					#ffffff,
+		bg:					#f0f0f0,
 		fg:					#212931,
 		fg-bold:			#212931,
 		fg-light:			mix(#212931, #ffffff, 50%),
-		border:				mix(#dcdcdc, #ffffff, 50%),
+		border:				#ffffff00,
 		border-bg:			rgba(#dcdcdc, 0.25),
-		accent:				#18bfef,
+		accent:				#682e29,
+		half-accent:        #d09c97,
 
 		alt: (
-			bg:				#f5f5f5,
-			fg:				#717981,
-			fg-bold:		#717981,
-			fg-light:		mix(#717981, #f5f5f5, 50%),
-			border:			mix(#dcdcdc, #f5f5f5, 75%),
-			border-bg:		rgba(#dcdcdc, 0.5),
-			accent:			#18bfef,
+			bg:					#f0f0f0,
+			fg:					#212931,
+			fg-bold:			#212931,
+			fg-light:			mix(#212931, #ffffff, 50%),
+			border:				mix(#dcdcdc, #ffffff, 50%),
+			border-bg:			rgba(#dcdcdc, 0.25),
+			accent:				#682e29,
+			half-accent:        #d09c97,
 		),
 
 		invert: (
-			bg:				#1e252d,
-			bg-alt:			#1e252d,
-			fg:				#ffffff,
-			fg-bold:		#ffffff,
-			fg-light:		rgba(#ffffff, 0.5),
-			border:			#ffffff,
-			border-bg:		rgba(#ffffff,0.075),
-			accent:			#18bfef,
-		),
-
-		darkmode: (
-			bg:				#292A2D, /* mudou o fundo da scrollbar */
-			bg-alt:			#1c19a5,
-			fg:				#3903fc,
-			fg-bold:		rgb(245, 245, 245), /* mudou cor dos h's, icones e a's */
-			fg-light:		rgba(#694f48, 0.5),
-			border:			#b9b9b9, /* mudou o círculo em volta dos ícones */
-			border-bg:		#292A2D, /* fundo do content */
-			accent:			#18bfef,
+			bg:					#f0f0f0,
+			fg:					#212931,
+			fg-bold:			#212931,
+			fg-light:			mix(#212931, #ffffff, 50%),
+			border:				mix(#dcdcdc, #ffffff, 50%),
+			border-bg:			rgba(#dcdcdc, 0.25),
+			accent:				#682e29,
+			half-accent:        #d09c97,
 		),
 	);

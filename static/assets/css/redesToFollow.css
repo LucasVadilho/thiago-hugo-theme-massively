@@ -1,0 +1,109 @@
+section{
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(199 125 80);
+    width: 120%;
+    left: -10%;
+    position: relative;
+}
+
+#redes-sociais {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px !important;
+}
+
+#redes-sociais a {
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    text-align: center;
+    line-height: 40px;
+    font-size: 18px;
+    margin: 0 0 0 10px;
+    display: block;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid #fff;
+    z-index: 1;
+    box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
+}
+
+#redes-sociais a:hover{
+    cursor: pointer;
+}
+
+#wattpad{
+    position: relative;
+    width: 18px;
+    height: 18px;
+    vertical-align: 0 !important;
+    transition: .5s;
+    z-index: 3;
+    margin-right: 0 !important;
+    filter: invert(15%) sepia(8%) saturate(0%) hue-rotate(125deg) brightness(104%) contrast(103%);
+}
+
+#redes-sociais a .icon {
+    position: relative;
+    color: #262626;
+    transition: .5s;
+    z-index: 3;
+    vertical-align: 2px !important;
+    margin-right: 0 !important;
+}
+
+#redes-sociais a:hover .icon,#redes-sociais a:hover #wattpad {
+    display: inline-block;
+    color: #fff;
+    transform: rotateY(360deg);
+    -webkit-transform: rotateY(360deg);
+    -ms-transform: rotateY(360deg);
+}
+
+#redes-sociais a:hover #wattpad{
+    filter: invert(100%) sepia(2%) saturate(7500%) hue-rotate(173deg) brightness(102%) contrast(115%);
+}
+
+#redes-sociais a:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f00;
+    transition: .5s;
+    z-index: 2;
+}
+
+#redes-sociais a:hover:before {
+    top: 0;
+}
+
+#redes-sociais a:nth-child(1):before{
+    background: #181818;
+}
+
+#redes-sociais a:nth-child(2):before{
+    background: #3b5999;
+}
+
+#redes-sociais a:nth-child(3):before{
+    background: #55acee;
+}
+
+#redes-sociais a:nth-child(4):before{
+    background: #FE0B81;
+}
+
+#redes-sociais a:nth-child(5):before{
+    background: #C8232C;
+}
+
+#redes-sociais a:nth-child(6):before{
+    background: #DF0022;
+}

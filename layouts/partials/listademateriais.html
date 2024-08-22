@@ -1,0 +1,25 @@
+<link rel="stylesheet" type="text/css" href="/assets/css/listademateriais.css"> <!-- Chamando CSS lista de materiais-->
+
+<div id="listaMateriais">
+    <div id="header-listaMateriais">
+        <h3>Materiais Utilizados</h3>
+        <span id='toCloseMateriais' onclick="fecharmateriais()">
+            <img src="/images/menu/close-things.png" alt="Fechar">
+        </span>
+    </div>
+        
+    <div id="container-materiais-utilizados">
+        {{ range .Params.materiais }}
+            <span material-id="{{ . }}"></span>
+        {{ end }}
+    </div>
+
+    <div id="footer-listaMateriais">
+        <p>Compras através dos links geram comissões 
+            que me permitem continuar criando. Clique 
+            no link desejado e compre normalmente; o preço <b>não</b> muda.
+            <br>
+            Muito obrigado :)
+        </p>
+    </div>
+</div>

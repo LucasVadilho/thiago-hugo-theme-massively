@@ -1,0 +1,89 @@
+<link rel="stylesheet" type="text/css" href="/assets/css/cards.css"> <!-- Chamando CSS CARDS -->
+<link rel="stylesheet" type="text/css" href="/assets/css/geral.css"> <!-- Chamando CSS CARDS -->
+
+<div id="container-mais-posts-como-esse">
+    <div id="container-double-line">
+        <h1 id="double-line-first-line">Mais historietas</h1>
+        <h1 id="double-line-seccond-line"> como essa, aqui...&nbsp&nbsp&nbsp</h1>
+    </div>
+    {{ $relatedhist := .Site.RegularPages.Related . | first 3 }}
+    {{ with $relatedhist }}
+            <div id="container-mais-posts-como-esse-cards">
+                {{ range . }}
+                    {{ if eq .Params.Layout "blog" }}
+                    <div id="correction-height">
+                        <div class="post-card" style="background-image: url('{{ .Params.Imagethumb }}');" onclick="window.location.href='{{ .Permalink }}';">
+                            <div class="categories-container">
+                                {{ range $categories := .Params.Categories }}
+                                <a onclick="window.location.href='/categories/{{ $categories }}';event.stopPropagation()" class="category-container">
+                                    <span class="category {{ $categories }}">{{ $categories }}</span>
+                                </a>
+                                {{ end }}
+                            </div>
+                            <div class="post-card-description">
+                                    {{ .Params.Description }}
+                            </div>
+                            <div class="post-card-info">
+                                <ul class="post-card-info-list">
+                                    <li><span class="fa-solid fa-clock"></span>{{ .Params.Tempoleitura }}</li>
+                                    <li class="comments-container"><span class="fa-solid fa-comments"></span>12<!-- Trocar para a variável do cusdis (ou do outro comentário que eu achei) --></li> 
+                                    <li><span class="fa-solid fa-tags" aria-hidden="true"></span>
+                                        {{ range $k, $v := .GetTerms "tags" }}
+                                            {{- if $k }}| {{ end }}
+                                            <a class="tags-container" onclick="window.location.href='/tags/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+                                        {{ end }}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {{ else }}
+                    <div class="post-container">
+                        <div class="categories-and-turn-container">
+                            <div class="turn-page">
+                                <a onclick="turnpage({{ .Params.Weight }});"><i class="fa-solid fa-rotate"></i></a>
+                            </div>
+                            <div class="categories-historietas">
+                                {{- range $categories := .Params.Categories -}}
+                                <a onclick="window.location.href='/categories/{{ $categories }}'" class="category-container">
+                                    <span class="category {{ $categories }}">{{- $categories }}</span>
+                                </a>
+                                {{- end -}}
+                            </div>
+                        </div>
+                        <div class="post-card-historietas" id="{{ .Params.Weight }}" onclick="window.location.href='{{ .Permalink | safeURL }}';">
+                            <div class="capa">
+                                <img src="{{ .Params.Imagethumb }}" alt="{{ .Params.Altimagethumb }}">
+                            </div>
+                            <div class="contracapa" style="background-color: {{ .Params.Backgroundhistcolor | safeCSS }}; color: {{ .Params.Chamadacolor | safeCSS}}">
+                                <div class="contracapa-title">{{ .Params.Title }}</div>
+                                <p class="contracapa-chamada">{{ .Params.Chamada }}</p>
+                                <img src="{{ .Params.Elementchamada }}" alt="{{ .Params.Altelementchamada }}">
+                            </div>
+                        </div>
+                        <div class="post-card-info-historietas">
+                            <ul class="post-card-info-list-historietas">
+                                <li><span class="fa-solid fa-clock"></span>{{ .Params.Tempoleitura }}</li>
+                                <li class="comments-container"><span class="fa-solid fa-comments"></span>12<!-- Trocar para a variável do cusdis (ou do outro comentário que eu achei) --></li> 
+                                <li><span class="fa-solid fa-tags" aria-hidden="true"></span>
+                                    {{ range $k, $v := .GetTerms "tags" }}
+                                        {{- if $k -}}| {{ end }}
+                                        <a class="tags-container" onclick="window.location.href='/tags/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+                                    {{ end }}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    {{ end }}
+                {{ end }}
+            </div>    
+    {{ end }}
+</div>
+
+<script>
+    window.addEventListener("load", (event) => {
+        if(document.getElementById("correction-height") != null){
+            document.getElementById("double-line-seccond-line").innerHTML = "e Making Of dessa..."
+        }
+    });
+</script>

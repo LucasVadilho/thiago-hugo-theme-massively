@@ -1,0 +1,48 @@
+<link rel="stylesheet" type="text/css" href="/assets/css/geral.css"> <!-- Chamando CSS geral -->
+<link rel="stylesheet" type="text/css" href="/assets/css/livros.css"> <!-- Chamando CSS geral -->
+
+{{- partial "htmlhead" . -}}
+{{- partial "navigationlinks" . -}}<!-- puxando os menus -->
+
+<body lang='{{ .Site.LanguageCode | default "pt-br" }}'>
+    <!-- Main -->
+    <div id="main">
+        {{- partial "pageHeaderMenuAndLogo" . -}}
+        <div id="container-livrosHeader">
+            <div class="container-header-name" id="livros-header-name">
+                <img src="/images/menu/livros-header.png" alt="Livros" class="img-page-header">
+            </div>
+            <div class="container-header-text">
+                <p><i>Escrevo e ilustro porque pouquíssimas coisas na vida me fazem sentir tão vivo quanto escrever e ilustrar. No final das contas, acho que só quero ser criativo,
+                     e criar histórias para compartilhar</i>
+                </p>
+            </div>
+        </div>
+        
+        <!-- BookShelf(One Day Will be here) --> 
+
+        <div id="container-post-all-after-header">
+            {{ range .Pages.ByWeight }}
+                <div class="container-livros-all-content" onclick="window.location.href='{{ .Params.Idlink | safeURL }}';event.stopPropagation()">
+                    <div class="container-livro-image">
+                        <img src="{{ .Params.Imagemselecaolivros }}" alt="{{ .Params.Altimagemselecaolivros }}">
+                    </div>
+                    <div class="container-livro-infos-and-buttons">
+                        <h5 style="color: {{ .Params.Colortext | safeCSS }}">{{ .Params.Categoria }}</h5>
+                        <img src="{{ .Params.Tema }}" alt="{{ .Params.Temaalt }}">
+                        <div class="saiba-mais-compre">
+                            <span class="span-link"><a onclick="window.open('{{ .Params.Idcompradolivro | safeURL }}');event.stopPropagation()"><h5 style="color: {{ .Params.Colortext | safeCSS }}">Comprar livro</h5></a></span>
+                            <span class="span-link"><a onclick="window.open('{{ .Params.Idcompradoebook | safeURL }}');event.stopPropagation()"><h5 style="color: {{ .Params.Colortext | safeCSS }}">Comprar ebook</h5></a></span>
+                            <span class="span-link"><a onclick="window.location.href='{{ .Params.Idlink | safeURL }}';event.stopPropagation()"><h5 style="color: {{ .Params.Colortext | safeCSS }}">Saiba mais</h5></a></span>
+                        </div>
+                    </div>
+                </div>
+            {{ end }}
+        </div>
+        {{- partial "emailing" . -}}
+        {{- partial "rodape.html" . }}
+    </div>
+    {{- template "_internal/google_analytics.html" . }}
+    {{- partial "scripts/index" . }}
+    {{- partial "meusscripts" . -}}
+</body>

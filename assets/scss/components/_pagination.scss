@@ -11,7 +11,6 @@
 		@include vendor('user-select', 'none');
 		cursor: default;
 		list-style: none;
-		margin: 0 0 _size(element-margin) 2px;
 		padding: 0;
 
 		a, span {
@@ -21,26 +20,30 @@
 				'box-shadow #{_duration(transition)} ease-in-out',
 				'color #{_duration(transition)} ease-in-out'
 			));
-			border: solid 2px;
+			border-top: solid 2px;
 			display: inline-block;
 			font-family: _font(family-heading);
-			font-size: 0.8rem;
+			font-size: 1rem;
 			font-weight: _font(weight-heading);
 			height: _size(element-height);
 			letter-spacing: 0.075em;
 			letter-spacing: _font(letter-spacing-heading);
 			line-height: calc(#{_size(element-height)} - 4px);
-			margin-left: -2px;
 			min-width: _size(element-height);
 			position: relative;
 			text-align: center;
 			text-decoration: none;
 			text-transform: uppercase;
+			margin-right: 5px;
+			padding-left: 1px;
+		}
+
+		:last-child>a{
+			margin-right: 0px !important;
 		}
 
 		.next, .previous {
 			@include icon;
-			padding: 0 1.75rem;
 
 			&:before {
 				display: inline-block;
@@ -51,15 +54,12 @@
 		.previous {
 			&:before {
 				content: '\f104';
-				margin-right: (0.75em / 0.8);
 			}
 		}
 
 		.next {
 			&:before {
 				content: '\f105';
-				float: right;
-				margin-left: (0.75em / 0.8);
 			}
 		}
 
@@ -70,8 +70,8 @@
 		}
 
 		@include breakpoint('<=xsmall') {
-			.page, .extra {
-				display: none;
+			a, span {
+				font-size: 0.9rem;
 			}
 		}
 	}
@@ -80,24 +80,20 @@
 		.pagination {
 			a, span {
 				border-color: _palette($p, border);
+				border-radius: 50% 50%;
 			}
 
 			a {
-				color: _palette($p, fg-bold) !important;
+				color: #424243;
 
 				&:hover {
-					color: _palette($p, accent) !important;
-					border-color: _palette($p, accent);
+					background-color: _palette($p, half-accent);
 					z-index: 1;
-
-					& + a,
-					& + span {
-						border-left-color: _palette($p, accent);
-					}
 				}
 
 				&.active {
-					background-color: _palette($p, border);
+					background-color: _palette($p, accent);
+					color: _palette($p, half-accent) !important;
 				}
 			}
 

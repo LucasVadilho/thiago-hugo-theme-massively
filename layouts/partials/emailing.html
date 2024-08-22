@@ -1,0 +1,108 @@
+<link rel="stylesheet" type="text/css" href="/assets/css/emailing.css"> <!-- Chamando CSS emailing-->
+<div id="container-emailing">
+    <div id="cartas-em-busca-de-um-lar-title">
+        <img src="/images/newsletter/cartas-em-busca-de-um-lar.png" alt="Cartas em busca de um lar">
+    </div>
+    <div id="container-newsletterForm" id="newsletterFocus">
+        <div id="de-eu-para-voce-miolo">
+            <p id="text-chamada-emailing-letter"><b>Quase</b> tão mágicas quanto as de Hogwarts¹. Cartas mensais,
+                 conteúdos especiais, voltados para dividir, inspirar e respirar. Entregues direto no seu email!</p>
+            <form id="newsletterForm" method="post">
+                <div id="container-input-emailing-letter">
+                    <input type="email" name="mailnewsl" id="emailnewsl" autocomplete="email" placeholder="Digite seu email aqui" required/>
+                    <span class="button-inscrever-de-eu-para-voce" onclick="subscribeEmailing()" tabindex="0">Inscrever</span>
+                    <span class="subscribing-emailing-letter"></span>
+                    <span class="email-sendo-inscrito-msg">Carregando... Por favor, aguarde...</span>
+                    <span class="email-inscrito-msg">Deu tudo certo. Agora é só esperar pelos pombos correios!</span>
+                    <span class="email-fail-inscrito-msg">Desculpe, algo deu errado. Podemos tentar outra vez?&nbsp
+                        <a onclick="tryagain()">Tentar outra vez</a>
+                    </span>
+                </div>
+            </form>
+            <p id="text-disclaimer-emailing-letter">Não se preocupe, sua privacidade será respeitada e a qualquer momento você poderá se desinscrever</p>
+            <p id="text-disclaimer-emailing-letter">¹Ainda esperando a minha carta para comparar</p>
+        </div>
+    </div>
+    <div id="pru">
+        <img src="/images/newsletter/eduardo-pru-por-td-vadilho.png" alt="Eduardo Pru. O entregador de cartas">
+    </div>
+</div>
+
+<script>
+var inscreverbutton = document.querySelector(".button-inscrever-de-eu-para-voce");
+var emailinscrito = document.querySelector(".email-inscrito-msg");
+var emailnaoinscrito = document.querySelector(".email-fail-inscrito-msg");
+var emailsendoinscrito = document.querySelector(".email-sendo-inscrito-msg")
+var loadingbarnewsletter = document.querySelector(".subscribing-emailing-letter");
+
+let emailsendoincrito = function(){
+    inscreverbutton.classList.add("button-inscrever-de-eu-para-voce-active");
+	setTimeout(function(){
+        loadingbarnewsletter.classList.add("container-input-emailing-letter-loading");
+        emailsendoinscrito.classList.add("email-sendo-inscrito-msg-active");
+	}, 1000);
+}
+
+let emailInscrito = function(){ 
+    emailinscrito.classList.add("email-inscrito-msg-active");
+    emailsendoinscrito.classList.remove("email-sendo-inscrito-msg-active");
+    loadingbarnewsletter.classList.add("loadingbarnewsletter-success");
+    setTimeout(function(){
+        emailinscrito.classList.remove("email-inscrito-msg-active");
+        inscreverbutton.classList.remove("button-inscrever-de-eu-para-voce-active");
+        flagbarcarregada = false;
+    }, 180000);
+}
+
+let tryagain = function (){
+    emailnaoinscrito.classList.remove("email-fail-inscrito-msg-active");
+    loadingbarnewsletter.classList.remove("container-input-emailing-letter-loading");
+    loadingbarnewsletter.classList.remove("loadingbarnewsletter-fail");
+    inscreverbutton.classList.remove("button-inscrever-de-eu-para-voce-active");
+    flagbarcarregada = false;
+}
+
+let emailNaoInscrito = function(){
+    loadingbarnewsletter.classList.add("loadingbarnewsletter-fail");
+    emailsendoinscrito.classList.remove("email-sendo-inscrito-msg-active");
+    emailnaoinscrito.classList.add("email-fail-inscrito-msg-active");
+}
+
+let subscribeEmailing = function(){
+    var input = document.getElementById("emailnewsl");
+
+    if(input.checkValidity() === true){
+        data = {
+            'mail': document.getElementById('emailnewsl').value,
+            'assunto': '[Newsletter] Signup'
+        }
+        emailsendoincrito();
+        url = 'https://thiago.oioipio.com/mensagem'
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+
+        }).then(result => {
+            emailInscrito();
+        }).catch(error => {
+            emailNaoInscrito();
+        })
+    } else {
+        input.reportValidity();
+    }
+}
+
+/* CLICK WITH ENTER */
+document.getElementById('emailnewsl').addEventListener('focus', function(){
+    document.addEventListener("keyup", ({key}) => {
+    if (key === "Enter") {
+        subscribeEmailing();
+    }
+})
+});
+/* ----------------END SENDING EMAIL---------------- */
+</script>

@@ -1,0 +1,416 @@
+/* SEÇÃO CONTATO */
+#title_seçãoContato{
+    margin-bottom: 0px;
+}
+
+.contatar{
+    padding-bottom: 0px;
+}
+
+#contatar{
+    background-color: #f5f5f5;
+}
+
+#contacting section{
+    padding-top: 40px;
+    border: none;
+}
+
+#contacting > section.split.contact > section:first-child {
+    padding: 35px 4rem 3rem 4rem;
+}
+
+#contacting form > .filds{
+    width: calc(100% + 3rem);
+}
+
+#li_btn_contato {
+    padding: 0;
+}
+
+#contacting > section.split > section:first-child{
+    text-justify: justify;
+    word-break: break-word;
+    hyphens: auto;
+    -ms-hyphens: auto;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    text-rendering: optimizeLegibility;
+}
+
+#contacting > section.split.contact > section > :last-child:hover{
+    cursor: pointer;
+}
+
+ul.icons li:last-child {
+    padding: 0 0.5rem 0 0;
+}
+
+ul.icons li:first-child{
+    margin-left: 7px;
+}
+
+#contacting > section {
+    padding: 3rem 0rem 3rem 3rem;
+}
+
+#contacting > section.split{
+    padding: 2.95rem 3rem 0rem 3rem;
+}
+
+/* Serviços */
+#container-servicos{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+#contacting h6{
+    text-align: center;
+}
+
+.underline-servicos{
+    border-bottom: 2px solid #299928;
+    border-width: medium;
+}
+
+.container-individual-servicos {
+    position: relative;
+    margin: 0px 0px 20px 0px;
+    display: flex;
+    flex-direction: row;
+    transition: all 200ms ease-in-out;
+    width: max-content;
+    box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
+    border-radius: 5px 5px;
+}
+
+.container-individual-servicos:hover{
+    cursor: pointer;
+}
+
+.container-imagethumb-servicos {
+    height: 80px;
+    width: 190px;
+    overflow: hidden;
+    border-radius: 5px 5px;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+}
+
+.container-imagethumb-servicos img {
+    height: 80px;
+    width: 200px;
+    object-fit: cover;
+    object-position: center;
+    transition: all 200ms ease-in-out;
+}
+
+.nome-chamada-servicos{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    height: 80px;
+    width: 130px;
+    left: 60px;
+    transition: all 200ms ease-in-out;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.nome-chamada-servicos h1 {
+    position: relative;
+    bottom: 0;
+    height: 80px;
+    font-size: 1.25rem;
+    font-family: "Alegreya Sans SC";
+    text-transform: uppercase;
+    transition: all 200ms ease-in-out;
+    text-align: right;
+    color: #ffffff !important;
+}
+
+.container-individual-servicos:hover img {
+    transform: scale(2);
+    /*object-position: bottom;*/
+}
+
+.container-individual-servicos:hover h1 {
+    bottom: 50px;
+}
+
+.container-individual-servicos:hover .container-imagethumb-servicos {
+    width: 250px;
+}
+
+/* snack serviços daqui para baixo */
+#SnackbarSaibaMais {
+    display: none;
+    text-align: left;
+    padding: 5px;
+    padding-left: 12px;
+    padding-right: 12px;
+    border-radius: 2px;
+    position: fixed;
+    bottom: 30px;
+    background-color: rgb(243 243 243);
+    box-shadow: 0 100vw 100vw 100vw rgba(30, 37, 45, 0.623);
+    color: #212931;
+    transform: translate(-50%,0);
+    left: 50%;
+    z-index: 7;
+    -webkit-animation: fadein 0.5s;
+    animation: fadein 0.5s;
+    width: calc(100% - 6rem);
+    max-width: 60rem;
+    max-height: 70dvh;
+    overflow-y: auto;
+}
+
+@media screen and (max-width: 481px) {
+    #SnackbarSaibaMais {
+        width: 96%;
+    }
+
+    #SnackbarSaibaMais h2{
+        font-size: 2.4rem !important;
+    }
+}
+#SnackbarSaibaMais p{
+    color: #131318;
+    font-weight: 500;
+    font-size: 15px;
+    font-family: helvetica;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+#SnackbarSaibaMais strong{
+    color: #131318 !important;
+}
+
+#SnackbarSaibaMais a{
+    color: #0000FF;
+    text-decoration: underline;
+}
+
+#SnackbarSaibaMais a:hover{
+    color: #252121 !important;
+    cursor: pointer;
+}
+
+#SnackbarSaibaMais h2{
+    color: #2F5A80;
+    margin-bottom: 35px;
+    text-wrap: balance;
+}
+
+#SnackbarSaibaMais h3{
+    font-size: 1.25rem;
+    color: #313030;
+}
+
+.container_destaqueTxtServicos{
+    border-left: 3px solid #af93c382;
+    margin: 0 0 18px 5%;
+}
+
+.destaqueTxtServicos{
+    margin: 0 0 5px 2% !important;
+}
+
+#close:hover{
+    cursor: pointer;
+    color: #18bfef;
+}
+
+#close{
+    padding-top: 10px;
+    background-color: transparent;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 0;
+    color: #656565;
+    border: none;
+    font-family: helvetica;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+#container-criacaodetextos, #container-leituracritica, #container-outroscriativos, #container-ilustracaoedesign{
+    display: none;
+    padding: 20px;
+}
+/* fim dos serviços */
+
+/* Redes */
+section #redes-sociais{
+    margin-left: -10px;
+}
+
+#redes-sociais {
+    display: flex;
+    justify-content: left;
+}
+
+#redes-sociais a {
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    text-align: center;
+    line-height: 40px;
+    font-size: 18px;
+    margin: 0 0 0 10px;
+    display: block;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid #fff;
+    z-index: 1;
+    box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
+}
+
+#redes-sociais a:hover{
+    cursor: pointer;
+}
+
+#wattpad{
+    position: relative;
+    width: 18px;
+    height: 18px;
+    vertical-align: 0 !important;
+    transition: .5s;
+    z-index: 3;
+    margin-right: 0 !important;
+    filter: invert(15%) sepia(8%) saturate(0%) hue-rotate(125deg) brightness(104%) contrast(103%);
+}
+
+#redes-sociais a .icon {
+    position: relative;
+    color: #262626;
+    transition: .5s;
+    z-index: 3;
+    vertical-align: 2px !important;
+    margin-right: 0 !important;
+}
+
+#redes-sociais a:hover .icon,#redes-sociais a:hover #wattpad {
+    display: inline-block;
+    color: #fff;
+    transform: rotateY(360deg);
+    -webkit-transform: rotateY(360deg);
+    -ms-transform: rotateY(360deg);
+}
+
+#redes-sociais a:hover #wattpad{
+    filter: invert(100%) sepia(2%) saturate(7500%) hue-rotate(173deg) brightness(102%) contrast(115%);
+}
+
+#redes-sociais a:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f00;
+    transition: .5s;
+    z-index: 2;
+}
+
+#redes-sociais a:hover:before {
+    top: 0;
+}
+
+#redes-sociais a:nth-child(1):before{
+    background: #3b5999;
+}
+
+#redes-sociais a:nth-child(2):before{
+    background: #55acee;
+}
+
+#redes-sociais a:nth-child(3):before{
+    background: #FE0B81;
+}
+
+#redes-sociais a:nth-child(4):before{
+    background: #C8232C;
+}
+
+#redes-sociais a:nth-child(5):before{
+    background: #DF0022;
+}
+
+/* fim das redes */
+
+/* REGRAS DE MEDIA */   
+@media screen and (min-width: 981px){
+    #message{
+        width: 100%;
+        resize: vertical;}
+}
+
+@media screen and (max-width: 980px){
+    #contacting > section.split {
+        border-top: solid 2px #e2e2e2;
+    }
+    #contacting>section {
+        padding: 2rem 3rem .1rem 3rem;
+    }
+}
+
+@media screen and (max-width: 980px) and (min-width:905px){
+    #container-servicos{
+        width: 60%;
+        align-self: center;
+    }
+}
+
+@media screen and (max-width: 904px) and (min-width:876px){
+    #container-servicos{
+        width: 90%;
+        align-self: center;
+    }
+}
+
+@media screen and (max-width: 875px) and (min-width:801px){
+    #container-servicos{
+        width: 70%;
+        align-self: center;
+    }
+}
+
+@media screen and (max-width: 800px) and (min-width:650px){
+    #container-servicos{
+        width: 80%;
+        align-self: center;
+    }
+}
+
+@media screen and (max-width: 649px) and (min-width:446px){
+    #container-servicos{
+        width: 60%;
+        align-self: center;
+    }
+}
+
+@media screen and (max-width: 445px){
+    #container-servicos{
+        width: 80%;
+        align-self: center;
+    }
+}
+
+@media screen and (max-width: 736px){
+    #contacting>section {
+        padding: 2rem 3rem .1rem 3rem;
+    }
+    #contacting > section.split {
+        padding: 2rem 1rem 0rem;
+    }
+}

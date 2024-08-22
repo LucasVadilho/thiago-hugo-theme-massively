@@ -1,0 +1,306 @@
+<link rel="stylesheet" type="text/css" href="/assets/css/geral.css"> <!-- Chamando CSS geral -->
+<link rel="stylesheet" type="text/css" href="/assets/css/galeriailustracoes.css">
+
+{{- partial "htmlhead" . -}}<!-- puxando as metatags -->
+{{- partial "navigationlinks" . -}}<!-- puxando os menus -->
+
+<body lang='{{ .Site.LanguageCode | default "pt-br" }}' class="is-preload">
+    <div id="main">
+        {{- partial "pageHeaderMenuAndLogo" . -}}
+        <div id="container-ilustracoesHeader">
+            <div class="container-header-name" id="galeria-ilustracoes-header-name">
+                <img src="/images/menu/galeria-header.png" alt="Galeria de Ilustrações" class="img-page-header">
+            </div>
+            <div class="container-header-text">
+                <p><i>Escrevo e ilustro porque pouquíssimas coisas na vida me fazem sentir tão vivo quanto escrever e ilustrar. No final das contas, acho que só quero ser criativo,
+                    e criar histórias para compartilhar</i>
+                </p>
+            </div>
+        </div>
+
+        <span id="array" idsArray="{{ .Params.ProjetosIds }}"></span>
+
+        <div id="organizer-galeria-ilustracoes">
+            {{ range .Pages.ByWeight  }}
+                <div id="{{ .Params.Projectid }}"
+                    onclick="abrirproj(event, '{{ .Params.Projectid }}')"
+                    itens="{{ jsonify .Params.Itens }}"
+                    lojalink="{{ .Params.Lojalink }}"
+                    class="{{ .Params.Class }}"
+                    backgroundcolor="{{ .Params.Backgroundcolor | safeCSS }}"
+                    naturalcoloricons="{{ .Params.Naturalcoloricons | safeCSS }}"
+                    >
+                    <img src="{{ .Params.Thumbprojeto }}" class="animation-element not-shown-img-state {{ .Params.Imgthumbposition | safeCSS }}" alt="{{ .Params.altthumb }}"> 
+                </div>           
+            {{ end }}
+        </div>
+        <div id="container-encaminhando-ao-contato">
+            <p class="encaminhandoAoContato">
+                <i>
+                    Caso queira contratar meus serviços de ilustração, por favor, encaminhe uma mensagem através da aba <a href="https://www.tdvadilho.com/contato/">contato</a>. Obrigado!
+                </i>
+            </p>
+        </div>
+        {{- partial "listademateriais" . -}}
+        {{- partial "emailing.html" . -}}
+        {{- partial "rodape.html" . -}}
+    </div>
+    {{- template "_internal/google_analytics.html" . }}
+    {{- partial "scripts/index" . }}
+    {{- partial "meusscripts" . }}
+</body>
+
+<script>
+    let openLink = function(link){ //Abrir links do projeto (botões e hiperlinks chamam essa função)
+        window.open(link);
+    }
+
+    window.addEventListener('load', ()=> { //Checa se já entrou na página com algum ID aberto
+        const id = new URLSearchParams(window.location.search).get('id'); 
+        if(id) {
+            abrirproj('', id);
+        }
+    });
+
+    let updateURLNoDisturbing = function(id){ // Setando a URL para que aas pessoas possam compartilhar
+        const newURL = '?id=' + id; 
+        history.replaceState({}, "New Page", newURL);
+    }
+
+    let lastResize = 0;
+    let changePositionOfCloseButton = function() { 
+        if(Date.now() - lastResize > 500) {
+            lastResize = Date.now();
+
+            rect = document.getElementById('openProject').getBoundingClientRect();
+            
+            buttonClose = document.getElementById('topButtonsContainer');
+            console.log(rect.x, rect.width, buttonClose.clientWidth);
+            buttonClose.style.paddingLeft = `${rect.x + rect.width - buttonClose.scrollWidth}px`;
+        }
+    }
+
+    let isBgWhite = function(bg){
+        if(bg == '#ffffff'){
+            $("#container-next-button-gallery-ilustracoes").hover(function() {
+                $(this).addClass("mix-blend-hard-light");
+            }, function() {
+                $(this).removeClass("mix-blend-hard-light");
+            });
+
+            $("#container-prev-button-gallery-ilustracoes").hover(function() {
+                $(this).addClass("mix-blend-hard-light");
+            }, function() {
+                $(this).removeClass("mix-blend-hard-light");
+            });
+
+            $(".buttonLojaProject").hover(function() {
+                $(this).addClass("mix-blend-hard-light");
+            }, function() {
+                $(this).removeClass("mix-blend-hard-light");
+            });
+
+            $(".buttonCloseProject").hover(function() {
+                $(this).addClass("mix-blend-hard-light");
+            }, function() {
+                $(this).removeClass("mix-blend-hard-light");
+            });
+
+            $(".buythistext").hover(function() {
+                $(this).addClass("mix-blend-hard-light");
+            }, function() {
+                $(this).removeClass("mix-blend-hard-light");
+            });
+        } 
+    }
+
+    let createSnackbar = function(id) {   
+        //CRIANDO SNACKBAR DA ONDE VAI ENTRAR OS TRABALHOS
+        let snackbar = document.createElement('div');
+        snackbar.classList = 'snackbar';
+        snackbar.id = 'snackbarId';
+        document.body.style.cssText = 'overflow: hidden';
+        snackbar.style.backgroundColor = document.getElementById(id).getAttribute('backgroundcolor');
+        let backgroundOfProject = document.getElementById(id).getAttribute('backgroundcolor');
+        let naturalcoloricons =  document.getElementById(id).getAttribute('naturalcoloricons');
+
+        //CRIANDO TOP PART
+        let topButtonsContainer = "";
+        let lojalink = document.getElementById(id).getAttribute('lojalink');
+        
+        if (lojalink != ""){
+            topButtonsContainer = 
+            `<div id='container-top-buttons-snackbarproj'>
+                <div class='buttonLojaProject' onclick="openLink(' `+ lojalink +` ')">
+                    <img src="/images/menu/cart-icon.png" alt="shopping cart" style=' `+ naturalcoloricons +`'">
+                </div>
+                <div class='buttonCloseProject' onclick="closeSnackbarProj()">
+                    <img src="/images/menu/close-things.png" alt="close" style='`+ naturalcoloricons +`'">
+                </div>
+            </div>`
+        }else{
+            topButtonsContainer = 
+            `<div id='container-top-buttons-snackbarproj'>
+                <div class='buttonCloseProject' onclick="closeSnackbarProj()">
+                    <img src="/images/menu/close-things.png" alt="close" style='`+ naturalcoloricons +`'">
+                </div>
+            </div>`
+        }
+
+        //CRIANDO MIOLO
+        // Criando o botão prev 
+        let openProject = `<div id='container-openProject-and-arrows'>` 
+            + `<div id="container-prev-button-gallery-ilustracoes" onclick="changeSlideProj(-1)">
+                <div id="prev-button-gallery-ilustracoes">
+                    <img src="/images/menu/prev-icon.png" alt="close" style='`+ naturalcoloricons +`'">
+                </div>
+            </div><div id="openProject">`
+
+        // Inserindo o conteúdo    
+        let itens = JSON.parse(document.getElementById(id).getAttribute('itens'));
+        for (let item of itens){
+            if (item.type == 'firstimage'){
+                openProject += '<div id="first-image"><img src="' + item.src + '" max-width="100%"  alt="'+ item.alt +'"  style="display:block; object-fit: contain; margin:'+item.margin+'" class="snackZoom '+ item.class +'" id="snackZoomId"/></div>'
+            }
+            if (item.type == 'image'){
+                openProject += '<img src="' + item.src + '" max-width="100%"  alt="'+ item.alt +'"  style="display:block; object-fit: contain; margin:'+item.margin+'" class="snackZoom '+ item.class +'" id="snackZoomId"/>'
+            }
+            if (item.type == 'imageSide'){
+                openProject += '<div class="imagesSideBySide" margin:"'+item.margin+' column-gap:' + item.columngap +'">'
+                for(i=0; i < item.src.length; i++){
+                    openProject += '<img src="' + item.src[i] + '" alt="'+ item.alt[i] +'"  style="display:block; object-fit: contain;margin-top:'+ item.imgmargintop[i] +'" class="snackZoom ' + item.class + '" id="snackZoomId"/>';
+                }
+                openProject += '</div>'
+            }
+            if (item.type == 'imagebuythis'){
+                openProject += '<img src="' + item.src + '" max-width="100%"  alt="'+ item.alt +'"  style="display:block; object-fit: contain; margin:'+item.margin+'; filter:'+item.filter+'" class="snackZoom '+ item.class +'" id="snackZoomId" onclick="openLink(`'+ lojalink +'`);"/>'
+            }
+            if (item.type == 'video') {
+                openProject += '<div style="margin:'+ item.margin +';" class="iframecontainer" id="snackZoomId"><iframe src="' + item.src + '" alt="' + item.alt + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" frameorder="0" vspace="0" hspace="0" marginwidth="0" marginheight="0" width="100%" style="margin: 0 0 0 0" frameBorder="0" scrolling="no" style="border: 0px" allowfullscreen></iframe></div>'
+            }
+            if(item.type == 'textleft'){
+                openProject += '<div class="container-text-inside-proj-left"><p class="'+ item.class +'"; style="color:'+ item.textcolor + '!important; margin:'+ item.margin +';text-align:'+ item.textalign +' !important' +';font-style:'+ item.fontstyle +' !important">'+ item.text +'</p></div>'
+            }
+            if(item.type == 'textcenter'){
+                openProject += '<div class="container-text-inside-proj-center"><p class="'+ item.class +'"; style="color:'+ item.textcolor + '!important; margin:'+ item.margin +';text-align:'+ item.textalign +' !important' +';font-style:'+ item.fontstyle +' !important">'+ item.text +'</p></div>'
+            }
+            if(item.type == 'textright'){
+                openProject += '<div class="container-text-inside-proj-right"><p class="'+ item.class +'"; style="color:'+ item.textcolor + '!important; margin:'+ item.margin +';text-align:'+ item.textalign +' !important' +';font-style:'+ item.fontstyle +' !important">'+ item.text +'</p></div>'
+            }
+        }
+
+        // Criando o botão next 
+        openProject += ` </div>
+            <div id="container-next-button-gallery-ilustracoes" onclick="changeSlideProj(1)">
+                <div id="next-button-gallery-ilustracoes">
+                    <img src="/images/menu/next-icon.png" alt="close" style='`+ naturalcoloricons +`'">
+                </div>
+            </div> 
+        </div>`;
+        
+        snackbar.innerHTML = topButtonsContainer + `<div id="container-openProject"> `+  openProject  + `</div> `; // Snackbar totalmente construida
+        document.body.append(snackbar); // Adiciona a snack ao body
+
+       /*  realignVertical("openProject"); */
+        setupSliderGaleria();// Slide da galeria no mobile
+        updateURLNoDisturbing(id);
+        isBgWhite(backgroundOfProject);
+
+        document.addEventListener('keydown', (ev) => {
+        if((ev.key == 'Escape') && (flagProjAberto == true)){
+            closeSnackbarProj();
+        }})
+    }
+
+    /* Slide no mobile */
+    let setupSliderGaleria = function() {
+        let touchsurface = document.getElementById('snackbarId'),
+        startX, 
+        startY,
+        dist,
+        distThreshold,
+        thresholdX = 50,
+        thresholdY = 50,
+        allowedTime = 1500,
+        elapsedTime,
+        startTime
+
+        touchsurface.addEventListener ('touchstart', function(e) {
+            let touchobj = e.changedTouches[0];
+            
+            dist = 0;
+            distThreshold = 0;
+            startX = touchobj.pageX;
+            startY = touchobj.pageY;
+            startTime = new Date().getTime();
+        }, false)
+
+        touchsurface.addEventListener('touchend', function(e) {
+            var touchobj = e.changedTouches[0];
+            dist = touchobj.pageX - startX;
+            distThreshold = Math.abs(dist);
+            elapsedTime = new Date().getTime() - startTime;
+           
+            if (
+                elapsedTime <= allowedTime &&
+                distThreshold >= thresholdX &&
+                Math.abs(touchobj.pageY - startY) <= thresholdY &&
+                dist > 0
+            ){
+                changeSlideProj(-1);
+            }
+
+            if (
+                elapsedTime <= allowedTime &&
+                distThreshold >= thresholdX &&
+                Math.abs(touchobj.pageY - startY) <= thresholdY &&
+                dist < 0)
+            {                                         
+                changeSlideProj(1);
+            }
+        }, false)
+    }
+
+    let idsArray = document.getElementById("array").getAttribute("idsArray"); //Criando array com os projetos existentes para permitir funcionamento dos slides
+    let splitIdsArray = idsArray.replace("]","").replace("[","").split(' ')
+    let totalProjectNum = splitIdsArray.length
+
+    let changeSlideProj = function(botao){  //Funcionamento dos slides
+        closeSnackbarProj(); //Fecha o projeto aberto para criar a nova snackbar
+        if(botao == 1) {
+            if(currentFocusProject + 1 >= totalProjectNum) {
+                currentFocusProject = 0;
+            } else {
+                currentFocusProject += 1;
+            }
+        } else {
+            if(currentFocusProject == 0) {
+                currentFocusProject = totalProjectNum - 1;
+            } else {
+                currentFocusProject -= 1;
+            }
+        }
+        abrirproj('', splitIdsArray[currentFocusProject]); //Cria a nova snack com a nova id
+    }
+    
+    let currentFocusProject;
+    let id;
+    let abrirproj = function (e, id){
+        if (e) e.stopPropagation();
+        document.getElementById(id);
+
+        flagProjAberto = true;
+        createSnackbar(id);
+        
+        currentFocusProject = splitIdsArray.indexOf(id);
+    }
+  
+    function closeSnackbarProj(){/*Função para fechar snack e retornar elementos ao padrão*/
+        let snackbarToClose = document.getElementById('snackbarId')
+        snackbarToClose.remove()
+
+        document.body.style.cssText = 'overflow: auto';
+        document.body.className = 'normal';
+        flagProjAberto = false;
+    }
+</script>

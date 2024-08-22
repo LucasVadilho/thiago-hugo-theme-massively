@@ -1,0 +1,60 @@
+<link rel="stylesheet" type="text/css" href="/assets/css/geral.css"> <!-- Chamando CSS GERAL -->
+<link rel="stylesheet" type="text/css" href="/assets/css/cards.css"> <!-- Chamando CSS CARDS -->
+
+<div class="posts-container">
+	{{ range .Pages.ByDate.Reverse }}
+		<div class="post-container">
+			<div class="categories-and-turn-container">
+				<a onclick="turnpage({{ .Params.Weight }});">
+					<div class="turn-page">
+						<i class="fa-solid fa-rotate"></i>
+					</div>
+				</a>
+				<div class="categories-historietas">
+					{{- range $categories := .Params.historietascategorias -}}
+					<a onclick="window.location.href='/historietascategorias/{{ $categories }}'" class="category-container">
+						<span class="category {{ $categories }}">{{- $categories }}</span>
+					</a>
+					{{- end -}}
+				</div>
+			</div>
+			<div class="post-card-historietas" id="{{ .Params.Weight }}" onclick="window.location.href='{{ .Permalink | safeURL }}';">
+				<div class="capa">
+					<img src="{{ .Params.Imagethumb }}" alt="{{ .Params.Altimagethumb }}">
+				</div>
+				<div class="contracapa" style="background-color: {{ .Params.Backgroundhistcolor | safeCSS }}; color: {{ .Params.Chamadacolor | safeCSS}}">
+					<div class="contracapa-to-scale">
+						<div class="contracapa-title" style="color: {{ .Params.Titlecolor | safeCSS }};">{{ .Params.Title }}</div>
+						<p class="contracapa-chamada" style="color: {{ .Params.Chamadacolor | safeCSS }};">{{ .Params.Chamada }}</p>
+						<img src="{{ .Params.Elementchamada }}" alt="{{ .Params.Altelementchamada }}">
+					</div>
+				</div>
+			</div>
+			<div class="post-card-info-historietas">
+				<ul class="post-card-info-list-historietas">
+					<li><span class="fa-solid fa-clock"></span>{{ .Params.Tempoleitura }}</li>
+					<li class="comments-container">
+						<span class="fa-solid fa-comments"></span>
+						<a href="{{ .Permalink | safeURL }}#remark42"><span class="remark42__counter" data-url="{{ .Permalink | safeURL }}"></span></a>
+					</li> 
+					<li><span class="fa-solid fa-tags" aria-hidden="true"></span>
+						{{ range $k, $v := .GetTerms "historietastags" }}
+							{{- if $k -}}| {{ end }}
+							<a class="tags-container" onclick="window.location.href='/historietastags/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+						{{ end }}
+					</li>
+				</ul>
+			</div>
+		</div>
+    {{ end }}
+</div>
+
+<script>
+    var remark_config = {
+      host: 'https://remark42.tdvadilho.com',
+      site_id: 'tdvadilho',
+      components: ['counter']
+    }
+</script>
+
+<script>!function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);</script>

@@ -1,0 +1,17 @@
+<!-- https://remark42.com/docs/configuration/frontend/ -->
+<script>
+    var remark_config = {
+      host: 'https://remark42.tdvadilho.com',
+      site_id: 'tdvadilho',
+      locale: 'bp',
+      components: ['embed', 'last-comments', 'counter'],
+      max_shown_comments: 5,
+      max_last_comments: 5,
+      show_rss_subscription: false,
+      simple_view: true,
+    }
+</script>
+
+<script>!function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);</script>
+
+<div id="remark42"></div>

@@ -1,0 +1,38 @@
+
+<div class="main-header-menu-and-logo">
+    <a href="https://www.tdvadilho.com">
+    <img src="/images/menu/td-vadilho.png" alt="TD Vadilho" class="first-td"></a>
+    <img src="/images/menu/td.png" alt="TD Vadilho" class="seccond-td"></a>
+    <span id="menu-to-navigate" onclick="opennavigationmenu()">
+        <img src="/images/menu/menu-text.png" class="menu-text" alt="Menu">
+        <img src="/images/menu/menu-hamburguer.png" class="menu-hamburguer" alt="Menu">
+   </span>
+</div>
+ 
+<style>
+.menu-hamburguer{
+    display: none;
+}
+
+.seccond-td{
+    display: none;
+}
+
+@media screen and (max-width: 768px){
+    .first-td{
+        display: none;
+    }
+
+    .seccond-td{
+        display: block;
+    }
+
+    .menu-hamburguer{
+        display: block;
+    }
+
+    .menu-text{
+        display: none;
+    }
+}
+</style>

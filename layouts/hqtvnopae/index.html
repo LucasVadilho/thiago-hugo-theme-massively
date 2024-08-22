@@ -1,0 +1,458 @@
+<link rel="stylesheet" type="text/css" href="/assets/css/hqtvnopae.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/geral.css">
+
+{{- partial "htmlhead" . -}}
+
+<body lang='{{ .Site.LanguageCode | default "pt-br" }}'>
+    <div id="main">
+        <div id="container-max-haqnto">
+            <div id="container-header-haqnto">
+                <div id="container-header-haqnto-imgbg">
+                    <img src="/images/haqntopag/bg_topo.jpg" alt="Ilustração digital da vista do outro lado do lago Mótil. Chuva e bicicleta caida a direita, levando o observador a seguir o caminho que Gabi fez.">
+                </div>
+
+                <div id="container-header-haqnto-titulo">
+                    <img src="/images/haqntopag/titulo.svg" alt="vetor do título do livro Há quanto tempo você não olha para as estrelas?">
+                </div>
+            </div>
+
+            <div id="container-frase-destaque">
+                <img src="/images/haqntopag/estrela-amarela.jpg" alt="Ilustração de estrela amarela">
+                <h1 class="frase-destaque">A maioria das pessoas vivem como se</h1>
+                <h1 class="frase-destaque">as estrelas não existissem. Acho que é porque</h1>
+                <h1 class="frase-destaque">elas são de graça e ninguém nunca dá</h1>
+                <h1 class="frase-destaque">valor ao que tem por garantido</h1>
+
+                <h1 class="frase-destaque-when-hit-width">
+                    A maioria das pessoas vivem como se as estrelas não existissem. Acho que é porque 
+                    elas são de graça e ninguém nunca dá valor ao que tem por garantido
+                </h1>
+            </div>
+
+            <p class="text-sysui capa-e-contra-text" style="color: #96d5dd; text-align: center;">Romance Psicológico Ficcional | Drama</p>
+
+            <div id="capa-e-contra">
+                <img src="/images/haqntopag/Capa-e-Contra.jpg" alt="capa e contra capa do livro">
+            </div>
+
+            <p class="text-sysui capa-e-contra-text" style="color: #96d5dd; text-align: center;">Uma história paranormal e sincera, que fala sobre o tempo, depressão e coisas que importam</p>
+
+            <div id="msg-do-autor">
+                <h1 class="frase-destaque msg-autor">Essa história surgiu do limbo. Não era sobre estrelas, tampouco sobre o olhar. Essa história, na verdade, era apenas uma tentativa desesperada de alguém que, desesperadamente, ansiava por se encontrar.</h1>
+                <h1 class="frase-destaque msg-autor right">Enquanto a escrevia, no entanto, descobri que haviam gritos entalados; gritos que o meu coração e a minha mente ansiavam por gritar. A partir daquele momento, percebi que não havia outra saída, aquela era a hora de esgoelar. E então, eu esgoelei, e eu mesmo escutei, porque aqueles eram gritos sinceros que eu precisava escutar. Após isso, a história de uma simples casa na árvore se metamorfoseou, agregando tudo aquilo que eu passei a enxergar.</h1>
+                <h1 class="frase-destaque msg-autor">Essa história surgiu na solidão da minha mente e na escuridão que fazia o meu coração gelar. Essa história surgiu no limbo, e do limbo, para que eu não retornasse mais lá. Essa história, por fim, virou algo que eu gostaria de compartilhar; para que você também não permita ao limbo se instaurar.</h1>
+            </div>
+            
+            <div id="galho">
+                <img src="/images/haqntopag/galhoFrenteDados_Colagem.jpg" alt="ilustração de um galho de uma tartaré no qual estão marcados os seguintes dados do livro: gênero: ficção; páginas: em breve; edição: 1ª ed.; editora: Flyve; papel: pólen 80g; capa: brochura; dimensões: 21x14cm; isbn: 978-65-00-84745-1; classificação indicativa: 14">
+            </div>
+
+            <div id="sinopse">
+                <h1 id="sinopse-title">Sinopse</h1>
+                <h1 class="frase-destaque poema">Me perguntei quando foi que parei de olhar para as estrelas</h1>
+                <h1 class="frase-destaque poema">E percebi que já fazia pelo menos um mês…</h1>
+                <h1 class="frase-destaque poema">Talvez já fizesse um ano inteiro,</h1>
+                <h1 class="frase-destaque poema">Talvez já fizesse até três.</h1>
+                <h1 class="frase-destaque poema">[…]</h1>
+                <h1 class="frase-destaque poema">Para falar a verdade,</h1>
+                <h1 class="frase-destaque poema">Eu já não tinha mais ideia de quando fora a última vez.</h1>
+                <h1 class="frase-destaque poema">O que me fez perguntar,</h1>
+                <h1 class="frase-destaque poema">Se eu, realmente, já havia feito isso alguma vez.</h1>
+
+                <h1 class="frase-destaque sinopse-text">Em meio às conturbadas férias de verão, Gabrielle Ávila foge da casa da avó e 
+                    é convidada a subir em uma casa na árvore um tanto quanto peculiar, na qual o caminho do passado cruza 
+                    com o caminho do presente e, dessa interseção, surgem novos olhares que fazem o conceito de viver se 
+                    ressignificar.
+                </h1>
+
+                <div class="img-button" onclick="openSnackComecoHist()">
+                    <img class="img-button-child-one" src="/images/haqntopag/leia-o-começo-dessa-historia-nohighlight.png" alt="Clique para ler o começo dessa história">
+                    <img class="img-button-child-two" src="/images/haqntopag/leia-o-começo-dessa-historia-highlight.png" alt="Clique para ler o começo dessa história">
+                </div>
+
+                <div id="snackbar-comeco-hist">
+                    <div id="button-close-comeco-hist" onclick="closeSnackbarHaQnto()">
+                        <span class='fa fa-x'></span>
+                    </div>
+
+                    <div id="container-comeco-hist-text">
+                        {{ .Content }}
+                    </div>
+                </div>
+            </div>
+
+            <div id="container-polaroids" class="margin-top-correction-visual-bug">
+                <div id="container-correct-margin-to-center">
+                    <div class="paper-polaroid">
+                        <div class="container-img-polaroid">
+                            <img src="/images/haqntopag/vista-detalhe-capa-ha-quanto-tempo-voce-nao-olha-para-as-estrelas-livro.jpg" alt="Detalhe da capa do livro, focando nas asas e texturas da borboleta">
+                        </div>
+                    </div>
+
+                    <div class="paper-polaroid">
+                        <div class="container-img-polaroid">
+                            <img src="/images/haqntopag/vista-detalhe-interior-ha-quanto-tempo-voce-nao-olha-para-as-estrelas-livro.jpg" alt="Detalhe do interior do livro, focando no capítulo 'há quanto tempo você não olha para as estrelas?'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="container-comentarios-selecionados" class="margin-top-correction-visual-bug">
+                <div class="comentario-selecionado-box">
+                    <img src="/images/haqntopag/aspas.png" alt="Abre aspas">
+                    <p class="frase-comentario-leitor">"A narrativa é desenvolvida de uma forma bonita quase poética, principalmente na parte sobrenatural da trama, envolvendo o leitor em um realismo mágico, que após a explicação final levará o leitor a se emocionar (por aqui eu enchi os olhos de lágrimas)."</p>
+                    <p class="leitor">
+                        <a href="https://www.instagram.com/p/C5GKdewOLss/" target='_blank'>
+                            — @Doidosporserieselivros
+                        </a>
+                    </p>
+                </div>
+
+                <div class="comentario-selecionado-box">
+                    <img src="/images/haqntopag/aspas.png" alt="Abre aspas">
+                    <p class="frase-comentario-leitor">"Me senti parte da família Ávila. Quis tomar café com a Dona Isabel; quis dar um sossego na irmã mais nova; quis ter o Isaque de pai; e o principal: quis ter a Gabi como amiga. E de certa forma tive, porque eu me irritei, tive medo, ri e chorei com ela. Obrigado por esse livro, Thi. Já tô doido para o próximo."</p>
+                    <p class="autoria-comentariopublico">
+                        <p class="leitor leitor2">
+                            <a href="https://www.instagram.com/p/C6Zxh2wPTB3/" target='_blank'>
+                                <span class="leitor">— Bruno Scandolara</span>
+                            </a>
+                        </p>
+                </div>
+            </div>
+
+            <div id="container-word-cloud" class="margin-top-correction-visual-bug">
+                <h1>Nas Palavras dos Leitores</h1>
+                <h5 class="text-sysui">Nuvem de palavras aberta a todos :)</h5>
+                <img src="/images/haqntopag/wordcloud-ha-quanto-tempo-voce-nao-olha-para-as-estrelas.jpg" alt="ilustração de um cordão de pisca pisca">
+                <img style="filter: brightness(90%);" src="/images/haqntopag/wordcloud-path.svg" alt="Nuvem de palavras para descrever o livro. Construída pelos leitores">
+                <div id="container-wc-invitation-and-lastupdate">
+                    <div id="container-last-update-text">
+                        <p class="last-update-text">Última atualização: 02/08/2024</p>
+                        <p class="last-update-text">Nova atualização em breve</p>
+                    </div>
+                    <div onclick="participarnuvemDePalavras(event)" class="button-participar">Participe aqui</div>
+                </div>
+            </div>
+
+            <h1 id="compre-o-livro-titulo" class="margin-top-correction-visual-bug">Compre o Livro</h1>
+            <div id="container-botoes-comprar-livro-offset-marker"></div>
+
+            <div id="container-specialcase-botoes-comprar-livro" onclick="openComprarSpecialCase(event)">
+                <div id="specialcase-botoes-comprar-livro">
+                    <i class="fa-solid fa-basket-shopping"></i>
+                    <i class="fa-solid fa-x"></i>
+                </div>
+            </div>
+
+            <div id="container-botoes-comprar-livro">
+                {{ if eq .Params.AvailableEditora true}}
+                    <a href="https://flyve.com.br/508/h-quanto-tempo-voc-n-o-olha-para-as-estrelas-" target="_blank" onclick="showSnackAgradecimento()">
+                        <div class="container-botao-comprar-livro">
+                            <div class="icone-shop-container flyve">
+                                <i class="fa-solid fa-basket-shopping"></i>
+                            </div>
+                            <p>Livro físico</p>
+                            <img src="/images/logos-lojas/logo-flyve.svg" alt="Logo Editora Flyve">
+                        </div>
+                    </a>
+                {{ end }}
+                
+                {{ if eq .Params.AvailableAmazon true}}
+                    <a href="https://amzn.to/3PNqnJ8" target="_blank" onclick="showSnackAgradecimento()">
+                        <div class="container-botao-comprar-livro">
+                            <div class="icone-shop-container amazon">
+                                <i class="fa-solid fa-basket-shopping"></i>
+                            </div>
+                            <p>Livro físico</p>
+                            <img src="/images/logos-lojas/logo-amazon.svg" alt="Logo Amazon">
+                        </div>
+                    </a>
+                    
+                    <a href="https://amzn.to/46sYiy9" target="_blank" onclick="showSnackAgradecimento()">
+                        <div class="container-botao-comprar-livro">
+                            <div class="icone-shop-container amazon">
+                                <i class="fa-solid fa-basket-shopping"></i>
+                            </div>
+                            <p>Ebook</p>
+                            <img src="/images/logos-lojas/logo-amazon.svg" alt="Logo Amazon">
+                        </div>
+                    </a>
+                {{ end }}
+            </div>
+
+            <div id="ainda-em-duvida-chamada" class="margin-top-correction-visual-bug">
+                <p id="ainda-em-duvida-clicavel"><a onclick="openTextAinda()">Ainda em dúvida se vai pegar o livro?</a></p>
+                <div id="container-text-ainda-em-duvida">
+                    <p>E se eu disesse que é a obra favorita da dona Neusa?</p>
+                    <p>Quem é dona Neusa? Foi isso mesmo que escutei? Quem é dona Neusa?! <i>Pff</i>... Minha avó, ué!</p>
+                    <p><i>Hmm...</i>Tem razão. A vó é minha e não sua. Bom, então, acho que só existe um jeito de resolvermos isso.
+                    <p>Na verdade, existem dois. Mas íamos precisar de gelatina, então, melhor irmos com a segunda opção.</p>    
+                    <p>Um segundo... 
+                    <p>Pronto. <a onclick="copiarUrlSharing()">Clica aqui</a> e manda o link pra sua avó :)</p>
+                    <p>Como pra quê? Pra ela pegar o livro e ler antes de você, ué! Aí ela pode falar que gostou e te dar confiança.</p>
+                    <p>...</p>
+                    <p>Não vai mandar?</p>
+                    <p>Não?!</p>
+                    <p><i>Aff...</i> Então tá.</p>
+                    <p>...</p>
+                    <p>...</p>
+                    <p>...</p>
+                    <p>Ainda está aqui?</p>
+                    <p>Então está pensando em pegar o livro, não está? <i>Hihihi!</i></p>
+                    <p>Confia, poxa. Eu sou o melhor escritor aqui da minha rua! Clica lá.</p>
+                    <p>Ok. Então, que tal um trato? Você lê uma das minhas histórias curtas, totalmente grátis, e, se gostar, você pega o livro. O que acha?</p>
+                    <p>Ótimo! Estou feliz que chegamos em um acordo. É só <a href="https://www.tdvadilho.com/historietas/" target="_blank">clicar aqui</a>, escolher a que quer e aproveitar :)</p>
+                    <p><i>Ah!</i> Não esquece, hein? Estou esperando você voltar!</p>
+                </div>
+            </div>
+
+            <!-- PARTICIPAR NUVEM DE PALAVRAS SNACKBAR -->
+            <div id="participarSnack">
+                <div id='buttonCloseParticiparSnack'><span class='fa fa-times' aria-hidden='true' onclick="closeparticiparnuvemDePalavras()"></span></div>
+
+                <h4>Por favor, digite o que achou do livro ou reforce uma palavra existente:</h4>
+                <form id="form_nuvemDePalavras" method="post">
+                    <div class="field">
+                        <input type="text" name="txt_nuvemDePalavraHaQnto" id="txt_nuvemDePalavraHaQnto" required spellcheck="true"  autocomplete="off" required/>
+                    </div>
+
+                    <ul class="actions">
+                        <li id="li_btn_nuvemDePalavrasHaQnto">
+                            <input type="submit" id="btn_enviarPalavraHaQnto" value='Enviar'/>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+            
+            <div id="agradecimento-snackbar">
+                <h2>Muito obrigado pelo seu apoio, espero que tenha uma ótima leitura!</h2>
+                <p>Não se esqueça de me contar o que achou :)</p>
+                <p>É só clicar em qualquer lugar para fechar</p>
+            </div>
+            {{- partial "rodape" . }}
+        </div>
+    </div>
+    <div id="urlCopiarNotification"></div>
+    {{- template "_internal/google_analytics.html" . }}
+    {{- partial "scripts/index" . }}
+    {{- partial "meusscripts" . -}}
+</body>
+
+
+<script>
+    let comprarButtonOpen = false;
+    let openComprarSpecialCase = function(e){
+        if (comprarButtonOpen == false){
+            document.getElementById("container-botoes-comprar-livro").style.display = "flex";
+            document.getElementById("specialcase-botoes-comprar-livro").children[1].style.display = "block";
+            document.getElementById("specialcase-botoes-comprar-livro").children[0].style.display = "none";
+            
+            comprarButtonOpen = true;
+        } else{
+            document.getElementById("container-botoes-comprar-livro").style.display = "none";
+            document.getElementById("specialcase-botoes-comprar-livro").children[1].style.display = "none";
+            document.getElementById("specialcase-botoes-comprar-livro").children[0].style.display = "block";
+
+            comprarButtonOpen = false;
+        }
+        
+    }
+
+    /* Display text ainda em duvida */
+    let openTextAinda = function (){
+        document.getElementById("container-text-ainda-em-duvida").style.display = "block";
+    }
+
+    /* Snack agradecimento */
+    let closeAgradecimento = function (){
+        let snackbar = document.getElementById("agradecimento-snackbar");
+        snackbar.style.display = "none";
+    }
+
+    let showSnackAgradecimento = function(){
+        let snackbar = document.getElementById("agradecimento-snackbar");
+        setTimeout(() => {
+            snackbar.style.display = "flex";
+            document.addEventListener("click", function(){ 
+                closeAgradecimento();
+            }, { once: true });
+        }, 1000);
+
+        if(comprarButtonOpen == true){
+            document.getElementById("container-botoes-comprar-livro").style.display = "none";
+            document.getElementById("specialcase-botoes-comprar-livro").children[1].style.display = "none";
+            document.getElementById("specialcase-botoes-comprar-livro").children[0].style.display = "block";
+            comprarButtonOpen = false;
+        }
+    }
+
+    /* Leitura do capitulo */
+    flagCanCloseWithEsq = false;
+    let openSnackComecoHist = function(){
+        let snackbarToOpen = document.getElementById("snackbar-comeco-hist");
+        snackbarToOpen.style.display = "inline-flex";
+        snackbarToOpen.classList.add("snackbar-comeco-hist-show");
+
+        document.body.style.overflowY = "hidden";
+        document.getElementById("container-botoes-comprar-livro").style.opacity = "0%";
+        document.getElementById("container-botoes-comprar-livro").style.pointerEvents = "none";
+
+        document.getElementById("container-specialcase-botoes-comprar-livro").style.opacity = "0%";
+        document.getElementById("container-specialcase-botoes-comprar-livro").style.pointerEvents = "none";
+        
+        flagCanCloseWithEsq = true;
+
+        document.addEventListener('keydown', (e) => {
+            if(flagCanCloseWithEsq == true){
+                if(e.key == 'Escape'){
+                    closeSnackbarHaQnto();
+                }
+            }
+        }, { once: true });
+    }
+
+    let closeSnackbarHaQnto = function (){
+        let snackbarToClose = document.getElementById("snackbar-comeco-hist");
+        snackbarToClose.style.display = "none";
+
+        document.body.style.overflowY = "auto";
+        document.getElementById("container-botoes-comprar-livro").style.opacity = "100%";
+        document.getElementById("container-botoes-comprar-livro").style.pointerEvents = "auto";
+
+        document.getElementById("container-specialcase-botoes-comprar-livro").style.opacity = "100%";
+        document.getElementById("container-specialcase-botoes-comprar-livro").style.pointerEvents = "auto";
+    }
+
+    /* Botões Comprar o Livro */
+    let offsetContainer = 0;
+    $(function fixedUntilPoint() {
+        function adjustDivPosition() {
+            var container = $('#container-botoes-comprar-livro-offset-marker');
+            var offsetContainer = container.offset().top;
+            var buttons = $('#container-botoes-comprar-livro');
+            var offsetFloat = $(document).scrollTop() + $(window).height() - container.outerHeight();
+
+            if(offsetContainer <= offsetFloat){
+                flagBotoesCompraLivres = true;
+                buttons.css({
+                    position: 'relative',
+                    bottom: 0,
+                    background: '#0d1e25'
+                });
+                if ($(window).width() <= 770) {
+                    buttons.css("display", "flex");
+                    buttons.css("padding-bottom", "0");
+                    $('#container-specialcase-botoes-comprar-livro').css("display", "none");
+                    $('#ainda-em-duvida-chamada').css("z-index", "25");
+                    $('#ainda-em-duvida-chamada').css("padding", "0px 0px 8rem 0px");
+                }
+            }else {
+                buttons.css({
+                    bottom:   0,
+                    position: 'fixed',
+                    top:      'auto',
+                    background: '#0d1e2500',
+                });
+                if (($(window).width() > 770)) {
+                    $('#container-specialcase-botoes-comprar-livro').css("display", "none");
+                    buttons.css("display", "flex");
+                    buttons.css('padding-bottom', 15);
+                }
+                if (($(window).width() <= 770)) {
+                    buttons.css('padding-bottom', 90);
+                    $('#container-specialcase-botoes-comprar-livro').css("display", "flex");
+                }
+                if (($(window).width() <= 770) && (comprarButtonOpen == false)) {
+                    buttons.css("display", "none");
+                }
+            }
+        }
+
+        $(document).ready(function() {
+            $(window).on('scroll resize', function() {adjustDivPosition()})
+            
+        });
+    });
+
+    
+    /* PARTICIPAR NUVEM DE PALAVRAS */
+    let closeparticiparnuvemDePalavras = function () {
+        let containerparticiparnuvemDePalavras = document.getElementById("participarSnack");
+        containerparticiparnuvemDePalavras.style.display="none"
+        if(window.innerWidth < 980){
+            let navPanelToggle = document.getElementById('navPanelToggle')
+            navPanelToggle.style.display = 'block'
+        }
+
+        document.body.style.cssText = 'overflow: auto';
+    }
+
+    let flagParticiparSnackAberto = false;
+    let participarnuvemDePalavras = function(e) {
+        e.stopPropagation()
+        let containerparticiparnuvemDePalavras = document.getElementById("participarSnack");
+        containerparticiparnuvemDePalavras.style.display = "inline-flex";
+        flagParticiparSnackAberto  = true;
+        let selectinput = document.getElementById('txt_nuvemDePalavraHaQnto');
+        selectinput.focus();
+        selectinput.select();
+
+        window.addEventListener('click', function(g){
+            if (containerparticiparnuvemDePalavras.contains(g.target)){
+            } else{
+                closeparticiparnuvemDePalavras();  
+            }
+        }, options = {"once": true})
+    }
+
+    document.addEventListener('keydown', (ev) => {
+        if((ev.key == 'Escape') && (flagParticiparSnackAberto == true)){
+            closeparticiparnuvemDePalavras();
+        }
+    }) 
+
+    /* processo servidor */
+    document.getElementById('participarSnack').addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        document.getElementById('btn_enviarPalavraHaQnto').setAttribute('disabled', 'a');
+        document.getElementById('li_btn_nuvemDePalavrasHaQnto').classList.add('borderAnimNuvem', 'inNuvem');
+        
+    
+        data = {'word': document.getElementById('txt_nuvemDePalavraHaQnto').value}
+        url = 'https://thiago.oioipio.com/wordcloud';
+        
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(result => {
+            document.getElementById('btn_enviarPalavraHaQnto').removeAttribute('disabled');
+            document.getElementById('li_btn_nuvemDePalavrasHaQnto').classList.remove('borderAnimNuvem', 'inNuvem');
+            
+            emailenviado();
+        }).catch(error => {
+            document.getElementById('btn_enviarPalavraHaQnto').removeAttribute('disabled');
+            document.getElementById('li_btn_nuvemDePalavrasHaQnto').classList.remove('borderAnimNuvem', 'inNuvem');
+            
+            emailnaoenviado();
+        })
+    })
+
+    let emailenviado = function(){
+        document.getElementById('participarSnack').innerHTML = "<div id='buttonCloseParticiparSnack'><span class='fa fa-times' aria-hidden='true' onclick='closeparticiparnuvemDePalavras()'></span></div><h3 style='margin-bottom: 20px'>A sua palavra foi enviada 😉</h3><h4>Obrigado pela sua participação! A palavra entrará para a nuvem na próxima atualização</h4>"
+        setTimeout(function(){ 
+            closeparticiparnuvemDePalavras(); 
+        }, 60000);
+    }
+
+    let palavraNaoEnviada = function(){
+        document.getElementById('participarSnack').innerHTML = "<div id='buttonCloseParticiparSnack'><span class='fa fa-times' aria-hidden='true' onclick='closeparticiparnuvemDePalavras()'></span></div><h3 style='margin-bottom: 20px'>Houve uma falha no servidor 😔<h3><h4>Desculpe, infelizmente a palavra não pode ser enviada. Podemos tentar outra vez? </h4><a";
+        setTimeout(function(){ 
+            closeparticiparnuvemDePalavras(); 
+        }, 6000);
+    }
+</script>

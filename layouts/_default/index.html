@@ -1,29 +1,32 @@
-{{- partial "htmlhead" . -}}
-<head>
-    <link rel="canonical" href="https://www.tdvadilho.com"/> 
-</head>
+<link rel="stylesheet" type="text/css" href="/assets/css/geral.css"> <!-- Chamando CSS geral -->
+<link rel="stylesheet" type="text/css" href="/assets/css/home.css"> <!-- Chamando CSS geral -->
 
+<<<<<<< HEAD
 	<body lang='{{ .Site.LanguageCode | default "pt-br" }}' class="is-preload">
+=======
+{{- partial "htmlhead" . -}}<!-- puxando as metatags -->
+{{- partial "navigationlinks" . -}}<!-- puxando os menus -->
+>>>>>>> beta
 
-        <!-- Wrapper -->
-        <div id="wrapper" class="fade-in">
-			{{- partial "intro.html" . -}}
-
-            {{- partial "header" . -}}
-            {{- partial "nav" . }}
-            
-            <!-- Main --> 
-            <div id="main">
-                
-                <div id="lancamento" 
-                     displaylancamento="{{ .Params.Displaylancamento }}"
-                     style="display: none;"
-                >
-                        <img src="{{ .Params.Lancamentoimagem1 }}" class="imglancamento1" alt="imagem lançamento 1">
-                        <img src="{{ .Params.Lancamentoimagem2 }}" class="imglancamento2" alt="imagem lançamento 2">
-                        <img src="{{ .Params.Lancamentoimagem3 }}" class="imglancamento3" alt="imagem lançamento 3">
-                        <img src="{{ .Params.Lancamentoimagem4 }}" class="imglancamento4" alt="imagem lançamento 4">            
+<body>
+    <!-- Main --> 
+    <div id="main">
+        {{- partial "pageHeaderMenuAndLogo" . -}}
+        <div id="container-home">
+            <div id="container-home-topo-items">
+                <div id="organizer-container-text-items">
+                    <a href="https://www.tdvadilho.com/sobre/"><h1>TD Vadilho</h1></a>
+                    <p class = "intro-paragraph">
+                        Escritor-ilustrador ou ilustrador-escritor. Depende de como você olhar.
+                    </p>
+                    <p class = "intro-paragraph">
+                        Para simplificar, <i>criador e contador de histórias</i>. Alguém que só quer ser criativo. Alguém que só quer escrever e ilustrar.
+                    </p>
+                    <p class = "intro-paragraph">
+                        Eu acredito na capacidade emocional e transformativa das histórias criativas, e é por isso que coloco no mundo <a onclick="opennavigationmenu()">aquilo que gostaria de encontrar</a>.
+                    </p>
                 </div>
+<<<<<<< HEAD
 
                 <div id="container_novidades">
                     <h1 id="title_seçãoNovidades">NOVIDADES</h1>
@@ -141,813 +144,93 @@
 
                 <div id="contatar" class="contato">
                     <h1 id="title_seçãoContato">CONTATO</h1>
+=======
+                <div id="bghome">
+>>>>>>> beta
                 </div>
             </div>
-            
-            {{- partial "footer/index" . }}
-            
-            <div id="Snackbar" onclick="closeSnackbar()">
-                <div id="SnackbarText1"></div>
-                <div id="SnackbarText2"></div>
-                <a id="close">x</a>
-            </div>  
 
-            {{- partial "copyright" . }}
-            <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
-            
+            <div id="container-home-topo-items-sub"></div>
+        
+            <div id="container-home-bottom-items">
+                {{ range where .Site.RegularPages "Params.Lastpost1" true }}
+                    {{ if eq .Params.Lastpost1type "galeria"}}
+                        <div id="item-bottom-esq" onclick="window.location.href='galeriailustracoes/?id={{ .Params.Projectid | safeURL }}'">
+                            <div class="novidade-notice">
+                                <span>Novidade</span></div>
+                            <div class="overlay-home-news"></div>
+                            <div class="organizer-home-news-text">
+                                <p class="home-news-type">{{ .Params.Lastpost1type }}</p>
+                                <h2 class="home-news-title">{{ .Params.Title }}</h2>
+                            </div>
+                            <img id="home-novidade-1" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
+                        </div>
+                    {{ else }}
+                        <div id="item-bottom-esq" onclick="window.location.href='{{ .Permalink | safeURL }}'">
+                            <div class="novidade-notice">
+                                <span>Novidade</span></div>
+                            <div class="overlay-home-news"></div>
+                            <div class="organizer-home-news-text">
+                                <p class="home-news-type">{{ .Params.Lastpost1type }}</p>
+                                <h2 class="home-news-title">{{ .Params.Title }}</h2>
+                            </div>
+                            <img id="home-novidade-1" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
+                        </div>
+                    {{ end }}
+                {{ end }}
+
+                {{ range where .Site.RegularPages "Params.Lastpost2" true }}
+                    {{ if eq .Params.Lastpost2type "galeria"}}
+                        <div id="item-bottom-center" onclick="window.location.href='galeriailustracoes/?id={{ .Params.Projectid | safeURL }}'">
+                            <div class="novidade-notice">Novidade</div>
+                            <div class="overlay-home-news"></div>
+                            <div class="organizer-home-news-text">
+                                <p class="home-news-type">{{  .Params.Lastpost2type }}</p>
+                                <h2 class="home-news-title">{{ .Params.Title }}</h2>
+                            </div>
+                            <img id="home-novidade-2" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
+                        </div>
+                    {{ else }}
+                        <div id="item-bottom-center" onclick="window.location.href='{{ .Permalink | safeURL }}'">
+                            <div class="novidade-notice">Novidade</div>
+                            <div class="overlay-home-news"></div>
+                            <div class="organizer-home-news-text">
+                                <p class="home-news-type">{{  .Params.Lastpost2type }}</p>
+                                <h2 class="home-news-title">{{ .Params.Title }}</h2>
+                            </div>
+                            <img id="home-novidade-2" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
+                        </div>
+                    {{ end }}
+                {{ end }}
+
+                {{ range where .Site.RegularPages "Params.Lastpost3" true }}
+                    {{ if eq .Params.Lastpost3type "galeria"}}
+                        <div id="item-bottom-dir" onclick="window.location.href='galeriailustracoes/?id={{ .Params.Projectid | safeURL }}'">
+                            <div class="novidade-notice">Novidade</div>
+                            <div class="overlay-home-news"></div>
+                            <div class="organizer-home-news-text">
+                                <p class="home-news-type">{{  .Params.Lastpost3type }}</p>
+                                <h2 class="home-news-title">{{ .Params.Title }}</h2>
+                            </div>
+                            <img id="home-novidade-3" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
+                        </div>
+                    {{ else }}
+                        <div id="item-bottom-dir" onclick="window.location.href='{{ .Permalink | safeURL }}'">
+                            <div class="novidade-notice">Novidade</div>
+                            <div class="overlay-home-news"></div>
+                            <div class="organizer-home-news-text">
+                                <p class="home-news-type">{{  .Params.Lastpost3type }}</p>
+                                <h2 class="home-news-title">{{ .Params.Title }}</h2>
+                            </div>
+                            <img id="home-novidade-3" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
+                        </div>
+                    {{ end }}
+                {{ end }}
+            </div>   
         </div>
-  
-        {{- template "_internal/google_analytics.html" . }}
-        {{- partial "scripts/index" . }}
-
-        <script defer data-host="https://cusdis.com" data-app-id="b935f701-f887-42b4-96cf-1852bf2005b2" src="https://cusdis.com/js/cusdis-count.umd.js"></script>
-    </body>
-    
-<style>
-/* INTRO - carater especial, só aparece nessa página */
-    #intro {
-        width: 85%;
-        margin: auto;
-        text-wrap: balance;   
-    }
-
-    #intro h1{
-        font-size: 4.8rem;
-        text-transform: none;
-        font-family: "Alegreya Sans SC","Source Sans Pro", Helvetica, sans-serif;
-    }
-
-    #intro p {
-        font-size: 1.8rem;
-        font-style: none;
-        margin-top: -0.25rem;
-        margin-bottom: 3.25rem;
-        font-family: 'Alegreya Sans SC',"Source Sans Pro", Helvetica, sans-serif;
-        width: 100%;
-        word-break: break-word;
-        letter-spacing: 0.125rem;
-    }
-
-/* LANÇAMENTO */  
-    #lancamento{
-        padding: 0;
-        margin: 0;
-    }
-
-    .imglancamento1{
-        width: 100%;
-        height: 200px;
-        display: block;
-        object-fit: cover;
-    }
-
-    .imglancamento2{
-        display:none;
-    }
-
-    .imglancamento3{
-        display:none;
-    }
-
-    .imglancamento4{
-        display:none;
-    }
-
-    .noDisplay{
-        display: none;
-    }
-
-/* SEÇÃO NOVIDADES */
-    #title_seçãoNovidades{
-        margin-bottom: 40px;
-    }
-
-    header{ /* Uma correção que tive que fazer, embora não entenda o exato motivo */
-        cursor: pointer; 
-    }
-
-    .organizer_ahrefNovidades{
-        display: contents;
-    }
-
-    .organizer_ahrefNovidades:hover p{
-        color: #212931;
-    }
-
-    .organizer_ahrefNovidades p{
-        color: #212931; 
-    }
-
-    /* NOVIDADE EM DESTAQUE */
-    #container_novidadeDestaque{                    /* REGRA: alterar entre os paddings */
-        padding: 0rem 6rem 2rem 6rem;                   /* caso o título for pequeno */
-        /* padding: 0rem 4rem 0rem 4rem; */             /* caso o título for grande*/
-    }
-
-    #novidadeDestaque{
-        -webkit-backface-visibility: hidden;
-        -webkit-transform: translateZ(0) scale(1, 1);
-        filter: blur(0);
-        -webkit-filter: blur(0);
-        transition: transform .2s;
-    }
-
-    #novidadeDestaque:hover{
-        cursor: pointer;
-        transform: perspective(300px) rotateY(1deg) translateZ(10px) scale(0.97);
-        transition: transform .2s;
-    }
-
-    .imgContainer_novidadeDestaque{
-        height: 46vh;
-        margin-top: 15px;
-        display: block;
-        overflow: hidden;
-    }
-
-    .imgContainer_novidadeDestaque img{
-        margin:auto;
-        width: 100%;
-        object-fit: cover;
-        object-position: center;
-        position: relative;
-        height: 100%;
-    }
-
-    /* OUTRAS NOVIDADES */
-    #container_outrasNovidades {
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: -ms-flex;
-        display: flex;
-        -moz-flex-wrap: wrap;
-        -webkit-flex-wrap: wrap;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-        flex-direction: row;
-        -moz-align-items: -moz-stretch;
-        -webkit-align-items: -webkit-stretch;
-        -ms-align-items: -ms-stretch;
-        align-items: stretch;
-        -webkit-backface-visibility: hidden;
-        -webkit-transform: translateZ(0) scale(1, 1);
-        filter: blur(0);
-        -webkit-filter: blur(0);
-        transition: transform .2s;
-        justify-content: space-around;
-    }
-
-    .section_outrasNovidades{
-        display: contents; /* Uma quebra do que seria o padrão. Tem que ficar */
-        padding: 0rem 4rem 0rem 4rem;
-    }   
-
-    #container_outrasNovidade_bloco{
-        -webkit-backface-visibility: hidden;
-        -webkit-transform: translateZ(0) scale(1, 1);
-        filter: blur(0);
-        -webkit-filter: blur(0);
-        transition: transform .2s; 
-        width: 43%;
-    }
-
-    #container_outrasNovidade_bloco:hover{
-        cursor: pointer;
-        transform: perspective(300px) rotateY(1deg) translateZ(10px) scale(0.97);
-        transition: transform .2s;
-    }
-
-    .title_outrasNovidades{
-        font-size: 1.75rem; /* Uma quebra do que seria o padrão. Tem que ficar */
-    }
-
-    .imgContainer_outrasNovidades{
-        height: 23vh;
-
-        overflow: hidden;
-    }
-
-    .imgContainer_outrasNovidades img{
-        margin:auto;
-        width: 100%;
-        object-fit: cover;
-        object-position: center;
-        position: relative;
-        height: 100%;
-    }
-
-/* SEÇÃO NEWSLETTER */
-    #container_newsletterForm{
-        background-color: #5F7183;
-    }
-
-    #title_seçãoNewsletter{
-        margin-bottom: 5px;
-        color: aliceblue;
-    }
-
-    .subtitle_seçãoNewsletter{
-        font-size: 1.25rem;
-        margin-bottom: 20px;
-        color: aliceblue;
-        line-height: 1.7;
-        letter-spacing: 0.1rem;
-    }
-
-    #newsletterForm{
-        margin-bottom: 0;
-    }
-    
-    #nomeOrganizer{
-        position: relative;
-        float: left;
-        width: 40%;
-    }
-
-    #emailOrganizer{
-        margin-left: 30px;
-        margin-right: 30px;
-        float: left;
-        width: 40%;
-    }
-
-    .txt_newsletterAviso{
-        text-align: center;
-        font-size: 15px;
-        color: aliceblue;
-    }
-
-    label{
-        color: aliceblue; 
-    }
-
-    #form_newsletter{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-around;
-    }
-
-    ul.actions{
-        margin-left:0;
-    }
-
-    #li_btn_inscrever {
-            padding: 0 !important;
-            margin-top: 28px;
-            background-color: #FFC97F;
-        }
-    
-        #btn_inscrever{
-            box-shadow: inset 0 0 0 2px #FFC97F;
-            color: #5f7183 !important;
-            height: 3rem;
-        }
-    
-        #btn_inscrever:hover{
-            box-shadow: inset 0 0 0 2px #725e5e;
-            color: #725e5e !important;
-        }
-
-    #nomenewsl, #emailnewsl{
-        background-color: aliceblue;
-    }
-
-/* SEÇÃO CONTATO */
-    #title_seçãoContato{
-        margin-bottom: 0px;
-    }
-
-    .contatar{
-        padding-bottom: 0px;
-    }
-
-    #contatar{
-        background-color: #f5f5f5;
-    }
-
-    #footer section{
-        padding-top: 40px;
-        border: none;
-    }
-
-    #footer > section.split.contact > section:first-child {
-        padding: 35px 4rem 3rem 4rem;
-    }
- 
-/* REGRAS DE MEDIA */  
-    @media screen and (max-width: 1075px) and (min-width: 981px){
-        #intro h1{
-            font-size:4rem;
-        }
-        #intro p {
-            font-size: 1.5rem;
-        }
-    }
-
-    @media screen and (max-width: 980px) and (min-width: 890px){
-        #intro h1{
-            font-size:4rem;
-        }
-
-        #intro p {
-            font-size: 1.3rem;
-        }
-    }
-
-    @media screen and (max-width: 891px) and (min-width: 805px){
-        #intro h1{
-            font-size:3rem;
-        }
-
-        #intro p {
-            font-size: 1.25rem;
-        }
-    }
-
-    @media screen and (max-width: 804px) and (min-width: 672px){
-        #intro h1{
-            font-size:3rem;
-        }
-
-        #intro p {
-            font-size: 1.25rem;
-        }
-    }
-
-    @media screen and (max-width: 671px){
-        #intro h1{
-            font-size:2.2rem;
-        }
-        
-        #intro p {
-            font-size: 1.25rem;
-        }
-    }
-
-    @media screen and (max-width: 1280px) and (min-width: 1010px){
-        #nomeOrganizer{
-            width: 39%;
-        }
-
-        #emailOrganizer{
-            margin-left: 28px;
-            margin-right: 28px;
-            width: 39%;
-        }   
-    }
-
-    @media screen and (max-width: 1010px) and (min-width: 975px){
-        #nomeOrganizer{
-            width: 38%;
-        }
-
-        #emailOrganizer{
-            margin-left: 25px;
-            margin-right: 25px;
-            width: 38%;
-        }   
-    }
-
-    @media screen and (max-width: 975px) and (min-width: 737px){
-        ul.actions{
-            margin-bottom: 25px;
-        }
-
-        #nomeOrganizer{
-            width: 96%;
-            margin-bottom: 22px;
-        }
-
-        #emailOrganizer{
-            margin-left: 0px;
-            margin-right: 0;
-            width: 96%;
-        }    
-    }
-
-    @media screen and (max-width: 736px) {
-        #container_novidadeDestaque,.section_outrasNovidades{
-            padding: 0rem 2rem 2rem 2rem;
-        }
-
-        .imgContainer_novidadeDestaque{
-            height: 34.5vh;
-        }
-    }
-
-    @media screen and (max-width: 736px) and (min-width: 376px){
-        ul.actions{
-            margin-bottom: 25px;
-        }
-
-        #nomeOrganizer{
-            width: 100%;
-            margin-bottom: 22px;
-        }
-
-        #emailOrganizer{
-            margin-left: 0px;
-            margin-right: 0;
-            width: 100%;
-        }
-        .txt_newsletterAviso{
-            width: 100%;
-            margin: 0;
-        }
-        #newsletterForm{
-            margin-bottom: 20px;
-        }
-        .subtitle_seçãoNewsletter{
-            width: 100%;
-            hyphens: none;
-        }
-        #title_seçãoNewsletter{
-            width: 100%;
-        } 
-        .header_novidades h2 {
-            font-size: 2.2rem;
-        }
-        .header_novidades h3 {
-            font-size: 1.1rem;
-        }
-    }
-
-    @media screen and (max-width: 1000px) and (min-width: 376px){
-        #container_novidades{
-            padding: 4rem 0 0 0;
-        }
-        
-        #container_outrasNovidade_bloco{
-            -webkit-backface-visibility: hidden;
-            -webkit-transform: translateZ(0) scale(1, 1);
-            filter: blur(0);
-            -webkit-filter: blur(0);
-            transition: transform .2s; 
-            width: 100%;
-            padding-top:2rem;
-            padding-bottom: 2rem;
-        }
-
-        .section_outrasNovidades{
-            border-top: solid 2px #eeeeee;
-            display: block;
-            width: inherit;
-        }
-
-        .txt_hideOverflowUmaLinha{
-            word-break: break-word;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: initial;
-            -webkit-line-clamp: 1; 
-            -webkit-box-orient: vertical;
-            display: -webkit-box;
-        }
-    }
-
-    @media screen and (max-width: 376px){
-        ul.actions{
-            margin-bottom: 25px;
-        }
-
-        #nomeOrganizer{
-            width: 100%;
-            margin-bottom: 22px;
-        }
-
-        #emailOrganizer{
-            margin-left: 0px;
-            margin-right: 0;
-            width: 100%;
-        }
-
-        .txt_newsletterAviso{
-            width: 100%;
-            margin: 0;
-            font-size: 13px;
-        }
-
-        #newsletterForm{
-            margin-bottom: 20px;
-        }
-
-        #container_novidades{
-            margin-bottom: 20px;
-        }
-
-        .subtitle_seçãoNewsletter{
-            width: 100%;
-            hyphens: none;
-            font-size: 15px;
-        }
-
-        #title_seçãoNewsletter{
-            width: 100%;
-        }  
-
-        h1{
-            font-size: 2.8rem;
-        }
-
-        #container_outrasNovidade_bloco{
-            -webkit-backface-visibility: hidden;
-            -webkit-transform: translateZ(0) scale(1, 1);
-            filter: blur(0);
-            -webkit-filter: blur(0);
-            transition: transform .2s; 
-            width: 100%;
-            padding: 2rem;
-        }
-        #container_novidadeDestaque{
-            padding: 0 2rem 2rem 2rem;
-        }
-
-        .section_outrasNovidades{
-            display: block;
-            border-top: solid 2px #eeeeee;
-        }
-
-        #container_novidades{
-            padding: 4rem 0 0 0;
-        }
-
-        h2, .title_outrasNovidades{
-            font-size: 1.5rem;
-        }
-
-        h3, .subtitle_outrasNovidades {
-            font-size: 1rem;
-        }
-
-        .txt_hideOverflowUmaLinha{
-            word-break: break-word;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: initial;
-            -webkit-line-clamp: 1; 
-            -webkit-box-orient: vertical;
-            display: -webkit-box;
-        }
-    }
-
-/* SNACKBAR CSS */
-    #Snackbar {
-        visibility: hidden;
-        text-align: left;
-        padding: 5px;
-        padding-left: 12px;
-        padding-right: 12px;
-        border-radius: 2px;
-        position: fixed;
-        bottom: 30px;
-        background-color: rgba(255, 255, 255, 0.875);
-        box-shadow: 0 0.125rem 0.75rem 0 rgba(30, 37, 45, 0.25);
-        color: #212931;
-        transform: translate(-50%,0);
-        left: 50%;
-        z-index: 7;
-    }
-
-    #Snackbar.showSucess {
-        visibility: visible;
-        -webkit-animation: fadein 0.5s;
-        animation: fadein 0.5s;
-        border-left: 10px solid #36a34c;
-    }
-
-    #Snackbar.showFail {
-        visibility: visible;
-        -webkit-animation: fadein 0.5s;
-        animation: fadein 0.5s;
-        border-left: 10px solid #a33636;
-    }
-
-    #SnackbarText1{
-        color: #101020;
-        font-weight: 600;
-        font-size: 18px;
-        font-family: helvetica;
-    }
-
-    #SnackbarText2{
-        margin-top: -12px;
-        font-size: 15px;
-        color: #656565;
-        font-weight: 400;
-        font-family: helvetica;
-    }
-
-    #Snackbar a{
-        position: absolute;
-        right: 5px;
-        top:  5px;
-        padding-right: 10px;
-        padding-top: 10px;
-        background-color: transparent;
-        font-size: 20px;
-        font-weight: 600;
-        line-height: 0;
-        color: #656565;
-        border: none;
-        font-family: helvetica;
-    }
-
-    #Snackbar:hover{
-        cursor: pointer;
-    }
-
-    #Snackbar:hover a{
-        cursor: pointer;
-        color: #18bfef;
-    }
-
-    @-webkit-keyframes fadein {
-        from {bottom: 0; opacity: 0;} 
-        to {bottom: 30px; opacity: 1;}
-    }
-
-    @keyframes fadein {
-        from {bottom: 0; opacity: 0;}
-        to {bottom: 30px; opacity: 1;}
-    }
-
-/* FEEDBACK BOTAO CARREGANDO */
-    .borderAnim {
-        position: relative;
-    }
-
-    .borderAnim:after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(120deg, #043a49, #18bfef, #043a49);
-        background-size: 300% 300%;
-        clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), 2px calc(100% - 2px), 2px 100%, 100% 100%, 100% 0%, 0% 0%);
-    }
-
-    .borderAnim.in:after {
-        animation: frame-enter 2s forwards ease-in-out reverse, gradient-animation 4s ease-in-out infinite;
-    }
-
-    /* motion */
-    @keyframes gradient-animation {
-        0% {
-            background-position: 15% 0%;
-        }
-        50% {
-            background-position: 85% 100%;
-        }
-        100% {
-            background-position: 15% 0%;
-        }
-    }
-
-    @keyframes frame-enter {
-        0% {
-            clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), 2px calc(100% - 2px), 2px 100%, 100% 100%, 100% 0%, 0% 0%);
-        }
-        25% {
-            clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), calc(100% - 2px) calc(100% - 2px), calc(100% - 2px) 100%, 100% 100%, 100% 0%, 0% 0%);
-        }
-        50% {
-            clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, 100% 0%, 0% 0%);
-        }
-        75% {
-            -webkit-clip-path: polygon(0% 100%, 2px 100%, 2px 2px, 2px 2px, 2px 2px, 2px 2px, 2px 2px, 2px 2px, 2px 0%, 0% 0%);
-        }
-        100% {
-            -webkit-clip-path: polygon(0% 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 0% 100%);
-        }
-    }
-
-/* MEDIA SCREEN RULES PARA IMAGEM DE LANÇAMENTO */
-
-    @media screen and (min-width: 1032px){
-        .imglancamento2, .imglancamento3, .imglancamento4{
-            display:none;
-        }
-        .imglancamento1{
-            width: 100%;
-            height: 200px;
-            display: block;
-            object-fit: cover;
-        }
-    }
-
-    @media screen and (max-width: 1032px) and (min-width: 851px){  
-        .imglancamento1, .imglancamento3, .imglancamento4{
-            display:none;
-        }
-        .imglancamento2{
-            width: 100%;
-            height: 200px;
-            display: block;
-            object-fit: cover;
-        }
-    }
-
-    @media screen and (max-width: 851px) and (min-width: 684px){
-        .imglancamento1, .imglancamento2, .imglancamento4{
-            display:none;
-        }
-        .imglancamento3{
-            width: 100%;
-            height: 200px;
-            display: block;
-            object-fit: cover;
-        }
-    }
-
-    @media screen and (max-width: 684px){
-        .imglancamento1, .imglancamento2, .imglancamento3{
-            display:none;
-        }
-        .imglancamento4{
-            width: 100%;
-            height: 200px;
-            display: block;
-            object-fit: cover;
-        } 
-    }
-    
-</style>
-
-<script>
-/* NEWSLETTER */
-var form = document.getElementById("Snackbar");
-
-    document.getElementById('newsletterForm').addEventListener("submit", (e) => {		
-        e.preventDefault()
-
-        document.getElementById('btn_inscrever').setAttribute('disabled', 'a')
-        document.getElementById('li_btn_inscrever').classList.add('borderAnim', 'in')
-    
-        data = {
-            'mail': document.getElementById('emailnewsl').value,
-            'nome': document.getElementById('nomenewsl').value,
-            'assunto': '[Newsletter] Signup'
-        }
-        
-        url = 'https://thiago.oioipio.com/contato'
-
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        }).then(result => {
-            document.getElementById('btn_inscrever').removeAttribute('disabled')
-            document.getElementById('li_btn_inscrever').classList.remove('borderAnim', 'in')
-
-            formularioEnviado()
-        }).catch(error => {
-            document.getElementById('btn_inscrever').removeAttribute('disabled')
-            document.getElementById('li_btn_inscrever').classList.remove('borderAnim', 'in')
-
-            formularioNaoEnviado()
-        })
-    })
-
-    let formularioEnviado = function(){
-        form.className = "showSucess";     
-        document.getElementById('SnackbarText1').innerHTML = "Inscrição realizada"
-        document.getElementById('SnackbarText2').innerHTML = "Muito obrigado por seu interesse pelo meu trabalho!"
-        setTimeout(function(){ 
-            form.className = form.className.replace("showSucess", "");   
-            resetForm();
-        }, 8000);
-
-        window.history.pushState('', '', '#form-enviado');
-    }
-
-    let formularioNaoEnviado = function(){
-        form.className = "showFail";
-        document.getElementById('SnackbarText1').innerHTML = "Falha no servidor"
-        document.getElementById('SnackbarText2').innerHTML = "Desculpe pelo erro. Por favor, tente novamente em alguns instantes"
-        setTimeout(function(){ 
-            form.className = form.className.replace("showFail", ""); 
-        }, 8000);
-    }
-
-    function closeSnackbar(){
-        if(form.classList.contains("showSucess")){
-            resetForm();
-            form.className = form.classList.remove("showSucess")
-        }else{
-            form.className = form.classList.remove("showFail")    
-        }
-    }
-
-    let resetForm = function(){
-      let resetNewsForm = document.getElementById('newsletterForm')
-      resetNewsForm.reset()
-      let resetContatoForm = document.getElementById('contato')
-      resetContatoForm.reset()
-    }
-</script>
+    </div>
+    {{- template "_internal/google_analytics.html" . }}
+    {{- partial "scripts/index" . }}
+    {{- partial "meusscripts" . -}}
+    <script defer data-host="https://cusdis.com" data-app-id="b935f701-f887-42b4-96cf-1852bf2005b2" src="https://cusdis.com/js/cusdis-count.umd.js"></script>
+</body>

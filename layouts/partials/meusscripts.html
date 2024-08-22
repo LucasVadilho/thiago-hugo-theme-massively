@@ -1,0 +1,477 @@
+<script>
+
+/* ----------------GO TO COMMENTS FROM POSTS CARD---------------- */
+let flagCameFromCard = false;
+let goToCommentsFromCard = function(event,link){
+    event.cancelBubble = true;
+    if(event.stopPropagation) event.stopPropagation();
+
+    flagCameFromCard = true;
+    window.open(link);
+}
+
+
+/* ----------------NAVIGATION---------------- */
+let flagnavigationisopen = false;
+let opennavigationmenu = function(){
+    document.getElementById("nav").style.display = "block";
+    document.body.style.overflow = 'hidden';
+    flagnavigationisopen = true;
+}
+
+
+/* ----------------CLOSE THINGS---------------- */
+//close things with X
+let closethis = function(what){
+    if(what === 'navigationmenu'){
+        document.getElementById("nav").style.display = "none";
+        flagnavigationisopen = false;
+        document.body.style.overflow = 'auto';
+    }
+}
+
+//close things with ESC
+let flagProjAberto = false;
+document.addEventListener('keydown', (ev) => {
+    if((ev.key == 'Escape') && (flagnavigationisopen == true)){
+        closethis('navigationmenu');
+    }
+    if((ev.key == 'Escape') && (canCloseImortalizados == true)){
+        fecharImortalizados();
+    }
+    if(flagProjAberto == true){
+        if(ev.key == 'Escape'){
+            closeSnackbarProj();
+        }
+        if(ev.keyCode == '39'){ //Projetos abertos na galeria tem esses adicionais para poder movimentar com a setinha
+            changeSlideProj(1);
+        }
+        if(ev.keyCode == '37'){
+            changeSlideProj(-1);
+        }
+    }
+    if(flagMateriaisAberto == true){
+        if(ev.key == 'Escape'){/* para ler quando preciona o esc*/
+            fecharmateriais();
+        }
+    }
+})
+
+
+/* ----------------SLIDESHOW---------------- */
+let slideIndex = 1; //inicializando slide
+let currentSlideText = document.getElementById("currentSlideText");
+
+if(currentSlideText != null){
+    currentSlideText.innerHTML = (slideIndex + 1) + '/' + currentSlideText.getAttribute("length");
+}
+
+function plusSlides(n) { //prev and next click
+    showSlides(slideIndex += n);
+}
+
+function currentSlide(n) { //slide que está mostrando na tela
+    showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("slider-gallery");
+    let squaresnavigation = document.getElementsByClassName("square-navigation-slider");
+    if (n > slides.length) {
+        slideIndex = 1;
+    }
+    if (n < 1) {
+        slideIndex = slides.length;
+    }
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (i = 0; i < squaresnavigation.length; i++) {
+        squaresnavigation[i].className = squaresnavigation[i].className.replace(" activeslide", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    squaresnavigation[slideIndex-1].className += " activeslide";
+    currentSlideText.innerHTML = (slideIndex) + '/' + currentSlideText.getAttribute("length");
+}
+    //SWIPE LEFT OR RIGHT
+    let touchsurface = document.getElementById('slider-container'),
+    startX, 
+    startY,
+    dist,
+    distThreshold,
+    thresholdX = 50,
+    thresholdY = 50,
+    allowedTime = 1500,
+    elapsedTime,
+    startTime
+
+    let setupSliderforswipe = function() {
+        touchsurface.addEventListener('touchstart', function(touch) {
+        let touchobj = touch.changedTouches[0];
+            
+        dist = 0;
+        distThreshold = 0;
+        startX = touchobj.pageX;
+        startY = touchobj.pageY;
+        startTime = new Date().getTime() ;
+    }, false)
+
+    touchsurface.addEventListener('touchend', function(touch) {
+        var touchobj = touch.changedTouches[0]
+        dist = touchobj.pageX - startX
+        distThreshold = Math.abs(dist)
+        elapsedTime = new Date().getTime() - startTime
+
+        if (
+            elapsedTime <= allowedTime &&
+            distThreshold >= thresholdX &&
+            Math.abs(touchobj.pageY - startY) <= thresholdY &&
+            dist > 0){
+            document.getElementById('prevSlide').click()
+        }
+
+         if (
+            elapsedTime <= allowedTime &&
+            distThreshold >= thresholdX &&
+            Math.abs(touchobj.pageY - startY) <= thresholdY &&
+            dist < 0){                                         
+                document.getElementById('nextSlide').click()
+             }
+         }, false)
+     }
+
+
+/* ----------------REALIGN VERTICAL---------------- */
+    let realignVertical = function(openProject){
+        let snackElement = document.getElementById('openProject');
+        let firstchildheight = snackElement.children[0].height;
+        console.log(window.innerHeight);
+        console.log(firstchildheight);
+        firstchilg.style.marginTop = ((window.innerHeight - firstchildheight)/2);
+    }
+
+/* ----------------ANIMAÇÃO DE CARREGAMENTO ILUSTRAÇÕES---------------- */
+/*Interactivity to determine when an animated element in in view. In view elements trigger our animation*/
+let check_if_in_view = function () {
+    //window and animation items
+    var animation_elements = $.find('.animation-element');
+    
+    var web_window = $(window);
+    
+    //get current window information
+    var window_height = web_window.height();
+    var window_top_position = web_window.scrollTop();
+    var window_bottom_position = (window_top_position + window_height);
+
+    //iterate through elements to see if its in view
+    $.each(animation_elements, function(i) {
+        var element = $(this);
+
+        if(element.attr("flagImagemMostrada") === "true"){
+            return;
+        }
+        
+        var element_height = $(element).outerHeight();
+        var element_top_position = $(element).offset().top;
+        var element_bottom_position = (element_top_position + element_height);
+
+        if ((element_bottom_position >= window_top_position) && (element_top_position <= window_bottom_position)) {
+            setTimeout(() => {
+                element.addClass('shown-img-state');
+                element.attr("flagImagemMostrada", true);
+            }, i * 70);
+        }
+    });
+}
+
+$(document).ready(function() {
+    $(window).on('scroll resize', function() {check_if_in_view()})
+    /* $(window).trigger('scroll'); */
+     setInterval(check_if_in_view, 1)
+});
+
+
+/*---------------- Copiar URL ----------------*/
+let urlCurrentPage = window.location.href;
+
+let copiarUrlSharing = function() {
+    let createCopiarNotification = function() {
+        let notification = document.getElementById("urlCopiarNotification");
+        notification.style.opacity = 1;
+        notification.innerHTML = '<i class="fa fa-link"></i> URL copiada. Agora é só colar :)</div>';
+        
+        setTimeout(() => {
+            notification.style.opacity = 0;
+        }, 4000);
+    }
+
+    if(navigator.clipboard) {
+        navigator.clipboard.writeText(window.location.href);
+        createCopiarNotification();
+    }
+    createCopiarNotification();
+}
+
+
+/*-----------------GO TO COMENTARIOS------------------*/
+let goToComentarios = function(){
+    let comentariosYPosition = document.getElementById("comentarioshist-container").offsetTop
+    window.scrollTo({left: 0, top: comentariosYPosition, behavior: "smooth"})
+}
+
+
+/* ----------------TURN PAGE HISTORIETAS---------------- */
+let turnpage = function (id){
+    document.getElementById(id).children[0].classList.toggle("flipcapa");
+    document.getElementById(id).children[1].classList.toggle("flipcontracapa");
+}
+
+/* ----------------PIN MATERIAIS LINKS AFILIADOS---------------- */
+let flagMateriaisAberto = false;
+    
+let expandirmateriais = function(e){
+    e.stopPropagation();
+    let listademateriais = document.getElementById("listaMateriais");
+    listademateriais.style.display = "flex";
+    renderMateriaisUtilizados();
+    flagMateriaisAberto = true;
+
+    window.addEventListener('click', function(g){
+        if(!listademateriais.contains(g.target)){
+            fecharmateriais();
+        }
+    }, options = {"once": true})
+}
+
+function fecharmateriais(){
+    let listademateriais = document.getElementById("listaMateriais");
+    listademateriais.style.display = "none";
+    flagMateriaisAberto = false;
+}
+
+materiais = {
+    1:{
+        nome: "Uni Pin Fine Line 0.5mm",
+        tipo: "caneta",
+        linkamazon: "https://amzn.to/48eTDz7",
+        linkmaga: "https://www.magazinevoce.com.br/magazinetdvadilho/caneta-nanquin-uniball-pin-tecnica-fine-line-preta-0-05mm-uni-ball/p/ebb48985b1/pa/cana/",
+    },
+    2:{
+        nome: "Uni Pin Chisel 2.0",
+        tipo: "caneta",
+        linkamazon: "https://amzn.to/3WamQaf",
+        linkmaga: "https://www.magazinevoce.com.br/magazinetdvadilho/caneta-nanquim-uni-pin-200-uni-ball-chisel-2-0-preto/p/dc2812k7k1/pa/cana/",
+    },
+    3:{
+        nome: "Fine Point 1mm Pen-touch Sakura",
+        tipo: "caneta",
+        linkamazon: "https://amzn.to/3zLtjRw",
+        linkmaga: "https://www.magazinevoce.com.br/magazinetdvadilho/caneta-spray-pen-touch-sakura-1-0mm-cor-preta/p/hk0agbf286/tb/ctke/",
+    },
+    4:{
+        nome: "Pincel Aquarelável CIS",
+        tipo: "caneta",
+        linkamazon: "https://amzn.to/4cGDs0m",
+        linkmaga: "https://www.magazinevoce.com.br/magazinetdvadilho/caneta-ponta-pincel-brush-pen-aquarelavel-marcador-artistico-cis/p/fdka8ge9ad/pa/cnat/",
+    },
+    5:{
+        nome: "Gelly Roll Branca 08 Sakura",
+        tipo: "caneta",
+        linkamazon: "https://amzn.to/46dc87n",
+        linkmaga: "https://www.magazinevoce.com.br/magazinetdvadilho/caneta-gel-branca-gelly-roll-08-sakura/p/hhf7h6eb96/pa/cngl/",
+    },
+    6:{
+        nome: "Esferográfica 0.8mm BIC",
+        tipo: "caneta",
+        linkamazon: "https://amzn.to/3ONwxse",
+        linkmaga: "https://www.magazinevoce.com.br/magazinetdvadilho/caneta-bic-preta-esferografica-ponta-fina-0-8mm-c-50un/p/he8d94jaj2/pa/cesf/",
+    },
+    7:{
+        nome: "Lápis de Cor Aquarelável Giotto",
+        tipo: "lapis-de-cor",
+        linkamazon: "https://amzn.to/42KL6ms",
+        linkmaga: "https://www.magazinevoce.com.br/magazinetdvadilho/lapis-de-cor-giotto-colors-3-0-c-24-cores/p/ce02ke77cb/pa/padc/",
+    },
+    8:{
+        nome: "Lápis de Cor BIC",
+        tipo: "lapis-de-cor",
+        linkamazon: "https://amzn.to/3SzRWWU",
+        linkmaga: "https://www.magazinevoce.com.br/magazinetdvadilho/lapis-de-cor-bic-evolution-24-cores-sextavado/p/hkab092a9h/pa/padc/",
+    },
+    9:{
+        nome: "Tinta PVA para Artesanato",
+        tipo: "tinta",
+        linkamazon: "https://amzn.to/3ULhEum",
+        linkmaga: "",
+    },
+    10:{
+        nome: "Giz Pastel Oleoso Giotto",
+        tipo: "giz",
+        linkamazon: "https://amzn.to/49OEQgcm",
+        linkmaga: "https://www.magazinevoce.com.br/magazinetdvadilho/giz-pastel-oleoso-giotto-olio-maxi-48-cores-293200/p/ea5df0fg5f/pa/gpol/",
+    },
+    11:{
+        nome: "Canson A4 140g/m²",
+        tipo: "papel",
+        linkamazon: "https://amzn.to/49j2jpj",
+        linkmaga: "https://www.magazinevoce.com.br/magazinetdvadilho/papel-canson-a4-creme-140g-m2-bloco-canson/p/ghk4e7caa1/pa/blte/",
+    },
+    12:{
+        nome: "Lápis Grafite Faber-Castell",
+        tipo: "lapis-grafite",
+        linkamazon: "https://amzn.to/4bFH5Dx",
+        linkmaga: "https://www.magazinevoce.com.br/magazinetdvadilho/lapis-faber-castell-tecnico-castell-9000-faber-castell/p/bjc79kdbb3/pa/lpes/",
+    },
+    13:{
+        nome: "Borracha Sakura",
+        tipo: "borracha",
+        linkamazon: "https://amzn.to/3Y7TrQA",
+        linkmaga: "https://www.magazinevoce.com.br/magazinetdvadilho/borracha-sakura-foam-eraser/p/kh54jcj624/pa/bort/",
+    },
+}
+
+let renderMateriaisUtilizados = function (){
+    let lista = document.getElementById("container-materiais-utilizados").children;
+    let canetas = document.createElement("div");
+    let lapissdecor = document.createElement("div");
+    let tintas = document.createElement("div");
+    let gizes = document.createElement("div");
+    let papeis = document.createElement("div");
+    let lapissgrafite = document.createElement("div");
+    let borrachas = document.createElement("div");
+
+    for(e of lista){
+        let material = materiais[e.getAttribute("material-id")];
+        if (material.tipo == "caneta"){
+            canetas.innerHTML = "<span class='material-type'>Canetas</span>";
+            let caneta = document.createElement('li');
+            caneta.innerHTML = "<span class='material-nome'>" + material.nome + "</span> (";
+
+            if(material.linkamazon){
+                caneta.innerHTML += "<a href='"+ material.linkamazon +"' target='_blank'><i class='fa fa-external-link' aria-hidden='true'></i> Amazon</a>";
+            }
+            if((material.linkamazon)&&(material.linkmaga)){
+                caneta.innerHTML += " | ";
+            }
+            if(material.linkmaga){
+                caneta.innerHTML += "<a href='"+ material.linkmaga +"' target='_blank'><i class='fa fa-external-link' aria-hidden='true'></i> Magazine Luiza</a>";
+            }
+            caneta.innerHTML += ")";
+            canetas.appendChild(caneta);
+        } else if(material.tipo == "lapis-de-cor") {
+            lapissdecor.innerHTML = "<span class='material-type'>Lápis de Cor</span>";
+            let lapis = document.createElement('li');
+            lapis.innerHTML = "<span class='material-nome'>" + material.nome + "</span> (";
+
+            if(material.linkamazon){
+                lapis.innerHTML += "<a href='"+ material.linkamazon +"' target='_blank'><i class='fa fa-external-link' aria-hidden='true'></i> Amazon</a>";
+            }
+            if((material.linkamazon)&&(material.linkmaga)){
+                lapis.innerHTML += " | ";
+            }
+            if(material.linkmaga){
+                lapis.innerHTML += "<a href='"+ material.linkmaga +"' target='_blank'><i class='fa fa-external-link' aria-hidden='true'></i> Magazine Luiza</a>";
+            }
+            lapis.innerHTML += ")";
+            lapissdecor.appendChild(lapis);
+        } else if(material.tipo == "tinta") {
+            tintas.innerHTML = "<span class='material-type'>Tintas</span>";
+            let tinta = document.createElement('li');
+            tinta.innerHTML = "<span class='material-nome'>" + material.nome + "</span> (";
+
+            if(material.linkamazon){
+                tinta.innerHTML += "<a href='"+ material.linkamazon +"' target='_blank'><i class='fa fa-external-link' aria-hidden='true'></i> Amazon</a>";
+            }
+            if((material.linkamazon)&&(material.linkmaga)){
+                tinta.innerHTML += " | ";
+            }
+            if(material.linkmaga){
+                tinta.innerHTML += "<a href='"+ material.linkmaga +"' target='_blank'><i class='fa fa-external-link' aria-hidden='true'></i> Magazine Luiza</a>";
+            }
+            tinta.innerHTML += ")";
+            tintas.appendChild(tinta);
+        } else if(material.tipo == "giz") {
+            gizes.innerHTML = "<span class='material-type'>Gizes</span>";
+            let giz = document.createElement('li');
+            giz.innerHTML = "<span class='material-nome'>" + material.nome + "</span> (";
+            if(material.linkamazon){
+                giz.innerHTML += "<a href='"+ material.linkamazon +"' target='_blank'><i class='fa fa-external-link' aria-hidden='true'></i> Amazon</a>";
+            }
+            if((material.linkamazon)&&(material.linkmaga)){
+                giz.innerHTML += " | ";
+            }
+            if(material.linkmaga){
+                giz.innerHTML += "<a href='"+ material.linkmaga +"' target='_blank'><i class='fa fa-external-link' aria-hidden='true'></i> Magazine Luiza</a>";
+            }
+            giz.innerHTML += ")";
+            gizes.appendChild(giz);
+        } else if(material.tipo == "papel") {
+            papeis.innerHTML = "<span class='material-type'>Papéis</span>";
+            let papel = document.createElement('li');
+            papel.innerHTML = "<span class='material-nome'>" + material.nome + "</span> (";
+            if(material.linkamazon){
+                papel.innerHTML += "<a href='"+ material.linkamazon +"' target='_blank'><i class='fa fa-external-link' aria-hidden='true'></i> Amazon</a>";
+            }
+            if((material.linkamazon)&&(material.linkmaga)){
+                papel.innerHTML += " | ";
+            }
+            if(material.linkmaga){
+                papel.innerHTML += "<a href='"+ material.linkmaga +"' target='_blank'><i class='fa fa-external-link' aria-hidden='true'></i> Magazine Luiza</a>";
+            }
+            papel.innerHTML += ")";
+            papeis.appendChild(papel);
+        } else if(material.tipo == "lapis-grafite") {
+            lapissgrafite.innerHTML = "<span class='material-type'>Lápis Grafite</span>";
+            let lapisgrafite = document.createElement('li');
+            lapisgrafite.innerHTML = "<span class='material-nome'>" + material.nome + "</span> (";
+            if(material.linkamazon){
+                lapisgrafite.innerHTML += "<a href='"+ material.linkamazon +"' target='_blank'><i class='fa fa-external-link' aria-hidden='true'></i> Amazon</a>";
+            }
+            if((material.linkamazon)&&(material.linkmaga)){
+                lapisgrafite.innerHTML += " | ";
+            }
+            if(material.linkmaga){
+                lapisgrafite.innerHTML += "<a href='"+ material.linkmaga +"' target='_blank'><i class='fa fa-external-link' aria-hidden='true'></i> Magazine Luiza</a>";
+            }
+            lapisgrafite.innerHTML += ")";
+            lapissgrafite.appendChild(lapisgrafite);
+        } else if(material.tipo == "borracha") {
+            borrachas.innerHTML = "<span class='material-type'>Borrachas</span>";
+            let borracha = document.createElement('li');
+            borracha.innerHTML = "<span class='material-nome'>" + material.nome + "</span> (";
+            if(material.linkamazon){
+                borracha.innerHTML += "<a href='"+ material.linkamazon +"' target='_blank'><i class='fa fa-external-link' aria-hidden='true'></i> Amazon</a>";
+            }
+            if((material.linkamazon)&&(material.linkmaga)){
+                borracha.innerHTML += " | ";
+            }
+            if(material.linkmaga){
+                borracha.innerHTML += "<a href='"+ material.linkmaga +"' target='_blank'><i class='fa fa-external-link' aria-hidden='true'></i> Magazine Luiza</a>";
+            }
+            borracha.innerHTML += ")";
+            borrachas.appendChild(borracha);
+        }
+    }
+
+    document.getElementById("container-materiais-utilizados").appendChild(canetas);
+    document.getElementById("container-materiais-utilizados").appendChild(lapissdecor);
+    document.getElementById("container-materiais-utilizados").appendChild(tintas);
+    document.getElementById("container-materiais-utilizados").appendChild(gizes);
+    document.getElementById("container-materiais-utilizados").appendChild(papeis);
+    document.getElementById("container-materiais-utilizados").appendChild(lapissgrafite);
+    document.getElementById("container-materiais-utilizados").appendChild(borrachas);
+}
+
+/* ----------------DOM CONTENT LOADED---------------- */
+document.addEventListener("DOMContentLoaded", (event) => {
+    /* slide */
+    let regularSlideGallery = document.getElementsByClassName("slider-gallery");
+    if (regularSlideGallery.length != ""){ //checando se existe regular slide para chamar (regular slide é todo slide com exceção do slide da página de ilustração)
+        setupSliderforswipe();
+        showSlides(slideIndex);
+    }
+});
+</script>
+    
+    

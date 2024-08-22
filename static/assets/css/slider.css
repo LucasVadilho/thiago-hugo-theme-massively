@@ -1,0 +1,121 @@
+#slider-container {
+    text-align: center;
+    width: 100%;
+}
+
+#container-gallery-images{
+    position: relative;
+    line-height: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.slider-gallery{
+    display: none; /* hides image by default */
+    overflow: hidden;
+    padding: 10px;
+    background-color: white;
+}
+
+.slider-gallery img, .slider-gallery iframe{
+    -webkit-animation: fadeInSlide 2s;
+    animation: fadeInSlide 2s;
+    transition: scale 1s ease-in-out;
+    width: 100%;
+}
+
+@-webkit-keyframes fadeInSlide {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+@keyframes fadeInSlide {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
+.slider-gallery img:hover{
+    scale: 1.2;
+    cursor: pointer;
+}
+
+#square-navigation-slider-container {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.square-navigation-slider {
+    cursor: pointer;
+    height: 8px;
+    width: 50px;
+    margin: 0 5px;
+    background-color: var(--highlight-color-text);
+    opacity: 40%;
+    display: inline-block;
+    transition: .3s ease-in-out;
+    margin: 3px;
+}
+
+.square-navigation-slider:hover{
+    transform: scaleY(1.6);
+}
+
+.activeslide, .square-navigation-slider:hover {
+    background-color: var(--whitesmoke-color);
+    opacity: 100%;
+}
+
+.youtube-container-hideui-specialhome{
+    overflow: hidden;
+    width: 100%;
+    /* Keep it the right aspect-ratio */
+    aspect-ratio: 16/9;
+    /* No clicking/hover effects */
+    pointer-events: none;
+}
+
+.youtube-container-hideui-spécialhome iframe{
+    /* Extend it beyond the viewport... */
+    width: 300%;
+    height: 100%;
+    /* ...and bring it back again */
+    margin-left: -100%;
+}
+
+#arrows-slider-container{
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+    display: inline-flex;
+    align-items: center;
+    scale: 1.4;
+    padding: 0px;
+}
+
+#prevSlide, #nextSlide {
+    cursor: pointer;
+    padding: 8px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+#currentSlideText p{
+    pointer-events: none;
+    font-style: italic;
+}
+
+/* Fading animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}

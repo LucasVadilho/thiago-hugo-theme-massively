@@ -1,8 +1,5 @@
 <!-- Posts -->
 {{ $data := .siteData }}
-<body lang='{{ .Site.LanguageCode | default "en-us" }}' class="is-preload">
-    {{ partial "partials/posts_blog/list_organizer" .posts }}
+<body lang='{{ .Site.LanguageCode | default "pt-br" }}' class="is-preload">
+    {{ partial "partials/posts_blog/blog_cards" .posts }}
 </body>
-
-<style>
-</style>

@@ -21,12 +21,29 @@
 [NAV_MENU]
   other = "Menu"
 [NAV_CONTACT]
-  other = "Serviços e contato"
+  other = "Contato"
 [PAGINATION_NEXT]
-  other = "Avançar"
+  other = ""
 [PAGINATION_PREVIOUS]
-  other = "Voltar"
+  other = ""
 [PAGINATION_FIRST]
   other = "First"
 [PAGINATION_LAST]
   other = "Last"
+
+[RODAPE_TEXT]
+  other = "©Thiago David Vadilho (TD Vadilho). All rights reserved."
+
+[PORTFOLIO]
+  other = "Portfolio"
+[ABOUT_ME_WORK]
+  other = "About Me & My Work"
+[CONTACT_PORTFOLIO]
+  other = "Contact"
+[CURRENT_LENGUAGE]
+  other = "EN"
+
+[CONTACT_PLACEHOLDER_SUBJECT]
+  other = ""
+[CONTACT_PLACEHOLDER_MESSAGE]
+  other = "And your message here :)"

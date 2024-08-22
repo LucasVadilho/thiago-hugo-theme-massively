@@ -1,0 +1,622 @@
+:root{
+    --main-bg-color: #F3EEEC;
+    --main-accent: #B3C0F5;
+    
+    --support-bg-color: #b3c0f5;
+    --support-h1-color: #335C67;
+    --support-h3-color: #111844b3;
+    --support-p-color: #141414;
+    --imortalizados-da-vez: #F79256; 
+
+    --accent-yellowish: #FFC97F;
+    --accent-avocadish: #C1B241;
+    --accent-blueish: #4199c1;
+    --accent-redish: #FFC7AF;
+
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+
+    --big-header-color: #2d303f;
+    --sumario-top-color: #bcb535;
+    --sumario-bottom-color: #a09665;
+    --hover-accent: #B3C0F5;
+
+    --blueish-bg-color: #202025fa;
+
+    --single-post-h1-color: #F3EEEC;
+
+    --highlight-color-text: #554c58;
+    --dark-color-text: #131313;
+    --grey-color-text: #888888e0;
+    --first-words-color: #4b1717;
+
+    --accent-color: #682e29;
+    
+    --pure-white-color: #ffffff;
+    --whitesmoke-color: #f5f5f5;
+
+    --blockquote-color:var(--accent-yellowish);
+
+    --text-shadow: #202020;
+    --overlay-color: #1118449c;
+}
+
+.noclick{
+    pointer-events: none;
+}
+
+main {
+    width: 100%;
+}
+
+a{
+    border: none;
+}
+
+a:hover{
+    cursor: pointer;
+}
+
+body{
+    height: 100%;
+    width: 100%;
+    color: var(--dark-color-text);
+}
+
+#main{
+    width: 100%;
+    background-color: var(--main-bg-color);
+}
+
+.main-header-menu-and-logo{
+    position: fixed;
+    z-index: 25;
+    display: inline-flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    margin-top: 15px;
+    left: 15px;
+    mix-blend-mode: color-burn;
+}
+
+#menu-to-navigate{
+    right: 15px;
+    position: fixed;
+}
+
+#logo:hover, .menu-text:hover,.closethings:hover, .menu-hamburguer:hover{
+    cursor: pointer;
+    filter:invert(20%) sepia(11%) saturate(2890%) hue-rotate(316deg) brightness(99%) contrast(93%);
+}
+
+.menu-hamburger{display: none;}
+
+@keyframes smooth-appear {
+    from{
+        bottom: -100%;
+    }
+    to{
+      bottom: 0;
+    }
+}
+
+#nav{
+    display: none;
+    text-align: center;
+    background-color: var(--accent-yellowish);
+    width: 100.1%;
+    height: 100dvh;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: 1s smooth-appear;
+    z-index: 10;
+}
+
+th{
+    display: none;
+}
+
+figcaption{
+    margin-top: 5px;
+}
+
+/*--------------------NAV MENU INSIDE------------------------*/
+#header-navigation-menu{
+    display: inline-flex;
+    width: 100%;
+    padding: 10px 10px;
+    justify-content: space-between;
+}
+
+#container-all-text-menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100dvh;
+}
+
+.links{
+    display: inline-flex;
+    flex-direction: column;
+    position: relative;
+    top: 0;
+    right: 50%;
+    transform: translateX(50%);
+    width: 100%;
+    height: 100%;
+    justify-content: space-evenly;
+}
+
+.links img{
+    max-width: 100%;
+}
+
+.links img:hover, .first-td:hover, .closethings:hover, .seccond-td:hover{
+    cursor: pointer;
+    filter: invert(20%) sepia(11%) saturate(2890%) hue-rotate(316deg) brightness(99%) contrast(93%);
+}
+
+/*--------------------PAGEs HEADER------------------------*/
+.img-page-header{
+    max-width: 100%;
+}
+
+.container-header-name{
+    height: 260px;
+    width: 100%;
+    padding: 0px 30px;
+    margin-bottom: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-header-name img{
+    max-width: 100%;
+    padding: 40px;
+}
+
+#historietas-header-name img, #blog-header-name img, #contato-header-name img {
+    width: 800px;
+}
+
+#livros-header-name img, #loja-header-name img, #galeria-ilustracoes-header-name img, #sobre-header-name img{
+    width: 600px;
+}
+
+.container-header-text{
+    max-width: 860px;
+    margin: auto;
+    margin-bottom: 40px;
+    text-align: center;
+    hyphens: none !important;
+    text-wrap: balance;
+    padding: 0px 20px 0px 20px;
+}
+
+.container-header-text p{
+    font-size: 1.15rem;
+}
+
+#historietas-header-name{
+    background-color: #7963a1;
+    margin-bottom: 50px;
+}
+
+#galeria-ilustracoes-header-name{
+    background-color: #dd7052;
+    margin-bottom: 100px;  
+}
+
+#blog-header-name{
+    background-color: var(--main-accent);
+    margin-bottom: 50px;
+}
+
+#sobre-header-name{
+    background-color: #8b3932;
+    margin-bottom: 100px;
+}
+
+#contato-header-name{
+    background-color: var(--big-header-color);
+    margin-bottom: 100px;
+}
+
+#livros-header-name{
+    background-color: #d9b4ce;
+    margin-bottom: 100px;
+}
+
+#loja-header-name{
+    background-color: #d2d73c;
+    margin-bottom: 100px;
+}
+
+#portfolio-header-name{
+    background-color: #dd7052;
+    margin-bottom: 100px;
+}
+
+@media screen and (max-width: 768px) {
+    .container-header-name{
+        height: 200px;
+    }
+}
+
+/* -------------------END OF PAGEs HEADER-------------------------- */
+
+/*--------------------PAGINATOR------------------------*/
+#container-paginator{
+    margin-top: 20px;
+    margin-bottom: 100px;
+}
+/*--------------------END OF PAGINATOR------------------------*/
+
+/*---------------------- DESTAQUES NO TEXTO ----------------------*/
+.blockquote {
+    margin: 10px auto 10px auto !important;
+    max-width: 700px !important;
+    position: relative;
+    color: var(--highlight-color-text);
+    font-family: 'Sanchez', serif;
+    font-size: 1.5rem;
+    line-height: 1;
+
+    blockquoteautor {
+      font-family: sans-serif;
+      font-size: 0.6em;
+      font-weight: 700;
+      color: var(--grey-color-text);
+      right: 0;
+      bottom: 0;
+      position: absolute;
+      
+      &:before {
+        content: '\2015';  
+      }
+    }
+    &:after {
+        content: '\201D';
+        position: absolute;
+        top: -1.5rem;
+        right: 0;
+        font-size: 6em;
+        font-style: italic;
+        color: var(--grey-color-text);
+        z-index: -1;
+     }
+  }
+
+.container_destaqueTxtBlog{
+    border-left: 3px solid #af93c382;
+    margin: 0 0 0 5%;
+}
+
+.destaqueTxtBlog{
+    margin: 0 0 0 2%;
+}
+/* --------------------- FIM DESTAQUES NO TEXTO ----------------------*/
+
+/*--------------------FEEDBACK BOTAO CARREGANDO--------------------*/
+.borderAnim {
+    position: relative;
+}
+
+.borderAnim:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(120deg, #043a49, #18bfef, #043a49);
+    background-size: 300% 300%;
+    clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), 2px calc(100% - 2px), 2px 100%, 100% 100%, 100% 0%, 0% 0%);
+}
+
+.borderAnim.in:after {
+    animation: frame-enter 2s forwards ease-in-out reverse, gradient-animation 4s ease-in-out infinite;
+}
+
+/* motion */
+@keyframes gradient-animation {
+    0% {
+        background-position: 15% 0%;
+    }
+    50% {
+        background-position: 85% 100%;
+    }
+    100% {
+        background-position: 15% 0%;
+    }
+}
+
+@keyframes frame-enter {
+    0% {
+        clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), 2px calc(100% - 2px), 2px 100%, 100% 100%, 100% 0%, 0% 0%);
+    }
+    25% {
+        clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) calc(100% - 2px), calc(100% - 2px) calc(100% - 2px), calc(100% - 2px) 100%, 100% 100%, 100% 0%, 0% 0%);
+    }
+    50% {
+        clip-path: polygon(0% 100%, 2px 100%, 2px 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 2px, 100% 0%, 0% 0%);
+    }
+    75% {
+        -webkit-clip-path: polygon(0% 100%, 2px 100%, 2px 2px, 2px 2px, 2px 2px, 2px 2px, 2px 2px, 2px 2px, 2px 0%, 0% 0%);
+    }
+    100% {
+        -webkit-clip-path: polygon(0% 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 2px 100%, 0% 100%);
+    }
+} 
+/*--------------------FIM FEEDBACK BOTAO CARREGANDO--------------------*/
+
+/*--------------------ESTILIZAÇÃO DA SCROLLBAR--------------------*/
+html {
+/* Firefox - Hides track and changes thumb color */
+    scrollbar-color: hsla(0, 0%, 33%, 0.5);
+    background-color: var(--main-bg-color);
+}
+
+@media screen and (min-width: 769px) {
+    ::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: hsla(0, 0%, 33%, 0.5);
+    }
+
+    ::-webkit-scrollbar-thumb:active {
+        background-color: hsl(0, 0%, 33%);
+    }
+    
+    ::-webkit-scrollbar-thumb:hover{
+        cursor: pointer;
+    }
+    
+}
+
+@media screen and (max-width:768px) {
+    ::-webkit-scrollbar-track-piece:start {
+        background: transparent url('images/backgrounds/scrollbar.png') repeat-y !important;
+    }
+    
+    ::-webkit-scrollbar-track-piece:end {
+        background: transparent url('images/backgrounds/scrollbar.png') repeat-y !important;
+    }
+}
+/*--------------------FIM ESTILIZAÇÃO DA SCROLLBAR--------------------*/
+
+/* -------------Hover em Palavra Link--------------- */
+p>a, figcaption>a{
+    color:#0000FF;
+    text-decoration: underline;
+    position: relative;
+    display: -webkit-inline-box;
+    position: sticky;
+}
+
+p>a::before, figcaption a::before{
+    background: hsl(45 100% 70%);
+    content: "";
+    inset: 0;
+    position: absolute ;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s ease-in-out;
+    z-index: -1;
+}
+
+p>a:hover::before, figcaption a:hover::before{
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+p>a:hover, figcaption>a:hover{
+    color: #252121 !important;
+}
+    /* Especial span dos singles (historietas e blog) */
+    .span-link>a{
+        position: sticky;
+    }
+
+    .span-link a::before{
+        background: hsl(45 100% 70%);
+        content: "";
+        inset: 0;
+        position: absolute ;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.5s ease-in-out;
+        z-index: -1;
+    }
+
+    .span-link>a:hover::before{
+        transform: scaleX(1);
+        transform-origin: left;       
+    }
+
+    .span-link>a:hover{
+        color: #252121 !important;
+        cursor: pointer;
+    }
+
+/* -------------Fim Hover em Palavra Link--------------- */
+
+/* -----------------Double Line Text-------------------- */
+#container-double-line{
+    display: flex;
+    flex-direction: column;
+    margin-right: 50px;
+}
+
+#container-double-line h1{
+    font-size: 3rem;
+}
+
+#double-line-seccond-line{
+    padding-left: 30px;
+}
+/* -----------------End Double Line Text------------------- */
+
+/*------------------------ Fadein animation -------------------------*/
+@keyframes fadeIn{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn{
+    animation-duration: 2s;
+    animation-name: fadeIn;
+    animation-timing-function: cubic-bezier(.71,.55,.62,1.57);
+}
+
+.fadeInHistorietas{
+    animation-duration: 2s;
+    animation-name: fadeIn;
+    animation-timing-function: cubic-bezier(.71,.55,.62,1.57);
+}
+
+.fadeInHistorietasBG{
+    animation-duration: 3s;
+    animation-name: fadeIn;
+    animation-timing-function: cubic-bezier(.71,.55,.62,1.57);
+}
+/* ----------------------- End of Fadeinanimation ------------------------*/
+
+/*-------------------- COPIAR URL ------------------*/
+.iconeContainerCopyUrl{
+    float: left;
+    color: white;
+    width: 26px;
+    height: 26px;
+    background-color: #56707D;
+    text-align: center;
+}
+
+.nomeContainerCopyUrl{
+    width: 130px;
+    float: right;
+    background-color:#607D8B;
+    color: white;
+    font-family: inherit;
+    height: 26px;
+    letter-spacing: 1px;
+    font-size: small;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+#urlCopiarNotification{
+    opacity: 0;
+    position: fixed;
+    top: 50px;
+    z-index: 25;
+    transform: translateY(-100%) translateX(-50%);
+    transition: 1s ease;
+    left: 50%;
+    padding: 9px 20px;
+    background: #343a40;
+    color: #eeeeee;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    font-family: system-ui, sans-serif;
+    font-variant: all-petite-caps;
+    font-weight: 500;
+    box-shadow: 0 0 14px rgba(0, 0, 0, 0.05); 
+}
+/*-------------------- END COPIAR URL ------------------*/
+
+/*-----------------Autoria e Referencia-----------------*/
+.referenciar{
+    font-size: 0.9rem !important;
+    line-height: 1.6;
+    color: var(--grey-color-text);
+    text-align: right;
+}
+
+.linkto_contato{
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--grey-color-text);
+}
+/*----------------- FIM Autoria e Referencia-----------------*/
+
+/* Realign - arruma a imagem verticalmente quando, no portfólio, só aparece uma imagem */
+.realignClass{
+    justify-content: center;
+}
+
+/*---------ANIM SCROLL IMAGE-------------*/
+.not-shown-img-state{
+    opacity: 0;
+    -moz-transition: all 1s ease-out;
+    -webkit-transition: all 1s ease-out;
+    -o-transition: all 1s ease-out;
+    transition: all 1s ease-out;
+    -moz-transform: translate3d(0px, 200px, 0px);
+    -webkit-transform: translate3d(0px, 200px, 0px);
+    -o-transform: translate(0px, 200px);
+    -ms-transform: translate(0px, 200px);
+    transform: translate3d(0px, 200, 0px);
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
+  .shown-img-state{
+    opacity: 1;
+    -moz-transform: translate3d(0px, 0px, 0px);
+    -webkit-transform: translate3d(0px, 0px, 0px);
+    -o-transform: translate(0px, 0px);
+    -ms-transform: translate(0px, 0px);
+    transform: translate3d(0px, 0px, 0px);
+  }
+
+/* -----------------text system ui-------------------*/
+.text-sysui{
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    font-family: system-ui;
+    text-transform: uppercase;
+}
+
+/* -----------------------Comentários-------------------------- */
+#container-comentarios-section{
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 100px auto;
+    padding: 0px 20px;
+    background: #eee;
+}
+
+#container-comentarios-section h1{
+    font-size: 3.5rem;
+}
+
+#remark42{
+    width: 100%;
+}
+
+.comentarios-avisos{
+    text-align: center;
+    font-size: 1rem;
+    text-wrap: balance;
+}
+
+@media screen and (max-width: 400px) {
+    #container-comentarios-section h1{
+        font-size: 2.8rem;
+    }
+}

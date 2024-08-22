@@ -29,16 +29,7 @@ $backgroundPath: "{{ .Site.Params.backgroundPath | default "images/bg.jpg" }}";
 
 // Mixins.
 
-@mixin color($p) {
-	@include color-typography($p);
-	@include color-box($p);
-	@include color-button($p);
-	@include color-form($p);
-	@include color-list($p);
-	@include color-section($p);
-	@include color-table($p);
-	@include color-pagination($p);
-}
+
 
 // Base.
 
@@ -56,21 +47,13 @@ $backgroundPath: "{{ .Site.Params.backgroundPath | default "images/bg.jpg" }}";
 @import 'components/image';
 @import 'components/actions';
 @import 'components/icons';
-@import 'components/list';
 @import 'components/section';
-@import 'components/table';
 @import 'components/pagination';
 
 // Layout.
 
-@import 'layout/wrapper';
-@import 'layout/intro';
-@import 'layout/header';
-@import 'layout/nav';
 @import 'layout/main';
-@import 'layout/footer';
-@import 'layout/navPanel';
-
+@import 'layout/contacting';
 
 // Hugo Theme specific
 
