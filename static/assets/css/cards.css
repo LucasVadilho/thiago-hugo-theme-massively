@@ -260,6 +260,10 @@
     margin-right: 1px;
 }
 
+.remark42__counter{
+    margin-right: 0px !important;
+}
+
 .post-card-info-list-historietas li a{
     text-decoration: underline;
 }

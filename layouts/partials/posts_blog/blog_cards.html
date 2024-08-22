@@ -6,7 +6,7 @@
 		<div class="post-card" style="background-image: url('{{ .Params.Imagethumb }}');" onclick="window.location.href='{{ .Permalink | safeURL }}';">
 			<div class="categories-container">
 				{{- range $categories := .Params.Blogcategorias -}}
-				<a onclick="window.location.href='/Blogcategorias/{{ $categories }}';event.stopPropagation()" class="category-container">
+				<a onclick="window.location.href='/blogcategorias/{{ replace $categories " " "-"}}';event.stopPropagation()" class="category-container">
 					<span class="category {{ $categories }}">{{- $categories }}</span>
 				</a>
 				{{- end -}}
@@ -17,7 +17,10 @@
 			<div class="post-card-info">
 				<ul class="post-card-info-list">
 					<li><span class="fa-solid fa-clock"></span>{{ .Params.Tempoleitura }}</li>
-					<li class="comments-container"><span class="fa-solid fa-comments"></span>12<!-- Trocar para a variável do cusdis (ou do outro comentário que eu achei) --></li> 
+					<li class="comments-container">
+						<span class="fa-solid fa-comments"></span>
+						<span class="remark42__counter" data-url="{{ .Permalink | safeURL }}"></span>
+					</li>  
 					<li><span class="fa-solid fa-tags" aria-hidden="true"></span>
 						{{ range $k, $v := .GetTerms "blogtags" }}
 							{{- if $k -}}| {{ end }}
@@ -28,6 +31,14 @@
 			</div>
 		</div>
 	{{ end }}
-
-	<script defer data-host="https://cusdis.com" data-app-id="b935f701-f887-42b4-96cf-1852bf2005b2" src="https://cusdis.com/js/cusdis-count.umd.js"></script>
 </div>
+
+<script>
+    var remark_config = {
+      host: 'https://remark42.tdvadilho.com',
+      site_id: 'tdvadilho',
+      components: ['counter']
+    }
+</script>
+
+<script>!function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);</script>

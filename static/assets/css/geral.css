@@ -613,3 +613,9 @@ p>a:hover, figcaption>a:hover{
     font-size: 1rem;
     text-wrap: balance;
 }
+
+@media screen and (max-width: 400px) {
+    #container-comentarios-section h1{
+        font-size: 2.8rem;
+    }
+}

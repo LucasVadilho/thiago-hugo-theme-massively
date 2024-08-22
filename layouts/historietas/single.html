@@ -54,11 +54,11 @@
                                                 {{ $firstChar := substr .LinkTitle 0 1 }}
                                                 {{ if eq $firstChar "a" }}
                                                     <span class="span-link" style="text-transform: uppercase">
-                                                        <a onclick="window.location.href='/categories/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+                                                        <a onclick="window.location.href='/historietascategorias/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
                                                     </span>
                                                 {{ else }}
                                                     <span class="span-link">
-                                                        <a onclick="window.location.href='/categories/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+                                                        <a onclick="window.location.href='/historietascategorias/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
                                                     </span>
                                                 {{ end }}
                                         {{ end }}
@@ -74,7 +74,7 @@
                                         {{ range $k, $tags := .GetTerms "tags" }}
                                             {{- if $k }}<span style="text-transform: none">e </span>{{ end }}
                                             <span class="span-link">
-                                                <a class="tags-container" onclick="window.location.href='/tags/{{ .LinkTitle | safeURL }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+                                                <a class="tags-container" onclick="window.location.href='/historietastags/{{ .LinkTitle | safeURL }}';event.stopPropagation()">{{ .LinkTitle }}</a>
                                             </span>
                                         {{ end }}
                                     </h4>
@@ -110,7 +110,11 @@
                             </div>
                             {{- partial "suporte" . }}
                         </div>
-                        {{- partial "similarHistsAndProcess" .}}
+                        <div id="container-comentarios-section">
+                            <h1>Comentários</h1>
+                            <p class="comentarios-avisos">Para comentar, clique em entrar e escolha se quer comentar como anônimo ou criando um usuário. Depois escreva a sua mensagem e voilà :)</p>
+                            {{- partial "comentario" . }}
+                        </div>
                     </td>
                 </tr>
             </tbody>
@@ -118,16 +122,8 @@
         <div class="paperOverlay"></div>
         {{- partial "listademateriais" . -}}
         {{- partial "emailing" . -}}
-        <div id="container-comentarios-section">
-            <h1>Comentários</h1>
-            <li class="comments-container">
-                <span class="fa-solid fa-comments"></span>
-                <span class="remark42__counter" data-url="{{ .Permalink | safeURL }}"></span>
-                <span class="remark42__counter" data-url="https://beta.tdvadilho.com/historietas/historieta8/"></span>
-            </li> 
-            <p class="comentarios-avisos">Para comentar, clique em entrar e escolha se quer comentar como anônimo ou criando um usuário. Depois escreva a sua mensagem e voilà :)</p>
-            {{- partial "comentario" . }}
-        </div>
+       
+                 {{- partial "similarHistsAndProcess" .}}
         {{- partial "rodape.html" . }}
     </div>
     <div id="urlCopiarNotification"></div>
