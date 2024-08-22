@@ -600,6 +600,10 @@ p>a:hover, figcaption>a:hover{
     padding: 0px 20px;
 }
 
+#container-comentarios-section h1{
+    font-size: 3.5rem;
+}
+
 #remark42{
     width: 100%;
 }
