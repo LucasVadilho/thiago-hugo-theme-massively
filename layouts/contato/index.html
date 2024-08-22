@@ -164,7 +164,7 @@ document.getElementById('contato').addEventListener("submit", (e) => {
 
     emailsendoenviado();
     data = Object.fromEntries(new FormData(e.target).entries());
-    url = 'https://thiago.oioipio.com/contato';
+    url = 'https://thiago.oioipio.com/mensagem';
     
     fetch(url, {
         method: 'POST',
