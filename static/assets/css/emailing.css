@@ -175,6 +175,11 @@
     color: #e79e99 !important
 }
 
+#pru, #cartas-em-busca-de-um-lar-title{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 @media screen and (max-width: 1300px){
     #container-emailing{
         flex-direction: column;
