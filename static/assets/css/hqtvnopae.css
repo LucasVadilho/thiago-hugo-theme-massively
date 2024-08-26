@@ -144,11 +144,15 @@ body{
 #capa-e-contra{
     display: inline-flex;
     flex-direction: column;
-    transform: translateX(-50%);
-    left: 50%;
     position: relative;
-    max-width: 98dvw;
+    max-height: 98dvh;
     margin: 30px 0px 30px 0px;
+    align-items: center;
+}
+
+#capa-e-contra img{
+    max-height: 98dvh;
+    object-fit: contain;
 }
 
 .capa-e-contra-text{

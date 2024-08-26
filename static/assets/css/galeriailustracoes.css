@@ -90,7 +90,7 @@
     height: 50px;
     position: absolute;
     align-items: center;
-    z-index: 25;
+    /* z-index: 25; */
 }
 
 .buttonLojaProject{
@@ -110,7 +110,10 @@
     padding: 10px 10px 10px 5px;
 }
 
-.buttonLojaProject:hover, .buttonCloseProject:hover{
+.buttonCloseProject,.buttonLojaProject{
+    z-index: 25;
+}
+.buttonCloseProject:hover,.buttonLojaProject:hover{
     cursor: pointer;
     mix-blend-mode: color-burn;
 }
