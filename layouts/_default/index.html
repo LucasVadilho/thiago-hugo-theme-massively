@@ -91,7 +91,7 @@
                             <img id="home-novidade-3" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
                         </div>
                     {{ else }}
-                        <div id="item-bottom-dir" onclick="window.location.href='/historietas/historieta8/'">
+                        <div id="item-bottom-dir" onclick="window.location.href='{{ .RelPermalink | safeURL }}'">
                             <div class="novidade-notice">Novidade</div>
                             <div class="overlay-home-news"></div>
                             <div class="organizer-home-news-text">
