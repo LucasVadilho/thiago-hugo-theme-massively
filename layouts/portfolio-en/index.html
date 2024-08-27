@@ -3,46 +3,45 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/contato.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/sobre.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/portfolio.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/rodape.css">
 
-{{ $data := index .Site.Data .Site.Language.Lang }}
 {{- partial "htmlhead" . -}}<!-- puxando as metatags -->
-
-<body lang='{{ .Site.LanguageCode | default "en" }}'>
+{{ $data := index .Site.Data .Site.Language.Lang }}
+<body>
     <div id="main">
         <div id="container-portfolioHeader">
             <div class="container-header-name" id="portfolio-header-name">
                 <h1>TD Vadilho</h1>
                 
-                <div id="container-portfolio-navigation-and-lenguages">
-                    <div id="container-navigation" class="menu-text">
-                        <div id="go-to-portfolio" class="active-menu" onclick="openPortfolio()">{{ i18n "PORTFOLIO" . }}</div>
-                        <div id="go-to-sobre" onclick="openSobre()">{{ i18n "ABOUT_ME_WORK" . }}</div>
-                        <div id="go-to-contact" onclick="openContact()">{{ i18n "CONTACT_PORTFOLIO" . }}</div>
+                <div id="container-portfolio-navigation-and-languages">
+                    <div id="container-navigation" class="menu-language">
+                        <div id="go-to-portfolio" class="active-menu" onclick="openPortfolio()">Portfólio</div>
+                        <div id="go-to-sobre" onclick="openSobre()">About me & My Work</div>
+                        <div id="go-to-contact" onclick="openContact()">Contact</div>
                     </div>
                     
-                    <div id="just-a-divisor" class="menu-text">
+                    <div id="just-a-divisor" class="menu-language">
                         |
                     </div>
 
-                    <div id="container-lenguage" class="menu-text">
+                    <div id="container-language">
                         <details class="dropdown">
-                            <summary role="button">
-                                <a class="button-lenguage">
-                                    {{ i18n "CURRENT_LENGUAGE" . }}
+                            <summary role="button"  class="menu-language">
+                                <a class="button-language">
+                                    EN
                                     <i class="fa-solid fa-caret-down"></i>
                                 </a>
                             </summary>
                             <ul>
-                                <li><a onclick="lenguageToPTBR()">Pt-br</a></li>
-                                <li><a onclick="lenguageToEN()">En</a></li>
+                                <li><a onclick="window.location.replace('/portfolio-pt-br/')">Pt-br</a></li>
                           </ul>
                         </details>
                     </div>
                 </div>
             </div>
-            <div class="container-header-text">
-                <p><i>Escrevo e ilustro porque pouquíssimas coisas na vida me fazem sentir tão vivo quanto escrever e ilustrar. No final das contas, acho que só quero ser criativo,
-                    e criar histórias para compartilhar</i>
+            <div class="container-header-text" id="container-header-text">
+                <p><i>Ilustro porque pouquíssimas coisas na vida me fazem sentir tão vivo quanto Ilustrar. No final das contas, acho que só quero ser criativo,
+                    e criar narrativas visuais para compartilhar</i>
                 </p>
             </div>
         </div>
@@ -56,17 +55,18 @@
                 <div id="{{ .Params.Projectid }}"
                     onclick="abrirproj(event, '{{ .Params.Projectid }}')"
                     itens="{{ jsonify .Params.Itens }}"
+                    lojalink="{{ .Params.Lojalink }}"
                     class="{{ .Params.Class }}"
                     backgroundcolor="{{ .Params.Backgroundcolor | safeCSS }}"
+                    naturalcoloricons="{{ .Params.Naturalcoloricons | safeCSS }}"
                     >
-                    <img src="{{ .Params.Thumbprojeto }}" class="animation-element not-shown-img-state" alt="{{ .Params.altthumb }}"> 
+                    <img src="{{ .Params.Thumbprojeto }}" class="animation-element not-shown-img-state {{ .Params.Imgthumbposition | safeCSS }}" alt="{{ .Params.altthumb }}"> 
                 </div>           
             {{ end }}
         </div>
 
         <!-- ABOUT -->
         <div id="container-sobre">
-
         </div>
 
         <!-- CONTATO -->
@@ -76,30 +76,38 @@
                 <form id="contato" method="post">
                     <div class="fields">
                         <div class="field">
-                            <label for="name">{{ i18n "CONTACT_FORM_FIELD_NAME" . }}</label>
-                            <input type="text" name="nome" id="name" autocomplete="given-name" placeholder="Como posso te chamar?" required/>
+                            <label for="name">Name</label>
+                            <input type="text" name="nome" id="name" autocomplete="given-name" placeholder="How should I address you?" required/>
                         </div>
                         <div class="field">
-                            <label for="email">{{ i18n "CONTACT_FORM_FIELD_EMAIL" . }}</label>
-                            <input type="email" name="mail" autocomplete="email" id="email" placeholder="Digite seu email aqui" required/>
+                            <label for="email">Email</label>
+                            <input type="email" name="mail" autocomplete="email" id="email" placeholder="Your valid email goes here" required/>
                         </div>
                         <div class="field" onclick="invertArrow()">
-                            <label for="assunto">{{ i18n "CONTACT_FORM_FIELD_ASSUNTO" . }}</label>
-                            <input type="text" name="subject" autocomplete="email" id="email" placeholder='{{ i18n "CONTACT_PLACEHOLDER_SUBJECT" . }}' required/>
+                            <label for="assunto">Subject</label>
+                            <span class="arrow"><i class="fa-solid fa-caret-down"></i></span>
+                            <select id="assunto" name="assunto" required>
+                                <option value="" disabled selected style="color: rgb(165, 165, 165) !important;background-color:  rgb(218, 218, 218) !important;">Select the subject</option>
+                                <option value="I would like to hire you">I would like to hire you</option>
+                                <option value="I have some questions">I have some questions</option>
+                                <option value="Looking for a business partership">I'm looking for a business partership</option>
+                                <option value="Other">Other</option>
+                            </select>
                         </div>
                         <div class="field">
-                            <label for="message">{{ i18n "CONTACT_FORM_FIELD_MESSAGE" . }}</label>
-                            <textarea name="mensagem" id="message" rows="3" placeholder='{{ i18n "CONTACT_PLACEHOLDER_MESSAGE" . }}' required></textarea>
+                            <label for="message">Message</label>
+                            <textarea name="mensagem" id="message" rows="3" placeholder='And, your message, goes here :)' required></textarea>
                         </div>
                     </div>
                 
                     <ul class="actions">
                         <li id="li_btn_contato">
-                            <input type="submit" id="btn_enviar" value='{{ i18n "CONTACT_FORM_SUBMIT_SEND_MESSAGE" . }}'/>
+                            <input type="submit" id="btn_enviar" value='Send Message'/>
                             <span class="messaging-contato"></span>
-                            <span class="email-enviado-msg">Mensagem enviada. Responderei o mais breve que possível! </span>
-                            <span class="email-fail-envio-msg">Desculpe, algo deu errado. Podemos tentar outra vez?&nbsp
-                                <a onclick="tryagainContato()">Tentar outra vez</a>
+                            <span class="email-enviando-msg">Sending... Please, wait...</span>
+                            <span class="email-enviado-msg">Message sent. I will respond as soon as possible. Thanks! </span>
+                            <span class="email-fail-envio-msg">Sorry, something went wrong. Could we try again?&nbsp
+                                <a onclick="tryagainContato()">Try again</a>
                             </span>
                         </li>
                     </ul>
@@ -110,14 +118,14 @@
                 <section class="split contact">
                     {{ with $data.contactinfo.email }}
                     <section id="splitcontact">
-                        <label for="meuemail" style="margin-bottom: -5px">Meu email</label>
+                        <label for="meuemail" style="margin-bottom: -5px">My email</label>
                         <a href="mailto:{{ . }}">{{ . }}</a>
                     </section>
                     {{ end }}
     
                     {{ with $data.social }}
                     <section>
-                        <label for="socials" style="margin-bottom: -5px">Me encontre em</label>
+                        <label for="socials" style="margin-bottom: -5px">Find me on</label>
                         <div id="redes-sociais">
                             {{ with .instagram }}
                                 <a href="{{ . }}" target="_blank"><i class="fa fa-instagram icon"></i></a>
@@ -146,7 +154,15 @@
             </div>
         {{ end }}
         </div>
-        {{- partial "rodape.html" . -}}
+        <div id="container-all-rodape">
+            <div class="container-partes-rodape">
+                ©Thiago David Vadilho (TD Vadilho). All rights reserved.
+            </div>
+        
+            <div class="container-partes-rodape">
+               <a href="https://html5up.net" target="_blank">Design: HTML5 UP</a> | <a href="https://curtiscode.dev" target="_blank">Hugo port: curstiscode</a> <!-- | <a href="https://html5up.net" target="_blank">Políticas de privacidade</a> -->
+            </div>
+        </div>
     </div>
     {{- template "_internal/google_analytics.html" . }}
     {{- partial "scripts/index" . }}
@@ -159,6 +175,7 @@
         document.getElementById("organizer-galeria-ilustracoes").style.display = "none";
         document.getElementById("container-sobre").style.display = "none";
         document.getElementById("contato-form-container").style.display = "inline-flex";
+        document.getElementById("container-header-text").style.display = "none";
 
         document.getElementById("go-to-contact").classList.add("active-menu");
         document.getElementById("go-to-portfolio").classList.remove("active-menu");
@@ -170,6 +187,7 @@
         document.getElementById("contato-form-container").style.display = "none";
         document.getElementById("organizer-galeria-ilustracoes").style.display = "none";
         document.getElementById("container-sobre").style.display = "inline-flex";
+        document.getElementById("container-header-text").style.display = "block";
 
         document.getElementById("go-to-sobre").classList.add("active-menu");
         document.getElementById("go-to-portfolio").classList.remove("active-menu");
@@ -181,12 +199,91 @@
         document.getElementById("contato-form-container").style.display = "none";
         document.getElementById("container-sobre").style.display = "none";
         document.getElementById("organizer-galeria-ilustracoes").style.display = "grid";
+        document.getElementById("container-header-text").style.display = "block";
         
         document.getElementById("go-to-portfolio").classList.add("active-menu");
         document.getElementById("go-to-sobre").classList.remove("active-menu");
         document.getElementById("go-to-contact").classList.remove("active-menu");
     }
 
+
+    /* SENDING MESSAGE */
+    let flagOptionsContato = false;
+    let invertArrow = function(){
+        var arrow = document.querySelector(".arrow");
+        event.stopPropagation();
+        
+        if (flagOptionsContato == false){
+            arrow.style.transform = "rotate(180deg)";
+            flagOptionsContato = true;
+        } else{
+            arrow.style.transform = "rotate(0deg)";
+            flagOptionsContato = false;
+        }
+    }
+    var contatobutton = document.querySelector("#btn_enviar");
+    var loadingbar = document.querySelector(".messaging-contato");
+    var msgemailenviado = document.querySelector(".email-enviado-msg");
+    var msgemailnaoenviado = document.querySelector(".email-fail-envio-msg");
+    var msgsendoenviada = document.querySelector(".email-enviando-msg");
+
+    let emailsendoenviado = function (){
+        contatobutton.classList.add("btn_enviar-active");
+        setTimeout(function(){
+            loadingbar.classList.add("container-input-emailing-contato-loading");
+            msgsendoenviada.classList.add("email-sendo-enviado-msg-active");
+        }, 1000);
+    }
+
+    let emailEnviado = function(){
+        let formulario = document.getElementById("contato");
+        msgemailenviado.classList.add("email-enviado-msg-active");
+        loadingbar.classList.add("loadingbar-success");
+        msgsendoenviada.classList.remove("email-sendo-enviado-msg-active");
+
+        setTimeout(function(){
+            msgemailenviado.classList.remove("email-enviado-msg-active");
+            loadingbar.classList.remove("container-input-emailing-contato-loading");
+            contatobutton.classList.remove("btn_enviar-active");
+            loadingbar.classList.remove("loadingbar-success");
+        }, 9000);
+        formulario.reset();
+    }
+
+    let tryagainContato = function (){
+        msgemailnaoenviado.classList.remove("email-fail-contato-msg-active");
+        loadingbar.classList.remove("container-input-emailing-contato-loading");
+        contatobutton.classList.remove("btn_enviar-active");
+        loadingbar.classList.remove("loadingbar-fail");
+        contatobutton.click();
+    }
+
+    let emailNaoEnviado = function(){
+        msgsendoenviada.classList.remove("email-sendo-enviado-msg-active");
+        msgemailnaoenviado.classList.add("email-fail-envio-msg-active");
+        loadingbar.classList.add("loadingbar-fail");
+    }
+
+    document.getElementById('contato').addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        emailsendoenviado();
+        data = Object.fromEntries(new FormData(e.target).entries());
+        url = 'https://thiago.oioipio.com/mensagem';
+        
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(result => {
+            emailEnviado();
+        }).catch(error => {   
+            emailNaoEnviado();
+        })
+    })
 
     /* CONSTRUINDO O OPEN PROJECT */
     let openLink = function(link){ //Abrir links do projeto (botões e hiperlinks chamam essa função)
@@ -205,7 +302,7 @@
         history.replaceState({}, "New Page", newURL);
     }
 
-    /* let lastResize = 0;
+    let lastResize = 0;
     let changePositionOfCloseButton = function() { 
         if(Date.now() - lastResize > 500) {
             lastResize = Date.now();
@@ -216,7 +313,29 @@
             console.log(rect.x, rect.width, buttonClose.clientWidth);
             buttonClose.style.paddingLeft = `${rect.x + rect.width - buttonClose.scrollWidth}px`;
         }
-    } */
+    }
+
+    let isBgWhite = function(bg){
+        if(bg == '#ffffff'){
+            $("#container-next-button-gallery-ilustracoes").hover(function() {
+                $(this).addClass("mix-blend-hard-light");
+            }, function() {
+                $(this).removeClass("mix-blend-hard-light");
+            });
+
+            $("#container-prev-button-gallery-ilustracoes").hover(function() {
+                $(this).addClass("mix-blend-hard-light");
+            }, function() {
+                $(this).removeClass("mix-blend-hard-light");
+            });
+
+            $(".buttonCloseProject").hover(function() {
+                $(this).addClass("mix-blend-hard-light");
+            }, function() {
+                $(this).removeClass("mix-blend-hard-light");
+            });
+        } 
+    }
 
     let createSnackbar = function(id) {   
         //CRIANDO SNACKBAR DA ONDE VAI ENTRAR OS TRABALHOS
@@ -225,65 +344,67 @@
         snackbar.id = 'snackbarId';
         document.body.style.cssText = 'overflow: hidden';
         snackbar.style.backgroundColor = document.getElementById(id).getAttribute('backgroundcolor');
-    
+        let backgroundOfProject = document.getElementById(id).getAttribute('backgroundcolor');
+        let naturalcoloricons =  document.getElementById(id).getAttribute('naturalcoloricons');
+
         //CRIANDO TOP PART
         let topButtonsContainer = "";
         let lojalink = document.getElementById(id).getAttribute('lojalink');
         
-        if (lojalink != ""){
-            topButtonsContainer = 
-            `<div id='container-top-buttons-snackbarproj'>
-                <div class='buttonLojaProject' onclick="openLink(' `+ lojalink +` ')">
-                    <span class='fa-solid fa-cart-shopping fa-lg'></span> 
-                </div>
-                <div class='buttonCloseProject' onclick="closeSnackbarProj()">
-                    <span class='fa-solid fa-x fa-lg'></span>
-                </div>
-            </div>`
-        } else {
-            topButtonsContainer = 
-            `<div class='container-top-buttons-snackbarproj'>
-                <div class='buttonCloseProject' onclick="closeSnackbarProj()>
-                    <span class='fa-solid fa-x fa-lg' aria-hidden='true'"></span>
-                </div>
-            </div>`
-        }
+        topButtonsContainer = 
+        `<div id='container-top-buttons-snackbarproj'>
+            <div class='buttonCloseProject' onclick="closeSnackbarProj()">
+                <img src="/images/menu/close-things.png" alt="close" style='`+ naturalcoloricons +`'">
+            </div>
+        </div>`
 
         //CRIANDO MIOLO
         // Criando o botão prev 
         let openProject = `<div id='container-openProject-and-arrows'>` 
-            + `<div id="container-prev-button-gallery-ilustracoes">
-                <div id="prev-button-gallery-ilustracoes" onclick="changeSlideProj(-1)">
-                    <span class='fa fa-chevron-left fa-lg' aria-hidden='true'></span>
+            + `<div id="container-prev-button-gallery-ilustracoes" onclick="changeSlideProj(-1)">
+                <div id="prev-button-gallery-ilustracoes">
+                    <img src="/images/menu/prev-icon.png" alt="close" style='`+ naturalcoloricons +`'">
                 </div>
             </div><div id="openProject">`
 
         // Inserindo o conteúdo    
         let itens = JSON.parse(document.getElementById(id).getAttribute('itens'));
         for (let item of itens){
+            if (item.type == 'firstimage'){
+                openProject += '<div id="first-image"><img src="' + item.src + '" max-width="100%"  alt="'+ item.alt +'"  style="display:block; object-fit: contain; margin:'+item.margin+'" class="snackZoom '+ item.class +'" id="snackZoomId"/></div>'
+            }
             if (item.type == 'image'){
-                openProject += '<img src="' + item.src + '" width="' + item.width + 'px" height="' + item.height + 'px" alt="'+ item.alt +'"  style="display:block; object-fit: contain; max-height: 89vh; margin:'+item.margin+'" class="snackZoom '+ item.class +'" id="snackZoomId"/>'
+                openProject += '<img src="' + item.src + '" max-width="100%"  alt="'+ item.alt +'"  style="display:block; object-fit: contain; margin:'+item.margin+'" class="snackZoom '+ item.class +'" id="snackZoomId"/>'
             }
             if (item.type == 'imageSide'){
                 openProject += '<div class="imagesSideBySide" margin:"'+item.margin+' column-gap:' + item.columngap +'">'
                 for(i=0; i < item.src.length; i++){
-                    openProject += '<img src="' + item.src[i] + '" alt="'+ item.alt[i] +'"  style="display:block; object-fit: contain; max-height: 89vh;margin-top:'+ item.imgmargintop[i] +'" class="snackZoom ' + item.class + '" id="snackZoomId"/>';
+                    openProject += '<img src="' + item.src[i] + '" alt="'+ item.alt[i] +'"  style="display:block; object-fit: contain;margin-top:'+ item.imgmargintop[i] +'" class="snackZoom ' + item.class + '" id="snackZoomId"/>';
                 }
                 openProject += '</div>'
+            }
+            if (item.type == 'imagebuythis'){
+                openProject += '<img src="' + item.src + '" max-width="100%"  alt="'+ item.alt +'"  style="display:block; object-fit: contain; margin:'+item.margin+'; filter:'+item.filter+'" class="snackZoom '+ item.class +'" id="snackZoomId" onclick="openLink(`'+ lojalink +'`);"/>'
             }
             if (item.type == 'video') {
                 openProject += '<div style="margin:'+ item.margin +';" class="iframecontainer" id="snackZoomId"><iframe src="' + item.src + '" alt="' + item.alt + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" frameorder="0" vspace="0" hspace="0" marginwidth="0" marginheight="0" width="100%" style="margin: 0 0 0 0" frameBorder="0" scrolling="no" style="border: 0px" allowfullscreen></iframe></div>'
             }
-            if(item.type == 'text'){
-                openProject += '<p style="color:'+ item.textcolor + '!important; margin:'+ item.margin +';text-align:'+ item.textalign +'">'+ item.text +'</p>'
+            if(item.type == 'textleft'){
+                openProject += '<div class="container-text-inside-proj-left"><p class="'+ item.class +'"; style="color:'+ item.textcolor + '!important; margin:'+ item.margin +';text-align:'+ item.textalign +' !important' +';font-style:'+ item.fontstyle +' !important">'+ item.text +'</p></div>'
+            }
+            if(item.type == 'textcenter'){
+                openProject += '<div class="container-text-inside-proj-center"><p class="'+ item.class +'"; style="color:'+ item.textcolor + '!important; margin:'+ item.margin +';text-align:'+ item.textalign +' !important' +';font-style:'+ item.fontstyle +' !important">'+ item.text +'</p></div>'
+            }
+            if(item.type == 'textright'){
+                openProject += '<div class="container-text-inside-proj-right"><p class="'+ item.class +'"; style="color:'+ item.textcolor + '!important; margin:'+ item.margin +';text-align:'+ item.textalign +' !important' +';font-style:'+ item.fontstyle +' !important">'+ item.text +'</p></div>'
             }
         }
 
         // Criando o botão next 
         openProject += ` </div>
-            <div id="container-next-button-gallery-ilustracoes">
-                <div id="next-button-gallery-ilustracoes" onclick="changeSlideProj(1)">
-                    <span class='fa fa-chevron-right fa-lg' aria-hidden='true'></span>
+            <div id="container-next-button-gallery-ilustracoes" onclick="changeSlideProj(1)">
+                <div id="next-button-gallery-ilustracoes">
+                    <img src="/images/menu/next-icon.png" alt="close" style='`+ naturalcoloricons +`'">
                 </div>
             </div> 
         </div>`;
@@ -291,9 +412,15 @@
         snackbar.innerHTML = topButtonsContainer + `<div id="container-openProject"> `+  openProject  + `</div> `; // Snackbar totalmente construida
         document.body.append(snackbar); // Adiciona a snack ao body
 
-        realignVertical("openProject");
+       /*  realignVertical("openProject"); */
         setupSliderGaleria();// Slide da galeria no mobile
         updateURLNoDisturbing(id);
+        isBgWhite(backgroundOfProject);
+
+        document.addEventListener('keydown', (ev) => {
+        if((ev.key == 'Escape') && (flagProjAberto == true)){
+            closeSnackbarProj();
+        }})
     }
 
     /* Slide no mobile */

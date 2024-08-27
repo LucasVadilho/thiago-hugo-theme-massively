@@ -43,7 +43,11 @@
 [CURRENT_LENGUAGE]
   other = "EN"
 
+[CONTACT_PLACEHOLDER_NAME]
+  other = "How should I address you?"
+[CONTACT_PLACEHOLDER_EMAIL]
+  other = "Your valid email goes here"
 [CONTACT_PLACEHOLDER_SUBJECT]
-  other = ""
+  other = "The subject of the message here"
 [CONTACT_PLACEHOLDER_MESSAGE]
-  other = "And your message here :)"
+  other = "And, your message, goes here :)"

@@ -39,6 +39,15 @@
 [ABOUT_ME_WORK]
   other = "Sobre Mim & Meu Trabalho"
 [CONTACT_PORTFOLIO]
-  other = "Contato"
+  other = "Contatao"
 [CURRENT_LENGUAGE]
   other = "PT-BR"
+
+[CONTACT_PLACEHOLDER_NAME]
+  other = "Como posso te chamar?"
+[CONTACT_PLACEHOLDER_EMAIL]
+  other = "Digite o seu email aqui"
+[CONTACT_PLACEHOLDER_SUBJECT]
+  other = "O assunto do email vem aqui"
+[CONTACT_PLACEHOLDER_MESSAGE]
+  other = "E, por fim, a sua mensagem :)"

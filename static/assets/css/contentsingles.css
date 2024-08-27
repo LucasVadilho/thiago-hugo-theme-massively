@@ -160,6 +160,15 @@ h3{ /* Subtópicosdo content */
     margin: 1rem auto 1rem auto !important;
 }
 
+.container-destacando-text-on-post{
+    max-width: 860px;
+    padding: 0px 40px;
+    margin: 20px auto !important;
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+}
+
 .container-destaques-on-post{
     margin: auto;
     max-width: 860px;
