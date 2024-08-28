@@ -12,6 +12,26 @@
     color: #F9E4CB;
 }
 
+#container-sobre{
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+#container-sobre p{
+    max-width: 800px;
+    margin-bottom: 20px;
+}
+
+#container-sobre p:first-of-type{
+    margin-top: 20px;
+}
+
+#container-sobre p:last-of-type{
+    margin-bottom: 0px;
+}
+
 #container-sobre, #contato-form-container{
     display: none;
 }
@@ -79,7 +99,7 @@
   
     .button-language{
         background: #A9C3CF;
-        padding: 5px;
+        padding: 5px 8px;
         border-radius: 5px;
         color: #193E4F;
     }
@@ -201,4 +221,8 @@
 
 .container-partes-rodape, #container-all-rodape a{
     color: var(--whitesmoke-color) !important;
+}
+
+#organizer-galeria-ilustracoes{
+    margin: 0px auto 100px auto;
 }

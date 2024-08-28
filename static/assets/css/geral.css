@@ -1,5 +1,5 @@
 :root{
-    --main-bg-color: #F3EEEC;
+    --main-bg-color: #F5f5f5; 
     --main-accent: #B3C0F5;
     
     --support-bg-color: #b3c0f5;
@@ -23,7 +23,7 @@
 
     --blueish-bg-color: #202025fa;
 
-    --single-post-h1-color: #F3EEEC;
+    --single-post-h1-color: #F5f5f5;
 
     --highlight-color-text: #554c58;
     --dark-color-text: #131313;
@@ -591,12 +591,17 @@ p>a:hover, figcaption>a:hover{
 }
 
 /* -----------------------Comentários-------------------------- */
+#just-a-color{
+    background: #eee;
+    padding: 100px 0px;
+}
+
 #container-comentarios-section{
     max-width: 900px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 100px auto;
+    margin: 0px auto;
     padding: 0px 20px;
     background: #eee;
 }
