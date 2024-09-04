@@ -44,7 +44,7 @@
         {{- end -}} 
 
         <!--------------------------- CSS setado pelo tema (não mexer) ---------------------------->
-		{{ if .Site.IsServer }}
+		{{ if hugo.IsServer }}
 		    {{ $style := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "main.scss" . | toCSS (dict "targetPath" "assets/css/main.css" "enableSourceMap" true) }}
 		    <link rel="stylesheet" href="{{ ($style).RelPermalink }}">
 		{{ else }}
