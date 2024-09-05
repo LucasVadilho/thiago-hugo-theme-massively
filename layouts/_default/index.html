@@ -38,17 +38,23 @@
                             <div class="organizer-home-news-text">
                                 <p class="home-news-type">{{ .Params.Lastpost1type }}</p>
                                 <h2 class="home-news-title">{{ .Params.Title }}</h2>
+                                {{ if (isset .Params "titlecontinuity")}}
+                                    <h2 class="home-news-title"> {{ .Params.Titlecontinuity }} </h2>
+                                {{ end }}
                             </div>
                             <img id="home-novidade-1" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
                         </div>
                     {{ else }}
-                        <div id="item-bottom-esq" onclick="window.location.href='/blog/matutando/sobre-como-ler-mais-e-yata-yata-yata/'">
+                        <div id="item-bottom-esq" onclick="window.location.href='{{ .Permalink | safeURL }}'">
                             <div class="novidade-notice">
                                 <span>Novidade</span></div>
                             <div class="overlay-home-news"></div>
                             <div class="organizer-home-news-text">
                                 <p class="home-news-type">{{ .Params.Lastpost1type }}</p>
                                 <h2 class="home-news-title">{{ .Params.Title }}</h2>
+                                {{ if (isset .Params "titlecontinuity")}}
+                                    <h2 class="home-news-title"> {{ .Params.Titlecontinuity }} </h2>
+                                {{ end }}
                             </div>
                             <img id="home-novidade-1" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
                         </div>
@@ -63,6 +69,9 @@
                             <div class="organizer-home-news-text">
                                 <p class="home-news-type">{{  .Params.Lastpost2type }}</p>
                                 <h2 class="home-news-title">{{ .Params.Title }}</h2>
+                                {{ if (isset .Params "titlecontinuity")}}
+                                    <h2 class="home-news-title"> {{ .Params.Titlecontinuity }} </h2>
+                                {{ end }}
                             </div>
                             <img id="home-novidade-2" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
                         </div>
@@ -73,6 +82,9 @@
                             <div class="organizer-home-news-text">
                                 <p class="home-news-type">{{  .Params.Lastpost2type }}</p>
                                 <h2 class="home-news-title">{{ .Params.Title }}</h2>
+                                {{ if (isset .Params "titlecontinuity")}}
+                                    <h2 class="home-news-title"> {{ .Params.Titlecontinuity }} </h2>
+                                {{ end }}
                             </div>
                             <img id="home-novidade-2" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
                         </div>
@@ -87,16 +99,22 @@
                             <div class="organizer-home-news-text">
                                 <p class="home-news-type">{{  .Params.Lastpost3type }}</p>
                                 <h2 class="home-news-title">{{ .Params.Title }}</h2>
+                                {{ if (isset .Params "titlecontinuity")}}
+                                    <h2 class="home-news-title"> {{ .Params.Titlecontinuity }} </h2>
+                                {{ end }}
                             </div>
                             <img id="home-novidade-3" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
                         </div>
                     {{ else }}
-                        <div id="item-bottom-dir" onclick="window.location.href='/historietas/historieta8/'">
+                        <div id="item-bottom-dir" onclick="window.location.href='{{ .Permalink | safeURL }}'">
                             <div class="novidade-notice">Novidade</div>
                             <div class="overlay-home-news"></div>
                             <div class="organizer-home-news-text">
                                 <p class="home-news-type">{{  .Params.Lastpost3type }}</p>
                                 <h2 class="home-news-title">{{ .Params.Title }}</h2>
+                                {{ if (isset .Params "titlecontinuity")}}
+                                    <h2 class="home-news-title"> {{ .Params.Titlecontinuity }} </h2>
+                                {{ end }}
                             </div>
                             <img id="home-novidade-3" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
                         </div>

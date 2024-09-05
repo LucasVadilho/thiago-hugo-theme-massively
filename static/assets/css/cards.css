@@ -294,14 +294,11 @@
     justify-content: space-around;
     overflow: hidden;
     column-gap: 30px;
+    align-items: center;
 }
 
 #container-mais-posts-como-esse-cards .post-card{
     margin-bottom: 0px !important;
-}
-
-#correction-height{
-    padding-top: 30.39px;
 }
 
 #container-mais-posts-como-esse-cards .post-card-info-historietas{

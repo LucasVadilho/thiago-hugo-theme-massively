@@ -20,6 +20,9 @@
                             <div id="header-single-posts">
                                 <div id="header-title-single-post">
                                     <h1> {{ .Title }} </h1>
+                                    {{ if (isset .Params "titlecontinuity")}}
+                                        <h1> {{ .Params.Titlecontinuity }} </h1>
+                                    {{ end }}
                                 </div>
                                 <div id="header-infos-single-post">
                                     <h4 class="header-infos-single-post-categories">

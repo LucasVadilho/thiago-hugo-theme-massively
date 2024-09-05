@@ -211,6 +211,7 @@ body {
     opacity: 20%;
     pointer-events: none;  
 }
+
 /* Table of Contents */
 #container-table-of-contents{
     margin-top: 1.5rem;
@@ -323,6 +324,13 @@ body {
 /* Enfeites */
 .riscado{
     text-decoration: line-through;
+}
+
+/* Especial POEMAS */
+#poem-title{
+    font-family: "Baskervville SC", serif;
+    font-size: 2rem;
+    margin-bottom: 20px;
 }
 
 /* REGRAS DE MEDIA */
