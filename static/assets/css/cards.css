@@ -201,7 +201,7 @@
 }
 
 .turn-page{
-    background-color: var(--blockquote-color);
+    background-color: var(--accent-yellowish);
     color: var(--dark-color-text);
     border-radius: 5px;
     padding: 3px;

@@ -448,12 +448,13 @@ body{
 
 #agradecimento-snackbar{
     width: 100%;
-    background-color: #ffdaa7;
+    background-color: #eadaf1;
     padding-top: 90px 0px 0px 90px;
     color: var(--dark-color-text);
     position: fixed;
     transform: translateY(-50%);
     top: 50%;
+    left: 0%;
     min-height: 500px;
     display: none;
     justify-content: center;

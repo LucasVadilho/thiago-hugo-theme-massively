@@ -91,11 +91,11 @@
 
                         <span id="container-div-color" style="background-color: {{ .Params.Backgroundhistcolor | safeCSS }};"></span>
 
-                        <div id="container-texto-and-image-content" style="background-color: {{ .Params.Bgcontentcolor | safeCSS }}">
+                        <div id="container-texto-and-image-content" style="background-color: {{ .Params.Bgcontentcolor | safeCSS }};padding-bottom: 100px;">
                             <span class="correcting-figcaption-color" style="color: {{ .Params.ContentTextColor | safeCSS }}">
                                 {{ .Content }}
                             </span>
-                            <p class="referenciar" style="margin-top:30px; color: {{ .Params.ContentTextColor | safeCSS }}80">Autor e ilustrador: ©Thiago David Vadilho (TD Vadilho)</p>
+                            <p class="referenciar" style="margin-top:50px; color: {{ .Params.ContentTextColor | safeCSS }}80">Autor e ilustrador: ©Thiago David Vadilho (TD Vadilho)</p>
                             <p class="referenciar" style="color: {{ .Params.ContentTextColor | safeCSS }}80">*Jamais venda ou monetize este conteúdo sem a autorização expressa do autor.</p>
                             <p class="referenciar" style="color: {{ .Params.ContentTextColor | safeCSS }}80">Caso necessário, entre em <a  href='{{ "contato" | relLangURL }}' style="color: {{ .Params.DestaqueLettersColor | safeCSS }}">contato</a>.</p>
                         </div>
@@ -119,7 +119,10 @@
         <div id="just-a-color">
             <div id="container-comentarios-section">
                 <h1>Comentários</h1>
-                <p class="comentarios-avisos">Para comentar, clique em entrar e escolha se quer comentar como anônimo ou criando um usuário. Depois escreva a sua mensagem e voilà :)</p>
+                <div class="comentarios-avisos-container">
+                    <p class="comentarios-avisos">• Clique em entrar e escolha entre comentar como anônimo ou com um usuário</p>
+                    <p class="comentarios-avisos">• Para receber notificação de respostas, clique em "inscrever e-mail" depois de entrar :)</p>
+                </div>
                 {{- partial "comentario" . }}
             </div>
         </div>

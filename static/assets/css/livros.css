@@ -12,6 +12,14 @@
     max-width: 100%;
 }
 
+.container-livros-all-content:hover{
+    cursor: pointer;
+}
+
+.container-livros-all-content:hover>.container-livro-image img{
+    scale: 1.2;
+}
+
 .container-livro-image{
     overflow: hidden;
 }
@@ -22,10 +30,10 @@
     max-width: 100%;
 }
 
-.container-livro-image img:hover{
+/* .container-livro-image img:hover{
     cursor: pointer;
     scale: 1.2;
-}
+} */
 
 .container-livro-infos-and-buttons{
     display: flex;

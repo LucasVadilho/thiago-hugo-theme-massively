@@ -1,5 +1,6 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/geral.css"> <!-- Chamando CSS geral -->
 <link rel="stylesheet" type="text/css" href="/assets/css/contentsingles.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/contentsinglesespecialblog.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/suporte.css">
 
 {{- partial "htmlhead" . -}}<!-- puxando as metatags -->
@@ -72,7 +73,7 @@
                                 <div class="no-table-of-contents"></div>
                             {{ end }}
                             {{ .Content }}
-                            <p class="referenciar" style="margin-top:30px">Texto e imagens: ©Thiago David Vadilho (TD Vadilho)</p>
+                            <p class="referenciar" style="margin-top:50px">Texto e imagens: ©Thiago David Vadilho (TD Vadilho)</p>
                             <p class="referenciar">*Jamais venda ou monetize este conteúdo sem a autorização expressa do autor.</p>
                             <p class="referenciar">Caso necessário, entre em <a  href='{{ "#contatar" | relLangURL }}' class="linkto_contato"><u>contato</u></a>.</p>
                         </div>    
@@ -98,7 +99,10 @@
         <div id="just-a-color">
             <div id="container-comentarios-section">
                 <h1>Comentários</h1>
-                <p class="comentarios-avisos">Para comentar, clique em entrar e escolha se quer comentar como anônimo ou criando um usuário. Depois escreva a sua mensagem e voilà :)</p>
+                <div class="comentarios-avisos-container">
+                    <p class="comentarios-avisos">• Clique em entrar e escolha entre comentar como anônimo ou com um usuário</p>
+                    <p class="comentarios-avisos">• Para receber notificação de respostas, clique em "inscrever e-mail" depois de entrar :)</p>
+                </div>
                 {{- partial "comentario" . }}
             </div>
         </div>

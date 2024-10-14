@@ -35,10 +35,10 @@
     --pure-white-color: #ffffff;
     --whitesmoke-color: #f5f5f5;
 
-    --blockquote-color:var(--accent-yellowish);
-
     --text-shadow: #202020;
     --overlay-color: #1118449c;
+
+    --bgblogcolor: #FAF5FF;
 }
 
 .noclick{
@@ -255,40 +255,47 @@ figcaption{
 }
 /*--------------------END OF PAGINATOR------------------------*/
 
-/*---------------------- DESTAQUES NO TEXTO ----------------------*/
-.blockquote {
-    margin: 10px auto 10px auto !important;
-    max-width: 700px !important;
-    position: relative;
-    color: var(--highlight-color-text);
-    font-family: 'Sanchez', serif;
-    font-size: 1.5rem;
-    line-height: 1;
+/*---------------------- BLOCKQUOTE NO TEXTO ----------------------*/
+@import url('https://fonts.googleapis.com/css?family=Special+Elite');
 
-    blockquoteautor {
-      font-family: sans-serif;
-      font-size: 0.6em;
-      font-weight: 700;
-      color: var(--grey-color-text);
-      right: 0;
-      bottom: 0;
-      position: absolute;
-      
-      &:before {
-        content: '\2015';  
-      }
-    }
-    &:after {
-        content: '\201D';
+blockquote {
+    margin: 40px auto 0px auto !important;
+    max-width: 860px !important;
+    position: relative;
+    font-family: 'Special Elite', cursive;
+    color: #2c1a73;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 100;
+    font-size: 1.8rem;
+    line-height: 1.4;
+    padding: .5rem 50px;
+}
+
+    blockquote:before{
         position: absolute;
-        top: -1.5rem;
-        right: 0;
-        font-size: 6em;
-        font-style: italic;
-        color: var(--grey-color-text);
-        z-index: -1;
-     }
-  }
+        color: #465cd57a;
+        font-size: 8rem;
+        width: 4rem;
+        height: 4rem;
+        content: '“';
+        left: 2.5rem;
+        top: -2rem;
+    }
+
+.blockquoteautor{
+    text-align: center;
+    max-width: 600px !important;
+    hyphens: none;
+    font-family: 'Special Elite', cursive;
+    color: #3f3f5a;
+    margin-top: 0 !important;
+    line-height: 3;
+    font-size: 1.2rem;
+    margin-bottom: 30px !important;
+}
 
 .container_destaqueTxtBlog{
     border-left: 3px solid #af93c382;
@@ -614,10 +621,14 @@ p>a:hover, figcaption>a:hover{
     width: 100%;
 }
 
+.comentarios-avisos-container{
+    width: 100%;
+}
+
 .comentarios-avisos{
-    text-align: center;
+    text-align: left;
     font-size: 1rem;
-    text-wrap: balance;
+    padding: 0px 20px;
 }
 
 @media screen and (max-width: 400px) {

@@ -106,13 +106,6 @@
 		top: -0.5rem;
 	}
 
-	blockquote {
-		border-left: solid 4px;
-		font-style: italic;
-		margin: 0 0 _size(element-margin) 0;
-		padding: (_size(element-margin) / 4) 0 (_size(element-margin) / 4) _size(element-margin);
-	}
-
 	code {
 		border-radius: _size(border-radius);
 		border: solid 2px;
@@ -178,10 +171,6 @@
 
 		h1, h2, h3, h4, h5, h6 {
 			color: _palette($p, fg-bold);
-		}
-
-		blockquote {
-			border-left-color: _palette($p, border);
 		}
 
 		code {

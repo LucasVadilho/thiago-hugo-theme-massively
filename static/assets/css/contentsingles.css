@@ -18,7 +18,7 @@ td{
 
 #container-header-single-post{
     width: 100%;
-    background: linear-gradient(180deg, var(--big-header-color) 0%, var(--big-header-color) 80%, var(--single-post-h1-color) 80%, var(--single-post-h1-color) 100%);
+    background: linear-gradient(180deg, var(--big-header-color) 0%, var(--big-header-color) 80%, var(--bgblogcolor) 80%, var(--bgblogcolor) 100%);
 }
 
 #header-single-posts{
@@ -67,7 +67,7 @@ td{
 #container-texto-and-image-content{
     margin: auto;
     padding-top: 80px;
-    padding-bottom: 80px;
+    padding-bottom: 0px;
 }
 
 #container-div-color{
@@ -125,6 +125,8 @@ figcaption p{
     font-size: 0.9rem;
     font-style: italic;
     font-family: math;
+    max-width: 600px !important;
+    hyphens: none;
 }
 
 #container-chamada-content{
@@ -163,10 +165,11 @@ h3{ /* Subtópicosdo content */
 .container-destacando-text-on-post{
     max-width: 860px;
     padding: 0px 40px;
-    margin: 20px auto !important;
+    margin: 40px auto !important;
     text-align: center;
     font-style: italic;
     font-weight: bold;
+    color: #2c1a73;
 }
 
 .container-destaques-on-post{
@@ -336,7 +339,7 @@ body {
 /* REGRAS DE MEDIA */
 @media  screen and (max-width: 861px){
     #container-texto-and-image-content{
-        padding: 80px 20px 80px 20px;
+        padding: 80px 20px 0px 20px;
     }
 }
 
@@ -357,7 +360,7 @@ body {
         padding-top: 80px;
     }
     #container-header-single-post{
-        background: linear-gradient(180deg, var(--big-header-color) 0%, var(--big-header-color) 90%, var(--single-post-h1-color) 90%, var(--single-post-h1-color) 100%);
+        background: linear-gradient(180deg, var(--big-header-color) 0%, var(--big-header-color) 90%, var(--bgblogcolor) 90%, var(--bgblogcolor) 100%);
     }
 }
 
@@ -378,6 +381,6 @@ body {
         padding-top: 80px;
     }
     #container-header-single-post{
-        background: linear-gradient(180deg, var(--big-header-color) 0%, var(--big-header-color) 90%, var(--single-post-h1-color) 90%, var(--single-post-h1-color) 100%);
+        background: linear-gradient(180deg, var(--big-header-color) 0%, var(--big-header-color) 90%, var(--bgblogcolor) 90%, var(--bgblogcolor) 100%);
     }
 }
