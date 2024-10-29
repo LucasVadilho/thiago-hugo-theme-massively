@@ -112,6 +112,7 @@
 
 .buttonCloseProject,.buttonLojaProject{
     z-index: 25;
+    user-select: none;
 }
 .buttonCloseProject:hover,.buttonLojaProject:hover{
     cursor: pointer;
@@ -165,6 +166,7 @@
 
 #container-prev-button-gallery-ilustracoes,#container-next-button-gallery-ilustracoes{
     height: calc(100dvh);
+    user-select: none;
 }
 
 #prev-button-gallery-ilustracoes,#next-button-gallery-ilustracoes{

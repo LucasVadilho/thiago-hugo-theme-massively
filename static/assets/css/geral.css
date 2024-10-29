@@ -41,6 +41,10 @@
     --bgblogcolor: #FAF5FF;
 }
 
+.noselect{
+    user-select: none;
+}
+
 .noclick{
     pointer-events: none;
 }
