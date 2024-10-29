@@ -12,10 +12,8 @@
         <title>
             {{- if .IsHome -}}
                 {{ .Site.Title }} | Escritor e Ilustrador
-            {{- else if .Page.Title -}}
-                {{ .Page.Title }} | {{ .Site.Title }}
-            {{- else -}}
-                {{ .Site.Title }}
+            {{ else }}
+                {{ .Site.Title }} | {{ .Page.Title }}
             {{- end -}}
         </title>
 
@@ -80,7 +78,7 @@
         <!-- Font Sanchez -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Sanchez:ital@0;1&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.c</html>om/css2?family=Sanchez:ital@0;1&display=swap" rel="stylesheet">
     
         <!-- Bakersville -->
         <link rel="preconnect" href="https://fonts.googleapis.com">

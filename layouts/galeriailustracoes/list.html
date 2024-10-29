@@ -159,33 +159,36 @@
         // Inserindo o conteúdo    
         let itens = JSON.parse(document.getElementById(id).getAttribute('itens'));
         for (let item of itens){
-            if (item.type == 'firstimage'){
+            if (item.type == 'firstimage') {
                 openProject += '<div id="first-image"><img src="' + item.src + '" max-width="100%"  alt="'+ item.alt +'"  style="display:block; object-fit: contain; margin:'+item.margin+'" class="snackZoom '+ item.class +'" id="snackZoomId"/></div>'
             }
-            if (item.type == 'image'){
+            if (item.type == 'image') {
                 openProject += '<img src="' + item.src + '" max-width="100%"  alt="'+ item.alt +'"  style="display:block; object-fit: contain; margin:'+item.margin+'" class="snackZoom '+ item.class +'" id="snackZoomId"/>'
             }
-            if (item.type == 'imageSide'){
+            if (item.type == 'imageSide') {
                 openProject += '<div class="imagesSideBySide" margin:"'+item.margin+' column-gap:' + item.columngap +'">'
-                for(i=0; i < item.src.length; i++){
+                for(i = 0; i < item.src.length; i++){
                     openProject += '<img src="' + item.src[i] + '" alt="'+ item.alt[i] +'"  style="display:block; object-fit: contain;margin-top:'+ item.imgmargintop[i] +'" class="snackZoom ' + item.class + '" id="snackZoomId"/>';
                 }
                 openProject += '</div>'
             }
-            if (item.type == 'imagebuythis'){
+            if (item.type == 'imagebuythis') {
                 openProject += '<img src="' + item.src + '" max-width="100%"  alt="'+ item.alt +'"  style="display:block; object-fit: contain; margin:'+item.margin+'; filter:'+item.filter+'" class="snackZoom '+ item.class +'" id="snackZoomId" onclick="openLink(`'+ lojalink +'`);"/>'
             }
             if (item.type == 'video') {
                 openProject += '<div style="margin:'+ item.margin +';" class="iframecontainer noselect" id="snackZoomId"><iframe src="' + item.src + '" alt="' + item.alt + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" frameorder="0" vspace="0" hspace="0" marginwidth="0" marginheight="0" width="100%" style="margin: 0 0 0 0" frameBorder="0" scrolling="no" style="border: 0px" allowfullscreen></iframe></div>'
             }
-            if(item.type == 'textleft'){
+            if(item.type == 'textleft') {
                 openProject += '<div class="container-text-inside-proj-left"><p class="'+ item.class +'"; style="color:'+ item.textcolor + '!important; margin:'+ item.margin +';text-align:'+ item.textalign +' !important' +';font-style:'+ item.fontstyle +' !important">'+ item.text +'</p></div>'
             }
-            if(item.type == 'textcenter'){
+            if(item.type == 'textcenter') {
                 openProject += '<div class="container-text-inside-proj-center"><p class="'+ item.class +'"; style="color:'+ item.textcolor + '!important; margin:'+ item.margin +';text-align:'+ item.textalign +' !important' +';font-style:'+ item.fontstyle +' !important">'+ item.text +'</p></div>'
             }
-            if(item.type == 'textright'){
+            if(item.type == 'textright') {
                 openProject += '<div class="container-text-inside-proj-right"><p class="'+ item.class +'"; style="color:'+ item.textcolor + '!important; margin:'+ item.margin +';text-align:'+ item.textalign +' !important' +';font-style:'+ item.fontstyle +' !important">'+ item.text +'</p></div>'
+            }
+            if(item.type == 'shorts') {
+                openProject += `<div style="margin:'+ item.margin +';" class=" noselect" id="snackZoomId"><iframe width="315" height="560" src="${item.src}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>`;
             }
         }
 
