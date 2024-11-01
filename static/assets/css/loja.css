@@ -94,17 +94,94 @@
     position: relative;
 }
 
-@media screen and (max-width: 680px) and (min-width: 473px){
+#dataFinal {
+    font-size: 1.5rem;
+    font-family: system-ui;
+    line-height: 1rem;
+    background: azure;
+    width: 40%;
+    padding: 8px 10px 10px;
+    font-weight: 600;
+    margin: -7 58% 0 !important;
+    color: #cb3c3c;
+}
+
+#container-text-promocao h2 {
+    font-size: 3.5rem;
+    line-height: 1;
+    margin: 20 50% 0 !important;
+    color: #ebebeb;
+    background: #cb3c3c;
+    width: 50%;
+    font-variant: all-petite-caps;
+    padding: 5px 10px 15px;
+}
+
+@media screen and (max-width: 880px) and (min-width: 664px){
     #dataFinal {
+        font-size: 1.4rem
+    }
+    #container-text-promocao h2{
+        font-size: 3rem;
+    }
+}
+
+@media screen and (max-width: 663px) and (min-width: 555px){
+    #dataFinal {
+        font-size: 1.25rem
+    }
+    #container-text-promocao h2{
+        font-size: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 554px) and (min-width: 426px){
+    #dataFinal {
+        font-size: 0.9rem;
+        width: 50%;
+    }
+    #container-text-promocao h2{
         font-size: 2rem;
     }
 }
 
-@media screen and (max-width: 472px) {
-    #container-text-promocao h2{
-        font-size: 2.2rem;
-    }
+@media screen and (max-width: 425px) and (min-width: 376px){
     #dataFinal {
+        font-size: 0.8rem;        
+        width: 50%;
+    }
+    #container-text-promocao h2{
+        font-size: 1.75rem;
+    }
+}
+
+@media screen and (max-width: 375px) and (min-width: 358px){
+    #dataFinal {
+        font-size: 0.8rem;        
+        width: 50%;
+    }
+    #container-text-promocao h2{
+        font-size: 1.55rem;
+    }
+}
+
+@media screen and (max-width: 357px){
+    #dataFinal {
+        font-size: 0.7rem;
+        width: 50%;
+    }
+    #container-text-promocao h2{
         font-size: 1.4rem;
+    }
+}
+
+@media screen and (max-width: 750px){
+    #dataFinal {
+        width: 50%;     
+        margin: -7 48% 0 !important;
+    }
+    #container-text-promocao h2{
+        width: 60%; 
+        margin: 20 40% 0 !important;
     }
 }

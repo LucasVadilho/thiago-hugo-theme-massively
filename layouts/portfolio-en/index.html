@@ -399,6 +399,9 @@
             if(item.type == 'textright'){
                 openProject += '<div class="container-text-inside-proj-right"><p class="'+ item.class +'"; style="color:'+ item.textcolor + '!important; margin:'+ item.margin +';text-align:'+ item.textalign +' !important' +';font-style:'+ item.fontstyle +' !important">'+ item.text +'</p></div>'
             }
+            if(item.type == 'shorts') {
+                openProject += `<div style="margin:`+ item.margin +`;" class=" noselect" id="snackZoomId"><iframe width="315" height="560" src="${item.src}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>`;
+            }
         }
 
         // Criando o botão next 

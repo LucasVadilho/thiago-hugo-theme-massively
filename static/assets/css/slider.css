@@ -119,3 +119,25 @@
     from {opacity: .4}
     to {opacity: 1}
 }
+
+@media screen and (max-width: 850px){
+    #arrows-slider-container{
+        scale: 1.2;
+        bottom: unset;
+    }
+    #slider-container{
+        margin-bottom: 50px;
+    }
+}
+
+@media screen and (max-width: 585px) and (min-width: 417px){
+    .square-navigation-slider{
+        width: 35px;
+    }
+}
+
+@media screen and (max-width: 416px){
+    .square-navigation-slider{
+        width: 30px;
+    }
+}
