@@ -80,7 +80,7 @@ body{
     flex-wrap: nowrap;
     margin-top: 15px;
     left: 15px;
-    mix-blend-mode: color-burn;
+    mix-blend-mode: hard-light;
 }
 
 #menu-to-navigate{
@@ -241,6 +241,11 @@ figcaption{
 
 #portfolio-header-name{
     background-color: #dd7052;
+    margin-bottom: 100px;
+}
+
+#gearemateriais-header-name{
+    background-color: #ffe181;
     margin-bottom: 100px;
 }
 
