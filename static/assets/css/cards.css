@@ -424,6 +424,12 @@
     color: var(--whitesmoke-color);
 }
 
+.diário{
+    background-color: rgb(32, 28, 87);
+    text-transform: capitalize;
+    color: var(--whitesmoke-color);
+}
+
 .al{
     background-color: rgb(76, 163, 76);
     text-transform: uppercase;
