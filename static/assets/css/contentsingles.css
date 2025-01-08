@@ -18,7 +18,7 @@ td{
 
 #container-header-single-post{
     width: 100%;
-    background: linear-gradient(180deg, var(--big-header-color) 0%, var(--big-header-color) 80%, var(--bgblogcolor) 80%, var(--bgblogcolor) 100%);
+    background: linear-gradient(180deg, #212151 0%, #212151 80%, var(--bgblogcolor) 80%, var(--bgblogcolor) 100%);
 }
 
 #header-single-posts{
@@ -360,7 +360,7 @@ body {
         padding-top: 80px;
     }
     #container-header-single-post{
-        background: linear-gradient(180deg, var(--big-header-color) 0%, var(--big-header-color) 90%, var(--bgblogcolor) 90%, var(--bgblogcolor) 100%);
+        background: linear-gradient(180deg, #212151 0%, #212151 90%, var(--bgblogcolor) 90%, var(--bgblogcolor) 100%);
     }
 }
 
@@ -381,6 +381,6 @@ body {
         padding-top: 80px;
     }
     #container-header-single-post{
-        background: linear-gradient(180deg, var(--big-header-color) 0%, var(--big-header-color) 90%, var(--bgblogcolor) 90%, var(--bgblogcolor) 100%);
+        background: linear-gradient(180deg, #212151 0%, #212151 90%, var(--bgblogcolor) 90%, var(--bgblogcolor) 100%);
     }
 }

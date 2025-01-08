@@ -10,12 +10,12 @@
     <div id="main">
         <div id="container-portfolioHeader">
             <div class="container-header-name" id="portfolio-header-name">
-                <h1>TD Vadilho</h1>
+                <img src="/images/assinatura.png" alt="TD Vadilho">
                 
                 <div id="container-portfolio-navigation-and-languages">
                     <div id="container-navigation" class="menu-language">
                         <div id="go-to-portfolio" class="active-menu" onclick="openPortfolio()">Portfólio</div>
-                        <div id="go-to-sobre" onclick="openSobre()">Sobre mim & Meu Trabalho</div>
+                        <div id="go-to-sobre" onclick="openSobre()">Sobre</div>
                         <div id="go-to-contact" onclick="openContact()">Contato</div>
                     </div>
                     
@@ -59,6 +59,10 @@
                     backgroundcolor="{{ .Params.Backgroundcolor | safeCSS }}"
                     naturalcoloricons="{{ .Params.Naturalcoloricons | safeCSS }}"
                     >
+                    <div class="thumbprojeto-nomeandview">
+                        <p class="nome">{{ .Params.tituloprojeto }}</p>
+                        <p class="view">- veja -</p>
+                    </div>
                     <img src="{{ .Params.Thumbprojeto }}" class="animation-element not-shown-img-state {{ .Params.Imgthumbposition | safeCSS }}" alt="{{ .Params.altthumb }}"> 
                 </div>           
             {{ end }}
@@ -132,20 +136,16 @@
                                 <a href="{{ . }}" target="_blank"><i class="fa fa-instagram icon"></i></a>
                             {{ end }}
 
+                            {{ with .youtube }}
+                                <a href="{{ . }}" target="_blank"><i class="fa fa-youtube-play icon"></i></a>
+                            {{ end }}
+
                             {{ with .facebook}}
                                 <a href="{{ . }}" target="_blank"><i class="fa fa-facebook-f icon"></i></a>
                             {{ end }}
-    
-                            {{ with .pinterest }}
-                                <a href="{{ . }}" target="_blank"><i class="fa fa-pinterest icon"></i></a>
-                            {{ end }}
 
-                            {{ with .discord }}
-                                <a href="{{ . }}" target="_blank"><i class="fa fa-discord icon"></i></a>
-                            {{ end }}
-                            
-                            {{ with .youtube }}
-                                <a href="{{ . }}" target="_blank"><i class="fa fa-youtube-play icon"></i></a>
+                            {{ with .linkedin}}
+                                <a href="{{ . }}" target="_blank"><i class="fa fa-linkedin icon"></i></a>
                             {{ end }}
                         </div>
                     </section>

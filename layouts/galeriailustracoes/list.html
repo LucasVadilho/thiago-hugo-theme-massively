@@ -21,7 +21,7 @@
         <span id="array" idsArray="{{ .Params.ProjetosIds }}"></span>
 
         <div id="organizer-galeria-ilustracoes">
-            {{ range .Pages.ByWeight  }}
+            {{ range .Pages.ByWeight.Reverse  }}
                 <div id="{{ .Params.Projectid }}"
                     onclick="abrirproj(event, '{{ .Params.Projectid }}')"
                     itens="{{ jsonify .Params.Itens }}"
@@ -30,6 +30,10 @@
                     backgroundcolor="{{ .Params.Backgroundcolor | safeCSS }}"
                     naturalcoloricons="{{ .Params.Naturalcoloricons | safeCSS }}"
                     >
+                    <div class="thumbprojeto-nomeandview">
+                        <p class="nome">{{ .Params.tituloprojeto }}</p>
+                        <p class="view">- veja -</p>
+                    </div>
                     <img src="{{ .Params.Thumbprojeto }}" class="animation-element not-shown-img-state {{ .Params.Imgthumbposition | safeCSS }}" alt="{{ .Params.altthumb }}"> 
                 </div>           
             {{ end }}

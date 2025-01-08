@@ -80,17 +80,11 @@ body{
     flex-wrap: nowrap;
     margin-top: 15px;
     left: 15px;
-    mix-blend-mode: hard-light;
 }
 
 #menu-to-navigate{
     right: 15px;
     position: fixed;
-}
-
-#logo:hover, .menu-text:hover,.closethings:hover, .menu-hamburguer:hover{
-    cursor: pointer;
-    filter:invert(20%) sepia(11%) saturate(2890%) hue-rotate(316deg) brightness(99%) contrast(93%);
 }
 
 .menu-hamburger{display: none;}
@@ -125,6 +119,10 @@ figcaption{
     margin-top: 5px;
 }
 
+.nowrap{ /* NO ONE CAN WRAP US */
+    white-space: nowrap;
+}
+
 /*--------------------NAV MENU INSIDE------------------------*/
 #header-navigation-menu{
     display: inline-flex;
@@ -156,10 +154,19 @@ figcaption{
     max-width: 100%;
 }
 
-.links img:hover, .first-td:hover, .closethings:hover, .seccond-td:hover{
+/*----------- HOVERS NOS MENUS TD, HAMBURGUER, MENU, TD VADILHO, LINKS MENU GERAL e CLOSE -------------*/
+.menu-hamburguer:hover, .menu-text:hover, .links img:hover, .closethings:hover, .first-td:hover, .seccond-td:hover{
     cursor: pointer;
-    filter: invert(20%) sepia(11%) saturate(2890%) hue-rotate(316deg) brightness(99%) contrast(93%);
 }
+
+    /* parte de cores */
+    .closethings:hover, .links img:hover{
+        filter:invert(20%) sepia(11%) saturate(2890%) hue-rotate(316deg) brightness(99%) contrast(93%);
+    }
+
+    .menu-hamburguer:hover, .menu-text:hover, .first-td:hover, .seccond-td:hover{
+        filter: brightness(0) invert(69%) sepia(26%) saturate(804%) hue-rotate(174deg) brightness(101%) contrast(101%);
+    }
 
 /*--------------------PAGEs HEADER------------------------*/
 .img-page-header{
@@ -179,15 +186,10 @@ figcaption{
 
 .container-header-name img{
     max-width: 100%;
-    padding: 40px;
 }
 
-#historietas-header-name img, #blog-header-name img, #contato-header-name img {
-    width: 800px;
-}
-
-#livros-header-name img, #loja-header-name img, #galeria-ilustracoes-header-name img, #sobre-header-name img{
-    width: 600px;
+#historietas-header-name img, #blog-header-name img, #contato-header-name img, #livros-header-name img, #loja-header-name img, #galeria-ilustracoes-header-name img, #sobre-header-name img {
+    width: 700px;
 }
 
 .container-header-text{
@@ -210,12 +212,12 @@ figcaption{
 }
 
 #galeria-ilustracoes-header-name{
-    background-color: #dd7052;
+    background-color: #c05a3d;
     margin-bottom: 100px;  
 }
 
 #blog-header-name{
-    background-color: var(--main-accent);
+    background-color: #5958a7;
     margin-bottom: 50px;
 }
 
@@ -225,28 +227,27 @@ figcaption{
 }
 
 #contato-header-name{
-    background-color: var(--big-header-color);
+    background-color: #af7fd3;
     margin-bottom: 100px;
 }
 
 #livros-header-name{
-    background-color: #d9b4ce;
+    background-color: #e7b138;
     margin-bottom: 100px;
 }
 
 #loja-header-name{
-    background-color: #d2d73c;
-    margin-bottom: 100px;
-}
-
-#portfolio-header-name{
-    background-color: #dd7052;
+    background-color: #bec03d;
     margin-bottom: 100px;
 }
 
 #gearemateriais-header-name{
     background-color: #ffe181;
     margin-bottom: 100px;
+}
+
+#contato-header-name img, #loja-header-name img, #livros-header-name img{
+    filter: brightness(0) invert(99%) sepia(0%) saturate(4749%) hue-rotate(172deg) brightness(116%) contrast(100%);
 }
 
 @media screen and (max-width: 768px) {

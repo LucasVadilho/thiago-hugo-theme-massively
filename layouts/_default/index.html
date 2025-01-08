@@ -11,29 +11,32 @@
         <div id="container-home">
             <div id="container-home-topo-items">
                 <div id="organizer-container-text-items">
-                    <a href='{{ absURL "sobre" }}'><h1>TD Vadilho</h1></a>
+                    <a href='{{ absURL "sobre" }}'><img src="/images/assinatura.png" alt="TD Vadilho"></a>
                     <p class = "intro-paragraph">
+                        <i>Escritor e Ilustrador. Criador e <span class="nowrap">co-criador</span> de histórias que gostaria de encontrar</i>
+                        <!-- 
                         Escritor-ilustrador ou ilustrador-escritor. Depende de como você olhar.
-                    </p>
-                    <p class = "intro-paragraph">
                         Para simplificar, <i>criador e contador de histórias</i>. Alguém que só quer ser criativo. Alguém que só quer escrever e ilustrar.
-                    </p>
-                    <p class = "intro-paragraph">
                         Eu acredito na capacidade emocional e transformativa das histórias criativas, e é por isso que coloco no mundo <a onclick="opennavigationmenu()">aquilo que gostaria de encontrar</a>.
+                        -->
                     </p>
                 </div>
-                <div id="bghome">
-                </div>
+                <div id="bghome"></div>
             </div>
 
             <div id="container-home-topo-items-sub"></div>
-        
+
             <div id="container-home-bottom-items">
+                <!-- NOVIDADE CARD -->
+                <div id="mask-novidades-card-container">
+                    <div id="novidades-card-container">
+                        Novidades!
+                    </div>
+                </div>
+                <!-- NOVIDADE 1 -->
                 {{ range where .Site.RegularPages "Params.Lastpost1" true }}
                     {{ if eq .Params.Lastpost1type "galeria"}}
                         <div id="item-bottom-esq" onclick="window.location.href='galeriailustracoes/?id={{ .Params.Projectid | safeURL }}'">
-                            <div class="novidade-notice">
-                                <span>Novidade</span></div>
                             <div class="overlay-home-news"></div>
                             <div class="organizer-home-news-text">
                                 <p class="home-news-type">{{ .Params.Lastpost1type }}</p>
@@ -42,13 +45,11 @@
                                     <h2 class="home-news-title"> {{ .Params.Titlecontinuity }} </h2>
                                 {{ end }}
                             </div>
-                            <img id="home-novidade-1" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
+                            <img id="home-novidade-1" src="{{ .Params.Homeimage }}" alt="{{ .Params.Homeimagealt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
                         </div>
                     {{ end }}
                     {{ if eq .Params.Lastpost1type "loja"}}
                         <div id="item-bottom-esq" onclick="window.open('{{ .Params.Linknovidadeloja | safeURL }}')">
-                            <div class="novidade-notice">
-                                <span>Novidade</span></div>
                             <div class="overlay-home-news"></div>
                             <div class="organizer-home-news-text">
                                 <p class="home-news-type">{{ .Params.Lastpost1type }}</p>
@@ -57,13 +58,11 @@
                                     <h2 class="home-news-title"> {{ .Params.Titlecontinuity }} </h2>
                                 {{ end }}
                             </div>
-                            <img id="home-novidade-1" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
+                            <img id="home-novidade-1" src="{{ .Params.Homeimage }}" alt="{{ .Params.Homeimagealt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
                         </div>
                     {{ end }}
                     {{ if or (eq .Params.Lastpost1type "blog") (eq .Params.Lastpost1type "historietas") }}
                         <div id="item-bottom-esq" onclick="window.location.href='{{ .Permalink | safeURL }}'">
-                            <div class="novidade-notice">
-                                <span>Novidade</span></div>
                             <div class="overlay-home-news"></div>
                             <div class="organizer-home-news-text">
                                 <p class="home-news-type">{{ .Params.Lastpost1type }}</p>
@@ -72,15 +71,15 @@
                                     <h2 class="home-news-title"> {{ .Params.Titlecontinuity }} </h2>
                                 {{ end }}
                             </div>
-                            <img id="home-novidade-1" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
+                            <img id="home-novidade-1" src="{{ .Params.Homeimage }}" alt="{{ .Params.Homeimagealt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
                         </div>
                     {{ end }}
                 {{ end }}
 
+                <!-- NOVIDADE 2 -->
                 {{ range where .Site.RegularPages "Params.Lastpost2" true }}
                     {{ if eq .Params.Lastpost2type "galeria"}}
                         <div id="item-bottom-center" onclick="window.location.href='galeriailustracoes/?id={{ .Params.Projectid | safeURL }}'">
-                            <div class="novidade-notice">Novidade</div>
                             <div class="overlay-home-news"></div>
                             <div class="organizer-home-news-text">
                                 <p class="home-news-type">{{  .Params.Lastpost2type }}</p>
@@ -89,13 +88,11 @@
                                     <h2 class="home-news-title"> {{ .Params.Titlecontinuity }} </h2>
                                 {{ end }}
                             </div>
-                            <img id="home-novidade-2" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
+                            <img id="home-novidade-2" src="{{ .Params.Homeimage }}" alt="{{ .Params.Homeimagealt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
                         </div>
                     {{ end }}
                     {{ if eq .Params.Lastpost2type "loja"}}
                         <div id="item-bottom-center" onclick="window.open('{{ .Params.Linknovidadeloja | safeURL }}')">
-                            <div class="novidade-notice">
-                                <span>Novidade</span></div>
                             <div class="overlay-home-news"></div>
                             <div class="organizer-home-news-text">
                                 <p class="home-news-type">{{ .Params.Lastpost2type }}</p>
@@ -104,13 +101,11 @@
                                     <h2 class="home-news-title"> {{ .Params.Titlecontinuity }} </h2>
                                 {{ end }}
                             </div>
-                            <img id="home-novidade-2" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
+                            <img id="home-novidade-2" src="{{ .Params.Homeimage }}" alt="{{ .Params.Homeimagealt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
                         </div>
                     {{ end }}
                     {{ if or (eq .Params.Lastpost2type "blog") (eq .Params.Lastpost1type "historietas") }}
                         <div id="item-bottom-center" onclick="window.location.href='{{ .Permalink | safeURL }}'">
-                            <div class="novidade-notice">
-                                <span>Novidade</span></div>
                             <div class="overlay-home-news"></div>
                             <div class="organizer-home-news-text">
                                 <p class="home-news-type">{{ .Params.Lastpost2type }}</p>
@@ -119,15 +114,15 @@
                                     <h2 class="home-news-title"> {{ .Params.Titlecontinuity }} </h2>
                                 {{ end }}
                             </div>
-                            <img id="home-novidade-2" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
+                            <img id="home-novidade-2" src="{{ .Params.Homeimage }}" alt="{{ .Params.Homeimagealt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
                         </div>
                     {{ end }}
                 {{ end }}
 
+                <!-- NOVIDADE 3 -->
                 {{ range where .Site.RegularPages "Params.Lastpost3" true }}
                     {{ if eq .Params.Lastpost3type "galeria"}}
                         <div id="item-bottom-dir" onclick="window.location.href='galeriailustracoes/?id={{ .Params.Projectid | safeURL }}'">
-                            <div class="novidade-notice">Novidade</div>
                             <div class="overlay-home-news"></div>
                             <div class="organizer-home-news-text">
                                 <p class="home-news-type">{{  .Params.Lastpost3type }}</p>
@@ -136,13 +131,11 @@
                                     <h2 class="home-news-title"> {{ .Params.Titlecontinuity }} </h2>
                                 {{ end }}
                             </div>
-                            <img id="home-novidade-3" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
+                            <img id="home-novidade-3" src="{{ .Params.Homeimage }}" alt="{{ .Params.Homeimagealt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
                         </div>
                     {{ end }}
                     {{ if eq .Params.Lastpost3type "loja"}}
                         <div id="item-bottom-dir" onclick="window.open('{{ .Params.Linknovidadeloja | safeURL }}')">
-                            <div class="novidade-notice">
-                                <span>Novidade</span></div>
                             <div class="overlay-home-news"></div>
                             <div class="organizer-home-news-text">
                                 <p class="home-news-type">{{ .Params.Lastpost3type }}</p>
@@ -151,13 +144,11 @@
                                     <h2 class="home-news-title"> {{ .Params.Titlecontinuity }} </h2>
                                 {{ end }}
                             </div>
-                            <img id="home-novidade-3" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
+                            <img id="home-novidade-3" src="{{ .Params.Homeimage }}" alt="{{ .Params.Homeimagealt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
                         </div>
                     {{ end }}
                     {{ if or (eq .Params.Lastpost3type "blog") (eq .Params.Lastpost1type "historietas") }}
                         <div id="item-bottom-dir" onclick="window.location.href='{{ .Permalink | safeURL }}'">
-                            <div class="novidade-notice">
-                                <span>Novidade</span></div>
                             <div class="overlay-home-news"></div>
                             <div class="organizer-home-news-text">
                                 <p class="home-news-type">{{ .Params.Lastpost3type }}</p>
@@ -166,7 +157,7 @@
                                     <h2 class="home-news-title"> {{ .Params.Titlecontinuity }} </h2>
                                 {{ end }}
                             </div>
-                            <img id="home-novidade-3" src="{{  .Params.Imageheader }}" alt="{{  .Params.Imageheaderalt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
+                            <img id="home-novidade-3" src="{{ .Params.homeimage }}" alt="{{ .Params.homeimagealt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
                         </div>
                     {{ end }}
                 {{ end }}

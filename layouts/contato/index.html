@@ -77,20 +77,16 @@
                                 <a href="{{ . }}" target="_blank"><i class="fa fa-instagram icon"></i></a>
                             {{ end }}
 
+                            {{ with .youtube }}
+                                <a href="{{ . }}" target="_blank"><i class="fa fa-youtube-play icon"></i></a>
+                            {{ end }}
+
                             {{ with .facebook}}
                                 <a href="{{ . }}" target="_blank"><i class="fa fa-facebook-f icon"></i></a>
                             {{ end }}
-    
-                            {{ with .pinterest }}
-                                <a href="{{ . }}" target="_blank"><i class="fa fa-pinterest icon"></i></a>
-                            {{ end }}
 
-                            {{ with .discord }}
-                                <a href="{{ . }}" target="_blank"><i class="fa fa-discord icon"></i></a>
-                            {{ end }}
-                            
-                            {{ with .youtube }}
-                                <a href="{{ . }}" target="_blank"><i class="fa fa-youtube-play icon"></i></a>
+                            {{ with .linkedin}}
+                                <a href="{{ . }}" target="_blank"><i class="fa fa-linkedin icon"></i></a>
                             {{ end }}
                         </div>
                     </section>

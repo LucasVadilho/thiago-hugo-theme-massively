@@ -8,12 +8,12 @@
 #container-navigation-sobre{
     display: inline-flex;
     flex-wrap: nowrap;
-    column-gap: 20px;
+    column-gap: 30px;
 }
 
 .menu-navegation-inside-sobre{
-    margin-top: 80px;
-    font-size: 1.8rem;
+    margin-top: 40px;
+    font-size: 1.5rem;
     font-weight: 600;
     letter-spacing: 2px;
     font-family: system-ui;
@@ -45,15 +45,15 @@
 #go-to-modo-funny:hover,
 #go-to-modo-serio:hover,
 #go-to-modo-poem:hover{
-    transform: scale(1.1) ;
+    transform: scale(1.05) ;
     transition: 0.4s ease-in-out;
     cursor: pointer;
     filter: blur(0);
 }
 
 .container-left-align-text{
-    max-width:1200px;
-    margin: 100px auto;
+    max-width: 1200px;
+    margin: 60px auto 100px auto;
     padding-right: 200px;
     padding-left: 20px;
 }
@@ -159,7 +159,7 @@
 }
 
 .container-poem{
-    margin-top: 100px;
+    margin-top: 60px;
     padding: 0px 30px;
 }
 
@@ -202,7 +202,7 @@
 /* no-funny-buisness-be-formal */
 #no-funny-buisness-be-formal{
     max-width: 850px;
-    margin: 100px auto;
+    margin: 60px auto 100px auto;
     display: none;
     padding: 0px 30px;
 }
