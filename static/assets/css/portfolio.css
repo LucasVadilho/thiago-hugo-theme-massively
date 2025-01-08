@@ -45,6 +45,7 @@
 
 #container-sobre, #contato-form-container{
     display: none;
+    margin-top: 80px;
 }
 
 #container-portfolio-navigation-and-languages{
