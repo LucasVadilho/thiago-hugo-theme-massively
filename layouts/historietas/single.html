@@ -95,7 +95,9 @@
                             <span class="correcting-figcaption-color" style="color: {{ .Params.ContentTextColor | safeCSS }}">
                                 {{ .Content }}
                             </span>
-                            <p class="referenciar" style="margin-top:50px; color: {{ .Params.ContentTextColor | safeCSS }}80">Autor e ilustrador: ©Thiago David Vadilho (TD Vadilho)</p>
+                            <div class="assinatura-content"><img style="{{ .Params.AssinaturaFiltro | safeCSS }}" src="/images/assinatura.png" alt="asssinatura TD Vadilho"></div>
+                            <div class="small-correction" style="margin-top:50px"></div>
+                           <!--  <p class="referenciar" style="margin-top:50px; color: {{ .Params.ContentTextColor | safeCSS }}80">Autor e ilustrador: ©Thiago David Vadilho (TD Vadilho)</p> -->
                             <p class="referenciar" style="color: {{ .Params.ContentTextColor | safeCSS }}80">*Jamais venda ou monetize este conteúdo sem a autorização expressa do autor.</p>
                             <p class="referenciar" style="color: {{ .Params.ContentTextColor | safeCSS }}80">Caso necessário, entre em <a  href='{{ "contato" | relLangURL }}' style="color: {{ .Params.DestaqueLettersColor | safeCSS }}">contato</a>.</p>
                         </div>

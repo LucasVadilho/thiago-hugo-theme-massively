@@ -5,3 +5,45 @@
 #container-texto-and-image-content{
     color:#352743;
 }
+
+#container-texto-and-image-content p{
+    max-width: 800px;
+    margin: 0px auto 12px auto;
+    color: #4a375d;
+    font-size: 1.2rem;
+}
+
+#container-texto-and-image-content h2{
+    max-width: 800px;
+}
+
+#container-table-of-contents h2 {
+    max-width: 860px;
+}
+
+.button-blog{
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-radius: 3px;
+    line-height: normal;
+    transition: transform .2s ease;
+    background-color: #4F46E5;
+    margin-right: 10px;
+    margin: 40px auto 0px auto;
+    max-width: fit-content;
+}
+
+.button-blog:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: transform .2s ease;
+}
+
+.notice{
+    font-size: 0.9rem !important;
+    color: var(--grey-color-text) !important;
+    text-align: center !important;
+    margin-top: 10px !important;
+    text-wrap: balance !important;
+}

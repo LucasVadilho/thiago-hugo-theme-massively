@@ -77,8 +77,10 @@ td{
 }
 
 #container-texto-and-image-content p{
-    max-width: 860px;
+    max-width: 800px;
     margin: auto;
+    font-size: 1.2rem;
+    hyphens: none;
 }
 
 #container-texto-and-image-content h2{
@@ -122,7 +124,7 @@ figcaption p{
     text-align: center;
     line-height: 1.5;
     color: var(--grey-color-text) !important;
-    font-size: 0.9rem;
+    font-size: 0.9rem !important;
     font-style: italic;
     font-family: math;
     max-width: 600px !important;

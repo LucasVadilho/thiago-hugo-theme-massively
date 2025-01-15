@@ -226,11 +226,12 @@
 
 .contracapa-chamada{
     margin-top: auto;
-    line-height: 1.5;
+    line-height: 1.35;
     text-align: center;
     text-wrap: balance;
     margin-bottom: 10px;
     font-size: 1.1rem;
+    hyphens: none;
 }
 
 .contracapa img{
