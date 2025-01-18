@@ -27,14 +27,18 @@
 								<li><span class="fa-solid fa-clock"></span>{{ .Params.Tempoleitura }}</li>
 								<li class="comments-container">
 									<span class="fa-solid fa-comments"></span>
-									<a href="{{ .Permalink | safeURL }}#remark42">
-										<span class="remark42__counter" data-url="{{ .Permalink | safeURL }}"></span>
-									</a>
+									<span class="span-link">
+										<a href="{{ .Permalink | safeURL }}#remark42">
+											<span class="remark42__counter" data-url="{{ .Permalink | safeURL }}"></span>
+										</a>
+									</span>
 								</li> 
 								<li><span class="fa-solid fa-tags" aria-hidden="true"></span>
 									{{ range $k, $v := .GetTerms "tags" }}
 										{{- if $k }}| {{ end }}
-										<a class="tags-container" onclick="window.location.href='/tags/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+										<span class="span-link">
+											<a class="tags-container" onclick="window.location.href='/tags/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+										</span>
 									{{ end }}
 								</li>
 							</ul>
@@ -69,14 +73,18 @@
 								<li><span class="fa-solid fa-clock"></span>{{ .Params.Tempoleitura }}</li>
 								<li class="comments-container">
 									<span class="fa-solid fa-comments"></span>
-									<a href="{{ .Permalink | safeURL }}#remark42">
-										<span class="remark42__counter" data-url="{{ .Permalink | safeURL }}"></span>
-									</a>
+									<span class="span-link">
+										<a href="{{ .Permalink | safeURL }}#remark42">
+											<span class="remark42__counter" data-url="{{ .Permalink | safeURL }}"></span>
+										</a>
+									</span>
 								</li> 
 								<li><span class="fa-solid fa-tags" aria-hidden="true"></span>
 									{{ range $k, $v := .GetTerms "tags" }}
 										{{- if $k -}}| {{ end }}
-										<a class="tags-container" onclick="window.location.href='/tags/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+										<span class="span-link">
+											<a class="tags-container" onclick="window.location.href='/tags/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+										</span>
 									{{ end }}
 								</li>
 							</ul>

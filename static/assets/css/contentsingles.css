@@ -139,6 +139,8 @@ figcaption p{
     font-size: 1.25rem;
     line-height: 1.5;
     padding-left: 10%;
+    color: #5e4b83;
+    font-weight: 600;
 }
 
 h2{ /* Tópicos principais do content */
@@ -240,7 +242,7 @@ body {
 }
 
 #TableOfContents ul{
-    list-style-type: "-";
+    list-style-type: "- ";
     padding-left: 2.5rem;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -338,7 +340,55 @@ body {
     margin-bottom: 20px;
 }
 
+/* Sidenotes */
+.sidenote-web{
+    width: 300px;
+    display: flex;
+    position: relative;
+    font-size: 1rem !important;
+    color: #655be8cf !important;
+    line-height: 1;
+    flex-direction: column;
+    transform: translate(-650px, 36px);
+    height: 0;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.sidenote-web-embellish{
+    border-top: 1px solid;
+    width: 350px;
+    margin: 0px auto -13px auto;
+    height: 0px;
+/*     transform: translate(-600px, 62px); */
+    color: #655be863 !important;
+}
+
+.sidenote-mobile{ /* regras de media em baixo */
+    display: none;
+    position: relative;
+    font-size: 1rem !important;
+    color: #655be8cf !important;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1;
+    flex-direction: column;
+    transform: translateX(-650px);
+}
+
+
 /* REGRAS DE MEDIA */
+@media  screen and (max-width: 1500px){
+    .sidenote-mobile{
+        display: flex;
+        max-width: 800px;
+        transform: none;
+    }
+    .sidenote-web-embellish, .sidenote-web{
+        display: none;
+    }
+}
+
 @media  screen and (max-width: 861px){
     #container-texto-and-image-content{
         padding: 80px 20px 0px 20px;

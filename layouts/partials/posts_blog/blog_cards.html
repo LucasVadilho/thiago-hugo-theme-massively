@@ -6,8 +6,10 @@
 		<div class="post-card" style="background-image: url('{{ .Params.Imagethumb }}');" onclick="window.location.href='{{ .Permalink | safeURL }}';">
 			<div class="categories-container">
 				{{- range $categories := .Params.Blogcategorias -}}
-				<a onclick="window.location.href='/blogcategorias/{{ replace $categories " " "-"}}';event.stopPropagation()" class="category-container">
-					<span class="category {{ $categories }}">{{- $categories }}</span>
+				<a onclick="window.location.href='/blogcategorias/{{ replace $categories " " "-"}}';event.stopPropagation()" >
+					<div class="category-container">
+						<span class="category {{ $categories }}">{{- $categories }}</span>
+					</div>
 				</a>
 				{{- end -}}
 			</div>
@@ -19,12 +21,16 @@
 					<li><span class="fa-solid fa-clock"></span>{{ .Params.Tempoleitura }}</li>
 					<li class="comments-container">
 						<span class="fa-solid fa-comments"></span>
-						<a href="{{ .Permalink | safeURL }}#remark42"><span class="remark42__counter" data-url="{{ .Permalink | safeURL }}"></span></a>
+						<div class="span-link" style="display: contents;">
+							<a href="{{ .Permalink | safeURL }}#remark42"><span class="remark42__counter" data-url="{{ .Permalink | safeURL }}"></span></a>
+						</div>
 					</li>  
 					<li><span class="fa-solid fa-tags" aria-hidden="true"></span>
 						{{ range $k, $v := .GetTerms "blogtags" }}
 							{{- if $k -}}| {{ end }}
-							<a class="tags-container" onclick="window.location.href='/blogtags/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+							<div class="span-link" style="display: contents;">
+								<a class="tags-container" onclick="window.location.href='/blogtags/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+							</div>
 						{{ end }}
 					</li>
 				</ul>

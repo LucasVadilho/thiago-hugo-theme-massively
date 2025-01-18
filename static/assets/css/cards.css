@@ -46,24 +46,40 @@
 
 .category-container{
     transition: transform .2s ease;
-    -webkit-filter: blur(0);
+    position: relative;
+    z-index: 2;
 }
 
 .category-container:hover, .turn-page:hover{
-    transform: scale(1.1);
+    transform: rotate(-5deg);
     transition: transform .2s ease;
 }
 
-.post-card-description{
-    line-height: 1.3rem;
-    hyphens: none;
-    text-wrap: balance;
-    text-shadow: 1px 1px 1px var(--dark-color-text);
-    margin-bottom: 5px;
+.post-card:has(.category-container:hover), .post-card:has(.span-link:hover){
+    background-size: 100%;
 }
 
+.post-card-description{
+    line-height: 1.2rem;
+    hyphens: none;
+    text-wrap: balance;
+    background:#fdfcff;
+    width: 110%;
+    color: #3f2a55;
+    padding: 15px 10px 10px 25px;
+    margin-left: -25px;
+    margin-top: -15px;
+} 
+
 .post-card-info{
-    text-shadow: 1px 1px 1px var(--dark-color-text);
+    background:#fdfcff;
+    width: 110%;
+    color: #261538;
+    padding: 5px 10px 10px 25px;
+    margin-left: -25px;
+    margin-top: -15px;
+    z-index: -1;
+    /* text-shadow: 1px 1px 1px var(--dark-color-text); */
 }
 
 .post-card-info-list{
@@ -87,22 +103,24 @@
 }
 
 .post-card-info-list li a{
-    color: white;
+    color: #131313;
+    /* color: white; */
     text-decoration: underline;
 }
 
 .post-card-info-list li span{
+    color: #131313;
     margin-right: 5px;
 }
 
 .category{
     -moz-border-radius: 5px;
-    -webkit-border-radius: 5px; 
+    -webkit-border-radius: 5px;
     border-radius: 5px;
-    padding: 3px;
-    font-weight: bold;
-    font-size: 0.8rem;
-    letter-spacing: 0.025rem;
+    padding: 3px 5px;
+    letter-spacing: 0.6px;
+    font-size: 14px;
+    font-weight: 600;
 }
 
 .tags-container{
@@ -293,7 +311,7 @@
 #container-mais-posts-como-esse-cards{
     display: inline-flex;
     justify-content: space-around;
-    overflow: hidden;
+ /*    overflow: hidden; */
     column-gap: 30px;
     align-items: center;
 }
