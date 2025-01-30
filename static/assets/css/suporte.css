@@ -3,7 +3,7 @@
     border-width: thin;
     text-align: center;
     background-color: var(--support-bg-color);
-    padding: 120px 30px 90px 30px;
+    padding: 120px 14px 90px 14px;
     margin-top: 100px;
 }
 
@@ -36,7 +36,7 @@
 
 .container-imortalizados-da-vez p{
     hyphens: none !important;
-    padding: 0px 15px;
+    text-wrap: balance;
 }
 
 .imortalizados{
@@ -64,6 +64,7 @@
 .nomes-imortalizados{
     max-width: 100%;
     position: relative;
+    margin-top: 20px;
 }
 
 #container-modos-de-apoiar{
@@ -124,13 +125,16 @@
     padding: 8px;
     border-radius: 3px;
     line-height: normal;
-    transition: transform .2s ease;
 }
 
-.button-contribuicao-direta:hover{
+.button-contribuicao-direta:nth-child(1):hover{
     cursor: pointer;
-    transform: scale(1.1);
-    transition: transform .2s ease;
+    transform: rotate(-6deg);
+}
+
+.button-contribuicao-direta:nth-child(2):hover{
+    cursor: pointer;
+    transform: rotate(4deg);
 }
 
 .button-contribuicao-direta:nth-child(1){
@@ -158,13 +162,16 @@
     padding: 8px;
     border-radius: 3px;
     line-height: normal;
-    transition: transform .2s ease;
 }
 
-.button-linkafiliado:hover{
+.button-linkafiliado:nth-child(1):hover{
     cursor: pointer;
-    transform: scale(1.1);
-    transition: transform .2s ease;
+    transform: rotate(-4.3deg);
+}
+
+.button-linkafiliado:nth-child(2):hover{
+    cursor: pointer;
+    transform: rotate(3deg);
 }
 
 .button-linkafiliado:nth-child(1){
@@ -193,7 +200,6 @@
     width: fit-content;
     margin: auto;
     margin-top: 12px;
-    transition: transform .2s ease;
 }
 
 .button-compartilhar-container{
@@ -203,8 +209,7 @@
 
 .button-compartilhar-post:hover{
     cursor: pointer;
-    transform: scale(1.1);
-    transition: transform .2s ease;
+    transform: rotate(5.2deg);
 }
 
 /* text inside button */
@@ -214,7 +219,6 @@
     font-weight: 700;
     letter-spacing: 0.075em;
     padding: 0px 0px 0px 4px;
-    filter: blur(0);
 }
 
 .fa-link, .compartilhar{

@@ -28,7 +28,7 @@
     --highlight-color-text: #554c58;
     --dark-color-text: #131313;
     --grey-color-text: #888888e0;
-    --first-words-color: #4b1717;
+    --first-words-color: #3b1029;
 
     --accent-color: #682e29;
     
@@ -197,13 +197,13 @@ figcaption{
     margin: auto;
     margin-bottom: 40px;
     text-align: center;
-    hyphens: none !important;
     text-wrap: balance;
     padding: 0px 20px 0px 20px;
 }
 
 .container-header-text p{
     font-size: 1.15rem;
+    hyphens: none !important;
 }
 
 #historietas-header-name{
@@ -555,7 +555,7 @@ p>a:hover, figcaption>a:hover{
 /* ------------------- Asssinatura Content -------------- */
 .assinatura-content{   
     margin: 40px auto 0 auto;
-    width: 800px;
+    max-width: 800px;
     display: flex;
     justify-content: center;
 }

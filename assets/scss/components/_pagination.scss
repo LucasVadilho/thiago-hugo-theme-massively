@@ -87,13 +87,13 @@
 				color: #424243;
 
 				&:hover {
-					background-color: _palette($p, half-accent);
+					background-color: #cd98b6;
 					z-index: 1;
 				}
 
 				&.active {
-					background-color: _palette($p, accent);
-					color: _palette($p, half-accent) !important;
+					background-color: #b9518d !important;
+					color: #ffffff !important;
 				}
 			}
 

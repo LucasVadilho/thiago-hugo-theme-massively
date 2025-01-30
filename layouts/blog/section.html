@@ -21,6 +21,7 @@
                     a libertação criativa continuar :)</i></p>
             </div>
         </div>
+
         <div id="container-post-all-after-header">
             <div id="container-postagens">
                 {{ partial "posts_blog/list.html" (dict "posts" $postsPaging "siteData" (index .Site.Data .Site.Language.Lang)) }}

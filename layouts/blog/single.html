@@ -58,7 +58,9 @@
                                         <span>{{ .Params.Tempoleitura }}utos</span>
                                     </h4>
                                 </div>
+                                
                                 <img src="{{ .Params.Imageheader }}" alt="{{ .Params.Imageheaderalt }}">
+                                <div id="bg-image-correction"></div>
                             </div>
                         </div>
 
@@ -84,7 +86,9 @@
                             <h1>Apoie a Toca</h1>
                             <div class="container-imortalizados-da-vez">
                                 <div class="container-imortalizados-da-vez">
-                                    <p>A criação desse conteúdo somente foi possível graças ao apoio dos incríveis leitores e leitoras do site.  Como forma de representar o meu agradecimento, deixo alguns de vocês <i><a class="imortalizados" onclick="openImortalizados()">imortalizados</a></i> nesta postagem. É uma homenagem simples, eu sei, mas a simplicidade é ótima em carregar coisas do coração.</p>
+                                    <p>A criação desse post foi possível graças ao apoio dos incríveis leitores e leitoras do blog.  
+                                        Como forma de agradecimento, deixo alguns <i><a class="imortalizados" onclick="openImortalizados()">imortalizados</a></i> nesta página. 
+                                        É uma homenagem simples, mas a simplicidade é ótima em carregar coisas do coração.</p>
                                     <img class="nomes-imortalizados" src="{{ .Params.Imortalizadosdavez }}" alt="{{ .Params.Imortalizadosdavezalt }}">
                                 </div>
                             </div>
@@ -115,3 +119,41 @@
     {{- partial "scripts/index" . }}
     {{- partial "meusscripts" . -}}
 </body>
+
+<script>
+    /* Primeiro, seta a height e o top quando a página carrega */
+    addEventListener("load", (event) => {
+        var containerheader = document.getElementById("container-header-single-post");
+        if(containerheader) {
+            var rect = containerheader.getBoundingClientRect();
+            console.log("height: " + rect.height);
+
+            var correctiondiv = document.getElementById("bg-image-correction");
+            if((correctiondiv) && (rect.width > 768)){
+                correctiondiv.style.top = ((0.8 * rect.height) - 2);
+                correctiondiv.style.height = ((0.2 * rect.height) + 2);
+            } else{
+                correctiondiv.style.top = ((0.9 * rect.height) - 2);
+                correctiondiv.style.height = ((0.1 * rect.height) + 2);
+            }
+        }
+    });
+
+    /* Depois, em window resize, precisa ajeitar esse valor */
+    addEventListener("resize", (event) => {
+        var containerheader = document.getElementById("container-header-single-post");
+        if(containerheader) {
+            var rect = containerheader.getBoundingClientRect();
+            console.log("height: " + rect.height);
+
+            var correctiondiv = document.getElementById("bg-image-correction");
+            if((correctiondiv) && (rect.width  > 768)){
+                correctiondiv.style.top = ((0.8 * rect.height) - 2);
+                correctiondiv.style.height = ((0.2 * rect.height) + 2);
+            } else{
+                correctiondiv.style.top = ((0.9 * rect.height) - 2);
+                correctiondiv.style.height = ((0.1 * rect.height) + 2);
+            }
+        }
+    });
+</script>

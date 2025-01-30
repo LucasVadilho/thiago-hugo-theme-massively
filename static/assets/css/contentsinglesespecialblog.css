@@ -8,7 +8,7 @@
 
 #container-texto-and-image-content p{
     max-width: 800px;
-    margin: 0px auto 12px auto;
+    margin: 0px auto 20px auto;
     color: #5e427b;
     font-size: 1.2rem;
 }
@@ -27,17 +27,23 @@
     padding: 8px;
     border-radius: 3px;
     line-height: normal;
-    transition: transform .2s ease;
-    background-color: #4F46E5;
+    background-color: #e54646;
     margin-right: 10px;
     margin: 40px auto 0px auto;
     max-width: fit-content;
 }
 
-.button-blog:hover{
+.button-blog-ahref{
+    display: contents;
+}
+
+.button-blog-ahref:hover>.button-blog{
     cursor: pointer;
-    transform: scale(1.1);
-    transition: transform .2s ease;
+    transform: rotate(5deg);
+}
+
+.button-blog>.button-text{
+    font-size: 1rem;
 }
 
 .notice{

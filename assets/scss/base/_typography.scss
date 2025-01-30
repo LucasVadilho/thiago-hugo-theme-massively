@@ -36,7 +36,7 @@
 
 	p {
 		text-justify: left;
-		line-height: 1.7;
+		line-height: 1.55;
 		font-size: 1.25rem;
 		word-break: break-word;
 		hyphens: auto;
@@ -165,7 +165,7 @@
 
 			&:hover {
 				border-bottom-color: transparent;
-				color: _palette($p, accent) !important;
+				color: #3b1029 !important;
 			}
 		}
 
