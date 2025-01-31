@@ -6,7 +6,7 @@
 		<div class="post-card" style="background-image: url('{{ .Params.Imagethumb }}');" onclick="window.location.href='{{ .Permalink | safeURL }}';">
 			<div class="categories-container">
 				{{- range $categories := .Params.Blogcategorias -}}
-				<a onclick="window.location.href='/blogcategorias/{{ replace $categories " " "-"}}';event.stopPropagation()" >
+				<a href="/blogcategorias/{{ replace $categories ` ` `-`}}" >
 					<div class="category-container">
 						<span class="category {{ $categories }}">{{- $categories }}</span>
 					</div>
@@ -29,7 +29,7 @@
 						{{ range $k, $v := .GetTerms "blogtags" }}
 							{{- if $k -}}| {{ end }}
 							<div class="span-link" style="display: contents;">
-								<a class="tags-container" onclick="window.location.href='/blogtags/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+								<a class="tags-container" onclick="window.location.href='/blogtags/{{ lower (replace .LinkTitle ` ` `-`)}}';event.stopPropagation()">{{ .LinkTitle }}</a>
 							</div>
 						{{ end }}
 					</li>

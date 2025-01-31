@@ -12,7 +12,7 @@
 				</a>
 				<div class="categories-historietas">
 					{{- range $categories := .Params.historietascategorias -}}
-					<a onclick="window.location.href='/historietascategorias/{{ $categories }}'" class="category-container">
+					<a href="/historietascategorias/{{ replace $categories ` ` `-` }}" class="category-container">
 						<span class="category {{ $categories }}">{{- $categories }}</span>
 					</a>
 					{{- end -}}
@@ -40,7 +40,7 @@
 					<li><span class="fa-solid fa-tags" aria-hidden="true"></span>
 						{{ range $k, $v := .GetTerms "historietastags" }}
 							{{- if $k -}}| {{ end }}
-							<a class="tags-container" onclick="window.location.href='/historietastags/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+							<a class="tags-container span-link" href="/historietastags/{{ lower (replace .LinkTitle ` ` `-`)}}">{{ .LinkTitle }}</a>
 						{{ end }}
 					</li>
 				</ul>

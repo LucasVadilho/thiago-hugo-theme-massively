@@ -52,11 +52,11 @@
                                                 {{ $firstChar := substr .LinkTitle 0 1 }}
                                                 {{ if eq $firstChar "a" }}
                                                     <span class="span-link" style="text-transform: uppercase">
-                                                        <a onclick="window.location.href='/historietascategorias/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+                                                        <a href="/historietascategorias/{{ lower (replace .LinkTitle ` ` `-`)}}">{{ .LinkTitle }}</a>
                                                     </span>
                                                 {{ else }}
                                                     <span class="span-link">
-                                                        <a onclick="window.location.href='/historietascategorias/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+                                                        <a href="/historietascategorias/{{ lower (replace .LinkTitle ` ` `-`)}}">{{ .LinkTitle }}</a>
                                                     </span>
                                                 {{ end }}
                                         {{ end }}
@@ -72,7 +72,7 @@
                                         {{ range $k, $tags := .GetTerms "tags" }}
                                             {{- if $k }}<span style="text-transform: none">e </span>{{ end }}
                                             <span class="span-link">
-                                                <a class="tags-container" onclick="window.location.href='/historietastags/{{ .LinkTitle | safeURL }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+                                                <a class="tags-container" href="/historietastags/{{ lower (replace .LinkTitle ` ` `-`)}}">{{ .LinkTitle }}</a>
                                             </span>
                                         {{ end }}
                                     </h4>

@@ -188,8 +188,12 @@ figcaption{
     max-width: 100%;
 }
 
-#historietas-header-name img, #blog-header-name img, #contato-header-name img, #livros-header-name img, #loja-header-name img, #galeria-ilustracoes-header-name img, #sobre-header-name img {
+#blog-header-name img, #contato-header-name img, #livros-header-name img, #loja-header-name img, #galeria-ilustracoes-header-name img, #sobre-header-name img {
     width: 700px;
+}
+
+#historietas-header-name img{
+    width: 850px;
 }
 
 .container-header-text{
@@ -417,7 +421,14 @@ p>a, figcaption>a{
     position: sticky;
 }
 
-p>a::before, figcaption a::before{
+li>a.span-link{
+    text-decoration: underline;
+    position: relative;
+    display: -webkit-inline-box;
+    position: sticky; 
+}
+
+p>a::before, figcaption a::before, li>a.span-link::before{
     background: hsl(45 100% 70%);
     content: "";
     inset: 0;
@@ -428,39 +439,40 @@ p>a::before, figcaption a::before{
     z-index: -1;
 }
 
-p>a:hover::before, figcaption a:hover::before{
+p>a:hover::before, figcaption a:hover::before, li>a.span-link:hover::before{
     transform: scaleX(1);
     transform-origin: left;
 }
 
-p>a:hover, figcaption>a:hover{
+p>a:hover, figcaption>a:hover, li>a.span-link:hover{
     color: #252121 !important;
 }
-    /* Especial span dos singles (historietas e blog) */
-    .span-link>a{
-        position: sticky;
-    }
 
-    .span-link a::before{
-        background: hsl(45 100% 70%);
-        content: "";
-        inset: 0;
-        position: absolute ;
-        transform: scaleX(0);
-        transform-origin: right;
-        transition: transform 0.5s ease-in-out;
-        z-index: -1;
-    }
+/* Especial span dos SINGLES (historietas e blog) */
+.span-link>a{
+    position: sticky;
+}
 
-    .span-link>a:hover::before{
-        transform: scaleX(1);
-        transform-origin: left;       
-    }
+.span-link a::before{
+    background: hsl(45 100% 70%);
+    content: "";
+    inset: 0;
+    position: absolute ;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s ease-in-out;
+    z-index: -1;
+}
 
-    .span-link>a:hover{
-        color: #252121 !important;
-        cursor: pointer;
-    }
+.span-link>a:hover::before{
+    transform: scaleX(1);
+    transform-origin: left;       
+}
+
+.span-link>a:hover{
+    color: #252121 !important;
+    cursor: pointer;
+}
 
 /* -------------Fim Hover em Palavra Link--------------- */
 

@@ -134,6 +134,15 @@
 }
 
 /* ESPECIAL >>>>>>>>>>>>HISTORIETAS<<<<<<<<<<<<<< */
+.categories-historietas a:hover:has(> .contos) {transform: rotate(4.2deg);}
+.categories-historietas a:hover:has(> .crônicas) {transform: rotate(-4deg);}
+.categories-historietas a:hover:has(> .al) {transform: rotate(-4.2deg);}
+.categories-historietas a:hover:has(> .a10) {transform: rotate(-4.7deg);}
+.categories-historietas a:hover:has(> .a12) {transform: rotate(-5deg);}
+.categories-historietas a:hover:has(> .a14) {transform: rotate(-6deg);}
+.categories-historietas a:hover:has(> .a16) {transform: rotate(6deg);}
+.categories-historietas a:hover:has(> .a18) {transform: rotate(5.25deg);}
+
 .post-card-historietas{
     width: 300px;
     height: 424px;
@@ -273,6 +282,7 @@
     margin-right: -5px;
     text-align: right;
     padding: 0;
+    color: #251d4a !important;
 }
 
 .post-card-info-list-historietas li{
@@ -287,10 +297,12 @@
 
 .remark42__counter{
     margin-right: 0px !important;
+    color: #251d4a !important;
 }
 
 .post-card-info-list-historietas li a{
     text-decoration: underline;
+    color: #251d4a !important;
 }
 
 .post-card-info-list-historietas li span{
@@ -426,12 +438,12 @@
 }
 
 .contos{
-    background-color: rgb(184, 76, 76);
+    background-color: rgb(131, 26, 87);
     text-transform: capitalize; 
     color: var(--whitesmoke-color);
 }
 
-.crônica{
+.crônicas{
     background-color: rgb(45, 115, 128);
     text-transform: capitalize; 
     color: var(--whitesmoke-color);
