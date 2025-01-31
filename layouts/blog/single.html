@@ -31,7 +31,7 @@
                                         {{ range $v, $categories := .GetTerms "categories" }}
                                             {{- if $v }}<span style="text-transform: none">e </span>{{ end }}
                                             <span class="span-link">
-                                                <a onclick="window.location.href='/blogcategorias/{{ replace .LinkTitle " " "-" }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+                                                <a href="/blogcategorias/{{ lower (replace .LinkTitle ` ` `-`)}}">{{ .LinkTitle }}</a>
                                             </span>
                                         {{ end}}
                                     </h4>
@@ -45,7 +45,7 @@
                                         {{ range $k, $tags := .GetTerms "tags" }}
                                             {{- if $k }}, {{ end }}
                                             <span class="span-link">
-                                                <a class="tags-container" onclick="window.location.href='/blogtags/{{ .LinkTitle }}';event.stopPropagation()">{{ .LinkTitle }}</a>
+                                                <a class="tags-container" href="/blogtags/{{ lower (replace .LinkTitle ` ` `-`)}}">{{ .LinkTitle }}</a>
                                             </span>
                                         {{ end }}
                                     </h4>
