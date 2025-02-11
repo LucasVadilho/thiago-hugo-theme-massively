@@ -29,6 +29,7 @@
                     class="{{ .Params.Class }}"
                     backgroundcolor="{{ .Params.Backgroundcolor | safeCSS }}"
                     naturalcoloricons="{{ .Params.Naturalcoloricons | safeCSS }}"
+                    scrollbarcolor="{{ .Params.Scrollbarcolor | safeCSS }}"
                     >
                     <div class="thumbprojeto-nomeandview">
                         <p class="nome">{{ .Params.tituloprojeto }}</p>
@@ -79,7 +80,7 @@
             rect = document.getElementById('openProject').getBoundingClientRect();
             
             buttonClose = document.getElementById('topButtonsContainer');
-            console.log(rect.x, rect.width, buttonClose.clientWidth);
+            /* console.log(rect.x, rect.width, buttonClose.clientWidth); */
             buttonClose.style.paddingLeft = `${rect.x + rect.width - buttonClose.scrollWidth}px`;
         }
     }
@@ -127,6 +128,8 @@
         snackbar.style.backgroundColor = document.getElementById(id).getAttribute('backgroundcolor');
         let backgroundOfProject = document.getElementById(id).getAttribute('backgroundcolor');
         let naturalcoloricons =  document.getElementById(id).getAttribute('naturalcoloricons');
+        let scrollbarcolor = document.getElementById(id).getAttribute('scrollbarcolor');
+        changeColorScrollBar(scrollbarcolor);
 
         //CRIANDO TOP PART
         let topButtonsContainer = "";
@@ -170,17 +173,17 @@
                 openProject += '<img src="' + item.src + '" max-width="100%"  alt="'+ item.alt +'"  style="display:block; object-fit: contain; margin:'+item.margin+'" class="snackZoom '+ item.class +'" id="snackZoomId"/>'
             }
             if (item.type == 'imageSide') {
-                openProject += '<div class="imagesSideBySide" margin:"'+item.margin+' column-gap:' + item.columngap +'">'
+                openProject += '<div class="imagesSideBySide" style="margin:'+ item.margin +'; column-gap:' + item.columngap +'">'
                 for(i = 0; i < item.src.length; i++){
                     openProject += '<img src="' + item.src[i] + '" alt="'+ item.alt[i] +'"  style="display:block; object-fit: contain;margin-top:'+ item.imgmargintop[i] +'" class="snackZoom ' + item.class + '" id="snackZoomId"/>';
                 }
                 openProject += '</div>'
             }
             if (item.type == 'imagebuythis') {
-                openProject += '<img src="' + item.src + '" max-width="100%"  alt="'+ item.alt +'"  style="display:block; object-fit: contain; margin:'+item.margin+'; filter:'+item.filter+'" class="snackZoom '+ item.class +'" id="snackZoomId" onclick="openLink(`'+ lojalink +'`);"/>'
+                openProject += '<div class="container-buy-this" onclick="openLink(`'+ lojalink +'`)"><img src="' + item.src + '" max-width="100%"  alt="'+ item.alt +'"  style="display:block; object-fit: contain; margin:'+item.margin+'; filter:'+item.filter+'" class="snackZoom '+ item.class +'" id="snackZoomId";"/></div>'
             }
             if (item.type == 'video') {
-                openProject += '<div style="margin:'+ item.margin +';" class="iframecontainer noselect" id="snackZoomId"><iframe src="' + item.src + '" alt="' + item.alt + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" frameorder="0" vspace="0" hspace="0" marginwidth="0" marginheight="0" width="100%" style="margin: 0 0 0 0" frameBorder="0" scrolling="no" style="border: 0px" allowfullscreen></iframe></div>'
+                openProject += '<div style="margin:'+ item.margin +';" class="iframecontainer noselect" id="snackZoomId"><iframe src="' + item.src + '" alt="' + item.alt + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" frameorder="0" vspace="0" hspace="0" marginwidth="0" marginheight="0" width="100%" style="margin: 0 0 0 0; padding-left: 15px; padding-right: 15px;" frameBorder="0" scrolling="no" style="border: 0px" allowfullscreen></iframe></div>'
             }
             if(item.type == 'textleft') {
                 openProject += '<div class="container-text-inside-proj-left"><p class="'+ item.class +'"; style="color:'+ item.textcolor + '!important; margin:'+ item.margin +';text-align:'+ item.textalign +' !important' +';font-style:'+ item.fontstyle +' !important">'+ item.text +'</p></div>'
@@ -309,5 +312,8 @@
         document.body.style.cssText = 'overflow: auto';
         document.body.className = 'normal';
         flagProjAberto = false;
+
+        document.styleSheets[0].deleteRule(0);
+        resetScrollBarColor();
     }
 </script>

@@ -1,5 +1,5 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/geral.css"> <!-- Chamando CSS geral -->
-<link rel="stylesheet" type="text/css" href="/assets/css/home.css"> <!-- Chamando CSS geral -->
+<link rel="stylesheet" type="text/css" href="/assets/css/home.css"> <!-- Chamando CSS home -->
 
 {{- partial "htmlhead" . -}}<!-- puxando as metatags -->
 {{- partial "navigationlinks" . -}}<!-- puxando os menus -->
@@ -7,19 +7,14 @@
 <body>
     <!-- Main --> 
     <div id="main">
-        {{- partial "pageHeaderMenuAndLogo" . -}}
         <div id="container-home">
             <div id="container-home-topo-items">
                 <div id="organizer-container-text-items">
                     <a href='{{ absURL "sobre" }}'><img src="/images/assinatura.png" alt="TD Vadilho"></a>
                     <p class = "intro-paragraph">
                         <i>Escritor e Ilustrador. Criador e <span class="nowrap">co-criador</span> de histórias que gostaria de encontrar</i>
-                        <!-- 
-                        Escritor-ilustrador ou ilustrador-escritor. Depende de como você olhar.
-                        Para simplificar, <i>criador e contador de histórias</i>. Alguém que só quer ser criativo. Alguém que só quer escrever e ilustrar.
-                        Eu acredito na capacidade emocional e transformativa das histórias criativas, e é por isso que coloco no mundo <a onclick="opennavigationmenu()">aquilo que gostaria de encontrar</a>.
-                        -->
                     </p>
+                    {{- partial "pageHeaderMenuAndLogo" . -}}
                 </div>
                 <div id="bghome"></div>
             </div>

@@ -8,7 +8,7 @@
     --support-p-color: #141414;
     --imortalizados-da-vez: #F79256; 
 
-    --accent-yellowish: #FFC97F;
+    --accent-yellowish: #ffd966;
     --accent-avocadish: #C1B241;
     --accent-blueish: #4199c1;
     --accent-redish: #FFC7AF;
@@ -83,10 +83,12 @@ body{
 }
 
 #menu-to-navigate{
-    right: 15px;
+    right: 2px;
     position: fixed;
+    scale: 0.8;
 }
 
+.menu-special-main{display: none;}
 .menu-hamburger{display: none;}
 
 @keyframes smooth-appear {
@@ -101,7 +103,8 @@ body{
 #nav{
     display: none;
     text-align: center;
-    background-color: var(--accent-yellowish);
+    background-color: #ffd966;
+    /* background-color: var(--accent-yellowish); */
     width: 100.1%;
     height: 100dvh;
     position: fixed;
@@ -381,7 +384,7 @@ html {
     background-color: var(--main-bg-color);
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 426px) {
     ::-webkit-scrollbar {
         width: 5px;
         height: 5px;
@@ -401,7 +404,7 @@ html {
     
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 425px) {
     ::-webkit-scrollbar-track-piece:start {
         background: transparent url('images/backgrounds/scrollbar.png') repeat-y !important;
     }
@@ -602,10 +605,10 @@ p>a:hover, figcaption>a:hover, li>a.span-link:hover{
 /*---------ANIM SCROLL IMAGE-------------*/
 .not-shown-img-state{
     opacity: 0;
-    -moz-transition: all 1s ease-out;
-    -webkit-transition: all 1s ease-out;
-    -o-transition: all 1s ease-out;
-    transition: all 1s ease-out;
+    -moz-transition: all 0.8s ease-out;
+    -webkit-transition: all 0.8s ease-out;
+    -o-transition: all 0.8s ease-out;
+    transition: all 0.8s ease-out;
     -moz-transform: translate3d(0px, 200px, 0px);
     -webkit-transform: translate3d(0px, 200px, 0px);
     -o-transform: translate(0px, 200px);

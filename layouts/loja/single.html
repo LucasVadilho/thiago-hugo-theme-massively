@@ -14,15 +14,17 @@
         </div>
 
         <div id="container-loja-all">
-            <div id="loja-promocao">
-                <div id="container-text-promocao">
-                    <h2>Em promoção!</h2>
-                    <div id="dataFinal">
-                        {{ .Params.Datafinalpromo }}
+            {{ if eq .Params.PromocaoAtiva true }}
+                <div id="loja-promocao">
+                    <div id="container-text-promocao">
+                        <h2>Em promoção!</h2>
+                        <div id="dataFinal">
+                            {{ .Params.Datafinalpromo }}
+                        </div>
                     </div>
+                    {{- partial "slider" . -}}
                 </div>
-                {{- partial "slider" . -}}
-            </div>
+            {{ end }}
 
             <div class="container-header-text">
                 <p><i>Na compra de qualquer produto das ilustrações, R$1 é destinado para instituições beneficientes</i></p>
@@ -31,46 +33,54 @@
             <div id="loja-no-promocao">
                 <div class="container-clicavel-and-title">
                     <div class="clicavel-lojas" onclick="window.open('{{ .Params.Linklivros | safeURL }}')">
-                        <img src="{{ .Params.Thumblivros }}" alt="{{ .Params.Altthumblivros }}">
+                        <img src="{{ .Params.Thumblivros }}" alt="{{ .Params.Altthumblivros }}" class="clicavel-item">
+                        <img src="{{ .Params.Hoverthumblivros }}" alt="{{ .Params.Altthumblivros }}" class="clicavel-hover">
                     </div>
+                    <!-- Caso quiser retornar
                     <div class="title-tipo-product">
                         <span>Livros</span>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="container-clicavel-and-title">
                     <div class="clicavel-lojas" onclick="window.open('{{ .Params.Linkcanecas | safeURL }}')">
-                        <img src="{{ .Params.Thumbcanecas }}" alt="{{ .Params.Altthumbcanecas }}">
-                    </div>
-                    <div class="title-tipo-product">
-                        <span>Canecas</span>
+                        <img src="{{ .Params.Thumbcanecas }}" alt="{{ .Params.Altthumbcanecas }}" class="clicavel-item">
+                        <img src="{{ .Params.Hoverthumbcanecas }}" alt="{{ .Params.Altthumbcanecas }}" class="clicavel-hover">
                     </div>
                 </div>
 
                 <div class="container-clicavel-and-title">  
                     <div class="clicavel-lojas" onclick="window.open('{{ .Params.Linkprints | safeURL }}')">
-                        <img src="{{ .Params.Thumbprints }}" alt="{{ .Params.Altthumbprints }}">
-                    </div>
-                    <div class="title-tipo-product">
-                        <span>Prints (Pôsteres)</span>
+                        <img src="{{ .Params.Thumbprints }}" alt="{{ .Params.Altthumbprints }}"  class="clicavel-item">
+                        <img src="{{ .Params.Hoverthumbprints }}" alt="{{ .Params.Altthumbprints }}" class="clicavel-hover">
                     </div>
                 </div>
 
                 <div class="container-clicavel-and-title">  
                     <div class="clicavel-lojas" onclick="window.open('{{ .Params.Linkecobag | safeURL }}')">
-                        <img src="{{ .Params.Thumbecobag }}" alt="{{ .Params.Altthumbecobag }}">
-                    </div>
-                    <div class="title-tipo-product">
-                        <span>Ecobags</span>
+                        <img src="{{ .Params.Thumbecobag }}" alt="{{ .Params.Altthumbecobag }}" class="clicavel-item">
+                        <img src="{{ .Params.Hoverthumbecobag }}" alt="{{ .Params.Altthumbecobag }}" class="clicavel-hover">
                     </div>
                 </div>
 
                 <div class="container-clicavel-and-title">  
-                    <div class="clicavel-lojas" onclick="window.open('{{ .Params.Linkbottomsandimas | safeURL }}')">
-                        <img src="{{ .Params.Thumbbottomsandimas }}" alt="{{ .Params.Altthumbbottomsandimas }}">
+                    <div class="clicavel-lojas" onclick="window.open('{{ .Params.Linkbottons | safeURL }}')">
+                        <img src="{{ .Params.Thumbbottons }}" alt="{{ .Params.Altthumbbottons }}" class="clicavel-item">
+                        <img src="{{ .Params.Hoverthumbbottons }}" alt="{{ .Params.Altthumbbottons }}" class="clicavel-hover">
                     </div>
-                    <div class="title-tipo-product">
-                        <span>Bottons e Imãs</span>
+                </div>
+
+                <div class="container-clicavel-and-title">  
+                    <div class="clicavel-lojas" onclick="window.open('{{ .Params.Linkimas | safeURL }}')">
+                        <img src="{{ .Params.Thumbimas }}" alt="{{ .Params.Altthumbimas }}" class="clicavel-item">
+                        <img src="{{ .Params.Hoverthumbimas }}" alt="{{ .Params.Altthumbimas }}" class="clicavel-hover">
+                    </div>
+                </div>
+
+                <div class="container-clicavel-and-title">  
+                    <div class="clicavel-lojas" onclick="window.open('{{ .Params.Linkcamisetas | safeURL }}')">
+                        <img src="{{ .Params.Thumbcamisetas }}" alt="{{ .Params.Altthumbcamisetas }}" class="clicavel-item">
+                        <img src="{{ .Params.Hoverthumbcamisetas }}" alt="{{ .Params.Altthumbcamisetas }}" class="clicavel-hover">
                     </div>
                 </div>
             </div>

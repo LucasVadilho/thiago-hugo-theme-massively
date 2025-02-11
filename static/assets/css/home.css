@@ -6,21 +6,31 @@
     background-color: white !important;
 }
 
-#menu-to-navigate{
-    right: 35px !important;
+/* Menu home, special case */
+#menu-to-navigate, .main-header-menu-and-logo{
+    position: relative !important;
+    right: 0px !important;
+    left: 0px !important;
 }
 
 .main-header-menu-and-logo{
     margin-top: 25px !important;
 }
 
-.menu-text, .menu-hamburguer{
-    filter: brightness(0) invert(69%) sepia(75%) saturate(296%) hue-rotate(348deg) brightness(101%) contrast(101%);   
-}
-
-.first-td, .seccond-td{
+.first-td, .seccond-td, .menu-text, .menu-hamburguer{
     display: none !important;
 }
+
+.menu-special-main{
+    scale: 0.9;
+    display: block !important;
+}
+
+#menu-to-navigate:hover{
+    cursor: pointer;
+}
+
+#menu-to-navigate:hover > .menu-special-main {transform: rotate(5deg)}
 
 #container-home {
     width: 100%;
@@ -40,6 +50,7 @@
 
 #organizer-container-text-items a{
     width: fit-content;
+    filter: brightness(0) invert(77%) sepia(56%) saturate(452%) hue-rotate(346deg) brightness(107%) contrast(101%);
 }
 
 #organizer-container-text-items a:hover{
@@ -105,19 +116,21 @@ p a{
 }
 
 #novidades-card-container{
+    font-weight: 500;
+    letter-spacing: 3px;
+    font-family: system-ui !important;
+    text-transform: uppercase;
     position: absolute;
     z-index: 2;
     background: white;
     padding: 10px 20px 0px 20px;
-    font-family: 'Lora';
-    font-weight: 700;
     font-style: italic;
-    right: 50px;
+    right: 30px;
     transform: rotate(356deg);
-    font-size: 20px;
+    font-size: 18px;
     height: calc(40% + 45px);
     transform-origin: bottom;
-    margin-top: calc(60dvh - 60px);
+    margin-top: calc(60dvh - 50px);
 }
 
 #container-home-bottom-items{
@@ -326,20 +339,20 @@ p a{
 
 @media screen and (max-width: 700px) and (min-width: 553px) {
     #novidades-card-container{
-        font-size: 1.2rem;
+        font-size: 16px;
         right: 30px;
         padding: 10px 15px 0px 15px;
         transform: rotate(353deg);
-        margin-top: calc(60dvh - 50px);
+        margin-top: calc(60dvh - 45px);
     }
 }
 
 @media screen and (max-width: 552px) and (min-width: 300px) {
     #novidades-card-container{
-        font-size: 1.2rem;
-        right: 2px;
+        font-size: 14px;
+        right: 0px;
         padding: 10px 15px 0px 15px;
         transform: rotate(350deg);
-        margin-top: calc(60dvh - 50px);
+        margin-top: calc(60dvh - 40px);
     }
 }

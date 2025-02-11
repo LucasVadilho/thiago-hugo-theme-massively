@@ -144,12 +144,33 @@
     mix-blend-mode: hard-light !important;
 }
 
-#container-next-button-gallery-ilustracoes:hover,#container-prev-button-gallery-ilustracoes:hover,.buttonCloseProject:hover,.buttonLojaProject:hover,.buythistext:hover{
+.container-buy-this{
+    max-width: 100%;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.container-buy-this:hover,.buttonCloseProject:hover,.buttonLojaProject:hover{
     cursor: pointer;
+}
+
+.container-buy-this:hover>.buythistext, .buttonCloseProject:hover,.buttonLojaProject:hover{
     mix-blend-mode: hard-light;
     transform: rotate(4deg);
     perspective: 0;
-} 
+}
+
+/* Caso especial por conta da scrollbar (ficava coberta por conta do rotate) */
+    #container-next-button-gallery-ilustracoes:hover, #container-prev-button-gallery-ilustracoes:hover{
+        cursor: pointer;
+    }
+
+    #container-next-button-gallery-ilustracoes:hover > #next-button-gallery-ilustracoes img,
+    #container-prev-button-gallery-ilustracoes:hover > #prev-button-gallery-ilustracoes img{  
+        mix-blend-mode: hard-light;
+        transform: rotate(4deg);
+        perspective: 0;
+    }
 
 .snackbar span{
     line-height: normal !important;
@@ -215,16 +236,16 @@
     bottom: 0;
     right: 0;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 17px);
     border: none;
 }
 
 .imagesSideBySide{
     display: flex;
     flex-direction: row;
-    column-gap: 40px;
     max-width: 100%;
     flex-wrap: wrap;
+    align-items: flex-start;
     justify-content: center;
 }
 
