@@ -215,10 +215,6 @@
     margin-bottom: 0px;
 }
 
-#no-funny-contato{
-    margin-top: 40px;
-}
-
 @media screen and (max-width: 1149px) {
     #estilo-escrita{
         justify-content: flex-start;

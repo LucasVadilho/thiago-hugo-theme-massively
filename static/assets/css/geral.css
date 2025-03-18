@@ -157,6 +157,19 @@ figcaption{
     max-width: 100%;
 }
 
+.links span:nth-child(1),.links span:nth-child(2){
+    scale: 0.85;
+}
+
+
+.links span:nth-child(4),.links span:nth-child(6),.links span:nth-child(7){
+    scale: 0.8;
+}
+
+.links span:nth-child(5){
+    scale: 0.9;
+}
+
 /*----------- HOVERS NOS MENUS TD, HAMBURGUER, MENU, TD VADILHO, LINKS MENU GERAL e CLOSE -------------*/
 .menu-hamburguer:hover, .menu-text:hover, .links img:hover, .closethings:hover, .first-td:hover, .seccond-td:hover{
     cursor: pointer;
@@ -260,6 +273,9 @@ figcaption{
 @media screen and (max-width: 768px) {
     .container-header-name{
         height: 200px;
+    }
+    .links img{
+        max-width: 95%;
     }
 }
 

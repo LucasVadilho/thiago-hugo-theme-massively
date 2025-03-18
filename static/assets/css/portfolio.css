@@ -1,3 +1,7 @@
+.container-header-text{
+    margin: 80px auto 40px;
+}
+
 #portfolio-header-name{
     padding: 70px 30px;
     background-color: #c05a3d;
@@ -25,7 +29,8 @@
 }
 
 #container-sobre img{
-    max-width: 95%
+    max-width: 95%;
+    margin-bottom: 30px;
 }
 
 #container-sobre p{
@@ -35,12 +40,28 @@
     padding-left: 20px;
 }
 
+#container-sobre p:nth-child(3){
+    text-align: center !important;
+    margin: 15px 0px 35px !important;
+    color: #611ba1;
+    font-weight: 500;
+    padding: 0px 60px !important;
+}
+
 #container-sobre p:first-of-type{
     margin-top: 20px;
 }
 
 #container-sobre p:last-of-type{
     margin-bottom: 0px;
+}
+
+#container-sobre p:nth-child(5),#container-sobre p:nth-child(7){
+    color: #C05A3D;
+    font-weight: 500;
+    text-align: left;
+    margin-top: 30px;
+    font-size: 1.5rem;
 }
 
 #container-sobre, #contato-form-container{
