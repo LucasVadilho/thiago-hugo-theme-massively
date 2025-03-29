@@ -50,14 +50,14 @@
                                         {{ range $v, $categories := .GetTerms "categories" }}
                                             {{- if $v }}({{ end }}
                                                 {{ $firstChar := substr .LinkTitle 0 1 }}
-                                                {{ if eq $firstChar "a" }}
-                                                    <span class="span-link" style="text-transform: uppercase">
-                                                        <a href="/historietascategorias/{{ lower (replace .LinkTitle ` ` `-`)}}">{{ .LinkTitle }}</a>
-                                                    </span>
-                                                {{ else }}
-                                                    <span class="span-link">
-                                                        <a href="/historietascategorias/{{ lower (replace .LinkTitle ` ` `-`)}}">{{ .LinkTitle }}</a>
-                                                    </span>
+                                                    {{ if eq $firstChar "A" }}
+                                                        <span class="span-link">
+                                                            <a href="/historietascategorias/{{ lower (replace .LinkTitle ` ` `-`)}}" style="text-transform: uppercase">{{ .LinkTitle }}</a>
+                                                        </span>
+                                                    {{ else }}
+                                                        <span class="span-link">
+                                                            <a href="/historietascategorias/{{ lower (replace .LinkTitle ` ` `-`)}}">{{ .LinkTitle }}</a>
+                                                        </span>
                                                 {{ end }}
                                         {{ end }}
                                         )
@@ -91,7 +91,7 @@
 
                         <span id="container-div-color" style="background-color: {{ .Params.Backgroundhistcolor | safeCSS }};"></span>
 
-                        <div id="container-texto-and-image-content" style="background-color: {{ .Params.Bgcontentcolor | safeCSS }};padding-bottom: 100px;">
+                        <div id="container-texto-and-image-content-historietas" style="background-color: {{ .Params.Bgcontentcolor | safeCSS }};padding-bottom: 100px;">
                             <span class="correcting-figcaption-color" style="color: {{ .Params.ContentTextColor | safeCSS }}">
                                 {{ .Content }}
                             </span>

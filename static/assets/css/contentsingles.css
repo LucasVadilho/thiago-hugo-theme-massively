@@ -80,7 +80,7 @@ td{
     z-index: 2;
 }
 
-#container-texto-and-image-content{
+#container-texto-and-image-content, #container-texto-and-image-content-historietas{
     margin: auto;
     padding-top: 80px;
     padding-bottom: 0px;
@@ -99,7 +99,31 @@ td{
     hyphens: none;
 }
 
-#container-texto-and-image-content h2{
+#container-texto-and-image-content-historietas p{
+    max-width: 800px;
+    margin: auto;
+    font-size: 1.2rem;
+    hyphens: auto;
+    text-align: justify;
+    text-wrap-style: stable;
+    word-spacing: -0.025em;
+    text-indent: 2rem;
+}
+
+#container-texto-and-image-content-historietas p .primeiroparagrafo{/* Correção pq estou usando o text-indent nas historietas */
+    margin-left: -2rem;
+}
+
+.space-travessao{ /* just me being a little psycho */
+    margin-right: 6px;
+}
+
+figcaption>p{ /* Correção pq estou usando o text-indent nas historietas */
+    text-indent: 0px !important;
+    text-align: center !important;
+}
+
+#container-texto-and-image-content h2,#container-texto-and-image-content-historietas h2{
     text-wrap: pretty;
 }
 
@@ -120,7 +144,7 @@ td{
 
 .container-img-centralizada img, .container-img-alinhada-esq img{
     max-width: 100%;
-    max-height: 97dvh;
+/*     max-height: 97dvh; CAUSA BLUR*/
 }
 
 .changeto1rem{
@@ -359,6 +383,30 @@ body {
     opacity: 80%;
 }
 
+.button-loja-historietas{
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-radius: 3px;
+    line-height: normal;
+    background-color: #e54646;
+    margin: 30px auto 0px auto;
+    max-width: fit-content;
+}
+
+.button-loja-historietas-ahref{
+    display: contents;
+}
+
+.button-loja-historietas-ahref:hover>.button-loja-historietas, .button-loja-historietas-ahref:hover>.button-loja-historietas-side-by-side{
+    cursor: pointer;
+    transform: rotate(5deg);
+}
+
+.button-loja-historietas>.button-text, .button-loja-historietas-side-by-side>.button-text{
+    font-size: 1rem;
+}
+
 /* Enfeites */
 .riscado{
     text-decoration: line-through;
@@ -428,7 +476,7 @@ body {
 }
 
 @media  screen and (max-width: 861px){
-    #container-texto-and-image-content{
+    #container-texto-and-image-content,#container-texto-and-image-content-historietas{
         padding: 80px 20px 0px 20px;
     }
 }
@@ -446,7 +494,7 @@ body {
     #header-infos-single-post h4, #header-infos-single-post-historietas h4{
         font-size: 0.9rem;
     }
-    #container-texto-and-image-content{
+    #container-texto-and-image-content,#container-texto-and-image-content-historietas{
         padding-top: 80px;
     }
     #container-header-single-post{
@@ -471,7 +519,7 @@ body {
         font-size: 0.9rem;
         letter-spacing: 0.8px;
     }
-    #container-texto-and-image-content{
+    #container-texto-and-image-content,#container-texto-and-image-content-historietas{
         padding-top: 80px;
     }
     #container-header-single-post{

@@ -604,6 +604,7 @@ p>a:hover, figcaption>a:hover, li>a.span-link:hover{
     color: var(--grey-color-text) !important;
     text-align: right !important;
     margin: 0px auto !important;
+    text-indent: 0 !important;
 }
 
 .linkto_contato{

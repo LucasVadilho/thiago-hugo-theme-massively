@@ -167,8 +167,6 @@
 .capa img{
     width: 300px;
     height: 424px;
-    object-fit: cover;
-    object-position: 50% 50%;
     transition: transform 1s;
     -webkit-filter: blur(0);
 }
@@ -179,7 +177,7 @@
 }
 
 .flipcapa{
-    transform:rotateY(180deg);
+    transform: rotateY(180deg);
     z-index: -1;
 }
 

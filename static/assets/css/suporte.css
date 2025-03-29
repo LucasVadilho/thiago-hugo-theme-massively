@@ -230,3 +230,9 @@
         font-size: 3rem;
     }
 }
+
+@media  screen and (min-width:700px) {
+    .nomes-imortalizados{
+        max-width: 70%;
+    }
+}
