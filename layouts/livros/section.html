@@ -26,6 +26,7 @@
                 <div class="container-livros-all-content" onclick="window.location.href='{{ .Params.Idlink | safeURL }}';event.stopPropagation()">
                     <div class="container-livro-image">
                         <img src="{{ .Params.Imagemselecaolivros }}" alt="{{ .Params.Altimagemselecaolivros }}">
+                        <img src="{{ .Params.Imagemhoverselecaolivros }}" alt="{{ .Params.Altimagemselecaolivros }}">
                     </div>
                     <div class="container-livro-infos-and-buttons">
                         <h5 style="color: {{ .Params.Colortext | safeCSS }}">{{ .Params.Categoria }}</h5>

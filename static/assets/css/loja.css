@@ -141,6 +141,12 @@
     }
 }
 
+@media screen and (max-width: 470px){
+    .container-clicavel-and-title img{
+        max-width: 100%;
+    }
+}
+
 @media screen and (max-width: 425px) and (min-width: 376px){
     #dataFinal {
         font-size: 0.8rem;        

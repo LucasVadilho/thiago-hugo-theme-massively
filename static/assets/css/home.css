@@ -233,15 +233,23 @@ p a{
     z-index: -1;
 }
 
-/* quantas novidades vai mostrar? */
-@media screen and (max-width: 1024px){
-    #item-bottom-dir{
-        display: none;
+/* NOVIDADES */
+    /* quantas novidades vai mostrar? */
+    @media screen and (max-width: 1024px){
+        #item-bottom-dir{
+            display: none;
+        }
+        #item-bottom-esq,#item-bottom-center{
+            width: 50%;
+        }
     }
-    #item-bottom-esq,#item-bottom-center{
-        width: 50%;
+
+    /* diminui o tamanho das imagens das novidades para ainda ficar interessante de olhar */
+    @media  screen and (max-width: 768px){
+        #item-bottom-esq img, #item-bottom-center img, #item-bottom-dir img{
+            height: calc(100% + 80px);
+        }
     }
-}
 
 /* media screen para sizes */
 @media  screen and (max-width: 1440px) and (min-width: 769px){
