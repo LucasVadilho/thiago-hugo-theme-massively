@@ -58,7 +58,7 @@
                                 <div class="capa">
                                     <img src="{{ .Params.Imagethumb }}" alt="{{ .Params.Altimagethumb }}">
                                 </div>
-                                <div class="contracapa" style="background-color: {{ .Params.Backgroundhistcolor | safeCSS }}; color: {{ .Params.Chamadacolor | safeCSS}}">
+                                <div class="contracapa" style="background-color: {{ .Params.Backgroundhistcolor | safeCSS }}; color: {{ .Params.Chamadacolor | safeCSS}}; display: flex; flex-direction: column;">
                                     <div class="contracapa-title">{{ .Params.Title }}</div>
                                     <p class="contracapa-chamada">{{ .Params.Chamada }}</p>
                                     <img src="{{ .Params.Elementchamada }}" alt="{{ .Params.Altelementchamada }}">
