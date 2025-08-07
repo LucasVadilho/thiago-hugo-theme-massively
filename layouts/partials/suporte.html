@@ -3,7 +3,7 @@
 <div id="container-modos-de-apoiar">
     <div class="container-apoio">
         <h3>Diretamente</h3>
-        <p>Apoie por PIX ou com a compra dos meus livros, prints e canecas. Todas as contribuições e compras fazem uma <i>enorme diferença!</i></p>
+        <p>Apoie por PIX ou com a compra dos meus livros e ilustrações. Todas as contribuições e compras fazem uma <i>enorme diferença!</i></p>
 
         <div id="container-contribuicaodireta-buttons">
             <div class="button-contribuicao-direta">
@@ -44,13 +44,15 @@
 
     <div class="container-apoio">
         <h3>Sem custo</h3>
-        <p>Compartilhe esse conteúdo com <i>amigos(as)!</i> Clique no botão, cole onde quiser, e me ajude enquanto cria assunto para conversar :)</p>
+        <p>Se inscreva na newsletter <i>Cartas em Busca de um Lar</i> e receba um <nbsp>e-mail</nbsp> por mês contendo uma carta e o resumo das novidades!</p>
+        {{- partial "emailing-versao-apoio" . -}}
+        <!-- <p>Compartilhe esse conteúdo com <i>amigos(as)!</i> Clique no botão, cole onde quiser, e me ajude enquanto cria assunto para conversar :)</p>
         <div class="button-compartilhar-post">
             <span class="button-compartilhar-container" onclick="copiarUrlSharing()">
                 <span i class="fa fa-link icon"></span>
                 <span class="button-text compartilhar"> COMPARTILHAR</span>
             </span> 
-        </div>
+        </div> -->
     </div>                            
 </div>
 
@@ -58,8 +60,13 @@
     <span id='toCloseImortalizados' onclick="fecharImortalizados()">
         <img src="/images/menu/close-things.png" alt="Fechar">
     </span>
-    <p>Os imortalizados da vez são escolhidos sem qualquer condição ou comparação. Todo apoio faz uma enorme diferença, e escrever o nome de alguns dos apoiadores é uma forma que encontrei para tornar mais palpável e mais pessoal o meu sentimento de gratidão.</p>
-    <p>Esse sentimento é para com todos vocês, e ainda que seu nome não tenha, propriamente, aparecido, saiba que os imortalizados da vez estão te representando, e que o ato de colocá-los nessa página foi feito com você nos pensamentos, e no coração.</p>
+    <p>Os imortalizados da vez são escolhidos sem qualquer comparação. TODO apoio faz uma enorme diferença, e escrever o nome de alguns
+        apoiadores foi a forma que encontrei para tornar mais palpável o meu sentimento de gratidão.</p>
+    <p>Esse sentimento, no entanto, é para com <b>todos vocês</b> que apoiam as histórias. Ainda que seu nome possa não tenha aparecido nessa edição, 
+        saiba que os imortalizados da vez estão te representando, e o ato de <nobr>colocá-los</nobr> nessa página foi feito com você nos pensamentos e no coração!
+    </p>
+    <p>Sendo assim, muito obrigado por fazer parte das Historietas ❤️
+    </p>
 </div>
 
 <script>

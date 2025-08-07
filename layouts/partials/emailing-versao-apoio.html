@@ -1,0 +1,99 @@
+<link rel="stylesheet" type="text/css" href="/assets/css/emailing-versao-apoio.css"> <!-- Chamando CSS emailing-->
+
+<div id="container-emailing-vapoio">
+    <div id="container-newsletterForm-vapoio" id="newsletterFocus">
+        <div id="de-eu-para-voce-miolo-vapoio">
+            <form id="newsletterForm-vapoio" method="post">
+                <div id="container-input-emailing-letter-vapoio">
+                    <input type="email" name="mailnewsl" id="emailnewsl-vapoio" autocomplete="email" placeholder="Digite seu email aqui" required/>
+                    <span class="button-inscrever-de-eu-para-voce-vapoio" onclick="subscribeEmailingVAPOIO()" tabindex="0">Inscrever</span>
+                    <span class="subscribing-emailing-letter-vapoio"></span>
+                    <span class="email-sendo-inscrito-msg-vapoio">Carregando... Por favor, aguarde...</span>
+                    <span class="email-inscrito-msg-vapoio">Deu tudo certo! Até breve :)</span>
+                    <span class="email-fail-inscrito-msg-vapoio">Ops! Podemos tentar outra vez?&nbsp
+                        <a onclick="tryagainVAPOIO()">Tentar</a>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+var inscreverbuttonVAPOIO = document.querySelector(".button-inscrever-de-eu-para-voce-vapoio");
+var emailinscritoVAPOIO = document.querySelector(".email-inscrito-msg-vapoio");
+var emailnaoinscritoVAPOIO = document.querySelector(".email-fail-inscrito-msg-vapoio");
+var emailsendoinscritoVAPOIO = document.querySelector(".email-sendo-inscrito-msg-vapoio")
+var loadingbarnewsletterVAPOIO = document.querySelector(".subscribing-emailing-letter-vapoio");
+
+let emailsendoincritoVAPOIO = function(){
+    inscreverbuttonVAPOIO.classList.add("button-inscrever-de-eu-para-voce-active-vapoio");
+	setTimeout(function(){
+        loadingbarnewsletterVAPOIO.classList.add("container-input-emailing-letter-loading-vapoio");
+        emailsendoinscritoVAPOIO.classList.add("email-sendo-inscrito-msg-active-vapoio");
+	}, 1000);
+}
+
+let emailInscritoVAPOIO = function(){ 
+    emailinscritoVAPOIO.classList.add("email-inscrito-msg-active-vapoio");
+    emailsendoinscritoVAPOIO.classList.remove("email-sendo-inscrito-msg-active-vapoio");
+    loadingbarnewsletterVAPOIO.classList.add("loadingbarnewsletter-success-vapoio");
+    setTimeout(function(){
+        emailinscritoVAPOIO.classList.remove("email-inscrito-msg-active-vapoio");
+        inscreverbuttonVAPOIO.classList.remove("button-inscrever-de-eu-para-voce-active-vapoio");
+        flagbarcarregadaVAPOIO = false;
+    }, 180000);
+}
+
+let tryagainVAPOIO = function (){
+    emailnaoinscritoVAPOIO.classList.remove("email-fail-inscrito-msg-active-vapoio");
+    loadingbarnewsletterVAPOIO.classList.remove("container-input-emailing-letter-loading-vapoio");
+    loadingbarnewsletterVAPOIO.classList.remove("loadingbarnewsletter-fail-vapoio");
+    inscreverbuttonVAPOIO.classList.remove("button-inscrever-de-eu-para-voce-active-vapoio");
+    flagbarcarregadaVAPOIO = false;
+}
+
+let emailNaoInscritoVAPOIO = function(){
+    loadingbarnewsletterVAPOIO.classList.add("loadingbarnewsletter-fail-vapoio");
+    emailsendoinscritoVAPOIO.classList.remove("email-sendo-inscrito-msg-active-vapoio");
+    emailnaoinscritoVAPOIO.classList.add("email-fail-inscrito-msg-active-vapoio");
+}
+
+let subscribeEmailingVAPOIO = function(){
+    var input = document.getElementById("emailnewsl-vapoio");
+
+    if(input.checkValidity() === true){
+        data = {
+            'mail': document.getElementById('emailnewsl-vapoio').value,
+            'assunto': '[Newsletter] Signup'
+        }
+        emailsendoincritoVAPOIO();
+        url = 'https://www.tdvadilho.com/mensagem'
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+
+        }).then(result => {
+            emailInscritoVAPOIO();
+        }).catch(error => {
+            emailNaoInscritoVAPOIO();
+        })
+    } else {
+        input.reportValidity();
+    }
+}
+
+/* CLICK WITH ENTER */
+document.getElementById('emailnewsl-vapoio').addEventListener('focus', function(){
+    document.addEventListener("keyup", ({key}) => {
+    if (key === "Enter") {
+        subscribeEmailingVAPOIO();
+    }
+})
+});
+/* ----------------END SENDING EMAIL---------------- */
+</script>

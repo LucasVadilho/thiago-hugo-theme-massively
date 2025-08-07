@@ -46,8 +46,7 @@
     z-index: 2;  
     opacity: 0;
     transition: 0.5s ease-in-out;
-    background-color: var(--overlay-color);
-
+    background-color: #d7deecab;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -55,26 +54,27 @@
 }
 
 .nome{
-    font-size: 3.2rem;
-    font-style: italic;
-    font-family: Lora;
+    font-size: 2.4rem;
+    text-wrap: balance;
+    text-transform: uppercase;
+    font-family: "Afacad Flux", sans-serif;
     font-weight: 400;
     line-height: 1;
     hyphens: none;
     padding: 0px 20px;
-    color: var(--whitesmoke-color);
+    color: #681d11;
     text-align: center;
-    text-shadow: 1px 1px 1px var(--text-shadow);
 }
 
 .view{
-    font-size: 1.2rem;
+    font-size: 1.45rem;
     letter-spacing: 2px;
     font-family: system-ui, sans-serif;
     font-variant: all-petite-caps;
+    font-weight: 300;
     line-height: 1;
-    padding: 0px 20px;
-    color: var(--whitesmoke-color);
+    padding: 10px 20px;
+    color: #681d11;
 }
 
 .thumbprojeto-nomeandview:hover{
@@ -204,7 +204,6 @@
 }
 
 #openProject img{
-    object-fit: contain;
     max-height: calc(100dvh);
     max-width: 100%;
 }

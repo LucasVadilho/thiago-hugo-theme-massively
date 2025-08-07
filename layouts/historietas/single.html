@@ -105,12 +105,26 @@
                         <div id="suporteashistorietas">
                             <h1>Apoie as Historietas</h1>
                             <div class="container-imortalizados-da-vez">
-                                <p>A criação desse conteúdo somente foi possível graças ao apoio dos incríveis leitores e leitoras do site.  Como forma de representar o meu agradecimento, deixo alguns de vocês <i><a class="imortalizados" onclick="openImortalizados()">imortalizados</a></i> nesta historieta. É uma homenagem simples, eu sei, mas a simplicidade é ótima em carregar coisas do coração.</p>
+                                <p>O compartilhamento dessa história foi possível graças ao apoio dos leitores. Como forma de os homenagear e agradecer, deixo aqui alguns de seus nomes
+                                    <i><a class="imortalizados" onclick="openImortalizados()">imortalizados</a></i> nas páginas dessa historieta ❤️</p>
                                 <img class="nomes-imortalizados" src="{{ .Params.Imortalizadosdavez }}" alt="{{ .Params.Imortalizadosdavezalt }}">
                             </div>
                             {{- partial "suporte" . }}
                         </div>
+                        
                         {{- partial "similarHistsAndProcess" .}}
+
+                        <div id="just-a-color-for-commentsbg">
+                            <div id="container-comentarios-section">
+                                <h1>Comentários</h1>
+                                <div class="comentarios-avisos-container">
+                                    <p class="comentarios-avisos">• Clique em entrar e escolha entre comentar como anônimo ou com um usuário</p>
+                                    <p class="comentarios-avisos">• Para receber notificação de respostas, clique em "Inscrever-se por E-mail" depois de entrar :)</p>
+                                </div>
+                                {{- partial "comentario" . }}
+                            </div>
+                        </div>
+                        
                     </td>
                 </tr>
             </tbody>
@@ -118,16 +132,6 @@
         <div class="paperOverlay"></div>
         {{- partial "listademateriais" . -}}
         {{- partial "emailing" . -}}
-        <div id="just-a-color">
-            <div id="container-comentarios-section">
-                <h1>Comentários</h1>
-                <div class="comentarios-avisos-container">
-                    <p class="comentarios-avisos">• Clique em entrar e escolha entre comentar como anônimo ou com um usuário</p>
-                    <p class="comentarios-avisos">• Para receber notificação de respostas, clique em "Inscrever-se por E-mail" depois de entrar :)</p>
-                </div>
-                {{- partial "comentario" . }}
-            </div>
-        </div>
         {{- partial "rodape.html" . }}
     </div>
     <div id="urlCopiarNotification"></div>

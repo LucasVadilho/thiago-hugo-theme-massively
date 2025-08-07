@@ -41,6 +41,8 @@
 
 .imortalizados{
     text-decoration: underline;
+    color: var(--support-h3-color);
+    font-weight: 600;
 }
 
 #toCloseImortalizados{
@@ -101,7 +103,7 @@
     position: fixed;
     max-width: 800px;
     bottom: 40px;
-    background: var(--big-header-color);
+    background: #043a49;
     color: var(--whitesmoke-color);
     border: 10px solid;
     transform: translateX(-50%);
@@ -114,8 +116,11 @@
 }
 
 #snackbar-imortalizados-da-vez p{
-    text-align: left;
+    text-align: center;
+    padding: 0px 20px;
     margin-bottom: 20px;
+    hyphens: none !important;
+    text-wrap: balance;
 }
 
 /* direta */

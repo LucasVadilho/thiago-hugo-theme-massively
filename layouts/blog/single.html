@@ -86,15 +86,25 @@
                             <h1>Apoie a Toca</h1>
                             <div class="container-imortalizados-da-vez">
                                 <div class="container-imortalizados-da-vez">
-                                    <p>A criação desse post foi possível graças ao apoio dos incríveis leitores e leitoras do blog.  
-                                        Como forma de agradecimento, deixo alguns <i><a class="imortalizados" onclick="openImortalizados()">imortalizados</a></i> nesta página. 
-                                        É uma homenagem simples, mas a simplicidade é ótima em carregar coisas do coração.</p>
+                                   <p>A criação dessa postagem foi possível graças ao apoio dos leitores. Como forma de os homenagear e agradecer, deixo aqui alguns de seus nomes
+                                    <i><a class="imortalizados" onclick="openImortalizados()">imortalizados</a></i> nas páginas desse post ❤️</p>
                                     <img class="nomes-imortalizados" src="{{ .Params.Imortalizadosdavez }}" alt="{{ .Params.Imortalizadosdavezalt }}">
                                 </div>
                             </div>
                             {{- partial "suporte" . }}
                         </div>
                         {{- partial "similarPostsBlog" .}}
+
+                        <div id="just-a-color-for-commentsbg">
+                            <div id="container-comentarios-section">
+                                <h1>Comentários</h1>
+                                <div class="comentarios-avisos-container">
+                                    <p class="comentarios-avisos">• Clique em entrar e escolha entre comentar como anônimo ou com um usuário</p>
+                                    <p class="comentarios-avisos">• Para receber notificação de respostas, clique em "Inscrever-se por E-mail" depois de entrar :)</p>
+                                </div>
+                                {{- partial "comentario" . }}
+                            </div>
+                        </div>
                     </td>
                 </tr>
             </tbody>
@@ -102,16 +112,7 @@
         <div class="paperOverlay"></div>
         {{- partial "listademateriais" . -}}
         {{- partial "emailing" . -}}
-        <div id="just-a-color">
-            <div id="container-comentarios-section">
-                <h1>Comentários</h1>
-                <div class="comentarios-avisos-container">
-                    <p class="comentarios-avisos">• Clique em entrar e escolha entre comentar como anônimo ou com um usuário</p>
-                    <p class="comentarios-avisos">• Para receber notificação de respostas, clique em "Inscrever-se por E-mail" depois de entrar :)</p>
-                </div>
-                {{- partial "comentario" . }}
-            </div>
-        </div>
+        
         {{- partial "rodape.html" . }}
     </div>
     <div id="urlCopiarNotification"></div>

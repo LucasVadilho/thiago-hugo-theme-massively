@@ -1,0 +1,205 @@
+#container-emailing-vapoio{
+    margin-top: 12px;
+}
+
+#container-newsletterForm-vapoio{
+    /* display: inline-flex;
+    flex-direction: column; */
+}
+
+#de-eu-para-voce-miolo-vapoio{/* container do miolo */
+   /*  max-width: 900px; */
+}
+
+#newsletterForm-vapoio{
+    /* margin-bottom: 40px; */
+}
+
+#container-input-emailing-letter-vapoio{
+    border-radius: 30px;
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: 35px;
+    -webkit-transition: transform 0.2s ease-in-out 0s;
+       -moz-transition: transform 0.2s ease-in-out 0s;
+         -o-transition: transform 0.2s ease-in-out 0s;
+            transition: transform 0.2s ease-in-out 0s;
+}
+
+#container-input-emailing-letter-vapoio input{
+    height: 35px;
+    background-color: var(--whitesmoke-color);
+    border-radius: 30px 0px 0px 30px;
+}
+
+.button-inscrever-de-eu-para-voce-vapoio{
+    background-color: var(--accent-avocadish);
+    padding: 66px 30px 0px 30px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    font-family: system-ui, sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    height: 120px;
+    transform: translateY(-50%);
+	color: var(--whitesmoke-color);
+	-webkit-transition: transform 1s ease 0s ;
+	   -moz-transition: transform 1s ease 0s ;
+	     -o-transition: transform 1s ease 0s ;
+	        transition: transform 1s ease 0s ;
+}
+
+.subscribing-emailing-letter-vapoio{
+	background: #424252;
+    width: 100%;
+	height: 60px;
+    transform: translateX(-100%);
+    position: absolute;
+	z-index: 5;
+	display: inline-block;
+	-webkit-transition: transform 2s ease 0s ;
+	   -moz-transition: transform 2s ease 0s ;
+	     -o-transition: transform 2s ease 0s ;
+	        transition: transform 2s ease 0s ;
+}
+
+.email-inscrito-msg-vapoio, .email-fail-inscrito-msg-vapoio, .email-sendo-inscrito-msg-vapoio{
+    hyphens: auto;
+    line-height: 1.2;
+    padding: 10px 20px;
+    width: 100%;    
+    height: 35px;
+    z-index: 5;
+    position: absolute;
+    display: inline-flex;
+    color: var(--whitesmoke-color);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: "Lora";
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0px 20px;
+    opacity: 0;
+    transform: translateY(50px);
+	-webkit-transition: transform 0.5s ease 0.25s ;
+	   -moz-transition: transform 0.5s ease 0.25s ;
+	     -o-transition: transform 0.5s ease 0.25s ;
+	        transition: transform 0.5s ease 0.25s ;
+            pointer-events: none;
+}
+
+
+#container-newsletterForm-vapoio section{
+    margin-top: 50px;
+    text-align: center;
+}
+
+/* Feedback */
+.container-input-emailing-letter-loading-vapoio {
+	-webkit-transform: translateX(0);
+	   -moz-transform: translateX(0);
+	    -ms-transform: translateX(0);
+	     -o-transform: translateX(0);
+	        transform: translateX(0);
+}
+
+.button-inscrever-de-eu-para-voce-vapoio:hover{
+    cursor: pointer;
+    background-color: #9d902d;
+}
+
+.button-inscrever-de-eu-para-voce-active-vapoio{
+    -webkit-transform: translateY(0%);
+	   -moz-transform: translateY(0%);
+	    -ms-transform: translateY(0%);
+	     -o-transform: translateY(0%);
+	        transform: translateY(0%);
+}
+
+.email-inscrito-msg-active-vapoio, .email-fail-inscrito-msg-active-vapoio, .email-sendo-inscrito-msg-active-vapoio{
+	-webkit-transform: translateY(0px);
+	   -moz-transform: translateY(0px);
+	    -ms-transform: translateY(0px);
+	     -o-transform: translateY(0px);
+	        transform: translateY(0px);
+            opacity: 100%;
+            pointer-events: all;
+}
+
+.loadingbarnewsletter-success-vapoio{
+    background: #29683e !important;
+    transform: translateX(0%);
+}
+
+.loadingbarnewsletter-fail-vapoio{
+    background-color: #441310 !important;
+    transform: translateX(0%);
+}
+
+.email-fail-inscrito-msg-vapoio a{
+    text-decoration: underline;
+    color: var(--whitesmoke-color);
+}
+
+.email-fail-inscrito-msg-vapoio a:hover{
+    cursor: pointer;
+    color: #e79e99 !important
+}
+
+/* @media screen and (max-width: 1300px){
+    #container-emailing{
+        flex-direction: column;
+        padding-top: 90px;
+        padding-bottom: 90px;
+    }
+}
+
+@media screen and (max-width:1025px) and (min-width: 0px){
+    #container-emailing{
+        flex-direction: column;
+        padding: 90px 20px 90px 20px;
+    }
+}
+
+@media screen and (max-width:615px) and (min-width: 326px){
+    #text-chamada-emailing-letter {
+        font-size: 1.35rem;
+    }
+    #text-disclaimer-emailing-letter{
+        font-size: 0.9rem;
+    }
+    .button-inscrever-de-eu-para-voce{
+        padding: 78px 20px 0px 20px;
+    }
+}
+
+@media screen and (max-width:375px) {
+    input{
+        padding: 0px 22px;
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width:325px) and (min-width: 0px){
+    #text-chamada-emailing-letter {
+        font-size: 1.1rem;
+    }
+    #text-disclaimer-emailing-letter{
+        font-size: 0.85rem;
+    }
+    .button-inscrever-de-eu-para-voce{
+        padding: 78px 20px 0px 20px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .email-inscrito-msg, .email-fail-inscrito-msg, .email-sendo-inscrito-msg{
+        font-size: 0.9rem;
+    }
+} */

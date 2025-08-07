@@ -85,7 +85,6 @@ body{
 #menu-to-navigate{
     right: 2px;
     position: fixed;
-    scale: 0.8;
 }
 
 .menu-special-main{display: none;}
@@ -655,7 +654,7 @@ p>a:hover, figcaption>a:hover, li>a.span-link:hover{
 }
 
 /* -----------------------Comentários-------------------------- */
-#just-a-color{
+#just-a-color-for-commentsbg{
     background: #eee;
     padding: 100px 0px;
 }
