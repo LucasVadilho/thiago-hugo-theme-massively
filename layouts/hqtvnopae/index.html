@@ -6,13 +6,104 @@
 <body lang='{{ .Site.LanguageCode | default "pt-br" }}'>
     <div id="main">
         <div id="container-max-haqnto">
+            <!-- CHUVA -->
+            <div class="container-chuva">
+
+                <div class="rain">
+                    <div class="drop"></div>
+                    <div class="particles">
+                        <div></div><div></div><div></div><div></div>
+                    </div>
+                </div>
+
+                <div class="rain">
+                    <div class="drop"></div>
+                    <div class="particles">
+                        <div></div><div></div><div></div><div></div>
+                    </div>
+                </div>
+
+                <div class="rain">
+                    <div class="drop"></div>
+                    <div class="particles">
+                        <div></div><div></div><div></div><div></div>
+                    </div>
+                </div>
+
+                <div class="rain">
+                    <div class="drop"></div>
+                    <div class="particles">
+                        <div></div><div></div><div></div><div></div>
+                    </div>
+                </div>
+
+                <div class="rain">
+                    <div class="drop"></div>
+                    <div class="particles">
+                        <div></div><div></div><div></div><div></div>
+                    </div>
+                </div>
+
+                <div class="rain">
+                    <div class="drop"></div>
+                    <div class="particles">
+                        <div></div><div></div><div></div><div></div>
+                    </div>
+                </div>
+
+                <div class="rain">
+                    <div class="drop"></div>
+                    <div class="particles">
+                        <div></div><div></div><div></div><div></div>
+                    </div>
+                </div>
+
+                <div class="rain">
+                    <div class="drop"></div>
+                    <div class="particles">
+                        <div></div><div></div><div></div><div></div>
+                    </div>
+                </div>
+
+                <div class="rain">
+                    <div class="drop"></div>
+                    <div class="particles">
+                        <div></div><div></div><div></div><div></div>
+                    </div>
+                </div>
+
+                <div class="rain">
+                    <div class="drop"></div>
+                    <div class="particles">
+                        <div></div><div></div><div></div><div></div>
+                    </div>
+                </div>
+
+                <div class="rain">
+                    <div class="drop"></div>
+                    <div class="particles">
+                        <div></div><div></div><div></div><div></div>
+                    </div>
+                </div>
+
+                <div class="rain">
+                    <div class="drop"></div>
+                    <div class="particles">
+                        <div></div><div></div><div></div><div></div>
+                    </div>
+                </div>
+            </div>
+            <!-- FIM CHUVA -->
+
             <div id="container-header-haqnto">
+                <div id="gradient-container"></div>
+                
                 <div id="container-header-haqnto-imgbg">
                     <img src="/images/haqntopag/bg_topo.jpg" alt="Ilustração digital da vista do outro lado do lago Mótil. Chuva e bicicleta caida a direita, levando o observador a seguir o caminho que Gabi fez.">
                 </div>
 
-                <div id="container-header-haqnto-titulo">
-                    <img src="/images/haqntopag/titulo.svg" alt="vetor do título do livro Há quanto tempo você não olha para as estrelas?">
+                <div id="container-header-haqnto-titulo" >
+                    <img src="/images/haqntopag/titulo.png" class="breathing-element" alt="Há quanto tempo você não olha para as estrelas?">
                 </div>
             </div>
 
@@ -29,13 +120,13 @@
                 </h1>
             </div>
 
-            <p class="text-sysui capa-e-contra-text" style="color: #96d5dd; text-align: center;">Romance Psicológico Ficcional | Drama</p>
+            <p class="text-sysui capa-e-contra-text" style="color: #96d5dd; text-align: center;">Romance (não romântico) Psicológico Ficcional | Dark Drama</p>
 
-            <div id="capa-e-contra">
+            <div id="capa-e-contra" class="breathing-element">
                 <img src="/images/haqntopag/Capa-e-Contra.jpg" alt="capa e contra capa do livro">
             </div>
 
-            <p class="text-sysui capa-e-contra-text" style="color: #96d5dd; text-align: center;">Uma história paranormal e sincera, que fala sobre o tempo, depressão e coisas que importam</p>
+            <p class="text-sysui capa-e-contra-text" style="color: #96d5dd; text-align: center;">Uma história paranormal e sincera que fala sobre o tempo, depressão e coisas que importam</p>
 
             <div id="msg-do-autor">
                 <h1 class="frase-destaque msg-autor">Essa história surgiu do limbo. Não era sobre estrelas, tampouco sobre o olhar. Essa história, na verdade, era apenas uma tentativa desesperada de alguém que, desesperadamente, ansiava por se encontrar.</h1>
@@ -77,19 +168,56 @@
 
                     <div id="container-comeco-hist-text">
                         {{ .Content }}
+
+                        <h2 id="compre-o-livro-titulo-insidecapitulo">Compre o Livro</h2>
+                            <div id="container-botoes-comprar-livro-insidecapitulo">
+                                {{ if eq .Params.AvailableEditora true}}
+                                    <a href="https://flyve.com.br/508/h-quanto-tempo-voc-n-o-olha-para-as-estrelas-" target="_blank" onclick="showSnackAgradecimento()">
+                                        <div class="container-botao-comprar-livro">
+                                            <div class="icone-shop-container flyve">
+                                                <i class="fa-solid fa-basket-shopping"></i>
+                                            </div>
+                                            <p>Livro físico</p>
+                                            <img src="/images/logos-lojas/logo-flyve.svg" alt="Logo Editora Flyve">
+                                        </div>
+                                    </a>
+                                {{ end }}
+                                
+                                {{ if eq .Params.AvailableAmazon true}}
+                                    <a href="https://amzn.to/4najrUU" target="_blank" onclick="showSnackAgradecimento()">
+                                        <div class="container-botao-comprar-livro">
+                                            <div class="icone-shop-container amazon">
+                                                <i class="fa-solid fa-basket-shopping"></i>
+                                            </div>
+                                            <p>Livro físico</p>
+                                            <img src="/images/logos-lojas/logo-amazon.svg" alt="Logo Amazon">
+                                        </div>
+                                    </a>
+                                    
+                                    <a href="https://amzn.to/3JCnpXU" target="_blank" onclick="showSnackAgradecimento()">
+                                        <div class="container-botao-comprar-livro">
+                                            <div class="icone-shop-container amazon">
+                                                <i class="fa-solid fa-basket-shopping"></i>
+                                            </div>
+                                            <p>Ebook</p>
+                                            <img src="/images/logos-lojas/logo-amazon.svg" alt="Logo Amazon">
+                                        </div>
+                                    </a>
+                                {{ end }}
+                            </div>
                     </div>
                 </div>
             </div>
 
             <div id="container-polaroids" class="margin-top-correction-visual-bug">
                 <div id="container-correct-margin-to-center">
-                    <div class="paper-polaroid">
+                    <div class="paper-polaroid" style= "background-image: url('/images/haqntopag/polaroid-papel.jpg');">
                         <div class="container-img-polaroid">
                             <img src="/images/haqntopag/vista-detalhe-capa-ha-quanto-tempo-voce-nao-olha-para-as-estrelas-livro.jpg" alt="Detalhe da capa do livro, focando nas asas e texturas da borboleta">
                         </div>
                     </div>
 
-                    <div class="paper-polaroid">
+                    <div class="paper-polaroid" style= "background-image: url('/images/haqntopag/polaroid-papel2.jpg');">
                         <div class="container-img-polaroid">
                             <img src="/images/haqntopag/vista-detalhe-interior-ha-quanto-tempo-voce-nao-olha-para-as-estrelas-livro.jpg" alt="Detalhe do interior do livro, focando no capítulo 'há quanto tempo você não olha para as estrelas?'">
                         </div>
@@ -127,14 +255,14 @@
                 <img style="filter: brightness(90%);" src="/images/haqntopag/wordcloud-path.svg" alt="Nuvem de palavras para descrever o livro. Construída pelos leitores">
                 <div id="container-wc-invitation-and-lastupdate">
                     <div id="container-last-update-text">
-                        <p class="last-update-text">Última atualização: 14/10/2024</p>
+                        <p class="last-update-text">Última atualização: 29/08/2025</p>
                         <p class="last-update-text">Nova atualização em breve</p>
                     </div>
                     <div onclick="participarnuvemDePalavras(event)" class="button-participar">Participe aqui</div>
                 </div>
             </div>
 
-            <h1 id="compre-o-livro-titulo" class="margin-top-correction-visual-bug">Compre o Livro</h1>
+            <h1 id="compre-o-livro-titulo" class="margin-top-correction-visual-bug">Compre o Livro Aqui</h1>
             <div id="container-botoes-comprar-livro-offset-marker"></div>
 
             <div id="container-specialcase-botoes-comprar-livro" onclick="openComprarSpecialCase(event)">
@@ -158,7 +286,7 @@
                 {{ end }}
                 
                 {{ if eq .Params.AvailableAmazon true}}
-                    <a href="https://amzn.to/3PNqnJ8" target="_blank" onclick="showSnackAgradecimento()">
+                    <a href="https://amzn.to/4najrUU" target="_blank" onclick="showSnackAgradecimento()">
                         <div class="container-botao-comprar-livro">
                             <div class="icone-shop-container amazon">
                                 <i class="fa-solid fa-basket-shopping"></i>
@@ -168,7 +296,7 @@
                         </div>
                     </a>
                     
-                    <a href="https://amzn.to/46sYiy9" target="_blank" onclick="showSnackAgradecimento()">
+                    <a href="https://amzn.to/3JCnpXU" target="_blank" onclick="showSnackAgradecimento()">
                         <div class="container-botao-comprar-livro">
                             <div class="icone-shop-container amazon">
                                 <i class="fa-solid fa-basket-shopping"></i>
@@ -288,6 +416,7 @@
 
     /* Leitura do capitulo */
     flagCanCloseWithEsq = false;
+    flagOverlayAberto = false;
     let openSnackComecoHist = function(){
         let snackbarToOpen = document.getElementById("snackbar-comeco-hist");
         snackbarToOpen.style.display = "inline-flex";
@@ -301,6 +430,9 @@
         document.getElementById("container-specialcase-botoes-comprar-livro").style.pointerEvents = "none";
         
         flagCanCloseWithEsq = true;
+        flagOverlayAberto = true;
+       
+        $('.container-chuva').css('display','none');
 
         document.addEventListener('keydown', (e) => {
             if(flagCanCloseWithEsq == true){
@@ -321,6 +453,9 @@
 
         document.getElementById("container-specialcase-botoes-comprar-livro").style.opacity = "100%";
         document.getElementById("container-specialcase-botoes-comprar-livro").style.pointerEvents = "auto";
+
+        flagOverlayAberto = false;
+        $('.container-chuva').css('display','grid');
     }
 
     /* Botões Comprar o Livro */
@@ -337,13 +472,15 @@
                 buttons.css({
                     position: 'relative',
                     bottom: 0,
-                    background: '#0d1e25'
+                    background: '#0d1e25',
+                    'z-index': -1
                 });
                 if ($(window).width() <= 770) {
                     buttons.css("display", "flex");
+                    buttons.css("flex-flow", "wrap");
                     buttons.css("padding-bottom", "0");
                     $('#container-specialcase-botoes-comprar-livro').css("display", "none");
-                    $('#ainda-em-duvida-chamada').css("z-index", "25");
+                    $('#ainda-em-duvida-chamada').css("z-index", "-1");
                     $('#ainda-em-duvida-chamada').css("padding", "0px 0px 8rem 0px");
                 }
             }else {
@@ -352,6 +489,7 @@
                     position: 'fixed',
                     top:      'auto',
                     background: '#0d1e2500',
+                    'z-index': 10
                 });
                 if (($(window).width() > 770)) {
                     $('#container-specialcase-botoes-comprar-livro').css("display", "none");
@@ -370,7 +508,6 @@
 
         $(document).ready(function() {
             $(window).on('scroll resize', function() {adjustDivPosition()})
-            
         });
     });
 
@@ -385,6 +522,7 @@
         }
 
         document.body.style.cssText = 'overflow: auto';
+        flagOverlayAberto = false;
     }
 
     let flagParticiparSnackAberto = false;
@@ -396,6 +534,7 @@
         let selectinput = document.getElementById('txt_nuvemDePalavraHaQnto');
         selectinput.focus();
         selectinput.select();
+        flagOverlayAberto = true;
 
         window.addEventListener('click', function(g){
             if (containerparticiparnuvemDePalavras.contains(g.target)){
@@ -455,4 +594,50 @@
             closeparticiparnuvemDePalavras(); 
         }, 6000);
     }
+
+    window.onload = function () {
+        setTimeout(function() {
+            if(flagOverlayAberto == false){
+                thunderthuthuthunder = document.getElementById('main');
+                thunderthuthuthunder.style.filter = "brightness(3)";
+
+                setTimeout(function() {
+                    thunderthuthuthunder = document.getElementById('main');
+                    thunderthuthuthunder.style.filter = "brightness(2)";
+
+                    setTimeout(function() {
+                        thunderthuthuthunder = document.getElementById('main');
+                        thunderthuthuthunder.style.filter = "brightness(3)";
+
+                        setTimeout(function() {
+                            thunderthuthuthunder = document.getElementById('main');
+                            thunderthuthuthunder.style.filter = "none";
+                        }, 100);
+                    }, 200);
+                }, 100);
+            }
+        }, 3000);
+    }
+
+    setInterval(function() {
+        if(flagOverlayAberto == false){
+            thunderthuthuthunder = document.getElementById('main');
+            thunderthuthuthunder.style.filter = "brightness(3)";
+
+            setTimeout(function() {
+                thunderthuthuthunder = document.getElementById('main');
+                thunderthuthuthunder.style.filter = "brightness(2)";
+
+                setTimeout(function() {
+                    thunderthuthuthunder = document.getElementById('main');
+                    thunderthuthuthunder.style.filter = "brightness(3)";
+
+                    setTimeout(function() {
+                        thunderthuthuthunder = document.getElementById('main');
+                        thunderthuthuthunder.style.filter = "none";
+                    }, 100);
+                }, 200);
+            }, 100);
+        }
+    }, 60000);
 </script>
