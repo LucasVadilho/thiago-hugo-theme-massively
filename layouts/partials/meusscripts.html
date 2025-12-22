@@ -480,6 +480,13 @@ let resetScrollBarColor = function(){
     document.styleSheets[0].deleteRule(0);
 }
 
+/* --------------OPEN SPOILER TEXT----------------- */
+let openspoilertext = function(spoilernumber){
+    $(".spoiler-text").eq(spoilernumber).css("display", "block");
+    $(".spoiler-image").eq(spoilernumber).css("display", "block");
+}
+
+
 /* ----------------CHANGING COLOR TD E MENU ON SCROLL (AINDA TEM QUE FAZER!)----------------*/
 
 
