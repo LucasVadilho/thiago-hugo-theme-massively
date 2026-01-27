@@ -100,7 +100,7 @@
                             <img id="home-novidade-2" src="{{ .Params.Homeimage }}" alt="{{ .Params.Homeimagealt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
                         </div>
                     {{ end }}
-                    {{ if or (eq .Params.Lastpost2type "blog") (eq .Params.Lastpost1type "historietas") }}
+                    {{ if or (eq .Params.Lastpost2type "blog") (eq .Params.Lastpost2type "historietas") }}
                         <div id="item-bottom-center" onclick="window.location.href='{{ .Permalink | safeURL }}'">
                             <div class="overlay-home-news"></div>
                             <div class="organizer-home-news-text">
