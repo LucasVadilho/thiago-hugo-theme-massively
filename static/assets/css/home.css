@@ -22,7 +22,7 @@
 }
 
 .menu-special-main{
-    scale: 0.9;
+    scale: 0.8;
     display: block !important;
 }
 
@@ -40,7 +40,7 @@
 }
 
 #organizer-container-text-items{
-    height: 70%;
+    height: 73%;
     display: inline-flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -58,7 +58,7 @@
 }
 
 #organizer-container-text-items a img{
-    width: 500px;
+    width: 400px;
 }
 
 h1{
@@ -96,7 +96,7 @@ p a{
 
 #container-home-topo-items-sub{
     height: 70%;
-    top: 10px;
+    top: 7px;
     width: 100%;
     background-color: #ffffff;
     clip-path: polygon(0 0, 100% 0, 100% 87%, 0% 100%);
@@ -106,7 +106,7 @@ p a{
 
 #mask-novidades-card-container{
     height: calc(70% - 8px);
-    top: 10px;
+    top: 8px;
     width: 100%;
     clip-path: polygon(0 0, 100% 0, 100% 87%, 0% 100%);
     z-index: 2;
@@ -117,6 +117,7 @@ p a{
 
 #novidades-card-container{
     font-weight: 500;
+    font-size: 16px;
     letter-spacing: 3px;
     font-family: system-ui !important;
     text-transform: uppercase;
@@ -126,8 +127,7 @@ p a{
     padding: 10px 20px 0px 20px;
     font-style: italic;
     right: 30px;
-    transform: rotate(356deg);
-    font-size: 18px;
+    transform: rotate(357deg);
     height: calc(40% + 45px);
     transform-origin: bottom;
     margin-top: calc(60dvh - 50px);
@@ -139,11 +139,11 @@ p a{
     flex-wrap: nowrap;
     bottom: 0;
     columns: 2;
-    column-gap: 10px;
+    column-gap: 7px;
     width: 100%;
     align-items: flex-end;
-    padding: 0px 10px 10px 10px;
-    height: calc(40% - 10px);
+    padding: 0px 7px 7px 7px;
+    height: calc(40% - 7px);
 }
 
 #item-bottom-esq,#item-bottom-center,#item-bottom-dir{
@@ -174,14 +174,14 @@ p a{
     letter-spacing: 3px;
     font-family: system-ui;
     text-transform: uppercase;
-    text-shadow: 1px 1px 1px var(--text-shadow);
+    text-shadow: 2px 2px 2px var(--text-shadow);
     transition: 0.5s ease-in-out;
     padding: 0px 20px 0px 20px;
 }
 
 .home-news-title{
     color: var(--pure-white-color);
-    text-shadow: 1px 1px 1px var(--text-shadow);
+    text-shadow: 2px 2px 2px var(--text-shadow);
     transition: 0.5s ease-in-out;
     padding: 0px 20px 0px 20px;
     line-height: 0.9;
@@ -221,9 +221,9 @@ p a{
 /* bg */
 #bghome{
     position: absolute;
-    top: 10;
-    left: 10;
-    width: calc(100% - 20px);
+    top: 7;
+    left: 7;
+    width: calc(100% - 14px);
     height: 100%;
     background: #000000;
     background-blend-mode: hard-light;
@@ -254,17 +254,17 @@ p a{
 /* media screen para sizes */
 @media  screen and (max-width: 1440px) and (min-width: 769px){
     #bghome{
-        top: 10;
-        left: 10;
-        width: calc(100% - 20px);
+        top: 7px;
+        left: 7px;
+        width: calc(100% - 14px);
     }
     #container-home-topo-items-sub{
-        top: 10px;
+        top: 7px;
     }
     #container-home-bottom-items{
-        column-gap: 10px;
-        padding: 0px 10px 10px 10px;
-        height: calc(40% - 10px);
+        column-gap: 7px;
+        padding: 0px 7px 7px 7px;
+        height: calc(40% - 7px);
     }
 }
 
@@ -279,17 +279,17 @@ p a{
         font-size: 1.6rem;
     }
     #bghome{
-        top: 10;
-        left: 10;
-        width: calc(100% - 20px);
+        top: 7px;
+        left: 7px;
+        width: calc(100% - 14px);
     }
     #container-home-topo-items-sub{
-        top: 10px;
+        top: 7px;
     }
     #container-home-bottom-items{
-        column-gap: 10px;
-        padding: 0px 10px 10px 10px;
-        height: calc(40% - 10px);
+        column-gap: 7px;
+        padding: 0px 7px 7px 7px;
+        height: calc(40% - 7px);
     }
 }
 
@@ -298,15 +298,15 @@ p a{
         font-size: 1.1rem;
     }
     #organizer-container-text-items a img{
-        width: 350px;
+        width: 250px;
     }
     .intro-paragraph{
         font-size: 1.50rem;
         padding: 0 30px;
     }
     #bghome{
-        top: 7;
-        left: 7;
+        top: 7px;
+        left: 7px;
         width: calc(100% - 14px);
     }
     #container-home-topo-items-sub{
@@ -324,15 +324,15 @@ p a{
         font-size: 1.1rem;
     }
     #organizer-container-text-items a img{
-        width: 300px;
+        width: 250px;
     }
     .intro-paragraph{
         font-size: 1.40rem;
         padding: 0 20px;
     }
     #bghome{
-        top: 7;
-        left: 7;
+        top: 7px;
+        left: 7px;
         width: calc(100% - 14px);
     }
     #container-home-topo-items-sub{
