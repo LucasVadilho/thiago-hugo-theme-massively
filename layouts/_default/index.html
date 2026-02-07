@@ -12,8 +12,7 @@
                 <div id="organizer-container-text-items">
                     <a href='{{ absURL "sobre" }}'><img src="/images/assinatura.png" alt="TD Vadilho"></a>
                     <p class = "intro-paragraph">
-                        <i>Escritor e Ilustrador. Eu conto e ilustro histórias para você :) </i>
-                           
+                        <i>Escritor e Ilustrador. Eu conto e ilustro histórias para você :) </i>                  
                     </p>
                     {{- partial "pageHeaderMenuAndLogo" . -}}
                 </div>
@@ -37,9 +36,6 @@
                             <div class="organizer-home-news-text">
                                 <p class="home-news-type">{{ .Params.Lastpost1type }}</p>
                                 <h2 class="home-news-title">{{ .Params.Titlehome }}</h2>
-                                {{ if .Params.Titlehomecontinuity }}
-                                    <h2 class="home-news-title"> {{ .Params.Titlehomecontinuity }} </h2>
-                                {{ end }}
                             </div>
                             <img id="home-novidade-1" src="{{ .Params.Homeimage }}" alt="{{ .Params.Homeimagealt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
                         </div>
@@ -50,9 +46,6 @@
                             <div class="organizer-home-news-text">
                                 <p class="home-news-type">{{ .Params.Lastpost1type }}</p>
                                 <h2 class="home-news-title">{{ .Params.Titlehome }}</h2>
-                                {{ if .Params.Titlehomecontinuity }}
-                                    <h2 class="home-news-title"> {{ .Params.Titlehomecontinuity }} </h2>
-                                {{ end }}
                             </div>
                             <img id="home-novidade-1" src="{{ .Params.Homeimage }}" alt="{{ .Params.Homeimagealt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
                         </div>
@@ -68,9 +61,6 @@
                                     {{ end }}
                                 </p>
                                 <h2 class="home-news-title">{{ .Params.Titlehome }}</h2>
-                                {{ if .Params.Titlehomecontinuity }}
-                                    <h2 class="home-news-title"> {{ .Params.Titlehomecontinuity }} </h2>
-                                {{ end }}
                             </div>
                             <img id="home-novidade-1" src="{{ .Params.Homeimage }}" alt="{{ .Params.Homeimagealt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
                         </div>
@@ -85,9 +75,6 @@
                             <div class="organizer-home-news-text">
                                 <p class="home-news-type">{{  .Params.Lastpost2type }}</p>
                                 <h2 class="home-news-title">{{ .Params.Titlehome }}</h2>
-                                {{ if .Params.Titlehomecontinuity }}
-                                    <h2 class="home-news-title"> {{ .Params.Titlehomecontinuity }} </h2>
-                                {{ end }}
                             </div>
                             <img id="home-novidade-2" src="{{ .Params.Homeimage }}" alt="{{ .Params.Homeimagealt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
                         </div>
@@ -98,9 +85,6 @@
                             <div class="organizer-home-news-text">
                                 <p class="home-news-type">{{ .Params.Lastpost2type }}</p>
                                 <h2 class="home-news-title">{{ .Params.Titlehome }}</h2>
-                                {{ if .Params.Titlehomecontinuity }}
-                                    <h2 class="home-news-title"> {{ .Params.Titlehomecontinuity }} </h2>
-                                {{ end }}
                             </div>
                             <img id="home-novidade-2" src="{{ .Params.Homeimage }}" alt="{{ .Params.Homeimagealt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
                         </div>
@@ -116,9 +100,6 @@
                                     {{ end }}
                                 </p>
                                 <h2 class="home-news-title">{{ .Params.Titlehome }}</h2>
-                                {{ if .Params.Titlehomecontinuity }}
-                                    <h2 class="home-news-title"> {{ .Params.Titlehomecontinuity }} </h2>
-                                {{ end }}
                             </div>
                             <img id="home-novidade-2" src="{{ .Params.Homeimage }}" alt="{{ .Params.Homeimagealt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
                         </div>
@@ -133,9 +114,6 @@
                             <div class="organizer-home-news-text">
                                 <p class="home-news-type">{{  .Params.Lastpost3type }}</p>
                                 <h2 class="home-news-title">{{ .Params.Titlehome }}</h2>
-                                {{ if .Params.Titlehomecontinuity }}
-                                    <h2 class="home-news-title"> {{ .Params.Titlehomecontinuity }} </h2>
-                                {{ end }}
                             </div>
                             <img id="home-novidade-3" src="{{ .Params.Homeimage }}" alt="{{ .Params.Homeimagealt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
                         </div>
@@ -146,9 +124,6 @@
                             <div class="organizer-home-news-text">
                                 <p class="home-news-type">{{ .Params.Lastpost3type }}</p>
                                 <h2 class="home-news-title">{{ .Params.Titlehome }}</h2>
-                                {{ if .Params.Titlehomecontinuity }}
-                                    <h2 class="home-news-title"> {{ .Params.Titlehomecontinuity }} </h2>
-                                {{ end }}
                             </div>
                             <img id="home-novidade-3" src="{{ .Params.Homeimage }}" alt="{{ .Params.Homeimagealt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
                         </div>
@@ -164,9 +139,6 @@
                                     {{ end }}
                                 </p>
                                 <h2 class="home-news-title">{{ .Params.Titlehome }}</h2>
-                                {{ if .Params.Titlehomecontinuity }}
-                                    <h2 class="home-news-title"> {{ .Params.Titlehomecontinuity }} </h2>
-                                {{ end }}
                             </div>
                             <img id="home-novidade-3" src="{{ .Params.homeimage }}" alt="{{ .Params.homeimagealt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
                         </div>
