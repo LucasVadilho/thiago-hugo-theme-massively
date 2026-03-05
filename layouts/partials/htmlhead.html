@@ -31,6 +31,7 @@
             <meta property="og:description" content="{{ site.Params.Description }}" />
             <meta property="og:url" content="{{ site.BaseURL }}" />
             <meta name="og:image" content="{{ site.Params.Image }}" />
+            <meta name="og:image:secure_url" content="{{ .Params.Imagethumb }}" />
             <meta name="author" content="TD Vadilho">
         {{- else -}}
             <meta name="og:title" content="{{ .Params.Title }}" />
@@ -38,6 +39,7 @@
             <meta property="og:description" content="{{ .Params.Description }}" />
             <meta property="og:url" content="{{ .Page.Permalink }}" />
             <meta name="og:image" content="{{ .Params.Imagethumb }}" />
+            <meta name="og:image:secure_url" content="{{ .Params.Imagethumb }}" />
             <meta name="author" content="TD Vadilho">
         {{- end -}} 
 
