@@ -1,5 +1,6 @@
 #container-post-all-after-header{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     margin-bottom: 100px;
     width: 100%;
@@ -82,7 +83,7 @@
 
 .saiba-mais-compre{
     display: inline-flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     text-decoration: underline;
     width: 100%;
     column-gap: 20px;

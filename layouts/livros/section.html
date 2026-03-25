@@ -32,8 +32,12 @@
                         <h5 style="color: {{ .Params.Colortext | safeCSS }}">{{ .Params.Categoria }}</h5>
                         <img src="{{ .Params.Tema }}" alt="{{ .Params.Temaalt }}">
                         <div class="saiba-mais-compre">
-                            <span class="span-link"><a onclick="window.open('{{ .Params.Idcompradolivro | safeURL }}');event.stopPropagation()"><h5 style="color: {{ .Params.Colortext | safeCSS }}">Comprar livro</h5></a></span>
-                            <span class="span-link"><a onclick="window.open('{{ .Params.Idcompradoebook | safeURL }}');event.stopPropagation()"><h5 style="color: {{ .Params.Colortext | safeCSS }}">Comprar ebook</h5></a></span>
+                            {{ if .Params.Idcompradolivro }}
+                                <span class="span-link"><a onclick="window.open('{{ .Params.Idcompradolivro | safeURL }}');event.stopPropagation()"><h5 style="color: {{ .Params.Colortext | safeCSS }}">Comprar livro</h5></a></span>
+                            {{ end }}
+                            {{ if .Params.Idcompradoebook }}
+                                <span class="span-link"><a onclick="window.open('{{ .Params.Idcompradoebook | safeURL }}');event.stopPropagation()"><h5 style="color: {{ .Params.Colortext | safeCSS }}">Comprar ebook</h5></a></span>
+                            {{ end }}
                             <span class="span-link"><a onclick="window.location.href='{{ .Params.Idlink | safeURL }}';event.stopPropagation()"><h5 style="color: {{ .Params.Colortext | safeCSS }}">Saiba mais</h5></a></span>
                         </div>
                     </div>

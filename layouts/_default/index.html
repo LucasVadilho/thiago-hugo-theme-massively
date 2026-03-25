@@ -50,6 +50,16 @@
                             <img id="home-novidade-1" src="{{ .Params.Homeimage }}" alt="{{ .Params.Homeimagealt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
                         </div>
                     {{ end }}
+                    {{ if eq .Params.Lastpost1type "livro"}}
+                        <div id="item-bottom-esq" onclick="window.open('{{ .Params.Linklivro | safeURL }}')">
+                            <div class="overlay-home-news"></div>
+                            <div class="organizer-home-news-text">
+                                <p class="home-news-type">{{ .Params.Lastpost1type }}</p>
+                                <h2 class="home-news-title">{{ .Params.Titlehome }}</h2>
+                            </div>
+                            <img id="home-novidade-1" src="{{ .Params.Homeimage }}" alt="{{ .Params.Homeimagealt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
+                        </div>
+                    {{ end }}
                     {{ if or (eq .Params.Lastpost1type "blog") (eq .Params.Lastpost1type "historietas") }}
                         <div id="item-bottom-esq" onclick="window.location.href='{{ .Permalink | safeURL }}'">
                             <div class="overlay-home-news"></div>
@@ -89,6 +99,16 @@
                             <img id="home-novidade-2" src="{{ .Params.Homeimage }}" alt="{{ .Params.Homeimagealt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
                         </div>
                     {{ end }}
+                    {{ if eq .Params.Lastpost2type "livro"}}
+                        <div id="item-bottom-esq" onclick="window.open('{{ .Params.Linklivro | safeURL }}')">
+                            <div class="overlay-home-news"></div>
+                            <div class="organizer-home-news-text">
+                                <p class="home-news-type">{{ .Params.Lastpost2type }}</p>
+                                <h2 class="home-news-title">{{ .Params.Titlehome }}</h2>
+                            </div>
+                            <img id="home-novidade-2" src="{{ .Params.Homeimage }}" alt="{{ .Params.Homeimagealt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
+                        </div>
+                    {{ end }}
                     {{ if or (eq .Params.Lastpost2type "blog") (eq .Params.Lastpost2type "historietas") }}
                         <div id="item-bottom-center" onclick="window.location.href='{{ .Permalink | safeURL }}'">
                             <div class="overlay-home-news"></div>
@@ -120,6 +140,16 @@
                     {{ end }}
                     {{ if eq .Params.Lastpost3type "loja"}}
                         <div id="item-bottom-dir" onclick="window.open('{{ .Params.Linknovidadeloja | safeURL }}')">
+                            <div class="overlay-home-news"></div>
+                            <div class="organizer-home-news-text">
+                                <p class="home-news-type">{{ .Params.Lastpost3type }}</p>
+                                <h2 class="home-news-title">{{ .Params.Titlehome }}</h2>
+                            </div>
+                            <img id="home-novidade-3" src="{{ .Params.Homeimage }}" alt="{{ .Params.Homeimagealt }}" style="padding-top: {{ .Params.Paddingtop | safeCSS }}">
+                        </div>
+                    {{ end }}
+                    {{ if eq .Params.Lastpost3type "livro"}}
+                        <div id="item-bottom-esq" onclick="window.open('{{ .Params.Linklivro | safeURL }}')">
                             <div class="overlay-home-news"></div>
                             <div class="organizer-home-news-text">
                                 <p class="home-news-type">{{ .Params.Lastpost3type }}</p>
