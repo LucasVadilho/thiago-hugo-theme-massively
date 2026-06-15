@@ -423,6 +423,7 @@ body{
     column-gap: 20px;
     justify-content: center;
     z-index: 20;
+    background-color: rgb(13, 30, 37);
 }
 
 #container-specialcase-botoes-comprar-livro{
@@ -507,6 +508,7 @@ body{
 
 #agradecimento-snackbar{
     width: 100%;
+    height: 100dvh;
     background-color: #eadaf1;
     padding-top: 90px 0px 0px 90px;
     color: var(--dark-color-text);
@@ -726,6 +728,9 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    z-index: 1;
+    background: linear-gradient(90deg, rgba(0, 8, 10, 1) 0%, rgba(13, 30, 37, 1) 6%, rgba(13, 30, 37, 1) 94%, rgba(0, 8, 10, 1) 100%);
+    background-color: rgb(13, 30, 37);
 }
 
 #ainda-em-duvida-chamada p{

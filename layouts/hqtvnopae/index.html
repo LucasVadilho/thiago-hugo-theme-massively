@@ -472,15 +472,15 @@
                 buttons.css({
                     position: 'relative',
                     bottom: 0,
-                    background: '#0d1e25',
-                    'z-index': -1
+                    background: 'linear-gradient(90deg, rgba(0, 8, 10, 1) 0%, rgba(13, 30, 37, 1) 6%, rgba(13, 30, 37, 1) 94%, rgba(0, 8, 10, 1) 100%)',
+                    'z-index': 0
                 });
                 if ($(window).width() <= 770) {
                     buttons.css("display", "flex");
                     buttons.css("flex-flow", "wrap");
                     buttons.css("padding-bottom", "0");
                     $('#container-specialcase-botoes-comprar-livro').css("display", "none");
-                    $('#ainda-em-duvida-chamada').css("z-index", "-1");
+                    $('#ainda-em-duvida-chamada').css("z-index", "1");
                     $('#ainda-em-duvida-chamada').css("padding", "0px 0px 8rem 0px");
                 }
             }else {
