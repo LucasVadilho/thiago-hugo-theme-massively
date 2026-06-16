@@ -420,10 +420,10 @@ body{
     width: 1150px;
     max-width: 100%;
     display: inline-flex;
+    flex-wrap: wrap;
     column-gap: 20px;
     justify-content: center;
     z-index: 20;
-    background-color: rgb(13, 30, 37);
 }
 
 #container-specialcase-botoes-comprar-livro{
@@ -1031,6 +1031,12 @@ body{
     }
 }
 
+@media screen and (max-width: 928px){
+    #button-close-comeco-hist{
+        color: var(--dark-color-text);
+    }
+}
+
 @media screen and (max-width: 845px){
     .img-button{
        margin-bottom: 120px; 
@@ -1053,7 +1059,7 @@ body{
     }
 }
 
-@media screen and (max-width: 770px){
+@media screen and (max-width: 776px){
     #container-botoes-comprar-livro{
         display: none;
         align-items: center;
@@ -1101,9 +1107,6 @@ body{
     }
     #container-comeco-hist-text{
         padding: 60px 20px;
-    }
-    #button-close-comeco-hist{
-        color: var(--dark-color-text);
     }
 }
 

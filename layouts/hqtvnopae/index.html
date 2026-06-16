@@ -477,7 +477,7 @@
                 });
                 if ($(window).width() <= 770) {
                     buttons.css("display", "flex");
-                    buttons.css("flex-flow", "wrap");
+                    buttons.css("flex-wrap", "wrap");
                     buttons.css("padding-bottom", "0");
                     $('#container-specialcase-botoes-comprar-livro').css("display", "none");
                     $('#ainda-em-duvida-chamada').css("z-index", "1");
@@ -488,19 +488,19 @@
                     bottom:   0,
                     position: 'fixed',
                     top:      'auto',
-                    background: '#0d1e2500',
+                    background: 'none',
                     'z-index': 10
                 });
-                if (($(window).width() > 770)) {
+                if (($(window).width() > 775)) {
                     $('#container-specialcase-botoes-comprar-livro').css("display", "none");
                     buttons.css("display", "flex");
                     buttons.css('padding-bottom', 15);
                 }
-                if (($(window).width() <= 770)) {
+                if (($(window).width() <= 775)) {
                     buttons.css('padding-bottom', 90);
                     $('#container-specialcase-botoes-comprar-livro').css("display", "flex");
                 }
-                if (($(window).width() <= 770) && (comprarButtonOpen == false)) {
+                if (($(window).width() <= 775) && (comprarButtonOpen == false)) {
                     buttons.css("display", "none");
                 }
             }
