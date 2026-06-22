@@ -27,18 +27,6 @@
     /* justify-content: VEM DE CADA IMAGEM;*/
 }
 
-.thumb-image-centered{
-    justify-content: center;
-}
-
-.thumb-image-left{
-    justify-content: flex-start;
-}
-
-.thumb-image-right{
-    justify-content: flex-end;
-}
-
 .thumbprojeto-nomeandview{
     width: 100%;
     position: absolute;
@@ -320,15 +308,15 @@
 }
 
 /* Position */
-.leftposition ~ #organizer-galeria-ilustracoes>div{
+.leftposition{
     justify-content: flex-start;
  }
 
- .rightposition ~ #organizer-galeria-ilustracoes>div{
+ .rightposition{
     justify-content: flex-end;
  }
 
- .centerposition ~ #organizer-galeria-ilustracoes>div{
+ .centerposition{
     justify-content: center;
  }
 

@@ -64,7 +64,7 @@
                         <p class="nome">{{ .Params.tituloprojeto }}</p>
                         <p class="view">— veja —</p>
                     </div>
-                    <img src="{{ .Params.Thumbprojeto }}" class="animation-element not-shown-img-state {{ .Params.Imgthumbposition | safeCSS }}" alt="{{ .Params.altthumb }}"> 
+                    <img src="{{ .Params.Thumbprojeto }}" class="animation-element not-shown-img-state" alt="{{ .Params.altthumb }}"> 
                 </div>           
             {{ end }}
         </div>
@@ -180,7 +180,7 @@
     let openSobre = function(){
         document.getElementById("contato-form-container").style.display = "none";
         document.getElementById("organizer-galeria-ilustracoes").style.display = "none";
-        document.getElementById("container-sobre").style.display = "inline-flex";
+        document.getElementById("container-sobre").style.display = "block";
         document.getElementById("container-header-text").style.display = "none";
 
         document.getElementById("go-to-sobre").classList.add("active-menu");
