@@ -164,7 +164,8 @@ body{
 }
 
 #galho{
-    margin-top: -40px;
+    margin-top: 25dvh;
+    /* margin-top: -40px; */
 }
 
 #galho img{
@@ -355,6 +356,7 @@ body{
     text-align: right;
     max-width: 700px;
     margin-left: auto;
+    margin-bottom: 8rem;
 }
 
 .comentario-selecionado-box:nth-child(3){
